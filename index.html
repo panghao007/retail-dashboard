@@ -80,6 +80,44 @@
         <div class="card-arrow">›</div>
       </div>
     </div></div>
+    
+<div id="peer-section" style="display:none; margin-top:42px;">
+  <style>
+    .section-title { display:flex; align-items:center; gap:9px; font-size:17px; font-weight:800; color:#1f2933; margin-bottom:4px; }
+    .branddot { width:9px; height:9px; border-radius:50%; background:#F6AA00; display:inline-block; }
+    #peer-section .desc { color:#6b7280; font-size:13px; }
+  </style>
+  <div class="section-title"><span class="branddot"></span>同事报表</div>
+  <div class="desc">由同事维护、自助更新的经营看板。</div>
+  <div class="list" id="peer-list" style="margin-top:16px;"></div>
+</div>
+<script>
+(function(){
+  var s = document.getElementById('peer-section');
+  var list = document.getElementById('peer-list');
+  if(!s || !list) return;
+  fetch('peer/manifest.json?t=' + Date.now())
+    .then(function(r){ return r.ok ? r.json() : []; })
+    .then(function(arr){
+      if(!Array.isArray(arr) || !arr.length) return;
+      s.style.display = 'block';
+      arr.forEach(function(it){
+        var title = it.title || '同事报表';
+        var file = it.file || '';
+        var updated = it.updated ? ('更新于 ' + it.updated) : '';
+        var card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = '<a class="card-main" href="' + file + '">'
+          + '<div class="card-title">' + title + '</div>'
+          + '<div class="card-sub">' + updated + '</div></a>'
+          + '<div class="card-right"><div class="card-arrow">›</div></div>';
+        list.appendChild(card);
+      });
+    })
+    .catch(function(e){ /* 清单缺失则不出该区 */ });
+})();
+</script>
+
     <div class="foot">
       <div class="warn">内含会员与门店经营敏感数据，请勿外传</div>
       <div class="suggest">
