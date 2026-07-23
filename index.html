@@ -19,11 +19,16 @@
   .list { margin-top:24px; display:flex; flex-direction:column; gap:12px; }
   .card { display:flex; align-items:center; justify-content:space-between;
     background:#fff; border:1px solid #e5e9ef; border-radius:14px; padding:18px 20px;
-    text-decoration:none; color:inherit; transition:all .15s ease; }
+    transition:all .15s ease; }
   .card:hover { border-color:#1AABCB; box-shadow:0 6px 20px rgba(26,171,203,.12); transform:translateY(-1px); }
   .card.latest { border-color:#1AABCB; background:linear-gradient(180deg,rgba(26,171,203,.05),#fff); }
+  .card-main { flex:1; text-decoration:none; color:inherit; }
   .card-title { font-size:16px; font-weight:700; }
   .card-sub { font-size:12.5px; color:#9099a5; margin-top:5px; }
+  .card-right { display:flex; align-items:center; gap:14px; flex-shrink:0; }
+  .dl { flex-shrink:0; font-size:13px; font-weight:600; color:#1AABCB;
+    text-decoration:none; background:rgba(26,171,203,.1); padding:6px 12px; border-radius:9px; transition:all .15s ease; }
+  .dl:hover { background:#1AABCB; color:#fff; }
   .card-arrow { font-size:26px; color:#c2c9d2; font-weight:300; }
   .card:hover .card-arrow { color:#1AABCB; }
   .tag { display:inline-block; font-size:11px; font-weight:700; color:#fff;
@@ -41,28 +46,37 @@
       <div class="count">共 3 期看板</div>
     </div>
     <div class="list">
-    <a class="card latest" href="d/2026-07-23.html">
-      <div class="card-main">
+    <div class="card latest">
+      <a class="card-main" href="d/2026-07-23.html">
         <div class="card-title">会员有效性数据看板（2026年07月23日）<span class="tag">最新</span></div>
         <div class="card-sub">星期四 · 订单级口径</div>
+      </a>
+      <div class="card-right">
+        
+        <div class="card-arrow">›</div>
       </div>
-      <div class="card-arrow">›</div>
-    </a>
-    <a class="card" href="d/2026-07-22.html">
-      <div class="card-main">
+    </div>
+    <div class="card">
+      <a class="card-main" href="d/2026-07-22.html">
         <div class="card-title">会员有效性数据看板（2026年07月22日）</div>
         <div class="card-sub">星期三 · 订单级口径</div>
+      </a>
+      <div class="card-right">
+        
+        <div class="card-arrow">›</div>
       </div>
-      <div class="card-arrow">›</div>
-    </a>
-    <a class="card" href="d/2026-07-18.html">
-      <div class="card-main">
+    </div>
+    <div class="card">
+      <a class="card-main" href="d/2026-07-18.html">
         <div class="card-title">会员有效性数据看板（2026年07月18日）</div>
         <div class="card-sub">星期六 · 订单级口径</div>
+      </a>
+      <div class="card-right">
+        
+        <div class="card-arrow">›</div>
       </div>
-      <div class="card-arrow">›</div>
-    </a></div>
-    <div class="foot">数据每日 09:00 自动刷新 · 最近生成 2026-07-23 11:48<br>内含会员与门店经营敏感数据，请勿外传</div>
+    </div></div>
+    <div class="foot">数据每日 09:00 自动刷新 · 最近生成 2026-07-23 12:16<br>内含会员与门店经营敏感数据，请勿外传</div>
   </div>
 </body>
 </html>
