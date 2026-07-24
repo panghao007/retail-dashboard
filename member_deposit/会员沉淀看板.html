@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>会员沉淀看板</title>
+<style>
+*{box-sizing:border-box;}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f4f6fa;color:#1f2937;margin:0;padding:32px;}
+.wrap{max-width:920px;margin:0 auto;}
+h1{font-size:24px;margin:0 0 4px;}
+.sub{color:#6b7280;font-size:13px;margin-bottom:20px;}
+.card{background:#fff;border-radius:14px;box-shadow:0 1px 3px rgba(16,24,40,.08);padding:20px 22px;margin-bottom:16px;}
+.section-title{font-size:16px;font-weight:700;margin:0 0 14px;display:flex;align-items:center;gap:8px;}
+.branddot{width:10px;height:10px;border-radius:3px;background:#1AABCB;display:inline-block;}
+table{width:100%;border-collapse:collapse;font-size:14px;}
+th,td{padding:11px 12px;text-align:left;border-bottom:1px solid #eef1f5;}
+th{color:#6b7280;font-weight:600;font-size:12px;letter-spacing:.04em;background:#fafbfc;}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+td.bname{font-weight:600;}
+tr:last-child td{border-bottom:none;}
+.delta{font-weight:700;}
+.delta.up{color:#10b981;} .delta.down{color:#ef4444;} .delta.flat{color:#9ca3af;}
+.kpis{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:4px;}
+.kpi{flex:1;min-width:150px;background:#fff;border-radius:14px;box-shadow:0 1px 3px rgba(16,24,40,.08);padding:16px 18px;}
+.kpi .v{font-size:28px;font-weight:800;color:#1AABCB;} .kpi .l{font-size:12px;color:#6b7280;margin-top:2px;}
+.warn{background:#fff4f4;border:1px solid #f3c9c9;color:#b42318;padding:10px 14px;border-radius:10px;font-size:13px;margin-top:6px;}
+.foot{color:#e02424;font-size:12px;margin-top:18px;line-height:1.7;}
+.note{color:#6b7280;font-size:12px;margin-top:10px;}
+</style></head><body><div class="wrap">
+<h1>会员沉淀看板</h1>
+<div class="sub">数据日期 2026-07-24 ｜ 以「首次购买门店」归属分公司 ｜ 对比昨日</div>
+<div class="kpis">
+  <div class="kpi"><div class="v">187,549</div><div class="l">会员沉淀总数（记录）</div></div>
+  <div class="kpi"><div class="v">187,359</div><div class="l">去重会员数</div></div>
+  <div class="kpi"><div class="v">6</div><div class="l">分公司数量</div></div>
+</div>
+<div class="card">
+  <div class="section-title"><span class="branddot"></span>各分公司会员沉淀</div>
+  <table>
+    <thead><tr><th>分公司</th><th class="num">会员沉淀（记录）</th><th class="num">去重会员</th><th class="num">较昨日新增</th><th class="num">昨日</th></tr></thead>
+    <tbody><tr><td class='bname'>上海爱飞</td><td class='num'>20,417</td><td class='num'>去重 20380</td><td class='num'><span class="delta flat">—</span></td><td class='num'>—</td></tr><tr><td class='bname'>北京中恒</td><td class='num'>23,242</td><td class='num'>去重 23241</td><td class='num'><span class="delta flat">—</span></td><td class='num'>—</td></tr><tr><td class='bname'>北京易联</td><td class='num'>42,367</td><td class='num'>去重 42363</td><td class='num'><span class="delta flat">—</span></td><td class='num'>—</td></tr><tr><td class='bname'>北京飞航</td><td class='num'>61,637</td><td class='num'>去重 61603</td><td class='num'><span class="delta flat">—</span></td><td class='num'>—</td></tr><tr><td class='bname'>四川新跃</td><td class='num'>13,186</td><td class='num'>去重 13186</td><td class='num'><span class="delta flat">—</span></td><td class='num'>—</td></tr><tr><td class='bname'>福建易联</td><td class='num'>14,307</td><td class='num'>去重 14307</td><td class='num'><span class="delta flat">—</span></td><td class='num'>—</td></tr><tr><td class='bname'>（未匹配门店）</td><td class='num'>408</td><td class='num'>去重 408</td><td class='num'><span class="delta flat">—</span></td><td class='num'>—</td></tr><tr><td class='bname'>（无门店信息）</td><td class='num'>11,985</td><td class='num'>去重 11871</td><td class='num'><span class="delta flat">—</span></td><td class='num'>—</td></tr></tbody>
+  </table>
+  <div class='warn'>⚠️ 有 3 个门店名未能匹配到分公司（样例：APR北京长楹天街ASP(231)、APR上海天空之城ASP(113)、APR上海前湾印象城ASP(64)），已计入「未匹配门店」。如属正常门店，请补充门店映射表。</div>
+  <div class="note">来源：导出列表_会员档案_0724182334.xlsx（导出上限 10 万行，若实际会员数更大需分页导出）</div>
+</div>
+<div class="foot">⚠️ 内含会员与门店经营敏感数据，请勿外传。<br>建议：对会员沉淀偏低的分公司、门店开展会员拉新与实名入会专项；重视公司数字资产。</div>
+</div></body></html>
