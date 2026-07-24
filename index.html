@@ -47,14 +47,6 @@
   .card.ips .card-arrow { color:#c2c9d2; }
   .card.ips:hover .card-arrow { color:#F6AA00; }
 
-  /* 「查看报告」跳转卡（红色，置于 IPS 分区顶部） */
-  .card.pos-report { border-left:4px solid #e63946; margin-top:16px; }
-  .card.pos-report:hover { border-color:#e63946; box-shadow:0 6px 20px rgba(230,57,70,.14); transform:translateY(-1px); }
-  .dl.pos { color:#e63946; background:rgba(230,57,70,.1); }
-  .dl.pos:hover { background:#e63946; color:#fff; }
-  .card.pos-report .card-arrow { color:#c2c9d2; }
-  .card.pos-report:hover .card-arrow { color:#e63946; }
-
   .warn { color:#e02424; font-weight:700; }
   .suggest { color:#e02424; margin-top:12px; font-size:13px; line-height:1.95; font-weight:600; text-align:left; max-width:560px; margin-left:auto; margin-right:auto; }
   .suggest-title { font-weight:800; font-size:14px; margin-bottom:4px; }
@@ -112,20 +104,9 @@
     </div></div>
 
     <div id="ips-section">
-      <div class="section-title"><span class="branddot"></span>分公司/门店唤起POS比例 · 银联商务B扫C占比 · 异常门店明细</div>
-      <div class="section-desc">由同事按天维护、上传的收银合规数据看板，点对应日期进入明细；上方「查看报告」为 7 月 POS 占比分析报告。</div>
-      
-      <div class="card pos-report">
-        <a class="card-main" href="reports/pos_analysis_7%E6%9C%88_report.html">
-          <div class="card-title">&#128202; 7月 POS 占比分析报告</div>
-          <div class="card-sub">分公司 / 门店唤起POS比例、银联商务B扫C占比、异常门店明细</div>
-        </a>
-        <div class="card-right">
-          <a class="dl pos" href="reports/pos_analysis_7%E6%9C%88_report.html">查看报告</a>
-          <div class="card-arrow">&#8250;</div>
-        </div>
-      </div>
-      <div class="list" id="ips-list" style="margin-top:12px;"></div>
+      <div class="section-title"><span class="branddot"></span>IPS 合规收银数据看板</div>
+      <div class="section-desc">分公司/门店唤起POS比例 · 银联商务B扫C占比 · 异常门店明细</div>
+      <div class="list" id="ips-list" style="margin-top:16px;"></div>
       <div class="empty" id="ips-empty" style="display:none;">暂无收银合规数据看板（同事尚未上传）</div>
     </div>
     <script>
