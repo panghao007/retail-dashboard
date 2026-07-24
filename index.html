@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>零售会员有效性看板 · 导航</title>
+<title>零售会员有效性数据看板 · 导航</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
@@ -39,6 +39,9 @@
   .suggest-title { font-weight:800; font-size:14px; margin-bottom:4px; }
   .suggest-em { font-weight:800; margin-top:4px; }
   .foot { margin-top:32px; text-align:center; color:#aab2bd; font-size:12px; line-height:1.7; }
+  #peer-section .section-title { display:flex; align-items:center; gap:9px; font-size:17px; font-weight:800; color:#1f2933; margin:34px 0 4px; }
+  #peer-section .branddot { width:9px; height:9px; border-radius:50%; background:#F6AA00; display:inline-block; }
+  #peer-section .desc { color:#6b7280; font-size:13px; }
 </style>
 </head>
 <body>
@@ -90,43 +93,38 @@
         <div class="card-arrow">›</div>
       </div>
     </div></div>
-    
-<div id="peer-section" style="display:none; margin-top:42px;">
-  <style>
-    .section-title { display:flex; align-items:center; gap:9px; font-size:17px; font-weight:800; color:#1f2933; margin-bottom:4px; }
-    .branddot { width:9px; height:9px; border-radius:50%; background:#F6AA00; display:inline-block; }
-    #peer-section .desc { color:#6b7280; font-size:13px; }
-  </style>
-  <div class="section-title"><span class="branddot"></span>同事报表</div>
-  <div class="desc">由同事维护、自助更新的经营看板。</div>
-  <div class="list" id="peer-list" style="margin-top:16px;"></div>
-</div>
-<script>
-(function(){
-  var s = document.getElementById('peer-section');
-  var list = document.getElementById('peer-list');
-  if(!s || !list) return;
-  fetch('peer/manifest.json?t=' + Date.now())
-    .then(function(r){ return r.ok ? r.json() : []; })
-    .then(function(arr){
-      if(!Array.isArray(arr) || !arr.length) return;
-      s.style.display = 'block';
-      arr.forEach(function(it){
-        var title = it.title || '同事报表';
-        var file = it.file || '';
-        var updated = it.updated ? ('更新于 ' + it.updated) : '';
-        var card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = '<a class="card-main" href="' + file + '">'
-          + '<div class="card-title">' + title + '</div>'
-          + '<div class="card-sub">' + updated + '</div></a>'
-          + '<div class="card-right"><div class="card-arrow">›</div></div>';
-        list.appendChild(card);
-      });
-    })
-    .catch(function(e){ /* 清单缺失则不出该区 */ });
-})();
-</script>
+
+    <div id="peer-section" style="display:none; margin-top:42px;">
+      <div class="section-title"><span class="branddot"></span>同事报表</div>
+      <div class="desc">由同事维护、自助更新的经营看板。</div>
+      <div class="list" id="peer-list" style="margin-top:16px;"></div>
+    </div>
+    <script>
+    (function(){
+      var s = document.getElementById('peer-section');
+      var list = document.getElementById('peer-list');
+      if(!s || !list) return;
+      fetch('peer/manifest.json?t=' + Date.now())
+        .then(function(r){ return r.ok ? r.json() : []; })
+        .then(function(arr){
+          if(!Array.isArray(arr) || !arr.length) return;
+          s.style.display = 'block';
+          arr.forEach(function(it){
+            var title = it.title || '同事报表';
+            var file = it.file || '';
+            var updated = it.updated ? ('更新于 ' + it.updated) : '';
+            var card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = '<a class="card-main" href="' + file + '">'
+              + '<div class="card-title">' + title + '</div>'
+              + '<div class="card-sub">' + updated + '</div></a>'
+              + '<div class="card-right"><div class="card-arrow">›</div></div>';
+            list.appendChild(card);
+          });
+        })
+        .catch(function(e){ /* 清单缺失则不出该区 */ });
+    })();
+    </script>
 
     <div class="foot">
       <div class="warn">内含会员与门店经营敏感数据，请勿外传</div>
