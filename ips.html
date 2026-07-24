@@ -6,91 +6,66 @@
 <title>IPS合规收银数据看板</title>
 <style>
   * {{ margin:0; padding:0; box-sizing:border-box; }}
-  html, body {{ min-height:100%; }}
   body {{ font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
-    color:#1f2933; background:#eaf1f5; position:relative; overflow-x:hidden; -webkit-font-smoothing:antialiased; }}
-  body::before {{ content:""; position:fixed; top:-180px; right:-140px; width:560px; height:560px;
-    background:radial-gradient(circle, rgba(26,171,203,.20), rgba(26,171,203,0) 70%); z-index:0; pointer-events:none; }}
-  body::after {{ content:""; position:fixed; bottom:-220px; left:-160px; width:520px; height:520px;
-    background:radial-gradient(circle, rgba(246,170,0,.13), rgba(246,170,0,0) 70%); z-index:0; pointer-events:none; }}
-  .wrap {{ position:relative; z-index:1; max-width:800px; margin:0 auto; padding:64px 20px 56px; }}
+    background:#f4f6fa; color:#1f2937; padding:24px; -webkit-font-smoothing:antialiased; }}
+  .wrap {{ max-width:920px; margin:0 auto; }}
+  .head {{ margin-bottom:24px; }}
+  h1 {{ font-size:24px; font-weight:700; }}
+  .h1-date {{ font-size:14px; font-weight:500; color:#9ca3af; margin-left:10px; }}
+  .sub {{ color:#6b7280; font-size:13px; margin-bottom:18px; }}
+  .count {{ display:inline-block; margin-top:8px; font-size:13px; color:#059669;
+    background:#ecfdf5; border:1px solid #a7f3d0; border-radius:8px; padding:5px 12px; font-weight:600; }}
+  .back {{ display:inline-flex; align-items:center; gap:6px; margin-bottom:16px; font-size:13px;
+    color:#4338ca; text-decoration:none; font-weight:600; background:#eef2ff; border:1px solid #e0e7ff; padding:6px 12px; border-radius:8px; }}
+  .back:hover {{ background:#e0e7ff; }}
 
-  /* ---- 品牌 / 落地页 hero ---- */
-  .logo {{ display:inline-flex; align-items:center; gap:11px; margin-bottom:24px; }}
-  .logo-mark {{ width:42px; height:42px; border-radius:12px; background:linear-gradient(135deg,#1AABCB,#0E8FB0);
-    position:relative; box-shadow:0 8px 22px rgba(26,171,203,.35); }}
-  .logo-mark::after {{ content:""; position:absolute; inset:13px; border:2.5px solid #fff; border-radius:4px; transform:rotate(45deg); }}
-  .logo-text {{ font-size:15px; font-weight:700; color:#1f2933; letter-spacing:.6px; }}
-  .hero {{ text-align:center; margin-bottom:48px; }}
-  .hero h1 {{ font-size:33px; font-weight:800; letter-spacing:-.5px; color:#15202b; }}
-  .hero .accent {{ color:#1AABCB; }}
-  .hero .sub {{ margin-top:13px; color:#6b7785; font-size:15px; line-height:1.7; }}
-  .divider {{ width:56px; height:4px; border-radius:3px; background:linear-gradient(90deg,#1AABCB,#F6AA00); margin:22px auto 0; }}
-
-  /* ---- 导航大卡片 ---- */
-  .navlist {{ display:flex; flex-direction:column; gap:18px; margin-top:6px; }}
-  .navcard {{ display:flex; align-items:center; gap:20px;
-    background:rgba(255,255,255,.82); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px);
-    border:1px solid rgba(226,232,240,.9); border-radius:20px; padding:26px 28px;
-    text-decoration:none; color:inherit; box-shadow:0 12px 32px rgba(31,41,51,.07);
-    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; }}
-  .navcard:hover {{ transform:translateY(-3px); box-shadow:0 20px 48px rgba(26,171,203,.20); border-color:rgba(26,171,203,.55); }}
-  .nicon {{ width:58px; height:58px; border-radius:16px; flex-shrink:0; display:flex; align-items:center; justify-content:center;
-    position:relative; box-shadow:0 8px 18px rgba(26,171,203,.30); }}
-  .nicon.brand {{ background:linear-gradient(135deg,#1AABCB,#0E8FB0); }}
-  .nicon.accent {{ background:linear-gradient(135deg,#F6AA00,#E2930A); box-shadow:0 8px 18px rgba(246,170,0,.30); }}
-  .nicon .dot {{ width:18px; height:18px; background:#fff; border-radius:5px; transform:rotate(45deg); }}
+  /* 导航大卡片（看板 .card 风 + 左侧色条） */
+  .navlist {{ display:flex; flex-direction:column; gap:16px; margin-top:6px; }}
+  .navcard {{ display:flex; align-items:center; gap:18px; background:#fff; border-radius:12px;
+    padding:22px 24px; box-shadow:0 1px 3px rgba(0,0,0,.06); text-decoration:none; color:inherit;
+    border-left:4px solid #10b981; transition:all .15s ease; }}
+  .navcard:hover {{ box-shadow:0 6px 18px rgba(0,0,0,.10); transform:translateY(-1px); }}
+  .navcard.ips {{ border-left-color:#f97316; }}
+  .nicon {{ font-size:30px; flex-shrink:0; line-height:1; }}
   .nc-main {{ flex:1; }}
-  .nc-title {{ font-size:19px; font-weight:800; color:#15202b; letter-spacing:.2px; }}
-  .nc-sub {{ font-size:13.5px; color:#7b8593; margin-top:7px; line-height:1.6; }}
-  .nc-arrow {{ font-size:30px; color:#c2c9d2; font-weight:300; transition:transform .18s ease, color .18s ease; }}
-  .navcard:hover .nc-arrow {{ color:#1AABCB; transform:translateX(5px); }}
+  .nc-title {{ font-size:18px; font-weight:700; color:#1f2937; }}
+  .nc-sub {{ font-size:13px; color:#6b7280; margin-top:6px; line-height:1.6; }}
+  .nc-arrow {{ font-size:24px; color:#cbd5e1; font-weight:300; }}
+  .navcard:hover .nc-arrow {{ color:#10b981; }}
+  .navcard.ips:hover .nc-arrow {{ color:#f97316; }}
 
-  /* ---- 子页头部 ---- */
-  .back {{ display:inline-flex; align-items:center; gap:6px; margin-bottom:20px; font-size:13.5px; color:#1AABCB;
-    text-decoration:none; font-weight:600; background:rgba(26,171,203,.10); padding:7px 14px; border-radius:10px; }}
-  .back:hover {{ background:rgba(26,171,203,.18); }}
-  .head {{ margin-bottom:30px; }}
-  .brandbar {{ display:inline-block; width:46px; height:5px; border-radius:3px; background:linear-gradient(90deg,#1AABCB,#F6AA00); margin-bottom:16px; }}
-  .head h1 {{ font-size:27px; font-weight:800; letter-spacing:-.3px; color:#15202b; }}
-  .sub2 {{ color:#6b7785; font-size:14px; margin-top:9px; line-height:1.6; }}
-  .count {{ display:inline-block; margin-top:14px; font-size:13px; color:#1AABCB;
-    background:rgba(26,171,203,.12); padding:5px 14px; border-radius:20px; font-weight:600; }}
-
-  /* ---- 看板 / 同事 列表卡片 ---- */
-  .list {{ margin-top:6px; display:flex; flex-direction:column; gap:12px; }}
-  .card {{ display:flex; align-items:center; justify-content:space-between; gap:14px;
-    background:#fff; border:1px solid #e8edf2; border-radius:15px; padding:18px 20px;
-    box-shadow:0 6px 18px rgba(31,41,51,.05); transition:all .15s ease; }}
-  .card:hover {{ border-color:#1AABCB; box-shadow:0 10px 26px rgba(26,171,203,.13); transform:translateY(-1px); }}
-  .card.latest {{ border-color:#1AABCB; background:linear-gradient(180deg,rgba(26,171,203,.06),#fff); }}
+  /* 看板 / 同事 列表卡片（同看板 .card） */
+  .list {{ display:flex; flex-direction:column; gap:12px; }}
+  .card {{ background:#fff; border-radius:12px; padding:18px 20px; box-shadow:0 1px 3px rgba(0,0,0,.06);
+    display:flex; align-items:center; justify-content:space-between; gap:14px; transition:all .15s ease; }}
+  .card:hover {{ box-shadow:0 6px 18px rgba(0,0,0,.10); transform:translateY(-1px); }}
+  .card.latest {{ border-left:4px solid #10b981; }}
   .card-main {{ flex:1; text-decoration:none; color:inherit; min-width:0; }}
-  .card-title {{ font-size:16px; font-weight:700; color:#1f2933; }}
-  .card-sub {{ font-size:12.5px; color:#9099a5; margin-top:5px; }}
+  .card-title {{ font-size:16px; font-weight:700; color:#1f2937; }}
+  .card-sub {{ font-size:12.5px; color:#9ca3af; margin-top:5px; }}
   .card-right {{ display:flex; align-items:center; gap:14px; flex-shrink:0; }}
-  .dl {{ flex-shrink:0; font-size:13px; font-weight:600; color:#1AABCB;
-    text-decoration:none; background:rgba(26,171,203,.10); padding:6px 13px; border-radius:10px; transition:all .15s ease; }}
-  .dl:hover {{ background:#1AABCB; color:#fff; }}
-  .card-arrow {{ font-size:26px; color:#c2c9d2; font-weight:300; }}
-  .card:hover .card-arrow {{ color:#1AABCB; }}
+  .dl {{ flex-shrink:0; font-size:13px; font-weight:600; color:#059669; text-decoration:none;
+    background:#ecfdf5; border:1px solid #a7f3d0; padding:6px 12px; border-radius:8px; }}
+  .dl:hover {{ background:#d1fae5; }}
+  .card-arrow {{ font-size:24px; color:#cbd5e1; font-weight:300; }}
+  .card:hover .card-arrow {{ color:#10b981; }}
   .tag {{ display:inline-block; font-size:11px; font-weight:700; color:#fff;
-    background:#F6AA00; padding:2px 9px; border-radius:6px; margin-left:8px; vertical-align:2px; }}
-  .empty {{ text-align:center; color:#9099a5; padding:60px 0; font-size:14px; }}
+    background:#f97316; padding:2px 9px; border-radius:6px; margin-left:8px; vertical-align:2px; }}
+  .empty {{ text-align:center; color:#9ca3af; padding:60px 0; font-size:14px; }}
 
-  /* ---- 页脚（红色敏感提示 + 建议）---- */
-  .warn {{ color:#e02424; font-weight:700; }}
-  .suggest {{ color:#e02424; margin-top:12px; font-size:13px; line-height:1.95; font-weight:600; text-align:left; max-width:560px; margin-left:auto; margin-right:auto; }}
+  /* 页脚（红色敏感提示 + 建议） */
+  .warn {{ color:#dc2626; font-weight:700; }}
+  .suggest {{ color:#dc2626; margin-top:12px; font-size:13px; line-height:1.95; font-weight:600; text-align:left; max-width:560px; margin-left:auto; margin-right:auto; }}
   .suggest-title {{ font-weight:800; font-size:14px; margin-bottom:4px; }}
   .suggest-em {{ font-weight:800; margin-top:4px; }}
-  .foot {{ margin-top:40px; text-align:center; color:#aab2bd; font-size:12px; line-height:1.7; }}</style>
+  .foot {{ margin-top:36px; text-align:center; color:#9ca3af; font-size:12px; line-height:1.7; }}</style>
 </head>
 <body>
   <div class="wrap">
     <a class="back" href="index.html">‹ 返回导航</a>
     <div class="head">
-      <div class="brandbar"></div>
       <h1>IPS合规收银数据看板</h1>
-      <div class="sub2">由同事维护、自助更新的 IPS 合规收银数据看板。</div>
+      <div class="sub">由同事维护、自助更新的 IPS 合规收银数据看板。</div>
     </div>
     <div id="peer-section">
       <div class="list" id="peer-list"></div>
