@@ -134,22 +134,6 @@
     </div></div>
     </div>
 
-    
-    <div id="monthly-section">
-      <div class="section-title"><span class="branddot monthly"></span>往月数据看板</div>
-      <div class="section-desc">每月 1 号自动抓取上月最后一天的三类看板数据，形成可回溯的月度汇总。</div>
-      <div class="list" style="margin-top:16px;">
-    <div class="card monthly">
-      <a class="card-main" href="monthly_archive/往月数据看板.html">
-        <div class="card-title">📅 往月数据看板（会员沉淀 · 会员有效性 · 合规收银）</div>
-        <div class="card-sub">每月 1 号自动汇总上月最后一天各看板数据，沉淀为月度历史</div>
-      </a>
-      <div class="card-right">
-        <div class="card-arrow">›</div>
-      </div>
-    </div></div>
-    </div>
-
     <div id="ips-section">
       <div class="section-title"><span class="branddot"></span>IPS 合规收银数据看板</div>
       <div class="section-desc">分公司/门店唤起POS比例 · 银联商务B扫C占比 · 异常门店明细</div>
@@ -189,6 +173,22 @@
         .catch(function(e){ empty.style.display = 'block'; });
     })();
     </script>
+
+    
+    <div id="monthly-section">
+      <div class="section-title"><span class="branddot monthly"></span>往月数据看板</div>
+      <div class="section-desc">仅汇总「已完整结束的月份」（每月 1 号抓取上月最后一天的三类看板数据）；当月进行中不在内。</div>
+      <div class="list" style="margin-top:16px;">
+    <div class="card monthly">
+      <a class="card-main" href="monthly_archive/往月数据看板.html">
+        <div class="card-title">📅 往月数据看板（会员沉淀 · 会员有效性 · 合规收银）</div>
+        <div class="card-sub">每月 1 号自动汇总上月最后一天各看板数据，沉淀为月度历史</div>
+      </a>
+      <div class="card-right">
+        <div class="card-arrow">›</div>
+      </div>
+    </div></div>
+    </div>
 
     <div class="foot">
       <div class="warn">内含会员与门店经营敏感数据，请勿外传</div>
