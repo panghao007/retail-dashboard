@@ -16,6 +16,9 @@
   .desc { color:#6b7280; font-size:14px; margin-top:8px; line-height:1.6; }
   .count { display:inline-block; margin-top:14px; font-size:13px; color:#1AABCB;
     background:rgba(26,171,203,.1); padding:4px 12px; border-radius:20px; font-weight:600; }
+  .section-title { display:flex; align-items:center; gap:9px; font-size:17px; font-weight:800; color:#1f2933; margin:34px 0 4px; }
+  .branddot { width:9px; height:9px; border-radius:50%; background:#F6AA00; display:inline-block; }
+  .section-desc { color:#6b7280; font-size:13px; margin-bottom:2px; }
   .list { margin-top:24px; display:flex; flex-direction:column; gap:12px; }
   .card { display:flex; align-items:center; justify-content:space-between;
     background:#fff; border:1px solid #e5e9ef; border-radius:14px; padding:18px 20px;
@@ -46,9 +49,10 @@
     <div class="head">
       <div class="brandbar"></div>
       <h1>零售会员有效性数据看板</h1>
-      <div class="desc">按日期查看每日会员有效性分析（订单级口径）。每天 09:00 自动更新，选择日期进入对应看板。</div>
       <div class="count">共 4 期看板</div>
     </div>
+    <div class="section-title"><span class="branddot"></span>我的会员有效性数据看板</div>
+    <div class="section-desc">按日期查看每日会员有效性分析（订单级口径）。每天 09:00 自动更新，选择日期进入对应看板。</div>
     <div class="list">
     <div class="card latest">
       <a class="card-main" href="d/2026-07-24.html">
@@ -92,13 +96,8 @@
     </div></div>
     
 <div id="peer-section" style="display:none; margin-top:42px;">
-  <style>
-    .section-title { display:flex; align-items:center; gap:9px; font-size:17px; font-weight:800; color:#1f2933; margin-bottom:4px; }
-    .branddot { width:9px; height:9px; border-radius:50%; background:#F6AA00; display:inline-block; }
-    #peer-section .desc { color:#6b7280; font-size:13px; }
-  </style>
-  <div class="section-title"><span class="branddot"></span>同事报表</div>
-  <div class="desc">由同事维护、自助更新的经营看板。</div>
+  <div class="section-title"><span class="branddot"></span>他的IPS合规收银数据看板</div>
+  <div class="section-desc">由同事维护、自助更新的 IPS 合规收银数据看板。</div>
   <div class="list" id="peer-list" style="margin-top:16px;"></div>
 </div>
 <script>
@@ -112,7 +111,7 @@
       if(!Array.isArray(arr) || !arr.length) return;
       s.style.display = 'block';
       arr.forEach(function(it){
-        var title = it.title || '同事报表';
+        var title = it.title || 'IPS合规收银数据看板';
         var file = it.file || '';
         var updated = it.updated ? ('更新于 ' + it.updated) : '';
         var card = document.createElement('div');
