@@ -1,3 +1,8 @@
 [
-  { "date": "2026-07-24", "file": "reports/pos_analysis_7月_report.html", "title": "收银合规数据看板（2026年07月24日）", "updated": "2026-07-24 17:00" }
+  {
+    "date": "2026-07-29",
+    "file": "reports/pos_analysis_7月_report_2026-07-29.html",
+    "title": "POS占比分析报告 2026-07-29",
+    "updated": "2026-07-29"
+  }
 ]
