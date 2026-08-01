@@ -1,0 +1,56 @@
+{
+  "total_orders": 4,
+  "dup_removed": 0,
+  "total_rows": 4,
+  "total_members": 4,
+  "valid_members": 4,
+  "invalid_members": 0,
+  "rescued_members": 0,
+  "rescued_orders": 0,
+  "abnormal_members": 0,
+  "abnormal_orders": 0,
+  "latest_date": "2026-08-01",
+  "abnormal_order_detail_latest": 0,
+  "member_orders": 4,
+  "orders_valid": 4,
+  "orders_invalid": 0,
+  "fallback_orders": 0,
+  "empty_orders": 0,
+  "valid_rate": 100.0,
+  "invalid_rate": 0.0,
+  "branch_stats": [
+    {
+      "分公司": "北京飞航",
+      "总订单数": 4,
+      "有效会员订单": 4,
+      "无效会员订单": 0,
+      "有效占比": 100.0,
+      "无效占比": 0.0
+    }
+  ],
+  "store_stats": [
+    {
+      "门店": "DJI北京首都机场授权体验店",
+      "所属分公司": "北京飞航",
+      "总订单数": 3,
+      "有效会员订单": 3,
+      "无效会员订单": 0,
+      "无效占比": 0.0,
+      "无效号码": [],
+      "无效号码门店次数": {}
+    },
+    {
+      "门店": "DJI大疆哈苏北京大兴机场概念店",
+      "所属分公司": "北京飞航",
+      "总订单数": 1,
+      "有效会员订单": 1,
+      "无效会员订单": 0,
+      "无效占比": 0.0,
+      "无效号码": [],
+      "无效号码门店次数": {}
+    }
+  ],
+  "invalid_detail": [],
+  "abnormal_detail": [],
+  "abnormal_order_detail": []
+}
