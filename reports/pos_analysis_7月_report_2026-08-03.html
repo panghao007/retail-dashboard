@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8月ERP 零售单 POS占比分析报告</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root { --bg:#f5f7fa; --card:#fff; --text:#1f2937; --muted:#6b7280; --border:#e5e7eb; --red:#ef4444; --green:#22c55e; --blue:#3b82f6; --purple:#8b5cf6; --orange:#f97316; --teal:#14b8a6; }
+body { font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; background:var(--bg); color:var(--text); margin:0; padding:20px; }
+.container { max-width:1400px; margin:0 auto; }
+header { text-align:center; margin-bottom:30px; }
+header h1 { margin:0 0 8px; font-size:28px; }
+header p { color:var(--muted); margin:0; }
+.cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px; margin-bottom:30px; }
+.card { background:var(--card); border-radius:12px; padding:18px; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+.card h3 { margin:0 0 8px; font-size:15px; color:var(--muted); font-weight:600; }
+.card .value { font-size:26px; font-weight:700; color:var(--text); }
+.card .sub { font-size:13px; color:var(--muted); margin-top:6px; }
+.section { background:var(--card); border-radius:12px; padding:22px; margin-bottom:24px; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+.section h2 { margin:0 0 18px; font-size:18px; border-left:4px solid var(--blue); padding-left:10px; }
+table { width:100%; border-collapse:collapse; font-size:13px; margin-top:10px; }
+th, td { padding:10px 12px; text-align:left; border-bottom:1px solid var(--border); }
+th { background:#f9fafb; font-weight:600; }
+tr:hover { background:#f9fafb; }
+.num { text-align:right; font-variant-numeric:tabular-nums; }
+.chart-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(380px,1fr)); gap:24px; }
+.chart-box { position:relative; height:320px; }
+.region-detail { margin-bottom:30px; }
+.region-detail h3 { margin:0 0 14px; font-size:17px; color:var(--blue); }
+.grid-3 { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:20px; }
+.small-table { font-size:12px; }
+.small-table th, .small-table td { padding:7px 10px; }
+.badge { display:inline-block; padding:2px 8px; border-radius:10px; font-size:11px; background:#e0f2fe; color:#0369a1; }
+.footer { text-align:center; color:var(--muted); font-size:12px; margin-top:30px; }
+.kpi-banner { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:16px; margin-bottom:30px; }
+.kpi { background:linear-gradient(135deg,#1e3a8a,#3b82f6); color:#fff; border-radius:12px; padding:20px; text-align:center; }
+.kpi .k-label { font-size:13px; opacity:.85; margin-bottom:6px; }
+.kpi .k-value { font-size:30px; font-weight:800; }
+.kpi .k-sub { font-size:12px; opacity:.8; margin-top:4px; }
+.kpi.alt { background:linear-gradient(135deg,#047857,#10b981); }
+.kpi.warn { background:linear-gradient(135deg,#b45309,#f59e0b); }
+.kpi.purple { background:linear-gradient(135deg,#5b21b6,#8b5cf6); }
+.ratio-row { display:flex; align-items:center; gap:12px; margin:8px 0; }
+.ratio-label { width:90px; font-size:13px; font-weight:600; }
+.ratio-track { flex:1; background:#eef2f7; border-radius:8px; height:22px; overflow:hidden; }
+.ratio-fill { height:100%; background:linear-gradient(90deg,#22c55e,#3b82f6); border-radius:8px; display:flex; align-items:center; justify-content:flex-end; padding-right:8px; color:#fff; font-size:12px; font-weight:700; }
+.note { background:#f8fafc; border:1px solid var(--border); border-radius:10px; padding:18px 22px; font-size:13px; line-height:1.8; color:#374151; }
+.note h4 { margin:0 0 10px; color:var(--blue); }
+.note ul { margin:6px 0; padding-left:22px; }
+.note li { margin:3px 0; }
+.note code { background:#eef2f7; padding:1px 6px; border-radius:4px; font-size:12px; }
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <h1>8月ERP 零售单 POS占比分析报告</h1>
+  <p>数据来源：ERP「智慧收银 → 零售单查询」当月全公司方案导出 | 统计月份：2026年8月 | 有效POS记录 544 条 | 数据单据日期：2026年08月01日 至 2026年08月03日</p>
+</header>
+
+<div class="kpi-banner">
+  <div class="kpi"><div class="k-label">有效POS零售单</div><div class="k-value">544</div><div class="k-sub">2026年8月 · 排除ASP/退货/第三方</div></div>
+  <div class="kpi alt"><div class="k-label">唤起POS订单</div><div class="k-value">468</div><div class="k-sub">已唤起POS设备收款</div></div>
+  <div class="kpi warn"><div class="k-label">未唤起POS订单</div><div class="k-value">76</div><div class="k-sub">手动/指定通道收款</div></div>
+  <div class="kpi purple"><div class="k-label">整体唤起POS比例</div><div class="k-value">86.0%</div><div class="k-sub">唤起POS ÷ 零售单总量</div></div>
+</div>
+
+<div class="section">
+  <h2>核心指标 · 各分公司唤起POS比例</h2>
+  <p style="color:var(--muted);font-size:13px;margin:0 0 16px;">唤起POS比例 = 唤起POS订单数 ÷ 该分公司零售单总量。比例越高，说明该分公司越依赖POS设备自动唤起收款。</p>
+  <div style="margin-bottom:20px;">
+
+    <div class="ratio-row">
+      <div class="ratio-label">北京华为</div>
+      <div class="ratio-track"><div class="ratio-fill" style="width:87.1%">87.1%</div></div>
+    </div>
+
+    <div class="ratio-row">
+      <div class="ratio-label">福建华为</div>
+      <div class="ratio-track"><div class="ratio-fill" style="width:99.1%">99.1%</div></div>
+    </div>
+
+    <div class="ratio-row">
+      <div class="ratio-label">北京大疆</div>
+      <div class="ratio-track"><div class="ratio-fill" style="width:71.4%">71.4%</div></div>
+    </div>
+
+    <div class="ratio-row">
+      <div class="ratio-label">上海大疆</div>
+      <div class="ratio-track"><div class="ratio-fill" style="width:84.9%">84.9%</div></div>
+    </div>
+
+    <div class="ratio-row">
+      <div class="ratio-label">北京中恒</div>
+      <div class="ratio-track"><div class="ratio-fill" style="width:66.7%">66.7%</div></div>
+    </div>
+
+    <div class="ratio-row">
+      <div class="ratio-label">四川新跃</div>
+      <div class="ratio-track"><div class="ratio-fill" style="width:42.9%">42.9%</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="cards">
+
+  <div class="card">
+    <h3>北京华为</h3>
+    <div class="value">272</div>
+    <div class="sub">唤起POS: 237 <span class="badge">92 B扫C</span></div>
+    <div class="sub">唤起POS比例: <strong>87.1%</strong></div>
+  </div>
+
+  <div class="card">
+    <h3>福建华为</h3>
+    <div class="value">107</div>
+    <div class="sub">唤起POS: 106 <span class="badge">76 B扫C</span></div>
+    <div class="sub">唤起POS比例: <strong>99.1%</strong></div>
+  </div>
+
+  <div class="card">
+    <h3>北京大疆</h3>
+    <div class="value">70</div>
+    <div class="sub">唤起POS: 50 <span class="badge">1 B扫C</span></div>
+    <div class="sub">唤起POS比例: <strong>71.4%</strong></div>
+  </div>
+
+  <div class="card">
+    <h3>上海大疆</h3>
+    <div class="value">73</div>
+    <div class="sub">唤起POS: 62 <span class="badge">6 B扫C</span></div>
+    <div class="sub">唤起POS比例: <strong>84.9%</strong></div>
+  </div>
+
+  <div class="card">
+    <h3>北京中恒</h3>
+    <div class="value">15</div>
+    <div class="sub">唤起POS: 10 <span class="badge">8 B扫C</span></div>
+    <div class="sub">唤起POS比例: <strong>66.7%</strong></div>
+  </div>
+
+  <div class="card">
+    <h3>四川新跃</h3>
+    <div class="value">7</div>
+    <div class="sub">唤起POS: 3 <span class="badge">0 B扫C</span></div>
+    <div class="sub">唤起POS比例: <strong>42.9%</strong></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>分公司汇总</h2>
+  <table>
+    <thead><tr><th>分公司</th><th class="num">lps收银订单数量</th><th class="num">唤起POS</th><th class="num">未唤起POS</th><th class="num">唤起POS比例</th><th class="num">银联商务B扫C</th><th class="num">B扫C占比(唤起POS中)</th></tr></thead>
+    <tbody>
+<tr><td><strong>北京华为</strong></td><td class="num">272</td><td class="num">237</td><td class="num">35</td><td class="num">87.1%</td><td class="num">92</td><td class="num">38.8%</td></tr>
+<tr><td><strong>福建华为</strong></td><td class="num">107</td><td class="num">106</td><td class="num">1</td><td class="num">99.1%</td><td class="num">76</td><td class="num">71.7%</td></tr>
+<tr><td><strong>北京大疆</strong></td><td class="num">70</td><td class="num">50</td><td class="num">20</td><td class="num">71.4%</td><td class="num">1</td><td class="num">2.0%</td></tr>
+<tr><td><strong>上海大疆</strong></td><td class="num">73</td><td class="num">62</td><td class="num">11</td><td class="num">84.9%</td><td class="num">6</td><td class="num">9.7%</td></tr>
+<tr><td><strong>北京中恒</strong></td><td class="num">15</td><td class="num">10</td><td class="num">5</td><td class="num">66.7%</td><td class="num">8</td><td class="num">80.0%</td></tr>
+<tr><td><strong>四川新跃</strong></td><td class="num">7</td><td class="num">3</td><td class="num">4</td><td class="num">42.9%</td><td class="num">0</td><td class="num">0.0%</td></tr>
+</tbody></table>
+</div>
+
+<div class="section">
+  <h2>银联商务B扫C 跨分公司对比</h2>
+  <div class="chart-grid">
+    <div class="chart-box"><canvas id="bscBar"></canvas></div>
+    <div class="chart-box"><canvas id="bscPie"></canvas></div>
+  </div>
+  <table style="margin-top:18px;">
+    <thead><tr><th>分公司</th><th class="num">唤起POS总数</th><th class="num">银联商务B扫C订单数</th><th class="num">B扫C占比(唤起POS中)</th></tr></thead>
+    <tbody>
+<tr><td><strong>北京华为</strong></td><td class="num">237</td><td class="num">92</td><td class="num">38.82%</td></tr>
+<tr><td><strong>福建华为</strong></td><td class="num">106</td><td class="num">76</td><td class="num">71.70%</td></tr>
+<tr><td><strong>北京大疆</strong></td><td class="num">50</td><td class="num">1</td><td class="num">2.00%</td></tr>
+<tr><td><strong>上海大疆</strong></td><td class="num">62</td><td class="num">6</td><td class="num">9.68%</td></tr>
+<tr><td><strong>北京中恒</strong></td><td class="num">10</td><td class="num">8</td><td class="num">80.00%</td></tr>
+<tr><td><strong>四川新跃</strong></td><td class="num">3</td><td class="num">0</td><td class="num">0.00%</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <h2>各分公司唤起POS异常门店</h2>
+  <p style="color:var(--muted);font-size:13px;margin:0 0 16px;">纳入全部门店（已取消订单数门槛）。下列为各分公司中<b>「唤起POS占比」低于全公司整体唤起POS比例（86.0%）</b>的门店（异常门店），按占比由低到高排序。占比低于整体水平，说明该门店相对更倾向手动/指定通道收款、未唤起POS设备，是重点跟进对象。</p>
+
+  <div class="region-detail" style="margin-top:8px;">
+    <h3 style="color:var(--blue);margin:0 0 10px;">北京华为 · 唤起POS异常门店（13家）</h3>
+    <table class="small-table">
+      <thead><tr><th>门店</th><th class="num">lps收银订单数量</th><th class="num">唤起POS</th><th class="num">唤起POS占比</th></tr></thead>
+      <tbody>
+<tr><td><strong>华为北京丰台银泰</strong></td><td class="num">1</td><td class="num">0</td><td class="num"><strong>0.0%</strong></td></tr>
+<tr><td><strong>华为北京京投小站</strong></td><td class="num">4</td><td class="num">0</td><td class="num"><strong>0.0%</strong></td></tr>
+<tr><td><strong>华为北京汇琴广场</strong></td><td class="num">5</td><td class="num">2</td><td class="num"><strong>40.0%</strong></td></tr>
+<tr><td><strong>华为北京回龙观一店</strong></td><td class="num">4</td><td class="num">2</td><td class="num"><strong>50.0%</strong></td></tr>
+<tr><td><strong>华为北京同成街华联</strong></td><td class="num">2</td><td class="num">1</td><td class="num"><strong>50.0%</strong></td></tr>
+<tr><td><strong>华为北京旧宫万科</strong></td><td class="num">9</td><td class="num">6</td><td class="num"><strong>66.7%</strong></td></tr>
+<tr><td><strong>华为北京上德银泰</strong></td><td class="num">3</td><td class="num">2</td><td class="num"><strong>66.7%</strong></td></tr>
+<tr><td><strong>华为北京大兴大族</strong></td><td class="num">4</td><td class="num">3</td><td class="num"><strong>75.0%</strong></td></tr>
+<tr><td><strong>华为北京西铁营万达</strong></td><td class="num">9</td><td class="num">7</td><td class="num"><strong>77.8%</strong></td></tr>
+<tr><td><strong>华为北京房山万科</strong></td><td class="num">9</td><td class="num">7</td><td class="num"><strong>77.8%</strong></td></tr>
+<tr><td><strong>华为北京槐房万达</strong></td><td class="num">5</td><td class="num">4</td><td class="num"><strong>80.0%</strong></td></tr>
+<tr><td><strong>华为北京延庆万达</strong></td><td class="num">11</td><td class="num">9</td><td class="num"><strong>81.8%</strong></td></tr>
+<tr><td><strong>华为北京通州万达</strong></td><td class="num">34</td><td class="num">28</td><td class="num"><strong>82.4%</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="region-detail" style="margin-top:8px;">
+    <h3 style="color:var(--blue);margin:0 0 10px;">福建华为 · 唤起POS异常门店（1家）</h3>
+    <table class="small-table">
+      <thead><tr><th>门店</th><th class="num">lps收银订单数量</th><th class="num">唤起POS</th><th class="num">唤起POS占比</th></tr></thead>
+      <tbody>
+<tr><td><strong>华为福州平潭吾悦</strong></td><td class="num">6</td><td class="num">5</td><td class="num"><strong>83.3%</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="region-detail" style="margin-top:8px;">
+    <h3 style="color:var(--blue);margin:0 0 10px;">北京大疆 · 唤起POS异常门店（12家）</h3>
+    <table class="small-table">
+      <thead><tr><th>门店</th><th class="num">lps收银订单数量</th><th class="num">唤起POS</th><th class="num">唤起POS占比</th></tr></thead>
+      <tbody>
+<tr><td><strong>DJI北京蓝色港湾授权体验店</strong></td><td class="num">2</td><td class="num">0</td><td class="num"><strong>0.0%</strong></td></tr>
+<tr><td><strong>DJI北京北投新奥天虹授权体验店</strong></td><td class="num">2</td><td class="num">0</td><td class="num"><strong>0.0%</strong></td></tr>
+<tr><td><strong>DJI北京望京凯德MALL授权体验店</strong></td><td class="num">1</td><td class="num">0</td><td class="num"><strong>0.0%</strong></td></tr>
+<tr><td><strong>DJI北京东方新天地授权体验店</strong></td><td class="num">12</td><td class="num">5</td><td class="num"><strong>41.7%</strong></td></tr>
+<tr><td><strong>DJI北京丰科万达广场授权体验店</strong></td><td class="num">2</td><td class="num">1</td><td class="num"><strong>50.0%</strong></td></tr>
+<tr><td><strong>DJI北京中关村大融城授权体验店</strong></td><td class="num">2</td><td class="num">1</td><td class="num"><strong>50.0%</strong></td></tr>
+<tr><td><strong>DJI北京京西大悦城授权体验店</strong></td><td class="num">3</td><td class="num">2</td><td class="num"><strong>66.7%</strong></td></tr>
+<tr><td><strong>DJI北京昌平超级合生汇授权体验店</strong></td><td class="num">4</td><td class="num">3</td><td class="num"><strong>75.0%</strong></td></tr>
+<tr><td><strong>DJI北京西单大悦城授权体验店</strong></td><td class="num">4</td><td class="num">3</td><td class="num"><strong>75.0%</strong></td></tr>
+<tr><td><strong>DJI北京王府井APM授权高级体验店</strong></td><td class="num">4</td><td class="num">3</td><td class="num"><strong>75.0%</strong></td></tr>
+<tr><td><strong>DJI北京龙德广场授权体验店</strong></td><td class="num">5</td><td class="num">4</td><td class="num"><strong>80.0%</strong></td></tr>
+<tr><td><strong>DJI北京顺义华联授权体验店</strong></td><td class="num">6</td><td class="num">5</td><td class="num"><strong>83.3%</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="region-detail" style="margin-top:8px;">
+    <h3 style="color:var(--blue);margin:0 0 10px;">上海大疆 · 唤起POS异常门店（5家）</h3>
+    <table class="small-table">
+      <thead><tr><th>门店</th><th class="num">lps收银订单数量</th><th class="num">唤起POS</th><th class="num">唤起POS占比</th></tr></thead>
+      <tbody>
+<tr><td><strong>DJI上海复地活力城授权体验店</strong></td><td class="num">5</td><td class="num">1</td><td class="num"><strong>20.0%</strong></td></tr>
+<tr><td><strong>DJI上海长泰广场授权体验店</strong></td><td class="num">7</td><td class="num">5</td><td class="num"><strong>71.4%</strong></td></tr>
+<tr><td><strong>DJI上海百联又一城授权体验店</strong></td><td class="num">7</td><td class="num">5</td><td class="num"><strong>71.4%</strong></td></tr>
+<tr><td><strong>DJI上海美罗城授权体验店</strong></td><td class="num">4</td><td class="num">3</td><td class="num"><strong>75.0%</strong></td></tr>
+<tr><td><strong>DJI上海中庚漫游城授权体验店</strong></td><td class="num">6</td><td class="num">5</td><td class="num"><strong>83.3%</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="region-detail" style="margin-top:8px;">
+    <h3 style="color:var(--blue);margin:0 0 10px;">北京中恒 · 唤起POS异常门店（3家）</h3>
+    <table class="small-table">
+      <thead><tr><th>门店</th><th class="num">lps收银订单数量</th><th class="num">唤起POS</th><th class="num">唤起POS占比</th></tr></thead>
+      <tbody>
+<tr><td><strong>APR北京合生汇</strong></td><td class="num">3</td><td class="num">0</td><td class="num"><strong>0.0%</strong></td></tr>
+<tr><td><strong>APR北京万柳华联</strong></td><td class="num">1</td><td class="num">0</td><td class="num"><strong>0.0%</strong></td></tr>
+<tr><td><strong>APR北京龙德广场</strong></td><td class="num">2</td><td class="num">1</td><td class="num"><strong>50.0%</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="region-detail" style="margin-top:8px;">
+    <h3 style="color:var(--blue);margin:0 0 10px;">四川新跃 · 唤起POS异常门店（2家）</h3>
+    <table class="small-table">
+      <thead><tr><th>门店</th><th class="num">lps收银订单数量</th><th class="num">唤起POS</th><th class="num">唤起POS占比</th></tr></thead>
+      <tbody>
+<tr><td><strong>APR成都科华王府井</strong></td><td class="num">2</td><td class="num">0</td><td class="num"><strong>0.0%</strong></td></tr>
+<tr><td><strong>APR成都温江旭辉</strong></td><td class="num">2</td><td class="num">0</td><td class="num"><strong>0.0%</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section">
+  <h2>数据说明与统计口径</h2>
+  <div class="note">
+    <h4>统计范围</h4>
+    <ul>
+      <li>数据来源：ERP「智慧收银 → 零售单查询」中 <code>方案查询 = 当月全公司</code> 全量导出（桌面文件 <code>最新.xlsx</code>）</li>
+      <li>统计月份：仅含 <code>2026年8月</code> 单据</li>
+      <li>有效POS记录：共 544 条（已排除下述记录）</li>
+    </ul>
+    <h4>排除项</h4>
+    <ul>
+      <li>零售退货单、已退货、含第三方订单号的记录</li>
+      <li><b>ASP 门店</b>订单（业务组织或门店含 "ASP"）</li>
+      <li>非 POS 收款通道（仅保留：银联分期、刷卡扫码系列、XPOS、银联商务B扫C、银联商务智能POS系列、银联POS手动收款）</li>
+    </ul>
+    <h4>唤起POS 判定</h4>
+    <ul>
+      <li><b>唤起POS</b>：在 POS 通道中，由 POS 设备自动唤起收款（如 银联商务B扫C、银联分期、XPOS、银联商务智能POS内外卡受理/扫码 等）</li>
+      <li><b>未唤起POS</b>：刷卡扫码-银联、银联POS手动收款、刷卡扫码-XPOS、刷卡扫码-工行（手动或指定通道，未唤起POS设备）</li>
+      <li><b>唤起POS比例</b> = 唤起POS订单数 ÷ 该分公司零售单总量</li>
+      <li><b>银联商务B扫C占比</b> = 银联商务B扫C订单数 ÷ 唤起POS总数</li>
+    </ul>
+  </div>
+</div>
+
+<div class="footer">Generated by WorkBuddy · 2026-08-03 09:35</div>
+</div>
+
+<script>
+const regions = ['北京华为', '福建华为', '北京大疆', '上海大疆', '北京中恒', '四川新跃'];
+const bscCounts = [92, 76, 1, 6, 8, 0];
+const bscPcts = [38.82, 71.7, 2.0, 9.68, 80.0, 0.0];
+
+// 在图表上直接标注百分比数值, 更直观
+const valueLabelPlugin = {
+  id: 'valueLabel',
+  afterDatasetsDraw(chart) {
+    const id = chart.canvas && chart.canvas.id;
+    if (id !== 'bscBar' && id !== 'bscPie') return;
+    const ctx = chart.ctx;
+    const meta = chart.getDatasetMeta(0);
+    meta.data.forEach((el, i) => {
+      const pct = bscPcts[i];
+      if (id === 'bscBar') {
+        ctx.save();
+        ctx.fillStyle = '#1f2937';
+        ctx.font = 'bold 12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(pct.toFixed(1) + '%', el.x, el.y - 6);
+        ctx.restore();
+      } else {
+        const ang = (el.startAngle + el.endAngle) / 2;
+        const r = el.outerRadius * 0.62;
+        const x = el.x + Math.cos(ang) * r;
+        const y = el.y + Math.sin(ang) * r;
+        ctx.save();
+        ctx.fillStyle = '#fff';
+        ctx.font = 'bold 12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(pct.toFixed(1) + '%', x, y);
+        ctx.restore();
+      }
+    });
+  }
+};
+Chart.register(valueLabelPlugin);
+
+new Chart(document.getElementById('bscBar'), {
+  type: 'bar',
+  data: { labels: regions, datasets: [{ label: '银联商务B扫C订单数', data: bscCounts, backgroundColor: '#3b82f6' }] },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: '各分公司银联商务B扫C订单数' } }, scales: { y: { beginAtZero: true } } }
+});
+
+new Chart(document.getElementById('bscPie'), {
+  type: 'doughnut',
+  data: { labels: regions, datasets: [{ data: bscPcts, backgroundColor: ['#3b82f6','#22c55e','#f97316','#8b5cf6','#14b8a6','#ef4444'] }] },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: '银联商务B扫C占比分布(%)' } } }
+});
+</script>
+</body>
+</html>
