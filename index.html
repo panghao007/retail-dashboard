@@ -114,45 +114,22 @@
     </div></div>
     </div>
 
-    <div id="ips-section">
-      <div class="section-title"><span class="branddot"></span>IPS 合规收银数据看板</div>
-      <div class="section-desc">分公司/门店唤起POS比例 · 银联商务B扫C占比 · 异常门店明细</div>
-      <div class="list" id="ips-list" style="margin-top:16px;"></div>
-      <div class="empty" id="ips-empty" style="display:none;">暂无收银合规数据看板（同事尚未上传）</div>
+    
+    <div id="cashier-section">
+      <div class="section-title"><span class="branddot"></span>收银合规看板</div>
+      <div class="section-desc">基于 ERP 结算明细 + 收款分类规则判定每笔收款合规性；不合规明细可下载 Excel（按所属分公司分类）。</div>
+      <div class="list" style="margin-top:16px;">
+    <div class="card ips">
+      <a class="card-main" href="cashier/收银合规看板.html">
+        <div class="card-title">收银合规看板（2026-08-01 ~ 2026-08-04）</div>
+        <div class="card-sub">结算明细 · 合规率 98.49% · 不合规 266 笔 · 不合规明细可下载 Excel</div>
+      </a>
+      <div class="card-right">
+        <a class="dl" href="cashier/%E4%B8%8D%E5%90%88%E8%A7%84%E6%98%8E%E7%BB%86.xlsx" title="下载不合规明细.xlsx">⬇ 不合规明细</a>
+        <div class="card-arrow">›</div>
+      </div>
+    </div></div>
     </div>
-    <script>
-    (function(){
-      var list = document.getElementById('ips-list');
-      var empty = document.getElementById('ips-empty');
-      if(!list) return;
-      fetch('peer/manifest.json?t=' + Date.now())
-        .then(function(r){ return r.ok ? r.json() : []; })
-        .then(function(arr){
-          if(!Array.isArray(arr) || !arr.length) { empty.style.display = 'block'; return; }
-          arr.sort(function(a,b){ return (b.date||'').localeCompare(a.date||''); });
-          var W = ['日','一','二','三','四','五','六'];
-          arr.forEach(function(it){
-            var ds = it.date || '';
-            var p = ds.split('-');
-            var wd = '';
-            if(p.length === 3) {
-              try { wd = '星期' + W[new Date(+p[0], +p[1]-1, +p[2]).getDay()]; } catch(e) {}
-            }
-            var title = it.title || ('收银合规数据看板（' + p[0] + '年' + p[1] + '月' + p[2] + '日）');
-            var file = it.file || '';
-            var updated = it.updated ? ('更新于 ' + it.updated) : '同事上传';
-            var card = document.createElement('div');
-            card.className = 'card ips';
-            card.innerHTML = '<a class="card-main" href="' + file + '">'
-              + '<div class="card-title">' + title + '</div>'
-              + '<div class="card-sub">' + wd + ' · ' + updated + '</div></a>'
-              + '<div class="card-right"><div class="card-arrow">›</div></div>';
-            list.appendChild(card);
-          });
-        })
-        .catch(function(e){ empty.style.display = 'block'; });
-    })();
-    </script>
 
     
     <div id="monthly-section">
