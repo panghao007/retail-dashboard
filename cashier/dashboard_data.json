@@ -3,17 +3,18 @@
     "2026-08-01",
     "2026-08-05"
   ],
-  "total": 21079,
-  "compliant": 19660,
+  "total": 21076,
+  "compliant": 19658,
   "noncompliant": 239,
-  "excluded": 1179,
+  "excluded": 1178,
   "unmatched": 1,
   "excluded_asp": 88,
   "excluded_return": 1775,
+  "excluded_branch": 3,
   "compliance_rate": 98.8,
   "cat_amount": {
-    "合规": 72866396.21,
-    "剔除": 7134904.83,
+    "合规": 72865681.21,
+    "剔除": 7133530.64,
     "不合规": 1157217.46,
     "规则未覆盖": 4499.0
   },
@@ -61,10 +62,10 @@
       }
     },
     "现金": {
-      "count": 1100,
-      "amount": 7068900.66,
+      "count": 1099,
+      "amount": 7067526.47,
       "cat": {
-        "剔除": 1100
+        "剔除": 1099
       }
     },
     "刷卡扫码-银联": {
@@ -160,10 +161,10 @@
       }
     },
     "对公转账": {
-      "count": 83,
-      "amount": 752383.0,
+      "count": 82,
+      "amount": 752067.0,
       "cat": {
-        "合规": 83
+        "合规": 82
       }
     },
     "微盟付费会员": {
@@ -202,10 +203,10 @@
       }
     },
     "小程序": {
-      "count": 42,
-      "amount": 90138.0,
+      "count": 41,
+      "amount": 89739.0,
       "cat": {
-        "合规": 42
+        "合规": 41
       }
     },
     "花呗分期": {
@@ -1883,33 +1884,6 @@
       "excl": 0,
       "unmatched": 0,
       "rate": 100.0
-    },
-    "APR昆明同德广场": {
-      "count": 1,
-      "amount": 399.0,
-      "comp": 1,
-      "noncomp": 0,
-      "excl": 0,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "四川新跃内购店": {
-      "count": 1,
-      "amount": 316.0,
-      "comp": 1,
-      "noncomp": 0,
-      "excl": 0,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "APR昆明七彩云南": {
-      "count": 1,
-      "amount": 1374.19,
-      "comp": 0,
-      "noncomp": 0,
-      "excl": 1,
-      "unmatched": 0,
-      "rate": 0.0
     }
   },
   "org_stat": {
@@ -2600,18 +2574,6 @@
     "华为厦门思明星河COCO Park": {
       "count": 8,
       "noncomp": 0
-    },
-    "APR昆明同德广场": {
-      "count": 1,
-      "noncomp": 0
-    },
-    "四川新跃内购店": {
-      "count": 1,
-      "noncomp": 0
-    },
-    "APR昆明七彩云南": {
-      "count": 1,
-      "noncomp": 0
     }
   },
   "branch_stat": {
@@ -2652,13 +2614,13 @@
       "rate": 97.67
     },
     "四川新跃": {
-      "count": 2477,
-      "amount": 9947798.69,
-      "comp": 2348,
+      "count": 2964,
+      "amount": 11866078.22,
+      "comp": 2808,
       "noncomp": 8,
-      "excl": 121,
+      "excl": 148,
       "unmatched": 0,
-      "rate": 99.66
+      "rate": 99.72
     },
     "福建易联": {
       "count": 1884,
@@ -2668,51 +2630,6 @@
       "excl": 98,
       "unmatched": 0,
       "rate": 99.83
-    },
-    "（旧）APR成都凯德魅力城": {
-      "count": 145,
-      "amount": 579700.02,
-      "comp": 139,
-      "noncomp": 0,
-      "excl": 6,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "（旧）APR成都环球中心": {
-      "count": 142,
-      "amount": 593617.72,
-      "comp": 133,
-      "noncomp": 0,
-      "excl": 9,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "（旧）APR成都天府环宇坊": {
-      "count": 129,
-      "amount": 452489.05,
-      "comp": 120,
-      "noncomp": 0,
-      "excl": 9,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "（旧）APR成都东安天街": {
-      "count": 71,
-      "amount": 292472.74,
-      "comp": 68,
-      "noncomp": 0,
-      "excl": 3,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "剔除": {
-      "count": 3,
-      "amount": 2089.19,
-      "comp": 2,
-      "noncomp": 0,
-      "excl": 1,
-      "unmatched": 0,
-      "rate": 100.0
     }
   },
   "noncompliant_rows": [
