@@ -1,247 +1,247 @@
 {
   "data_range": [
     "2026-08-01",
-    "2026-08-05"
+    "2026-08-06"
   ],
-  "total": 21076,
-  "compliant": 19658,
-  "noncompliant": 239,
-  "excluded": 1178,
-  "unmatched": 1,
-  "excluded_asp": 88,
-  "excluded_return": 1775,
+  "total": 24977,
+  "compliant": 23314,
+  "noncompliant": 266,
+  "excluded": 1395,
+  "unmatched": 2,
+  "excluded_asp": 138,
+  "excluded_return": 2147,
   "excluded_branch": 3,
-  "compliance_rate": 98.8,
+  "compliance_rate": 98.87,
   "cat_amount": {
-    "合规": 72865681.21,
-    "剔除": 7133530.64,
-    "不合规": 1157217.46,
-    "规则未覆盖": 4499.0
+    "合规": 88320199.96,
+    "剔除": 8214128.77,
+    "不合规": 1268832.46,
+    "规则未覆盖": 6973.0
   },
   "channel_stat": {
     "银联国补自付": {
-      "count": 3339,
-      "amount": 13138238.35,
+      "count": 3848,
+      "amount": 15112792.24,
       "cat": {
-        "合规": 3339
+        "合规": 3848
       }
     },
     "银联国补补贴": {
-      "count": 3338,
-      "amount": 13136002.35,
+      "count": 3847,
+      "amount": 15110556.24,
       "cat": {
-        "合规": 3338
+        "合规": 3847
       }
     },
     "汇付支付": {
-      "count": 3053,
-      "amount": 9118510.62,
+      "count": 3636,
+      "amount": 10815937.62,
       "cat": {
-        "合规": 3053
+        "合规": 3636
       }
     },
     "京东秒送": {
-      "count": 1971,
-      "amount": 7417755.95,
+      "count": 2442,
+      "amount": 9808029.41,
       "cat": {
-        "合规": 1971
+        "合规": 2442
       }
     },
     "美团闪购": {
-      "count": 1322,
-      "amount": 5102673.65,
+      "count": 1626,
+      "amount": 6680221.65,
       "cat": {
-        "合规": 1322
+        "合规": 1626
       }
     },
     "银联商务B扫C": {
-      "count": 1200,
-      "amount": 3708168.48,
+      "count": 1416,
+      "amount": 4435302.04,
       "cat": {
-        "合规": 1200
+        "合规": 1416
       }
     },
     "现金": {
-      "count": 1099,
-      "amount": 7067526.47,
+      "count": 1293,
+      "amount": 8137759.6,
       "cat": {
-        "剔除": 1099
+        "剔除": 1293
       }
     },
     "刷卡扫码-银联": {
-      "count": 960,
-      "amount": 5506970.92,
+      "count": 1105,
+      "amount": 6556789.62,
       "cat": {
-        "合规": 881,
-        "不合规": 79
+        "合规": 1022,
+        "不合规": 83
       }
     },
     "银联商务智能POS扫码": {
-      "count": 877,
-      "amount": 2448239.9,
+      "count": 1024,
+      "amount": 2988799.28,
       "cat": {
-        "合规": 877
+        "合规": 1024
       }
     },
     "XPOS": {
-      "count": 588,
-      "amount": 1402618.84,
+      "count": 684,
+      "amount": 1651508.04,
       "cat": {
-        "合规": 588
+        "合规": 684
       }
     },
     "龙湖POS": {
-      "count": 545,
-      "amount": 1897208.0,
+      "count": 623,
+      "amount": 2222564.4,
       "cat": {
-        "合规": 545
+        "合规": 623
       }
     },
     "京东自营": {
-      "count": 450,
-      "amount": 1552600.85,
+      "count": 582,
+      "amount": 1960047.99,
       "cat": {
-        "合规": 450
-      }
-    },
-    "商场收银": {
-      "count": 349,
-      "amount": 1198852.55,
-      "cat": {
-        "合规": 349
+        "合规": 582
       }
     },
     "浙江天猫": {
-      "count": 342,
-      "amount": 974988.96,
+      "count": 457,
+      "amount": 1477491.11,
       "cat": {
-        "合规": 342
+        "合规": 457
       }
     },
-    "订金": {
-      "count": 238,
-      "amount": 999808.8,
+    "商场收银": {
+      "count": 388,
+      "amount": 1310314.14,
       "cat": {
-        "合规": 238
+        "合规": 388
       }
     },
     "抖超": {
-      "count": 238,
-      "amount": 1178693.1,
+      "count": 352,
+      "amount": 1962439.1,
       "cat": {
-        "合规": 238
+        "合规": 352
       }
     },
     "淘宝闪购": {
-      "count": 227,
-      "amount": 189766.05,
+      "count": 270,
+      "amount": 224464.05,
       "cat": {
-        "合规": 227
+        "合规": 270
+      }
+    },
+    "订金": {
+      "count": 248,
+      "amount": 1076771.8,
+      "cat": {
+        "合规": 248
       }
     },
     "银联POS手动收款": {
-      "count": 160,
-      "amount": 759452.96,
+      "count": 183,
+      "amount": 854565.96,
       "cat": {
-        "不合规": 160
+        "不合规": 183
       }
     },
     "京东国补": {
-      "count": 125,
-      "amount": 422759.0,
+      "count": 145,
+      "amount": 496986.0,
       "cat": {
-        "合规": 125
+        "合规": 145
       }
     },
     "教育优惠": {
-      "count": 117,
-      "amount": 946326.4,
+      "count": 138,
+      "amount": 1102270.28,
       "cat": {
-        "合规": 117
-      }
-    },
-    "对公转账": {
-      "count": 82,
-      "amount": 752067.0,
-      "cat": {
-        "合规": 82
+        "合规": 138
       }
     },
     "微盟付费会员": {
-      "count": 75,
-      "amount": 62460.0,
+      "count": 98,
+      "amount": 72825.0,
       "cat": {
-        "剔除": 75
+        "剔除": 98
+      }
+    },
+    "对公转账": {
+      "count": 98,
+      "amount": 941619.0,
+      "cat": {
+        "合规": 98
       }
     },
     "银联商务智能POS内外卡受理": {
-      "count": 71,
-      "amount": 349231.0,
+      "count": 85,
+      "amount": 405937.0,
       "cat": {
-        "合规": 71
+        "合规": 85
       }
     },
     "抖超国补": {
+      "count": 70,
+      "amount": 482159.0,
+      "cat": {
+        "合规": 70
+      }
+    },
+    "大众点评线上": {
+      "count": 63,
+      "amount": 547787.0,
+      "cat": {
+        "合规": 63
+      }
+    },
+    "花呗分期": {
+      "count": 52,
+      "amount": 526879.0,
+      "cat": {
+        "合规": 52
+      }
+    },
+    "小程序": {
       "count": 47,
-      "amount": 286032.0,
+      "amount": 122603.0,
       "cat": {
         "合规": 47
       }
     },
-    "大众点评线上": {
-      "count": 46,
-      "amount": 394504.0,
-      "cat": {
-        "合规": 46
-      }
-    },
     "电信-优惠券": {
-      "count": 42,
-      "amount": 149373.0,
+      "count": 45,
+      "amount": 159341.0,
       "cat": {
-        "合规": 42
-      }
-    },
-    "小程序": {
-      "count": 41,
-      "amount": 89739.0,
-      "cat": {
-        "合规": 41
-      }
-    },
-    "花呗分期": {
-      "count": 40,
-      "amount": 413098.0,
-      "cat": {
-        "合规": 40
+        "合规": 45
       }
     },
     "京东到家": {
-      "count": 21,
-      "amount": 88826.0,
+      "count": 25,
+      "amount": 90362.0,
       "cat": {
-        "合规": 21
-      }
-    },
-    "天猫国补": {
-      "count": 14,
-      "amount": 76947.24,
-      "cat": {
-        "合规": 14
+        "合规": 25
       }
     },
     "华为会员积分": {
-      "count": 14,
-      "amount": 76035.0,
+      "count": 17,
+      "amount": 78662.0,
       "cat": {
-        "合规": 14
+        "合规": 17
       }
     },
     "抖音支付": {
-      "count": 11,
-      "amount": 84933.0,
+      "count": 15,
+      "amount": 122059.0,
       "cat": {
-        "合规": 11
+        "合规": 15
+      }
+    },
+    "天猫国补": {
+      "count": 15,
+      "amount": 79668.75,
+      "cat": {
+        "合规": 15
       }
     },
     "华为生日礼券": {
@@ -252,17 +252,24 @@
       }
     },
     "京东白条分期": {
+      "count": 6,
+      "amount": 68290.0,
+      "cat": {
+        "合规": 6
+      }
+    },
+    "商场代金券": {
       "count": 5,
-      "amount": 56490.0,
+      "amount": 10066.0,
       "cat": {
         "合规": 5
       }
     },
     "大众点评券": {
-      "count": 4,
-      "amount": 15817.8,
+      "count": 5,
+      "amount": 22966.8,
       "cat": {
-        "合规": 4
+        "合规": 5
       }
     },
     "现金赠品": {
@@ -279,18 +286,18 @@
         "合规": 3
       }
     },
-    "商场代金券": {
-      "count": 2,
-      "amount": 7388.0,
-      "cat": {
-        "合规": 2
-      }
-    },
     "银联分期": {
       "count": 2,
       "amount": 7898.0,
       "cat": {
         "合规": 2
+      }
+    },
+    "万达付呗": {
+      "count": 1,
+      "amount": 2474.0,
+      "cat": {
+        "规则未覆盖": 1
       }
     },
     "高德": {
@@ -338,751 +345,796 @@
   },
   "store_stat": {
     "APR北京龙德广场": {
-      "count": 235,
-      "amount": 841203.11,
-      "comp": 202,
-      "noncomp": 13,
-      "excl": 20,
+      "count": 286,
+      "amount": 1069371.71,
+      "comp": 245,
+      "noncomp": 14,
+      "excl": 27,
       "unmatched": 0,
-      "rate": 93.95
+      "rate": 94.59
     },
     "APR北京合生汇": {
-      "count": 590,
-      "amount": 2162378.7,
-      "comp": 564,
-      "noncomp": 11,
-      "excl": 15,
+      "count": 697,
+      "amount": 2593524.9,
+      "comp": 669,
+      "noncomp": 12,
+      "excl": 16,
       "unmatched": 0,
-      "rate": 98.09
+      "rate": 98.24
     },
     "DJI北京东方新天地授权体验店": {
-      "count": 77,
-      "amount": 232873.0,
-      "comp": 67,
+      "count": 92,
+      "amount": 271160.0,
+      "comp": 80,
       "noncomp": 10,
-      "excl": 0,
+      "excl": 2,
       "unmatched": 0,
-      "rate": 87.01
+      "rate": 88.89
     },
     "华为北京通州万达": {
-      "count": 494,
-      "amount": 2189350.78,
-      "comp": 464,
+      "count": 572,
+      "amount": 2507465.78,
+      "comp": 541,
       "noncomp": 10,
-      "excl": 20,
+      "excl": 21,
       "unmatched": 0,
-      "rate": 97.89
-    },
-    "APR北京怀柔万达": {
-      "count": 178,
-      "amount": 696009.82,
-      "comp": 153,
-      "noncomp": 8,
-      "excl": 17,
-      "unmatched": 0,
-      "rate": 95.03
+      "rate": 98.19
     },
     "APR北京颐堤港": {
-      "count": 200,
-      "amount": 685623.52,
-      "comp": 182,
+      "count": 244,
+      "amount": 807634.08,
+      "comp": 223,
+      "noncomp": 8,
+      "excl": 13,
+      "unmatched": 0,
+      "rate": 96.54
+    },
+    "APR北京怀柔万达": {
+      "count": 206,
+      "amount": 831151.55,
+      "comp": 179,
+      "noncomp": 8,
+      "excl": 19,
+      "unmatched": 0,
+      "rate": 95.72
+    },
+    "华为北京丰台银泰": {
+      "count": 167,
+      "amount": 657592.9,
+      "comp": 151,
+      "noncomp": 8,
+      "excl": 8,
+      "unmatched": 0,
+      "rate": 94.97
+    },
+    "APR北京万柳华联": {
+      "count": 163,
+      "amount": 622203.29,
+      "comp": 154,
+      "noncomp": 7,
+      "excl": 2,
+      "unmatched": 0,
+      "rate": 95.65
+    },
+    "APR成都科华王府井": {
+      "count": 191,
+      "amount": 883889.04,
+      "comp": 173,
       "noncomp": 6,
       "excl": 12,
       "unmatched": 0,
-      "rate": 96.81
-    },
-    "APR北京万柳华联": {
-      "count": 141,
-      "amount": 561093.13,
-      "comp": 133,
-      "noncomp": 6,
-      "excl": 2,
-      "unmatched": 0,
-      "rate": 95.68
+      "rate": 96.65
     },
     "华为北京昌平政府街": {
-      "count": 49,
-      "amount": 220446.45,
-      "comp": 42,
+      "count": 52,
+      "amount": 234243.45,
+      "comp": 45,
       "noncomp": 6,
       "excl": 1,
       "unmatched": 0,
-      "rate": 87.5
+      "rate": 88.24
     },
     "华为北京汇琴广场": {
-      "count": 56,
-      "amount": 228456.62,
-      "comp": 50,
+      "count": 59,
+      "amount": 233542.62,
+      "comp": 53,
       "noncomp": 6,
       "excl": 0,
       "unmatched": 0,
-      "rate": 89.29
-    },
-    "华为北京丰台银泰": {
-      "count": 147,
-      "amount": 606028.6,
-      "comp": 133,
-      "noncomp": 6,
-      "excl": 8,
-      "unmatched": 0,
-      "rate": 95.68
-    },
-    "APR成都科华王府井": {
-      "count": 160,
-      "amount": 670420.88,
-      "comp": 142,
-      "noncomp": 6,
-      "excl": 12,
-      "unmatched": 0,
-      "rate": 95.95
+      "rate": 89.83
     },
     "APR北京东坝万达": {
-      "count": 209,
-      "amount": 705153.13,
-      "comp": 182,
+      "count": 249,
+      "amount": 867821.0,
+      "comp": 219,
       "noncomp": 5,
-      "excl": 22,
+      "excl": 25,
       "unmatched": 0,
-      "rate": 97.33
+      "rate": 97.77
     },
     "APR北京顺义华联": {
-      "count": 321,
-      "amount": 1515683.0,
-      "comp": 296,
+      "count": 404,
+      "amount": 1922667.87,
+      "comp": 373,
       "noncomp": 5,
-      "excl": 20,
+      "excl": 26,
       "unmatched": 0,
-      "rate": 98.34
-    },
-    "APR北京西三旗万象汇": {
-      "count": 175,
-      "amount": 794614.73,
-      "comp": 165,
-      "noncomp": 4,
-      "excl": 6,
-      "unmatched": 0,
-      "rate": 97.63
-    },
-    "华为北京旧宫万科": {
-      "count": 143,
-      "amount": 636189.97,
-      "comp": 128,
-      "noncomp": 4,
-      "excl": 11,
-      "unmatched": 0,
-      "rate": 96.97
-    },
-    "华为北京清河万象汇": {
-      "count": 334,
-      "amount": 1176119.98,
-      "comp": 319,
-      "noncomp": 4,
-      "excl": 11,
-      "unmatched": 0,
-      "rate": 98.76
+      "rate": 98.68
     },
     "APR北京五棵松华熙": {
-      "count": 254,
-      "amount": 1138315.36,
-      "comp": 238,
-      "noncomp": 4,
-      "excl": 12,
+      "count": 299,
+      "amount": 1318539.04,
+      "comp": 281,
+      "noncomp": 5,
+      "excl": 13,
       "unmatched": 0,
-      "rate": 98.35
-    },
-    "DJI上海复地活力城授权体验店": {
-      "count": 56,
-      "amount": 143150.6,
-      "comp": 49,
-      "noncomp": 4,
-      "excl": 3,
-      "unmatched": 0,
-      "rate": 92.45
+      "rate": 98.25
     },
     "APR北京大族广场": {
-      "count": 186,
-      "amount": 725707.76,
-      "comp": 170,
-      "noncomp": 4,
-      "excl": 12,
-      "unmatched": 0,
-      "rate": 97.7
-    },
-    "华为北京京投小站": {
-      "count": 19,
-      "amount": 45752.0,
-      "comp": 15,
-      "noncomp": 4,
-      "excl": 0,
-      "unmatched": 0,
-      "rate": 78.95
-    },
-    "华为北京回龙观华联": {
-      "count": 153,
-      "amount": 529744.0,
-      "comp": 149,
-      "noncomp": 4,
-      "excl": 0,
-      "unmatched": 0,
-      "rate": 97.39
-    },
-    "华为北京回龙观一店": {
-      "count": 17,
-      "amount": 53907.0,
-      "comp": 11,
-      "noncomp": 4,
-      "excl": 2,
-      "unmatched": 0,
-      "rate": 73.33
-    },
-    "DJI上海世博天地授权体验店": {
-      "count": 34,
-      "amount": 162276.0,
-      "comp": 29,
-      "noncomp": 3,
-      "excl": 2,
-      "unmatched": 0,
-      "rate": 90.62
-    },
-    "DJI上海长宁龙之梦授权体验店": {
-      "count": 70,
-      "amount": 184343.0,
-      "comp": 65,
-      "noncomp": 3,
-      "excl": 2,
-      "unmatched": 0,
-      "rate": 95.59
-    },
-    "DJI上海美罗城授权体验店": {
-      "count": 116,
-      "amount": 362431.0,
-      "comp": 111,
-      "noncomp": 3,
-      "excl": 2,
-      "unmatched": 0,
-      "rate": 97.37
-    },
-    "华为北京东坝万达": {
-      "count": 236,
-      "amount": 1063039.75,
-      "comp": 218,
-      "noncomp": 3,
+      "count": 229,
+      "amount": 923527.23,
+      "comp": 209,
+      "noncomp": 5,
       "excl": 15,
       "unmatched": 0,
-      "rate": 98.64
+      "rate": 97.66
     },
-    "华为北京平谷万达": {
-      "count": 178,
-      "amount": 568982.3,
-      "comp": 173,
-      "noncomp": 3,
-      "excl": 2,
+    "APR北京西三旗万象汇": {
+      "count": 211,
+      "amount": 1012997.76,
+      "comp": 199,
+      "noncomp": 4,
+      "excl": 8,
       "unmatched": 0,
-      "rate": 98.3
+      "rate": 98.03
     },
-    "华为北京同成街华联": {
-      "count": 68,
-      "amount": 580575.1,
-      "comp": 55,
-      "noncomp": 3,
-      "excl": 10,
-      "unmatched": 0,
-      "rate": 94.83
-    },
-    "DJI北京京西大悦城授权体验店": {
-      "count": 90,
-      "amount": 333188.0,
-      "comp": 85,
-      "noncomp": 3,
-      "excl": 2,
-      "unmatched": 0,
-      "rate": 96.59
-    },
-    "APR北京五道口购物中心": {
-      "count": 206,
-      "amount": 692491.42,
-      "comp": 198,
-      "noncomp": 3,
+    "DJI北京北投新奥天虹授权体验店": {
+      "count": 61,
+      "amount": 203784.0,
+      "comp": 52,
+      "noncomp": 4,
       "excl": 5,
       "unmatched": 0,
-      "rate": 98.51
+      "rate": 92.86
     },
-    "DJI北京蓝色港湾授权体验店": {
+    "APR北京五道口购物中心": {
+      "count": 252,
+      "amount": 859139.79,
+      "comp": 241,
+      "noncomp": 4,
+      "excl": 7,
+      "unmatched": 0,
+      "rate": 98.37
+    },
+    "DJI上海复地活力城授权体验店": {
+      "count": 67,
+      "amount": 179717.6,
+      "comp": 60,
+      "noncomp": 4,
+      "excl": 3,
+      "unmatched": 0,
+      "rate": 93.75
+    },
+    "华为北京清河万象汇": {
+      "count": 381,
+      "amount": 1389278.45,
+      "comp": 362,
+      "noncomp": 4,
+      "excl": 15,
+      "unmatched": 0,
+      "rate": 98.91
+    },
+    "华为北京延庆万达": {
+      "count": 154,
+      "amount": 531222.31,
+      "comp": 145,
+      "noncomp": 4,
+      "excl": 5,
+      "unmatched": 0,
+      "rate": 97.32
+    },
+    "华为北京旧宫万科": {
+      "count": 161,
+      "amount": 716274.12,
+      "comp": 144,
+      "noncomp": 4,
+      "excl": 13,
+      "unmatched": 0,
+      "rate": 97.3
+    },
+    "DJI上海世博天地授权体验店": {
       "count": 44,
-      "amount": 158488.0,
-      "comp": 38,
+      "amount": 191502.0,
+      "comp": 37,
+      "noncomp": 4,
+      "excl": 3,
+      "unmatched": 0,
+      "rate": 90.24
+    },
+    "华为北京回龙观华联": {
+      "count": 158,
+      "amount": 548615.0,
+      "comp": 154,
+      "noncomp": 4,
+      "excl": 0,
+      "unmatched": 0,
+      "rate": 97.47
+    },
+    "华为北京回龙观一店": {
+      "count": 22,
+      "amount": 57103.0,
+      "comp": 16,
+      "noncomp": 4,
+      "excl": 2,
+      "unmatched": 0,
+      "rate": 80.0
+    },
+    "华为北京京投小站": {
+      "count": 20,
+      "amount": 45851.0,
+      "comp": 16,
+      "noncomp": 4,
+      "excl": 0,
+      "unmatched": 0,
+      "rate": 80.0
+    },
+    "华为北京平谷万达": {
+      "count": 198,
+      "amount": 749206.3,
+      "comp": 191,
+      "noncomp": 3,
+      "excl": 4,
+      "unmatched": 0,
+      "rate": 98.45
+    },
+    "DJI上海长宁龙之梦授权体验店": {
+      "count": 88,
+      "amount": 240602.0,
+      "comp": 82,
       "noncomp": 3,
       "excl": 3,
+      "unmatched": 0,
+      "rate": 96.47
+    },
+    "DJI北京京西大悦城授权体验店": {
+      "count": 102,
+      "amount": 369888.0,
+      "comp": 97,
+      "noncomp": 3,
+      "excl": 2,
+      "unmatched": 0,
+      "rate": 97.0
+    },
+    "DJI上海美罗城授权体验店": {
+      "count": 138,
+      "amount": 425346.0,
+      "comp": 132,
+      "noncomp": 3,
+      "excl": 3,
+      "unmatched": 0,
+      "rate": 97.78
+    },
+    "华为北京东坝万达": {
+      "count": 269,
+      "amount": 1193583.4,
+      "comp": 242,
+      "noncomp": 3,
+      "excl": 24,
+      "unmatched": 0,
+      "rate": 98.78
+    },
+    "DJI上海百联又一城授权体验店": {
+      "count": 45,
+      "amount": 161114.79,
+      "comp": 38,
+      "noncomp": 3,
+      "excl": 4,
       "unmatched": 0,
       "rate": 92.68
     },
-    "DJI上海长泰广场授权体验店": {
-      "count": 72,
-      "amount": 223841.0,
-      "comp": 68,
+    "华为北京槐房万达": {
+      "count": 184,
+      "amount": 667266.86,
+      "comp": 166,
       "noncomp": 3,
-      "excl": 1,
-      "unmatched": 0,
-      "rate": 95.77
+      "excl": 13,
+      "unmatched": 2,
+      "rate": 98.22
     },
-    "DJI上海百联又一城授权体验店": {
-      "count": 38,
-      "amount": 135316.79,
-      "comp": 32,
+    "DJI北京蓝色港湾授权体验店": {
+      "count": 58,
+      "amount": 200137.0,
+      "comp": 51,
       "noncomp": 3,
-      "excl": 3,
-      "unmatched": 0,
-      "rate": 91.43
-    },
-    "华为北京回龙观万科": {
-      "count": 40,
-      "amount": 101737.87,
-      "comp": 36,
-      "noncomp": 3,
-      "excl": 1,
-      "unmatched": 0,
-      "rate": 92.31
-    },
-    "华为北京房山万科": {
-      "count": 111,
-      "amount": 400645.25,
-      "comp": 102,
-      "noncomp": 3,
-      "excl": 6,
-      "unmatched": 0,
-      "rate": 97.14
-    },
-    "DJI北京颐堤港授权体验店": {
-      "count": 62,
-      "amount": 202531.0,
-      "comp": 59,
-      "noncomp": 2,
-      "excl": 1,
-      "unmatched": 0,
-      "rate": 96.72
-    },
-    "APR成都温江旭辉": {
-      "count": 165,
-      "amount": 613319.6,
-      "comp": 151,
-      "noncomp": 2,
-      "excl": 12,
-      "unmatched": 0,
-      "rate": 98.69
-    },
-    "华为北京西铁营万达": {
-      "count": 141,
-      "amount": 657412.97,
-      "comp": 106,
-      "noncomp": 2,
-      "excl": 33,
-      "unmatched": 0,
-      "rate": 98.15
-    },
-    "APR北京石景山喜隆多": {
-      "count": 193,
-      "amount": 732384.95,
-      "comp": 177,
-      "noncomp": 2,
-      "excl": 14,
-      "unmatched": 0,
-      "rate": 98.88
-    },
-    "APR北京望京凯德茂": {
-      "count": 172,
-      "amount": 613863.48,
-      "comp": 165,
-      "noncomp": 2,
-      "excl": 5,
-      "unmatched": 0,
-      "rate": 98.8
-    },
-    "华为北京大兴大族": {
-      "count": 158,
-      "amount": 715704.6,
-      "comp": 133,
-      "noncomp": 2,
-      "excl": 23,
-      "unmatched": 0,
-      "rate": 98.52
-    },
-    "华为北京延庆万达": {
-      "count": 135,
-      "amount": 442577.1,
-      "comp": 129,
-      "noncomp": 2,
       "excl": 4,
       "unmatched": 0,
-      "rate": 98.47
+      "rate": 94.44
     },
-    "DJI北京龙德广场授权体验店": {
-      "count": 53,
-      "amount": 159525.0,
-      "comp": 49,
+    "DJI上海长泰广场授权体验店": {
+      "count": 98,
+      "amount": 311921.0,
+      "comp": 93,
+      "noncomp": 3,
+      "excl": 2,
+      "unmatched": 0,
+      "rate": 96.88
+    },
+    "华为北京同成街华联": {
+      "count": 80,
+      "amount": 607198.1,
+      "comp": 66,
+      "noncomp": 3,
+      "excl": 11,
+      "unmatched": 0,
+      "rate": 95.65
+    },
+    "华为北京房山万科": {
+      "count": 131,
+      "amount": 464783.55,
+      "comp": 121,
+      "noncomp": 3,
+      "excl": 7,
+      "unmatched": 0,
+      "rate": 97.58
+    },
+    "华为北京回龙观万科": {
+      "count": 44,
+      "amount": 112133.87,
+      "comp": 40,
+      "noncomp": 3,
+      "excl": 1,
+      "unmatched": 0,
+      "rate": 93.02
+    },
+    "DJI北京昌平超级合生汇授权体验店": {
+      "count": 58,
+      "amount": 157911.0,
+      "comp": 55,
+      "noncomp": 2,
+      "excl": 1,
+      "unmatched": 0,
+      "rate": 96.49
+    },
+    "DJI北京颐堤港授权体验店": {
+      "count": 70,
+      "amount": 218277.0,
+      "comp": 66,
       "noncomp": 2,
       "excl": 2,
       "unmatched": 0,
-      "rate": 96.08
+      "rate": 97.06
     },
-    "华为北京来福士": {
-      "count": 143,
-      "amount": 626610.03,
-      "comp": 128,
+    "DJI大疆哈苏北京朝阳合生汇概念店": {
+      "count": 183,
+      "amount": 613759.0,
+      "comp": 174,
+      "noncomp": 2,
+      "excl": 7,
+      "unmatched": 0,
+      "rate": 98.86
+    },
+    "APR北京望京凯德茂": {
+      "count": 221,
+      "amount": 818767.21,
+      "comp": 208,
+      "noncomp": 2,
+      "excl": 11,
+      "unmatched": 0,
+      "rate": 99.05
+    },
+    "APR北京石景山喜隆多": {
+      "count": 226,
+      "amount": 900366.19,
+      "comp": 208,
+      "noncomp": 2,
+      "excl": 16,
+      "unmatched": 0,
+      "rate": 99.05
+    },
+    "APR北京大兴龙湖": {
+      "count": 161,
+      "amount": 684857.81,
+      "comp": 146,
       "noncomp": 2,
       "excl": 13,
       "unmatched": 0,
-      "rate": 98.46
+      "rate": 98.65
     },
-    "华为北京牡丹园翠微": {
-      "count": 234,
-      "amount": 1001526.42,
-      "comp": 195,
+    "华为北京石景山万达": {
+      "count": 222,
+      "amount": 981617.65,
+      "comp": 208,
       "noncomp": 2,
-      "excl": 37,
+      "excl": 12,
       "unmatched": 0,
-      "rate": 98.98
+      "rate": 99.05
+    },
+    "DJI北京龙德广场授权体验店": {
+      "count": 57,
+      "amount": 174122.0,
+      "comp": 53,
+      "noncomp": 2,
+      "excl": 2,
+      "unmatched": 0,
+      "rate": 96.36
     },
     "华为厦门思明瑞景广场": {
-      "count": 68,
-      "amount": 205027.4,
-      "comp": 66,
+      "count": 85,
+      "amount": 245977.52,
+      "comp": 83,
       "noncomp": 2,
+      "excl": 0,
+      "unmatched": 0,
+      "rate": 97.65
+    },
+    "华为北京来福士": {
+      "count": 160,
+      "amount": 679225.63,
+      "comp": 144,
+      "noncomp": 2,
+      "excl": 14,
+      "unmatched": 0,
+      "rate": 98.63
+    },
+    "APR北京海淀大悦城": {
+      "count": 148,
+      "amount": 566998.93,
+      "comp": 139,
+      "noncomp": 2,
+      "excl": 7,
+      "unmatched": 0,
+      "rate": 98.58
+    },
+    "APR成都温江旭辉": {
+      "count": 202,
+      "amount": 852844.11,
+      "comp": 188,
+      "noncomp": 2,
+      "excl": 12,
+      "unmatched": 0,
+      "rate": 98.95
+    },
+    "DJI北京王府井APM授权高级体验店": {
+      "count": 183,
+      "amount": 557804.0,
+      "comp": 171,
+      "noncomp": 2,
+      "excl": 10,
+      "unmatched": 0,
+      "rate": 98.84
+    },
+    "APR北京丽泽龙湖": {
+      "count": 246,
+      "amount": 812650.26,
+      "comp": 233,
+      "noncomp": 2,
+      "excl": 11,
+      "unmatched": 0,
+      "rate": 99.15
+    },
+    "华为北京丰台鑫嘉汇": {
+      "count": 76,
+      "amount": 452916.16,
+      "comp": 65,
+      "noncomp": 2,
+      "excl": 9,
+      "unmatched": 0,
+      "rate": 97.01
+    },
+    "华为北京首开万象汇": {
+      "count": 307,
+      "amount": 1624652.12,
+      "comp": 295,
+      "noncomp": 2,
+      "excl": 10,
+      "unmatched": 0,
+      "rate": 99.33
+    },
+    "华为北京牡丹园翠微": {
+      "count": 269,
+      "amount": 1114084.14,
+      "comp": 229,
+      "noncomp": 2,
+      "excl": 38,
+      "unmatched": 0,
+      "rate": 99.13
+    },
+    "DJI上海陆家嘴中心L+mall授权体验店": {
+      "count": 67,
+      "amount": 177658.2,
+      "comp": 65,
+      "noncomp": 2,
+      "excl": 0,
+      "unmatched": 0,
+      "rate": 97.01
+    },
+    "华为北京西铁营万达": {
+      "count": 159,
+      "amount": 759771.93,
+      "comp": 123,
+      "noncomp": 2,
+      "excl": 34,
+      "unmatched": 0,
+      "rate": 98.4
+    },
+    "华为北京大兴大族": {
+      "count": 179,
+      "amount": 782989.13,
+      "comp": 151,
+      "noncomp": 2,
+      "excl": 26,
+      "unmatched": 0,
+      "rate": 98.69
+    },
+    "华为福州东街口": {
+      "count": 144,
+      "amount": 408207.96,
+      "comp": 142,
+      "noncomp": 1,
+      "excl": 1,
+      "unmatched": 0,
+      "rate": 99.3
+    },
+    "DJI北京太阳宫凯德授权体验店": {
+      "count": 83,
+      "amount": 216772.0,
+      "comp": 82,
+      "noncomp": 1,
+      "excl": 0,
+      "unmatched": 0,
+      "rate": 98.8
+    },
+    "APR北京旧宫万科": {
+      "count": 171,
+      "amount": 734392.86,
+      "comp": 167,
+      "noncomp": 1,
+      "excl": 3,
+      "unmatched": 0,
+      "rate": 99.4
+    },
+    "DJI北京昌平悦荟授权体验店": {
+      "count": 94,
+      "amount": 266901.0,
+      "comp": 89,
+      "noncomp": 1,
+      "excl": 4,
+      "unmatched": 0,
+      "rate": 98.89
+    },
+    "DJI上海漕河泾印象城授权体验店": {
+      "count": 34,
+      "amount": 202276.0,
+      "comp": 33,
+      "noncomp": 1,
       "excl": 0,
       "unmatched": 0,
       "rate": 97.06
     },
-    "DJI北京北投新奥天虹授权体验店": {
-      "count": 55,
-      "amount": 185832.0,
-      "comp": 49,
-      "noncomp": 2,
-      "excl": 4,
-      "unmatched": 0,
-      "rate": 96.08
-    },
-    "华为北京槐房万达": {
-      "count": 162,
-      "amount": 611646.86,
-      "comp": 149,
-      "noncomp": 2,
-      "excl": 10,
-      "unmatched": 1,
-      "rate": 98.68
-    },
-    "华为北京石景山万达": {
-      "count": 201,
-      "amount": 923244.65,
-      "comp": 187,
-      "noncomp": 2,
-      "excl": 12,
-      "unmatched": 0,
-      "rate": 98.94
-    },
-    "APR北京海淀大悦城": {
-      "count": 123,
-      "amount": 466836.32,
-      "comp": 116,
-      "noncomp": 2,
-      "excl": 5,
-      "unmatched": 0,
-      "rate": 98.31
-    },
-    "华为福州平潭吾悦": {
-      "count": 106,
-      "amount": 443161.06,
-      "comp": 95,
-      "noncomp": 1,
-      "excl": 10,
-      "unmatched": 0,
-      "rate": 98.96
-    },
-    "DJI大疆哈苏北京朝阳合生汇概念店": {
-      "count": 157,
-      "amount": 468973.0,
-      "comp": 150,
-      "noncomp": 1,
-      "excl": 6,
-      "unmatched": 0,
-      "rate": 99.34
-    },
-    "DJI北京昌平悦荟授权体验店": {
-      "count": 84,
-      "amount": 253227.0,
-      "comp": 79,
-      "noncomp": 1,
-      "excl": 4,
-      "unmatched": 0,
-      "rate": 98.75
-    },
-    "APR北京望京华彩": {
-      "count": 129,
-      "amount": 483920.59,
+    "DJI北京金源购物广场授权体验店": {
+      "count": 134,
+      "amount": 397633.0,
       "comp": 124,
       "noncomp": 1,
-      "excl": 4,
+      "excl": 9,
       "unmatched": 0,
       "rate": 99.2
     },
-    "DJI北京西单大悦城授权体验店": {
-      "count": 121,
-      "amount": 289108.0,
-      "comp": 110,
+    "APR北京房山熙悦": {
+      "count": 188,
+      "amount": 893546.44,
+      "comp": 177,
       "noncomp": 1,
       "excl": 10,
       "unmatched": 0,
-      "rate": 99.1
+      "rate": 99.44
     },
-    "DJI上海中庚漫游城授权体验店": {
-      "count": 76,
-      "amount": 204641.0,
-      "comp": 71,
+    "APR北京大红门银泰": {
+      "count": 119,
+      "amount": 443719.01,
+      "comp": 114,
       "noncomp": 1,
       "excl": 4,
       "unmatched": 0,
-      "rate": 98.61
+      "rate": 99.13
     },
-    "APR北京丽泽龙湖": {
-      "count": 211,
-      "amount": 673599.36,
-      "comp": 201,
-      "noncomp": 1,
-      "excl": 9,
-      "unmatched": 0,
-      "rate": 99.5
-    },
-    "DJI上海陆家嘴中心L+mall授权体验店": {
-      "count": 54,
-      "amount": 132613.2,
-      "comp": 53,
-      "noncomp": 1,
-      "excl": 0,
-      "unmatched": 0,
-      "rate": 98.15
-    },
-    "DJI北京望京凯德MALL授权体验店": {
-      "count": 48,
-      "amount": 147433.0,
-      "comp": 47,
-      "noncomp": 1,
-      "excl": 0,
-      "unmatched": 0,
-      "rate": 97.92
-    },
-    "DJI北京顺义华联授权体验店": {
-      "count": 72,
-      "amount": 181386.52,
-      "comp": 67,
-      "noncomp": 1,
-      "excl": 4,
-      "unmatched": 0,
-      "rate": 98.53
-    },
-    "APR北京同成街华联": {
-      "count": 95,
-      "amount": 353258.11,
-      "comp": 85,
-      "noncomp": 1,
-      "excl": 9,
-      "unmatched": 0,
-      "rate": 98.84
-    },
-    "APR北京亦庄龙湖": {
-      "count": 183,
-      "amount": 780384.16,
-      "comp": 175,
-      "noncomp": 1,
-      "excl": 7,
-      "unmatched": 0,
-      "rate": 99.43
-    },
-    "DJI北京王府井APM授权高级体验店": {
-      "count": 158,
-      "amount": 473446.0,
-      "comp": 148,
-      "noncomp": 1,
-      "excl": 9,
-      "unmatched": 0,
-      "rate": 99.33
-    },
-    "APR北京石景山万达": {
-      "count": 253,
-      "amount": 979027.15,
-      "comp": 237,
-      "noncomp": 1,
-      "excl": 15,
-      "unmatched": 0,
-      "rate": 99.58
-    },
-    "APR北京新奥天虹": {
-      "count": 50,
-      "amount": 204749.02,
-      "comp": 43,
-      "noncomp": 1,
-      "excl": 6,
-      "unmatched": 0,
-      "rate": 97.73
-    },
-    "DJI北京金源购物广场授权体验店": {
-      "count": 111,
-      "amount": 331844.0,
-      "comp": 104,
-      "noncomp": 1,
-      "excl": 6,
-      "unmatched": 0,
-      "rate": 99.05
-    },
-    "华为北京丰台鑫嘉汇": {
+    "DJI上海静安大融城授权体验店": {
       "count": 57,
-      "amount": 351181.7,
+      "amount": 204053.2,
+      "comp": 54,
+      "noncomp": 1,
+      "excl": 2,
+      "unmatched": 0,
+      "rate": 98.18
+    },
+    "华为北京东坝金隅": {
+      "count": 61,
+      "amount": 252592.65,
       "comp": 48,
       "noncomp": 1,
-      "excl": 8,
+      "excl": 12,
       "unmatched": 0,
       "rate": 97.96
     },
-    "APR北京旧宫万科": {
-      "count": 142,
-      "amount": 611405.3,
-      "comp": 139,
+    "APR北京新辰汇": {
+      "count": 157,
+      "amount": 531901.87,
+      "comp": 151,
       "noncomp": 1,
-      "excl": 2,
+      "excl": 5,
       "unmatched": 0,
-      "rate": 99.29
+      "rate": 99.34
     },
-    "DJI北京中关村大融城授权体验店": {
-      "count": 66,
-      "amount": 226189.0,
-      "comp": 61,
+    "DJI上海天荟广场授权体验店": {
+      "count": 31,
+      "amount": 97200.0,
+      "comp": 27,
       "noncomp": 1,
-      "excl": 4,
+      "excl": 3,
       "unmatched": 0,
-      "rate": 98.39
+      "rate": 96.43
     },
-    "APR北京房山熙悦": {
-      "count": 154,
-      "amount": 724293.34,
-      "comp": 143,
+    "APR北京亦庄龙湖": {
+      "count": 220,
+      "amount": 939118.07,
+      "comp": 209,
       "noncomp": 1,
       "excl": 10,
       "unmatched": 0,
-      "rate": 99.31
+      "rate": 99.52
     },
-    "DJI上海天荟广场授权体验店": {
-      "count": 24,
-      "amount": 77670.0,
-      "comp": 21,
+    "APR北京望京华彩": {
+      "count": 153,
+      "amount": 603715.08,
+      "comp": 146,
       "noncomp": 1,
-      "excl": 2,
+      "excl": 6,
       "unmatched": 0,
-      "rate": 95.45
+      "rate": 99.32
     },
-    "APR北京西铁营万达": {
-      "count": 124,
-      "amount": 504867.68,
-      "comp": 115,
-      "noncomp": 1,
-      "excl": 8,
-      "unmatched": 0,
-      "rate": 99.14
-    },
-    "APR北京新辰汇": {
-      "count": 111,
-      "amount": 347808.68,
-      "comp": 107,
-      "noncomp": 1,
-      "excl": 3,
-      "unmatched": 0,
-      "rate": 99.07
-    },
-    "APR北京长安龙湖": {
-      "count": 181,
-      "amount": 691485.33,
-      "comp": 165,
-      "noncomp": 1,
-      "excl": 15,
-      "unmatched": 0,
-      "rate": 99.4
-    },
-    "DJI上海漕河泾印象城授权体验店": {
-      "count": 27,
-      "amount": 186939.0,
-      "comp": 26,
-      "noncomp": 1,
-      "excl": 0,
-      "unmatched": 0,
-      "rate": 96.3
-    },
-    "华为北京酒仙桥颐堤港": {
-      "count": 198,
-      "amount": 700800.42,
-      "comp": 189,
-      "noncomp": 1,
-      "excl": 8,
-      "unmatched": 0,
-      "rate": 99.47
-    },
-    "DJI大疆哈苏北京芳草地概念店": {
-      "count": 39,
-      "amount": 358357.0,
-      "comp": 35,
-      "noncomp": 1,
-      "excl": 3,
-      "unmatched": 0,
-      "rate": 97.22
-    },
-    "DJI北京丰科万达广场授权体验店": {
-      "count": 58,
-      "amount": 195534.0,
-      "comp": 56,
-      "noncomp": 1,
-      "excl": 1,
-      "unmatched": 0,
-      "rate": 98.25
-    },
-    "APR北京大红门银泰": {
-      "count": 87,
-      "amount": 239784.11,
-      "comp": 85,
-      "noncomp": 1,
-      "excl": 1,
-      "unmatched": 0,
-      "rate": 98.84
-    },
-    "华为北京首开万象汇": {
-      "count": 279,
-      "amount": 1235317.12,
-      "comp": 270,
-      "noncomp": 1,
-      "excl": 8,
-      "unmatched": 0,
-      "rate": 99.63
-    },
-    "DJI上海静安大融城授权体验店": {
-      "count": 40,
-      "amount": 168777.2,
-      "comp": 39,
-      "noncomp": 1,
-      "excl": 0,
-      "unmatched": 0,
-      "rate": 97.5
-    },
-    "DJI北京昌平超级合生汇授权体验店": {
-      "count": 45,
-      "amount": 125186.0,
-      "comp": 43,
-      "noncomp": 1,
-      "excl": 1,
-      "unmatched": 0,
-      "rate": 97.73
-    },
-    "华为北京东坝金隅": {
-      "count": 49,
-      "amount": 206310.65,
-      "comp": 39,
+    "APR北京同成街华联": {
+      "count": 120,
+      "amount": 422762.12,
+      "comp": 110,
       "noncomp": 1,
       "excl": 9,
       "unmatched": 0,
-      "rate": 97.5
+      "rate": 99.1
+    },
+    "APR北京长安龙湖": {
+      "count": 224,
+      "amount": 829221.15,
+      "comp": 205,
+      "noncomp": 1,
+      "excl": 18,
+      "unmatched": 0,
+      "rate": 99.51
+    },
+    "DJI北京丰科万达广场授权体验店": {
+      "count": 68,
+      "amount": 227401.0,
+      "comp": 65,
+      "noncomp": 1,
+      "excl": 2,
+      "unmatched": 0,
+      "rate": 98.48
+    },
+    "DJI北京龙湖长安天街授权体验店": {
+      "count": 81,
+      "amount": 283546.25,
+      "comp": 77,
+      "noncomp": 1,
+      "excl": 3,
+      "unmatched": 0,
+      "rate": 98.72
+    },
+    "华为福州平潭吾悦": {
+      "count": 120,
+      "amount": 485447.06,
+      "comp": 106,
+      "noncomp": 1,
+      "excl": 13,
+      "unmatched": 0,
+      "rate": 99.07
+    },
+    "DJI北京顺义华联授权体验店": {
+      "count": 88,
+      "amount": 226890.52,
+      "comp": 81,
+      "noncomp": 1,
+      "excl": 6,
+      "unmatched": 0,
+      "rate": 98.78
+    },
+    "APR北京石景山万达": {
+      "count": 300,
+      "amount": 1161666.62,
+      "comp": 280,
+      "noncomp": 1,
+      "excl": 19,
+      "unmatched": 0,
+      "rate": 99.64
+    },
+    "DJI上海中庚漫游城授权体验店": {
+      "count": 88,
+      "amount": 232241.0,
+      "comp": 83,
+      "noncomp": 1,
+      "excl": 4,
+      "unmatched": 0,
+      "rate": 98.81
+    },
+    "DJI北京望京凯德MALL授权体验店": {
+      "count": 58,
+      "amount": 175647.0,
+      "comp": 57,
+      "noncomp": 1,
+      "excl": 0,
+      "unmatched": 0,
+      "rate": 98.28
+    },
+    "DJI北京西单大悦城授权体验店": {
+      "count": 132,
+      "amount": 320835.0,
+      "comp": 121,
+      "noncomp": 1,
+      "excl": 10,
+      "unmatched": 0,
+      "rate": 99.18
+    },
+    "华为北京房山燕隆汇": {
+      "count": 21,
+      "amount": 52407.1,
+      "comp": 19,
+      "noncomp": 1,
+      "excl": 1,
+      "unmatched": 0,
+      "rate": 95.0
+    },
+    "APR北京西铁营万达": {
+      "count": 145,
+      "amount": 597706.03,
+      "comp": 133,
+      "noncomp": 1,
+      "excl": 11,
+      "unmatched": 0,
+      "rate": 99.25
+    },
+    "华为北京酒仙桥颐堤港": {
+      "count": 214,
+      "amount": 734684.42,
+      "comp": 204,
+      "noncomp": 1,
+      "excl": 9,
+      "unmatched": 0,
+      "rate": 99.51
+    },
+    "DJI大疆哈苏北京芳草地概念店": {
+      "count": 46,
+      "amount": 379498.0,
+      "comp": 42,
+      "noncomp": 1,
+      "excl": 3,
+      "unmatched": 0,
+      "rate": 97.67
+    },
+    "DJI北京中关村大融城授权体验店": {
+      "count": 73,
+      "amount": 241965.0,
+      "comp": 67,
+      "noncomp": 1,
+      "excl": 5,
+      "unmatched": 0,
+      "rate": 98.53
+    },
+    "APR北京新奥天虹": {
+      "count": 61,
+      "amount": 242434.03,
+      "comp": 52,
+      "noncomp": 1,
+      "excl": 8,
+      "unmatched": 0,
+      "rate": 98.11
     },
     "华为北京上德银泰": {
       "count": 64,
@@ -1093,39 +1145,714 @@
       "unmatched": 0,
       "rate": 96.88
     },
-    "APR北京大兴龙湖": {
-      "count": 114,
-      "amount": 490914.63,
-      "comp": 102,
-      "noncomp": 1,
-      "excl": 11,
+    "华为泉州石狮泰禾广场": {
+      "count": 167,
+      "amount": 476179.95,
+      "comp": 163,
+      "noncomp": 0,
+      "excl": 4,
       "unmatched": 0,
-      "rate": 99.03
+      "rate": 100.0
     },
-    "DJI北京龙湖长安天街授权体验店": {
-      "count": 74,
-      "amount": 259516.25,
-      "comp": 70,
-      "noncomp": 1,
+    "DJI北京朝阳大悦城授权体验店": {
+      "count": 96,
+      "amount": 267954.0,
+      "comp": 95,
+      "noncomp": 0,
+      "excl": 1,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "华为北京丽泽龙湖": {
+      "count": 267,
+      "amount": 1280366.13,
+      "comp": 258,
+      "noncomp": 0,
+      "excl": 9,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "APR北京常营龙湖": {
+      "count": 336,
+      "amount": 1344225.95,
+      "comp": 310,
+      "noncomp": 0,
+      "excl": 26,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "华为北京北苑龙湖": {
+      "count": 136,
+      "amount": 640514.13,
+      "comp": 127,
+      "noncomp": 0,
+      "excl": 9,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "APR成都双楠伊藤": {
+      "count": 133,
+      "amount": 435084.25,
+      "comp": 132,
+      "noncomp": 0,
+      "excl": 1,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI上海百联南桥购物中心授权体验店": {
+      "count": 32,
+      "amount": 95835.0,
+      "comp": 29,
+      "noncomp": 0,
       "excl": 3,
       "unmatched": 0,
-      "rate": 98.59
+      "rate": 100.0
     },
-    "DJI北京西红门荟聚中心授权体验店": {
-      "count": 166,
-      "amount": 484450.2,
-      "comp": 156,
+    "APR成都蜀新天街": {
+      "count": 192,
+      "amount": 932549.08,
+      "comp": 172,
+      "noncomp": 0,
+      "excl": 20,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "华为北京沙河万达": {
+      "count": 105,
+      "amount": 465095.63,
+      "comp": 102,
+      "noncomp": 0,
+      "excl": 3,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI北京通州万达授权体验店": {
+      "count": 96,
+      "amount": 279885.0,
+      "comp": 86,
       "noncomp": 0,
       "excl": 10,
       "unmatched": 0,
       "rate": 100.0
     },
-    "华为厦门思明罗宾森广场": {
-      "count": 127,
-      "amount": 495908.9,
-      "comp": 121,
+    "APR成都北城天街": {
+      "count": 172,
+      "amount": 677323.61,
+      "comp": 163,
+      "noncomp": 0,
+      "excl": 9,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI北京东坝万达广场授权体验店": {
+      "count": 56,
+      "amount": 163095.0,
+      "comp": 54,
+      "noncomp": 0,
+      "excl": 2,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "APR北京北苑龙湖": {
+      "count": 92,
+      "amount": 302871.41,
+      "comp": 86,
       "noncomp": 0,
       "excl": 6,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "华为北京怀柔万达": {
+      "count": 156,
+      "amount": 514240.1,
+      "comp": 149,
+      "noncomp": 0,
+      "excl": 7,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI北京龙湖大兴天街授权体验店": {
+      "count": 58,
+      "amount": 160561.0,
+      "comp": 57,
+      "noncomp": 0,
+      "excl": 1,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "华为福州中骏世界城": {
+      "count": 276,
+      "amount": 1219552.08,
+      "comp": 250,
+      "noncomp": 0,
+      "excl": 26,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI上海长风大悦城授权体验店": {
+      "count": 25,
+      "amount": 84817.0,
+      "comp": 25,
+      "noncomp": 0,
+      "excl": 0,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "华为北京丰科万达": {
+      "count": 481,
+      "amount": 2142953.0,
+      "comp": 462,
+      "noncomp": 0,
+      "excl": 19,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "APR北京房山龙湖": {
+      "count": 272,
+      "amount": 1180537.58,
+      "comp": 234,
+      "noncomp": 0,
+      "excl": 38,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "APR成都温江伊藤": {
+      "count": 190,
+      "amount": 811139.68,
+      "comp": 190,
+      "noncomp": 0,
+      "excl": 0,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "华为北京长楹龙湖": {
+      "count": 438,
+      "amount": 1950125.68,
+      "comp": 416,
+      "noncomp": 0,
+      "excl": 22,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI北京西红门荟聚中心授权体验店": {
+      "count": 203,
+      "amount": 603363.2,
+      "comp": 190,
+      "noncomp": 0,
+      "excl": 13,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI上海虹口凯德授权体验店": {
+      "count": 46,
+      "amount": 95029.0,
+      "comp": 44,
+      "noncomp": 0,
+      "excl": 2,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI大疆哈苏北京华熙LIVE概念店": {
+      "count": 149,
+      "amount": 501509.05,
+      "comp": 132,
+      "noncomp": 0,
+      "excl": 17,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI上海凯德晶萃授权体验店": {
+      "count": 64,
+      "amount": 157715.0,
+      "comp": 63,
+      "noncomp": 0,
+      "excl": 1,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "APR北京槐房万达": {
+      "count": 131,
+      "amount": 504972.15,
+      "comp": 123,
+      "noncomp": 0,
+      "excl": 8,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI上海江桥万达授权体验店": {
+      "count": 54,
+      "amount": 152811.0,
+      "comp": 53,
+      "noncomp": 0,
+      "excl": 1,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "APR北京昌发展万科": {
+      "count": 149,
+      "amount": 502233.89,
+      "comp": 146,
+      "noncomp": 0,
+      "excl": 3,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "华为北京亦庄龙湖": {
+      "count": 388,
+      "amount": 1580215.95,
+      "comp": 375,
+      "noncomp": 0,
+      "excl": 13,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "华为福州仓山爱琴海合作店": {
+      "count": 69,
+      "amount": 176404.77,
+      "comp": 66,
+      "noncomp": 0,
+      "excl": 3,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "华为福州五四北泰禾广场": {
+      "count": 214,
+      "amount": 780417.88,
+      "comp": 199,
+      "noncomp": 0,
+      "excl": 15,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI北京西北旺万象汇授权体验店": {
+      "count": 66,
+      "amount": 205994.0,
+      "comp": 62,
+      "noncomp": 0,
+      "excl": 4,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI上海久光中心授权体验店": {
+      "count": 74,
+      "amount": 219541.0,
+      "comp": 70,
+      "noncomp": 0,
+      "excl": 4,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "APR北京大峡谷凯德茂": {
+      "count": 142,
+      "amount": 479964.6,
+      "comp": 134,
+      "noncomp": 0,
+      "excl": 8,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "APR成都武侯大悦城": {
+      "count": 209,
+      "amount": 871739.6,
+      "comp": 200,
+      "noncomp": 0,
+      "excl": 9,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "华为福州仓山爱琴海": {
+      "count": 128,
+      "amount": 541399.0,
+      "comp": 120,
+      "noncomp": 0,
+      "excl": 8,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI北京龙湖亦庄天街授权体验店": {
+      "count": 86,
+      "amount": 196150.2,
+      "comp": 86,
+      "noncomp": 0,
+      "excl": 0,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "华为北京方庄新城": {
+      "count": 70,
+      "amount": 225024.0,
+      "comp": 62,
+      "noncomp": 0,
+      "excl": 8,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI北京首都机场授权体验店": {
+      "count": 89,
+      "amount": 187445.0,
+      "comp": 85,
+      "noncomp": 0,
+      "excl": 4,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "华为厦门思明罗宾森广场": {
+      "count": 149,
+      "amount": 558600.1,
+      "comp": 142,
+      "noncomp": 0,
+      "excl": 7,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "APR成都时代天街": {
+      "count": 168,
+      "amount": 670665.42,
+      "comp": 159,
+      "noncomp": 0,
+      "excl": 9,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "华为南平武夷山宝龙广场": {
+      "count": 83,
+      "amount": 228061.0,
+      "comp": 79,
+      "noncomp": 0,
+      "excl": 4,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI上海第一八佰伴授权体验店": {
+      "count": 77,
+      "amount": 238020.0,
+      "comp": 77,
+      "noncomp": 0,
+      "excl": 0,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "APR成都天府大悦城": {
+      "count": 163,
+      "amount": 687430.06,
+      "comp": 155,
+      "noncomp": 0,
+      "excl": 8,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "APR成都高新伊藤": {
+      "count": 229,
+      "amount": 1049016.56,
+      "comp": 228,
+      "noncomp": 0,
+      "excl": 1,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI北京长楹天街授权体验店": {
+      "count": 112,
+      "amount": 369743.0,
+      "comp": 105,
+      "noncomp": 0,
+      "excl": 7,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "APR成都金牛凯德": {
+      "count": 239,
+      "amount": 1154271.11,
+      "comp": 223,
+      "noncomp": 0,
+      "excl": 16,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI北京万柳华联授权体验店": {
+      "count": 68,
+      "amount": 296229.0,
+      "comp": 66,
+      "noncomp": 0,
+      "excl": 2,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI北京龙湖房山天街授权体验店": {
+      "count": 98,
+      "amount": 658859.0,
+      "comp": 94,
+      "noncomp": 0,
+      "excl": 4,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "APR成都金楠天街": {
+      "count": 108,
+      "amount": 452667.87,
+      "comp": 103,
+      "noncomp": 0,
+      "excl": 5,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "APR成都三利爱琴海": {
+      "count": 303,
+      "amount": 1308865.7,
+      "comp": 287,
+      "noncomp": 0,
+      "excl": 16,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "APR北京延庆万达": {
+      "count": 127,
+      "amount": 529528.05,
+      "comp": 116,
+      "noncomp": 0,
+      "excl": 11,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "APR北京回龙观华联": {
+      "count": 136,
+      "amount": 579744.4,
+      "comp": 128,
+      "noncomp": 0,
+      "excl": 8,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "华为福州砂之船奥莱": {
+      "count": 100,
+      "amount": 443569.0,
+      "comp": 99,
+      "noncomp": 0,
+      "excl": 1,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "华为福州大洋晶典": {
+      "count": 181,
+      "amount": 800453.0,
+      "comp": 169,
+      "noncomp": 0,
+      "excl": 12,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "APR成都西宸天街": {
+      "count": 307,
+      "amount": 1277262.93,
+      "comp": 297,
+      "noncomp": 0,
+      "excl": 10,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "华为厦门湖里蔡塘爱琴海": {
+      "count": 44,
+      "amount": 145998.0,
+      "comp": 43,
+      "noncomp": 0,
+      "excl": 1,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "APR成都龙泉吾悦": {
+      "count": 107,
+      "amount": 526307.58,
+      "comp": 103,
+      "noncomp": 0,
+      "excl": 4,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI上海FFC滨江悅里授权体验店": {
+      "count": 12,
+      "amount": 46366.0,
+      "comp": 11,
+      "noncomp": 0,
+      "excl": 1,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "华为厦门思明宝龙一城": {
+      "count": 218,
+      "amount": 906238.44,
+      "comp": 212,
+      "noncomp": 0,
+      "excl": 6,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "华为北京门头沟长安天街": {
+      "count": 155,
+      "amount": 891230.23,
+      "comp": 144,
+      "noncomp": 0,
+      "excl": 11,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "华为北京通州乐堤港": {
+      "count": 136,
+      "amount": 623940.8,
+      "comp": 105,
+      "noncomp": 0,
+      "excl": 31,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "华为厦门思明大西洋天虹": {
+      "count": 18,
+      "amount": 51073.81,
+      "comp": 18,
+      "noncomp": 0,
+      "excl": 0,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI北京翠微百货授权体验店": {
+      "count": 46,
+      "amount": 160854.0,
+      "comp": 45,
+      "noncomp": 0,
+      "excl": 1,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI北京丽泽天街授权体验店": {
+      "count": 108,
+      "amount": 298319.0,
+      "comp": 107,
+      "noncomp": 0,
+      "excl": 1,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "APR成都武侯吾悦": {
+      "count": 155,
+      "amount": 665488.16,
+      "comp": 145,
+      "noncomp": 0,
+      "excl": 10,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "APR北京通州万达": {
+      "count": 210,
+      "amount": 931289.31,
+      "comp": 194,
+      "noncomp": 0,
+      "excl": 16,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI上海维璟印象城授权体验店": {
+      "count": 53,
+      "amount": 155164.55,
+      "comp": 53,
+      "noncomp": 0,
+      "excl": 0,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI大疆哈苏北京大兴机场概念店": {
+      "count": 84,
+      "amount": 292616.52,
+      "comp": 84,
+      "noncomp": 0,
+      "excl": 0,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "华为厦门思明星河COCO Park": {
+      "count": 9,
+      "amount": 41994.1,
+      "comp": 9,
+      "noncomp": 0,
+      "excl": 0,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI北京龙湖熙悦天街授权体验店": {
+      "count": 80,
+      "amount": 242939.0,
+      "comp": 78,
+      "noncomp": 0,
+      "excl": 2,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "华为厦门思明加州广场": {
+      "count": 105,
+      "amount": 297291.8,
+      "comp": 91,
+      "noncomp": 0,
+      "excl": 14,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI上海静安大悦城授权体验店": {
+      "count": 101,
+      "amount": 268202.0,
+      "comp": 98,
+      "noncomp": 0,
+      "excl": 3,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "APR北京牡丹园翠微": {
+      "count": 148,
+      "amount": 464398.43,
+      "comp": 146,
+      "noncomp": 0,
+      "excl": 2,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI北京通州万象汇授权体验店": {
+      "count": 70,
+      "amount": 225785.0,
+      "comp": 67,
+      "noncomp": 0,
+      "excl": 3,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "华为南平建阳建发悦城": {
+      "count": 68,
+      "amount": 310781.21,
+      "comp": 63,
+      "noncomp": 0,
+      "excl": 5,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "华为厦门思明君尚天虹": {
+      "count": 35,
+      "amount": 104291.08,
+      "comp": 35,
+      "noncomp": 0,
+      "excl": 0,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "DJI北京石景山万达授权体验店": {
+      "count": 36,
+      "amount": 109267.0,
+      "comp": 33,
+      "noncomp": 0,
+      "excl": 3,
+      "unmatched": 0,
+      "rate": 100.0
+    },
+    "华为福州宜家荟聚": {
+      "count": 33,
+      "amount": 124685.0,
+      "comp": 33,
+      "noncomp": 0,
+      "excl": 0,
       "unmatched": 0,
       "rate": 100.0
     },
@@ -1133,384 +1860,6 @@
       "count": 129,
       "amount": 452489.05,
       "comp": 120,
-      "noncomp": 0,
-      "excl": 9,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "APR成都武侯吾悦": {
-      "count": 132,
-      "amount": 564239.82,
-      "comp": 123,
-      "noncomp": 0,
-      "excl": 9,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI大疆哈苏北京华熙LIVE概念店": {
-      "count": 131,
-      "amount": 450351.05,
-      "comp": 118,
-      "noncomp": 0,
-      "excl": 13,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为北京丰科万达": {
-      "count": 387,
-      "amount": 1708559.8,
-      "comp": 371,
-      "noncomp": 0,
-      "excl": 16,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为福州中骏世界城": {
-      "count": 235,
-      "amount": 1043898.1,
-      "comp": 213,
-      "noncomp": 0,
-      "excl": 22,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI上海静安大悦城授权体验店": {
-      "count": 77,
-      "amount": 213610.0,
-      "comp": 75,
-      "noncomp": 0,
-      "excl": 2,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "APR北京房山龙湖": {
-      "count": 242,
-      "amount": 1048804.48,
-      "comp": 208,
-      "noncomp": 0,
-      "excl": 34,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI北京龙湖亦庄天街授权体验店": {
-      "count": 77,
-      "amount": 179930.2,
-      "comp": 77,
-      "noncomp": 0,
-      "excl": 0,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "APR成都温江伊藤": {
-      "count": 143,
-      "amount": 538286.05,
-      "comp": 143,
-      "noncomp": 0,
-      "excl": 0,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为北京怀柔万达": {
-      "count": 119,
-      "amount": 377434.45,
-      "comp": 114,
-      "noncomp": 0,
-      "excl": 5,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "APR北京常营龙湖": {
-      "count": 274,
-      "amount": 1067328.67,
-      "comp": 253,
-      "noncomp": 0,
-      "excl": 21,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为厦门思明宝龙一城": {
-      "count": 178,
-      "amount": 660460.34,
-      "comp": 174,
-      "noncomp": 0,
-      "excl": 4,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "APR成都金牛凯德": {
-      "count": 180,
-      "amount": 786784.72,
-      "comp": 167,
-      "noncomp": 0,
-      "excl": 13,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "APR成都三利爱琴海": {
-      "count": 238,
-      "amount": 970692.31,
-      "comp": 225,
-      "noncomp": 0,
-      "excl": 13,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI上海凯德晶萃授权体验店": {
-      "count": 52,
-      "amount": 116565.0,
-      "comp": 51,
-      "noncomp": 0,
-      "excl": 1,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI上海维璟印象城授权体验店": {
-      "count": 49,
-      "amount": 145871.55,
-      "comp": 49,
-      "noncomp": 0,
-      "excl": 0,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI北京万柳华联授权体验店": {
-      "count": 60,
-      "amount": 264586.0,
-      "comp": 59,
-      "noncomp": 0,
-      "excl": 1,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "APR北京延庆万达": {
-      "count": 117,
-      "amount": 507951.9,
-      "comp": 107,
-      "noncomp": 0,
-      "excl": 10,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为泉州石狮泰禾广场": {
-      "count": 146,
-      "amount": 422377.17,
-      "comp": 145,
-      "noncomp": 0,
-      "excl": 1,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "APR北京昌发展万科": {
-      "count": 114,
-      "amount": 347651.65,
-      "comp": 111,
-      "noncomp": 0,
-      "excl": 3,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI北京通州万象汇授权体验店": {
-      "count": 64,
-      "amount": 212154.0,
-      "comp": 61,
-      "noncomp": 0,
-      "excl": 3,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "APR成都时代天街": {
-      "count": 134,
-      "amount": 428957.08,
-      "comp": 126,
-      "noncomp": 0,
-      "excl": 8,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为福州五四北泰禾广场": {
-      "count": 190,
-      "amount": 683954.88,
-      "comp": 177,
-      "noncomp": 0,
-      "excl": 13,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "APR北京北苑龙湖": {
-      "count": 79,
-      "amount": 259464.48,
-      "comp": 73,
-      "noncomp": 0,
-      "excl": 6,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为福州砂之船奥莱": {
-      "count": 76,
-      "amount": 297040.0,
-      "comp": 75,
-      "noncomp": 0,
-      "excl": 1,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "APR北京通州万达": {
-      "count": 180,
-      "amount": 782634.29,
-      "comp": 166,
-      "noncomp": 0,
-      "excl": 14,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI北京通州万达授权体验店": {
-      "count": 86,
-      "amount": 251133.0,
-      "comp": 76,
-      "noncomp": 0,
-      "excl": 10,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI北京龙湖房山天街授权体验店": {
-      "count": 76,
-      "amount": 580160.0,
-      "comp": 72,
-      "noncomp": 0,
-      "excl": 4,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为厦门思明加州广场": {
-      "count": 88,
-      "amount": 228802.8,
-      "comp": 77,
-      "noncomp": 0,
-      "excl": 11,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为北京通州乐堤港": {
-      "count": 120,
-      "amount": 575354.8,
-      "comp": 89,
-      "noncomp": 0,
-      "excl": 31,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为北京亦庄龙湖": {
-      "count": 341,
-      "amount": 1364077.71,
-      "comp": 330,
-      "noncomp": 0,
-      "excl": 11,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为福州东街口": {
-      "count": 120,
-      "amount": 319278.86,
-      "comp": 119,
-      "noncomp": 0,
-      "excl": 1,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "APR成都金楠天街": {
-      "count": 84,
-      "amount": 316487.15,
-      "comp": 81,
-      "noncomp": 0,
-      "excl": 3,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI上海第一八佰伴授权体验店": {
-      "count": 69,
-      "amount": 214516.0,
-      "comp": 69,
-      "noncomp": 0,
-      "excl": 0,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为南平建阳建发悦城": {
-      "count": 53,
-      "amount": 214059.21,
-      "comp": 49,
-      "noncomp": 0,
-      "excl": 4,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI上海虹口凯德授权体验店": {
-      "count": 42,
-      "amount": 81860.0,
-      "comp": 40,
-      "noncomp": 0,
-      "excl": 2,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为北京门头沟长安天街": {
-      "count": 132,
-      "amount": 801911.23,
-      "comp": 121,
-      "noncomp": 0,
-      "excl": 11,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为厦门湖里蔡塘爱琴海": {
-      "count": 41,
-      "amount": 142203.0,
-      "comp": 40,
-      "noncomp": 0,
-      "excl": 1,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为福州大洋晶典": {
-      "count": 149,
-      "amount": 660116.6,
-      "comp": 138,
-      "noncomp": 0,
-      "excl": 11,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI北京太阳宫凯德授权体验店": {
-      "count": 65,
-      "amount": 169675.0,
-      "comp": 65,
-      "noncomp": 0,
-      "excl": 0,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI北京龙湖大兴天街授权体验店": {
-      "count": 48,
-      "amount": 139502.0,
-      "comp": 47,
-      "noncomp": 0,
-      "excl": 1,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "APR成都武侯大悦城": {
-      "count": 184,
-      "amount": 751871.2,
-      "comp": 176,
-      "noncomp": 0,
-      "excl": 8,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为北京丽泽龙湖": {
-      "count": 207,
-      "amount": 1062099.13,
-      "comp": 198,
       "noncomp": 0,
       "excl": 9,
       "unmatched": 0,
@@ -1525,165 +1874,12 @@
       "unmatched": 0,
       "rate": 100.0
     },
-    "DJI上海久光中心授权体验店": {
-      "count": 64,
-      "amount": 199941.0,
-      "comp": 60,
-      "noncomp": 0,
-      "excl": 4,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI北京翠微百货授权体验店": {
-      "count": 43,
-      "amount": 150278.0,
-      "comp": 42,
-      "noncomp": 0,
-      "excl": 1,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为北京长楹龙湖": {
-      "count": 376,
-      "amount": 1533469.0,
-      "comp": 361,
-      "noncomp": 0,
-      "excl": 15,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "APR成都西宸天街": {
-      "count": 246,
-      "amount": 997623.54,
-      "comp": 239,
-      "noncomp": 0,
-      "excl": 7,
-      "unmatched": 0,
-      "rate": 100.0
-    },
     "（旧）APR成都东安天街": {
       "count": 71,
       "amount": 292472.74,
       "comp": 68,
       "noncomp": 0,
       "excl": 3,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI北京西北旺万象汇授权体验店": {
-      "count": 59,
-      "amount": 180168.0,
-      "comp": 55,
-      "noncomp": 0,
-      "excl": 4,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI上海江桥万达授权体验店": {
-      "count": 45,
-      "amount": 126728.0,
-      "comp": 44,
-      "noncomp": 0,
-      "excl": 1,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI北京首都机场授权体验店": {
-      "count": 74,
-      "amount": 146891.0,
-      "comp": 71,
-      "noncomp": 0,
-      "excl": 3,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "APR成都蜀新天街": {
-      "count": 152,
-      "amount": 729343.03,
-      "comp": 137,
-      "noncomp": 0,
-      "excl": 15,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "APR成都双楠伊藤": {
-      "count": 106,
-      "amount": 327409.44,
-      "comp": 105,
-      "noncomp": 0,
-      "excl": 1,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI北京朝阳大悦城授权体验店": {
-      "count": 83,
-      "amount": 243694.0,
-      "comp": 82,
-      "noncomp": 0,
-      "excl": 1,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为南平武夷山宝龙广场": {
-      "count": 75,
-      "amount": 210278.0,
-      "comp": 72,
-      "noncomp": 0,
-      "excl": 3,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为北京北苑龙湖": {
-      "count": 110,
-      "amount": 541268.25,
-      "comp": 103,
-      "noncomp": 0,
-      "excl": 7,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为福州仓山爱琴海": {
-      "count": 95,
-      "amount": 421065.0,
-      "comp": 88,
-      "noncomp": 0,
-      "excl": 7,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为北京沙河万达": {
-      "count": 95,
-      "amount": 432407.63,
-      "comp": 92,
-      "noncomp": 0,
-      "excl": 3,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI北京长楹天街授权体验店": {
-      "count": 101,
-      "amount": 344719.0,
-      "comp": 95,
-      "noncomp": 0,
-      "excl": 6,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI上海百联南桥购物中心授权体验店": {
-      "count": 26,
-      "amount": 81568.0,
-      "comp": 25,
-      "noncomp": 0,
-      "excl": 1,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "APR北京大峡谷凯德茂": {
-      "count": 120,
-      "amount": 386757.48,
-      "comp": 115,
-      "noncomp": 0,
-      "excl": 5,
       "unmatched": 0,
       "rate": 100.0
     },
@@ -1695,965 +1891,776 @@
       "excl": 6,
       "unmatched": 0,
       "rate": 100.0
-    },
-    "APR成都高新伊藤": {
-      "count": 202,
-      "amount": 894243.08,
-      "comp": 201,
-      "noncomp": 0,
-      "excl": 1,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "APR北京回龙观华联": {
-      "count": 111,
-      "amount": 437615.18,
-      "comp": 104,
-      "noncomp": 0,
-      "excl": 7,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI上海长风大悦城授权体验店": {
-      "count": 20,
-      "amount": 67909.0,
-      "comp": 20,
-      "noncomp": 0,
-      "excl": 0,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "APR成都天府大悦城": {
-      "count": 138,
-      "amount": 530604.38,
-      "comp": 131,
-      "noncomp": 0,
-      "excl": 7,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI北京石景山万达授权体验店": {
-      "count": 30,
-      "amount": 87785.0,
-      "comp": 28,
-      "noncomp": 0,
-      "excl": 2,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "APR北京槐房万达": {
-      "count": 94,
-      "amount": 320198.91,
-      "comp": 88,
-      "noncomp": 0,
-      "excl": 6,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "APR成都北城天街": {
-      "count": 139,
-      "amount": 514466.47,
-      "comp": 131,
-      "noncomp": 0,
-      "excl": 8,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为北京房山燕隆汇": {
-      "count": 20,
-      "amount": 51208.1,
-      "comp": 19,
-      "noncomp": 0,
-      "excl": 1,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI北京丽泽天街授权体验店": {
-      "count": 92,
-      "amount": 276550.0,
-      "comp": 92,
-      "noncomp": 0,
-      "excl": 0,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI北京东坝万达广场授权体验店": {
-      "count": 46,
-      "amount": 130687.0,
-      "comp": 44,
-      "noncomp": 0,
-      "excl": 2,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "APR成都龙泉吾悦": {
-      "count": 74,
-      "amount": 313049.94,
-      "comp": 70,
-      "noncomp": 0,
-      "excl": 4,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI北京龙湖熙悦天街授权体验店": {
-      "count": 70,
-      "amount": 211768.0,
-      "comp": 69,
-      "noncomp": 0,
-      "excl": 1,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为厦门思明君尚天虹": {
-      "count": 27,
-      "amount": 74717.08,
-      "comp": 27,
-      "noncomp": 0,
-      "excl": 0,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "APR北京牡丹园翠微": {
-      "count": 125,
-      "amount": 395983.61,
-      "comp": 123,
-      "noncomp": 0,
-      "excl": 2,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为福州仓山爱琴海合作店": {
-      "count": 56,
-      "amount": 141209.77,
-      "comp": 53,
-      "noncomp": 0,
-      "excl": 3,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为北京方庄新城": {
-      "count": 62,
-      "amount": 202232.0,
-      "comp": 54,
-      "noncomp": 0,
-      "excl": 8,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI大疆哈苏北京大兴机场概念店": {
-      "count": 76,
-      "amount": 270286.52,
-      "comp": 76,
-      "noncomp": 0,
-      "excl": 0,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "DJI上海FFC滨江悅里授权体验店": {
-      "count": 8,
-      "amount": 14689.0,
-      "comp": 7,
-      "noncomp": 0,
-      "excl": 1,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为福州宜家荟聚": {
-      "count": 31,
-      "amount": 122309.0,
-      "comp": 31,
-      "noncomp": 0,
-      "excl": 0,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为厦门思明大西洋天虹": {
-      "count": 15,
-      "amount": 40869.81,
-      "comp": 15,
-      "noncomp": 0,
-      "excl": 0,
-      "unmatched": 0,
-      "rate": 100.0
-    },
-    "华为厦门思明星河COCO Park": {
-      "count": 8,
-      "amount": 39994.1,
-      "comp": 8,
-      "noncomp": 0,
-      "excl": 0,
-      "unmatched": 0,
-      "rate": 100.0
     }
   },
   "org_stat": {
     "APR北京龙德广场": {
-      "count": 235,
-      "noncomp": 13
+      "count": 286,
+      "noncomp": 14
     },
     "APR北京合生汇": {
-      "count": 590,
-      "noncomp": 11
+      "count": 697,
+      "noncomp": 12
     },
     "DJI北京东方新天地授权体验店": {
-      "count": 77,
+      "count": 92,
       "noncomp": 10
     },
     "华为北京通州万达": {
-      "count": 494,
+      "count": 572,
       "noncomp": 10
     },
-    "APR北京怀柔万达": {
-      "count": 178,
+    "APR北京颐堤港": {
+      "count": 244,
       "noncomp": 8
     },
-    "APR北京颐堤港": {
-      "count": 200,
-      "noncomp": 6
+    "APR北京怀柔万达": {
+      "count": 206,
+      "noncomp": 8
+    },
+    "华为北京丰台银泰": {
+      "count": 167,
+      "noncomp": 8
     },
     "APR北京万柳华联": {
-      "count": 141,
+      "count": 163,
+      "noncomp": 7
+    },
+    "APR成都科华王府井": {
+      "count": 191,
       "noncomp": 6
     },
     "华为北京昌平政府街": {
-      "count": 49,
+      "count": 52,
       "noncomp": 6
     },
     "华为北京汇琴广场": {
-      "count": 56,
-      "noncomp": 6
-    },
-    "华为北京丰台银泰": {
-      "count": 147,
-      "noncomp": 6
-    },
-    "APR成都科华王府井": {
-      "count": 160,
+      "count": 59,
       "noncomp": 6
     },
     "APR北京东坝万达": {
-      "count": 209,
+      "count": 249,
       "noncomp": 5
     },
     "APR北京顺义华联": {
-      "count": 321,
+      "count": 404,
+      "noncomp": 5
+    },
+    "APR北京五棵松华熙": {
+      "count": 299,
+      "noncomp": 5
+    },
+    "APR北京大族广场": {
+      "count": 229,
       "noncomp": 5
     },
     "APR北京西三旗万象汇": {
-      "count": 175,
+      "count": 211,
       "noncomp": 4
     },
-    "华为北京旧宫万科": {
-      "count": 143,
+    "DJI北京北投新奥天虹授权体验店": {
+      "count": 61,
       "noncomp": 4
     },
-    "华为北京清河万象汇": {
-      "count": 334,
-      "noncomp": 4
-    },
-    "APR北京五棵松华熙": {
-      "count": 254,
+    "APR北京五道口购物中心": {
+      "count": 252,
       "noncomp": 4
     },
     "DJI上海复地活力城授权体验店": {
-      "count": 56,
+      "count": 67,
       "noncomp": 4
     },
-    "APR北京大族广场": {
-      "count": 186,
+    "华为北京清河万象汇": {
+      "count": 381,
       "noncomp": 4
     },
-    "华为北京京投小站": {
-      "count": 19,
+    "华为北京延庆万达": {
+      "count": 154,
       "noncomp": 4
     },
-    "华为北京回龙观华联": {
-      "count": 153,
-      "noncomp": 4
-    },
-    "华为北京回龙观一店": {
-      "count": 17,
+    "华为北京旧宫万科": {
+      "count": 161,
       "noncomp": 4
     },
     "DJI上海世博天地授权体验店": {
-      "count": 34,
+      "count": 44,
+      "noncomp": 4
+    },
+    "华为北京回龙观华联": {
+      "count": 158,
+      "noncomp": 4
+    },
+    "华为北京回龙观一店": {
+      "count": 22,
+      "noncomp": 4
+    },
+    "华为北京京投小站": {
+      "count": 20,
+      "noncomp": 4
+    },
+    "华为北京平谷万达": {
+      "count": 198,
       "noncomp": 3
     },
     "DJI上海长宁龙之梦授权体验店": {
-      "count": 70,
-      "noncomp": 3
-    },
-    "DJI上海美罗城授权体验店": {
-      "count": 116,
-      "noncomp": 3
-    },
-    "华为北京东坝万达": {
-      "count": 236,
-      "noncomp": 3
-    },
-    "华为北京平谷万达": {
-      "count": 178,
-      "noncomp": 3
-    },
-    "华为北京同成街华联": {
-      "count": 68,
+      "count": 88,
       "noncomp": 3
     },
     "DJI北京京西大悦城授权体验店": {
-      "count": 90,
+      "count": 102,
       "noncomp": 3
     },
-    "APR北京五道口购物中心": {
-      "count": 206,
+    "DJI上海美罗城授权体验店": {
+      "count": 138,
       "noncomp": 3
     },
-    "DJI北京蓝色港湾授权体验店": {
-      "count": 44,
-      "noncomp": 3
-    },
-    "DJI上海长泰广场授权体验店": {
-      "count": 72,
+    "华为北京东坝万达": {
+      "count": 269,
       "noncomp": 3
     },
     "DJI上海百联又一城授权体验店": {
-      "count": 38,
+      "count": 45,
       "noncomp": 3
     },
-    "华为北京回龙观万科": {
-      "count": 40,
+    "华为北京槐房万达": {
+      "count": 184,
+      "noncomp": 3
+    },
+    "DJI北京蓝色港湾授权体验店": {
+      "count": 58,
+      "noncomp": 3
+    },
+    "DJI上海长泰广场授权体验店": {
+      "count": 98,
+      "noncomp": 3
+    },
+    "华为北京同成街华联": {
+      "count": 80,
       "noncomp": 3
     },
     "华为北京房山万科": {
-      "count": 111,
+      "count": 131,
       "noncomp": 3
     },
+    "华为北京回龙观万科": {
+      "count": 44,
+      "noncomp": 3
+    },
+    "DJI北京昌平超级合生汇授权体验店": {
+      "count": 58,
+      "noncomp": 2
+    },
     "DJI北京颐堤港授权体验店": {
-      "count": 62,
+      "count": 70,
       "noncomp": 2
     },
-    "APR成都温江旭辉": {
-      "count": 165,
-      "noncomp": 2
-    },
-    "华为北京西铁营万达": {
-      "count": 141,
-      "noncomp": 2
-    },
-    "APR北京石景山喜隆多": {
-      "count": 193,
+    "DJI大疆哈苏北京朝阳合生汇概念店": {
+      "count": 183,
       "noncomp": 2
     },
     "APR北京望京凯德茂": {
-      "count": 172,
+      "count": 221,
       "noncomp": 2
     },
-    "华为北京大兴大族": {
-      "count": 158,
+    "APR北京石景山喜隆多": {
+      "count": 226,
       "noncomp": 2
     },
-    "华为北京延庆万达": {
-      "count": 135,
-      "noncomp": 2
-    },
-    "DJI北京龙德广场授权体验店": {
-      "count": 53,
-      "noncomp": 2
-    },
-    "华为北京来福士": {
-      "count": 143,
-      "noncomp": 2
-    },
-    "华为北京牡丹园翠微": {
-      "count": 234,
-      "noncomp": 2
-    },
-    "华为厦门思明瑞景广场": {
-      "count": 68,
-      "noncomp": 2
-    },
-    "DJI北京北投新奥天虹授权体验店": {
-      "count": 55,
-      "noncomp": 2
-    },
-    "华为北京槐房万达": {
-      "count": 162,
+    "APR北京大兴龙湖": {
+      "count": 161,
       "noncomp": 2
     },
     "华为北京石景山万达": {
-      "count": 201,
+      "count": 222,
+      "noncomp": 2
+    },
+    "DJI北京龙德广场授权体验店": {
+      "count": 57,
+      "noncomp": 2
+    },
+    "华为厦门思明瑞景广场": {
+      "count": 85,
+      "noncomp": 2
+    },
+    "华为北京来福士": {
+      "count": 160,
       "noncomp": 2
     },
     "APR北京海淀大悦城": {
-      "count": 123,
+      "count": 148,
       "noncomp": 2
     },
-    "华为福州平潭吾悦": {
-      "count": 106,
-      "noncomp": 1
-    },
-    "DJI大疆哈苏北京朝阳合生汇概念店": {
-      "count": 157,
-      "noncomp": 1
-    },
-    "DJI北京昌平悦荟授权体验店": {
-      "count": 84,
-      "noncomp": 1
-    },
-    "APR北京望京华彩": {
-      "count": 129,
-      "noncomp": 1
-    },
-    "DJI北京西单大悦城授权体验店": {
-      "count": 121,
-      "noncomp": 1
-    },
-    "DJI上海中庚漫游城授权体验店": {
-      "count": 76,
-      "noncomp": 1
-    },
-    "APR北京丽泽龙湖": {
-      "count": 211,
-      "noncomp": 1
-    },
-    "DJI上海陆家嘴中心L+mall授权体验店": {
-      "count": 54,
-      "noncomp": 1
-    },
-    "DJI北京望京凯德MALL授权体验店": {
-      "count": 48,
-      "noncomp": 1
-    },
-    "DJI北京顺义华联授权体验店": {
-      "count": 72,
-      "noncomp": 1
-    },
-    "APR北京同成街华联": {
-      "count": 95,
-      "noncomp": 1
-    },
-    "APR北京亦庄龙湖": {
-      "count": 183,
-      "noncomp": 1
+    "APR成都温江旭辉": {
+      "count": 202,
+      "noncomp": 2
     },
     "DJI北京王府井APM授权高级体验店": {
-      "count": 158,
-      "noncomp": 1
+      "count": 183,
+      "noncomp": 2
     },
-    "APR北京石景山万达": {
-      "count": 253,
-      "noncomp": 1
-    },
-    "APR北京新奥天虹": {
-      "count": 50,
-      "noncomp": 1
-    },
-    "DJI北京金源购物广场授权体验店": {
-      "count": 111,
-      "noncomp": 1
+    "APR北京丽泽龙湖": {
+      "count": 246,
+      "noncomp": 2
     },
     "华为北京丰台鑫嘉汇": {
-      "count": 57,
+      "count": 76,
+      "noncomp": 2
+    },
+    "华为北京首开万象汇": {
+      "count": 307,
+      "noncomp": 2
+    },
+    "华为北京牡丹园翠微": {
+      "count": 269,
+      "noncomp": 2
+    },
+    "DJI上海陆家嘴中心L+mall授权体验店": {
+      "count": 67,
+      "noncomp": 2
+    },
+    "华为北京西铁营万达": {
+      "count": 159,
+      "noncomp": 2
+    },
+    "华为北京大兴大族": {
+      "count": 179,
+      "noncomp": 2
+    },
+    "华为福州东街口": {
+      "count": 144,
+      "noncomp": 1
+    },
+    "DJI北京太阳宫凯德授权体验店": {
+      "count": 83,
       "noncomp": 1
     },
     "APR北京旧宫万科": {
-      "count": 142,
+      "count": 171,
       "noncomp": 1
     },
-    "DJI北京中关村大融城授权体验店": {
-      "count": 66,
-      "noncomp": 1
-    },
-    "APR北京房山熙悦": {
-      "count": 154,
-      "noncomp": 1
-    },
-    "DJI上海天荟广场授权体验店": {
-      "count": 24,
-      "noncomp": 1
-    },
-    "APR北京西铁营万达": {
-      "count": 124,
-      "noncomp": 1
-    },
-    "APR北京新辰汇": {
-      "count": 111,
-      "noncomp": 1
-    },
-    "APR北京长安龙湖": {
-      "count": 181,
+    "DJI北京昌平悦荟授权体验店": {
+      "count": 94,
       "noncomp": 1
     },
     "DJI上海漕河泾印象城授权体验店": {
-      "count": 27,
+      "count": 34,
       "noncomp": 1
     },
-    "华为北京酒仙桥颐堤港": {
-      "count": 198,
+    "DJI北京金源购物广场授权体验店": {
+      "count": 134,
       "noncomp": 1
     },
-    "DJI大疆哈苏北京芳草地概念店": {
-      "count": 39,
-      "noncomp": 1
-    },
-    "DJI北京丰科万达广场授权体验店": {
-      "count": 58,
+    "APR北京房山熙悦": {
+      "count": 188,
       "noncomp": 1
     },
     "APR北京大红门银泰": {
-      "count": 87,
-      "noncomp": 1
-    },
-    "华为北京首开万象汇": {
-      "count": 279,
+      "count": 119,
       "noncomp": 1
     },
     "DJI上海静安大融城授权体验店": {
-      "count": 40,
-      "noncomp": 1
-    },
-    "DJI北京昌平超级合生汇授权体验店": {
-      "count": 45,
+      "count": 57,
       "noncomp": 1
     },
     "华为北京东坝金隅": {
-      "count": 49,
+      "count": 61,
+      "noncomp": 1
+    },
+    "APR北京新辰汇": {
+      "count": 157,
+      "noncomp": 1
+    },
+    "DJI上海天荟广场授权体验店": {
+      "count": 31,
+      "noncomp": 1
+    },
+    "APR北京亦庄龙湖": {
+      "count": 220,
+      "noncomp": 1
+    },
+    "APR北京望京华彩": {
+      "count": 153,
+      "noncomp": 1
+    },
+    "APR北京同成街华联": {
+      "count": 120,
+      "noncomp": 1
+    },
+    "APR北京长安龙湖": {
+      "count": 224,
+      "noncomp": 1
+    },
+    "DJI北京丰科万达广场授权体验店": {
+      "count": 68,
+      "noncomp": 1
+    },
+    "DJI北京龙湖长安天街授权体验店": {
+      "count": 81,
+      "noncomp": 1
+    },
+    "华为福州平潭吾悦": {
+      "count": 120,
+      "noncomp": 1
+    },
+    "DJI北京顺义华联授权体验店": {
+      "count": 88,
+      "noncomp": 1
+    },
+    "APR北京石景山万达": {
+      "count": 300,
+      "noncomp": 1
+    },
+    "DJI上海中庚漫游城授权体验店": {
+      "count": 88,
+      "noncomp": 1
+    },
+    "DJI北京望京凯德MALL授权体验店": {
+      "count": 58,
+      "noncomp": 1
+    },
+    "DJI北京西单大悦城授权体验店": {
+      "count": 132,
+      "noncomp": 1
+    },
+    "华为北京房山燕隆汇": {
+      "count": 21,
+      "noncomp": 1
+    },
+    "APR北京西铁营万达": {
+      "count": 145,
+      "noncomp": 1
+    },
+    "华为北京酒仙桥颐堤港": {
+      "count": 214,
+      "noncomp": 1
+    },
+    "DJI大疆哈苏北京芳草地概念店": {
+      "count": 46,
+      "noncomp": 1
+    },
+    "DJI北京中关村大融城授权体验店": {
+      "count": 73,
+      "noncomp": 1
+    },
+    "APR北京新奥天虹": {
+      "count": 61,
       "noncomp": 1
     },
     "华为北京上德银泰": {
       "count": 64,
       "noncomp": 1
     },
-    "APR北京大兴龙湖": {
-      "count": 114,
-      "noncomp": 1
+    "华为泉州石狮泰禾广场": {
+      "count": 167,
+      "noncomp": 0
     },
-    "DJI北京龙湖长安天街授权体验店": {
-      "count": 74,
-      "noncomp": 1
+    "DJI北京朝阳大悦城授权体验店": {
+      "count": 96,
+      "noncomp": 0
+    },
+    "华为北京丽泽龙湖": {
+      "count": 267,
+      "noncomp": 0
+    },
+    "APR北京常营龙湖": {
+      "count": 336,
+      "noncomp": 0
+    },
+    "华为北京北苑龙湖": {
+      "count": 136,
+      "noncomp": 0
+    },
+    "APR成都双楠伊藤": {
+      "count": 133,
+      "noncomp": 0
+    },
+    "DJI上海百联南桥购物中心授权体验店": {
+      "count": 32,
+      "noncomp": 0
+    },
+    "APR成都蜀新天街": {
+      "count": 192,
+      "noncomp": 0
+    },
+    "华为北京沙河万达": {
+      "count": 105,
+      "noncomp": 0
+    },
+    "DJI北京通州万达授权体验店": {
+      "count": 96,
+      "noncomp": 0
+    },
+    "APR成都北城天街": {
+      "count": 172,
+      "noncomp": 0
+    },
+    "DJI北京东坝万达广场授权体验店": {
+      "count": 56,
+      "noncomp": 0
+    },
+    "APR北京北苑龙湖": {
+      "count": 92,
+      "noncomp": 0
+    },
+    "华为北京怀柔万达": {
+      "count": 156,
+      "noncomp": 0
+    },
+    "DJI北京龙湖大兴天街授权体验店": {
+      "count": 58,
+      "noncomp": 0
+    },
+    "华为福州中骏世界城": {
+      "count": 276,
+      "noncomp": 0
+    },
+    "DJI上海长风大悦城授权体验店": {
+      "count": 25,
+      "noncomp": 0
+    },
+    "华为北京丰科万达": {
+      "count": 481,
+      "noncomp": 0
+    },
+    "APR北京房山龙湖": {
+      "count": 272,
+      "noncomp": 0
+    },
+    "APR成都温江伊藤": {
+      "count": 190,
+      "noncomp": 0
+    },
+    "华为北京长楹龙湖": {
+      "count": 438,
+      "noncomp": 0
     },
     "DJI北京西红门荟聚中心授权体验店": {
-      "count": 166,
+      "count": 203,
+      "noncomp": 0
+    },
+    "DJI上海虹口凯德授权体验店": {
+      "count": 46,
+      "noncomp": 0
+    },
+    "DJI大疆哈苏北京华熙LIVE概念店": {
+      "count": 149,
+      "noncomp": 0
+    },
+    "DJI上海凯德晶萃授权体验店": {
+      "count": 64,
+      "noncomp": 0
+    },
+    "APR北京槐房万达": {
+      "count": 131,
+      "noncomp": 0
+    },
+    "DJI上海江桥万达授权体验店": {
+      "count": 54,
+      "noncomp": 0
+    },
+    "APR北京昌发展万科": {
+      "count": 149,
+      "noncomp": 0
+    },
+    "华为北京亦庄龙湖": {
+      "count": 388,
+      "noncomp": 0
+    },
+    "华为福州仓山爱琴海合作店": {
+      "count": 69,
+      "noncomp": 0
+    },
+    "华为福州五四北泰禾广场": {
+      "count": 214,
+      "noncomp": 0
+    },
+    "DJI北京西北旺万象汇授权体验店": {
+      "count": 66,
+      "noncomp": 0
+    },
+    "DJI上海久光中心授权体验店": {
+      "count": 74,
+      "noncomp": 0
+    },
+    "APR北京大峡谷凯德茂": {
+      "count": 142,
+      "noncomp": 0
+    },
+    "APR成都武侯大悦城": {
+      "count": 209,
+      "noncomp": 0
+    },
+    "华为福州仓山爱琴海": {
+      "count": 128,
+      "noncomp": 0
+    },
+    "DJI北京龙湖亦庄天街授权体验店": {
+      "count": 86,
+      "noncomp": 0
+    },
+    "华为北京方庄新城": {
+      "count": 70,
+      "noncomp": 0
+    },
+    "DJI北京首都机场授权体验店": {
+      "count": 89,
       "noncomp": 0
     },
     "华为厦门思明罗宾森广场": {
+      "count": 149,
+      "noncomp": 0
+    },
+    "APR成都时代天街": {
+      "count": 168,
+      "noncomp": 0
+    },
+    "华为南平武夷山宝龙广场": {
+      "count": 83,
+      "noncomp": 0
+    },
+    "DJI上海第一八佰伴授权体验店": {
+      "count": 77,
+      "noncomp": 0
+    },
+    "APR成都天府大悦城": {
+      "count": 163,
+      "noncomp": 0
+    },
+    "APR成都高新伊藤": {
+      "count": 229,
+      "noncomp": 0
+    },
+    "DJI北京长楹天街授权体验店": {
+      "count": 112,
+      "noncomp": 0
+    },
+    "APR成都金牛凯德": {
+      "count": 239,
+      "noncomp": 0
+    },
+    "DJI北京万柳华联授权体验店": {
+      "count": 68,
+      "noncomp": 0
+    },
+    "DJI北京龙湖房山天街授权体验店": {
+      "count": 98,
+      "noncomp": 0
+    },
+    "APR成都金楠天街": {
+      "count": 108,
+      "noncomp": 0
+    },
+    "APR成都三利爱琴海": {
+      "count": 303,
+      "noncomp": 0
+    },
+    "APR北京延庆万达": {
       "count": 127,
+      "noncomp": 0
+    },
+    "APR北京回龙观华联": {
+      "count": 136,
+      "noncomp": 0
+    },
+    "华为福州砂之船奥莱": {
+      "count": 100,
+      "noncomp": 0
+    },
+    "华为福州大洋晶典": {
+      "count": 181,
+      "noncomp": 0
+    },
+    "APR成都西宸天街": {
+      "count": 307,
+      "noncomp": 0
+    },
+    "华为厦门湖里蔡塘爱琴海": {
+      "count": 44,
+      "noncomp": 0
+    },
+    "APR成都龙泉吾悦": {
+      "count": 107,
+      "noncomp": 0
+    },
+    "DJI上海FFC滨江悅里授权体验店": {
+      "count": 12,
+      "noncomp": 0
+    },
+    "华为厦门思明宝龙一城": {
+      "count": 218,
+      "noncomp": 0
+    },
+    "华为北京门头沟长安天街": {
+      "count": 155,
+      "noncomp": 0
+    },
+    "华为北京通州乐堤港": {
+      "count": 136,
+      "noncomp": 0
+    },
+    "华为厦门思明大西洋天虹": {
+      "count": 18,
+      "noncomp": 0
+    },
+    "DJI北京翠微百货授权体验店": {
+      "count": 46,
+      "noncomp": 0
+    },
+    "DJI北京丽泽天街授权体验店": {
+      "count": 108,
+      "noncomp": 0
+    },
+    "APR成都武侯吾悦": {
+      "count": 155,
+      "noncomp": 0
+    },
+    "APR北京通州万达": {
+      "count": 210,
+      "noncomp": 0
+    },
+    "DJI上海维璟印象城授权体验店": {
+      "count": 53,
+      "noncomp": 0
+    },
+    "DJI大疆哈苏北京大兴机场概念店": {
+      "count": 84,
+      "noncomp": 0
+    },
+    "华为厦门思明星河COCO Park": {
+      "count": 9,
+      "noncomp": 0
+    },
+    "DJI北京龙湖熙悦天街授权体验店": {
+      "count": 80,
+      "noncomp": 0
+    },
+    "华为厦门思明加州广场": {
+      "count": 105,
+      "noncomp": 0
+    },
+    "DJI上海静安大悦城授权体验店": {
+      "count": 101,
+      "noncomp": 0
+    },
+    "APR北京牡丹园翠微": {
+      "count": 148,
+      "noncomp": 0
+    },
+    "DJI北京通州万象汇授权体验店": {
+      "count": 70,
+      "noncomp": 0
+    },
+    "华为南平建阳建发悦城": {
+      "count": 68,
+      "noncomp": 0
+    },
+    "华为厦门思明君尚天虹": {
+      "count": 35,
+      "noncomp": 0
+    },
+    "DJI北京石景山万达授权体验店": {
+      "count": 36,
+      "noncomp": 0
+    },
+    "华为福州宜家荟聚": {
+      "count": 33,
       "noncomp": 0
     },
     "（旧）APR成都天府环宇坊": {
       "count": 129,
       "noncomp": 0
     },
-    "APR成都武侯吾悦": {
-      "count": 132,
-      "noncomp": 0
-    },
-    "DJI大疆哈苏北京华熙LIVE概念店": {
-      "count": 131,
-      "noncomp": 0
-    },
-    "华为北京丰科万达": {
-      "count": 387,
-      "noncomp": 0
-    },
-    "华为福州中骏世界城": {
-      "count": 235,
-      "noncomp": 0
-    },
-    "DJI上海静安大悦城授权体验店": {
-      "count": 77,
-      "noncomp": 0
-    },
-    "APR北京房山龙湖": {
-      "count": 242,
-      "noncomp": 0
-    },
-    "DJI北京龙湖亦庄天街授权体验店": {
-      "count": 77,
-      "noncomp": 0
-    },
-    "APR成都温江伊藤": {
-      "count": 143,
-      "noncomp": 0
-    },
-    "华为北京怀柔万达": {
-      "count": 119,
-      "noncomp": 0
-    },
-    "APR北京常营龙湖": {
-      "count": 274,
-      "noncomp": 0
-    },
-    "华为厦门思明宝龙一城": {
-      "count": 178,
-      "noncomp": 0
-    },
-    "APR成都金牛凯德": {
-      "count": 180,
-      "noncomp": 0
-    },
-    "APR成都三利爱琴海": {
-      "count": 238,
-      "noncomp": 0
-    },
-    "DJI上海凯德晶萃授权体验店": {
-      "count": 52,
-      "noncomp": 0
-    },
-    "DJI上海维璟印象城授权体验店": {
-      "count": 49,
-      "noncomp": 0
-    },
-    "DJI北京万柳华联授权体验店": {
-      "count": 60,
-      "noncomp": 0
-    },
-    "APR北京延庆万达": {
-      "count": 117,
-      "noncomp": 0
-    },
-    "华为泉州石狮泰禾广场": {
-      "count": 146,
-      "noncomp": 0
-    },
-    "APR北京昌发展万科": {
-      "count": 114,
-      "noncomp": 0
-    },
-    "DJI北京通州万象汇授权体验店": {
-      "count": 64,
-      "noncomp": 0
-    },
-    "APR成都时代天街": {
-      "count": 134,
-      "noncomp": 0
-    },
-    "华为福州五四北泰禾广场": {
-      "count": 190,
-      "noncomp": 0
-    },
-    "APR北京北苑龙湖": {
-      "count": 79,
-      "noncomp": 0
-    },
-    "华为福州砂之船奥莱": {
-      "count": 76,
-      "noncomp": 0
-    },
-    "APR北京通州万达": {
-      "count": 180,
-      "noncomp": 0
-    },
-    "DJI北京通州万达授权体验店": {
-      "count": 86,
-      "noncomp": 0
-    },
-    "DJI北京龙湖房山天街授权体验店": {
-      "count": 76,
-      "noncomp": 0
-    },
-    "华为厦门思明加州广场": {
-      "count": 88,
-      "noncomp": 0
-    },
-    "华为北京通州乐堤港": {
-      "count": 120,
-      "noncomp": 0
-    },
-    "华为北京亦庄龙湖": {
-      "count": 341,
-      "noncomp": 0
-    },
-    "华为福州东街口": {
-      "count": 120,
-      "noncomp": 0
-    },
-    "APR成都金楠天街": {
-      "count": 84,
-      "noncomp": 0
-    },
-    "DJI上海第一八佰伴授权体验店": {
-      "count": 69,
-      "noncomp": 0
-    },
-    "华为南平建阳建发悦城": {
-      "count": 53,
-      "noncomp": 0
-    },
-    "DJI上海虹口凯德授权体验店": {
-      "count": 42,
-      "noncomp": 0
-    },
-    "华为北京门头沟长安天街": {
-      "count": 132,
-      "noncomp": 0
-    },
-    "华为厦门湖里蔡塘爱琴海": {
-      "count": 41,
-      "noncomp": 0
-    },
-    "华为福州大洋晶典": {
-      "count": 149,
-      "noncomp": 0
-    },
-    "DJI北京太阳宫凯德授权体验店": {
-      "count": 65,
-      "noncomp": 0
-    },
-    "DJI北京龙湖大兴天街授权体验店": {
-      "count": 48,
-      "noncomp": 0
-    },
-    "APR成都武侯大悦城": {
-      "count": 184,
-      "noncomp": 0
-    },
-    "华为北京丽泽龙湖": {
-      "count": 207,
-      "noncomp": 0
-    },
     "（旧）APR成都环球中心": {
       "count": 142,
-      "noncomp": 0
-    },
-    "DJI上海久光中心授权体验店": {
-      "count": 64,
-      "noncomp": 0
-    },
-    "DJI北京翠微百货授权体验店": {
-      "count": 43,
-      "noncomp": 0
-    },
-    "华为北京长楹龙湖": {
-      "count": 376,
-      "noncomp": 0
-    },
-    "APR成都西宸天街": {
-      "count": 246,
       "noncomp": 0
     },
     "（旧）APR成都东安天街": {
       "count": 71,
       "noncomp": 0
     },
-    "DJI北京西北旺万象汇授权体验店": {
-      "count": 59,
-      "noncomp": 0
-    },
-    "DJI上海江桥万达授权体验店": {
-      "count": 45,
-      "noncomp": 0
-    },
-    "DJI北京首都机场授权体验店": {
-      "count": 74,
-      "noncomp": 0
-    },
-    "APR成都蜀新天街": {
-      "count": 152,
-      "noncomp": 0
-    },
-    "APR成都双楠伊藤": {
-      "count": 106,
-      "noncomp": 0
-    },
-    "DJI北京朝阳大悦城授权体验店": {
-      "count": 83,
-      "noncomp": 0
-    },
-    "华为南平武夷山宝龙广场": {
-      "count": 75,
-      "noncomp": 0
-    },
-    "华为北京北苑龙湖": {
-      "count": 110,
-      "noncomp": 0
-    },
-    "华为福州仓山爱琴海": {
-      "count": 95,
-      "noncomp": 0
-    },
-    "华为北京沙河万达": {
-      "count": 95,
-      "noncomp": 0
-    },
-    "DJI北京长楹天街授权体验店": {
-      "count": 101,
-      "noncomp": 0
-    },
-    "DJI上海百联南桥购物中心授权体验店": {
-      "count": 26,
-      "noncomp": 0
-    },
-    "APR北京大峡谷凯德茂": {
-      "count": 120,
-      "noncomp": 0
-    },
     "（旧）APR成都凯德魅力城": {
       "count": 145,
-      "noncomp": 0
-    },
-    "APR成都高新伊藤": {
-      "count": 202,
-      "noncomp": 0
-    },
-    "APR北京回龙观华联": {
-      "count": 111,
-      "noncomp": 0
-    },
-    "DJI上海长风大悦城授权体验店": {
-      "count": 20,
-      "noncomp": 0
-    },
-    "APR成都天府大悦城": {
-      "count": 138,
-      "noncomp": 0
-    },
-    "DJI北京石景山万达授权体验店": {
-      "count": 30,
-      "noncomp": 0
-    },
-    "APR北京槐房万达": {
-      "count": 94,
-      "noncomp": 0
-    },
-    "APR成都北城天街": {
-      "count": 139,
-      "noncomp": 0
-    },
-    "华为北京房山燕隆汇": {
-      "count": 20,
-      "noncomp": 0
-    },
-    "DJI北京丽泽天街授权体验店": {
-      "count": 92,
-      "noncomp": 0
-    },
-    "DJI北京东坝万达广场授权体验店": {
-      "count": 46,
-      "noncomp": 0
-    },
-    "APR成都龙泉吾悦": {
-      "count": 74,
-      "noncomp": 0
-    },
-    "DJI北京龙湖熙悦天街授权体验店": {
-      "count": 70,
-      "noncomp": 0
-    },
-    "华为厦门思明君尚天虹": {
-      "count": 27,
-      "noncomp": 0
-    },
-    "APR北京牡丹园翠微": {
-      "count": 125,
-      "noncomp": 0
-    },
-    "华为福州仓山爱琴海合作店": {
-      "count": 56,
-      "noncomp": 0
-    },
-    "华为北京方庄新城": {
-      "count": 62,
-      "noncomp": 0
-    },
-    "DJI大疆哈苏北京大兴机场概念店": {
-      "count": 76,
-      "noncomp": 0
-    },
-    "DJI上海FFC滨江悅里授权体验店": {
-      "count": 8,
-      "noncomp": 0
-    },
-    "华为福州宜家荟聚": {
-      "count": 31,
-      "noncomp": 0
-    },
-    "华为厦门思明大西洋天虹": {
-      "count": 15,
-      "noncomp": 0
-    },
-    "华为厦门思明星河COCO Park": {
-      "count": 8,
       "noncomp": 0
     }
   },
   "branch_stat": {
     "北京中恒": {
-      "count": 6473,
-      "amount": 24971246.54,
-      "comp": 6010,
-      "noncomp": 88,
-      "excl": 375,
+      "count": 7843,
+      "amount": 30832167.67,
+      "comp": 7287,
+      "noncomp": 98,
+      "excl": 458,
       "unmatched": 0,
-      "rate": 98.56,
+      "rate": 98.67,
       "stores_total": 37,
       "stores_comp": 10,
       "stores_noncomp": 27,
       "perfect_pct": 27.0
     },
     "北京易联": {
-      "count": 5835,
-      "amount": 24854211.39,
-      "comp": 5351,
-      "noncomp": 82,
-      "excl": 401,
-      "unmatched": 1,
-      "rate": 98.49,
+      "count": 6716,
+      "amount": 28794888.39,
+      "comp": 6170,
+      "noncomp": 90,
+      "excl": 454,
+      "unmatched": 2,
+      "rate": 98.56,
       "stores_total": 37,
-      "stores_comp": 11,
-      "stores_noncomp": 26,
-      "perfect_pct": 29.7
+      "stores_comp": 10,
+      "stores_noncomp": 27,
+      "perfect_pct": 27.0
     },
     "北京飞航": {
-      "count": 2861,
-      "amount": 9357404.74,
-      "comp": 2702,
-      "noncomp": 34,
-      "excl": 125,
+      "count": 3322,
+      "amount": 10724498.74,
+      "comp": 3130,
+      "noncomp": 40,
+      "excl": 152,
       "unmatched": 0,
-      "rate": 98.76,
+      "rate": 98.74,
       "stores_total": 37,
-      "stores_comp": 19,
-      "stores_noncomp": 18,
-      "perfect_pct": 51.4
+      "stores_comp": 18,
+      "stores_noncomp": 19,
+      "perfect_pct": 48.6
     },
     "上海爱飞": {
-      "count": 1059,
-      "amount": 3245256.34,
-      "comp": 1004,
-      "noncomp": 24,
-      "excl": 31,
+      "count": 1295,
+      "amount": 3937132.34,
+      "comp": 1227,
+      "noncomp": 26,
+      "excl": 42,
       "unmatched": 0,
-      "rate": 97.67,
+      "rate": 97.92,
       "stores_total": 21,
       "stores_comp": 10,
       "stores_noncomp": 11,
       "perfect_pct": 47.6
     },
     "四川新跃": {
-      "count": 2964,
-      "amount": 11866078.22,
-      "comp": 2808,
+      "count": 3555,
+      "amount": 15174824.29,
+      "comp": 3378,
       "noncomp": 8,
-      "excl": 148,
+      "excl": 169,
       "unmatched": 0,
-      "rate": 99.72,
+      "rate": 99.76,
       "stores_total": 20,
       "stores_comp": 18,
       "stores_noncomp": 2,
       "perfect_pct": 90.0
     },
     "福建易联": {
-      "count": 1884,
-      "amount": 6866731.08,
-      "comp": 1783,
-      "noncomp": 3,
-      "excl": 98,
+      "count": 2246,
+      "amount": 8346622.76,
+      "comp": 2122,
+      "noncomp": 4,
+      "excl": 120,
       "unmatched": 0,
-      "rate": 99.83,
+      "rate": 99.81,
       "stores_total": 20,
-      "stores_comp": 18,
-      "stores_noncomp": 2,
-      "perfect_pct": 90.0
+      "stores_comp": 17,
+      "stores_noncomp": 3,
+      "perfect_pct": 85.0
     }
   },
   "noncompliant_rows": [
@@ -2666,7 +2673,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "15002186552",
+      "会员手机号": "150****6552",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -2679,7 +2686,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17717330229",
+      "会员手机号": "177****0229",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -2692,7 +2699,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "15851497998",
+      "会员手机号": "158****7998",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -2705,7 +2712,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "13501985494",
+      "会员手机号": "135****5494",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -2718,7 +2725,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "13501985494",
+      "会员手机号": "135****5494",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -2731,7 +2738,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "18621189677",
+      "会员手机号": "186****9677",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -2744,7 +2751,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -2757,7 +2764,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -2770,7 +2777,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "18829237855",
+      "会员手机号": "188****7855",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -2783,7 +2790,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "18829237855",
+      "会员手机号": "188****7855",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -2796,7 +2803,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "18829237855",
+      "会员手机号": "188****7855",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -2809,7 +2816,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "13761009080",
+      "会员手机号": "137****9080",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -2822,7 +2829,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -2835,7 +2842,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "13802024526",
+      "会员手机号": "138****4526",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -2848,7 +2855,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "13801425533",
+      "会员手机号": "138****5533",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -2861,7 +2868,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -2874,7 +2881,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -2887,7 +2894,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "18516415918",
+      "会员手机号": "185****5918",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -2900,7 +2907,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "18516415918",
+      "会员手机号": "185****5918",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -2913,7 +2920,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "18817613772",
+      "会员手机号": "188****3772",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -2926,7 +2933,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "18317095937",
+      "会员手机号": "183****5937",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -2939,7 +2946,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -2952,7 +2959,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "18930021806",
+      "会员手机号": "189****1806",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -2965,7 +2972,33 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "13918221884",
+      "会员手机号": "139****1884",
+      "第三方订单号": "（无）",
+      "判定": "不合规（公司禁用收款通道）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "DJI上海世博天地授权体验店",
+      "业务组织": "DJI上海世博天地授权体验店",
+      "所属分公司": "上海爱飞",
+      "单据编号": "LSD2026080600925154",
+      "支付通道": "银联POS手动收款",
+      "收款方式": "银联POS手动收款",
+      "收款类型": "销售收款",
+      "会员手机号": "189****6007",
+      "第三方订单号": "（无）",
+      "判定": "不合规（公司禁用收款通道）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "DJI上海陆家嘴中心L+mall授权体验店",
+      "业务组织": "DJI上海陆家嘴中心L+mall授权体验店",
+      "所属分公司": "上海爱飞",
+      "单据编号": "LSD2026080600925259",
+      "支付通道": "银联POS手动收款",
+      "收款方式": "银联POS手动收款",
+      "收款类型": "销售收款",
+      "会员手机号": "167****1142",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -2978,7 +3011,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-15010019917",
+      "会员手机号": "+86-150****9917",
       "第三方订单号": "2083435200665018369",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -2991,7 +3024,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13501349969",
+      "会员手机号": "+86-135****9969",
       "第三方订单号": "2083485389348970505",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3004,7 +3037,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13910707048",
+      "会员手机号": "+86-139****7048",
       "第三方订单号": "2083476392870047750",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3017,7 +3050,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-15510780158",
+      "会员手机号": "+86-155****0158",
       "第三方订单号": "2083434705134288904",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3030,7 +3063,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13439407207",
+      "会员手机号": "+86-134****7207",
       "第三方订单号": "2083399273130491907",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3043,7 +3076,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
       "第三方订单号": "2083530245690810368",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3056,7 +3089,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-15210932966",
+      "会员手机号": "+86-152****2966",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3069,7 +3102,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-15010007583",
+      "会员手机号": "+86-150****7583",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3082,8 +3115,8 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13261868817",
-      "第三方订单号": "2083419466526625799",
+      "会员手机号": "+86-132****8817",
+      "第三方订单号": "20834194****6625799",
       "判定": "不合规（公司禁用收款通道）"
     },
     {
@@ -3095,7 +3128,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13550479925",
+      "会员手机号": "+86-135****9925",
       "第三方订单号": "2083378868570218500",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3108,8 +3141,8 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-15801106671",
-      "第三方订单号": "2083451322525212679",
+      "会员手机号": "+86-158****6671",
+      "第三方订单号": "208345132****212679",
       "判定": "不合规（公司禁用收款通道）"
     },
     {
@@ -3121,7 +3154,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18500108868",
+      "会员手机号": "+86-185****8868",
       "第三方订单号": "2083393526554419209",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3134,7 +3167,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18210299334",
+      "会员手机号": "+86-182****9334",
       "第三方订单号": "2083438481639473158",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3147,8 +3180,8 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13783573437",
-      "第三方订单号": "2083518682004193281",
+      "会员手机号": "+86-137****3437",
+      "第三方订单号": "20835186****4193281",
       "判定": "不合规（公司禁用收款通道）"
     },
     {
@@ -3160,7 +3193,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-17600766676",
+      "会员手机号": "+86-176****6676",
       "第三方订单号": "2083488925279584260",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3173,7 +3206,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-17600766676",
+      "会员手机号": "+86-176****6676",
       "第三方订单号": "2083489110968659969",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3186,8 +3219,8 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "15725085096",
-      "第三方订单号": "2083518481725394950",
+      "会员手机号": "157****5096",
+      "第三方订单号": "20835184****5394950",
       "判定": "不合规（公司禁用收款通道）"
     },
     {
@@ -3199,7 +3232,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13716624592",
+      "会员手机号": "+86-137****4592",
       "第三方订单号": "2083468249950625799",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3212,7 +3245,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13716475157",
+      "会员手机号": "+86-137****5157",
       "第三方订单号": "2083459403900444673",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3225,7 +3258,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18523376381",
+      "会员手机号": "+86-185****6381",
       "第三方订单号": "2083492041394888704",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3238,7 +3271,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18910616101",
+      "会员手机号": "+86-189****6101",
       "第三方订单号": "2083535221353807878",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3251,7 +3284,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13621031011",
+      "会员手机号": "+86-136****1011",
       "第三方订单号": "2083473729850638338",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3264,7 +3297,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13901205572",
+      "会员手机号": "+86-139****5572",
       "第三方订单号": "2083466044125376518",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3277,8 +3310,8 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13810149496",
-      "第三方订单号": "2083462717136334854",
+      "会员手机号": "+86-138****9496",
+      "第三方订单号": "20834627171****4854",
       "判定": "不合规（公司禁用收款通道）"
     },
     {
@@ -3290,7 +3323,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13641367692",
+      "会员手机号": "+86-136****7692",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3303,7 +3336,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13641367692",
+      "会员手机号": "+86-136****7692",
       "第三方订单号": "2083869093608218625",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3316,8 +3349,8 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13910513343",
-      "第三方订单号": "2083815839910227969",
+      "会员手机号": "+86-139****3343",
+      "第三方订单号": "20838158****0227969",
       "判定": "不合规（公司禁用收款通道）"
     },
     {
@@ -3329,7 +3362,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13426493653",
+      "会员手机号": "+86-134****3653",
       "第三方订单号": "2083862067750772743",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3342,7 +3375,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13833310953",
+      "会员手机号": "+86-138****0953",
       "第三方订单号": "2083867893785956356",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3355,7 +3388,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13961681898",
+      "会员手机号": "+86-139****1898",
       "第三方订单号": "2083866761469034502",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3368,7 +3401,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-15123276728",
+      "会员手机号": "+86-151****6728",
       "第三方订单号": "2083827033647800321",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3381,7 +3414,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-15354526593",
+      "会员手机号": "+86-153****6593",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3394,7 +3427,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13331156806",
+      "会员手机号": "+86-133****6806",
       "第三方订单号": "2083826879054483456",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3407,7 +3440,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13331156806",
+      "会员手机号": "+86-133****6806",
       "第三方订单号": "2083829974604701703",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3420,7 +3453,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18630630160",
+      "会员手机号": "+86-186****0160",
       "第三方订单号": "2083784830620794886",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3433,7 +3466,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18609733020",
+      "会员手机号": "+86-186****3020",
       "第三方订单号": "2083843530738790407",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3446,7 +3479,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "13126912129",
+      "会员手机号": "131****2129",
       "第三方订单号": "2083903589702107144",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3459,7 +3492,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "13120020218",
+      "会员手机号": "131****0218",
       "第三方订单号": "2083889439111569410",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3472,7 +3505,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13581641432",
+      "会员手机号": "+86-135****1432",
       "第三方订单号": "2083845611390427142",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3485,8 +3518,8 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-15081233779",
-      "第三方订单号": "2083844819106070534",
+      "会员手机号": "+86-150****3779",
+      "第三方订单号": "20838448191****0534",
       "判定": "不合规（公司禁用收款通道）"
     },
     {
@@ -3498,7 +3531,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13241560974",
+      "会员手机号": "+86-132****0974",
       "第三方订单号": "2083842589323927554",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3511,7 +3544,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18519348209",
+      "会员手机号": "+86-185****8209",
       "第三方订单号": "2083880794776854530",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3524,7 +3557,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "13717903613",
+      "会员手机号": "137****3613",
       "第三方订单号": "2083796531577610241",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3537,7 +3570,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13910003728",
+      "会员手机号": "+86-139****3728",
       "第三方订单号": "2083746005818204162",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3550,7 +3583,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13810629653",
+      "会员手机号": "+86-138****9653",
       "第三方订单号": "2083865579702910982",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3563,7 +3596,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18510982293",
+      "会员手机号": "+86-185****2293",
       "第三方订单号": "2083837986196086788",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3576,8 +3609,8 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18511861539",
-      "第三方订单号": "2083852615597301762",
+      "会员手机号": "+86-185****1539",
+      "第三方订单号": "20838526155****1762",
       "判定": "不合规（公司禁用收款通道）"
     },
     {
@@ -3589,8 +3622,8 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18518193180",
-      "第三方订单号": "2083816024266694656",
+      "会员手机号": "+86-185****3180",
+      "第三方订单号": "20838160****6694656",
       "判定": "不合规（公司禁用收款通道）"
     },
     {
@@ -3602,7 +3635,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13683597990",
+      "会员手机号": "+86-136****7990",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3615,7 +3648,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-17640577389",
+      "会员手机号": "+86-176****7389",
       "第三方订单号": "2083805331313393670",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3628,7 +3661,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18600510666",
+      "会员手机号": "+86-186****0666",
       "第三方订单号": "2083776290631974912",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3641,8 +3674,8 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
-      "第三方订单号": "2084201196351913991",
+      "会员手机号": "177****3777",
+      "第三方订单号": "2084201196****13991",
       "判定": "不合规（公司禁用收款通道）"
     },
     {
@@ -3654,8 +3687,8 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
-      "第三方订单号": "2084147188163665921",
+      "会员手机号": "177****3777",
+      "第三方订单号": "2084147****63665921",
       "判定": "不合规（公司禁用收款通道）"
     },
     {
@@ -3667,8 +3700,8 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "13466400961",
-      "第三方订单号": "2084221927193579527",
+      "会员手机号": "134****0961",
+      "第三方订单号": "208422192****579527",
       "判定": "不合规（公司禁用收款通道）"
     },
     {
@@ -3680,8 +3713,8 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13691017388",
-      "第三方订单号": "2084190014527176713",
+      "会员手机号": "+86-136****7388",
+      "第三方订单号": "2084190****27176713",
       "判定": "不合规（公司禁用收款通道）"
     },
     {
@@ -3693,8 +3726,8 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-17845403201",
-      "第三方订单号": "2084152579970605063",
+      "会员手机号": "+86-178****3201",
+      "第三方订单号": "2084152****70605063",
       "判定": "不合规（公司禁用收款通道）"
     },
     {
@@ -3706,7 +3739,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13772091675",
+      "会员手机号": "+86-137****1675",
       "第三方订单号": "2084232492481650697",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3719,8 +3752,8 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13911358193",
-      "第三方订单号": "2084157288642969605",
+      "会员手机号": "+86-139****8193",
+      "第三方订单号": "2084157****42969605",
       "判定": "不合规（公司禁用收款通道）"
     },
     {
@@ -3732,8 +3765,8 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13601120631",
-      "第三方订单号": "2084187266144460808",
+      "会员手机号": "+86-136****0631",
+      "第三方订单号": "2084187****44460808",
       "判定": "不合规（公司禁用收款通道）"
     },
     {
@@ -3745,7 +3778,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-19638791061",
+      "会员手机号": "+86-196****1061",
       "第三方订单号": "2084252509638729731",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3758,8 +3791,8 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13633865703",
-      "第三方订单号": "2084192660175429636",
+      "会员手机号": "+86-136****5703",
+      "第三方订单号": "2084192****75429636",
       "判定": "不合规（公司禁用收款通道）"
     },
     {
@@ -3771,7 +3804,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18511045271",
+      "会员手机号": "+86-185****5271",
       "第三方订单号": "2083508592578330630",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3784,8 +3817,8 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-15801282008",
-      "第三方订单号": "2084194671766958086",
+      "会员手机号": "+86-158****2008",
+      "第三方订单号": "2084194****66958086",
       "判定": "不合规（公司禁用收款通道）"
     },
     {
@@ -3797,7 +3830,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13691229757",
+      "会员手机号": "+86-136****9757",
       "第三方订单号": "2084255436819595267",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3810,7 +3843,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13552570613",
+      "会员手机号": "+86-135****0613",
       "第三方订单号": "2084222032561561600",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3823,8 +3856,8 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13501110861",
-      "第三方订单号": "2084178498098749443",
+      "会员手机号": "+86-135****0861",
+      "第三方订单号": "2084178****98749443",
       "判定": "不合规（公司禁用收款通道）"
     },
     {
@@ -3836,7 +3869,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-15801083837",
+      "会员手机号": "+86-158****3837",
       "第三方订单号": "2084480634701414408",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3849,7 +3882,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "13910582395",
+      "会员手机号": "139****2395",
       "第三方订单号": "2084584776910643202",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3862,7 +3895,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18710022618",
+      "会员手机号": "+86-187****2618",
       "第三方订单号": "2084577203302047747",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3875,7 +3908,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "13152793818",
+      "会员手机号": "131****3818",
       "第三方订单号": "2084582420416565255",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3888,7 +3921,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13903698525",
+      "会员手机号": "+86-139****8525",
       "第三方订单号": "2084563295659663364",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3901,7 +3934,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18261735723",
+      "会员手机号": "+86-182****5723",
       "第三方订单号": "2084556561731788801",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3914,7 +3947,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-15987691014",
+      "会员手机号": "+86-159****1014",
       "第三方订单号": "2084578829391523842",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3927,8 +3960,8 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "16628777206",
-      "第三方订单号": "2084911361862602752",
+      "会员手机号": "166****7206",
+      "第三方订单号": "208491136****602752",
       "判定": "不合规（公司禁用收款通道）"
     },
     {
@@ -3940,7 +3973,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "18101159239",
+      "会员手机号": "181****9239",
       "第三方订单号": "2084600368103059462",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3953,8 +3986,8 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13366352199",
-      "第三方订单号": "2084915380958691337",
+      "会员手机号": "+86-133****2199",
+      "第三方订单号": "20849153****8691337",
       "判定": "不合规（公司禁用收款通道）"
     },
     {
@@ -3966,8 +3999,8 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18445508888",
-      "第三方订单号": "2084915207937220613",
+      "会员手机号": "+86-184****8888",
+      "第三方订单号": "20849152****7220613",
       "判定": "不合规（公司禁用收款通道）"
     },
     {
@@ -3979,7 +4012,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18622724657",
+      "会员手机号": "+86-186****4657",
       "第三方订单号": "2084894536964186120",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -3992,7 +4025,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13717569681",
+      "会员手机号": "+86-137****9681",
       "第三方订单号": "2084829482505408520",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -4005,7 +4038,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "13569844525",
+      "会员手机号": "135****4525",
       "第三方订单号": "2084871296859967489",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -4018,8 +4051,8 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "13910138322",
-      "第三方订单号": "2084919518796447749",
+      "会员手机号": "139****8322",
+      "第三方订单号": "20849195****6447749",
       "判定": "不合规（公司禁用收款通道）"
     },
     {
@@ -4031,7 +4064,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18311317567",
+      "会员手机号": "+86-183****7567",
       "第三方订单号": "2084924210010554374",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -4044,8 +4077,8 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13716937668",
-      "第三方订单号": "2084916531509137415",
+      "会员手机号": "+86-137****7668",
+      "第三方订单号": "20849165****9137415",
       "判定": "不合规（公司禁用收款通道）"
     },
     {
@@ -4057,7 +4090,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18735742384",
+      "会员手机号": "+86-187****2384",
       "第三方订单号": "2084998687974752260",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -4070,7 +4103,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18289656555",
+      "会员手机号": "+86-182****6555",
       "第三方订单号": "2084975273100976130",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -4083,7 +4116,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13911111165",
+      "会员手机号": "+86-139****1165",
       "第三方订单号": "2084974748826144775",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -4096,7 +4129,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-15101134504",
+      "会员手机号": "+86-151****4504",
       "第三方订单号": "2084883374583341065",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -4109,8 +4142,138 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-15001107892",
+      "会员手机号": "+86-150****7892",
       "第三方订单号": "2084852832236150789",
+      "判定": "不合规（公司禁用收款通道）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "APR北京万柳华联",
+      "业务组织": "APR北京万柳华联",
+      "所属分公司": "北京中恒",
+      "单据编号": "LSD2026080600926233",
+      "支付通道": "银联POS手动收款",
+      "收款方式": "银联POS手动收款",
+      "收款类型": "销售收款",
+      "会员手机号": "+86-186****1308",
+      "第三方订单号": "2085245187****06659",
+      "判定": "不合规（公司禁用收款通道）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "APR北京丽泽龙湖",
+      "业务组织": "APR北京丽泽龙湖",
+      "所属分公司": "北京中恒",
+      "单据编号": "LSD2026080600929143",
+      "支付通道": "银联POS手动收款",
+      "收款方式": "银联POS手动收款",
+      "收款类型": "销售收款",
+      "会员手机号": "+86-159****4553",
+      "第三方订单号": "2085344049713668100",
+      "判定": "不合规（公司禁用收款通道）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "APR北京五棵松华熙",
+      "业务组织": "APR北京五棵松华熙",
+      "所属分公司": "北京中恒",
+      "单据编号": "LSD2026080600927703",
+      "支付通道": "银联POS手动收款",
+      "收款方式": "银联POS手动收款",
+      "收款类型": "销售收款",
+      "会员手机号": "+86-182****0118",
+      "第三方订单号": "2085307535911358466",
+      "判定": "不合规（公司禁用收款通道）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "APR北京五道口购物中心",
+      "业务组织": "APR北京五道口购物中心",
+      "所属分公司": "北京中恒",
+      "单据编号": "LSD2026080600927796",
+      "支付通道": "银联POS手动收款",
+      "收款方式": "银联POS手动收款",
+      "收款类型": "销售收款",
+      "会员手机号": "+86-131****6806",
+      "第三方订单号": "2085295631063126019",
+      "判定": "不合规（公司禁用收款通道）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "APR北京合生汇",
+      "业务组织": "APR北京合生汇",
+      "所属分公司": "北京中恒",
+      "单据编号": "LSD2026080600926161",
+      "支付通道": "银联POS手动收款",
+      "收款方式": "银联POS手动收款",
+      "收款类型": "销售收款",
+      "会员手机号": "+86-130****7777",
+      "第三方订单号": "2085244984078962691",
+      "判定": "不合规（公司禁用收款通道）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "APR北京大兴龙湖",
+      "业务组织": "APR北京大兴龙湖",
+      "所属分公司": "北京中恒",
+      "单据编号": "LSD2026080600929008",
+      "支付通道": "银联POS手动收款",
+      "收款方式": "银联POS手动收款",
+      "收款类型": "销售收款",
+      "会员手机号": "+86-135****9861",
+      "第三方订单号": "2085328485513134087",
+      "判定": "不合规（公司禁用收款通道）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "APR北京大族广场",
+      "业务组织": "APR北京大族广场",
+      "所属分公司": "北京中恒",
+      "单据编号": "LSD2026080600929164",
+      "支付通道": "银联POS手动收款",
+      "收款方式": "银联POS手动收款",
+      "收款类型": "销售收款",
+      "会员手机号": "+86-139****5633",
+      "第三方订单号": "2085338656480452616",
+      "判定": "不合规（公司禁用收款通道）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "APR北京颐堤港",
+      "业务组织": "APR北京颐堤港",
+      "所属分公司": "北京中恒",
+      "单据编号": "LSD2026080600929936",
+      "支付通道": "银联POS手动收款",
+      "收款方式": "银联POS手动收款",
+      "收款类型": "销售收款",
+      "会员手机号": "+86-188****6406",
+      "第三方订单号": "2085353198****66280",
+      "判定": "不合规（公司禁用收款通道）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "APR北京颐堤港",
+      "业务组织": "APR北京颐堤港",
+      "所属分公司": "北京中恒",
+      "单据编号": "LSD2026080600925578",
+      "支付通道": "银联POS手动收款",
+      "收款方式": "银联POS手动收款",
+      "收款类型": "销售收款",
+      "会员手机号": "+86-138****4074",
+      "第三方订单号": "2085227340126167045",
+      "判定": "不合规（公司禁用收款通道）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "APR北京龙德广场",
+      "业务组织": "APR北京龙德广场",
+      "所属分公司": "北京中恒",
+      "单据编号": "LSD2026080600926014",
+      "支付通道": "银联POS手动收款",
+      "收款方式": "银联POS手动收款",
+      "收款类型": "销售收款",
+      "会员手机号": "+86-198****5812",
+      "第三方订单号": "2085222461115273217",
       "判定": "不合规（公司禁用收款通道）"
     },
     {
@@ -4122,7 +4285,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13903752518",
+      "会员手机号": "+86-139****2518",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4135,7 +4298,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18610581534",
+      "会员手机号": "+86-186****1534",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4148,7 +4311,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-15845106261",
+      "会员手机号": "+86-158****6261",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4161,7 +4324,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18612349666",
+      "会员手机号": "+86-186****9666",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4174,7 +4337,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13810352964",
+      "会员手机号": "+86-138****2964",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4187,7 +4350,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13718095245",
+      "会员手机号": "+86-137****5245",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4200,7 +4363,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13314006607",
+      "会员手机号": "+86-133****6607",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4213,7 +4376,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-15811079578",
+      "会员手机号": "+86-158****9578",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -4226,7 +4389,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4239,7 +4402,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-19031031802",
+      "会员手机号": "+86-190****1802",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4252,7 +4415,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-15621681888",
+      "会员手机号": "+86-156****1888",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4265,7 +4428,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13661280769",
+      "会员手机号": "+86-136****0769",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4278,7 +4441,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4291,7 +4454,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4304,7 +4467,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18611157992",
+      "会员手机号": "+86-186****7992",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4317,7 +4480,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "13501365178",
+      "会员手机号": "135****5178",
       "第三方订单号": "260801000210361243",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -4330,7 +4493,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "13501365178",
+      "会员手机号": "135****5178",
       "第三方订单号": "260801000210359210",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -4343,7 +4506,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "15891396735",
+      "会员手机号": "158****6735",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4356,7 +4519,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "18501348918",
+      "会员手机号": "185****8918",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4369,7 +4532,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "18501348918",
+      "会员手机号": "185****8918",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4382,7 +4545,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13910738563",
+      "会员手机号": "+86-139****8563",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4395,7 +4558,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18600813681",
+      "会员手机号": "+86-186****3681",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4408,7 +4571,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13241845290",
+      "会员手机号": "+86-132****5290",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4421,7 +4584,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18910790781",
+      "会员手机号": "+86-189****0781",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4434,7 +4597,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13701124764",
+      "会员手机号": "+86-137****4764",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4447,7 +4610,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-17310918086",
+      "会员手机号": "+86-173****8086",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4460,7 +4623,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13366268655",
+      "会员手机号": "+86-133****8655",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4473,7 +4636,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13366083358",
+      "会员手机号": "+86-133****3358",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -4486,7 +4649,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13701353871",
+      "会员手机号": "+86-137****3871",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4499,7 +4662,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13522162380",
+      "会员手机号": "+86-135****2380",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4512,7 +4675,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18701521204",
+      "会员手机号": "+86-187****1204",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4525,7 +4688,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-15833287802",
+      "会员手机号": "+86-158****7802",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4538,7 +4701,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13701315188",
+      "会员手机号": "+86-137****5188",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4551,7 +4714,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-15641259614",
+      "会员手机号": "+86-156****9614",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4564,7 +4727,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4577,7 +4740,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4590,7 +4753,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4603,7 +4766,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13910423939",
+      "会员手机号": "+86-139****3939",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4616,7 +4779,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13261999058",
+      "会员手机号": "+86-132****9058",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4629,7 +4792,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18518638357",
+      "会员手机号": "+86-185****8357",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4642,7 +4805,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-15132604775",
+      "会员手机号": "+86-151****4775",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4655,7 +4818,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13121848359",
+      "会员手机号": "+86-131****8359",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4668,7 +4831,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13121848359",
+      "会员手机号": "+86-131****8359",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -4681,7 +4844,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13121848359",
+      "会员手机号": "+86-131****8359",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4694,7 +4857,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13121848359",
+      "会员手机号": "+86-131****8359",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -4707,7 +4870,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "13932069854",
+      "会员手机号": "139****9854",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4720,7 +4883,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-15833287802",
+      "会员手机号": "+86-158****7802",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4733,7 +4896,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18801170892",
+      "会员手机号": "+86-188****0892",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4746,7 +4909,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13629133866",
+      "会员手机号": "+86-136****3866",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4759,7 +4922,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18611202999",
+      "会员手机号": "+86-186****2999",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4772,7 +4935,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13661254596",
+      "会员手机号": "+86-136****4596",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4785,7 +4948,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13552763541",
+      "会员手机号": "+86-135****3541",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4798,7 +4961,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13691446230",
+      "会员手机号": "+86-136****6230",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4811,7 +4974,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13521507391",
+      "会员手机号": "+86-135****7391",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4824,7 +4987,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18710099725",
+      "会员手机号": "+86-187****9725",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4837,7 +5000,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13621262871",
+      "会员手机号": "+86-136****2871",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4850,7 +5013,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13661104417",
+      "会员手机号": "+86-136****4417",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -4863,7 +5026,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13901056913",
+      "会员手机号": "+86-139****6913",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4876,7 +5039,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13671275348",
+      "会员手机号": "+86-136****5348",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4889,7 +5052,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13581627766",
+      "会员手机号": "+86-135****7766",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4902,7 +5065,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-17801591967",
+      "会员手机号": "+86-178****1967",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4915,7 +5078,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "15311151994",
+      "会员手机号": "153****1994",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4928,7 +5091,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-15641259614",
+      "会员手机号": "+86-156****9614",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4941,7 +5104,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-15176350897",
+      "会员手机号": "+86-151****0897",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -4954,7 +5117,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18513141770",
+      "会员手机号": "+86-185****1770",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4967,7 +5130,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18703248972",
+      "会员手机号": "+86-187****8972",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4980,7 +5143,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-15801661870",
+      "会员手机号": "+86-158****1870",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -4993,7 +5156,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "18831402372",
+      "会员手机号": "188****2372",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5006,7 +5169,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "13391980100",
+      "会员手机号": "133****0100",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -5019,7 +5182,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "13391980100",
+      "会员手机号": "133****0100",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -5032,7 +5195,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-19845726299",
+      "会员手机号": "+86-198****6299",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -5045,7 +5208,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-19845726299",
+      "会员手机号": "+86-198****6299",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -5058,7 +5221,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-15201675172",
+      "会员手机号": "+86-152****5172",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -5071,7 +5234,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-15201095512",
+      "会员手机号": "+86-152****5512",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -5084,7 +5247,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-17610621972",
+      "会员手机号": "+86-176****1972",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5097,7 +5260,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "18911380307",
+      "会员手机号": "189****0307",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -5110,7 +5273,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "18239484561",
+      "会员手机号": "182****4561",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -5123,7 +5286,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18531921711",
+      "会员手机号": "+86-185****1711",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -5136,7 +5299,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13301394816",
+      "会员手机号": "+86-133****4816",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5149,7 +5312,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13269760312",
+      "会员手机号": "+86-132****0312",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -5162,7 +5325,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "13911935407",
+      "会员手机号": "139****5407",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -5175,9 +5338,113 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18611732128",
+      "会员手机号": "+86-186****2128",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "华为北京丰台鑫嘉汇",
+      "业务组织": "华为北京丰台鑫嘉汇",
+      "所属分公司": "北京易联",
+      "单据编号": "LSD2026080600926330",
+      "支付通道": "刷卡扫码-银联",
+      "收款方式": "刷卡扫码-银联",
+      "收款类型": "销售收款",
+      "会员手机号": "166****5415",
+      "第三方订单号": "（无）",
+      "判定": "不合规（缺三方单号）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "华为北京丰台银泰",
+      "业务组织": "华为北京丰台银泰",
+      "所属分公司": "北京易联",
+      "单据编号": "LSD2026080600929390",
+      "支付通道": "银联POS手动收款",
+      "收款方式": "银联POS手动收款",
+      "收款类型": "销售收款",
+      "会员手机号": "137****5621",
+      "第三方订单号": "（无）",
+      "判定": "不合规（公司禁用收款通道）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "华为北京丰台银泰",
+      "业务组织": "华为北京丰台银泰",
+      "所属分公司": "北京易联",
+      "单据编号": "LSD2026080600929142",
+      "支付通道": "银联POS手动收款",
+      "收款方式": "银联POS手动收款",
+      "收款类型": "销售收款",
+      "会员手机号": "137****5621",
+      "第三方订单号": "（无）",
+      "判定": "不合规（公司禁用收款通道）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "华为北京延庆万达",
+      "业务组织": "华为北京延庆万达",
+      "所属分公司": "北京易联",
+      "单据编号": "LSD2026080600928502",
+      "支付通道": "银联POS手动收款",
+      "收款方式": "银联POS手动收款",
+      "收款类型": "销售收款",
+      "会员手机号": "+86-133****1333",
+      "第三方订单号": "（无）",
+      "判定": "不合规（公司禁用收款通道）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "华为北京延庆万达",
+      "业务组织": "华为北京延庆万达",
+      "所属分公司": "北京易联",
+      "单据编号": "LSD2026080600927639",
+      "支付通道": "刷卡扫码-银联",
+      "收款方式": "刷卡扫码-银联",
+      "收款类型": "销售收款",
+      "会员手机号": "+86-133****1333",
+      "第三方订单号": "（无）",
+      "判定": "不合规（缺三方单号）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "华为北京房山燕隆汇",
+      "业务组织": "华为北京房山燕隆汇",
+      "所属分公司": "北京易联",
+      "单据编号": "LSD2026080600929105",
+      "支付通道": "刷卡扫码-银联",
+      "收款方式": "刷卡扫码-银联",
+      "收款类型": "销售收款",
+      "会员手机号": "137****0711",
+      "第三方订单号": "（无）",
+      "判定": "不合规（缺三方单号）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "华为北京槐房万达",
+      "业务组织": "华为北京槐房万达",
+      "所属分公司": "北京易联",
+      "单据编号": "LSD2026080600929170",
+      "支付通道": "刷卡扫码-银联",
+      "收款方式": "刷卡扫码-银联",
+      "收款类型": "销售收款",
+      "会员手机号": "+86-173****6853",
+      "第三方订单号": "（无）",
+      "判定": "不合规（缺三方单号）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "华为北京首开万象汇",
+      "业务组织": "华为北京首开万象汇",
+      "所属分公司": "北京易联",
+      "单据编号": "LSD2026080600926413",
+      "支付通道": "银联POS手动收款",
+      "收款方式": "银联POS手动收款",
+      "收款类型": "销售收款",
+      "会员手机号": "+86-135****7766",
+      "第三方订单号": "（无）",
+      "判定": "不合规（公司禁用收款通道）"
     },
     {
       "单据日期": "2026-08-01",
@@ -5188,7 +5455,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5201,7 +5468,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5214,7 +5481,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5227,7 +5494,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17721822965",
+      "会员手机号": "177****2965",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5240,7 +5507,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "18407395224",
+      "会员手机号": "184****5224",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5253,7 +5520,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5266,7 +5533,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5279,7 +5546,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "13717822423",
+      "会员手机号": "137****2423",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5292,7 +5559,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5305,7 +5572,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5318,7 +5585,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "13511065980",
+      "会员手机号": "135****5980",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5331,7 +5598,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "13511065980",
+      "会员手机号": "135****5980",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5344,7 +5611,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "15844439456",
+      "会员手机号": "158****9456",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5357,7 +5624,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18311207721",
+      "会员手机号": "+86-183****7721",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5370,7 +5637,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5383,7 +5650,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5396,7 +5663,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5409,7 +5676,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5422,7 +5689,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17208264364",
+      "会员手机号": "172****4364",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5435,7 +5702,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "13810037017",
+      "会员手机号": "138****7017",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5448,7 +5715,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "13511065980",
+      "会员手机号": "135****5980",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5461,7 +5728,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5474,7 +5741,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "13810551500",
+      "会员手机号": "138****1500",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5487,7 +5754,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "15712982651",
+      "会员手机号": "157****2651",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5500,7 +5767,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "13426422963",
+      "会员手机号": "134****2963",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5513,7 +5780,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "18666941441",
+      "会员手机号": "186****1441",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5526,7 +5793,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "18611309390",
+      "会员手机号": "186****9390",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5539,7 +5806,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "15201283830",
+      "会员手机号": "152****3830",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5552,7 +5819,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5565,7 +5832,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17326882982",
+      "会员手机号": "173****2982",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5578,7 +5845,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "13521352633",
+      "会员手机号": "135****2633",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5591,7 +5858,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "15179867380",
+      "会员手机号": "151****7380",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5604,7 +5871,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "13426263737",
+      "会员手机号": "134****3737",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5617,7 +5884,85 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "17701033777",
+      "会员手机号": "177****3777",
+      "第三方订单号": "（无）",
+      "判定": "不合规（公司禁用收款通道）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "DJI北京北投新奥天虹授权体验店",
+      "业务组织": "DJI北京北投新奥天虹授权体验店",
+      "所属分公司": "北京飞航",
+      "单据编号": "LSD2026080600927423",
+      "支付通道": "银联POS手动收款",
+      "收款方式": "银联POS手动收款",
+      "收款类型": "销售收款",
+      "会员手机号": "186****4146",
+      "第三方订单号": "（无）",
+      "判定": "不合规（公司禁用收款通道）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "DJI北京北投新奥天虹授权体验店",
+      "业务组织": "DJI北京北投新奥天虹授权体验店",
+      "所属分公司": "北京飞航",
+      "单据编号": "LSD2026080600924993",
+      "支付通道": "银联POS手动收款",
+      "收款方式": "银联POS手动收款",
+      "收款类型": "销售收款",
+      "会员手机号": "187****7311",
+      "第三方订单号": "（无）",
+      "判定": "不合规（公司禁用收款通道）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "DJI北京太阳宫凯德授权体验店",
+      "业务组织": "DJI北京太阳宫凯德授权体验店",
+      "所属分公司": "北京飞航",
+      "单据编号": "LSD2026080600925769",
+      "支付通道": "银联POS手动收款",
+      "收款方式": "银联POS手动收款",
+      "收款类型": "销售收款",
+      "会员手机号": "186****1215",
+      "第三方订单号": "（无）",
+      "判定": "不合规（公司禁用收款通道）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "DJI北京昌平超级合生汇授权体验店",
+      "业务组织": "DJI北京昌平超级合生汇授权体验店",
+      "所属分公司": "北京飞航",
+      "单据编号": "LSD2026080600930309",
+      "支付通道": "银联POS手动收款",
+      "收款方式": "银联POS手动收款",
+      "收款类型": "销售收款",
+      "会员手机号": "133****7937",
+      "第三方订单号": "（无）",
+      "判定": "不合规（公司禁用收款通道）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "DJI北京王府井APM授权高级体验店",
+      "业务组织": "DJI北京王府井APM授权高级体验店",
+      "所属分公司": "北京飞航",
+      "单据编号": "LSD2026080600929773",
+      "支付通道": "银联POS手动收款",
+      "收款方式": "银联POS手动收款",
+      "收款类型": "销售收款",
+      "会员手机号": "177****3777",
+      "第三方订单号": "（无）",
+      "判定": "不合规（公司禁用收款通道）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "DJI大疆哈苏北京朝阳合生汇概念店",
+      "业务组织": "DJI大疆哈苏北京朝阳合生汇概念店",
+      "所属分公司": "北京飞航",
+      "单据编号": "LSD2026080600929795",
+      "支付通道": "银联POS手动收款",
+      "收款方式": "银联POS手动收款",
+      "收款类型": "销售收款",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5630,7 +5975,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18145003714",
+      "会员手机号": "+86-181****3714",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -5643,7 +5988,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13408496425",
+      "会员手机号": "+86-134****6425",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -5656,7 +6001,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18665031921",
+      "会员手机号": "+86-186****1921",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -5669,7 +6014,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-15982494633",
+      "会员手机号": "+86-159****4633",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -5682,7 +6027,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13683538289",
+      "会员手机号": "+86-136****8289",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -5695,7 +6040,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "13982987878",
+      "会员手机号": "139****7878",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -5708,7 +6053,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "13908180299",
+      "会员手机号": "139****0299",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -5721,7 +6066,7 @@
       "支付通道": "刷卡扫码-银联",
       "收款方式": "刷卡扫码-银联",
       "收款类型": "销售收款",
-      "会员手机号": "15982039395",
+      "会员手机号": "159****9395",
       "第三方订单号": "（无）",
       "判定": "不合规（缺三方单号）"
     },
@@ -5734,7 +6079,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-17850050594",
+      "会员手机号": "+86-178****0594",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5747,7 +6092,7 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-18965810178",
+      "会员手机号": "+86-189****0178",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     },
@@ -5760,7 +6105,20 @@
       "支付通道": "银联POS手动收款",
       "收款方式": "银联POS手动收款",
       "收款类型": "销售收款",
-      "会员手机号": "+86-13055511120",
+      "会员手机号": "+86-130****1120",
+      "第三方订单号": "（无）",
+      "判定": "不合规（公司禁用收款通道）"
+    },
+    {
+      "单据日期": "2026-08-06",
+      "销售门店": "华为福州东街口",
+      "业务组织": "华为福州东街口",
+      "所属分公司": "福建易联",
+      "单据编号": "LSD2026080600926421",
+      "支付通道": "银联POS手动收款",
+      "收款方式": "银联POS手动收款",
+      "收款类型": "销售收款",
+      "会员手机号": "177****3777",
       "第三方订单号": "（无）",
       "判定": "不合规（公司禁用收款通道）"
     }
