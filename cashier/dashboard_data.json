@@ -2584,7 +2584,11 @@
       "noncomp": 88,
       "excl": 375,
       "unmatched": 0,
-      "rate": 98.56
+      "rate": 98.56,
+      "stores_total": 37,
+      "stores_comp": 10,
+      "stores_noncomp": 27,
+      "perfect_pct": 27.0
     },
     "北京易联": {
       "count": 5835,
@@ -2593,7 +2597,11 @@
       "noncomp": 82,
       "excl": 401,
       "unmatched": 1,
-      "rate": 98.49
+      "rate": 98.49,
+      "stores_total": 37,
+      "stores_comp": 11,
+      "stores_noncomp": 26,
+      "perfect_pct": 29.7
     },
     "北京飞航": {
       "count": 2861,
@@ -2602,7 +2610,11 @@
       "noncomp": 34,
       "excl": 125,
       "unmatched": 0,
-      "rate": 98.76
+      "rate": 98.76,
+      "stores_total": 37,
+      "stores_comp": 19,
+      "stores_noncomp": 18,
+      "perfect_pct": 51.4
     },
     "上海爱飞": {
       "count": 1059,
@@ -2611,7 +2623,11 @@
       "noncomp": 24,
       "excl": 31,
       "unmatched": 0,
-      "rate": 97.67
+      "rate": 97.67,
+      "stores_total": 21,
+      "stores_comp": 10,
+      "stores_noncomp": 11,
+      "perfect_pct": 47.6
     },
     "四川新跃": {
       "count": 2964,
@@ -2620,7 +2636,11 @@
       "noncomp": 8,
       "excl": 148,
       "unmatched": 0,
-      "rate": 99.72
+      "rate": 99.72,
+      "stores_total": 20,
+      "stores_comp": 18,
+      "stores_noncomp": 2,
+      "perfect_pct": 90.0
     },
     "福建易联": {
       "count": 1884,
@@ -2629,7 +2649,11 @@
       "noncomp": 3,
       "excl": 98,
       "unmatched": 0,
-      "rate": 99.83
+      "rate": 99.83,
+      "stores_total": 20,
+      "stores_comp": 18,
+      "stores_noncomp": 2,
+      "perfect_pct": 90.0
     }
   },
   "noncompliant_rows": [
