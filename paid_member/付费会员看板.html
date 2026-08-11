@@ -3,18 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>付费会员销售看板 · 会员连带率（2026-08-01 ~ 2026-08-10（当月累积））</title>
+<title>付费会员销售看板 · 会员连带率（多维日期）</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}
   body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
     background:#f4f6f8;color:#1f2933;padding:0 16px;-webkit-font-smoothing:antialiased;}
-  .wrap{max-width:880px;margin:0 auto;padding:44px 0 56px;}
-  .brandbar{display:inline-block;width:44px;height:5px;border-radius:3px;background:#1AABCB;margin-bottom:14px;}
+  .wrap{max-width:900px;margin:0 auto;padding:44px 0 56px;}
+  .brandbar{display:inline-block;width:44px;height:5px;border-radius:3px;background:#6366f1;margin-bottom:14px;}
   h1{font-size:25px;font-weight:800;letter-spacing:-.3px;}
   .sub{color:#6b7280;font-size:13.5px;margin-top:8px;line-height:1.6;}
-  .kpis{display:flex;gap:14px;margin:26px 0 8px;flex-wrap:wrap;}
+  .selbar{display:flex;align-items:center;gap:10px;margin:24px 0 6px;flex-wrap:wrap;}
+  .selbar .lab{font-size:13px;color:#6b7280;font-weight:600;margin-right:4px;}
+  .seg{display:inline-flex;background:#fff;border:1px solid #e5e9ef;border-radius:11px;overflow:hidden;}
+  .seg button{border:0;background:transparent;padding:9px 16px;font-size:14px;font-weight:600;color:#4b5563;cursor:pointer;transition:all .12s;}
+  .seg button.active{background:#6366f1;color:#fff;}
+  .seg button:not(.active):hover{background:#eef0fe;}
+  .custom{display:none;align-items:center;gap:8px;}
+  .custom.show{display:inline-flex;}
+  .custom input{font-size:13px;padding:7px 10px;border:1px solid #e5e9ef;border-radius:9px;color:#1f2933;background:#fff;}
+  .custom button{font-size:13px;font-weight:600;padding:7px 14px;border:0;border-radius:9px;background:#6366f1;color:#fff;cursor:pointer;}
+  .period{font-size:13px;color:#6366f1;font-weight:700;margin:10px 0 2px;}
+  .note-upd{font-size:12px;color:#9aa3ad;margin-bottom:8px;}
+  .kpis{display:flex;gap:14px;margin:14px 0 6px;flex-wrap:wrap;}
   .kpi{flex:1;min-width:150px;background:#fff;border:1px solid #e5e9ef;border-radius:14px;padding:18px 20px;}
-  .kpi .v{font-size:30px;font-weight:800;color:#1AABCB;}
+  .kpi .v{font-size:30px;font-weight:800;color:#6366f1;}
   .kpi .v.o{color:#F6AA00;}
   .kpi .l{font-size:13px;color:#9099a5;margin-top:6px;}
   table{width:100%;border-collapse:collapse;margin-top:20px;background:#fff;border-radius:14px;overflow:hidden;border:1px solid #e5e9ef;}
@@ -27,7 +39,7 @@
   .bar span{display:block;height:100%;border-radius:6px;}
   td.rate b{font-size:15px;vertical-align:middle;}
   .bd{margin-top:30px;}
-  .bd-title{font-size:14px;font-weight:700;color:#374151;margin-bottom:10px;padding-left:10px;border-left:4px solid #1AABCB;}
+  .bd-title{font-size:14px;font-weight:700;color:#374151;margin-bottom:10px;padding-left:10px;border-left:4px solid #6366f1;}
   .store-table{margin-top:0;}
   .store-table th,.store-table td{padding:9px 16px;font-size:13.5px;}
   td.sn{font-weight:600;font-size:13px;}
@@ -42,41 +54,258 @@
   .note p{font-size:13px;color:#6b7280;line-height:1.7;}
   .foot{margin-top:26px;color:#9aa3ad;font-size:12px;text-align:center;}
   .warn{color:#dc2626;font-weight:700;}
+  .loading{padding:40px 0;text-align:center;color:#9099a5;font-size:14px;}
 </style>
 </head>
 <body>
   <div class="wrap">
     <div class="brandbar"></div>
     <h1>付费会员销售看板 · 会员连带率</h1>
-    <div class="sub">统计周期：<b>2026-08-01 ~ 2026-08-10（当月累积）</b>。仅统计北京中恒 / 四川新跃 / 北京易联 / 福建易联 四家分公司。</div>
-    <div class="kpis">
-      <div class="kpi"><div class="v">5156</div><div class="l">主机台量（分母·累计）</div></div>
-      <div class="kpi"><div class="v o">314</div><div class="l">VIP会员商品数（分子·累计）</div></div>
-      <div class="kpi"><div class="v">6.09%</div><div class="l">合计会员连带率</div></div>
-      <div class="kpi"><div class="v">6.19%</div><div class="l">合计开单占比</div></div>
+    <div class="sub">选择时间维度查看对应数据。仅统计北京中恒 / 四川新跃 / 北京易联 / 福建易联 四家分公司。</div>
+    <div class="selbar">
+      <span class="lab">时间维度</span>
+      <div class="seg" id="seg">
+        <button data-mode="当日">当日</button>
+        <button data-mode="昨日">昨日</button>
+        <button data-mode="当月" class="active">当月</button>
+        <button data-mode="自定义">自定义</button>
+      </div>
+      <div class="custom" id="custom">
+        <input type="date" id="cstart">
+        <span style="color:#9aa3ad">至</span>
+        <input type="date" id="cend">
+        <button id="capply">应用</button>
+      </div>
     </div>
-    <table>
-      <thead><tr><th>所属分公司</th><th style="text-align:right">主机台量</th><th style="text-align:right">VIP数</th><th>会员连带率</th><th style="text-align:right">开单占比</th><th style="text-align:right">门店销售(售/总)</th><th style="text-align:right">未售门店</th></tr></thead>
-      <tbody>
-        <tr><td class="bn">北京易联</td><td class="num">2041</td><td class="num">243</td><td class="rate"><div class="bar"><span style="width:100.0%;background:#16a34a"></span></div><b style="color:#16a34a">11.91%</b></td><td class="num">12.12%</td><td class="num">37/38</td><td class="num" style="color:#dc2626">1</td></tr>
-<tr><td class="bn">福建易联</td><td class="num">722</td><td class="num">71</td><td class="rate"><div class="bar"><span style="width:82.6%;background:#F6AA00"></span></div><b style="color:#F6AA00">9.83%</b></td><td class="num">10.09%</td><td class="num">20/22</td><td class="num" style="color:#dc2626">2</td></tr>
-<tr><td class="bn">北京中恒</td><td class="num">1743</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td><td class="num">37/37</td><td class="num" style="color:#dc2626">0</td></tr>
-<tr><td class="bn">四川新跃</td><td class="num">650</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td><td class="num">20/24</td><td class="num" style="color:#dc2626">4</td></tr>
-      </tbody>
-    </table>
-    <div class="bd"><div class="bd-title">每日趋势（含VIP会员商品连带率 / 开单占比）</div><table class="store-table"><thead><tr><th>日期</th><th style="text-align:right">主机台量</th><th style="text-align:right">VIP数</th><th style="text-align:right">连带率</th><th style="text-align:right">开单占比</th></tr></thead><tbody><tr><td>2026-08-01</td><td class="num">715</td><td class="num">0</td><td class="num">0.00%</td><td class="num">0.00%</td></tr><tr><td>2026-08-02</td><td class="num">624</td><td class="num">0</td><td class="num">0.00%</td><td class="num">0.00%</td></tr><tr><td>2026-08-03</td><td class="num">431</td><td class="num">1</td><td class="num">0.23%</td><td class="num">0.24%</td></tr><tr><td>2026-08-04</td><td class="num">433</td><td class="num">29</td><td class="num">6.70%</td><td class="num">6.74%</td></tr><tr><td>2026-08-05</td><td class="num">424</td><td class="num">34</td><td class="num">8.02%</td><td class="num">8.35%</td></tr><tr><td>2026-08-06</td><td class="num">445</td><td class="num">22</td><td class="num">4.94%</td><td class="num">5.16%</td></tr><tr><td>2026-08-07</td><td class="num">410</td><td class="num">20</td><td class="num">4.88%</td><td class="num">4.98%</td></tr><tr><td>2026-08-08</td><td class="num">620</td><td class="num">97</td><td class="num">15.65%</td><td class="num">15.80%</td></tr><tr><td>2026-08-09</td><td class="num">619</td><td class="num">86</td><td class="num">13.89%</td><td class="num">13.94%</td></tr><tr><td>2026-08-10</td><td class="num">435</td><td class="num">25</td><td class="num">5.75%</td><td class="num">5.88%</td></tr></tbody></table></div>
-    <div class="bd"><div class="bd-title">北京中恒 · 门店明细（销售 37/37 家）</div><table class="store-table"><thead><tr><th>门店</th><th style="text-align:right">主机台量(分母)</th><th style="text-align:right">VIP数(分子)</th><th>会员连带率</th><th style="text-align:right">开单占比</th></tr></thead><tbody><tr><td class="sn">APR北京延庆万达</td><td class="num">37</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京丽泽龙湖</td><td class="num">40</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京大族广场</td><td class="num">50</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京长安龙湖</td><td class="num">43</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京大峡谷凯德茂</td><td class="num">25</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京牡丹园翠微</td><td class="num">12</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京房山熙悦</td><td class="num">65</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京新奥天虹</td><td class="num">23</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京海淀大悦城</td><td class="num">47</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京怀柔万达</td><td class="num">70</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京望京凯德茂</td><td class="num">26</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京五道口购物中心</td><td class="num">31</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京北苑龙湖</td><td class="num">24</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京石景山喜隆多</td><td class="num">47</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京大红门银泰</td><td class="num">16</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京龙德广场</td><td class="num">79</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京望京华彩</td><td class="num">24</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京槐房万达</td><td class="num">35</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京常营龙湖</td><td class="num">79</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京旧宫万科</td><td class="num">47</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京新辰汇</td><td class="num">20</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京昌发展万科</td><td class="num">17</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京房山龙湖</td><td class="num">72</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京东坝万达</td><td class="num">46</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京合生汇</td><td class="num">150</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京颐堤港</td><td class="num">45</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京亦庄龙湖</td><td class="num">55</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京顺义华联</td><td class="num">135</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京通州万达</td><td class="num">53</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京大兴龙湖</td><td class="num">46</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京五棵松华熙</td><td class="num">73</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京西铁营万达</td><td class="num">26</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京同成街华联</td><td class="num">27</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京西三旗万象汇</td><td class="num">63</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京石景山万达</td><td class="num">56</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京万柳华联</td><td class="num">19</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR北京回龙观华联</td><td class="num">20</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr></tbody></table><div class="unsold ok">✅ 该分公司所有门店当期均有主机销售</div></div><div class="bd"><div class="bd-title">四川新跃 · 门店明细（销售 20/24 家）</div><table class="store-table"><thead><tr><th>门店</th><th style="text-align:right">主机台量(分母)</th><th style="text-align:right">VIP数(分子)</th><th>会员连带率</th><th style="text-align:right">开单占比</th></tr></thead><tbody><tr><td class="sn">APR成都武侯大悦城</td><td class="num">39</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR成都科华王府井</td><td class="num">26</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR成都双楠伊藤</td><td class="num">29</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">（旧）APR成都环球中心</td><td class="num">13</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR成都北城天街</td><td class="num">32</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR成都高新伊藤</td><td class="num">58</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR成都三利爱琴海</td><td class="num">56</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR成都金牛凯德</td><td class="num">59</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR成都时代天街</td><td class="num">30</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR成都温江伊藤</td><td class="num">28</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR成都龙泉吾悦</td><td class="num">35</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">（旧）APR成都凯德魅力城</td><td class="num">9</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR成都蜀新天街</td><td class="num">42</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR成都金楠天街</td><td class="num">23</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR成都天府大悦城</td><td class="num">34</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR成都西宸天街</td><td class="num">41</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">（旧）APR成都天府环宇坊</td><td class="num">14</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">（旧）APR成都东安天街</td><td class="num">8</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR成都温江旭辉</td><td class="num">44</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">APR成都武侯吾悦</td><td class="num">30</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr></tbody></table><div class="unsold"><div class="us-title">未售门店（4 家 · 当期主机台量=0）</div><span class="tag">APR成都东安天街</span><span class="tag">APR成都凯德魅力城</span><span class="tag">APR成都天府环宇坊</span><span class="tag">APR成都环球中心</span></div></div><div class="bd"><div class="bd-title">北京易联 · 门店明细（销售 37/38 家）</div><table class="store-table"><thead><tr><th>门店</th><th style="text-align:right">主机台量(分母)</th><th style="text-align:right">VIP数(分子)</th><th>会员连带率</th><th style="text-align:right">开单占比</th></tr></thead><tbody><tr><td class="sn">华为北京东坝金隅</td><td class="num">16</td><td class="num">11</td><td class="rate"><div class="bar"><span style="width:100.0%;background:#16a34a"></span></div><b style="color:#16a34a">68.75%</b></td><td class="num">68.75%</td></tr><tr><td class="sn">华为北京丰台鑫嘉汇</td><td class="num">16</td><td class="num">7</td><td class="rate"><div class="bar"><span style="width:63.6%;background:#16a34a"></span></div><b style="color:#16a34a">43.75%</b></td><td class="num">46.67%</td></tr><tr><td class="sn">华为北京方庄新城</td><td class="num">27</td><td class="num">11</td><td class="rate"><div class="bar"><span style="width:59.3%;background:#16a34a"></span></div><b style="color:#16a34a">40.74%</b></td><td class="num">40.74%</td></tr><tr><td class="sn">华为北京大兴大族</td><td class="num">53</td><td class="num">21</td><td class="rate"><div class="bar"><span style="width:57.6%;background:#16a34a"></span></div><b style="color:#16a34a">39.62%</b></td><td class="num">39.62%</td></tr><tr><td class="sn">华为北京平谷万达</td><td class="num">48</td><td class="num">14</td><td class="rate"><div class="bar"><span style="width:42.4%;background:#16a34a"></span></div><b style="color:#16a34a">29.17%</b></td><td class="num">29.17%</td></tr><tr><td class="sn">华为北京房山万科</td><td class="num">42</td><td class="num">11</td><td class="rate"><div class="bar"><span style="width:38.1%;background:#16a34a"></span></div><b style="color:#16a34a">26.19%</b></td><td class="num">26.19%</td></tr><tr><td class="sn">华为北京西铁营万达</td><td class="num">58</td><td class="num">15</td><td class="rate"><div class="bar"><span style="width:37.6%;background:#16a34a"></span></div><b style="color:#16a34a">25.86%</b></td><td class="num">25.86%</td></tr><tr><td class="sn">华为北京槐房万达</td><td class="num">51</td><td class="num">13</td><td class="rate"><div class="bar"><span style="width:37.1%;background:#16a34a"></span></div><b style="color:#16a34a">25.49%</b></td><td class="num">25.49%</td></tr><tr><td class="sn">华为北京回龙观万科</td><td class="num">13</td><td class="num">3</td><td class="rate"><div class="bar"><span style="width:33.6%;background:#16a34a"></span></div><b style="color:#16a34a">23.08%</b></td><td class="num">23.08%</td></tr><tr><td class="sn">华为北京旧宫万科</td><td class="num">70</td><td class="num">16</td><td class="rate"><div class="bar"><span style="width:33.2%;background:#16a34a"></span></div><b style="color:#16a34a">22.86%</b></td><td class="num">25.00%</td></tr><tr><td class="sn">华为北京东坝万达</td><td class="num">117</td><td class="num">26</td><td class="rate"><div class="bar"><span style="width:32.3%;background:#16a34a"></span></div><b style="color:#16a34a">22.22%</b></td><td class="num">23.42%</td></tr><tr><td class="sn">华为北京同成街华联</td><td class="num">23</td><td class="num">5</td><td class="rate"><div class="bar"><span style="width:31.6%;background:#16a34a"></span></div><b style="color:#16a34a">21.74%</b></td><td class="num">21.74%</td></tr><tr><td class="sn">华为北京北苑龙湖</td><td class="num">45</td><td class="num">9</td><td class="rate"><div class="bar"><span style="width:29.1%;background:#16a34a"></span></div><b style="color:#16a34a">20.00%</b></td><td class="num">20.45%</td></tr><tr><td class="sn">华为北京丰台银泰</td><td class="num">53</td><td class="num">10</td><td class="rate"><div class="bar"><span style="width:27.4%;background:#16a34a"></span></div><b style="color:#16a34a">18.87%</b></td><td class="num">18.87%</td></tr><tr><td class="sn">华为北京来福士</td><td class="num">61</td><td class="num">11</td><td class="rate"><div class="bar"><span style="width:26.2%;background:#16a34a"></span></div><b style="color:#16a34a">18.03%</b></td><td class="num">19.30%</td></tr><tr><td class="sn">华为北京石景山万达</td><td class="num">71</td><td class="num">11</td><td class="rate"><div class="bar"><span style="width:22.5%;background:#16a34a"></span></div><b style="color:#16a34a">15.49%</b></td><td class="num">15.49%</td></tr><tr><td class="sn">华为北京通州乐堤港</td><td class="num">48</td><td class="num">7</td><td class="rate"><div class="bar"><span style="width:21.2%;background:#16a34a"></span></div><b style="color:#16a34a">14.58%</b></td><td class="num">14.58%</td></tr><tr><td class="sn">华为北京门头沟长安天街</td><td class="num">62</td><td class="num">9</td><td class="rate"><div class="bar"><span style="width:21.1%;background:#16a34a"></span></div><b style="color:#16a34a">14.52%</b></td><td class="num">14.52%</td></tr><tr><td class="sn">华为北京牡丹园翠微</td><td class="num">76</td><td class="num">11</td><td class="rate"><div class="bar"><span style="width:21.1%;background:#16a34a"></span></div><b style="color:#16a34a">14.47%</b></td><td class="num">15.07%</td></tr><tr><td class="sn">华为北京昌平政府街</td><td class="num">17</td><td class="num">2</td><td class="rate"><div class="bar"><span style="width:17.1%;background:#16a34a"></span></div><b style="color:#16a34a">11.76%</b></td><td class="num">11.76%</td></tr><tr><td class="sn">华为北京上德银泰</td><td class="num">17</td><td class="num">2</td><td class="rate"><div class="bar"><span style="width:17.1%;background:#16a34a"></span></div><b style="color:#16a34a">11.76%</b></td><td class="num">13.33%</td></tr><tr><td class="sn">华为北京怀柔万达</td><td class="num">64</td><td class="num">7</td><td class="rate"><div class="bar"><span style="width:15.9%;background:#16a34a"></span></div><b style="color:#16a34a">10.94%</b></td><td class="num">10.94%</td></tr><tr><td class="sn">华为北京汇琴广场</td><td class="num">23</td><td class="num">2</td><td class="rate"><div class="bar"><span style="width:12.6%;background:#F6AA00"></span></div><b style="color:#F6AA00">8.70%</b></td><td class="num">8.70%</td></tr><tr><td class="sn">华为北京房山燕隆汇</td><td class="num">12</td><td class="num">1</td><td class="rate"><div class="bar"><span style="width:12.1%;background:#F6AA00"></span></div><b style="color:#F6AA00">8.33%</b></td><td class="num">8.33%</td></tr><tr><td class="sn">华为北京沙河万达</td><td class="num">29</td><td class="num">2</td><td class="rate"><div class="bar"><span style="width:10.0%;background:#F6AA00"></span></div><b style="color:#F6AA00">6.90%</b></td><td class="num">6.90%</td></tr><tr><td class="sn">华为北京延庆万达</td><td class="num">72</td><td class="num">3</td><td class="rate"><div class="bar"><span style="width:6.1%;background:#dc2626"></span></div><b style="color:#dc2626">4.17%</b></td><td class="num">4.17%</td></tr><tr><td class="sn">华为北京回龙观华联</td><td class="num">28</td><td class="num">1</td><td class="rate"><div class="bar"><span style="width:5.2%;background:#dc2626"></span></div><b style="color:#dc2626">3.57%</b></td><td class="num">3.57%</td></tr><tr><td class="sn">华为北京酒仙桥颐堤港</td><td class="num">57</td><td class="num">1</td><td class="rate"><div class="bar"><span style="width:2.6%;background:#dc2626"></span></div><b style="color:#dc2626">1.75%</b></td><td class="num">1.82%</td></tr><tr><td class="sn">华为北京清河万象汇</td><td class="num">101</td><td class="num">1</td><td class="rate"><div class="bar"><span style="width:1.4%;background:#dc2626"></span></div><b style="color:#dc2626">0.99%</b></td><td class="num">1.03%</td></tr><tr><td class="sn">华为北京亦庄龙湖</td><td class="num">73</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">华为北京丽泽龙湖</td><td class="num">63</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">华为北京丰科万达</td><td class="num">117</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">华为北京回龙观一店</td><td class="num">11</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">华为北京通州万达</td><td class="num">198</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">华为北京京投小站</td><td class="num">7</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">华为北京首开万象汇</td><td class="num">92</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">华为北京长楹龙湖</td><td class="num">110</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr></tbody></table><div class="unsold"><div class="us-title">未售门店（1 家 · 当期主机台量=0）</div><span class="tag">华为北京丰管路用户中心</span></div></div><div class="bd"><div class="bd-title">福建易联 · 门店明细（销售 20/22 家）</div><table class="store-table"><thead><tr><th>门店</th><th style="text-align:right">主机台量(分母)</th><th style="text-align:right">VIP数(分子)</th><th>会员连带率</th><th style="text-align:right">开单占比</th></tr></thead><tbody><tr><td class="sn">华为福州仓山爱琴海合作店</td><td class="num">10</td><td class="num">3</td><td class="rate"><div class="bar"><span style="width:100.0%;background:#16a34a"></span></div><b style="color:#16a34a">30.00%</b></td><td class="num">30.00%</td></tr><tr><td class="sn">华为南平武夷山宝龙广场</td><td class="num">31</td><td class="num">7</td><td class="rate"><div class="bar"><span style="width:75.3%;background:#16a34a"></span></div><b style="color:#16a34a">22.58%</b></td><td class="num">22.58%</td></tr><tr><td class="sn">华为厦门思明加州广场</td><td class="num">29</td><td class="num">6</td><td class="rate"><div class="bar"><span style="width:69.0%;background:#16a34a"></span></div><b style="color:#16a34a">20.69%</b></td><td class="num">20.69%</td></tr><tr><td class="sn">华为厦门湖里蔡塘爱琴海</td><td class="num">15</td><td class="num">3</td><td class="rate"><div class="bar"><span style="width:66.7%;background:#16a34a"></span></div><b style="color:#16a34a">20.00%</b></td><td class="num">21.43%</td></tr><tr><td class="sn">华为福州仓山爱琴海</td><td class="num">30</td><td class="num">5</td><td class="rate"><div class="bar"><span style="width:55.6%;background:#16a34a"></span></div><b style="color:#16a34a">16.67%</b></td><td class="num">16.67%</td></tr><tr><td class="sn">华为福州平潭吾悦</td><td class="num">43</td><td class="num">6</td><td class="rate"><div class="bar"><span style="width:46.5%;background:#16a34a"></span></div><b style="color:#16a34a">13.95%</b></td><td class="num">13.95%</td></tr><tr><td class="sn">华为福州五四北泰禾广场</td><td class="num">87</td><td class="num">11</td><td class="rate"><div class="bar"><span style="width:42.1%;background:#16a34a"></span></div><b style="color:#16a34a">12.64%</b></td><td class="num">12.64%</td></tr><tr><td class="sn">华为泉州石狮泰禾广场</td><td class="num">57</td><td class="num">7</td><td class="rate"><div class="bar"><span style="width:40.9%;background:#16a34a"></span></div><b style="color:#16a34a">12.28%</b></td><td class="num">12.28%</td></tr><tr><td class="sn">华为厦门思明宝龙一城</td><td class="num">63</td><td class="num">7</td><td class="rate"><div class="bar"><span style="width:37.0%;background:#16a34a"></span></div><b style="color:#16a34a">11.11%</b></td><td class="num">11.29%</td></tr><tr><td class="sn">华为福州宜家荟聚</td><td class="num">10</td><td class="num">1</td><td class="rate"><div class="bar"><span style="width:33.3%;background:#16a34a"></span></div><b style="color:#16a34a">10.00%</b></td><td class="num">10.00%</td></tr><tr><td class="sn">华为厦门思明罗宾森广场</td><td class="num">41</td><td class="num">4</td><td class="rate"><div class="bar"><span style="width:32.5%;background:#F6AA00"></span></div><b style="color:#F6AA00">9.76%</b></td><td class="num">10.00%</td></tr><tr><td class="sn">华为福州大洋晶典</td><td class="num">35</td><td class="num">2</td><td class="rate"><div class="bar"><span style="width:19.0%;background:#F6AA00"></span></div><b style="color:#F6AA00">5.71%</b></td><td class="num">5.71%</td></tr><tr><td class="sn">华为厦门思明瑞景广场</td><td class="num">38</td><td class="num">2</td><td class="rate"><div class="bar"><span style="width:17.5%;background:#F6AA00"></span></div><b style="color:#F6AA00">5.26%</b></td><td class="num">5.56%</td></tr><tr><td class="sn">华为福州砂之船奥莱</td><td class="num">39</td><td class="num">2</td><td class="rate"><div class="bar"><span style="width:17.1%;background:#F6AA00"></span></div><b style="color:#F6AA00">5.13%</b></td><td class="num">6.90%</td></tr><tr><td class="sn">华为南平建阳建发悦城</td><td class="num">45</td><td class="num">2</td><td class="rate"><div class="bar"><span style="width:14.8%;background:#dc2626"></span></div><b style="color:#dc2626">4.44%</b></td><td class="num">4.76%</td></tr><tr><td class="sn">华为福州东街口</td><td class="num">43</td><td class="num">1</td><td class="rate"><div class="bar"><span style="width:7.8%;background:#dc2626"></span></div><b style="color:#dc2626">2.33%</b></td><td class="num">2.33%</td></tr><tr><td class="sn">华为福州中骏世界城</td><td class="num">88</td><td class="num">2</td><td class="rate"><div class="bar"><span style="width:7.6%;background:#dc2626"></span></div><b style="color:#dc2626">2.27%</b></td><td class="num">2.27%</td></tr><tr><td class="sn">华为厦门思明星河COCO Park</td><td class="num">4</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">华为厦门思明大西洋天虹</td><td class="num">3</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr><tr><td class="sn">华为厦门思明君尚天虹</td><td class="num">11</td><td class="num">0</td><td class="rate"><div class="bar"><span style="width:0.0%;background:#dc2626"></span></div><b style="color:#dc2626">0.00%</b></td><td class="num">0.00%</td></tr></tbody></table><div class="unsold"><div class="us-title">未售门店（2 家 · 当期主机台量=0）</div><span class="tag">华为厦门湖里江头</span><span class="tag">华为福州福清高山</span></div></div>
-    <div class="note">
-      <h3>口径说明</h3>
-      <p>· <b>分母（主机台量）</b>：依据《通报商品分类-新.xlsx》sheet4 主机清单，商品编码命中的行；剔除「买断 / 礼品机出库 / 线上订单」，按销售数量正项求和。<br>
-      · <b>分子（VIP会员商品）</b>：商品编码含 "VIP" 字段的会员商品行，与分母同口径剔除。<br>
-      · <b>会员连带率</b> = 分子 ÷ 分母；<b>开单占比</b> = 含VIP的「单据」数 ÷ 含主机的「单据」数（订单级）。<br>
-      · <b>门店销售(售/总)</b>：分公司主数据（门店sheet）中，当期主机台量&gt;0 的门店数 / 主数据门店总数。<br>
-      · <b>未售门店</b>：主数据中当期主机台量=0 的门店（红字列出，见各分公司区块）。<br>
-      · <b>退货处理</b>：退货状态「已退货」整行剔除；「部分退货」按 实售=销售数量−已退数量 计入。<br>
-      · ⚠️ <b>北京中恒 0%</b> 为真实情况：VIP 会员商品 SKU 为分公司专属编码（BJYLVIP=北京易联、FJYLVIP=福建易联、SCXYVIP=四川新跃），数据中未见北京中恒对应编码。</p>
-    </div>
-    <div class="foot">数据来源：ERP 零售单导出（与会员有效性同源）· <span class="warn">内含经营敏感数据，请勿外传</span></div>
+    <div class="period" id="period"></div>
+    <div class="note-upd" id="noteUpd"></div>
+    <div id="content"><div class="loading">加载中…</div></div>
   </div>
+<script>
+const BRANCHES = ["北京中恒","四川新跃","北京易联","福建易联"];
+let INDEX = [];          // 可用日期列表（升序）
+let GENERATED = "";
+let DAILY = {};          // 缓存 date -> json
+let MODE = "当月";
+let CUSTOM = {start:null, end:null};
+
+function bjDate(d){ // d: Date -> 'YYYY-MM-DD' (北京)
+  const bj = new Date(d.getTime()+d.getTimezoneOffset()*60000+8*3600000);
+  return bj.toISOString().slice(0,10);
+}
+function todayBJ(){ return bjDate(new Date()); }
+function prevDay(s){ const d=new Date(s+'T00:00:00'); d.setDate(d.getDate()-1); return bjDate(d); }
+function fmtDate(s){ return s.replace(/-/g,''); }
+
+async function loadIndex(){
+  const t = todayBJ();
+  const cands = [t, prevDay(t), prevDay(prevDay(t))];
+  for(const c of cands){
+    try{
+      const r = await fetch('daily_index_'+fmtDate(c)+'.json', {cache:'no-store'});
+      if(r.ok){ const j = await r.json(); INDEX = j.dates||[]; GENERATED = j.generated||""; return; }
+    }catch(e){}
+  }
+  try{ const r = await fetch('daily_index.json', {cache:'no-store'}); if(r.ok){ const j=await r.json(); INDEX=j.dates||[]; GENERATED=j.generated||""; } }catch(e){}
+}
+async function loadDay(date){
+  if(DAILY[date]) return DAILY[date];
+  const r = await fetch('daily/'+fmtDate(date)+'.json', {cache:'no-store'});
+  const j = await r.json(); DAILY[date]=j; return j;
+}
+function selectedDates(){
+  if(INDEX.length===0) return [];
+  const max = INDEX[INDEX.length-1];
+  if(MODE==="当日") return [max];
+  if(MODE==="昨日") return INDEX.length>=2 ? [INDEX[INDEX.length-2]] : [max];
+  if(MODE==="当月"){ const ms = max.slice(0,8)+"01"; return INDEX.filter(d=>d>=ms); }
+  if(MODE==="自定义"){ return INDEX.filter(d=>d>=(CUSTOM.start||"0000") && d<=(CUSTOM.end||"9999")); }
+  return [];
+}
+function selectedLabel(dates){
+  if(dates.length===0) return "（无数据）";
+  if(MODE==="当日") return "当日（"+dates[dates.length-1]+"）";
+  if(MODE==="昨日") return "昨日（"+dates[0]+"）";
+  if(MODE==="当月") return "当月累积（"+dates[0]+" ~ "+dates[dates.length-1]+"）";
+  if(MODE==="自定义") return "自定义（"+(CUSTOM.start||"?")+" ~ "+(CUSTOM.end||"?")+"）";
+  return "";
+}
+function aggregate(js){
+  const total={denominator:0,numerator:0,order_denom:0,order_num:0};
+  const branches={};
+  BRANCHES.forEach(b=>branches[b]={denominator:0,numerator:0,order_denom:0,order_num:0,stores:{}});
+  js.forEach(d=>{
+    total.denominator+=d.total.denominator; total.numerator+=d.total.numerator;
+    total.order_denom+=d.total.order_denom; total.order_num+=d.total.order_num;
+    BRANCHES.forEach(b=>{
+      const bd=d.branches[b]||{denominator:0,numerator:0,order_denom:0,order_num:0};
+      branches[b].denominator+=bd.denominator; branches[b].numerator+=bd.numerator;
+      branches[b].order_denom+=bd.order_denom; branches[b].order_num+=bd.order_num;
+      d.stores.filter(s=>s.branch===b).forEach(s=>{
+        const o=branches[b].stores[s.store]||{denominator:0,numerator:0,order_denom:0,order_num:0};
+        o.denominator+=s.denominator; o.numerator+=s.numerator;
+        o.order_denom+=s.order_denom; o.order_num+=s.order_num;
+        branches[b].stores[s.store]=o;
+      });
+    });
+  });
+  return {total, branches, isRange: js.length>1};
+}
+function rateColor(rate){
+  if(rate>=10) return "#16a34a";
+  if(rate>=5) return "#F6AA00";
+  return "#dc2626";
+}
+function pct(x){ return (x*100).toFixed(2)+"%"; }
+function draw(agg, dates){
+  const total=agg.total;
+  const totRate = total.denominator? total.numerator/total.denominator : 0;
+  const totORate = total.order_denom? total.order_num/total.order_denom : 0;
+  // KPI
+  let kpi = '<div class="kpis">'
+    + '<div class="kpi"><div class="v">'+total.denominator.toFixed(0)+'</div><div class="l">主机台量（分母）</div></div>'
+    + '<div class="kpi"><div class="v o">'+total.numerator.toFixed(0)+'</div><div class="l">VIP会员商品数（分子）</div></div>'
+    + '<div class="kpi"><div class="v">'+pct(totRate)+'</div><div class="l">合计会员连带率</div></div>'
+    + '<div class="kpi"><div class="v">'+pct(totORate)+'</div><div class="l">合计开单占比</div></div>'
+    + '</div>';
+
+  // 分公司表
+  let maxRate = Math.max.apply(null, BRANCHES.map(b=>agg.branches[b].denominator?agg.branches[b].numerator/agg.branches[b].denominator:0)) || 1;
+  let rows="";
+  BRANCHES.forEach(b=>{
+    const bd=agg.branches[b];
+    const rate = bd.denominator? bd.numerator/bd.denominator : 0;
+    const orate = bd.order_denom? bd.order_num/bd.order_denom : 0;
+    const col=rateColor(rate*100);
+    const w=(rate/maxRate*100);
+    // 门店售/总/未售
+    const master=Object.keys(bd.stores).length;
+    let sold=0, unsold=[];
+    Object.keys(bd.stores).forEach(s=>{
+      const o=bd.stores[s];
+      if(o.denominator>0||o.numerator>0) sold++; else unsold.push(s);
+    });
+    rows+='<tr>'
+      +'<td class="bn">'+b+'</td>'
+      +'<td class="num">'+bd.denominator.toFixed(0)+'</td>'
+      +'<td class="num">'+bd.numerator.toFixed(0)+'</td>'
+      +'<td class="rate"><div class="bar"><span style="width:'+w.toFixed(1)+'%;background:'+col+'"></span></div><b style="color:'+col+'">'+pct(rate)+'</b></td>'
+      +'<td class="num">'+pct(orate)+'</td>'
+      +'<td class="num">'+sold+'/'+master+'</td>'
+      +'<td class="num" style="color:#dc2626">'+unsold.length+'</td>'
+      +'</tr>';
+  });
+  let branchTable='<table><thead><tr><th>所属分公司</th><th style="text-align:right">主机台量</th>'
+    +'<th style="text-align:right">VIP数</th><th>会员连带率</th><th style="text-align:right">开单占比</th>'
+    +'<th style="text-align:right">门店销售(售/总)</th><th style="text-align:right">未售门店</th></tr></thead><tbody>'+rows+'</tbody></table>';
+
+  let html = kpi + branchTable;
+
+  // 每日趋势（区间模式）
+  if(agg.isRange){
+    let dr="";
+    dates.forEach(dt=>{
+      const d=DAILY[dt]; if(!d) return;
+      const r = d.total.denominator? d.total.numerator/d.total.denominator:0;
+      const o = d.total.order_denom? d.total.order_num/d.total.order_denom:0;
+      dr+='<tr><td>'+dt+'</td><td class="num">'+d.total.denominator.toFixed(0)+'</td>'
+        +'<td class="num">'+d.total.numerator.toFixed(0)+'</td>'
+        +'<td class="num">'+pct(r)+'</td><td class="num">'+pct(o)+'</td></tr>';
+    });
+    html+='<div class="bd"><div class="bd-title">每日趋势（会员连带率 / 开单占比）</div>'
+      +'<table class="store-table"><thead><tr><th>日期</th><th style="text-align:right">主机台量</th>'
+      +'<th style="text-align:right">VIP数</th><th style="text-align:right">连带率</th><th style="text-align:right">开单占比</th></tr></thead><tbody>'+dr+'</tbody></table></div>';
+  }
+
+  // 门店明细 + 未售（区间模式展示未售清单）
+  BRANCHES.forEach(b=>{
+    const bd=agg.branches[b];
+    const items=Object.keys(bd.stores).map(s=>({store:s, ...bd.stores[s]}))
+      .filter(o=>o.denominator>0||o.numerator>0)
+      .sort((a,b)=> (b.denominator?b.numerator/b.denominator:0)-(a.denominator?a.numerator/a.denominator:0));
+    const master=Object.keys(bd.stores).length;
+    let sold=0, unsold=[];
+    Object.keys(bd.stores).forEach(s=>{ const o=bd.stores[s]; if(o.denominator>0||o.numerator>0) sold++; else unsold.push(s); });
+    let sec='<div class="bd"><div class="bd-title">'+b+' · 门店明细（销售 '+sold+'/'+master+' 家）</div>';
+    if(items.length){
+      let maxr=Math.max.apply(null, items.map(o=>o.denominator?o.numerator/o.denominator:0))||1;
+      let sr="";
+      items.forEach(o=>{
+        const rate=o.denominator? o.numerator/o.denominator:null;
+        const orate=o.order_denom? o.order_num/o.order_denom:null;
+        if(rate===null){
+          sr+='<tr><td class="sn">'+o.store+'</td><td class="num">'+o.denominator.toFixed(0)+'</td>'
+            +'<td class="num">'+o.numerator.toFixed(0)+'</td><td class="rate"><b style="color:#9aa3ad">—</b></td>'
+            +'<td class="num" style="color:#9aa3ad">—</td></tr>';
+        }else{
+          const col=rateColor(rate*100); const w=(rate/maxr*100);
+          sr+='<tr><td class="sn">'+o.store+'</td><td class="num">'+o.denominator.toFixed(0)+'</td>'
+            +'<td class="num">'+o.numerator.toFixed(0)+'</td>'
+            +'<td class="rate"><div class="bar"><span style="width:'+w.toFixed(1)+'%;background:'+col+'"></span></div><b style="color:'+col+'">'+pct(rate)+'</b></td>'
+            +'<td class="num">'+(orate!==null?pct(orate):"—")+'</td></tr>';
+        }
+      });
+      sec+='<table class="store-table"><thead><tr><th>门店</th><th style="text-align:right">主机台量(分母)</th>'
+        +'<th style="text-align:right">VIP数(分子)</th><th>会员连带率</th><th style="text-align:right">开单占比</th></tr></thead><tbody>'+sr+'</tbody></table>';
+    }else{
+      sec+='<p class="muted">当期无主机销售门店。</p>';
+    }
+    if(agg.isRange){
+      if(unsold.length){
+        sec+='<div class="unsold"><div class="us-title">未售门店（'+unsold.length+' 家 · 当期主机台量=0）</div>'
+          + unsold.map(x=>'<span class="tag">'+x+'</span>').join('') + '</div>';
+      }else{
+        sec+='<div class="unsold ok">✅ 该分公司所有门店当期均有主机销售</div>';
+      }
+    }
+    sec+='</div>';
+    html+=sec;
+  });
+
+  html+='<div class="note"><h3>口径说明</h3><p>'
+    +'· <b>分母（主机台量）</b>：依据《通报商品分类-新.xlsx》sheet4 主机清单，商品编码命中的行；剔除「买断 / 礼品机出库 / 线上订单」，按销售数量正项求和。<br>'
+    +'· <b>分子（VIP会员商品）</b>：商品编码含 "VIP" 字段的会员商品行，与分母同口径剔除。<br>'
+    +'· <b>会员连带率</b> = 分子 ÷ 分母；<b>开单占比</b> = 含VIP的「单据」数 ÷ 含主机的「单据」数（订单级）。<br>'
+    +'· <b>门店销售(售/总)</b>：分公司主数据（门店sheet）中，当期主机台量&gt;0 的门店数 / 主数据门店总数。<br>'
+    +'· <b>未售门店</b>：仅「当月 / 自定义」区间维度展示——主数据中当期主机台量=0 的门店（单日维度不展示逐日未售清单）。<br>'
+    +'· <b>退货处理</b>：退货状态「已退货」整行剔除；「部分退货」按 实售=销售数量−已退数量 计入。<br>'
+    +'· ⚠️ <b>北京中恒 0%</b> 为真实情况：VIP 会员商品 SKU 为分公司专属编码（BJYLVIP=北京易联、FJYLVIP=福建易联、SCXYVIP=四川新跃），数据中未见北京中恒对应编码。</p></div>';
+  html+='<div class="foot">数据来源：ERP 零售单导出（与会员有效性同源）· <span class="warn">内含经营敏感数据，请勿外传</span></div>';
+  document.getElementById('content').innerHTML = html;
+  document.getElementById('period').textContent = "统计周期：" + selectedLabel(dates);
+  document.getElementById('noteUpd').textContent = GENERATED ? ("数据更新于 " + GENERATED + "；当日 = 最新导出日（ERP 数据 T+1）") : "";
+}
+async function render(){
+  document.getElementById('content').innerHTML='<div class="loading">加载中…</div>';
+  const dates=selectedDates();
+  if(dates.length===0){ document.getElementById('content').innerHTML='<div class="loading">暂无可用数据</div>'; return; }
+  try{
+    const js=await Promise.all(dates.map(loadDay));
+    draw(aggregate(js), dates);
+  }catch(e){
+    document.getElementById('content').innerHTML='<div class="loading">数据加载失败：'+e+'</div>';
+  }
+}
+// 事件
+document.getElementById('seg').addEventListener('click', e=>{
+  const btn=e.target.closest('button'); if(!btn) return;
+  MODE=btn.dataset.mode;
+  [...document.querySelectorAll('#seg button')].forEach(b=>b.classList.toggle('active', b===btn));
+  document.getElementById('custom').classList.toggle('show', MODE==="自定义");
+  render();
+});
+document.getElementById('capply').addEventListener('click', ()=>{
+  CUSTOM.start=document.getElementById('cstart').value||null;
+  CUSTOM.end=document.getElementById('cend').value||null;
+  if(CUSTOM.start) render();
+});
+(async function(){
+  await loadIndex();
+  const max = INDEX.length? INDEX[INDEX.length-1] : todayBJ();
+  document.getElementById('cstart').value = max.slice(0,8)+"01";
+  document.getElementById('cend').value = max;
+  render();
+})();
+</script>
 </body>
 </html>
