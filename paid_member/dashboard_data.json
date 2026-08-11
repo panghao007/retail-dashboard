@@ -3,40 +3,650 @@
   "export": "导出列表_零售单_0811060045.xlsx",
   "host_count_in_ref": 1157,
   "total_date_rows": 6902,
+  "returned_rows_excluded": 271,
+  "partial_rows_adjusted": 13,
   "branches": {
     "北京中恒": {
-      "denominator": 164.0,
+      "denominator": 154.0,
       "numerator": 0.0,
       "numerator_all": 0.0,
       "rate": 0.0,
-      "denom_rows": 164
+      "denom_rows": 154,
+      "stores": [
+        {
+          "store": "APR北京龙德广场",
+          "denominator": 4.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京五棵松华熙",
+          "denominator": 5.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京东坝万达",
+          "denominator": 1.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京常营龙湖",
+          "denominator": 8.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京西铁营万达",
+          "denominator": 1.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京怀柔万达",
+          "denominator": 3.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京大兴龙湖",
+          "denominator": 2.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京大族广场",
+          "denominator": 4.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京牡丹园翠微",
+          "denominator": 1.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京延庆万达",
+          "denominator": 5.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京回龙观华联",
+          "denominator": 2.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京五道口购物中心",
+          "denominator": 4.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京房山熙悦",
+          "denominator": 7.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京亦庄龙湖",
+          "denominator": 4.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京旧宫万科",
+          "denominator": 5.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京万柳华联",
+          "denominator": 5.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京石景山万达",
+          "denominator": 5.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京合生汇",
+          "denominator": 16.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京北苑龙湖",
+          "denominator": 4.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京新奥天虹",
+          "denominator": 2.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京槐房万达",
+          "denominator": 4.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京颐堤港",
+          "denominator": 1.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京大峡谷凯德茂",
+          "denominator": 2.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京长安龙湖",
+          "denominator": 4.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京丽泽龙湖",
+          "denominator": 5.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京通州万达",
+          "denominator": 7.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京同成街华联",
+          "denominator": 1.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京昌发展万科",
+          "denominator": 2.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京望京华彩",
+          "denominator": 4.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京顺义华联",
+          "denominator": 9.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京新辰汇",
+          "denominator": 4.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京望京凯德茂",
+          "denominator": 3.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京西三旗万象汇",
+          "denominator": 5.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京房山龙湖",
+          "denominator": 4.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京石景山喜隆多",
+          "denominator": 5.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR北京海淀大悦城",
+          "denominator": 6.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        }
+      ]
     },
     "四川新跃": {
-      "denominator": 67.0,
-      "numerator": 1.0,
-      "numerator_all": 1.0,
-      "rate": 0.014925373134328358,
-      "denom_rows": 67
+      "denominator": 65.0,
+      "numerator": 0.0,
+      "numerator_all": 0.0,
+      "rate": 0.0,
+      "denom_rows": 65,
+      "stores": [
+        {
+          "store": "APR成都金楠天街",
+          "denominator": 1.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR成都蜀新天街",
+          "denominator": 2.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR成都北城天街",
+          "denominator": 3.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR成都温江旭辉",
+          "denominator": 3.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR成都武侯大悦城",
+          "denominator": 6.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR成都龙泉吾悦",
+          "denominator": 7.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR成都西宸天街",
+          "denominator": 3.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR成都时代天街",
+          "denominator": 3.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR成都高新伊藤",
+          "denominator": 5.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR成都双楠伊藤",
+          "denominator": 1.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR成都科华王府井",
+          "denominator": 2.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR成都三利爱琴海",
+          "denominator": 7.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR成都武侯吾悦",
+          "denominator": 4.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR成都金牛凯德",
+          "denominator": 6.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR成都温江伊藤",
+          "denominator": 5.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "APR成都天府大悦城",
+          "denominator": 7.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        }
+      ]
     },
     "北京易联": {
       "denominator": 144.0,
       "numerator": 16.0,
       "numerator_all": 16.0,
       "rate": 0.1111111111111111,
-      "denom_rows": 144
+      "denom_rows": 144,
+      "stores": [
+        {
+          "store": "华为北京丰台鑫嘉汇",
+          "denominator": 0.0,
+          "numerator": 1.0,
+          "rate": null
+        },
+        {
+          "store": "华为北京槐房万达",
+          "denominator": 3.0,
+          "numerator": 2.0,
+          "rate": 0.6666666666666666
+        },
+        {
+          "store": "华为北京通州乐堤港",
+          "denominator": 3.0,
+          "numerator": 2.0,
+          "rate": 0.6666666666666666
+        },
+        {
+          "store": "华为北京大兴大族",
+          "denominator": 7.0,
+          "numerator": 3.0,
+          "rate": 0.42857142857142855
+        },
+        {
+          "store": "华为北京丰台银泰",
+          "denominator": 5.0,
+          "numerator": 2.0,
+          "rate": 0.4
+        },
+        {
+          "store": "华为北京东坝万达",
+          "denominator": 5.0,
+          "numerator": 2.0,
+          "rate": 0.4
+        },
+        {
+          "store": "华为北京旧宫万科",
+          "denominator": 3.0,
+          "numerator": 1.0,
+          "rate": 0.3333333333333333
+        },
+        {
+          "store": "华为北京昌平政府街",
+          "denominator": 3.0,
+          "numerator": 1.0,
+          "rate": 0.3333333333333333
+        },
+        {
+          "store": "华为北京房山万科",
+          "denominator": 3.0,
+          "numerator": 1.0,
+          "rate": 0.3333333333333333
+        },
+        {
+          "store": "华为北京来福士",
+          "denominator": 6.0,
+          "numerator": 1.0,
+          "rate": 0.16666666666666666
+        },
+        {
+          "store": "华为北京房山燕隆汇",
+          "denominator": 3.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为北京怀柔万达",
+          "denominator": 5.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为北京西铁营万达",
+          "denominator": 5.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为北京清河万象汇",
+          "denominator": 4.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为北京通州万达",
+          "denominator": 11.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为北京回龙观一店",
+          "denominator": 1.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为北京亦庄龙湖",
+          "denominator": 6.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为北京回龙观华联",
+          "denominator": 3.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为北京沙河万达",
+          "denominator": 2.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为北京长楹龙湖",
+          "denominator": 6.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为北京延庆万达",
+          "denominator": 4.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为北京酒仙桥颐堤港",
+          "denominator": 3.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为北京丰科万达",
+          "denominator": 12.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为北京首开万象汇",
+          "denominator": 9.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为北京牡丹园翠微",
+          "denominator": 4.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为北京丽泽龙湖",
+          "denominator": 3.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为北京石景山万达",
+          "denominator": 5.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为北京北苑龙湖",
+          "denominator": 3.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为北京门头沟长安天街",
+          "denominator": 5.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为北京方庄新城",
+          "denominator": 2.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为北京上德银泰",
+          "denominator": 3.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为北京京投小站",
+          "denominator": 1.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为北京平谷万达",
+          "denominator": 6.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        }
+      ]
     },
     "福建易联": {
-      "denominator": 75.0,
+      "denominator": 73.0,
       "numerator": 9.0,
       "numerator_all": 9.0,
-      "rate": 0.12,
-      "denom_rows": 75
+      "rate": 0.1232876712328767,
+      "denom_rows": 73,
+      "stores": [
+        {
+          "store": "华为福州平潭吾悦",
+          "denominator": 1.0,
+          "numerator": 1.0,
+          "rate": 1.0
+        },
+        {
+          "store": "华为厦门思明加州广场",
+          "denominator": 3.0,
+          "numerator": 2.0,
+          "rate": 0.6666666666666666
+        },
+        {
+          "store": "华为福州仓山爱琴海",
+          "denominator": 2.0,
+          "numerator": 1.0,
+          "rate": 0.5
+        },
+        {
+          "store": "华为南平武夷山宝龙广场",
+          "denominator": 5.0,
+          "numerator": 1.0,
+          "rate": 0.2
+        },
+        {
+          "store": "华为厦门思明瑞景广场",
+          "denominator": 6.0,
+          "numerator": 1.0,
+          "rate": 0.16666666666666666
+        },
+        {
+          "store": "华为泉州石狮泰禾广场",
+          "denominator": 7.0,
+          "numerator": 1.0,
+          "rate": 0.14285714285714285
+        },
+        {
+          "store": "华为南平建阳建发悦城",
+          "denominator": 9.0,
+          "numerator": 1.0,
+          "rate": 0.1111111111111111
+        },
+        {
+          "store": "华为福州五四北泰禾广场",
+          "denominator": 9.0,
+          "numerator": 1.0,
+          "rate": 0.1111111111111111
+        },
+        {
+          "store": "华为厦门思明罗宾森广场",
+          "denominator": 5.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为福州大洋晶典",
+          "denominator": 5.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为福州中骏世界城",
+          "denominator": 9.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为厦门思明星河COCO Park",
+          "denominator": 1.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为厦门思明宝龙一城",
+          "denominator": 6.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为福州东街口",
+          "denominator": 1.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        },
+        {
+          "store": "华为福州砂之船奥莱",
+          "denominator": 4.0,
+          "numerator": 0.0,
+          "rate": 0.0
+        }
+      ]
     }
   },
   "total": {
-    "denom": 450.0,
-    "numerator": 26.0,
-    "rate": 0.057777777777777775,
-    "numerator_all": 26.0
+    "denom": 436.0,
+    "numerator": 25.0,
+    "rate": 0.05733944954128441,
+    "numerator_all": 25.0
   }
 }
