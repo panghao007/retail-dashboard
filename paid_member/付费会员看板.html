@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>付费会员销售看板 · 会员连带率（2026-08-10）</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+    background:#f4f6f8;color:#1f2933;padding:0 16px;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:780px;margin:0 auto;padding:44px 0 56px;}
+  .brandbar{display:inline-block;width:44px;height:5px;border-radius:3px;background:#1AABCB;margin-bottom:14px;}
+  h1{font-size:25px;font-weight:800;letter-spacing:-.3px;}
+  .sub{color:#6b7280;font-size:13.5px;margin-top:8px;line-height:1.6;}
+  .kpis{display:flex;gap:14px;margin:26px 0 8px;}
+  .kpi{flex:1;background:#fff;border:1px solid #e5e9ef;border-radius:14px;padding:18px 20px;}
+  .kpi .v{font-size:30px;font-weight:800;color:#1AABCB;}
+  .kpi .v.o{color:#F6AA00;}
+  .kpi .l{font-size:13px;color:#9099a5;margin-top:6px;}
+  table{width:100%;border-collapse:collapse;margin-top:20px;background:#fff;border-radius:14px;overflow:hidden;
+    border:1px solid #e5e9ef;}
+  th,td{padding:14px 18px;text-align:left;font-size:14.5px;border-bottom:1px solid #f0f2f5;}
+  th{background:#fafbfc;color:#6b7280;font-weight:700;font-size:13px;}
+  td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;}
+  td.bn{font-weight:700;}
+  td.rate{width:240px;}
+  .bar{display:inline-block;width:130px;height:9px;background:#eef1f4;border-radius:6px;vertical-align:middle;margin-right:10px;overflow:hidden;}
+  .bar span{display:block;height:100%;border-radius:6px;}
+  td.rate b{font-size:15px;vertical-align:middle;}
+  .note{margin-top:22px;background:#fff;border:1px solid #e5e9ef;border-left:4px solid #F6AA00;border-radius:12px;padding:16px 18px;}
+  .note h3{font-size:14px;margin-bottom:8px;color:#92400e;}
+  .note p{font-size:13px;color:#6b7280;line-height:1.7;}
+  .foot{margin-top:26px;color:#9aa3ad;font-size:12px;text-align:center;}
+  .warn{color:#dc2626;font-weight:700;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brandbar"></div>
+    <h1>付费会员销售看板 · 会员连带率</h1>
+    <div class="sub">统计周期：数据日期 <b>2026-08-10</b>（每日更新，取前一日整日）。仅统计北京中恒 / 四川新跃 / 北京易联 / 福建易联 四家分公司。</div>
+    <div class="kpis">
+      <div class="kpi"><div class="v">450</div><div class="l">主机台量（分母）</div></div>
+      <div class="kpi"><div class="v o">26</div><div class="l">VIP会员商品数（分子）</div></div>
+      <div class="kpi"><div class="v">5.78%</div><div class="l">合计会员连带率</div></div>
+    </div>
+    <table>
+      <thead><tr><th>所属分公司</th><th style="text-align:right">主机台量(分母)</th><th style="text-align:right">VIP商品数(分子)</th><th>会员连带率</th></tr></thead>
+      <tbody>
+        <tr>
+      <td class="bn">福建易联</td>
+      <td class="num">75</td>
+      <td class="num">9</td>
+      <td class="rate">
+        <div class="bar"><span style="width:100.0%;background:#16a34a"></span></div>
+        <b style="color:#16a34a">12.00%</b>
+      </td>
+    </tr>
+<tr>
+      <td class="bn">北京易联</td>
+      <td class="num">144</td>
+      <td class="num">16</td>
+      <td class="rate">
+        <div class="bar"><span style="width:92.6%;background:#16a34a"></span></div>
+        <b style="color:#16a34a">11.11%</b>
+      </td>
+    </tr>
+<tr>
+      <td class="bn">四川新跃</td>
+      <td class="num">67</td>
+      <td class="num">1</td>
+      <td class="rate">
+        <div class="bar"><span style="width:12.4%;background:#dc2626"></span></div>
+        <b style="color:#dc2626">1.49%</b>
+      </td>
+    </tr>
+<tr>
+      <td class="bn">北京中恒</td>
+      <td class="num">164</td>
+      <td class="num">0</td>
+      <td class="rate">
+        <div class="bar"><span style="width:0.0%;background:#dc2626"></span></div>
+        <b style="color:#dc2626">0.00%</b>
+      </td>
+    </tr>
+      </tbody>
+    </table>
+    <div class="note">
+      <h3>口径说明</h3>
+      <p>· <b>分母（主机台量）</b>：依据《通报商品分类-新.xlsx》sheet4 主机清单，商品编码命中的行；剔除「买断 / 礼品机出库 / 线上订单」，按销售数量正项求和。<br>
+      · <b>分子（VIP会员商品）</b>：商品编码含 "VIP" 字段的会员商品行，与分母同口径剔除。<br>
+      · <b>会员连带率</b> = 分子 ÷ 分母。<br>
+      · ⚠️ <b>北京中恒 0%</b> 为真实情况：当前 VIP 会员商品 SKU 为分公司专属编码（BJYLVIP=北京易联、FJYLVIP=福建易联、SCXYVIP=四川新跃），数据中未见北京中恒对应编码，故无 VIP 商品计入。如该分公司应配置 VIP 会员商品，请补充 SKU 后重算。</p>
+    </div>
+    <div class="foot">数据来源：ERP 零售单导出（与会员有效性同源）· <span class="warn">内含经营敏感数据，请勿外传</span></div>
+  </div>
+</body>
+</html>

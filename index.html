@@ -60,6 +60,11 @@
   .card.monthly:hover { border-color:#7c3aed; box-shadow:0 6px 20px rgba(124,58,237,.14); }
   .card.monthly .card-arrow { color:#c2c9d2; }
   .card.monthly:hover .card-arrow { color:#7c3aed; }
+  .branddot.paid { background:#6366f1; }
+  .card.paid { border-left:4px solid #6366f1; }
+  .card.paid:hover { border-color:#6366f1; box-shadow:0 6px 20px rgba(99,102,241,.14); }
+  .card.paid .card-arrow { color:#c2c9d2; }
+  .card.paid:hover .card-arrow { color:#6366f1; }
 
   .warn { color:#e02424; font-weight:700; }
   .suggest { color:#e02424; margin-top:12px; font-size:13px; line-height:1.95; font-weight:600; text-align:left; max-width:560px; margin-left:auto; margin-right:auto; }
@@ -116,6 +121,22 @@
       </a>
       <div class="card-right">
         <a class="dl" href="cashier/%E4%B8%8D%E5%90%88%E8%A7%84%E6%98%8E%E7%BB%86_20260811.xlsx" title="下载不合规明细.xlsx">⬇ 不合规明细</a>
+        <div class="card-arrow">›</div>
+      </div>
+    </div></div>
+    </div>
+
+    
+    <div id="paid-section">
+      <div class="section-title"><span class="branddot paid"></span>付费会员销售看板</div>
+      <div class="section-desc">依据《通报商品分类-新.xlsx》sheet4 主机清单定分母，商品编码含 VIP 定分子，计算四家分公司会员连带率。</div>
+      <div class="list" style="margin-top:16px;">
+    <div class="card paid" id="paid-card">
+      <a class="card-main" href="paid_member/付费会员看板_20260811.html">
+        <div class="card-title">付费会员销售看板（2026-08-10）</div>
+        <div class="card-sub">会员连带率 5.78% · 主机台量 0 · VIP商品 26 · 仅四家分公司</div>
+      </a>
+      <div class="card-right">
         <div class="card-arrow">›</div>
       </div>
     </div></div>
