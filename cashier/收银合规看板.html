@@ -29,7 +29,7 @@ th{background:#f0f6f8;color:#456} tbody tr:hover{background:#fafdff}
 
 <script>
 var RULE_MAP = {"APP": "合规", "XPOS": "有三方单号的视为合规", "车业务代金券": "合规", "电信-优惠券": "合规", "订金": "合规", "抖音来客": "合规", "对公转账": "合规", "花呗分期": "合规", "华为会员积分": "合规", "华为生日礼券": "合规", "回收补贴": "合规", "汇付支付": "合规", "教育优惠": "合规", "京东白条分期": "合规", "联通-优惠券": "合规", "龙湖POS": "合规", "美团闪购": "合规", "商场代金券": "合规", "商场收银": "合规", "刷卡扫码-工行": "不合规", "刷卡扫码-银联": "有三方单号的视为合规", "微盟付费会员": "合规", "现金": "合规", "银联国补自付": "合规", "现金赠品": "合规", "移动-优惠券": "合规", "银联POS手动收款": "不合规", "银联分期": "合规", "银联国补补贴": "合规", "银联商务B扫C": "合规", "银联商务智能POS内外卡受理": "合规", "银联商务智能POS扫码": "合规", "大众点评券": "合规", "大众点评线上": "合规", "抖超": "合规", "抖超国补": "合规", "抖音国补": "合规", "抖音支付": "合规", "高德": "合规", "京东到家": "合规", "京东到家DW": "合规", "京东国补": "合规", "京东秒送": "合规", "京东自营": "合规", "快手": "合规", "企业购": "合规", "淘宝闪购": "合规", "天猫国补": "合规", "小程序": "合规", "小红书": "合规", "浙江天猫": "合规"};
-var GENERATED = "2026-08-12 14:10";
+var GENERATED = "2026-08-12 14:14";
 var INDEX = [];
 var STORE_BRANCH = {};
 var DAILY = {};
@@ -71,6 +71,7 @@ function aggregate(dayobjs){
   var bs_store={};
   for(var s in store_stat){ var br=STORE_BRANCH[s]||""; if(!br) continue; var b=bs_store[br]||(bs_store[br]={total:0,comp:0,noncomp:0}); b.total++; if(store_stat[s].noncomp===0 && store_stat[s].comp>0) b.comp++; if(store_stat[s].noncomp>0) b.noncomp++; }
   for(var b in branch_stat){ var bb=bs_store[b]||{total:0,comp:0,noncomp:0}; branch_stat[b].stores_total=bb.total; branch_stat[b].stores_comp=bb.comp; branch_stat[b].stores_noncomp=bb.noncomp; branch_stat[b].rate=((branch_stat[b].comp+branch_stat[b].noncomp)>0)? Math.round(branch_stat[b].comp/(branch_stat[b].comp+branch_stat[b].noncomp)*100*100)/100 : 0; branch_stat[b].perfect_pct=(bb.total>0)? Math.round(bb.comp/bb.total*1000)/10 : 0; }
+  for(var s in store_stat){ var st=store_stat[s]; st.rate=(st.comp+st.noncomp>0)? Math.round(st.comp/(st.comp+st.noncomp)*100*100)/100 : 0; }
   return {total:total,compliant:comp,noncompliant:nonc,excluded:excl,unmatched:unm,excluded_asp:easp,excluded_return:eret,excluded_branch:ebr,cat_amount:cat_amount,channel_stat:channel_stat,store_stat:store_stat,org_stat:org_stat,branch_stat:branch_stat,noncompliant_rows:rows};
 }
 function ratePct(c,nc){ return (c+nc)>0? c/(c+nc)*100 : 0; }
