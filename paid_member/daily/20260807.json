@@ -1,11 +1,11 @@
 {
   "date": "2026-08-07",
-  "generated": "2026-08-12 16:09",
+  "generated": "2026-08-12 22:07",
   "total": {
     "denominator": 406.0,
-    "numerator": 20.0,
+    "numerator": 19.0,
     "order_denom": 402,
-    "order_num": 20
+    "order_num": 19
   },
   "branches": {
     "北京中恒": {
@@ -22,9 +22,9 @@
     },
     "北京易联": {
       "denominator": 149.0,
-      "numerator": 11.0,
+      "numerator": 10.0,
       "order_denom": 146,
-      "order_num": 11
+      "order_num": 10
     },
     "福建易联": {
       "denominator": 61.0,
@@ -558,9 +558,9 @@
       "branch": "北京易联",
       "store": "华为北京丰台银泰",
       "denominator": 5.0,
-      "numerator": 1.0,
+      "numerator": 0.0,
       "order_denom": 5,
-      "order_num": 1
+      "order_num": 0
     },
     {
       "branch": "北京易联",

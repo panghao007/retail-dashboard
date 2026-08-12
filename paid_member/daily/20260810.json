@@ -1,10 +1,10 @@
 {
   "date": "2026-08-10",
-  "generated": "2026-08-12 16:09",
+  "generated": "2026-08-12 22:07",
   "total": {
-    "denominator": 430.0,
+    "denominator": 429.0,
     "numerator": 25.0,
-    "order_denom": 423,
+    "order_denom": 422,
     "order_num": 25
   },
   "branches": {
@@ -15,9 +15,9 @@
       "order_num": 0
     },
     "四川新跃": {
-      "denominator": 65.0,
+      "denominator": 64.0,
       "numerator": 0.0,
-      "order_denom": 64,
+      "order_denom": 63,
       "order_num": 0
     },
     "北京易联": {
@@ -477,9 +477,9 @@
     {
       "branch": "四川新跃",
       "store": "APR成都高新伊藤",
-      "denominator": 5.0,
+      "denominator": 4.0,
       "numerator": 0.0,
-      "order_denom": 5,
+      "order_denom": 4,
       "order_num": 0
     },
     {
