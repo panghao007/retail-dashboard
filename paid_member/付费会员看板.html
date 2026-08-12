@@ -90,7 +90,7 @@ let MODE = "当月";
 let CUSTOM = {start:null, end:null};
 
 function bjDate(d){ // d: Date -> 'YYYY-MM-DD' (北京)
-  const bj = new Date(d.getTime()+d.getTimezoneOffset()*60000+8*3600000);
+  const bj = new Date(d.getTime()+8*3600000);
   return bj.toISOString().slice(0,10);
 }
 function todayBJ(){ return bjDate(new Date()); }
