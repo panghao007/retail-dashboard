@@ -115,15 +115,14 @@
     
     <div id="cashier-section">
       <div class="section-title"><span class="branddot"></span>收银合规看板</div>
-      <div class="section-desc">基于 ERP 结算明细 + 收款分类规则判定每笔收款合规性；不合规明细可下载 Excel（按所属分公司分类）。</div>
+      <div class="section-desc">基于 ERP 结算明细 + 收款分类规则判定每笔收款合规性；看板内可切换 当日/昨日/当月/自定义 四个时间维度，区间维度额外展示每日合规趋势。</div>
       <div class="list" style="margin-top:16px;">
     <div class="card ips" id="cashier-card">
-      <a class="card-main" href="cashier/收银合规看板_20260812.html">
-        <div class="card-title">收银合规看板（2026-08-01 ~ 2026-08-11）</div>
-        <div class="card-sub">结算明细 · 合规率 98.83% · 不合规 526 笔 · 不合规明细可下载 Excel</div>
+      <a class="card-main" href="cashier/收银合规看板.html">
+        <div class="card-title">收银合规看板（多维日期）</div>
+        <div class="card-sub">合规率 / 不合规笔数 · 支持 当日 / 昨日 / 当月 / 自定义 切换 · 不合规明细可下载 CSV</div>
       </a>
       <div class="card-right">
-        <a class="dl" href="cashier/%E4%B8%8D%E5%90%88%E8%A7%84%E6%98%8E%E7%BB%86_20260812.xlsx" title="下载不合规明细.xlsx">⬇ 不合规明细</a>
         <div class="card-arrow">›</div>
       </div>
     </div></div>
@@ -171,25 +170,6 @@
       </div>
     </div>
   </div>
-
-<script>
-(function(){
-  try{
-    var n=new Date();
-    var bj=new Date(n.getTime()+n.getTimezoneOffset()*60000+8*3600000);
-    var v=bj.toISOString().slice(0,10).replace(/-/g,'');
-    // 拉取带日期的 dashboard_data_<v>.json（新文件名=新URL，CDN 无旧缓存，必取最新）
-    fetch('cashier/dashboard_data_'+v+'.json').then(function(r){return r.json();}).then(function(d){
-      var dr=d.data_range||['',''];
-      var period=(dr[0]&&dr[1]&&dr[0]!==dr[1])?(dr[0]+' ~ '+dr[1]):(dr[0]||'最新');
-      var card=document.getElementById('cashier-card');
-      if(!card)return;
-      var t=card.querySelector('.card-title'); if(t)t.textContent='收银合规看板（'+period+'）';
-      var s=card.querySelector('.card-sub'); if(s)s.textContent='结算明细 · 合规率 '+d.compliance_rate+'% · 不合规 '+d.noncompliant+' 笔 · 不合规明细可下载 Excel';
-    }).catch(function(e){});
-  }catch(e){}
-})();
-</script>
 
 <!-- RETAIL_STATS_START -->
 <script>
