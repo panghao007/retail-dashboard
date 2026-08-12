@@ -202,7 +202,7 @@ function draw(agg, dates, want){
       +'<td class="bn">'+b+'</td>'
       +'<td class="num">'+bd.denominator.toFixed(0)+'</td>'
       +'<td class="num">'+bd.numerator.toFixed(0)+'</td>'
-      +'<td class="rate"><div class="bar"><span style="width:'+w.toFixed(1)+'%;background:'+col+'"></span></div><b style="color:'+col+'">'+pct(rate)+'</b></td>'
+      +'<td class="rate"><b style="color:'+col+'">'+pct(rate)+'</b></td>'
       +'<td class="num">'+bOpen+'/'+master+'（'+pct(bOpen/master)+'）</td>'
       +'</tr>';
   });
@@ -254,7 +254,7 @@ function draw(agg, dates, want){
           const col=rateColor(rate*100); const w=(rate/maxr*100);
           sr+='<tr><td class="sn">'+o.store+'</td><td class="num">'+o.denominator.toFixed(0)+'</td>'
             +'<td class="num">'+o.numerator.toFixed(0)+'</td>'
-            +'<td class="rate"><div class="bar"><span style="width:'+w.toFixed(1)+'%;background:'+col+'"></span></div><b style="color:'+col+'">'+pct(rate)+'</b></td>'
+            +'<td class="rate"><b style="color:'+col+'">'+pct(rate)+'</b></td>'
             +'<td>'+openCell+'</td></tr>';
         }
       });
