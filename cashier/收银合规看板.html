@@ -29,7 +29,7 @@ th{background:#f0f6f8;color:#456} tbody tr:hover{background:#fafdff}
 
 <script>
 var RULE_MAP = {"APP": "合规", "XPOS": "有三方单号的视为合规", "车业务代金券": "合规", "电信-优惠券": "合规", "订金": "合规", "抖音来客": "合规", "对公转账": "合规", "花呗分期": "合规", "华为会员积分": "合规", "华为生日礼券": "合规", "回收补贴": "合规", "汇付支付": "合规", "教育优惠": "合规", "京东白条分期": "合规", "联通-优惠券": "合规", "龙湖POS": "合规", "美团闪购": "合规", "商场代金券": "合规", "商场收银": "合规", "刷卡扫码-工行": "不合规", "刷卡扫码-银联": "有三方单号的视为合规", "微盟付费会员": "合规", "现金": "合规", "银联国补自付": "合规", "现金赠品": "合规", "移动-优惠券": "合规", "银联POS手动收款": "不合规", "银联分期": "合规", "银联国补补贴": "合规", "银联商务B扫C": "合规", "银联商务智能POS内外卡受理": "合规", "银联商务智能POS扫码": "合规", "大众点评券": "合规", "大众点评线上": "合规", "抖超": "合规", "抖超国补": "合规", "抖音国补": "合规", "抖音支付": "合规", "高德": "合规", "京东到家": "合规", "京东到家DW": "合规", "京东国补": "合规", "京东秒送": "合规", "京东自营": "合规", "快手": "合规", "企业购": "合规", "淘宝闪购": "合规", "天猫国补": "合规", "小程序": "合规", "小红书": "合规", "浙江天猫": "合规"};
-var GENERATED = "2026-08-12 09:46";
+var GENERATED = "2026-08-12 13:59";
 var INDEX = [];
 var STORE_BRANCH = {};
 var DAILY = {};
@@ -116,9 +116,7 @@ function draw(D, D1, T, T1){
       +'<td style="text-align:right">'+fmt(v.count)+'</td>'
       +'<td style="text-align:right;color:#1a9e4b">'+fmt(v.comp)+'</td>'
       +'<td style="text-align:right;color:#c0392b"><b>'+fmt(v.noncomp)+'</b></td>'
-      +'<td style="text-align:right">'+v.rate+'%</td>'
-      +'<td style="text-align:right">'+dBadge(v.noncomp,v1&&v1.noncomp,'down')+'</td>'
-      +'<td style="text-align:right">'+dPP(v.rate,v1&&v1.rate)+'</td></tr>';
+      +'<td style="text-align:right">'+dBadge(v.noncomp,v1&&v1.noncomp,'down')+'</td></tr>';
   });
   var store_rows="";
   Object.keys(D.store_stat).filter(function(s){return D.store_stat[s].noncomp>0;}).sort(function(a,b){return D.store_stat[b].noncomp-D.store_stat[a].noncomp;}).forEach(function(s){
@@ -135,7 +133,7 @@ function draw(D, D1, T, T1){
   var perfect_pct=(total_stores>0)? Math.round(perfect.length/total_stores*1000)/10 : 0;
   var perfect_rows=perfect.map(function(s){var v=D.store_stat[s];return '<tr><td>'+s+'</td><td style="text-align:right">'+fmt(v.count)+'</td><td style="text-align:right;color:#1a9e4b">'+fmt(v.comp)+'</td><td style="text-align:right;color:#1a9e4b"><b>100%</b></td></tr>';}).join("");
   var html=kpi
-    +'<div class="sec"><h2>按所属分公司（不合规笔数 · 右两列为对比前一天）</h2><table><thead><tr><th>所属分公司</th><th style="text-align:right">合规门店数量</th><th style="text-align:right">不合规门店数量</th><th style="text-align:right">100%合规门店占比</th><th style="text-align:right">笔数</th><th style="text-align:right">合规</th><th style="text-align:right">不合规</th><th style="text-align:right">分公司合规率</th><th style="text-align:right">不合规Δ</th><th style="text-align:right">合规率Δ</th></tr></thead><tbody>'+(branch_rows||'<tr><td colspan=10 style="text-align:center;color:#1a9e4b">✅ 各分公司均合规</td></tr>')+'</tbody></table></div>'
+    +'<div class="sec"><h2>按所属分公司（不合规笔数 · 右列为对比前一天）</h2><table><thead><tr><th>所属分公司</th><th style="text-align:right">合规门店数量</th><th style="text-align:right">不合规门店数量</th><th style="text-align:right">100%合规门店占比</th><th style="text-align:right">笔数</th><th style="text-align:right">合规</th><th style="text-align:right">不合规</th><th style="text-align:right">对比昨日增加</th></tr></thead><tbody>'+(branch_rows||'<tr><td colspan=8 style="text-align:center;color:#1a9e4b">✅ 各分公司均合规</td></tr>')+'</tbody></table></div>'
     +'<div class="sec"><h2>按门店（不合规 > 0 的门店 · 右列为对比前一天）</h2><table><thead><tr><th>销售门店</th><th style="text-align:right">笔数</th><th style="text-align:right">合规</th><th style="text-align:right">不合规</th><th style="text-align:right">门店合规率</th><th style="text-align:right">不合规Δ</th></tr></thead><tbody>'+(store_rows||'<tr><td colspan=6 style="text-align:center;color:#1a9e4b">✅ 各门店均合规</td></tr>')+'</tbody></table></div>'
     +'<div class="sec"><h2>按支付通道分布（Top40 · 右列为对比前一天不合规Δ）</h2><table><thead><tr><th>支付通道</th><th style="text-align:right">笔数</th><th style="text-align:right">合规</th><th style="text-align:right">不合规</th><th style="text-align:right">剔除</th><th style="text-align:right">不合规Δ</th></tr></thead><tbody>'+chan_rows+'</tbody></table></div>'
     +'<div class="sec"><h2>✅ 100% 合规门店（共 '+fmt(perfect.length)+' 家 / 占全部 '+fmt(total_stores)+' 家门店的 '+perfect_pct+'%）</h2><p style="font-size:13px;color:#667;margin:0 0 10px;line-height:1.7">以下门店在统计日<b>合规收款笔数 &gt; 0</b> 且 <b>不合规笔数 = 0</b>，即 100% 合规。</p><table><thead><tr><th>销售门店</th><th style="text-align:right">收款笔数</th><th style="text-align:right">合规</th><th style="text-align:right">门店合规率</th></tr></thead><tbody>'+(perfect_rows||'<tr><td colspan=4 style="text-align:center;color:#c0392b">暂无 100% 合规门店</td></tr>')+'</tbody></table></div>'
