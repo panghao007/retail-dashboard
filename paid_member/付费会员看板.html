@@ -113,20 +113,24 @@ async function loadDay(date){
   const r = await fetch('daily/'+fmtDate(date)+'.json', {cache:'no-store'});
   const j = await r.json(); DAILY[date]=j; return j;
 }
-function selectedDates(){
-  if(INDEX.length===0) return [];
-  const max = INDEX[INDEX.length-1];
-  if(MODE==="当日") return [max];
-  if(MODE==="昨日") return INDEX.length>=2 ? [INDEX[INDEX.length-2]] : [max];
-  if(MODE==="当月"){ const ms = max.slice(0,8)+"01"; return INDEX.filter(d=>d>=ms); }
-  if(MODE==="自定义"){ return INDEX.filter(d=>d>=(CUSTOM.start||"0000") && d<=(CUSTOM.end||"9999")); }
+function wantDates(){
+  const t=todayBJ(), y=prevDay(t), ms=t.slice(0,8)+"01";
+  if(MODE==="当日") return [t];
+  if(MODE==="昨日") return [y];
+  if(MODE==="当月") return INDEX.filter(d=>d>=ms && d<=y);
+  if(MODE==="自定义") return INDEX.filter(d=>d>=(CUSTOM.start||"0000") && d<=(CUSTOM.end||"9999"));
   return [];
 }
-function selectedLabel(dates){
-  if(dates.length===0) return "（无数据）";
-  if(MODE==="当日") return "当日（"+dates[dates.length-1]+"）";
-  if(MODE==="昨日") return "昨日（"+dates[0]+"）";
-  if(MODE==="当月") return "当月累积（"+dates[0]+" ~ "+dates[dates.length-1]+"）";
+function availableDates(){
+  const want=wantDates();
+  const av=want.filter(d=>INDEX.includes(d));
+  return {want, av, missing:want.filter(d=>!INDEX.includes(d))};
+}
+function selectedLabel(want){
+  if(want.length===0) return "（无数据）";
+  if(MODE==="当日") return "当日（"+want[0]+"）";
+  if(MODE==="昨日") return "昨日（"+want[0]+"）";
+  if(MODE==="当月") return "当月累积（"+want[0]+" ~ "+want[want.length-1]+"）";
   if(MODE==="自定义") return "自定义（"+(CUSTOM.start||"?")+" ~ "+(CUSTOM.end||"?")+"）";
   return "";
 }
@@ -157,16 +161,24 @@ function rateColor(rate){
   return "#dc2626";
 }
 function pct(x){ return (x*100).toFixed(2)+"%"; }
-function draw(agg, dates){
+function draw(agg, dates, want){
   const total=agg.total;
   const totRate = total.denominator? total.numerator/total.denominator : 0;
-  const totORate = total.order_denom? total.order_num/total.order_denom : 0;
+  // 付费会员开单占比 = 有VIP销售的门店数 / 主数据门店总数（门店维度二元判定）
+  let totalStores=0, openStores=0;
+  BRANCHES.forEach(b=>{
+    Object.keys(agg.branches[b].stores).forEach(s=>{
+      totalStores++;
+      if(agg.branches[b].stores[s].numerator>0) openStores++;
+    });
+  });
+  const totOpenRate = totalStores? openStores/totalStores : 0;
   // KPI
   let kpi = '<div class="kpis">'
     + '<div class="kpi"><div class="v">'+total.denominator.toFixed(0)+'</div><div class="l">主机台量（分母）</div></div>'
     + '<div class="kpi"><div class="v o">'+total.numerator.toFixed(0)+'</div><div class="l">VIP会员商品数（分子）</div></div>'
     + '<div class="kpi"><div class="v">'+pct(totRate)+'</div><div class="l">合计会员连带率</div></div>'
-    + '<div class="kpi"><div class="v">'+pct(totORate)+'</div><div class="l">合计开单占比</div></div>'
+    + '<div class="kpi"><div class="v">'+pct(totOpenRate)+'</div><div class="l">付费会员开单占比（'+openStores+'/'+totalStores+' 门店）</div></div>'
     + '</div>';
 
   // 分公司表
@@ -175,28 +187,29 @@ function draw(agg, dates){
   BRANCHES.forEach(b=>{
     const bd=agg.branches[b];
     const rate = bd.denominator? bd.numerator/bd.denominator : 0;
-    const orate = bd.order_denom? bd.order_num/bd.order_denom : 0;
     const col=rateColor(rate*100);
     const w=(rate/maxRate*100);
-    // 门店售/总/未售
+    // 门店售/总/未售（主机维度）
     const master=Object.keys(bd.stores).length;
     let sold=0, unsold=[];
+    let bOpen=0;
     Object.keys(bd.stores).forEach(s=>{
       const o=bd.stores[s];
       if(o.denominator>0||o.numerator>0) sold++; else unsold.push(s);
+      if(o.numerator>0) bOpen++;
     });
     rows+='<tr>'
       +'<td class="bn">'+b+'</td>'
       +'<td class="num">'+bd.denominator.toFixed(0)+'</td>'
       +'<td class="num">'+bd.numerator.toFixed(0)+'</td>'
       +'<td class="rate"><div class="bar"><span style="width:'+w.toFixed(1)+'%;background:'+col+'"></span></div><b style="color:'+col+'">'+pct(rate)+'</b></td>'
-      +'<td class="num">'+pct(orate)+'</td>'
+      +'<td class="num">'+bOpen+'/'+master+'（'+pct(bOpen/master)+'）</td>'
       +'<td class="num">'+sold+'/'+master+'</td>'
       +'<td class="num" style="color:#dc2626">'+unsold.length+'</td>'
       +'</tr>';
   });
   let branchTable='<table><thead><tr><th>所属分公司</th><th style="text-align:right">主机台量</th>'
-    +'<th style="text-align:right">VIP数</th><th>会员连带率</th><th style="text-align:right">开单占比</th>'
+    +'<th style="text-align:right">VIP数</th><th>会员连带率</th><th style="text-align:right">付费会员开单(门店)</th>'
     +'<th style="text-align:right">门店销售(售/总)</th><th style="text-align:right">未售门店</th></tr></thead><tbody>'+rows+'</tbody></table>';
 
   let html = kpi + branchTable;
@@ -207,10 +220,12 @@ function draw(agg, dates){
     dates.forEach(dt=>{
       const d=DAILY[dt]; if(!d) return;
       const r = d.total.denominator? d.total.numerator/d.total.denominator:0;
-      const o = d.total.order_denom? d.total.order_num/d.total.order_denom:0;
+      let ts=0, os=0;
+      d.stores.forEach(s=>{ ts++; if(s.numerator>0) os++; });
+      const orr = ts? os/ts : 0;
       dr+='<tr><td>'+dt+'</td><td class="num">'+d.total.denominator.toFixed(0)+'</td>'
         +'<td class="num">'+d.total.numerator.toFixed(0)+'</td>'
-        +'<td class="num">'+pct(r)+'</td><td class="num">'+pct(o)+'</td></tr>';
+        +'<td class="num">'+pct(r)+'</td><td class="num">'+pct(orr)+'</td></tr>';
     });
     html+='<div class="bd"><div class="bd-title">每日趋势（会员连带率 / 开单占比）</div>'
       +'<table class="store-table"><thead><tr><th>日期</th><th style="text-align:right">主机台量</th>'
@@ -232,21 +247,22 @@ function draw(agg, dates){
       let sr="";
       items.forEach(o=>{
         const rate=o.denominator? o.numerator/o.denominator:null;
-        const orate=o.order_denom? o.order_num/o.order_denom:null;
+        const opened=o.numerator>0;
+        const openCell=opened? '<span style="color:#16a34a;font-weight:700">有</span>' : '<span style="color:#9aa3ad">无</span>';
         if(rate===null){
           sr+='<tr><td class="sn">'+o.store+'</td><td class="num">'+o.denominator.toFixed(0)+'</td>'
             +'<td class="num">'+o.numerator.toFixed(0)+'</td><td class="rate"><b style="color:#9aa3ad">—</b></td>'
-            +'<td class="num" style="color:#9aa3ad">—</td></tr>';
+            +'<td>'+openCell+'</td></tr>';
         }else{
           const col=rateColor(rate*100); const w=(rate/maxr*100);
           sr+='<tr><td class="sn">'+o.store+'</td><td class="num">'+o.denominator.toFixed(0)+'</td>'
             +'<td class="num">'+o.numerator.toFixed(0)+'</td>'
             +'<td class="rate"><div class="bar"><span style="width:'+w.toFixed(1)+'%;background:'+col+'"></span></div><b style="color:'+col+'">'+pct(rate)+'</b></td>'
-            +'<td class="num">'+(orate!==null?pct(orate):"—")+'</td></tr>';
+            +'<td>'+openCell+'</td></tr>';
         }
       });
       sec+='<table class="store-table"><thead><tr><th>门店</th><th style="text-align:right">主机台量(分母)</th>'
-        +'<th style="text-align:right">VIP数(分子)</th><th>会员连带率</th><th style="text-align:right">开单占比</th></tr></thead><tbody>'+sr+'</tbody></table>';
+        +'<th style="text-align:right">VIP数(分子)</th><th>会员连带率</th><th>付费会员开单</th></tr></thead><tbody>'+sr+'</tbody></table>';
     }else{
       sec+='<p class="muted">当期无主机销售门店。</p>';
     }
@@ -265,23 +281,32 @@ function draw(agg, dates){
   html+='<div class="note"><h3>口径说明</h3><p>'
     +'· <b>分母（主机台量）</b>：依据《通报商品分类-新.xlsx》sheet4 主机清单，商品编码命中的行；剔除「买断 / 礼品机出库 / 线上订单」，按销售数量正项求和。<br>'
     +'· <b>分子（VIP会员商品）</b>：商品编码含 "VIP" 字段的会员商品行，与分母同口径剔除。<br>'
-    +'· <b>会员连带率</b> = 分子 ÷ 分母；<b>开单占比</b> = 含VIP的「单据」数 ÷ 含主机的「单据」数（订单级）。<br>'
+    +'· <b>会员连带率</b> = 分子 ÷ 分母；<b>付费会员开单占比</b> = 区间内「有 VIP 会员商品销售」的门店数 ÷ 四家分公司主数据门店总数（门店维度二元判定：卖过 VIP 即「有」，未卖即「无」）。<br>'
     +'· <b>门店销售(售/总)</b>：分公司主数据（门店sheet）中，当期主机台量&gt;0 的门店数 / 主数据门店总数。<br>'
     +'· <b>未售门店</b>：仅「当月 / 自定义」区间维度展示——主数据中当期主机台量=0 的门店（单日维度不展示逐日未售清单）。<br>'
     +'· <b>退货处理</b>：退货状态「已退货」整行剔除；「部分退货」按 实售=销售数量−已退数量 计入。<br>'
     +'· ⚠️ <b>北京中恒 0%</b> 为真实情况：VIP 会员商品 SKU 为分公司专属编码（BJYLVIP=北京易联、FJYLVIP=福建易联、SCXYVIP=四川新跃），数据中未见北京中恒对应编码。</p></div>';
   html+='<div class="foot">数据来源：ERP 零售单导出（与会员有效性同源）· <span class="warn">内含经营敏感数据，请勿外传</span></div>';
   document.getElementById('content').innerHTML = html;
-  document.getElementById('period').textContent = "统计周期：" + selectedLabel(dates);
-  document.getElementById('noteUpd').textContent = GENERATED ? ("数据更新于 " + GENERATED + "；当日 = 最新导出日（ERP 数据 T+1）") : "";
+  document.getElementById('period').textContent = "统计周期：" + selectedLabel(want||[]);
+  document.getElementById('noteUpd').textContent = GENERATED ? ("数据更新于 " + GENERATED + "；当日 = 今天(真实日历)，当日数据需当天重导 ERP 后生成") : "";
 }
 async function render(){
   document.getElementById('content').innerHTML='<div class="loading">加载中…</div>';
-  const dates=selectedDates();
-  if(dates.length===0){ document.getElementById('content').innerHTML='<div class="loading">暂无可用数据</div>'; return; }
+  const {want, av, missing}=availableDates();
+  if(av.length===0){
+    let msg='';
+    if(MODE==="当日") msg='今日（'+want[0]+'）数据尚未导出（ERP 数据为 T+1）。最新可用数据截至 '+(INDEX.length?INDEX[INDEX.length-1]:'无')+'。';
+    else if(MODE==="昨日") msg='昨日（'+want[0]+'）数据暂不可用。';
+    else msg='所选范围内暂无导出数据。';
+    document.getElementById('content').innerHTML='<div class="loading">'+msg+'</div>';
+    document.getElementById('period').textContent="统计周期："+selectedLabel(want);
+    document.getElementById('noteUpd').textContent=GENERATED?("数据更新于 "+GENERATED):"";
+    return;
+  }
   try{
-    const js=await Promise.all(dates.map(loadDay));
-    draw(aggregate(js), dates);
+    const js=await Promise.all(av.map(loadDay));
+    draw(aggregate(js), av, want);
   }catch(e){
     document.getElementById('content').innerHTML='<div class="loading">数据加载失败：'+e+'</div>';
   }
@@ -301,9 +326,9 @@ document.getElementById('capply').addEventListener('click', ()=>{
 });
 (async function(){
   await loadIndex();
-  const max = INDEX.length? INDEX[INDEX.length-1] : todayBJ();
-  document.getElementById('cstart').value = max.slice(0,8)+"01";
-  document.getElementById('cend').value = max;
+  const t = todayBJ(), y = prevDay(t);
+  document.getElementById('cstart').value = t.slice(0,8)+"01";
+  document.getElementById('cend').value = y;
   render();
 })();
 </script>
