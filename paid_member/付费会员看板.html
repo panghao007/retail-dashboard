@@ -61,7 +61,7 @@
   <div class="wrap">
     <div class="brandbar"></div>
     <h1>付费会员销售看板 · 会员连带率</h1>
-    <div class="sub">选择时间维度查看对应数据。仅统计北京中恒 / 四川新跃 / 北京易联 / 福建易联 四家分公司。</div>
+    <div class="sub">来源：ERP 零售单-零售单查询（当月-全部公司）｜ 口径：通报商品分类-新.xlsx·主机清单 + VIP商品编码 ｜ 仅统计北京中恒 / 四川新跃 / 北京易联 / 福建易联 四家分公司</div>
     <div class="selbar">
       <span class="lab">时间维度</span>
       <div class="seg" id="seg">
@@ -289,7 +289,9 @@ function draw(agg, dates, want){
   html+='<div class="foot">数据来源：ERP 零售单导出（与会员有效性同源）· <span class="warn">内含经营敏感数据，请勿外传</span></div>';
   document.getElementById('content').innerHTML = html;
   document.getElementById('period').textContent = "统计周期：" + selectedLabel(want||[]);
-  document.getElementById('noteUpd').textContent = GENERATED ? ("数据更新于 " + GENERATED + "；当日 = 今天(真实日历)，当日数据需当天重导 ERP 后生成") : "";
+  var nowBJ = new Date(new Date().getTime()+8*3600000);
+  var todayStr = nowBJ.toISOString().slice(0,10);
+  document.getElementById('noteUpd').innerHTML = GENERATED ? ("数据更新于 <b>"+GENERATED+"</b> ｜ 今日 <b>"+todayStr+"</b>；当日数据需当天重导 ERP 后生成") : "";
 }
 async function render(){
   document.getElementById('content').innerHTML='<div class="loading">加载中…</div>';
