@@ -2,54 +2,43 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>收银合规看板</title>
 <style>
-*{{box-sizing:border-box}} body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;margin:0;background:#f5f7fa;color:#1f2d3d}}
-.head{{background:linear-gradient(120deg,#1AABCB,#1488a8);color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}}
-.head h1{{margin:0;font-size:21px}} .head p{{margin:3px 0 0;opacity:.92;font-size:12.5px}}
-.bar{{display:flex;gap:8px;background:rgba(255,255,255,.18);padding:6px;border-radius:11px;flex-wrap:wrap}}
-.bar button{{border:0;background:transparent;color:#fff;font-size:13.5px;font-weight:600;padding:7px 14px;border-radius:8px;cursor:pointer;opacity:.8}}
-.bar button.on{{background:#fff;color:#1488a8;opacity:1}}
-.cust{{display:none;gap:8px;align-items:center;margin-left:6px;color:#fff;font-size:13px}}
-.cust input{{border:0;border-radius:7px;padding:6px 8px;font-size:13px;color:#1f2d3d}}
-.kpis{{display:flex;gap:14px;padding:18px 24px;flex-wrap:wrap}}
-.card{{background:#fff;border-radius:12px;padding:16px 20px;flex:1;min-width:140px;box-shadow:0 2px 10px rgba(0,0,0,.06)}}
-.card .n{{font-size:28px;font-weight:700}} .card .l{{font-size:12.5px;color:#667}} .card.bad .n{{color:#c0392b}} .card.good .n{{color:#1a9e4b}}
-.sec{{background:#fff;margin:0 24px 18px;border-radius:12px;padding:14px 18px;box-shadow:0 2px 10px rgba(0,0,0,.06)}}
-.sec h2{{font-size:15.5px;margin:0 0 10px;color:#1AABCB;border-left:4px solid #F6AA00;padding-left:10px;display:flex;justify-content:space-between;align-items:center}}
-table{{width:100%;border-collapse:collapse;font-size:13px}} th,td{{padding:6px 8px;border-bottom:1px solid #eef;text-align:left}}
-th{{background:#f0f6f8;color:#456}} tbody tr:hover{{background:#fafdff}}
-.note{{font-size:12px;color:#889;padding:0 24px 22px;line-height:1.7}}
-.dlbtn{{display:inline-block;margin:0 0 10px;font-size:13px;font-weight:600;color:#fff;background:#1AABCB;text-decoration:none;padding:8px 16px;border-radius:9px;border:0;cursor:pointer}}
-.dlbtn:hover{{background:#1488a8}}
-#mwrap{{padding:0 24px 8px;font-size:13px;color:#456}} #period{{font-weight:600;color:#1488a8}}
+*{box-sizing:border-box} body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;margin:0;background:#f5f7fa;color:#1f2d3d}
+.head{background:linear-gradient(120deg,#1AABCB,#1488a8);color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.head h1{margin:0;font-size:21px} .head p{margin:3px 0 0;opacity:.92;font-size:12.5px}
+.kpis{display:flex;gap:14px;padding:18px 24px;flex-wrap:wrap}
+.card{background:#fff;border-radius:12px;padding:16px 20px;flex:1;min-width:150px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.card .n{font-size:28px;font-weight:700} .card .l{font-size:12.5px;color:#667} .card.bad .n{color:#c0392b} .card.good .n{color:#1a9e4b}
+.card .d{display:block;margin-top:6px;font-size:12px;font-weight:700;color:#9ca3af}
+.sec{background:#fff;margin:0 24px 18px;border-radius:12px;padding:14px 18px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.sec h2{font-size:15.5px;margin:0 0 10px;color:#1AABCB;border-left:4px solid #F6AA00;padding-left:10px;display:flex;justify-content:space-between;align-items:center}
+table{width:100%;border-collapse:collapse;font-size:13px} th,td{padding:6px 8px;border-bottom:1px solid #eef;text-align:left}
+th{background:#f0f6f8;color:#456} tbody tr:hover{background:#fafdff}
+.note{font-size:12px;color:#889;padding:0 24px 22px;line-height:1.7}
+.dlbtn{display:inline-block;margin:0 0 10px;font-size:13px;font-weight:600;color:#fff;background:#1AABCB;text-decoration:none;padding:8px 16px;border-radius:9px;border:0;cursor:pointer}
+.dlbtn:hover{background:#1488a8}
+#mwrap{padding:0 24px 8px;font-size:13px;color:#456} #period{font-weight:600;color:#1488a8}
+.cmp{margin:0 24px 6px;background:#fff;border-radius:12px;padding:12px 18px;font-size:13px;color:#456;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.cmp b{color:#1488a8}
 </style></head><body>
 <div class="head">
   <div><h1>收银合规看板</h1><p>来源：ERP 零售单-结算明细（当月-全部公司-结算）｜ 判定依据：通报商品分类-新.xlsx·收款分类</p></div>
-  <div class="bar">
-    <button data-m="当日" onclick="setMode('当日')">当日</button>
-    <button data-m="昨日" onclick="setMode('昨日')">昨日</button>
-    <button data-m="当月" onclick="setMode('当月')">当月</button>
-    <button data-m="自定义" onclick="setMode('自定义')">自定义</button>
-    <span class="cust" id="cust"><input type="date" id="cstart"> ~ <input type="date" id="cend"><button class="dlbtn" style="padding:5px 12px" onclick="applyCustom()">应用</button></span>
-  </div>
 </div>
-<div id="mwrap">统计周期：<span id="period">加载中…</span> ｜ <span id="noteUpd"></span></div>
+<div id="mwrap">统计日期：<span id="period">加载中…</span> ｜ <span id="noteUpd"></span></div>
+<div class="cmp" id="cmp" style="display:none"></div>
 <div id="content"><div class="note">加载中…</div></div>
 
 <script>
 var RULE_MAP = {"APP": "合规", "XPOS": "有三方单号的视为合规", "车业务代金券": "合规", "电信-优惠券": "合规", "订金": "合规", "抖音来客": "合规", "对公转账": "合规", "花呗分期": "合规", "华为会员积分": "合规", "华为生日礼券": "合规", "回收补贴": "合规", "汇付支付": "合规", "教育优惠": "合规", "京东白条分期": "合规", "联通-优惠券": "合规", "龙湖POS": "合规", "美团闪购": "合规", "商场代金券": "合规", "商场收银": "合规", "刷卡扫码-工行": "不合规", "刷卡扫码-银联": "有三方单号的视为合规", "微盟付费会员": "合规", "现金": "合规", "银联国补自付": "合规", "现金赠品": "合规", "移动-优惠券": "合规", "银联POS手动收款": "不合规", "银联分期": "合规", "银联国补补贴": "合规", "银联商务B扫C": "合规", "银联商务智能POS内外卡受理": "合规", "银联商务智能POS扫码": "合规", "大众点评券": "合规", "大众点评线上": "合规", "抖超": "合规", "抖超国补": "合规", "抖音国补": "合规", "抖音支付": "合规", "高德": "合规", "京东到家": "合规", "京东到家DW": "合规", "京东国补": "合规", "京东秒送": "合规", "京东自营": "合规", "快手": "合规", "企业购": "合规", "淘宝闪购": "合规", "天猫国补": "合规", "小程序": "合规", "小红书": "合规", "浙江天猫": "合规"};
 var GENERATED = "2026-08-12 09:46";
-var MODE = "昨日";
 var INDEX = [];
 var STORE_BRANCH = {};
 var DAILY = {};
-var CUSTOM = {start:"", end:""};
+var TKEY = "";
 
 function bjNow(){ var n=new Date(); return new Date(n.getTime()+(n.getTimezoneOffset()+480)*60000); }
 function todayKey(){ var b=bjNow(); return b.getFullYear()*10000+(b.getMonth()+1)*100+b.getDate(); }
 function keyToYmd(k){ return k? (k.slice(0,4)+"-"+k.slice(4,6)+"-"+k.slice(6,8)) : ""; }
-function ymdToKey(s){ return s? s.replace(/-/g,"") : ""; }
 function prevKey(k){ var y=+k.slice(0,4), m=+k.slice(4,6), d=+k.slice(6,8); var dt=new Date(y,m-1,d); dt.setDate(dt.getDate()-1); return dt.getFullYear()*10000+(dt.getMonth()+1)*100+dt.getDate(); }
-function firstOfMonthKey(k){ return (+k.slice(0,4))*10000+(+k.slice(4,6))*100+1; }
 
 function idxName(k){ return "daily_index_"+k+".json"; }
 async function loadIndex(){
@@ -61,24 +50,6 @@ async function loadIndex(){
   INDEX=[];
 }
 function loadDay(k){ if(DAILY[k]) return Promise.resolve(DAILY[k]); return fetch("daily/"+k+".json").then(function(r){return r.json();}).then(function(j){DAILY[k]=j;return j;}).catch(function(){return null;}); }
-
-function selectedDates(){
-  if(INDEX.length===0) return [];
-  var t=todayKey();
-  if(MODE==="当日") return [t];
-  if(MODE==="昨日") return [prevKey(t)];
-  if(MODE==="当月"){ var ms=firstOfMonthKey(t); var ye=prevKey(t); return INDEX.filter(function(d){return d>=ms && d<=ye;}); }
-  if(MODE==="自定义"){ return INDEX.filter(function(d){return d>=(CUSTOM.start||"0000") && d<=(CUSTOM.end||"99999999");}); }
-  return [];
-}
-function selectedLabel(dates){
-  if(dates.length===0) return "（无数据）";
-  if(MODE==="当日") return "当日（"+keyToYmd(dates[0])+"）"+(dates[0]!==todayKey()?" · 当日数据尚未导出，最新可用截至 "+keyToYmd(dates[0]):"");
-  if(MODE==="昨日") return "昨日（"+keyToYmd(dates[0])+"）";
-  if(MODE==="当月") return "当月累积（"+keyToYmd(dates[0])+" ~ "+keyToYmd(dates[dates.length-1])+"）";
-  if(MODE==="自定义") return "自定义（"+(CUSTOM.start?keyToYmd(CUSTOM.start):"?")+" ~ "+(CUSTOM.end?keyToYmd(CUSTOM.end):"?")+"）";
-  return "";
-}
 
 function aggregate(dayobjs){
   var total=0,comp=0,nonc=0,excl=0,unm=0,easp=0,eret=0,ebr=0;
@@ -97,28 +68,47 @@ function aggregate(dayobjs){
     for(var b in d.branch_stat) addBranch(b,d.branch_stat[b]);
     (d.noncompliant_rows||[]).forEach(function(r){rows.push(r);});
   });
-  // 按分公司聚合门店数（按窗口重算）
   var bs_store={};
   for(var s in store_stat){ var br=STORE_BRANCH[s]||""; if(!br) continue; var b=bs_store[br]||(bs_store[br]={total:0,comp:0,noncomp:0}); b.total++; if(store_stat[s].noncomp===0 && store_stat[s].comp>0) b.comp++; if(store_stat[s].noncomp>0) b.noncomp++; }
   for(var b in branch_stat){ var bb=bs_store[b]||{total:0,comp:0,noncomp:0}; branch_stat[b].stores_total=bb.total; branch_stat[b].stores_comp=bb.comp; branch_stat[b].stores_noncomp=bb.noncomp; branch_stat[b].rate=((branch_stat[b].comp+branch_stat[b].noncomp)>0)? Math.round(branch_stat[b].comp/(branch_stat[b].comp+branch_stat[b].noncomp)*100*100)/100 : 0; branch_stat[b].perfect_pct=(bb.total>0)? Math.round(bb.comp/bb.total*1000)/10 : 0; }
   return {total:total,compliant:comp,noncompliant:nonc,excluded:excl,unmatched:unm,excluded_asp:easp,excluded_return:eret,excluded_branch:ebr,cat_amount:cat_amount,channel_stat:channel_stat,store_stat:store_stat,org_stat:org_stat,branch_stat:branch_stat,noncompliant_rows:rows};
 }
-function pct(n){ return (Math.round(n*1000)/1000)+"%"; }
+function ratePct(c,nc){ return (c+nc)>0? c/(c+nc)*100 : 0; }
 function fmt(n){ return (n==null)?"0":n.toLocaleString("en-US"); }
+function dBadge(cur, prev, kind){
+  if(prev==null) return '<span class="d flat">— 无前日</span>';
+  var d=cur-prev;
+  if(d===0) return '<span class="d flat">±0</span>';
+  var up=d>0;
+  var good = kind==='neutral' ? null : (kind==='up'? up : !up);
+  var col = good==null? '#9ca3af' : (good? '#1a9e4b':'#c0392b');
+  return '<span class="d" style="color:'+col+'">'+(up?'▲':'▼')+Math.abs(d)+'</span>';
+}
+function dPP(cur, prev){
+  if(prev==null) return '<span class="d flat">— 无前日</span>';
+  var d=Math.round((cur-prev)*100)/100;
+  if(d===0) return '<span class="d flat">±0.00pp</span>';
+  var up=d>0; var col= up?'#1a9e4b':'#c0392b';
+  return '<span class="d" style="color:'+col+'">'+(up?'▲':'▼')+Math.abs(d).toFixed(2)+'pp</span>';
+}
 
-function draw(D, dates){
-  var rate=(D.compliant+D.noncompliant)>0? D.compliant/(D.compliant+D.noncompliant)*100 : 0;
+function draw(D, D1, T, T1){
+  var rT=ratePct(D.compliant,D.noncompliant);
+  var r1=D1? ratePct(D1.compliant,D1.noncompliant):null;
   var kpi='<div class="kpis">'
-    +'<div class="card"><div class="n">'+fmt(D.total)+'</div><div class="l">有效收款笔数</div></div>'
-    +'<div class="card good"><div class="n">'+fmt(D.compliant)+'</div><div class="l">合规笔数</div></div>'
-    +'<div class="card bad"><div class="n">'+fmt(D.noncompliant)+'</div><div class="l">不合规笔数</div></div>'
-    +'<div class="card"><div class="n">'+Math.round(rate*100)/100+'%</div><div class="l">合规率（合规/合规+不合规）</div></div>'
-    +'<div class="card"><div class="n">'+fmt(D.excluded)+'</div><div class="l">剔除（现金/赠品/会员）</div></div>'
+    +'<div class="card"><div class="n">'+fmt(D.total)+'</div><div class="l">有效收款笔数</div><div class="d">较前一天 '+dBadge(D.total,D1&&D1.total,'neutral')+'</div></div>'
+    +'<div class="card good"><div class="n">'+fmt(D.compliant)+'</div><div class="l">合规笔数</div><div class="d">较前一天 '+dBadge(D.compliant,D1&&D1.compliant,'up')+'</div></div>'
+    +'<div class="card bad"><div class="n">'+fmt(D.noncompliant)+'</div><div class="l">不合规笔数</div><div class="d">较前一天 '+dBadge(D.noncompliant,D1&&D1.noncompliant,'down')+'</div></div>'
+    +'<div class="card"><div class="n">'+Math.round(rT*100)/100+'%</div><div class="l">合规率（合规/合规+不合规）</div><div class="d">较前一天 '+dPP(rT,r1)+'</div></div>'
+    +'<div class="card"><div class="n">'+fmt(D.excluded)+'</div><div class="l">剔除（现金/赠品/会员）</div><div class="d">较前一天 '+dBadge(D.excluded,D1&&D1.excluded,'neutral')+'</div></div>'
     +'</div>';
-  // 分公司表
+  if(D1){
+    document.getElementById('cmp').style.display='block';
+    document.getElementById('cmp').innerHTML='📊 <b>对比前一天（'+keyToYmd(T1)+'）</b>：有效收款 '+dBadge(D.total,D1.total,'neutral')+' ｜ 合规 '+dBadge(D.compliant,D1.compliant,'up')+' ｜ 不合规 '+dBadge(D.noncompliant,D1.noncompliant,'down')+' ｜ 合规率 '+dPP(rT,r1);
+  }
   var branch_rows="";
   Object.keys(D.branch_stat).sort(function(a,b){return (D.branch_stat[b].noncomp-D.branch_stat[a].noncomp)||(D.branch_stat[b].count-D.branch_stat[a].count);}).forEach(function(br){
-    var v=D.branch_stat[br];
+    var v=D.branch_stat[br]; var v1=D1?D1.branch_stat[br]:null;
     branch_rows+='<tr><td><b>'+br+'</b></td>'
       +'<td style="text-align:right;color:#1a9e4b">'+fmt(v.stores_comp)+'</td>'
       +'<td style="text-align:right;color:#c0392b">'+fmt(v.stores_noncomp)+'</td>'
@@ -126,39 +116,30 @@ function draw(D, dates){
       +'<td style="text-align:right">'+fmt(v.count)+'</td>'
       +'<td style="text-align:right;color:#1a9e4b">'+fmt(v.comp)+'</td>'
       +'<td style="text-align:right;color:#c0392b"><b>'+fmt(v.noncomp)+'</b></td>'
-      +'<td style="text-align:right">'+v.rate+'%</td></tr>';
+      +'<td style="text-align:right">'+v.rate+'%</td>'
+      +'<td style="text-align:right">'+dBadge(v.noncomp,v1&&v1.noncomp,'down')+'</td>'
+      +'<td style="text-align:right">'+dPP(v.rate,v1&&v1.rate)+'</td></tr>';
   });
-  // 门店表（不合规>0）
   var store_rows="";
   Object.keys(D.store_stat).filter(function(s){return D.store_stat[s].noncomp>0;}).sort(function(a,b){return D.store_stat[b].noncomp-D.store_stat[a].noncomp;}).forEach(function(s){
-    var v=D.store_stat[s];
-    store_rows+='<tr><td>'+s+'</td><td style="text-align:right">'+fmt(v.count)+'</td><td style="text-align:right">'+fmt(v.comp)+'</td><td style="text-align:right;color:#c0392b"><b>'+fmt(v.noncomp)+'</b></td><td style="text-align:right">'+v.rate+'%</td></tr>';
+    var v=D.store_stat[s]; var v1=D1?D1.store_stat[s]:null;
+    store_rows+='<tr><td>'+s+'</td><td style="text-align:right">'+fmt(v.count)+'</td><td style="text-align:right">'+fmt(v.comp)+'</td><td style="text-align:right;color:#c0392b"><b>'+fmt(v.noncomp)+'</b></td><td style="text-align:right">'+v.rate+'%</td><td style="text-align:right">'+dBadge(v.noncomp,v1&&v1.noncomp,'down')+'</td></tr>';
   });
-  // 支付通道 Top40
   var chan_rows="";
   Object.keys(D.channel_stat).sort(function(a,b){return D.channel_stat[b].count-D.channel_stat[a].count;}).slice(0,40).forEach(function(ch){
-    var v=D.channel_stat[ch];
-    chan_rows+='<tr><td>'+ch+'</td><td style="text-align:right">'+fmt(v.count)+'</td><td style="text-align:right;color:#1a9e4b">'+fmt(v.cat["合规"]||0)+'</td><td style="text-align:right;color:#c0392b">'+fmt(v.cat["不合规"]||0)+'</td><td style="text-align:right;color:#888">'+fmt(v.cat["剔除"]||0)+'</td></tr>';
+    var v=D.channel_stat[ch]; var v1=D1?D1.channel_stat[ch]:null;
+    chan_rows+='<tr><td>'+ch+'</td><td style="text-align:right">'+fmt(v.count)+'</td><td style="text-align:right;color:#1a9e4b">'+fmt(v.cat["合规"]||0)+'</td><td style="text-align:right;color:#c0392b">'+fmt(v.cat["不合规"]||0)+'</td><td style="text-align:right;color:#888">'+fmt(v.cat["剔除"]||0)+'</td><td style="text-align:right">'+dBadge(v.cat["不合规"]||0,v1&&v1.cat&&v1.cat["不合规"]||0,'down')+'</td></tr>';
   });
-  // 100%合规门店
   var perfect=Object.keys(D.store_stat).filter(function(s){return D.store_stat[s].noncomp===0 && D.store_stat[s].comp>0;}).sort(function(a,b){return D.store_stat[b].count-D.store_stat[a].count;});
   var total_stores=Object.keys(D.store_stat).length;
   var perfect_pct=(total_stores>0)? Math.round(perfect.length/total_stores*1000)/10 : 0;
   var perfect_rows=perfect.map(function(s){var v=D.store_stat[s];return '<tr><td>'+s+'</td><td style="text-align:right">'+fmt(v.count)+'</td><td style="text-align:right;color:#1a9e4b">'+fmt(v.comp)+'</td><td style="text-align:right;color:#1a9e4b"><b>100%</b></td></tr>';}).join("");
-  // 区间维度才展示门店走势/未售类汇总；这里收银合规无"未售"概念，仅当区间时给"每日趋势"提示
-  var trend="";
-  if(MODE==="当月"||MODE==="自定义"){
-    var dr="";
-    dates.forEach(function(dt){ var d=DAILY[dt]; if(!d) return; var r=(d.compliant+d.noncompliant)>0? d.compliant/(d.compliant+d.noncompliant)*100:0; dr+='<tr><td>'+keyToYmd(dt)+'</td><td style="text-align:right">'+fmt(d.total)+'</td><td style="text-align:right;color:#1a9e4b">'+fmt(d.compliant)+'</td><td style="text-align:right;color:#c0392b">'+fmt(d.noncompliant)+'</td><td style="text-align:right">'+Math.round(r*100)/100+'%</td></tr>'; });
-    trend='<div class="sec"><h2>每日合规趋势</h2><table><thead><tr><th>日期</th><th style="text-align:right">有效笔数</th><th style="text-align:right">合规</th><th style="text-align:right">不合规</th><th style="text-align:right">合规率</th></tr></thead><tbody>'+dr+'</tbody></table></div>';
-  }
   var html=kpi
-    +'<div class="sec"><h2>按所属分公司（不合规笔数）</h2><table><thead><tr><th>所属分公司</th><th style="text-align:right">合规门店数量</th><th style="text-align:right">不合规门店数量</th><th style="text-align:right">100%合规门店占比</th><th style="text-align:right">笔数</th><th style="text-align:right">合规</th><th style="text-align:right">不合规</th><th style="text-align:right">分公司合规率</th></tr></thead><tbody>'+(branch_rows||'<tr><td colspan=8 style="text-align:center;color:#1a9e4b">✅ 各分公司均合规</td></tr>')+'</tbody></table></div>'
-    +'<div class="sec"><h2>按门店（不合规 > 0 的门店）</h2><table><thead><tr><th>销售门店</th><th style="text-align:right">笔数</th><th style="text-align:right">合规</th><th style="text-align:right">不合规</th><th style="text-align:right">门店合规率</th></tr></thead><tbody>'+(store_rows||'<tr><td colspan=5 style="text-align:center;color:#1a9e4b">✅ 各门店均合规</td></tr>')+'</tbody></table></div>'
-    +'<div class="sec"><h2>按支付通道分布（Top40）</h2><table><thead><tr><th>支付通道</th><th style="text-align:right">笔数</th><th style="text-align:right">合规</th><th style="text-align:right">不合规</th><th style="text-align:right">剔除</th></tr></thead><tbody>'+chan_rows+'</tbody></table></div>'
-    +'<div class="sec"><h2>✅ 100% 合规门店（共 '+fmt(perfect.length)+' 家 / 占全部 '+fmt(total_stores)+' 家门店的 '+perfect_pct+'%）</h2><p style="font-size:13px;color:#667;margin:0 0 10px;line-height:1.7">以下门店在统计周期内<b>合规收款笔数 &gt; 0</b> 且 <b>不合规笔数 = 0</b>，即 100% 合规。</p><table><thead><tr><th>销售门店</th><th style="text-align:right">收款笔数</th><th style="text-align:right">合规</th><th style="text-align:right">门店合规率</th></tr></thead><tbody>'+(perfect_rows||'<tr><td colspan=4 style="text-align:center;color:#c0392b">暂无 100% 合规门店</td></tr>')+'</tbody></table></div>'
-    +trend
-    +'<div class="sec"><h2>不合规概览（共 '+fmt(D.noncompliant)+' 笔）</h2><p style="font-size:13px;color:#667;margin:0 0 10px;line-height:1.7">逐笔明细（单据、门店、会员号等）可下载当前区间 CSV 查看；不合规按所属分公司分布见上方表格。</p><button class="dlbtn" onclick="downloadCSV()">⬇ 下载当前区间不合规明细 CSV</button></div>'
+    +'<div class="sec"><h2>按所属分公司（不合规笔数 · 右两列为对比前一天）</h2><table><thead><tr><th>所属分公司</th><th style="text-align:right">合规门店数量</th><th style="text-align:right">不合规门店数量</th><th style="text-align:right">100%合规门店占比</th><th style="text-align:right">笔数</th><th style="text-align:right">合规</th><th style="text-align:right">不合规</th><th style="text-align:right">分公司合规率</th><th style="text-align:right">不合规Δ</th><th style="text-align:right">合规率Δ</th></tr></thead><tbody>'+(branch_rows||'<tr><td colspan=10 style="text-align:center;color:#1a9e4b">✅ 各分公司均合规</td></tr>')+'</tbody></table></div>'
+    +'<div class="sec"><h2>按门店（不合规 > 0 的门店 · 右列为对比前一天）</h2><table><thead><tr><th>销售门店</th><th style="text-align:right">笔数</th><th style="text-align:right">合规</th><th style="text-align:right">不合规</th><th style="text-align:right">门店合规率</th><th style="text-align:right">不合规Δ</th></tr></thead><tbody>'+(store_rows||'<tr><td colspan=6 style="text-align:center;color:#1a9e4b">✅ 各门店均合规</td></tr>')+'</tbody></table></div>'
+    +'<div class="sec"><h2>按支付通道分布（Top40 · 右列为对比前一天不合规Δ）</h2><table><thead><tr><th>支付通道</th><th style="text-align:right">笔数</th><th style="text-align:right">合规</th><th style="text-align:right">不合规</th><th style="text-align:right">剔除</th><th style="text-align:right">不合规Δ</th></tr></thead><tbody>'+chan_rows+'</tbody></table></div>'
+    +'<div class="sec"><h2>✅ 100% 合规门店（共 '+fmt(perfect.length)+' 家 / 占全部 '+fmt(total_stores)+' 家门店的 '+perfect_pct+'%）</h2><p style="font-size:13px;color:#667;margin:0 0 10px;line-height:1.7">以下门店在统计日<b>合规收款笔数 &gt; 0</b> 且 <b>不合规笔数 = 0</b>，即 100% 合规。</p><table><thead><tr><th>销售门店</th><th style="text-align:right">收款笔数</th><th style="text-align:right">合规</th><th style="text-align:right">门店合规率</th></tr></thead><tbody>'+(perfect_rows||'<tr><td colspan=4 style="text-align:center;color:#c0392b">暂无 100% 合规门店</td></tr>')+'</tbody></table></div>'
+    +'<div class="sec"><h2>不合规概览（共 '+fmt(D.noncompliant)+' 笔）</h2><p style="font-size:13px;color:#667;margin:0 0 10px;line-height:1.7">逐笔明细（单据、门店、会员号等）可下载 CSV 查看；不合规按所属分公司分布见上方表格。</p><button class="dlbtn" onclick="downloadCSV()">⬇ 下载不合规明细 CSV</button></div>'
     +'<div class="note">'
     +'· 已剔除<b>退货订单</b> <b>'+fmt(D.excluded_return)+'</b> 笔（不计入任何统计）。<br>'
     +'· 已剔除门店名含「ASP」的结算明细 <b>'+fmt(D.excluded_asp)+'</b> 笔（不计入任何统计）。<br>'
@@ -174,52 +155,34 @@ function ruleDesc(){
   return L("合规",groups["合规"])+L("不合规",groups["不合规"])+L("有条件合规",groups["有条件合规"],"——有「第三方订单号」才合规，否则不合规")+L("剔除",groups["剔除"],"（非收款方式）");
 }
 function downloadCSV(){
-  var rows=getCurrentRows(); if(!rows.length){ alert("当前区间无不合格明细"); return; }
+  var rows=getCurrentRows(); if(!rows.length){ alert("当前无不合格明细"); return; }
   var cols=["单据日期","业务组织","所属分公司","销售门店","单据编号","支付通道","收款方式","收款类型","会员手机号","第三方订单号","判定"];
   var esc=function(s){ s=String(s==null?"":s); return /[",\n]/.test(s)? '"'+s.replace(/"/g,'""')+'"' : s; };
   var lines=[cols.join(",")];
   rows.forEach(function(r){ lines.push(cols.map(function(c){return esc(r[c]);}).join(",")); });
   var blob=new Blob(["\ufeff"+lines.join("\n")],{type:"text/csv;charset=utf-8"});
-  var a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="不合规明细_"+MODE+".csv"; a.click();
+  var a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="不合规明细_"+TKEY+".csv"; a.click();
 }
 var _CURRENT_ROWS=[];
 function getCurrentRows(){ return _CURRENT_ROWS; }
 
-async function render(){
-  document.getElementById('content').innerHTML='<div class="note">加载中…</div>';
-  var dates=selectedDates();
-  if(dates.length===0){ document.getElementById('content').innerHTML='<div class="note">暂无可用数据（当日数据尚未导出）</div>'; document.getElementById('period').textContent=selectedLabel([]); return; }
-  try{
-    var js=await Promise.all(dates.map(loadDay));
-    var fallbackNote="";
-    if(js.every(function(x){return !x;})){
-      // 所选窗口无数据（如「当日」尚未导出），回退到最新可用日
-      var fb=INDEX.slice().sort().reverse()[0];
-      if(fb){ var fobj=await loadDay(fb); if(fobj){ js=[fobj]; dates=[fb]; fallbackNote="数据尚未导出，以下为最新可用 "+keyToYmd(fb); } }
-    }
-    if(js.every(function(x){return !x;})){ document.getElementById('content').innerHTML='<div class="note">暂无可用数据</div>'; document.getElementById('period').textContent="（无数据）"; return; }
-    var D=aggregate(js);
-    _CURRENT_ROWS=D.noncompliant_rows;
-    draw(D, dates);
-    document.getElementById('period').textContent = fallbackNote ? fallbackNote : selectedLabel(dates);
-    document.getElementById('noteUpd').textContent=GENERATED? ("数据更新于 "+GENERATED):"";
-  }catch(e){ document.getElementById('content').innerHTML='<div class="note">数据加载失败：'+e+'</div>'; }
-}
-function setMode(m){
-  MODE=m;
-  document.querySelectorAll('.bar button').forEach(function(b){ b.classList.toggle('on', b.dataset.m===m); });
-  document.getElementById('cust').style.display=(m==="自定义")?"inline-flex":"none";
-  if(m==="自定义"){ var t=todayKey(); document.getElementById('cstart').value=keyToYmd(firstOfMonthKey(t)); document.getElementById('cend').value=keyToYmd(prevKey(t)); }
-  render();
-}
-function applyCustom(){ CUSTOM.start=ymdToKey(document.getElementById('cstart').value); CUSTOM.end=ymdToKey(document.getElementById('cend').value); render(); }
-
 (async function(){
   await loadIndex();
-  var t=todayKey();
-  document.getElementById('cstart').value=keyToYmd(firstOfMonthKey(t));
-  document.getElementById('cend').value=keyToYmd(prevKey(t));
-  setMode("当日");
+  var content=document.getElementById('content');
+  if(INDEX.length===0){ content.innerHTML='<div class="note">暂无可用数据</div>'; document.getElementById('period').textContent='（无数据）'; return; }
+  var dates=INDEX.slice().sort();
+  var T=dates[dates.length-1];
+  var T1=(INDEX.indexOf(prevKey(T))>=0)? prevKey(T) : (dates.length>1? dates[dates.length-2] : null);
+  var objs=await Promise.all([loadDay(T), T1?loadDay(T1):Promise.resolve(null)]);
+  var DT=objs[0], D1raw=objs[1];
+  if(!DT){ content.innerHTML='<div class="note">数据加载失败</div>'; document.getElementById('period').textContent='（加载失败）'; return; }
+  TKEY=T;
+  var D=aggregate([DT]);
+  var D1=D1raw? aggregate([D1raw]) : null;
+  _CURRENT_ROWS=D.noncompliant_rows;
+  draw(D, D1, T, T1);
+  document.getElementById('period').textContent=keyToYmd(T)+(T1?(' ｜ 对比前一天：'+keyToYmd(T1)):'（无前日数据，无法对比）');
+  document.getElementById('noteUpd').textContent=GENERATED? ('数据更新于 '+GENERATED):'';
 })();
 </script>
 <!-- RETAIL_STATS_START -->
