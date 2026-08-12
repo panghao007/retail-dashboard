@@ -204,13 +204,10 @@ function draw(agg, dates, want){
       +'<td class="num">'+bd.numerator.toFixed(0)+'</td>'
       +'<td class="rate"><div class="bar"><span style="width:'+w.toFixed(1)+'%;background:'+col+'"></span></div><b style="color:'+col+'">'+pct(rate)+'</b></td>'
       +'<td class="num">'+bOpen+'/'+master+'（'+pct(bOpen/master)+'）</td>'
-      +'<td class="num">'+sold+'/'+master+'</td>'
-      +'<td class="num" style="color:#dc2626">'+unsold.length+'</td>'
       +'</tr>';
   });
   let branchTable='<table><thead><tr><th>所属分公司</th><th style="text-align:right">主机台量</th>'
-    +'<th style="text-align:right">VIP数</th><th>会员连带率</th><th style="text-align:right">付费会员开单(门店)</th>'
-    +'<th style="text-align:right">门店销售(售/总)</th><th style="text-align:right">未售门店</th></tr></thead><tbody>'+rows+'</tbody></table>';
+    +'<th style="text-align:right">VIP数</th><th>会员连带率</th><th style="text-align:right">付费会员开单(门店)</th></tr></thead><tbody>'+rows+'</tbody></table>';
 
   let html = kpi + branchTable;
 
