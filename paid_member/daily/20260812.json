@@ -1,24 +1,24 @@
 {
   "date": "2026-08-12",
-  "generated": "2026-08-13 16:05",
+  "generated": "2026-08-13 17:42",
   "total": {
-    "denominator": 425.0,
-    "numerator": 78.0,
-    "order_denom": 415,
-    "order_num": 78
+    "denominator": 436.0,
+    "numerator": 86.0,
+    "order_denom": 426,
+    "order_num": 86
   },
   "branches": {
     "北京中恒": {
-      "denominator": 124.0,
+      "denominator": 123.0,
       "numerator": 21.0,
-      "order_denom": 123,
+      "order_denom": 122,
       "order_num": 21
     },
     "四川新跃": {
-      "denominator": 70.0,
-      "numerator": 25.0,
-      "order_denom": 70,
-      "order_num": 25
+      "denominator": 82.0,
+      "numerator": 33.0,
+      "order_denom": 82,
+      "order_num": 33
     },
     "北京易联": {
       "denominator": 166.0,
@@ -309,9 +309,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京顺义华联",
-      "denominator": 8.0,
+      "denominator": 7.0,
       "numerator": 0.0,
-      "order_denom": 8,
+      "order_denom": 7,
       "order_num": 0
     },
     {
@@ -341,18 +341,18 @@
     {
       "branch": "四川新跃",
       "store": "APR成都东安天街",
-      "denominator": 0.0,
-      "numerator": 0.0,
-      "order_denom": 0,
-      "order_num": 0
+      "denominator": 1.0,
+      "numerator": 1.0,
+      "order_denom": 1,
+      "order_num": 1
     },
     {
       "branch": "四川新跃",
       "store": "APR成都凯德魅力城",
-      "denominator": 0.0,
-      "numerator": 0.0,
-      "order_denom": 0,
-      "order_num": 0
+      "denominator": 4.0,
+      "numerator": 4.0,
+      "order_denom": 4,
+      "order_num": 4
     },
     {
       "branch": "四川新跃",
@@ -381,10 +381,10 @@
     {
       "branch": "四川新跃",
       "store": "APR成都天府环宇坊",
-      "denominator": 0.0,
-      "numerator": 0.0,
-      "order_denom": 0,
-      "order_num": 0
+      "denominator": 4.0,
+      "numerator": 1.0,
+      "order_denom": 4,
+      "order_num": 1
     },
     {
       "branch": "四川新跃",
@@ -429,10 +429,10 @@
     {
       "branch": "四川新跃",
       "store": "APR成都环球中心",
-      "denominator": 0.0,
-      "numerator": 0.0,
-      "order_denom": 0,
-      "order_num": 0
+      "denominator": 3.0,
+      "numerator": 2.0,
+      "order_denom": 3,
+      "order_num": 2
     },
     {
       "branch": "四川新跃",

@@ -1,10 +1,10 @@
 {
   "date": "2026-08-06",
-  "generated": "2026-08-13 16:05",
+  "generated": "2026-08-13 17:42",
   "total": {
-    "denominator": 373.0,
+    "denominator": 380.0,
     "numerator": 22.0,
-    "order_denom": 359,
+    "order_denom": 366,
     "order_num": 22
   },
   "branches": {
@@ -15,9 +15,9 @@
       "order_num": 0
     },
     "四川新跃": {
-      "denominator": 47.0,
+      "denominator": 54.0,
       "numerator": 0.0,
-      "order_denom": 44,
+      "order_denom": 51,
       "order_num": 0
     },
     "北京易联": {
@@ -349,9 +349,9 @@
     {
       "branch": "四川新跃",
       "store": "APR成都凯德魅力城",
-      "denominator": 0.0,
+      "denominator": 1.0,
       "numerator": 0.0,
-      "order_denom": 0,
+      "order_denom": 1,
       "order_num": 0
     },
     {
@@ -381,9 +381,9 @@
     {
       "branch": "四川新跃",
       "store": "APR成都天府环宇坊",
-      "denominator": 0.0,
+      "denominator": 4.0,
       "numerator": 0.0,
-      "order_denom": 0,
+      "order_denom": 4,
       "order_num": 0
     },
     {
@@ -429,9 +429,9 @@
     {
       "branch": "四川新跃",
       "store": "APR成都环球中心",
-      "denominator": 0.0,
+      "denominator": 2.0,
       "numerator": 0.0,
-      "order_denom": 0,
+      "order_denom": 2,
       "order_num": 0
     },
     {
