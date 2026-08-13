@@ -3,34 +3,34 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>会员沉淀看板</title>
 <style>
-*{{box-sizing:border-box;}}
-body{{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f4f6fa;color:#1f2937;margin:0;padding:0;}}
-.head{{background:linear-gradient(120deg,#10b981,#0e9f6e);color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}}
-.head h1{{margin:0;font-size:21px}} .head p{{margin:3px 0 0;opacity:.92;font-size:12.5px}}
-.bar{{display:flex;gap:8px;background:rgba(255,255,255,.18);padding:6px;border-radius:11px;flex-wrap:wrap}}
-.bar button{{border:0;background:transparent;color:#fff;font-size:13.5px;font-weight:600;padding:7px 14px;border-radius:8px;cursor:pointer;opacity:.8}}
-.bar button.on{{background:#fff;color:#0e9f6e;opacity:1}}
-.cust{{display:none;gap:8px;align-items:center;margin-left:6px;color:#fff;font-size:13px}}
-.cust input{{border:0;border-radius:7px;padding:6px 8px;font-size:13px;color:#1f2d3d}}
-.kpis{{display:flex;gap:14px;padding:18px 24px;flex-wrap:wrap}}
-.kpi{{flex:1;min-width:150px;background:#fff;border-radius:14px;box-shadow:0 1px 3px rgba(16,24,40,.08);padding:16px 18px}}
-.kpi .v{{font-size:28px;font-weight:800;color:#10b981}} .kpi .l{{font-size:12px;color:#6b7280;margin-top:2px}}
-.kpi.warn-k .v{{color:#f97316}}
-.sec{{background:#fff;margin:0 24px 16px;border-radius:14px;padding:16px 18px;box-shadow:0 1px 3px rgba(16,24,40,.08)}}
-.sec h2{{font-size:16px;font-weight:700;margin:0 0 12px;display:flex;align-items:center;gap:8px;}}
-.branddot{{width:10px;height:10px;border-radius:3px;background:#10b981;display:inline-block;}}
-table{{width:100%;border-collapse:collapse;font-size:14px}}
-th,td{{padding:10px 12px;text-align:left;border-bottom:1px solid #eef1f5}}
-th{{color:#6b7280;font-weight:600;font-size:12px;background:#fafbfc}}
-td.num,th.num{{text-align:right;font-variant-numeric:tabular-nums;}}
-td.bname{{font-weight:600}}
-.delta{{font-weight:700}} .delta.up{{color:#10b981}} .delta.down{{color:#ef4444}} .delta.flat{{color:#9ca3af}}
-.note{{color:#6b7280;font-size:12px;margin-top:10px;line-height:1.7}}
-.warn{{background:#fff4f4;border:1px solid #f3c9c9;color:#b42318;padding:10px 14px;border-radius:10px;font-size:13px;margin-top:8px}}
-.branch-block{{margin-top:14px}}
-.branch-name{{font-size:13px;font-weight:700;color:#10b981;margin-bottom:6px;padding-left:8px;border-left:3px solid #10b981}}
-#period{{font-weight:600;color:#fff}}
-#mwrap{{padding:8px 24px 0;font-size:13px;color:#fff}}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f4f6fa;color:#1f2937;margin:0;padding:0;}
+.head{background:linear-gradient(120deg,#10b981,#0e9f6e);color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.head h1{margin:0;font-size:21px} .head p{margin:3px 0 0;opacity:.92;font-size:12.5px}
+.bar{display:flex;gap:8px;background:rgba(255,255,255,.18);padding:6px;border-radius:11px;flex-wrap:wrap}
+.bar button{border:0;background:transparent;color:#fff;font-size:13.5px;font-weight:600;padding:7px 14px;border-radius:8px;cursor:pointer;opacity:.8}
+.bar button.on{background:#fff;color:#0e9f6e;opacity:1}
+.cust{display:none;gap:8px;align-items:center;margin-left:6px;color:#fff;font-size:13px}
+.cust input{border:0;border-radius:7px;padding:6px 8px;font-size:13px;color:#1f2d3d}
+.kpis{display:flex;gap:14px;padding:18px 24px;flex-wrap:wrap}
+.kpi{flex:1;min-width:150px;background:#fff;border-radius:14px;box-shadow:0 1px 3px rgba(16,24,40,.08);padding:16px 18px}
+.kpi .v{font-size:28px;font-weight:800;color:#10b981} .kpi .l{font-size:12px;color:#6b7280;margin-top:2px}
+.kpi.warn-k .v{color:#f97316}
+.sec{background:#fff;margin:0 24px 16px;border-radius:14px;padding:16px 18px;box-shadow:0 1px 3px rgba(16,24,40,.08)}
+.sec h2{font-size:16px;font-weight:700;margin:0 0 12px;display:flex;align-items:center;gap:8px;}
+.branddot{width:10px;height:10px;border-radius:3px;background:#10b981;display:inline-block;}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #eef1f5}
+th{color:#6b7280;font-weight:600;font-size:12px;background:#fafbfc}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+td.bname{font-weight:600}
+.delta{font-weight:700} .delta.up{color:#10b981} .delta.down{color:#ef4444} .delta.flat{color:#9ca3af}
+.note{color:#6b7280;font-size:12px;margin-top:10px;line-height:1.7}
+.warn{background:#fff4f4;border:1px solid #f3c9c9;color:#b42318;padding:10px 14px;border-radius:10px;font-size:13px;margin-top:8px}
+.branch-block{margin-top:14px}
+.branch-name{font-size:13px;font-weight:700;color:#10b981;margin-bottom:6px;padding-left:8px;border-left:3px solid #10b981}
+#period{font-weight:600;color:#fff}
+#mwrap{padding:8px 24px 0;font-size:13px;color:#fff}
 </style></head><body>
 <div class="head">
   <div><h1>会员沉淀看板</h1><p>以「首次购买门店」归属分公司 ｜ 截至所选日期的累计会员数（快照，不可加总）</p></div>
@@ -49,18 +49,18 @@ td.bname{{font-weight:600}}
 var BRANCH_ORDER = ["上海爱飞", "北京中恒", "北京易联", "北京飞航", "四川新跃", "福建易联", "（未匹配门店）", "未消费会员"];
 var EXCLUDED_KW = ["丰管路", "内购店"];
 var NOTE = "会员沉淀为「截至某日的累计会员数」快照，不可加总；时间维度=快照日期。历史每日快照自 2026-08-11 起累积，更早日期暂无快照（会员档案为时点拉取）。";
-var GENERATED = "2026-08-13 17:50";
+var GENERATED = "2026-08-13 18:27";
 var MODE = "当日";
 var INDEX = [];
 var SNAPS = {};
 var CUSTOM = {start:"", end:""};
 
 function bjNow(){ var n=new Date(); return new Date(n.getTime()+(n.getTimezoneOffset()+480)*60000); }
-function todayKey(){ var b=bjNow(); return b.getFullYear()*10000+(b.getMonth()+1)*100+b.getDate(); }
-function keyToYmd(k){ return k? (k.slice(0,4)+"-"+k.slice(4,6)+"-"+k.slice(6,8)) : ""; }
-function ymdToKey(s){ return s? s.replace(/-/g,"") : ""; }
-function prevKey(k){ var y=+k.slice(0,4),m=+k.slice(4,6),d=+k.slice(6,8); var dt=new Date(y,m-1,d); dt.setDate(dt.getDate()-1); return dt.getFullYear()*10000+(dt.getMonth()+1)*100+dt.getDate(); }
-function firstOfMonthKey(k){ return (+k.slice(0,4))*10000+(+k.slice(4,6))*100+1; }
+function todayKey(){ var b=bjNow(); var m=('0'+(b.getMonth()+1)).slice(-2), d=('0'+b.getDate()).slice(-2); return ''+b.getFullYear()+m+d; }
+function keyToYmd(k){ k=''+k; return k? (k.slice(0,4)+"-"+k.slice(4,6)+"-"+k.slice(6,8)) : ""; }
+function ymdToKey(s){ return s? (''+s).replace(/-/g,"") : ""; }
+function prevKey(k){ k=''+k; var y=+k.slice(0,4),m=+k.slice(4,6),d=+k.slice(6,8); var dt=new Date(y,m-1,d); dt.setDate(dt.getDate()-1); var mm=('0'+(dt.getMonth()+1)).slice(-2), dd=('0'+dt.getDate()).slice(-2); return ''+dt.getFullYear()+mm+dd; }
+function firstOfMonthKey(k){ k=''+k; return k.slice(0,4)+k.slice(4,6)+'01'; }
 function idxName(k){ return "daily_index_"+k+".json"; }
 async function loadIndex(){
   var k=todayKey();
