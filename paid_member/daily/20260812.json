@@ -1,10 +1,10 @@
 {
   "date": "2026-08-12",
-  "generated": "2026-08-13 17:42",
+  "generated": "2026-08-13 22:04",
   "total": {
-    "denominator": 436.0,
+    "denominator": 437.0,
     "numerator": 86.0,
-    "order_denom": 426,
+    "order_denom": 427,
     "order_num": 86
   },
   "branches": {
@@ -21,15 +21,15 @@
       "order_num": 33
     },
     "北京易联": {
-      "denominator": 166.0,
+      "denominator": 165.0,
       "numerator": 25.0,
-      "order_denom": 164,
+      "order_denom": 163,
       "order_num": 25
     },
     "福建易联": {
-      "denominator": 65.0,
+      "denominator": 67.0,
       "numerator": 7.0,
-      "order_denom": 58,
+      "order_denom": 60,
       "order_num": 7
     }
   },
@@ -741,9 +741,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京沙河万达",
-      "denominator": 4.0,
+      "denominator": 3.0,
       "numerator": 0.0,
-      "order_denom": 4,
+      "order_denom": 3,
       "order_num": 0
     },
     {
@@ -877,9 +877,9 @@
     {
       "branch": "福建易联",
       "store": "华为厦门思明星河COCO Park",
-      "denominator": 2.0,
+      "denominator": 3.0,
       "numerator": 0.0,
-      "order_denom": 2,
+      "order_denom": 3,
       "order_num": 0
     },
     {
@@ -925,9 +925,9 @@
     {
       "branch": "福建易联",
       "store": "华为福州东街口",
-      "denominator": 4.0,
+      "denominator": 5.0,
       "numerator": 0.0,
-      "order_denom": 4,
+      "order_denom": 5,
       "order_num": 0
     },
     {
