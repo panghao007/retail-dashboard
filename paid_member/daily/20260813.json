@@ -1,35 +1,35 @@
 {
   "date": "2026-08-13",
-  "generated": "2026-08-13 22:04",
+  "generated": "2026-08-14 06:50",
   "total": {
-    "denominator": 357.0,
+    "denominator": 362.0,
     "numerator": 104.0,
-    "order_denom": 356,
+    "order_denom": 361,
     "order_num": 104
   },
   "branches": {
     "北京中恒": {
-      "denominator": 113.0,
+      "denominator": 114.0,
       "numerator": 39.0,
-      "order_denom": 113,
+      "order_denom": 114,
       "order_num": 39
     },
     "四川新跃": {
-      "denominator": 66.0,
+      "denominator": 68.0,
       "numerator": 31.0,
-      "order_denom": 65,
+      "order_denom": 67,
       "order_num": 31
     },
     "北京易联": {
-      "denominator": 125.0,
+      "denominator": 126.0,
       "numerator": 28.0,
-      "order_denom": 125,
+      "order_denom": 126,
       "order_num": 28
     },
     "福建易联": {
-      "denominator": 53.0,
+      "denominator": 54.0,
       "numerator": 6.0,
-      "order_denom": 53,
+      "order_denom": 54,
       "order_num": 6
     }
   },
@@ -77,9 +77,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京亦庄龙湖",
-      "denominator": 5.0,
+      "denominator": 6.0,
       "numerator": 0.0,
-      "order_denom": 5,
+      "order_denom": 6,
       "order_num": 0
     },
     {
@@ -373,9 +373,9 @@
     {
       "branch": "四川新跃",
       "store": "APR成都天府大悦城",
-      "denominator": 3.0,
+      "denominator": 4.0,
       "numerator": 2.0,
-      "order_denom": 3,
+      "order_denom": 4,
       "order_num": 2
     },
     {
@@ -421,9 +421,9 @@
     {
       "branch": "四川新跃",
       "store": "APR成都温江旭辉",
-      "denominator": 6.0,
+      "denominator": 7.0,
       "numerator": 3.0,
-      "order_denom": 6,
+      "order_denom": 7,
       "order_num": 3
     },
     {
@@ -725,9 +725,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京槐房万达",
-      "denominator": 7.0,
+      "denominator": 8.0,
       "numerator": 1.0,
-      "order_denom": 7,
+      "order_denom": 8,
       "order_num": 1
     },
     {
@@ -981,9 +981,9 @@
     {
       "branch": "福建易联",
       "store": "华为福州平潭吾悦",
-      "denominator": 10.0,
+      "denominator": 11.0,
       "numerator": 0.0,
-      "order_denom": 10,
+      "order_denom": 11,
       "order_num": 0
     },
     {
