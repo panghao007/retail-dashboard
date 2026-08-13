@@ -1,10 +1,10 @@
 {
   "date": "2026-08-10",
-  "generated": "2026-08-13 14:15",
+  "generated": "2026-08-13 14:25",
   "total": {
-    "denominator": 358.0,
+    "denominator": 355.0,
     "numerator": 25.0,
-    "order_denom": 353,
+    "order_denom": 350,
     "order_num": 25
   },
   "branches": {
@@ -15,15 +15,15 @@
       "order_num": 0
     },
     "四川新跃": {
-      "denominator": 65.0,
+      "denominator": 64.0,
       "numerator": 0.0,
-      "order_denom": 64,
+      "order_denom": 63,
       "order_num": 0
     },
     "北京易联": {
-      "denominator": 86.0,
+      "denominator": 84.0,
       "numerator": 16.0,
-      "order_denom": 86,
+      "order_denom": 84,
       "order_num": 16
     },
     "福建易联": {
@@ -477,9 +477,9 @@
     {
       "branch": "四川新跃",
       "store": "APR成都高新伊藤",
-      "denominator": 5.0,
+      "denominator": 4.0,
       "numerator": 0.0,
-      "order_denom": 5,
+      "order_denom": 4,
       "order_num": 0
     },
     {
@@ -645,9 +645,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京大兴大族",
-      "denominator": 7.0,
+      "denominator": 5.0,
       "numerator": 3.0,
-      "order_denom": 7,
+      "order_denom": 5,
       "order_num": 3
     },
     {
