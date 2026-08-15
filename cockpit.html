@@ -84,10 +84,11 @@ body{
   </div>
   <div class="grid" id="grid"></div>
   <div class="dl-section">
-    <div class="dl-title">数据下载（各看板明细 Excel）</div>
+    <div class="dl-title">数据下载（各看板明细 Excel / CSV）</div>
     <div class="dl-row">
       <a class="dl-btn" id="dl-validity" href="#">⬇ 会员有效性分析.xlsx</a>
       <a class="dl-btn" href="member_deposit/会员沉淀分析.xlsx">⬇ 会员沉淀分析.xlsx</a>
+      <a class="dl-btn" id="dl-cashier-csv" href="javascript:void(0)">⬇ 合规收银不合规明细 CSV</a>
     </div>
   </div>
   <div class="foot">内含会员与门店经营敏感数据，请勿外传</div>
@@ -214,6 +215,7 @@ async function loadValidity(){
 
 // ===== 2. 会员沉淀 =====
 const DEP_SPECIAL=["（未匹配门店）","未消费会员"];
+var CASHIER_T=null;
 async function fetchIndexWithFallback(subdir){
   const today=beijingYMD();
   for(let back=0; back<=60; back++){
@@ -291,15 +293,17 @@ function extractCashier(txt){
   const dM=txt.match(/var\s+D\s*=\s*([\s\S]*?);\s*\n\s*var\s+D1/);
   const d1M=txt.match(/var\s+D1\s*=\s*([\s\S]*?);\s*(?:\n|var|$)/);
   const gM=txt.match(/var\s+GENERATED\s*=\s*"([^"]+)"/);
+  const tM=txt.match(/var\s+T\s*=\s*"([^"]+)"/);
   const D=dM?JSON.parse(dM[1]):null;
   const D1=d1M?JSON.parse(d1M[1]):null;
-  return {D,D1,generated:gM?gM[1]:null};
+  return {D,D1,generated:gM?gM[1]:null, T:tM?tM[1]:null};
 }
 async function loadCashier(){
   try{
     const txt=await getText("cashier/收银合规看板.html?_="+Date.now());
-    const {D,D1,generated}=extractCashier(txt);
+    const {D,D1,generated,T}=extractCashier(txt);
     if(!D) throw new Error("D not found");
+    if(T) CASHIER_T=T;
     DATES.cashier=(generated||"").slice(0,10);
     const comp=D.compliant, nonc=D.noncompliant;
     const rate=pct(comp, comp+nonc);
@@ -360,6 +364,22 @@ async function loadPaid(){
   }
   updateHeader();
 }
+
+// 合规收银不合规明细 CSV 下载（复用看板 daily/noncompliant_<T>.json，与看板口径一致）
+function downloadCashierCSV(){
+  if(!CASHIER_T){ alert("合规收银数据加载中，请稍候再试"); return; }
+  fetch("cashier/daily/noncompliant_"+CASHIER_T+".json?_="+Date.now()).then(function(r){return r.json();}).then(function(j){
+    var rows=j.noncompliant_rows||[];
+    if(!rows.length){ alert("当前无不合格明细"); return; }
+    var cols=["单据日期","业务组织","所属分公司","销售门店","单据编号","支付通道","收款方式","收款类型","会员手机号","第三方订单号","判定"];
+    var esc=function(s){ s=String(s==null?"":s); return /[",\n]/.test(s)? '"'+s.replace(/"/g,'""')+'"' : s; };
+    var lines=[cols.join(",")];
+    rows.forEach(function(r){ lines.push(cols.map(function(c){return esc(r[c]);}).join(",")); });
+    var blob=new Blob(["\ufeff"+lines.join("\n")],{type:"text/csv;charset=utf-8"});
+    var a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="不合规明细_"+CASHIER_T+".csv"; a.click();
+  }).catch(function(){ alert("明细加载失败"); });
+}
+document.getElementById("dl-cashier-csv").addEventListener("click", downloadCashierCSV);
 
 buildCards();
 updateHeader();
