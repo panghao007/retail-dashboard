@@ -36,6 +36,7 @@
   td.bn{font-weight:700;white-space:nowrap;}
   td.sn{font-weight:600;font-size:13px;white-space:nowrap;}
   td.rate{width:100px;text-align:center;}
+  td.tier{font-size:12.5px;color:#4b5563;max-width:280px;line-height:1.6;}
   .bar{display:inline-block;width:120px;height:9px;background:#eef1f4;border-radius:6px;vertical-align:middle;margin-right:10px;overflow:hidden;}
   .bar span{display:block;height:100%;border-radius:6px;}
   td.rate b{font-size:15px;vertical-align:middle;}
@@ -202,16 +203,19 @@ function draw(agg, dates, want){
       if(o.denominator>0||o.numerator>0) sold++; else unsold.push(s);
       if(o.numerator>0) bOpen++;
     });
+    // 档位：该分公司售出的 VIP 商品名称（取自聚合后的 bd.vip）
+    const tierNames = Object.keys(bd.vip||{}).map(c=>(bd.vip[c].name||c).replace(/会员套餐?/,'')).filter(Boolean);
     rows+='<tr>'
       +'<td class="bn">'+b+'</td>'
       +'<td class="num">'+bd.denominator.toFixed(0)+'</td>'
       +'<td class="num">'+bd.numerator.toFixed(0)+'</td>'
       +'<td class="rate"><b style="color:'+col+'">'+pct(rate)+'</b></td>'
       +'<td class="num">'+bOpen+'/'+master+'（'+pct(bOpen/master)+'）</td>'
+      +'<td class="tier">'+(tierNames.length ? tierNames.join(' / ') : '<span class="muted">—</span>')+'</td>'
       +'</tr>';
   });
   let branchTable='<table><thead><tr><th>所属分公司</th><th style="text-align:right">主机台量</th>'
-    +'<th style="text-align:right">VIP数</th><th>会员连带率</th><th style="text-align:right">付费会员开单(门店)</th></tr></thead><tbody>'+rows+'</tbody></table>';
+    +'<th style="text-align:right">VIP数</th><th>会员连带率</th><th style="text-align:right">付费会员开单(门店)</th><th>档位</th></tr></thead><tbody>'+rows+'</tbody></table>';
 
   let html = kpi + branchTable;
 
