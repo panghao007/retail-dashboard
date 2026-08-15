@@ -66,6 +66,11 @@ body{
 .enter .ar{transition:transform .16s;}
 .card:hover .enter .ar{transform:translateX(4px);}
 .foot{margin-top:36px;text-align:center;color:#e02424;font-weight:700;font-size:13px;letter-spacing:.5px;}
+.dl-section{margin-top:30px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:18px 20px;}
+.dl-title{font-size:13px;font-weight:700;color:#9fb2c4;margin-bottom:12px;letter-spacing:1px;}
+.dl-row{display:flex;gap:12px;flex-wrap:wrap;}
+.dl-btn{font-size:13.5px;font-weight:700;color:var(--cyan);text-decoration:none;background:rgba(26,171,203,.12);padding:9px 16px;border-radius:10px;transition:all .16s;border:1px solid rgba(26,171,203,.25);}
+.dl-btn:hover{background:var(--cyan);color:#06121f;}
 </style>
 </head>
 <body>
@@ -78,6 +83,13 @@ body{
     <div class="updated" id="updated">实时数据 · 加载中…</div>
   </div>
   <div class="grid" id="grid"></div>
+  <div class="dl-section">
+    <div class="dl-title">数据下载（各看板明细 Excel）</div>
+    <div class="dl-row">
+      <a class="dl-btn" id="dl-validity" href="#">⬇ 会员有效性分析.xlsx</a>
+      <a class="dl-btn" href="member_deposit/会员沉淀分析.xlsx">⬇ 会员沉淀分析.xlsx</a>
+    </div>
+  </div>
   <div class="foot">内含会员与门店经营敏感数据，请勿外传</div>
 </div>
 
@@ -192,6 +204,8 @@ async function loadValidity(){
         : [deltaChip("无效增减", k.invalid_rate?0:0, "%", "down")]
     );
     if(j.html) document.getElementById("card-validity").href=j.html;
+    const dlV=document.getElementById("dl-validity");
+    if(dlV && DATES.validity) dlV.href="d/"+DATES.validity+"_会员有效性分析.xlsx";
   }catch(e){
     setCard("validity","—",[{num:"—",lab:"会员有效性(取数失败)"}],[]);
   }
