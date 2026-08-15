@@ -212,6 +212,31 @@ async function fetchIndexWithFallback(subdir){
   return null;
 }
 async function loadDeposit(){
+  // 优先读实时数据源 latest.json（单日期模式，避免滞后）
+  try{
+    const j=await getJSON("member_deposit/latest.json?_="+Date.now());
+    const k=j.kpi||{};
+    DATES.deposit=j.date||k.date||"";
+    const total=k.total_distinct;
+    const branchCnt=k.branch_count;
+    const prevNew=k.prev_new;   // null 显示"—"
+    const deltas=[ prevNew==null
+      ? {text:"较昨日新增：—", type:"flat"}
+      : deltaChip("较昨日新增", prevNew, "人", "up") ];
+    setCard("deposit",
+      "快照日期 "+(j.date||""),
+      [
+        {num:fmt(total), lab:"去重会员总数"},
+        {num:(branchCnt==null?"—":branchCnt), lab:"分公司数量"},
+        {num:(prevNew==null?"—":fmt(prevNew)), lab:"较昨日新增"},
+      ],
+      deltas
+    );
+    if(j.html) document.getElementById("card-deposit").href=j.html;
+    updateHeader();
+    return;
+  }catch(e){ /* 回退到原有 daily_index/daily JSON 逻辑 */ }
+  // 回退：原有 daily_index/daily JSON 逻辑
   try{
     const idx=await fetchIndexWithFallback("member_deposit");
     if(!idx) throw new Error("no index");
