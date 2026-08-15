@@ -323,7 +323,15 @@ async function loadPaid(){
     DATES.paid=d.date||last;
     const t=d.total||{};
     const rate=pct(t.numerator, t.denominator);
-    const ordRate=pct(t.order_num, t.order_denom);
+    // 开单占比 = 门店覆盖度（有VIP销售的门店数 ÷ 门店总数，门店维度二元判定）—— 与付费会员看板口径一致
+    let openStores=0, totalStores=0; const _seen=new Set();
+    (d.stores||[]).forEach(s=>{
+      const key=(s.branch||"")+"/"+(s.store||"");
+      if(_seen.has(key)) return; _seen.add(key);
+      totalStores++;
+      if((s.numerator||0)>0) openStores++;
+    });
+    const ordRate = totalStores ? openStores/totalStores*100 : null;
     setCard("paid",
       "数据日期 "+(d.date||last),
       [
@@ -331,7 +339,7 @@ async function loadPaid(){
         {num:(ordRate!=null?ordRate.toFixed(2):"—"), unit:"%", lab:"开单占比"},
         {num:(t.numerator!=null?t.numerator:"—")+"/"+(t.denominator!=null?t.denominator:"—"), lab:"连带 分子/分母"},
       ],
-      [{text:`开单 ${t.order_num!=null?t.order_num:"—"}/${t.order_denom!=null?t.order_denom:"—"}`, type:"flat"}]
+      [{text:`门店 ${openStores}/${totalStores}`, type:"flat"}]
     );
   }catch(e){
     setCard("paid","—",[{num:"—",lab:"付费会员(取数失败)"}],[]);
