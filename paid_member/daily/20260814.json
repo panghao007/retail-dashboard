@@ -1,11 +1,11 @@
 {
   "date": "2026-08-14",
-  "generated": "2026-08-16 02:26",
+  "generated": "2026-08-16 06:50",
   "total": {
     "denominator": 404.0,
-    "numerator": 98.0,
+    "numerator": 97.0,
     "order_denom": 399,
-    "order_num": 98
+    "order_num": 97
   },
   "branches": {
     "北京中恒": {
@@ -43,9 +43,9 @@
     },
     "四川新跃": {
       "denominator": 87.0,
-      "numerator": 26.0,
+      "numerator": 25.0,
       "order_denom": 83,
-      "order_num": 26,
+      "order_num": 25,
       "vip_items": [
         {
           "code": "SCXYVIP00001",
@@ -60,7 +60,7 @@
         {
           "code": "SCXYVIP00003",
           "name": "1598元臻享会员",
-          "qty": 4.0
+          "qty": 3.0
         },
         {
           "code": "SCXYVIP00002",
@@ -608,15 +608,10 @@
       "branch": "四川新跃",
       "store": "APR成都三利爱琴海",
       "denominator": 9.0,
-      "numerator": 2.0,
+      "numerator": 1.0,
       "order_denom": 6,
-      "order_num": 2,
+      "order_num": 1,
       "vip_items": [
-        {
-          "code": "SCXYVIP00003",
-          "name": "1598元臻享会员",
-          "qty": 1.0
-        },
         {
           "code": "SCXYVIP00001",
           "name": "698元悦享会员",
