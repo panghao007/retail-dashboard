@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>会员数据驾驶舱</title>
+<style>
+:root{
+  --cyan:#1AABCB; --orange:#F6AA00; --green:#10b981; --purple:#6366f1;
+  --bg1:#0b1a2e; --bg2:#0a1422;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;
+  background:linear-gradient(160deg,var(--bg1) 0%,var(--bg2) 100%);
+  background-attachment:fixed;
+  color:#e6edf3; min-height:100vh; padding:26px 18px 44px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;}
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:14px;margin-bottom:30px;
+  padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.08);
+}
+.brand{display:flex;align-items:center;gap:13px;}
+.logo{width:12px;height:36px;border-radius:4px;background:linear-gradient(180deg,var(--cyan),var(--orange));box-shadow:0 0 16px rgba(26,171,203,.5);}
+.title{font-size:25px;font-weight:800;letter-spacing:.5px;color:#fff;}
+.title small{display:block;font-size:11.5px;font-weight:500;color:#7e93a8;margin-top:4px;letter-spacing:1.5px;}
+.updated{font-size:13px;color:#8aa0b4;text-align:right;line-height:1.5;max-width:60%;}
+.updated b{color:var(--cyan);font-weight:600;}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+@media(max-width:760px){.grid{grid-template-columns:1fr;} .updated{max-width:100%;text-align:left;}}
+.card{
+  position:relative;display:block;text-decoration:none;color:inherit;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:18px;padding:22px 22px 18px;
+  overflow:hidden;cursor:pointer;
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.card::before{content:"";position:absolute;left:0;top:0;height:100%;width:5px;background:var(--c);opacity:.92;}
+.card:hover{transform:translateY(-6px);border-color:var(--c);box-shadow:0 16px 40px rgba(0,0,0,.5),0 0 0 1px var(--c) inset,0 0 30px -6px var(--c);}
+.card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;gap:10px;}
+.card-name{display:flex;align-items:center;gap:9px;font-size:16px;font-weight:700;color:#fff;}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--c);box-shadow:0 0 10px var(--c);flex-shrink:0;}
+.period{font-size:11.5px;color:#7e93a8;text-align:right;flex-shrink:0;}
+.kpis{display:flex;gap:14px;flex-wrap:wrap;}
+.kpi{flex:1;min-width:88px;}
+.kpi .num{font-size:33px;font-weight:800;line-height:1.05;color:#fff;letter-spacing:-.5px;}
+.kpi .num .u{font-size:14px;font-weight:600;color:#9fb2c4;margin-left:2px;}
+.kpi .lab{font-size:11.5px;color:#8aa0b4;margin-top:5px;}
+.deltas{margin-top:15px;display:flex;gap:8px;flex-wrap:wrap;min-height:0;}
+.chip{font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:20px;white-space:nowrap;}
+.chip.up{color:#34d399;background:rgba(52,211,153,.14);}
+.chip.down{color:#f87171;background:rgba(248,113,113,.14);}
+.chip.flat{color:#94a3b8;background:rgba(148,163,184,.13);}
+.enter{
+  margin-top:16px;display:inline-flex;align-items:center;gap:6px;
+  font-size:13px;font-weight:700;color:var(--c);
+  background:color-mix(in srgb,var(--c) 15%,transparent);
+  padding:7px 14px;border-radius:10px;transition:all .16s;
+}
+.card:hover .enter{background:var(--c);color:#06121f;}
+.enter .ar{transition:transform .16s;}
+.card:hover .enter .ar{transform:translateX(4px);}
+.foot{margin-top:36px;text-align:center;color:#e02424;font-weight:700;font-size:13px;letter-spacing:.5px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand">
+      <div class="logo"></div>
+      <div class="title">会员数据驾驶舱<small>RETAIL MEMBER COCKPIT · 四看板关键指标实时聚合</small></div>
+    </div>
+    <div class="updated" id="updated">实时数据 · 加载中…</div>
+  </div>
+  <div class="grid" id="grid"></div>
+  <div class="foot">内含会员与门店经营敏感数据，请勿外传</div>
+</div>
+
+<script>
+"use strict";
+const C = {
+  validity:{name:"会员有效性", color:"var(--cyan)",   href:"d/2026-08-14.html"},
+  deposit :{name:"会员沉淀",   color:"var(--green)",  href:"member_deposit/会员沉淀看板.html"},
+  cashier :{name:"合规收银",   color:"var(--orange)", href:"cashier/收银合规看板.html"},
+  paid    :{name:"付费会员",   color:"var(--purple)", href:"paid_member/付费会员看板.html"},
+};
+const DATES = {}; // 各看板最新日期
+const fmt = n => (n==null||isNaN(n)) ? "—" : Number(n).toLocaleString("en-US");
+const pct = (n,d) => (n==null||d==null||d===0) ? null : n/d*100;
+const cb = (s)=> (s||"").replace(/[\s-]/g,""); // 去空格与连字符，用于 YYYYMMDD 文件名
+
+function beijingYMD(){ // 北京时间 YYYYMMDD
+  const now=new Date();
+  const bj=new Date(now.getTime() + now.getTimezoneOffset()*60000 + 8*3600000);
+  const y=bj.getUTCFullYear(), m=String(bj.getUTCMonth()+1).padStart(2,"0"), d=String(bj.getUTCDate()).padStart(2,"0");
+  return y+m+d;
+}
+function shiftDays(yyyymmdd, back){ // 返回 YYYYMMDD 往前 back 天
+  const y=+yyyymmdd.slice(0,4), m=+yyyymmdd.slice(4,6), d=+yyyymmdd.slice(6,8);
+  const dt=new Date(y,m-1,d); dt.setDate(dt.getDate()-back);
+  return dt.getFullYear()+String(dt.getMonth()+1).padStart(2,"0")+String(dt.getDate()).padStart(2,"0");
+}
+async function getJSON(url){
+  const r = await fetch(url, {cache:"no-store"});
+  if(!r.ok) throw new Error("HTTP "+r.status+" "+url);
+  return r.json();
+}
+async function getText(url){
+  const r = await fetch(url, {cache:"no-store"});
+  if(!r.ok) throw new Error("HTTP "+r.status+" "+url);
+  return r.text();
+}
+function updateHeader(){
+  const parts=[];
+  if(DATES.validity) parts.push("有效 "+DATES.validity);
+  if(DATES.deposit)  parts.push("沉淀 "+DATES.deposit);
+  if(DATES.cashier)  parts.push("收银 "+DATES.cashier);
+  if(DATES.paid)     parts.push("付费 "+DATES.paid);
+  document.getElementById("updated").innerHTML = "实时数据 · 更新于 " + (parts.length?parts.join(" · "):"<b>加载中…</b>");
+}
+
+// ---- 渲染卡片骨架 ----
+function buildCards(){
+  const grid=document.getElementById("grid");
+  for(const key in C){
+    const c=C[key];
+    const a=document.createElement("a");
+    a.className="card"; a.id="card-"+key; a.style.setProperty("--c",c.color);
+    a.href=c.href; a.target="_self";
+    a.innerHTML=`
+      <div class="card-head">
+        <div class="card-name"><span class="dot"></span>${c.name}</div>
+        <div class="period" id="period-${key}">加载中…</div>
+      </div>
+      <div class="kpis" id="kpis-${key}">
+        <div class="kpi"><div class="num">—</div><div class="lab">加载中…</div></div>
+      </div>
+      <div class="deltas" id="deltas-${key}"></div>
+      <span class="enter">进入看板 <span class="ar">›</span></span>`;
+    grid.appendChild(a);
+  }
+}
+function setCard(key, period, kpis, deltas){
+  const p=document.getElementById("period-"+key); if(p) p.textContent=period||"";
+  const kw=document.getElementById("kpis-"+key);
+  if(kw){
+    kw.innerHTML=kpis.map(k=>`
+      <div class="kpi">
+        <div class="num">${k.num}${k.unit?`<span class="u">${k.unit}</span>`:""}</div>
+        <div class="lab">${k.lab}</div>
+      </div>`).join("");
+  }
+  const dw=document.getElementById("deltas-"+key);
+  if(dw){
+    dw.innerHTML=(deltas||[]).map(d=>`<span class="chip ${d.type}">${d.text}</span>`).join("");
+  }
+}
+// delta type: up=绿(向好) down=红(变差) flat=灰
+function deltaChip(label, val, unit, goodWhen){
+  if(val==null||isNaN(val)) return {text:label+" 无对比", type:"flat"};
+  const arrow = val>0?"▲":(val<0?"▼":"＝");
+  let type="flat";
+  if(val!==0){
+    if(goodWhen==="up")  type = val>0?"up":"down";
+    if(goodWhen==="down")type = val<0?"up":"down";
+  }
+  const sign = val>0?"+":"";
+  return {text:`${label} ${arrow}${sign}${val}${unit||""}`, type};
+}
+
+// ===== 1. 会员有效性 =====
+async function loadValidity(){
+  try{
+    const j=await getJSON("d/latest.json?_="+Date.now());
+    const k=j.kpi||{};
+    DATES.validity=j.date||k.latest_date||"";
+    const invDelta = k.prev_invalid==null ? null : 0; // 无对比字段
+    setCard("validity",
+      "数据日期 "+(k.latest_date||j.date||""),
+      [
+        {num:fmt(k.total_orders), lab:"会员订单总数"},
+        {num:(k.valid_rate!=null?k.valid_rate.toFixed(2):"—"), unit:"%", lab:"有效占比"},
+        {num:(k.invalid_rate!=null?k.invalid_rate.toFixed(2):"—"), unit:"%", lab:"无效占比"},
+      ],
+      k.prev_invalid==null
+        ? [{text:"对比昨日无效增减：无数据", type:"flat"}]
+        : [deltaChip("无效增减", k.invalid_rate?0:0, "%", "down")]
+    );
+    if(j.html) document.getElementById("card-validity").href=j.html;
+  }catch(e){
+    setCard("validity","—",[{num:"—",lab:"会员有效性(取数失败)"}],[]);
+  }
+  updateHeader();
+}
+
+// ===== 2. 会员沉淀 =====
+const DEP_SPECIAL=["（未匹配门店）","未消费会员"];
+async function fetchIndexWithFallback(subdir){
+  const today=beijingYMD();
+  for(let back=0; back<=60; back++){
+    const dt=shiftDays(today,back);
+    try{
+      const idx=await getJSON(`${subdir}/daily_index_${dt}.json?_=${Date.now()}`);
+      if(idx && idx.dates && idx.dates.length) return idx;
+    }catch(_){}
+  }
+  return null;
+}
+async function loadDeposit(){
+  try{
+    const idx=await fetchIndexWithFallback("member_deposit");
+    if(!idx) throw new Error("no index");
+    const dates=idx.dates;
+    const last=dates[dates.length-1];                 // YYYYMMDD
+    const daily=await getJSON(`member_deposit/daily/${last}.json?_=${Date.now()}`);
+    DATES.deposit=daily.date||last;
+    const total=daily.total_distinct;
+    const branchCnt=Object.keys(daily.branches||{}).filter(k=>!DEP_SPECIAL.includes(k)).length;
+    let deltas=[], diff=null;
+    if(dates.length>=2){
+      const prev=dates[dates.length-2];
+      try{
+        const pd=await getJSON(`member_deposit/daily/${prev}.json?_=${Date.now()}`);
+        diff=(pd.total_distinct!=null&&total!=null)? total-pd.total_distinct : null;
+        deltas=[deltaChip("较昨日新增", diff, "人", "up")];
+      }catch(_){ deltas=[{text:"较昨日新增：—",type:"flat"}]; }
+    }else{
+      deltas=[{text:"较昨日新增：—",type:"flat"}];
+    }
+    setCard("deposit",
+      "快照日期 "+(daily.date||last),
+      [
+        {num:fmt(total), lab:"去重会员总数"},
+        {num:branchCnt, lab:"分公司数量"},
+        {num:(diff==null?"—":fmt(diff)), lab:"较昨日新增"},
+      ],
+      deltas
+    );
+  }catch(e){
+    setCard("deposit","—",[{num:"—",lab:"会员沉淀(取数失败)"}],[]);
+  }
+  updateHeader();
+}
+
+// ===== 3. 合规收银 =====
+function extractCashier(txt){
+  const dM=txt.match(/var\s+D\s*=\s*([\s\S]*?);\s*\n\s*var\s+D1/);
+  const d1M=txt.match(/var\s+D1\s*=\s*([\s\S]*?);\s*(?:\n|var|$)/);
+  const gM=txt.match(/var\s+GENERATED\s*=\s*"([^"]+)"/);
+  const D=dM?JSON.parse(dM[1]):null;
+  const D1=d1M?JSON.parse(d1M[1]):null;
+  return {D,D1,generated:gM?gM[1]:null};
+}
+async function loadCashier(){
+  try{
+    const txt=await getText("cashier/收银合规看板.html?_="+Date.now());
+    const {D,D1,generated}=extractCashier(txt);
+    if(!D) throw new Error("D not found");
+    DATES.cashier=(generated||"").slice(0,10);
+    const comp=D.compliant, nonc=D.noncompliant;
+    const rate=pct(comp, comp+nonc);
+    const deltas=[];
+    if(D1){
+      const c1=D1.compliant, n1=D1.noncompliant;
+      const rate1=pct(c1, c1+n1);
+      if(rate!=null&&rate1!=null) deltas.push(deltaChip("合规率", +(rate-rate1).toFixed(2), "pp", "up"));
+      if(nonc!=null&&n1!=null)     deltas.push(deltaChip("不合规", nonc-n1, "笔", "down"));
+    }
+    setCard("cashier",
+      "数据日期 "+(generated?generated.slice(0,10):"—"),
+      [
+        {num:(rate!=null?rate.toFixed(2):"—"), unit:"%", lab:"合规率"},
+        {num:fmt(nonc), lab:"不合规笔数"},
+        {num:fmt(comp), lab:"有效收款笔数"},
+      ],
+      deltas.length?deltas:[{text:"对比昨日：—",type:"flat"}]
+    );
+  }catch(e){
+    setCard("cashier","—",[{num:"—",lab:"合规收银(取数失败)"}],[]);
+  }
+  updateHeader();
+}
+
+// ===== 4. 付费会员 =====
+async function loadPaid(){
+  try{
+    const idx=await fetchIndexWithFallback("paid_member");
+    if(!idx) throw new Error("no index");
+    const dates=idx.dates;
+    const last=dates[dates.length-1];                 // YYYY-MM-DD
+    const file=cb(last)+".json";                      // -> YYYYMMDD.json
+    const d=await getJSON(`paid_member/daily/${file}?_=${Date.now()}`);
+    DATES.paid=d.date||last;
+    const t=d.total||{};
+    const rate=pct(t.numerator, t.denominator);
+    const ordRate=pct(t.order_num, t.order_denom);
+    setCard("paid",
+      "数据日期 "+(d.date||last),
+      [
+        {num:(rate!=null?rate.toFixed(2):"—"), unit:"%", lab:"会员连带率"},
+        {num:(ordRate!=null?ordRate.toFixed(2):"—"), unit:"%", lab:"开单占比"},
+        {num:(t.numerator!=null?t.numerator:"—")+"/"+(t.denominator!=null?t.denominator:"—"), lab:"连带 分子/分母"},
+      ],
+      [{text:`开单 ${t.order_num!=null?t.order_num:"—"}/${t.order_denom!=null?t.order_denom:"—"}`, type:"flat"}]
+    );
+  }catch(e){
+    setCard("paid","—",[{num:"—",lab:"付费会员(取数失败)"}],[]);
+  }
+  updateHeader();
+}
+
+buildCards();
+updateHeader();
+loadValidity();
+loadDeposit();
+loadCashier();
+loadPaid();
+</script>
+</body>
+</html>

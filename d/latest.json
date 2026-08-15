@@ -1,0 +1,15 @@
+{
+  "date": "2026-08-14",
+  "html": "d/2026-08-14.html",
+  "kpi": {
+    "total_orders": 17051,
+    "valid_members": 15158,
+    "invalid_members": 70,
+    "valid_rate": 92.67,
+    "invalid_rate": 7.33,
+    "orders_valid": 15742,
+    "orders_invalid": 1245,
+    "prev_invalid": null,
+    "latest_date": "2026-08-12"
+  }
+}
