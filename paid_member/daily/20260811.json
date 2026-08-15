@@ -1,6 +1,6 @@
 {
   "date": "2026-08-11",
-  "generated": "2026-08-15 16:12",
+  "generated": "2026-08-15 18:17",
   "total": {
     "denominator": 361.0,
     "numerator": 47.0,
@@ -12,25 +12,68 @@
       "denominator": 124.0,
       "numerator": 13.0,
       "order_denom": 124,
-      "order_num": 13
+      "order_num": 13,
+      "vip_items": [
+        {
+          "code": "vip-iphone1498",
+          "name": "ipone会员套餐1498",
+          "qty": 10.0
+        },
+        {
+          "code": "vip-iphone698",
+          "name": "ipone会员套餐698",
+          "qty": 2.0
+        },
+        {
+          "code": "vip-iphone548",
+          "name": "ipone会员套餐548",
+          "qty": 1.0
+        }
+      ]
     },
     "四川新跃": {
       "denominator": 87.0,
       "numerator": 3.0,
       "order_denom": 87,
-      "order_num": 3
+      "order_num": 3,
+      "vip_items": [
+        {
+          "code": "SCXYVIP00001",
+          "name": "698元悦享会员",
+          "qty": 2.0
+        },
+        {
+          "code": "SCXYVIP00003",
+          "name": "1598元臻享会员",
+          "qty": 1.0
+        }
+      ]
     },
     "北京易联": {
       "denominator": 101.0,
       "numerator": 26.0,
       "order_denom": 101,
-      "order_num": 26
+      "order_num": 26,
+      "vip_items": [
+        {
+          "code": "BJYLVIP0001",
+          "name": "498元套包",
+          "qty": 26.0
+        }
+      ]
     },
     "福建易联": {
       "denominator": 49.0,
       "numerator": 5.0,
       "order_denom": 44,
-      "order_num": 5
+      "order_num": 5,
+      "vip_items": [
+        {
+          "code": "FJYLVIP0001",
+          "name": "399元礼包",
+          "qty": 5.0
+        }
+      ]
     }
   },
   "stores": [

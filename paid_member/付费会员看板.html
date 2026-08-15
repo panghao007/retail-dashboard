@@ -137,7 +137,7 @@ function selectedLabel(want){
 function aggregate(js){
   const total={denominator:0,numerator:0,order_denom:0,order_num:0};
   const branches={};
-  BRANCHES.forEach(b=>branches[b]={denominator:0,numerator:0,order_denom:0,order_num:0,stores:{}});
+  BRANCHES.forEach(b=>branches[b]={denominator:0,numerator:0,order_denom:0,order_num:0,vip:{},stores:{}});
   js.forEach(d=>{
     total.denominator+=d.total.denominator; total.numerator+=d.total.numerator;
     total.order_denom+=d.total.order_denom; total.order_num+=d.total.order_num;
@@ -145,6 +145,10 @@ function aggregate(js){
       const bd=d.branches[b]||{denominator:0,numerator:0,order_denom:0,order_num:0};
       branches[b].denominator+=bd.denominator; branches[b].numerator+=bd.numerator;
       branches[b].order_denom+=bd.order_denom; branches[b].order_num+=bd.order_num;
+      (bd.vip_items||[]).forEach(it=>{
+        if(!branches[b].vip[it.code]) branches[b].vip[it.code]={name:it.name,qty:0};
+        branches[b].vip[it.code].qty += it.qty;
+      });
       d.stores.filter(s=>s.branch===b).forEach(s=>{
         const o=branches[b].stores[s.store]||{denominator:0,numerator:0,order_denom:0,order_num:0};
         o.denominator+=s.denominator; o.numerator+=s.numerator;
@@ -263,6 +267,16 @@ function draw(agg, dates, want){
     }else{
       sec+='<p class="muted">当期无主机销售门店。</p>';
     }
+    // 付费会员商品销售明细：区分该分公司具体卖了哪些会员商品
+    if(bd.vip && Object.keys(bd.vip).length){
+      let vr="";
+      const vk=Object.keys(bd.vip).sort((x,y)=>bd.vip[y].qty-bd.vip[x].qty);
+      vk.forEach(k=>{ const it=bd.vip[k];
+        vr+='<tr><td class="sn">'+k+'</td><td>'+it.name+'</td><td class="num">'+it.qty.toFixed(0)+'</td></tr>';
+      });
+      sec+='<div class="bd" style="margin-top:14px"><div class="bd-title">付费会员商品销售明细（'+Object.keys(bd.vip).length+' 种）</div>'
+        +'<table class="store-table"><thead><tr><th>商品编码</th><th>商品名称</th><th style="text-align:right">VIP数</th></tr></thead><tbody>'+vr+'</tbody></table></div>';
+    }
     if(agg.isRange){
       if(unsold.length){
         sec+='<div class="unsold"><div class="us-title">未售门店（'+unsold.length+' 家 · 当期主机台量=0）</div>'
@@ -282,7 +296,8 @@ function draw(agg, dates, want){
     +'· <b>门店销售(售/总)</b>：分公司主数据（门店sheet）中，当期主机台量&gt;0 的门店数 / 主数据门店总数。<br>'
     +'· <b>未售门店</b>：仅「当月 / 自定义」区间维度展示——主数据中当期主机台量=0 的门店（单日维度不展示逐日未售清单）。<br>'
     +'· <b>退货处理</b>：退货状态「已退货」整行剔除；「部分退货」按 实售=销售数量−已退数量 计入。<br>'
-    +'· ⚠️ 各分公司 VIP 编码均来自《通报商品分类-新.xlsx》sheet「付费会员商品」（北京中恒=vip-iphone* / 四川新跃=SCXYVIP* / 北京易联=BJYLVIP* / 福建易联=FJYLVIP*）。</p></div>';
+    +'· ⚠️ 各分公司 VIP 编码均来自《通报商品分类-新.xlsx》sheet「付费会员商品」（北京中恒=vip-iphone* / 四川新跃=SCXYVIP* / 北京易联=BJYLVIP* / 福建易联=FJYLVIP*）。<br>'
+    +'· 各分公司区块下方「付费会员商品销售明细」列出该分公司当期具体售出的会员商品（按商品编码 / 名称 / VIP数），便于核对都卖了哪些付费会员商品。</p></div>';
   html+='<div class="foot">数据来源：ERP 零售单导出（与会员有效性同源）· <span class="warn">内含经营敏感数据，请勿外传</span></div>';
   document.getElementById('content').innerHTML = html;
   document.getElementById('period').textContent = "统计周期：" + selectedLabel(want||[]);

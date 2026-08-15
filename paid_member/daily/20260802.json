@@ -1,6 +1,6 @@
 {
   "date": "2026-08-02",
-  "generated": "2026-08-15 16:12",
+  "generated": "2026-08-15 18:17",
   "total": {
     "denominator": 500.0,
     "numerator": 0.0,
@@ -12,25 +12,29 @@
       "denominator": 207.0,
       "numerator": 0.0,
       "order_denom": 207,
-      "order_num": 0
+      "order_num": 0,
+      "vip_items": []
     },
     "四川新跃": {
       "denominator": 75.0,
       "numerator": 0.0,
       "order_denom": 75,
-      "order_num": 0
+      "order_num": 0,
+      "vip_items": []
     },
     "北京易联": {
       "denominator": 151.0,
       "numerator": 0.0,
       "order_denom": 151,
-      "order_num": 0
+      "order_num": 0,
+      "vip_items": []
     },
     "福建易联": {
       "denominator": 67.0,
       "numerator": 0.0,
       "order_denom": 67,
-      "order_num": 0
+      "order_num": 0,
+      "vip_items": []
     }
   },
   "stores": [

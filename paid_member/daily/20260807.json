@@ -1,6 +1,6 @@
 {
   "date": "2026-08-07",
-  "generated": "2026-08-15 16:12",
+  "generated": "2026-08-15 18:17",
   "total": {
     "denominator": 331.0,
     "numerator": 19.0,
@@ -12,25 +12,41 @@
       "denominator": 139.0,
       "numerator": 0.0,
       "order_denom": 139,
-      "order_num": 0
+      "order_num": 0,
+      "vip_items": []
     },
     "四川新跃": {
       "denominator": 68.0,
       "numerator": 0.0,
       "order_denom": 68,
-      "order_num": 0
+      "order_num": 0,
+      "vip_items": []
     },
     "北京易联": {
       "denominator": 80.0,
       "numerator": 10.0,
       "order_denom": 78,
-      "order_num": 10
+      "order_num": 10,
+      "vip_items": [
+        {
+          "code": "BJYLVIP0001",
+          "name": "498元套包",
+          "qty": 10.0
+        }
+      ]
     },
     "福建易联": {
       "denominator": 44.0,
       "numerator": 9.0,
       "order_denom": 44,
-      "order_num": 9
+      "order_num": 9,
+      "vip_items": [
+        {
+          "code": "FJYLVIP0001",
+          "name": "399元礼包",
+          "qty": 9.0
+        }
+      ]
     }
   },
   "stores": [

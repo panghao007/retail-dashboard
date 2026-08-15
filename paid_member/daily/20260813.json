@@ -1,6 +1,6 @@
 {
   "date": "2026-08-13",
-  "generated": "2026-08-15 16:12",
+  "generated": "2026-08-15 18:17",
   "total": {
     "denominator": 359.0,
     "numerator": 103.0,
@@ -12,25 +12,88 @@
       "denominator": 114.0,
       "numerator": 39.0,
       "order_denom": 114,
-      "order_num": 39
+      "order_num": 39,
+      "vip_items": [
+        {
+          "code": "vip-iphone1498",
+          "name": "ipone会员套餐1498",
+          "qty": 24.0
+        },
+        {
+          "code": "vip-iphone698",
+          "name": "ipone会员套餐698",
+          "qty": 9.0
+        },
+        {
+          "code": "vip-iphone998",
+          "name": "ipone会员套餐998",
+          "qty": 4.0
+        },
+        {
+          "code": "vip-iphone1798",
+          "name": "ipone会员套餐1798",
+          "qty": 2.0
+        }
+      ]
     },
     "四川新跃": {
       "denominator": 68.0,
       "numerator": 30.0,
       "order_denom": 67,
-      "order_num": 30
+      "order_num": 30,
+      "vip_items": [
+        {
+          "code": "SCXYVIP00001",
+          "name": "698元悦享会员",
+          "qty": 11.0
+        },
+        {
+          "code": "SCXYVIP00002",
+          "name": "998元尊享会员",
+          "qty": 11.0
+        },
+        {
+          "code": "SCXYVIP00003",
+          "name": "1598元臻享会员",
+          "qty": 5.0
+        },
+        {
+          "code": "SCXYVIP00004",
+          "name": "2198元奢享会员",
+          "qty": 3.0
+        }
+      ]
     },
     "北京易联": {
       "denominator": 124.0,
       "numerator": 28.0,
       "order_denom": 124,
-      "order_num": 28
+      "order_num": 28,
+      "vip_items": [
+        {
+          "code": "BJYLVIP0001",
+          "name": "498元套包",
+          "qty": 28.0
+        }
+      ]
     },
     "福建易联": {
       "denominator": 53.0,
       "numerator": 6.0,
       "order_denom": 53,
-      "order_num": 6
+      "order_num": 6,
+      "vip_items": [
+        {
+          "code": "FJYLVIP0001",
+          "name": "399元礼包",
+          "qty": 5.0
+        },
+        {
+          "code": "FJYLVIP0003",
+          "name": "1299元礼包",
+          "qty": 1.0
+        }
+      ]
     }
   },
   "stores": [
