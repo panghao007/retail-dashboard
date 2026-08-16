@@ -446,17 +446,18 @@ function draw(agg, dates, want){
       cv._geo={pl:pl,pt:pt,cw:cw,ch:ch,maxV:maxV,n:n};
     }
 
-    // 按钮切换分公司（先绑定事件，绘图失败也不影响）
-    wrap.querySelectorAll('.trend-btn').forEach(function(btn){
+    // 按钮切换分公司（从 .bd 父级查找，因按钮在 .trend-btns 兄弟节点中）
+    var bdPanel=wrap.parentElement;
+    bdPanel.querySelectorAll('.trend-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
-        wrap.querySelectorAll('.trend-btn').forEach(function(b){ b.classList.remove('active'); });
+        bdPanel.querySelectorAll('.trend-btn').forEach(function(b){ b.classList.remove('active'); });
         this.classList.add('active');
         activeBranch=this.getAttribute('data-trend-branch');
         drawChart();
       });
     });
     // 图例点击切换显隐
-    wrap.querySelectorAll('.trend-legend span').forEach(function(sp){
+    bdPanel.querySelectorAll('.trend-legend span').forEach(function(sp){
       sp.addEventListener('click', function(){
         var k=this.getAttribute('data-line');
         showLine[k]=!showLine[k];
