@@ -70,7 +70,16 @@
   .foot{margin-top:26px;color:#9aa3ad;font-size:12px;text-align:center;}
   .warn{color:#dc2626;font-weight:700;}
   .loading{padding:40px 0;text-align:center;color:#9099a5;font-size:14px;}
+  /* 趋势图表 */
+  .trend-btns{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
+  .trend-btn{border:1px solid #e5e9ef;background:#fff;border-radius:20px;padding:6px 16px;font-size:13px;font-weight:600;
+    color:#4b5563;cursor:pointer;transition:all .15s;}
+  .trend-btn.active{background:#6366f1;color:#fff;border-color:#6366f1;}
+  .trend-btn:not(.active):hover{background:#eef0fe;}
+  .chart-wrap{position:relative;width:100%;height:340px;}
+  .chart-wrap canvas{width:100%!important;height:100%!important;}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 </head>
 <body>
   <div class="wrap">
@@ -241,22 +250,14 @@ function draw(agg, dates, want){
 
   let html = kpi + branchTable;
 
-  // 每日趋势（区间模式）
+  // 每日趋势（区间模式）—— 折线图 + 分公司切换
   if(agg.isRange){
-    let dr="";
-    dates.forEach(dt=>{
-      const d=DAILY[dt]; if(!d) return;
-      const r = d.total.denominator? d.total.numerator/d.total.denominator:0;
-      let ts=0, os=0;
-      d.stores.forEach(s=>{ ts++; if(s.numerator>0) os++; });
-      const orr = ts? os/ts : 0;
-      dr+='<tr><td>'+dt+'</td><td class="num">'+d.total.denominator.toFixed(0)+'</td>'
-        +'<td class="num">'+d.total.numerator.toFixed(0)+'</td>'
-        +'<td class="num">'+pct(r)+'</td><td class="num">'+pct(orr)+'</td></tr>';
-    });
+    const trendBtns = ['全部', ...BRANCHES].map(b =>
+      '<button class="trend-btn'+(b==='全部'?' active':'')+'" data-trend-branch="'+b+'">'+b+'</button>'
+    ).join('');
     html+='<div class="bd"><div class="bd-title">每日趋势（会员连带率 / 开单占比）</div>'
-      +'<table class="store-table"><thead><tr><th>日期</th><th style="text-align:right">主机台量</th>'
-      +'<th style="text-align:right">VIP数</th><th style="text-align:right">连带率</th><th style="text-align:right">开单占比</th></tr></thead><tbody>'+dr+'</tbody></table></div>';
+      +'<div class="trend-btns">'+trendBtns+'</div>'
+      +'<div class="chart-wrap"><canvas id="trendChart"></canvas></div></div>';
   }
 
   // 门店明细 + 未售（区间模式展示未售清单）
@@ -348,6 +349,62 @@ function draw(agg, dates, want){
       }
     });
   });
+  // 趋势折线图 + 分公司切换
+  (function(){
+    var cv=document.getElementById('trendChart'); if(!cv) return;
+    var chartInst=null;
+    function makeData(branch){
+      var labels=[], rateData=[], openData=[];
+      dates.forEach(function(dt){
+        var d=DAILY[dt]; if(!d) return;
+        labels.push(dt.slice(5));
+        var src=(branch==='全部')?d.total:(d.branches[branch]||null);
+        if(src){
+          var r=src.denominator? src.numerator/src.denominator:0;
+          rateData.push(Math.round(r*10000)/100);
+          var ts=0,os=0;
+          if(branch==='全部'){
+            d.stores.forEach(function(s){ts++;if(s.numerator>0)os++;});
+          }else{
+            d.stores.forEach(function(s){if(s.branch===branch){ts++;if(s.numerator>0)os++;}});
+          }
+          openData.push(ts?Math.round(os/ts*10000)/100:0);
+        }else{
+          rateData.push(null); openData.push(null);
+        }
+      });
+      return {labels:labels, rate:rateData, open:openData};
+    }
+    function drawChart(branch){
+      var d=makeData(branch);
+      if(chartInst){chartInst.destroy();}
+      chartInst=new Chart(cv.getContext('2d'),{
+        type:'line',
+        data:{
+          labels:d.labels,
+          datasets:[
+            {label:'会员连带率(%)',data:d.rate,borderColor:'#6366f1',backgroundColor:'rgba(99,102,241,0.08)',fill:true,tension:.35,pointRadius:4,pointHoverRadius:6,yAxisID:'y'},
+            {label:'开单占比(%)',data:d.open,borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,0.06)',fill:true,tension:.35,pointRadius:4,pointHoverRadius:6,yAxisID:'y1'}
+          ]
+        },
+        options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+          plugins:{legend:{position:'top',labels:{usePointStyle:true,padding:16,font:{size:13}}},
+            tooltip:{callbacks:{label:function(ctx){return ctx.dataset.label+': '+ctx.parsed.y+'%';}}}},
+          scales:{x:{grid:{color:'#f0f1f3'},ticks:{font:{size:11},maxRotation:45}},
+            y:{position:'left',grid:{color:'#f0f1f3'},ticks:{callback:function(v){return v+'%';},font:{size:11}},beginAtZero:true},
+            y1:{position:'right',grid:{draw:false},ticks:{callback:function(v){return v+'%';},font:{size:11}},beginAtZero:true}}
+        }
+      });
+    }
+    drawChart('全部');
+    cv.parentElement.querySelectorAll('.trend-btn').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        cv.parentElement.querySelectorAll('.trend-btn').forEach(function(b){b.classList.remove('active');});
+        this.classList.add('active');
+        drawChart(this.getAttribute('data-trend-branch'));
+      });
+    });
+  })();
   document.getElementById('period').textContent = "统计周期：" + selectedLabel(want||[]);
   var nowBJ = new Date(new Date().getTime()+8*3600000);
   var todayStr = nowBJ.toISOString().slice(0,10);
