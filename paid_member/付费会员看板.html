@@ -78,8 +78,13 @@
   .trend-btn:not(.active):hover{background:#eef0fe;}
   .chart-wrap{position:relative;width:100%;height:340px;}
   .chart-wrap canvas{width:100%!important;height:100%!important;}
+  .trend-legend{display:flex;gap:18px;margin-bottom:6px;font-size:13px;}
+  .trend-legend span{display:inline-flex;align-items:center;gap:6px;cursor:pointer;user-select:none;}
+  .trend-legend i{width:12px;height:12px;border-radius:3px;display:inline-block;}
+  .trend-legend span.off{opacity:.4;}
+  .trend-tip{position:absolute;pointer-events:none;background:rgba(31,41,51,.92);color:#fff;font-size:12px;
+    padding:7px 10px;border-radius:8px;line-height:1.6;white-space:nowrap;display:none;z-index:9;transform:translate(-50%,-100%);}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 </head>
 <body>
   <div class="wrap">
@@ -257,7 +262,9 @@ function draw(agg, dates, want){
     ).join('');
     html+='<div class="bd"><div class="bd-title">每日趋势（会员连带率 / 开单占比）</div>'
       +'<div class="trend-btns">'+trendBtns+'</div>'
-      +'<div class="chart-wrap"><canvas id="trendChart"></canvas></div></div>';
+      +'<div class="trend-legend"><span data-line="rate"><i style="background:#6366f1"></i>会员连带率(%)</span>'
+      +'<span data-line="open"><i style="background:#f59e0b"></i>开单占比(%)</span></div>'
+      +'<div class="chart-wrap"><canvas id="trendChart"></canvas><div class="trend-tip" id="trendTip"></div></div></div>';
   }
 
   // 门店明细 + 未售（区间模式展示未售清单）
@@ -349,10 +356,15 @@ function draw(agg, dates, want){
       }
     });
   });
-  // 趋势折线图 + 分公司切换
+  // 趋势折线图（原生 Canvas，无外部依赖）+ 分公司切换
   (function(){
     var cv=document.getElementById('trendChart'); if(!cv) return;
-    var chartInst=null;
+    var wrap=cv.parentElement;
+    var dpr=window.devicePixelRatio||1;
+    var activeBranch='全部';
+    var showLine={rate:true, open:true};
+    var curData=null;
+
     function makeData(branch){
       var labels=[], rateData=[], openData=[];
       dates.forEach(function(dt){
@@ -375,35 +387,109 @@ function draw(agg, dates, want){
       });
       return {labels:labels, rate:rateData, open:openData};
     }
-    function drawChart(branch){
-      var d=makeData(branch);
-      if(chartInst){chartInst.destroy();}
-      chartInst=new Chart(cv.getContext('2d'),{
-        type:'line',
-        data:{
-          labels:d.labels,
-          datasets:[
-            {label:'会员连带率(%)',data:d.rate,borderColor:'#6366f1',backgroundColor:'rgba(99,102,241,0.08)',fill:true,tension:.35,pointRadius:4,pointHoverRadius:6,yAxisID:'y'},
-            {label:'开单占比(%)',data:d.open,borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,0.06)',fill:true,tension:.35,pointRadius:4,pointHoverRadius:6,yAxisID:'y1'}
-          ]
-        },
-        options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
-          plugins:{legend:{position:'top',labels:{usePointStyle:true,padding:16,font:{size:13}}},
-            tooltip:{callbacks:{label:function(ctx){return ctx.dataset.label+': '+ctx.parsed.y+'%';}}}},
-          scales:{x:{grid:{color:'#f0f1f3'},ticks:{font:{size:11},maxRotation:45}},
-            y:{position:'left',grid:{color:'#f0f1f3'},ticks:{callback:function(v){return v+'%';},font:{size:11}},beginAtZero:true},
-            y1:{position:'right',grid:{draw:false},ticks:{callback:function(v){return v+'%';},font:{size:11}},beginAtZero:true}}
-        }
+
+    function xAt(i,n,cw,pl){ return n>1? pl+cw*i/(n-1) : pl+cw/2; }
+    function yAt(v,maxV,ch,pt){ return pt+ch-(v/maxV)*ch; }
+
+    function drawChart(){
+      var d=makeData(activeBranch);
+      curData=d;
+      var w=cv.clientWidth, h=cv.clientHeight;
+      if(!w||!h) return;
+      cv.width=w*dpr; cv.height=h*dpr;
+      var ctx=cv.getContext('2d'); ctx.setTransform(dpr,0,0,dpr,0,0);
+      ctx.clearRect(0,0,w,h);
+      var pl=46, pr=14, pt=18, pb=30;
+      var cw=w-pl-pr, ch=h-pt-pb;
+      var n=d.labels.length; if(!n) return;
+      var maxV=0;
+      if(showLine.rate) d.rate.forEach(function(v){ if(v!=null) maxV=Math.max(maxV,v); });
+      if(showLine.open) d.open.forEach(function(v){ if(v!=null) maxV=Math.max(maxV,v); });
+      maxV=Math.ceil(maxV/10)*10 || 10;
+      // 网格 + Y 轴标签
+      ctx.strokeStyle='#eef0f3'; ctx.lineWidth=1;
+      ctx.fillStyle='#9aa3ad'; ctx.font='11px -apple-system,sans-serif';
+      ctx.textAlign='right'; ctx.textBaseline='middle';
+      var steps=5;
+      for(var i=0;i<=steps;i++){
+        var val=maxV*i/steps, y=yAt(val,maxV,ch,pt);
+        ctx.beginPath(); ctx.moveTo(pl,y); ctx.lineTo(pl+cw,y); ctx.stroke();
+        ctx.fillText(val+'%', pl-6, y);
+      }
+      // X 轴标签
+      ctx.textAlign='center'; ctx.textBaseline='top';
+      d.labels.forEach(function(lb,i){
+        var x=xAt(i,n,cw,pl);
+        ctx.fillText(lb, x, pt+ch+8);
       });
+      // 画线
+      function plot(data,color){
+        ctx.strokeStyle=color; ctx.lineWidth=2.2; ctx.beginPath();
+        var started=false;
+        data.forEach(function(v,i){
+          var x=xAt(i,n,cw,pl);
+          if(v==null){started=false; return;}
+          var y=yAt(v,maxV,ch,pt);
+          if(!started){ctx.moveTo(x,y); started=true;} else ctx.lineTo(x,y);
+        });
+        ctx.stroke();
+        data.forEach(function(v,i){
+          if(v==null) return;
+          var x=xAt(i,n,cw,pl), y=yAt(v,maxV,ch,pt);
+          ctx.fillStyle='#fff'; ctx.beginPath(); ctx.arc(x,y,3.4,0,Math.PI*2); ctx.fill();
+          ctx.strokeStyle=color; ctx.lineWidth=2; ctx.beginPath(); ctx.arc(x,y,3.4,0,Math.PI*2); ctx.stroke();
+        });
+      }
+      if(showLine.rate) plot(d.rate,'#6366f1');
+      if(showLine.open) plot(d.open,'#f59e0b');
+      // 存几何供 tooltip
+      cv._geo={pl:pl,pt:pt,cw:cw,ch:ch,maxV:maxV,n:n};
     }
-    drawChart('全部');
-    cv.parentElement.querySelectorAll('.trend-btn').forEach(function(btn){
-      btn.addEventListener('click',function(){
-        cv.parentElement.querySelectorAll('.trend-btn').forEach(function(b){b.classList.remove('active');});
+
+    // 按钮切换分公司（先绑定事件，绘图失败也不影响）
+    wrap.querySelectorAll('.trend-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        wrap.querySelectorAll('.trend-btn').forEach(function(b){ b.classList.remove('active'); });
         this.classList.add('active');
-        drawChart(this.getAttribute('data-trend-branch'));
+        activeBranch=this.getAttribute('data-trend-branch');
+        drawChart();
       });
     });
+    // 图例点击切换显隐
+    wrap.querySelectorAll('.trend-legend span').forEach(function(sp){
+      sp.addEventListener('click', function(){
+        var k=this.getAttribute('data-line');
+        showLine[k]=!showLine[k];
+        this.classList.toggle('off', !showLine[k]);
+        drawChart();
+      });
+    });
+    // tooltip
+    var tip=document.getElementById('trendTip');
+    cv.addEventListener('mousemove', function(e){
+      if(!curData||!cv._geo){ return; }
+      var rect=cv.getBoundingClientRect();
+      var mx=e.clientX-rect.left;
+      var g=cv._geo, n=g.n;
+      // 找最近点
+      var idx=0, best=1e9;
+      for(var i=0;i<n;i++){
+        var x=xAt(i,n,g.cw,g.pl);
+        if(Math.abs(x-mx)<best){ best=Math.abs(x-mx); idx=i; }
+      }
+      var x=xAt(idx,n,g.cw,g.pl);
+      var lines=[];
+      if(showLine.rate && curData.rate[idx]!=null) lines.push('<b style="color:#a5b4fc">会员连带率 '+curData.rate[idx]+'%</b>');
+      if(showLine.open && curData.open[idx]!=null) lines.push('<b style="color:#fcd34d">开单占比 '+curData.open[idx]+'%</b>');
+      if(!lines.length) return;
+      tip.innerHTML='<div style="opacity:.7;margin-bottom:2px">'+curData.labels[idx]+' · '+activeBranch+'</div>'+lines.join('<br>');
+      tip.style.display='block';
+      tip.style.left=x+'px';
+      tip.style.top=(yAt(Math.max(curData.rate[idx]||0,curData.open[idx]||0),g.maxV,g.ch,g.pt)-10)+'px';
+    });
+    cv.addEventListener('mouseleave', function(){ if(tip) tip.style.display='none'; });
+
+    drawChart();
   })();
   document.getElementById('period').textContent = "统计周期：" + selectedLabel(want||[]);
   var nowBJ = new Date(new Date().getTime()+8*3600000);
