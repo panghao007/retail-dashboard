@@ -1,0 +1,473 @@
+{
+  "updated": "2026-08-14",
+  "points": [
+    {
+      "date": "2026-08-01",
+      "invalid": 2,
+      "valid": 1723,
+      "orders_invalid": 234,
+      "total": 1725,
+      "branches": {
+        "北京飞航": {
+          "invalid": 136,
+          "valid": 530,
+          "total": 666
+        },
+        "四川新跃": {
+          "invalid": 39,
+          "valid": 111,
+          "total": 150
+        },
+        "上海爱飞": {
+          "invalid": 32,
+          "valid": 169,
+          "total": 201
+        },
+        "北京易联": {
+          "invalid": 20,
+          "valid": 465,
+          "total": 485
+        },
+        "福建易联": {
+          "invalid": 6,
+          "valid": 137,
+          "total": 143
+        },
+        "北京中恒": {
+          "invalid": 1,
+          "valid": 359,
+          "total": 360
+        }
+      }
+    },
+    {
+      "date": "2026-08-02",
+      "invalid": 11,
+      "valid": 3134,
+      "orders_invalid": 408,
+      "total": 3145,
+      "branches": {
+        "北京飞航": {
+          "invalid": 234,
+          "valid": 854,
+          "total": 1088
+        },
+        "四川新跃": {
+          "invalid": 72,
+          "valid": 233,
+          "total": 305
+        },
+        "上海爱飞": {
+          "invalid": 62,
+          "valid": 303,
+          "total": 365
+        },
+        "北京易联": {
+          "invalid": 32,
+          "valid": 869,
+          "total": 901
+        },
+        "福建易联": {
+          "invalid": 7,
+          "valid": 280,
+          "total": 287
+        },
+        "北京中恒": {
+          "invalid": 1,
+          "valid": 696,
+          "total": 697
+        }
+      }
+    },
+    {
+      "date": "2026-08-03",
+      "invalid": 13,
+      "valid": 4022,
+      "orders_invalid": 517,
+      "total": 4035,
+      "branches": {
+        "北京飞航": {
+          "invalid": 296,
+          "valid": 1057,
+          "total": 1353
+        },
+        "四川新跃": {
+          "invalid": 98,
+          "valid": 327,
+          "total": 425
+        },
+        "上海爱飞": {
+          "invalid": 79,
+          "valid": 376,
+          "total": 455
+        },
+        "北京易联": {
+          "invalid": 34,
+          "valid": 1108,
+          "total": 1142
+        },
+        "福建易联": {
+          "invalid": 8,
+          "valid": 364,
+          "total": 372
+        },
+        "北京中恒": {
+          "invalid": 2,
+          "valid": 916,
+          "total": 918
+        }
+      }
+    },
+    {
+      "date": "2026-08-04",
+      "invalid": 24,
+      "valid": 6006,
+      "orders_invalid": 707,
+      "total": 6030,
+      "branches": {
+        "北京飞航": {
+          "invalid": 375,
+          "valid": 1627,
+          "total": 2002
+        },
+        "四川新跃": {
+          "invalid": 126,
+          "valid": 491,
+          "total": 617
+        },
+        "上海爱飞": {
+          "invalid": 106,
+          "valid": 620,
+          "total": 726
+        },
+        "北京易联": {
+          "invalid": 67,
+          "valid": 1623,
+          "total": 1690
+        },
+        "福建易联": {
+          "invalid": 31,
+          "valid": 474,
+          "total": 505
+        },
+        "北京中恒": {
+          "invalid": 2,
+          "valid": 1366,
+          "total": 1368
+        }
+      }
+    },
+    {
+      "date": "2026-08-05",
+      "invalid": 31,
+      "valid": 7041,
+      "orders_invalid": 783,
+      "total": 7072,
+      "branches": {
+        "北京飞航": {
+          "invalid": 401,
+          "valid": 1920,
+          "total": 2321
+        },
+        "四川新跃": {
+          "invalid": 127,
+          "valid": 564,
+          "total": 691
+        },
+        "上海爱飞": {
+          "invalid": 116,
+          "valid": 786,
+          "total": 902
+        },
+        "北京易联": {
+          "invalid": 89,
+          "valid": 1841,
+          "total": 1930
+        },
+        "福建易联": {
+          "invalid": 39,
+          "valid": 556,
+          "total": 595
+        },
+        "北京中恒": {
+          "invalid": 11,
+          "valid": 1610,
+          "total": 1621
+        }
+      }
+    },
+    {
+      "date": "2026-08-06",
+      "invalid": 35,
+      "valid": 8075,
+      "orders_invalid": 826,
+      "total": 8110,
+      "branches": {
+        "北京飞航": {
+          "invalid": 420,
+          "valid": 2231,
+          "total": 2651
+        },
+        "上海爱飞": {
+          "invalid": 127,
+          "valid": 953,
+          "total": 1080
+        },
+        "四川新跃": {
+          "invalid": 127,
+          "valid": 660,
+          "total": 787
+        },
+        "北京易联": {
+          "invalid": 101,
+          "valid": 2044,
+          "total": 2145
+        },
+        "福建易联": {
+          "invalid": 40,
+          "valid": 634,
+          "total": 674
+        },
+        "北京中恒": {
+          "invalid": 11,
+          "valid": 1826,
+          "total": 1837
+        }
+      }
+    },
+    {
+      "date": "2026-08-09",
+      "invalid": 54,
+      "valid": 12302,
+      "orders_invalid": 1026,
+      "total": 12356,
+      "branches": {
+        "北京飞航": {
+          "invalid": 481,
+          "valid": 3797,
+          "total": 4278
+        },
+        "上海爱飞": {
+          "invalid": 187,
+          "valid": 1307,
+          "total": 1494
+        },
+        "北京易联": {
+          "invalid": 155,
+          "valid": 2994,
+          "total": 3149
+        },
+        "四川新跃": {
+          "invalid": 136,
+          "valid": 986,
+          "total": 1122
+        },
+        "福建易联": {
+          "invalid": 43,
+          "valid": 906,
+          "total": 949
+        },
+        "北京中恒": {
+          "invalid": 24,
+          "valid": 2758,
+          "total": 2782
+        }
+      }
+    },
+    {
+      "date": "2026-08-10",
+      "invalid": 57,
+      "valid": 13199,
+      "orders_invalid": 1098,
+      "total": 13256,
+      "branches": {
+        "北京飞航": {
+          "invalid": 514,
+          "valid": 4065,
+          "total": 4579
+        },
+        "上海爱飞": {
+          "invalid": 206,
+          "valid": 1396,
+          "total": 1602
+        },
+        "北京易联": {
+          "invalid": 163,
+          "valid": 3221,
+          "total": 3384
+        },
+        "四川新跃": {
+          "invalid": 138,
+          "valid": 1087,
+          "total": 1225
+        },
+        "福建易联": {
+          "invalid": 48,
+          "valid": 976,
+          "total": 1024
+        },
+        "北京中恒": {
+          "invalid": 29,
+          "valid": 2951,
+          "total": 2980
+        }
+      }
+    },
+    {
+      "date": "2026-08-11",
+      "invalid": 61,
+      "valid": 14071,
+      "orders_invalid": 1162,
+      "total": 14132,
+      "branches": {
+        "北京飞航": {
+          "invalid": 537,
+          "valid": 4312,
+          "total": 4849
+        },
+        "上海爱飞": {
+          "invalid": 231,
+          "valid": 1499,
+          "total": 1730
+        },
+        "北京易联": {
+          "invalid": 165,
+          "valid": 3420,
+          "total": 3585
+        },
+        "四川新跃": {
+          "invalid": 138,
+          "valid": 1188,
+          "total": 1326
+        },
+        "福建易联": {
+          "invalid": 53,
+          "valid": 1040,
+          "total": 1093
+        },
+        "北京中恒": {
+          "invalid": 35,
+          "valid": 3145,
+          "total": 3180
+        }
+      }
+    },
+    {
+      "date": "2026-08-12",
+      "invalid": 70,
+      "valid": 15158,
+      "orders_invalid": 1245,
+      "total": 15228,
+      "branches": {
+        "北京飞航": {
+          "invalid": 566,
+          "valid": 4573,
+          "total": 5139
+        },
+        "上海爱飞": {
+          "invalid": 246,
+          "valid": 1626,
+          "total": 1872
+        },
+        "北京易联": {
+          "invalid": 180,
+          "valid": 3635,
+          "total": 3815
+        },
+        "四川新跃": {
+          "invalid": 141,
+          "valid": 1422,
+          "total": 1563
+        },
+        "北京中恒": {
+          "invalid": 56,
+          "valid": 3365,
+          "total": 3421
+        },
+        "福建易联": {
+          "invalid": 53,
+          "valid": 1115,
+          "total": 1168
+        }
+      }
+    },
+    {
+      "date": "2026-08-13",
+      "invalid": 75,
+      "valid": 16283,
+      "orders_invalid": 1286,
+      "total": 16358,
+      "branches": {
+        "北京飞航": {
+          "invalid": 573,
+          "valid": 4922,
+          "total": 5495
+        },
+        "上海爱飞": {
+          "invalid": 252,
+          "valid": 1765,
+          "total": 2017
+        },
+        "北京易联": {
+          "invalid": 199,
+          "valid": 3865,
+          "total": 4064
+        },
+        "四川新跃": {
+          "invalid": 148,
+          "valid": 1539,
+          "total": 1687
+        },
+        "北京中恒": {
+          "invalid": 58,
+          "valid": 3614,
+          "total": 3672
+        },
+        "福建易联": {
+          "invalid": 53,
+          "valid": 1186,
+          "total": 1239
+        }
+      }
+    },
+    {
+      "date": "2026-08-14",
+      "invalid": 75,
+      "valid": 17806,
+      "orders_invalid": 1312,
+      "total": 17881,
+      "branches": {
+        "北京飞航": {
+          "invalid": 589,
+          "valid": 5367,
+          "total": 5956
+        },
+        "上海爱飞": {
+          "invalid": 257,
+          "valid": 1982,
+          "total": 2239
+        },
+        "北京易联": {
+          "invalid": 201,
+          "valid": 4213,
+          "total": 4414
+        },
+        "四川新跃": {
+          "invalid": 149,
+          "valid": 1694,
+          "total": 1843
+        },
+        "北京中恒": {
+          "invalid": 59,
+          "valid": 3947,
+          "total": 4006
+        },
+        "福建易联": {
+          "invalid": 54,
+          "valid": 1269,
+          "total": 1323
+        }
+      }
+    }
+  ]
+}
