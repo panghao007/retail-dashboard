@@ -112,6 +112,16 @@
   </div>
 <script>
 const BRANCHES = ["北京中恒","四川新跃","北京易联","福建易联"];
+// 本月（2026-08）新开分公司起始销售日：起始日之前的天数对该分公司不计入统计窗口（剔除）。
+// 仅对 2026-08 生效，以后月份（2026-09 起）自动不过滤。
+const BRANCH_START_2026_08 = {
+  "北京易联":"2026-08-03", "福建易联":"2026-08-03",
+  "北京中恒":"2026-08-11", "四川新跃":"2026-08-11"
+};
+function branchStart(b, date){
+  if(date && date.indexOf("2026-08")===0) return BRANCH_START_2026_08[b]||null;
+  return null;
+}
 let INDEX = [];          // 可用日期列表（升序）
 let GENERATED = "";
 let DAILY = {};          // 缓存 date -> json
@@ -168,10 +178,12 @@ function aggregate(js){
   const branches={};
   BRANCHES.forEach(b=>branches[b]={denominator:0,numerator:0,order_denom:0,order_num:0,vip:{},stores:{}});
   js.forEach(d=>{
-    total.denominator+=d.total.denominator; total.numerator+=d.total.numerator;
-    total.order_denom+=d.total.order_denom; total.order_num+=d.total.order_num;
     BRANCHES.forEach(b=>{
+      const _bs=branchStart(b, d.date);
+      if(_bs && d.date < _bs) return;  // 本月该分公司尚未开始销售，剔除该日该分支
       const bd=d.branches[b]||{denominator:0,numerator:0,order_denom:0,order_num:0};
+      total.denominator+=bd.denominator; total.numerator+=bd.numerator;
+      total.order_denom+=bd.order_denom; total.order_num+=bd.order_num;
       branches[b].denominator+=bd.denominator; branches[b].numerator+=bd.numerator;
       branches[b].order_denom+=bd.order_denom; branches[b].order_num+=bd.order_num;
       (bd.vip_items||[]).forEach(it=>{
