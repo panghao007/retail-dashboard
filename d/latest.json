@@ -2,14 +2,14 @@
   "date": "2026-08-16",
   "html": "d/index.html",
   "kpi": {
-    "total_orders": 17051,
-    "valid_members": 15158,
-    "invalid_members": 70,
-    "valid_rate": 92.67,
-    "invalid_rate": 7.33,
-    "orders_valid": 15742,
-    "orders_invalid": 1245,
+    "total_orders": 19807,
+    "valid_members": 18495,
+    "invalid_members": 75,
+    "valid_rate": 93.38,
+    "invalid_rate": 6.62,
+    "orders_valid": 18495,
+    "orders_invalid": 1312,
     "prev_invalid": null,
-    "latest_date": "2026-08-12"
+    "latest_date": "2026-08-16"
   }
 }
