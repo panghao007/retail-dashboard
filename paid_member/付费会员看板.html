@@ -364,12 +364,13 @@ function draw(agg, dates, want){
     var activeBranch='全部';
     var showLine={rate:true, open:true};
     var curData=null;
+    function fmtDay(ds){ var m=String(ds).match(/(\d{1,2})$/); return (m?m[1]:ds)+'日'; }
 
     function makeData(branch){
       var labels=[], rateData=[], openData=[];
       dates.forEach(function(dt){
         var d=DAILY[dt]; if(!d) return;
-        labels.push(dt.slice(5));
+        labels.push(fmtDay(dt));
         var src=(branch==='全部')?d.total:(d.branches[branch]||null);
         if(src){
           var r=src.denominator? src.numerator/src.denominator:0;
@@ -399,7 +400,7 @@ function draw(agg, dates, want){
       cv.width=w*dpr; cv.height=h*dpr;
       var ctx=cv.getContext('2d'); ctx.setTransform(dpr,0,0,dpr,0,0);
       ctx.clearRect(0,0,w,h);
-      var pl=46, pr=14, pt=18, pb=30;
+      var pl=48, pr=48, pt=18, pb=36;
       var cw=w-pl-pr, ch=h-pt-pb;
       var n=d.labels.length; if(!n) return;
       var maxV=0;
@@ -416,11 +417,11 @@ function draw(agg, dates, want){
         ctx.beginPath(); ctx.moveTo(pl,y); ctx.lineTo(pl+cw,y); ctx.stroke();
         ctx.fillText(val+'%', pl-6, y);
       }
-      // X 轴标签
-      ctx.textAlign='center'; ctx.textBaseline='top';
+      // X 轴标签（竖向，防手机叠压）
+      ctx.fillStyle='#9aa3ad'; ctx.font='11px -apple-system,sans-serif';
       d.labels.forEach(function(lb,i){
         var x=xAt(i,n,cw,pl);
-        ctx.fillText(lb, x, pt+ch+8);
+        ctx.save(); ctx.translate(x,pt+ch+6); ctx.rotate(-Math.PI/2); ctx.textAlign='right'; ctx.textBaseline='middle'; ctx.fillText(lb,0,0); ctx.restore();
       });
       // 画线
       function plot(data,color){
