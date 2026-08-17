@@ -227,6 +227,17 @@ body{
 
 <script>
 "use strict";
+// ── 防陈旧页面：URL 无查询参数时自动跳转到带时间戳版本 ──
+// 解决浏览器/中间代理对本页 HTML 的磁盘缓存：GitHub Pages CDN 对同一路径缓存 10 分钟，
+// 且浏览器可能直接读本地旧文件不回源。带上 ?t= 时间戳 = 新 URL = 强制回源拿最新版。
+(function(){
+  try{
+    if(!location.search){
+      location.replace(location.href.split("#")[0] + "?t=" + Date.now());
+      return;
+    }
+  }catch(_){}
+})();
 const C = {
   validity:{name:"会员有效性", color:"var(--cyan)",   href:"d/index.html"},
   cashier :{name:"合规收银",   color:"var(--orange)", href:"cashier/收银合规看板.html"},
