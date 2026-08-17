@@ -1,17 +1,17 @@
 {
   "date": "2026-08-16",
-  "generated": "2026-08-17 06:50",
+  "generated": "2026-08-17 16:06",
   "total": {
-    "denominator": 558.0,
+    "denominator": 557.0,
     "numerator": 167.0,
-    "order_denom": 551,
+    "order_denom": 550,
     "order_num": 167
   },
   "branches": {
     "北京中恒": {
-      "denominator": 204.0,
+      "denominator": 203.0,
       "numerator": 68.0,
-      "order_denom": 203,
+      "order_denom": 202,
       "order_num": 68,
       "vip_items": [
         {
@@ -235,9 +235,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京合生汇",
-      "denominator": 24.0,
+      "denominator": 23.0,
       "numerator": 3.0,
-      "order_denom": 23,
+      "order_denom": 22,
       "order_num": 3,
       "vip_items": [
         {
