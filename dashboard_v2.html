@@ -124,8 +124,8 @@ body{
 </head>
 <body>
 <div id="__build_marker" style="position:fixed;top:0;left:0;right:0;z-index:99999;background:#16b8a6;color:#fff;padding:10px 18px;font:700 18px/1.4 -apple-system,sans-serif;letter-spacing:1px;box-shadow:0 2px 8px rgba(0,0,0,.4);">
-  ✅ v=70f5a1f · 构建 2026-08-18 02:13 · 新路径 dashboard_v2.html
-  <span style="float:right;font-size:12px;opacity:.9">看到这条=新版 · 没看到=打开的还是旧 dashboard.html</span>
+  ✅ v=beijingYMD修复 · 2026-08-18 02:33 · 新路径 dashboard_v2.html
+  <span style="float:right;font-size:12px;opacity:.9">看到这条=新版 · 付费会员应为 8-17</span>
 </div>
 <div style="height:52px"></div>
 
@@ -264,9 +264,9 @@ function branchStart(b, date){
   return null;
 }
 
-function beijingYMD(){ // 北京时间 YYYYMMDD
+function beijingYMD(){ // 北京时间 YYYYMMDD（勿用 getTimezoneOffset——中国时区 -480 会抵消 +8h 导致返回昨天）
   const now=new Date();
-  const bj=new Date(now.getTime() + now.getTimezoneOffset()*60000 + 8*3600000);
+  const bj=new Date(now.getTime() + 8*3600000);   // 绝对时间戳直接加 8 小时 = 北京时间
   const y=bj.getUTCFullYear(), m=String(bj.getUTCMonth()+1).padStart(2,"0"), d=String(bj.getUTCDate()).padStart(2,"0");
   return y+m+d;
 }

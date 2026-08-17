@@ -258,9 +258,9 @@ function branchStart(b, date){
   return null;
 }
 
-function beijingYMD(){ // 北京时间 YYYYMMDD
+function beijingYMD(){ // 北京时间 YYYYMMDD（勿用 getTimezoneOffset——中国时区 -480 会抵消 +8h 导致返回昨天）
   const now=new Date();
-  const bj=new Date(now.getTime() + now.getTimezoneOffset()*60000 + 8*3600000);
+  const bj=new Date(now.getTime() + 8*3600000);   // 绝对时间戳直接加 8 小时 = 北京时间
   const y=bj.getUTCFullYear(), m=String(bj.getUTCMonth()+1).padStart(2,"0"), d=String(bj.getUTCDate()).padStart(2,"0");
   return y+m+d;
 }
