@@ -201,7 +201,8 @@ async function loadValidity(){
     const j=await getJSON("d/latest.json?_="+Date.now());
     const k=j.kpi||{};
     DATES.validity=j.date||k.latest_date||"";
-    const invDelta = k.prev_invalid==null ? null : 0; // 无对比字段
+    const invDelta = (k.prev_invalid!=null && k.orders_invalid!=null)
+      ? k.orders_invalid - k.prev_invalid : null; // 日增量=当日累计−前日累计
     setCard("validity",
       "数据日期 "+(k.latest_date||j.date||""),
       [
@@ -209,9 +210,9 @@ async function loadValidity(){
         {num:(k.valid_rate!=null?k.valid_rate.toFixed(2):"—"), unit:"%", lab:"有效占比"},
         {num:(k.invalid_rate!=null?k.invalid_rate.toFixed(2):"—"), unit:"%", lab:"无效占比"},
       ],
-      k.prev_invalid==null
+      invDelta==null
         ? [{text:"对比昨日无效增减：无数据", type:"flat"}]
-        : [deltaChip("无效增减", k.invalid_rate?0:0, "%", "down")]
+        : [deltaChip("无效增减", invDelta, "笔", "down")]
     );
     const dlV=document.getElementById("dl-validity");
     if(dlV && DATES.validity) dlV.href="d/"+DATES.validity+"_会员有效性分析.xlsx";
