@@ -66,6 +66,7 @@ body{
 .card:hover .enter{background:var(--c);color:#06121f;}
 .enter .ar{transition:transform .16s;}
 .card:hover .enter .ar{transform:translateX(4px);}
+.ai-desc{margin-top:4px;padding:12px 2px 4px;font-size:13.5px;color:#9fb2c4;line-height:1.7;}
 .foot{margin-top:36px;text-align:center;color:#e02424;font-weight:700;font-size:13px;letter-spacing:.5px;}
 .dl-section{margin-top:30px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:18px 20px;}
 .dl-title{font-size:13px;font-weight:700;color:#9fb2c4;margin-bottom:12px;letter-spacing:1px;}
@@ -123,6 +124,7 @@ const C = {
   cashier :{name:"合规收银",   color:"var(--orange)", href:"cashier/收银合规看板.html"},
   paid    :{name:"付费会员",   color:"var(--purple)", href:"paid_member/付费会员看板.html"},
   deposit :{name:"会员沉淀",   color:"var(--green)",  href:"member_deposit/会员沉淀看板.html"},
+  insight :{name:"AI 解读",    color:"#16b8a6",       href:"ai-insight.html"},
 };
 const DATES = {}; // 各看板最新日期
 const fmt = n => (n==null||isNaN(n)) ? "—" : Number(n).toLocaleString("en-US");
@@ -176,6 +178,15 @@ function buildCards(){
     const a=document.createElement("a");
     a.className="card"; a.id="card-"+key; a.style.setProperty("--c",c.color);
     a.href=c.href; a.target="_self";
+    if(key==="insight"){
+      a.innerHTML=`
+      <div class="card-head">
+        <div class="card-name"><span class="dot"></span>${c.name}</div>
+        <div class="period">实时解读 · 已脱敏</div>
+      </div>
+      <div class="ai-desc">基于四看板聚合数据的 AI 深度解读：会员质量业态归因、收银合规重灾区、沉睡会员资产、付费产值双维度、跨看板管理简报。</div>
+      <span class="enter">查看 AI 解读报告 <span class="ar">›</span></span>`;
+    } else {
     a.innerHTML=`
       <div class="card-head">
         <div class="card-name"><span class="dot"></span>${c.name}</div>
@@ -186,6 +197,7 @@ function buildCards(){
       </div>
       <div class="deltas" id="deltas-${key}"></div>
       <span class="enter">进入看板 <span class="ar">›</span></span>`;
+    }
     grid.appendChild(a);
   }
 }
