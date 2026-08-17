@@ -35,12 +35,20 @@ th{background:#f0f6f8;color:#456} tbody tr:hover{background:#fafdff}
   .vt-tip .vt-tip-d{font-weight:700;margin-bottom:3px;font-size:12.5px;}
   .vt-tip .vt-tip-row{color:#d1d5db;}
   .vt-tip .vt-tip-row b{color:#fff;font-size:13px;}
-  /* ── 移动端/云之家WebView适配：再缩小一档 ── */
+  /* ── 移动端/云之家WebView适配：统一缩小 ── */
   @media(max-width:768px){
     body{padding:12px 10px;}
     .head h1{font-size:16px;} .head p{font-size:10px;}
     .card .n{font-size:20px;} .card .l{font-size:9.5px;} .card .d{font-size:9.5px;}
     .sec h2{font-size:12.5px;}
+    .note{font-size:11px;}
+    .dlbtn{font-size:12px;}
+    #mwrap{font-size:11px;}
+    .cmp{font-size:11px;}
+    .ct-btn{font-size:11px;}
+    .legend{font-size:11px;}
+    .trend-btn{font-size:11px;}
+    .sec p{font-size:11px!important;} /* 覆盖 JS 内联 font-size:13px */
     table,th,td{font-size:10.5px;} th,td{padding:6px 8px;}
     .vt-tip,.vt-tip .vt-tip-d,.vt-tip .vt-tip-row b{font-size:10px;}
   }
