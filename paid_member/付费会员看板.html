@@ -174,26 +174,29 @@ function selectedLabel(want){
   return "";
 }
 function aggregate(js){
-  const total={denominator:0,numerator:0,order_denom:0,order_num:0};
+  const total={denominator:0,numerator:0,order_denom:0,order_num:0,amount:0};
   const branches={};
-  BRANCHES.forEach(b=>branches[b]={denominator:0,numerator:0,order_denom:0,order_num:0,vip:{},stores:{}});
+  BRANCHES.forEach(b=>branches[b]={denominator:0,numerator:0,order_denom:0,order_num:0,amount:0,vip:{},stores:{}});
   js.forEach(d=>{
     BRANCHES.forEach(b=>{
       const _bs=branchStart(b, d.date);
       if(_bs && d.date < _bs) return;  // 本月该分公司尚未开始销售，剔除该日该分支
-      const bd=d.branches[b]||{denominator:0,numerator:0,order_denom:0,order_num:0};
+      const bd=d.branches[b]||{denominator:0,numerator:0,order_denom:0,order_num:0,amount:0};
       total.denominator+=bd.denominator; total.numerator+=bd.numerator;
       total.order_denom+=bd.order_denom; total.order_num+=bd.order_num;
+      total.amount+=(bd.amount||0);
       branches[b].denominator+=bd.denominator; branches[b].numerator+=bd.numerator;
       branches[b].order_denom+=bd.order_denom; branches[b].order_num+=bd.order_num;
+      branches[b].amount+=(bd.amount||0);
       (bd.vip_items||[]).forEach(it=>{
         if(!branches[b].vip[it.code]) branches[b].vip[it.code]={name:it.name,qty:0};
         branches[b].vip[it.code].qty += it.qty;
       });
       d.stores.filter(s=>s.branch===b).forEach(s=>{
-        const o=branches[b].stores[s.store]||{denominator:0,numerator:0,order_denom:0,order_num:0,vip:{}};
+        const o=branches[b].stores[s.store]||{denominator:0,numerator:0,order_denom:0,order_num:0,amount:0,vip:{}};
         o.denominator+=s.denominator; o.numerator+=s.numerator;
         o.order_denom+=s.order_denom; o.order_num+=s.order_num;
+        o.amount+=(s.amount||0);
         (s.vip_items||[]).forEach(it=>{
           if(!o.vip[it.code]) o.vip[it.code]={name:it.name,qty:0};
           o.vip[it.code].qty += it.qty;
@@ -223,11 +226,13 @@ function draw(agg, dates, want){
   });
   const totOpenRate = totalStores? openStores/totalStores : 0;
   // KPI
+  const fmtAmt = n => (n>=10000 ? (n/10000).toFixed(2)+'万' : n.toFixed(0));
   let kpi = '<div class="kpis">'
     + '<div class="kpi"><div class="v">'+total.denominator.toFixed(0)+'</div><div class="l">主机台量（分母）</div></div>'
     + '<div class="kpi"><div class="v o">'+total.numerator.toFixed(0)+'</div><div class="l">VIP会员商品数（分子）</div></div>'
     + '<div class="kpi"><div class="v">'+pct(totRate)+'</div><div class="l">合计会员连带率</div></div>'
     + '<div class="kpi"><div class="v">'+pct(totOpenRate)+'</div><div class="l">付费会员开单占比（'+openStores+'/'+totalStores+' 门店）</div></div>'
+    + '<div class="kpi"><div class="v o">¥'+fmtAmt(total.amount)+'</div><div class="l">会员产值金额总计</div></div>'
     + '</div>';
 
   // 分公司表
@@ -253,17 +258,18 @@ function draw(agg, dates, want){
       +'<td class="num">'+bd.numerator.toFixed(0)+'</td>'
       +'<td class="rate"><b style="color:'+col+'">'+pct(rate)+'</b></td>'
       +'<td class="num">'+bOpen+'/'+master+'（'+pct(bOpen/master)+'）</td>'
+      +'<td class="num">¥'+fmtAmt(bd.amount||0)+'</td>'
       +'</tr>';
     // 档位明细子行：该分公司各 VIP 商品档位卖了几个
     const tierItems=Object.keys(bd.vip||{}).map(c=>({name:(bd.vip[c].name||c).replace(/会员套餐?/,''), qty:bd.vip[c].qty}))
       .sort((x,y)=>y.qty-x.qty);
     if(tierItems.length){
       const tierStr=tierItems.map(it=>it.name+' ×'+it.qty).join('　·　');
-      rows+='<tr class="tier-row"><td class="tier-label" colspan="5"><span class="tier-tag">档位明细</span>'+tierStr+'</td></tr>';
+      rows+='<tr class="tier-row"><td class="tier-label" colspan="6"><span class="tier-tag">档位明细</span>'+tierStr+'</td></tr>';
     }
   });
   let branchTable='<table><thead><tr><th>所属分公司</th><th style="text-align:right">主机台量</th>'
-    +'<th style="text-align:right">VIP数</th><th>会员连带率</th><th style="text-align:right">付费会员开单(门店)</th></tr></thead><tbody>'+rows+'</tbody></table>';
+    +'<th style="text-align:right">VIP数</th><th>会员连带率</th><th style="text-align:right">付费会员开单(门店)</th><th style="text-align:right">会员产值金额合计</th></tr></thead><tbody>'+rows+'</tbody></table>';
 
   let html = kpi + branchTable;
 

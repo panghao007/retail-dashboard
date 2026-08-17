@@ -1,11 +1,12 @@
 {
   "date": "2026-08-14",
-  "generated": "2026-08-17 22:05",
+  "generated": "2026-08-17 23:45",
   "total": {
     "denominator": 404.0,
     "numerator": 97.0,
     "order_denom": 399,
-    "order_num": 97
+    "order_num": 97,
+    "amount": 92811.0
   },
   "branches": {
     "北京中恒": {
@@ -17,29 +18,35 @@
         {
           "code": "vip-iphone1498",
           "name": "ipone会员套餐1498",
-          "qty": 22.0
+          "qty": 22.0,
+          "price": 1498
         },
         {
           "code": "vip-iphone698",
           "name": "ipone会员套餐698",
-          "qty": 11.0
+          "qty": 11.0,
+          "price": 698
         },
         {
           "code": "vip-iphone998",
           "name": "ipone会员套餐998",
-          "qty": 4.0
+          "qty": 4.0,
+          "price": 998
         },
         {
           "code": "vip-iphone1198",
           "name": "ipone会员套餐1198",
-          "qty": 2.0
+          "qty": 2.0,
+          "price": 1198
         },
         {
           "code": "vip-iphone1798",
           "name": "ipone会员套餐1798",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 1798
         }
-      ]
+      ],
+      "amount": 48820.0
     },
     "四川新跃": {
       "denominator": 87.0,
@@ -50,24 +57,29 @@
         {
           "code": "SCXYVIP00001",
           "name": "698元悦享会员",
-          "qty": 14.0
+          "qty": 14.0,
+          "price": 698
         },
         {
           "code": "SCXYVIP00004",
           "name": "2198元奢享会员",
-          "qty": 5.0
+          "qty": 5.0,
+          "price": 2198
         },
         {
           "code": "SCXYVIP00003",
           "name": "1598元臻享会员",
-          "qty": 3.0
+          "qty": 3.0,
+          "price": 1598
         },
         {
           "code": "SCXYVIP00002",
           "name": "998元尊享会员",
-          "qty": 3.0
+          "qty": 3.0,
+          "price": 998
         }
-      ]
+      ],
+      "amount": 28550.0
     },
     "北京易联": {
       "denominator": 130.0,
@@ -78,9 +90,11 @@
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
-          "qty": 27.0
+          "qty": 27.0,
+          "price": 498
         }
-      ]
+      ],
+      "amount": 13446.0
     },
     "福建易联": {
       "denominator": 46.0,
@@ -91,9 +105,11 @@
         {
           "code": "FJYLVIP0001",
           "name": "399元礼包",
-          "qty": 5.0
+          "qty": 5.0,
+          "price": 399
         }
-      ]
+      ],
+      "amount": 1995.0
     }
   },
   "stores": [
@@ -104,7 +120,8 @@
       "numerator": 0.0,
       "order_denom": 1,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京中恒",
@@ -113,7 +130,8 @@
       "numerator": 0.0,
       "order_denom": 1,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京中恒",
@@ -126,9 +144,11 @@
         {
           "code": "vip-iphone1498",
           "name": "ipone会员套餐1498",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 1498
         }
-      ]
+      ],
+      "amount": 1498.0
     },
     {
       "branch": "北京中恒",
@@ -141,9 +161,11 @@
         {
           "code": "vip-iphone998",
           "name": "ipone会员套餐998",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 998
         }
-      ]
+      ],
+      "amount": 998.0
     },
     {
       "branch": "北京中恒",
@@ -152,7 +174,8 @@
       "numerator": 0.0,
       "order_denom": 5,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京中恒",
@@ -161,7 +184,8 @@
       "numerator": 0.0,
       "order_denom": 2,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京中恒",
@@ -170,7 +194,8 @@
       "numerator": 0.0,
       "order_denom": 1,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京中恒",
@@ -183,9 +208,11 @@
         {
           "code": "vip-iphone998",
           "name": "ipone会员套餐998",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 998
         }
-      ]
+      ],
+      "amount": 998.0
     },
     {
       "branch": "北京中恒",
@@ -194,7 +221,8 @@
       "numerator": 0.0,
       "order_denom": 0,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京中恒",
@@ -207,9 +235,11 @@
         {
           "code": "vip-iphone1498",
           "name": "ipone会员套餐1498",
-          "qty": 2.0
+          "qty": 2.0,
+          "price": 1498
         }
-      ]
+      ],
+      "amount": 2996.0
     },
     {
       "branch": "北京中恒",
@@ -222,14 +252,17 @@
         {
           "code": "vip-iphone1498",
           "name": "ipone会员套餐1498",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 1498
         },
         {
           "code": "vip-iphone1798",
           "name": "ipone会员套餐1798",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 1798
         }
-      ]
+      ],
+      "amount": 3296.0
     },
     {
       "branch": "北京中恒",
@@ -242,9 +275,11 @@
         {
           "code": "vip-iphone1498",
           "name": "ipone会员套餐1498",
-          "qty": 2.0
+          "qty": 2.0,
+          "price": 1498
         }
-      ]
+      ],
+      "amount": 2996.0
     },
     {
       "branch": "北京中恒",
@@ -257,9 +292,11 @@
         {
           "code": "vip-iphone698",
           "name": "ipone会员套餐698",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 698
         }
-      ]
+      ],
+      "amount": 698.0
     },
     {
       "branch": "北京中恒",
@@ -268,7 +305,8 @@
       "numerator": 0.0,
       "order_denom": 0,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京中恒",
@@ -277,7 +315,8 @@
       "numerator": 0.0,
       "order_denom": 6,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京中恒",
@@ -286,7 +325,8 @@
       "numerator": 0.0,
       "order_denom": 1,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京中恒",
@@ -299,9 +339,11 @@
         {
           "code": "vip-iphone698",
           "name": "ipone会员套餐698",
-          "qty": 2.0
+          "qty": 2.0,
+          "price": 698
         }
-      ]
+      ],
+      "amount": 1396.0
     },
     {
       "branch": "北京中恒",
@@ -310,7 +352,8 @@
       "numerator": 0.0,
       "order_denom": 6,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京中恒",
@@ -323,19 +366,23 @@
         {
           "code": "vip-iphone998",
           "name": "ipone会员套餐998",
-          "qty": 2.0
+          "qty": 2.0,
+          "price": 998
         },
         {
           "code": "vip-iphone698",
           "name": "ipone会员套餐698",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 698
         },
         {
           "code": "vip-iphone1498",
           "name": "ipone会员套餐1498",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 1498
         }
-      ]
+      ],
+      "amount": 4192.0
     },
     {
       "branch": "北京中恒",
@@ -348,14 +395,17 @@
         {
           "code": "vip-iphone1498",
           "name": "ipone会员套餐1498",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 1498
         },
         {
           "code": "vip-iphone698",
           "name": "ipone会员套餐698",
-          "qty": 2.0
+          "qty": 2.0,
+          "price": 698
         }
-      ]
+      ],
+      "amount": 2894.0
     },
     {
       "branch": "北京中恒",
@@ -368,14 +418,17 @@
         {
           "code": "vip-iphone1498",
           "name": "ipone会员套餐1498",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 1498
         },
         {
           "code": "vip-iphone698",
           "name": "ipone会员套餐698",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 698
         }
-      ]
+      ],
+      "amount": 2196.0
     },
     {
       "branch": "北京中恒",
@@ -384,7 +437,8 @@
       "numerator": 0.0,
       "order_denom": 1,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京中恒",
@@ -397,9 +451,11 @@
         {
           "code": "vip-iphone698",
           "name": "ipone会员套餐698",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 698
         }
-      ]
+      ],
+      "amount": 698.0
     },
     {
       "branch": "北京中恒",
@@ -412,9 +468,11 @@
         {
           "code": "vip-iphone1498",
           "name": "ipone会员套餐1498",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 1498
         }
-      ]
+      ],
+      "amount": 1498.0
     },
     {
       "branch": "北京中恒",
@@ -427,9 +485,11 @@
         {
           "code": "vip-iphone1198",
           "name": "ipone会员套餐1198",
-          "qty": 2.0
+          "qty": 2.0,
+          "price": 1198
         }
-      ]
+      ],
+      "amount": 2396.0
     },
     {
       "branch": "北京中恒",
@@ -442,9 +502,11 @@
         {
           "code": "vip-iphone1498",
           "name": "ipone会员套餐1498",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 1498
         }
-      ]
+      ],
+      "amount": 1498.0
     },
     {
       "branch": "北京中恒",
@@ -457,9 +519,11 @@
         {
           "code": "vip-iphone1498",
           "name": "ipone会员套餐1498",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 1498
         }
-      ]
+      ],
+      "amount": 1498.0
     },
     {
       "branch": "北京中恒",
@@ -472,9 +536,11 @@
         {
           "code": "vip-iphone698",
           "name": "ipone会员套餐698",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 698
         }
-      ]
+      ],
+      "amount": 698.0
     },
     {
       "branch": "北京中恒",
@@ -483,7 +549,8 @@
       "numerator": 0.0,
       "order_denom": 6,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京中恒",
@@ -496,9 +563,11 @@
         {
           "code": "vip-iphone1498",
           "name": "ipone会员套餐1498",
-          "qty": 3.0
+          "qty": 3.0,
+          "price": 1498
         }
-      ]
+      ],
+      "amount": 4494.0
     },
     {
       "branch": "北京中恒",
@@ -511,14 +580,17 @@
         {
           "code": "vip-iphone698",
           "name": "ipone会员套餐698",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 698
         },
         {
           "code": "vip-iphone1498",
           "name": "ipone会员套餐1498",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 1498
         }
-      ]
+      ],
+      "amount": 2196.0
     },
     {
       "branch": "北京中恒",
@@ -531,9 +603,11 @@
         {
           "code": "vip-iphone698",
           "name": "ipone会员套餐698",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 698
         }
-      ]
+      ],
+      "amount": 698.0
     },
     {
       "branch": "北京中恒",
@@ -546,9 +620,11 @@
         {
           "code": "vip-iphone1498",
           "name": "ipone会员套餐1498",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 1498
         }
-      ]
+      ],
+      "amount": 1498.0
     },
     {
       "branch": "北京中恒",
@@ -557,7 +633,8 @@
       "numerator": 0.0,
       "order_denom": 4,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京中恒",
@@ -570,9 +647,11 @@
         {
           "code": "vip-iphone1498",
           "name": "ipone会员套餐1498",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 1498
         }
-      ]
+      ],
+      "amount": 1498.0
     },
     {
       "branch": "北京中恒",
@@ -585,9 +664,11 @@
         {
           "code": "vip-iphone1498",
           "name": "ipone会员套餐1498",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 1498
         }
-      ]
+      ],
+      "amount": 1498.0
     },
     {
       "branch": "北京中恒",
@@ -600,9 +681,11 @@
         {
           "code": "vip-iphone1498",
           "name": "ipone会员套餐1498",
-          "qty": 3.0
+          "qty": 3.0,
+          "price": 1498
         }
-      ]
+      ],
+      "amount": 4494.0
     },
     {
       "branch": "四川新跃",
@@ -615,9 +698,11 @@
         {
           "code": "SCXYVIP00001",
           "name": "698元悦享会员",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 698
         }
-      ]
+      ],
+      "amount": 698.0
     },
     {
       "branch": "四川新跃",
@@ -626,7 +711,8 @@
       "numerator": 0.0,
       "order_denom": 3,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "四川新跃",
@@ -639,9 +725,11 @@
         {
           "code": "SCXYVIP00001",
           "name": "698元悦享会员",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 698
         }
-      ]
+      ],
+      "amount": 698.0
     },
     {
       "branch": "四川新跃",
@@ -654,9 +742,11 @@
         {
           "code": "SCXYVIP00004",
           "name": "2198元奢享会员",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 2198
         }
-      ]
+      ],
+      "amount": 2198.0
     },
     {
       "branch": "四川新跃",
@@ -665,7 +755,8 @@
       "numerator": 0.0,
       "order_denom": 2,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "四川新跃",
@@ -678,19 +769,23 @@
         {
           "code": "SCXYVIP00004",
           "name": "2198元奢享会员",
-          "qty": 2.0
+          "qty": 2.0,
+          "price": 2198
         },
         {
           "code": "SCXYVIP00002",
           "name": "998元尊享会员",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 998
         },
         {
           "code": "SCXYVIP00001",
           "name": "698元悦享会员",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 698
         }
-      ]
+      ],
+      "amount": 6092.0
     },
     {
       "branch": "四川新跃",
@@ -703,9 +798,11 @@
         {
           "code": "SCXYVIP00001",
           "name": "698元悦享会员",
-          "qty": 3.0
+          "qty": 3.0,
+          "price": 698
         }
-      ]
+      ],
+      "amount": 2094.0
     },
     {
       "branch": "四川新跃",
@@ -718,9 +815,11 @@
         {
           "code": "SCXYVIP00001",
           "name": "698元悦享会员",
-          "qty": 2.0
+          "qty": 2.0,
+          "price": 698
         }
-      ]
+      ],
+      "amount": 1396.0
     },
     {
       "branch": "四川新跃",
@@ -729,7 +828,8 @@
       "numerator": 0.0,
       "order_denom": 1,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "四川新跃",
@@ -742,19 +842,23 @@
         {
           "code": "SCXYVIP00003",
           "name": "1598元臻享会员",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 1598
         },
         {
           "code": "SCXYVIP00004",
           "name": "2198元奢享会员",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 2198
         },
         {
           "code": "SCXYVIP00001",
           "name": "698元悦享会员",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 698
         }
-      ]
+      ],
+      "amount": 4494.0
     },
     {
       "branch": "四川新跃",
@@ -763,7 +867,8 @@
       "numerator": 0.0,
       "order_denom": 2,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "四川新跃",
@@ -772,7 +877,8 @@
       "numerator": 0.0,
       "order_denom": 4,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "四川新跃",
@@ -785,14 +891,17 @@
         {
           "code": "SCXYVIP00001",
           "name": "698元悦享会员",
-          "qty": 2.0
+          "qty": 2.0,
+          "price": 698
         },
         {
           "code": "SCXYVIP00003",
           "name": "1598元臻享会员",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 1598
         }
-      ]
+      ],
+      "amount": 2994.0
     },
     {
       "branch": "四川新跃",
@@ -805,9 +914,11 @@
         {
           "code": "SCXYVIP00001",
           "name": "698元悦享会员",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 698
         }
-      ]
+      ],
+      "amount": 698.0
     },
     {
       "branch": "四川新跃",
@@ -816,7 +927,8 @@
       "numerator": 0.0,
       "order_denom": 1,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "四川新跃",
@@ -825,7 +937,8 @@
       "numerator": 0.0,
       "order_denom": 3,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "四川新跃",
@@ -838,9 +951,11 @@
         {
           "code": "SCXYVIP00003",
           "name": "1598元臻享会员",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 1598
         }
-      ]
+      ],
+      "amount": 1598.0
     },
     {
       "branch": "四川新跃",
@@ -853,19 +968,23 @@
         {
           "code": "SCXYVIP00004",
           "name": "2198元奢享会员",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 2198
         },
         {
           "code": "SCXYVIP00001",
           "name": "698元悦享会员",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 698
         },
         {
           "code": "SCXYVIP00002",
           "name": "998元尊享会员",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 998
         }
-      ]
+      ],
+      "amount": 3894.0
     },
     {
       "branch": "四川新跃",
@@ -874,7 +993,8 @@
       "numerator": 0.0,
       "order_denom": 6,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "四川新跃",
@@ -887,14 +1007,17 @@
         {
           "code": "SCXYVIP00002",
           "name": "998元尊享会员",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 998
         },
         {
           "code": "SCXYVIP00001",
           "name": "698元悦享会员",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 698
         }
-      ]
+      ],
+      "amount": 1696.0
     },
     {
       "branch": "四川新跃",
@@ -903,7 +1026,8 @@
       "numerator": 0.0,
       "order_denom": 0,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "四川新跃",
@@ -912,7 +1036,8 @@
       "numerator": 0.0,
       "order_denom": 0,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "四川新跃",
@@ -921,7 +1046,8 @@
       "numerator": 0.0,
       "order_denom": 0,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "四川新跃",
@@ -930,7 +1056,8 @@
       "numerator": 0.0,
       "order_denom": 0,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京易联",
@@ -939,7 +1066,8 @@
       "numerator": 0.0,
       "order_denom": 1,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京易联",
@@ -952,9 +1080,11 @@
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
-          "qty": 2.0
+          "qty": 2.0,
+          "price": 498
         }
-      ]
+      ],
+      "amount": 996.0
     },
     {
       "branch": "北京易联",
@@ -967,9 +1097,11 @@
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
-          "qty": 3.0
+          "qty": 3.0,
+          "price": 498
         }
-      ]
+      ],
+      "amount": 1494.0
     },
     {
       "branch": "北京易联",
@@ -978,7 +1110,8 @@
       "numerator": 0.0,
       "order_denom": 0,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京易联",
@@ -991,9 +1124,11 @@
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
-          "qty": 3.0
+          "qty": 3.0,
+          "price": 498
         }
-      ]
+      ],
+      "amount": 1494.0
     },
     {
       "branch": "北京易联",
@@ -1002,7 +1137,8 @@
       "numerator": 0.0,
       "order_denom": 0,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京易联",
@@ -1011,7 +1147,8 @@
       "numerator": 0.0,
       "order_denom": 0,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京易联",
@@ -1020,7 +1157,8 @@
       "numerator": 0.0,
       "order_denom": 0,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京易联",
@@ -1029,7 +1167,8 @@
       "numerator": 0.0,
       "order_denom": 0,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京易联",
@@ -1038,7 +1177,8 @@
       "numerator": 0.0,
       "order_denom": 0,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京易联",
@@ -1047,7 +1187,8 @@
       "numerator": 0.0,
       "order_denom": 4,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京易联",
@@ -1056,7 +1197,8 @@
       "numerator": 0.0,
       "order_denom": 1,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京易联",
@@ -1069,9 +1211,11 @@
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 498
         }
-      ]
+      ],
+      "amount": 498.0
     },
     {
       "branch": "北京易联",
@@ -1080,7 +1224,8 @@
       "numerator": 0.0,
       "order_denom": 1,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京易联",
@@ -1089,7 +1234,8 @@
       "numerator": 0.0,
       "order_denom": 7,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京易联",
@@ -1102,9 +1248,11 @@
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
-          "qty": 3.0
+          "qty": 3.0,
+          "price": 498
         }
-      ]
+      ],
+      "amount": 1494.0
     },
     {
       "branch": "北京易联",
@@ -1117,9 +1265,11 @@
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
-          "qty": 2.0
+          "qty": 2.0,
+          "price": 498
         }
-      ]
+      ],
+      "amount": 996.0
     },
     {
       "branch": "北京易联",
@@ -1128,7 +1278,8 @@
       "numerator": 0.0,
       "order_denom": 7,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京易联",
@@ -1141,9 +1292,11 @@
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 498
         }
-      ]
+      ],
+      "amount": 498.0
     },
     {
       "branch": "北京易联",
@@ -1156,9 +1309,11 @@
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 498
         }
-      ]
+      ],
+      "amount": 498.0
     },
     {
       "branch": "北京易联",
@@ -1167,7 +1322,8 @@
       "numerator": 0.0,
       "order_denom": 4,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京易联",
@@ -1176,7 +1332,8 @@
       "numerator": 0.0,
       "order_denom": 1,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京易联",
@@ -1189,9 +1346,11 @@
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 498
         }
-      ]
+      ],
+      "amount": 498.0
     },
     {
       "branch": "北京易联",
@@ -1200,7 +1359,8 @@
       "numerator": 0.0,
       "order_denom": 5,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京易联",
@@ -1213,9 +1373,11 @@
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
-          "qty": 3.0
+          "qty": 3.0,
+          "price": 498
         }
-      ]
+      ],
+      "amount": 1494.0
     },
     {
       "branch": "北京易联",
@@ -1228,9 +1390,11 @@
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
-          "qty": 3.0
+          "qty": 3.0,
+          "price": 498
         }
-      ]
+      ],
+      "amount": 1494.0
     },
     {
       "branch": "北京易联",
@@ -1239,7 +1403,8 @@
       "numerator": 0.0,
       "order_denom": 2,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京易联",
@@ -1252,9 +1417,11 @@
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 498
         }
-      ]
+      ],
+      "amount": 498.0
     },
     {
       "branch": "北京易联",
@@ -1263,7 +1430,8 @@
       "numerator": 0.0,
       "order_denom": 0,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京易联",
@@ -1276,9 +1444,11 @@
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 498
         }
-      ]
+      ],
+      "amount": 498.0
     },
     {
       "branch": "北京易联",
@@ -1291,9 +1461,11 @@
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 498
         }
-      ]
+      ],
+      "amount": 498.0
     },
     {
       "branch": "北京易联",
@@ -1306,9 +1478,11 @@
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 498
         }
-      ]
+      ],
+      "amount": 498.0
     },
     {
       "branch": "北京易联",
@@ -1317,7 +1491,8 @@
       "numerator": 0.0,
       "order_denom": 0,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京易联",
@@ -1326,7 +1501,8 @@
       "numerator": 0.0,
       "order_denom": 4,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京易联",
@@ -1335,7 +1511,8 @@
       "numerator": 0.0,
       "order_denom": 0,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京易联",
@@ -1344,7 +1521,8 @@
       "numerator": 0.0,
       "order_denom": 0,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京易联",
@@ -1353,7 +1531,8 @@
       "numerator": 0.0,
       "order_denom": 12,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京易联",
@@ -1362,7 +1541,8 @@
       "numerator": 0.0,
       "order_denom": 0,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "福建易联",
@@ -1371,7 +1551,8 @@
       "numerator": 0.0,
       "order_denom": 2,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "福建易联",
@@ -1384,9 +1565,11 @@
         {
           "code": "FJYLVIP0001",
           "name": "399元礼包",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 399
         }
-      ]
+      ],
+      "amount": 399.0
     },
     {
       "branch": "福建易联",
@@ -1399,9 +1582,11 @@
         {
           "code": "FJYLVIP0001",
           "name": "399元礼包",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 399
         }
-      ]
+      ],
+      "amount": 399.0
     },
     {
       "branch": "福建易联",
@@ -1410,7 +1595,8 @@
       "numerator": 0.0,
       "order_denom": 0,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "福建易联",
@@ -1419,7 +1605,8 @@
       "numerator": 0.0,
       "order_denom": 0,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "福建易联",
@@ -1428,7 +1615,8 @@
       "numerator": 0.0,
       "order_denom": 0,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "福建易联",
@@ -1437,7 +1625,8 @@
       "numerator": 0.0,
       "order_denom": 0,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "福建易联",
@@ -1446,7 +1635,8 @@
       "numerator": 0.0,
       "order_denom": 3,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "福建易联",
@@ -1459,9 +1649,11 @@
         {
           "code": "FJYLVIP0001",
           "name": "399元礼包",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 399
         }
-      ]
+      ],
+      "amount": 399.0
     },
     {
       "branch": "福建易联",
@@ -1470,7 +1662,8 @@
       "numerator": 0.0,
       "order_denom": 0,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "福建易联",
@@ -1479,7 +1672,8 @@
       "numerator": 0.0,
       "order_denom": 1,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "福建易联",
@@ -1488,7 +1682,8 @@
       "numerator": 0.0,
       "order_denom": 3,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "福建易联",
@@ -1497,7 +1692,8 @@
       "numerator": 0.0,
       "order_denom": 4,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "福建易联",
@@ -1506,7 +1702,8 @@
       "numerator": 0.0,
       "order_denom": 0,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "福建易联",
@@ -1519,9 +1716,11 @@
         {
           "code": "FJYLVIP0001",
           "name": "399元礼包",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 399
         }
-      ]
+      ],
+      "amount": 399.0
     },
     {
       "branch": "福建易联",
@@ -1530,7 +1729,8 @@
       "numerator": 0.0,
       "order_denom": 6,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "福建易联",
@@ -1539,7 +1739,8 @@
       "numerator": 0.0,
       "order_denom": 3,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "福建易联",
@@ -1548,7 +1749,8 @@
       "numerator": 0.0,
       "order_denom": 0,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "福建易联",
@@ -1557,7 +1759,8 @@
       "numerator": 0.0,
       "order_denom": 0,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "福建易联",
@@ -1570,9 +1773,11 @@
         {
           "code": "FJYLVIP0001",
           "name": "399元礼包",
-          "qty": 1.0
+          "qty": 1.0,
+          "price": 399
         }
-      ]
+      ],
+      "amount": 399.0
     },
     {
       "branch": "福建易联",
@@ -1581,7 +1786,8 @@
       "numerator": 0.0,
       "order_denom": 2,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "福建易联",
@@ -1590,7 +1796,8 @@
       "numerator": 0.0,
       "order_denom": 0,
       "order_num": 0,
-      "vip_items": []
+      "vip_items": [],
+      "amount": 0
     }
   ]
 }
