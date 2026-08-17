@@ -1,11 +1,11 @@
 {
   "date": "2026-08-08",
-  "generated": "2026-08-17 16:06",
+  "generated": "2026-08-17 22:05",
   "total": {
     "denominator": 525.0,
-    "numerator": 96.0,
+    "numerator": 95.0,
     "order_denom": 521,
-    "order_num": 96
+    "order_num": 95
   },
   "branches": {
     "北京中恒": {
@@ -24,14 +24,14 @@
     },
     "北京易联": {
       "denominator": 168.0,
-      "numerator": 84.0,
+      "numerator": 83.0,
       "order_denom": 167,
-      "order_num": 84,
+      "order_num": 83,
       "vip_items": [
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
-          "qty": 84.0
+          "qty": 83.0
         }
       ]
     },
@@ -891,14 +891,14 @@
       "branch": "北京易联",
       "store": "华为北京来福士",
       "denominator": 10.0,
-      "numerator": 4.0,
+      "numerator": 3.0,
       "order_denom": 10,
-      "order_num": 4,
+      "order_num": 3,
       "vip_items": [
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
-          "qty": 4.0
+          "qty": 3.0
         }
       ]
     },
