@@ -443,13 +443,19 @@ function extractCashier(txt){
   return {D,D1,generated:gM?gM[1]:null, T:tM?tM[1]:null};
 }
 // 直接从「会员有效性看板」HTML 提取 KPI（与看板内容强制一致，消灭 latest.json 漂移）
+// KPI DOM: <div class="kpi [good|bad]"><div class="label">L</div><div class="val">N<span class="unit">U</span></div>[<div class="sub2">…</div>]</div>
 function extractValidity(txt){
-  const num=lab=>{ const m=txt.match(new RegExp(lab+'</div><div class="val">([\\d,]+)')); return m?parseInt(m[1].replace(/,/g,''),10):null; };
-  const rateOf=lab=>{ const m=txt.match(new RegExp(lab+'</div><div class="val">[\\d,]+<span[^>]*>[^<]*</span></div><div class="sub2">([\\d.]+)%')); return m?parseFloat(m[1]):null; };
-  const total=num('会员订单数');
-  const validRate=rateOf('有效会员订单');
-  const invalidRate=rateOf('无效会员订单');
-  const dm=txt.match(/对比昨日无效订单<\/div><div class="val"><span[^>]*>([+-]?\d+)/);
+  // 会员订单数：val 形如 "22,440<span class="unit">单</span>"
+  const totalM=txt.match(/会员订单数<\/div><div class="val">([\d,]+)<span class="unit">单<\/span>/);
+  const total=totalM?parseInt(totalM[1].replace(/,/g,''),10):null;
+  // 有效占比：val 形如 "93.85<span class="unit">%</span>"
+  const vrM=txt.match(/有效占比<\/div><div class="val">([\d.]+)<span class="unit">%<\/span>/);
+  const validRate=vrM?parseFloat(vrM[1]):null;
+  // 无效占比：val 形如 "6.15<span class="unit">%</span>"
+  const irM=txt.match(/无效占比<\/div><div class="val">([\d.]+)<span class="unit">%<\/span>/);
+  const invalidRate=irM?parseFloat(irM[1]):null;
+  // 对比昨日无效增减：在「无效会员订单」卡的 sub2：「对比昨日新增 +30 单」/「对比昨日新增 -12 单」
+  const dm=txt.match(/无效会员订单<\/div><div class="val">[\d,]+<span class="unit">单<\/span><\/div><div class="sub2">对比昨日新增 ([+\-]?\d+) 单/);
   const delta=dm?parseInt(dm[1],10):null;
   const dtm=txt.match(/统计日期：<b>([\d-]+)/);
   return {total, validRate, invalidRate, delta, date:dtm?dtm[1]:null};
