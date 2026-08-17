@@ -519,43 +519,32 @@ async function loadCashier(){
 }
 
 // ===== 4. 付费会员 =====
-// 仪表口径与付费会员原看板默认「当月」模式一致：累加当月所有已统计日（≤昨天）的 daily JSON
+// 口径：单日（与"今日/昨日"自动切换——有当日用当日，没有就显示昨日）
 async function loadPaid(){
   try{
     const idx=await fetchIndexWithFallback("paid_member");
     if(!idx) throw new Error("no index");
-    const dates=idx.dates;                       // YYYY-MM-DD 数组（按单据日期）
+    const dates=idx.dates;
     if(!dates.length) throw new Error("empty dates");
-    const last=dates[dates.length-1];            // 累计截止日（原看板"当月"t=yesterday）
-    const ms=dates[0].slice(0,8)+"01";           // 当月 1 号（取 INDEX 首日所在月）
-    const accDates=dates.filter(d=>d>=ms && d<=last);
-    // 并发拉取当月所有已统计日的 daily JSON
-    const all=await Promise.all(accDates.map(d=>getJSON(`paid_member/daily/${cb(d)}.json?_=${Date.now()}`).catch(()=>null)));
-    // 按 store 累加（key=branch/store），开单按"任意日 numerator>0"二元判定
-    const storeMap=new Map();
-    all.forEach((d,i)=>{
-      if(!d) return;
-      const refDate=accDates[i];
-      (d.stores||[]).forEach(s=>{
-        const st=branchStart(s.branch, refDate);
-        if(st && refDate<st) return;
-        const key=(s.branch||"")+"/"+(s.store||"");
-        if(!storeMap.has(key)) storeMap.set(key,{n:0,de:0,open:false});
-        const m=storeMap.get(key);
-        const sn=(s.numerator||0), sd=(s.denominator||0);
-        m.n += sn; m.de += sd;
-        if(sn>0) m.open=true;
-      });
+    // 自动选择显示日期：idx.dates 含 today → 当日；否则用 idx.dates 最大（昨日）
+    const today=beijingYMD();  // YYYYMMDD
+    const todayDash=today.slice(0,4)+"-"+today.slice(4,6)+"-"+today.slice(6,8);  // YYYY-MM-DD
+    let displayDate = dates.includes(todayDash) ? todayDash : dates[dates.length-1];
+    const d=await getJSON(`paid_member/daily/${cb(displayDate)}.json?_=${Date.now()}`);
+    // 单日按分公司起始销售日过滤；开单占比以 d.stores 长度为分母（当日所有主数据门店数）
+    let num=0, den=0, openStores=0, totalStores=0;
+    (d.stores||[]).forEach(s=>{
+      const st=branchStart(s.branch, displayDate);
+      if(st && displayDate<st) return;
+      num += (s.numerator||0); den += (s.denominator||0);
+      totalStores++;
+      if((s.numerator||0)>0) openStores++;
     });
-    let num=0,den=0,openStores=0,totalStores=0;
-    storeMap.forEach(m=>{ num+=m.n; den+=m.de; totalStores++; if(m.open) openStores++; });
     const rate=pct(num, den);
     const ordRate = totalStores ? openStores/totalStores*100 : null;
-    // 日期显示用"当月累计 起始 ~ 截止"，与原看板 selectedLabel 当月模式一致
-    const periodLabel = (ms===last) ? `当月累计（${last}）` : `当月累计（${ms} ~ ${last}）`;
-    DATES.paid=last;
+    DATES.paid=displayDate;
     setCard("paid",
-      periodLabel,
+      "数据日期 "+displayDate,
       [
         {num:(rate!=null?rate.toFixed(2):"—"), unit:"%", lab:"会员连带率"},
         {num:(ordRate!=null?ordRate.toFixed(2):"—"), unit:"%", lab:"开单占比"},
