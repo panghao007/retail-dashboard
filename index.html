@@ -87,7 +87,7 @@ body{
     <div class="dl-title">数据下载（各看板明细 Excel / CSV）</div>
     <div class="dl-row">
       <a class="dl-btn" id="dl-validity" href="#">⬇ 会员有效性分析.xlsx</a>
-      <a class="dl-btn" href="member_deposit/会员沉淀分析.xlsx">⬇ 会员沉淀分析.xlsx</a>
+      <a class="dl-btn" id="dl-deposit" href="member_deposit/会员沉淀分析.xlsx">⬇ 会员沉淀分析.xlsx</a>
       <a class="dl-btn" id="dl-cashier-csv" href="javascript:void(0)">⬇ 合规收银不合规明细 CSV</a>
     </div>
   </div>
@@ -215,7 +215,10 @@ async function loadValidity(){
         : [deltaChip("无效增减", v.delta, "笔", "down")]
     );
     const dlV=document.getElementById("dl-validity");
-    if(dlV && v.date) dlV.href="d/"+v.date+"_会员有效性分析.xlsx";
+    if(dlV && v.date){
+      dlV.href="d/"+v.date+"_会员有效性分析.xlsx";
+      dlV.textContent="⬇ 会员有效性分析("+v.date+").xlsx";
+    }
     updateHeader();
     return;
   }catch(e){ /* 回退 latest.json */ }
@@ -225,8 +228,9 @@ async function loadValidity(){
     const k=j.kpi||{};
     const invDelta=(k.prev_invalid!=null&&k.orders_invalid!=null)?k.orders_invalid-k.prev_invalid:null;
     DATES.validity=j.date||k.latest_date||"";
+    var vDate=k.latest_date||j.date||"";
     setCard("validity",
-      "数据日期 "+(k.latest_date||j.date||""),
+      "数据日期 "+vDate,
       [
         {num:fmt(k.total_orders), lab:"会员订单总数"},
         {num:(k.valid_rate!=null?k.valid_rate.toFixed(2):"—"), unit:"%", lab:"有效占比"},
@@ -236,6 +240,9 @@ async function loadValidity(){
         ? [{text:"对比昨日无效增减：无数据", type:"flat"}]
         : [deltaChip("无效增减", invDelta, "笔", "down")]
     );
+    // 回退分支也更新下载按钮
+    var dlV2=document.getElementById("dl-validity");
+    if(dlV2 && vDate){ dlV2.href="d/"+vDate+"_会员有效性分析.xlsx"; dlV2.textContent="⬇ 会员有效性分析("+vDate+").xlsx"; }
   }catch(_){
     setCard("validity","—",[{num:"—",lab:"会员有效性(取数失败)"}],[]);
   }
@@ -272,8 +279,11 @@ async function loadDeposit(){
       ],
       [{text:`较昨日新增 ${fmt(dp.newSum)} 人`, type:"flat"}]
     );
-    const c=document.getElementById("card-deposit");
-    if(c && dp.date) c.href="member_deposit/"+dp.date+"_会员沉淀分析.xlsx";
+    const c=document.getElementById("dl-deposit");
+    if(c && dp.date){
+      c.href="member_deposit/"+dp.date+"_会员沉淀分析.xlsx";
+      c.textContent="⬇ 会员沉淀分析("+dp.date+").xlsx";
+    }
     updateHeader();
     return;
   }catch(e){ /* 回退 latest.json */ }
@@ -293,6 +303,10 @@ async function loadDeposit(){
       prevNew==null ? [{text:"较昨日新增：—",type:"flat"}] : [deltaChip("较昨日新增", prevNew, "人", "up")]
     );
     if(j.html) document.getElementById("card-deposit").href=j.html;
+    // 回退分支也更新下载按钮
+    var dpDate=j.date||"";
+    var dlD2=document.getElementById("dl-deposit");
+    if(dlD2 && dpDate){ dlD2.href="member_deposit/"+dpDate+"_会员沉淀分析.xlsx"; dlD2.textContent="⬇ 会员沉淀分析("+dpDate+").xlsx"; }
   }catch(_){
     setCard("deposit","—",[{num:"—",lab:"会员沉淀(取数失败)"}],[]);
   }
@@ -339,6 +353,9 @@ async function loadCashier(){
     const {D,D1,generated,T}=extractCashier(txt);
     if(!D) throw new Error("D not found");
     if(T) CASHIER_T=T;
+    // 更新下载按钮文字（带日期）
+    var dlC=document.getElementById("dl-cashier-csv");
+    if(dlC && T) dlC.textContent="⬇ 合规收银不合规明细("+T+").csv";
     DATES.cashier=(generated||"").slice(0,10);
     const comp=D.compliant, nonc=D.noncompliant;
     const rate=pct(comp, comp+nonc);
