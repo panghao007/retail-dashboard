@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>收银合规看板</title>
 <style>
-*{box-sizing:border-box} body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;margin:0;background:#f5f7fa;color:#1f2d3d}
+*{box-sizing:border-box} html{-webkit-text-size-adjust:100%!important;} body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;margin:0;background:#f5f7fa;color:#1f2d3d}
 .head{background:linear-gradient(120deg,#1AABCB,#1488a8);color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
 .head h1{margin:0;font-size:21px} .head p{margin:3px 0 0;opacity:.92;font-size:12.5px}
 .kpis{display:flex;gap:14px;padding:18px 24px;flex-wrap:wrap}
@@ -35,14 +35,14 @@ th{background:#f0f6f8;color:#456} tbody tr:hover{background:#fafdff}
   .vt-tip .vt-tip-d{font-weight:700;margin-bottom:3px;font-size:12.5px;}
   .vt-tip .vt-tip-row{color:#d1d5db;}
   .vt-tip .vt-tip-row b{color:#fff;font-size:13px;}
-  /* ── 移动端/云之家WebView适配 ── */
+  /* ── 移动端/云之家WebView适配：再缩小一档 ── */
   @media(max-width:768px){
-    body{padding:14px; -webkit-text-size-adjust:100%;}
-    .head h1{font-size:18px;} .head p{font-size:11px;}
-    .card .n{font-size:23px;} .card .l{font-size:10.5px;} .card .d{font-size:10.5px;}
-    .sec h2{font-size:13.5px;}
-    table,th,td{font-size:11.5px;} th,td{padding:7px 9px;}
-    .vt-tip,.vt-tip .vt-tip-d,.vt-tip .vt-tip-row b{font-size:11px;}
+    body{padding:12px 10px;}
+    .head h1{font-size:16px;} .head p{font-size:10px;}
+    .card .n{font-size:20px;} .card .l{font-size:9.5px;} .card .d{font-size:9.5px;}
+    .sec h2{font-size:12.5px;}
+    table,th,td{font-size:10.5px;} th,td{padding:6px 8px;}
+    .vt-tip,.vt-tip .vt-tip-d,.vt-tip .vt-tip-row b{font-size:10px;}
   }
 </style></head><body>
 <div class="head">

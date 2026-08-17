@@ -4,6 +4,7 @@
 <title>会员沉淀看板</title>
 <style>
 *{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%!important;}
 body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f4f6fa;color:#1f2937;margin:0;padding:32px;}
 .wrap{max-width:960px;margin:0 auto;}
 .head{background:linear-gradient(120deg,#1AABCB,#1488a8);color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;border-radius:12px;margin-bottom:18px;}
@@ -32,17 +33,17 @@ tr:last-child td{border-bottom:none;}
 .note{color:#6b7280;font-size:12px;margin-top:10px;}
 .branch-block{margin-top:14px;}
 .branch-name{font-size:13px;font-weight:700;color:#1AABCB;margin-bottom:6px;padding-left:8px;border-left:3px solid #1AABCB;}
-/* ── 移动端/云之家WebView适配 ── */
+/* ── 移动端/云之家WebView适配：再缩小一档 ── */
 @media(max-width:768px){
-  body{padding:14px; -webkit-text-size-adjust:100%;}
-  .head h1{font-size:18px;} .head p{font-size:11px;}
-  h1{font-size:20px;} .sub{font-size:11.5px;}
-  .statbar{font-size:11.5px;padding:8px 16px;}
-  .kpi .v{font-size:23px;} .kpi .l{font-size:10.5px;}
-  .warn{font-size:11.5px;padding:8px 12px;}
-  .foot,.note{font-size:10.5px;}
-  .branch-name{font-size:11.5px;}
-  table,th,td{font-size:11.5px;} th,td{padding:7px 9px;}
+  body{padding:12px 10px;}
+  .head h1{font-size:16px;} .head p{font-size:10px;}
+  h1{font-size:18px;} .sub{font-size:11px;}
+  .statbar{font-size:10.5px;padding:7px 14px;}
+  .kpi .v{font-size:20px;} .kpi .l{font-size:9.5px;}
+  .warn{font-size:10.5px;padding:7px 11px;}
+  .foot,.note{font-size:9.5px;}
+  .branch-name{font-size:10.5px;}
+  table,th,td{font-size:10.5px;} th,td{padding:6px 8px;}
 }
 </style></head><body><div class="wrap">
 <div class="head">

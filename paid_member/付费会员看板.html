@@ -6,6 +6,7 @@
 <title>付费会员销售看板 · 会员连带率（多维日期）</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%!important;}
   body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
     background:#f4f6f8;color:#1f2933;padding:0 16px;-webkit-font-smoothing:antialiased;}
   .wrap{max-width:900px;margin:0 auto;padding:44px 0 56px;}
@@ -84,17 +85,17 @@
   .trend-legend span.off{opacity:.4;}
   .trend-tip{position:absolute;pointer-events:none;background:rgba(31,41,51,.92);color:#fff;font-size:12px;
     padding:7px 10px;border-radius:8px;line-height:1.6;white-space:nowrap;display:none;z-index:9;transform:translate(-50%,-100%);}
-  /* ── 移动端/云之家WebView适配 ── */
+  /* ── 移动端/云之家WebView适配：再缩小一档 ── */
   @media(max-width:768px){
-    body{padding:14px; -webkit-text-size-adjust:100%;}
-    h1{font-size:21px;} .sub{font-size:11.5px;}
-    .selbar .lab,.period,.note-upd{font-size:11.5px;}
-    .seg button{font-size:12px;padding:7px 12px;}
-    .custom input,.custom button{font-size:11.5px;}
-    .kpi .v{font-size:25px;} .kpi .l{font-size:11.5px;}
-    th,td{padding:9px 13px;font-size:12.5px;} th{font-size:11.5px;} td.sn{font-size:11.5px;}
-    td.tier-label{font-size:11px;}
-    .trend-legend{font-size:11px;} .trend-tip{font-size:10.5px;}
+    body{padding:12px 10px;}
+    h1{font-size:19px;} .sub{font-size:11px;}
+    .selbar .lab,.period,.note-upd{font-size:10.5px;}
+    .seg button{font-size:11px;padding:6px 10px;}
+    .custom input,.custom button{font-size:10.5px;}
+    .kpi .v{font-size:21px;} .kpi .l{font-size:10.5px;}
+    th,td{padding:8px 11px;font-size:11.5px;} th{font-size:10.5px;} td.sn{font-size:10.5px;}
+    td.tier-label{font-size:10px;}
+    .trend-legend{font-size:10px;} .trend-tip{font-size:9.5px;}
   }
 </style>
 </head>

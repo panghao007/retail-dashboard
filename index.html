@@ -10,6 +10,7 @@
   --bg1:#0b1a2e; --bg2:#0a1422;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%!important;}
 html,body{height:100%;}
 body{
   font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;
@@ -71,26 +72,26 @@ body{
 .dl-row{display:flex;gap:12px;flex-wrap:wrap;}
 .dl-btn{font-size:13.5px;font-weight:700;color:var(--cyan);text-decoration:none;background:rgba(26,171,203,.12);padding:9px 16px;border-radius:10px;transition:all .16s;border:1px solid rgba(26,171,203,.25);}
 .dl-btn:hover{background:var(--cyan);color:#06121f;}
-/* ── 移动端/云之家WebView适配：全局缩小2号字体 ── */
+/* ── 移动端/云之家WebView适配：再缩小一档 ── */
 @media(max-width:768px){
-  body{padding:16px 12px 30px; -webkit-text-size-adjust:100%;}
-  .topbar{margin-bottom:18px;gap:10px;}
-  .logo{height:28px;}
-  .title{font-size:21px;} .title small{font-size:10px;}
-  .updated{font-size:11px;}
-  .card{padding:16px 16px 14px;border-radius:14px;}
-  .card-head{margin-bottom:12px;}
-  .card-name{font-size:14px;} .period{font-size:10px;}
-  .kpis{gap:10px;}
-  .kpi .num{font-size:27px;} .kpi .num .u{font-size:12px;}
-  .kpi .lab{font-size:10px;}
-  .deltas{margin-top:10px;}
-  .chip{font-size:10px;padding:3px 8px;}
-  .enter{font-size:11px;padding:5px 10px;}
-  .foot{font-size:11px;margin-top:24px;}
-  .dl-section{padding:14px 16px;margin-top:20px;}
-  .dl-title{font-size:11px;}
-  .dl-btn{font-size:11.5px;padding:7px 12px;}
+  body{padding:14px 10px 26px;}
+  .topbar{margin-bottom:14px;gap:8px;}
+  .logo{height:24px;}
+  .title{font-size:19px;} .title small{font-size:9.5px;}
+  .updated{font-size:10px;}
+  .card{padding:14px 14px 12px;border-radius:12px;}
+  .card-head{margin-bottom:10px;}
+  .card-name{font-size:13px;} .period{font-size:9.5px;}
+  .kpis{gap:8px;}
+  .kpi .num{font-size:23px;} .kpi .num .u{font-size:11px;}
+  .kpi .lab{font-size:9.5px;}
+  .deltas{margin-top:8px;}
+  .chip{font-size:9.5px;padding:2px 7px;}
+  .enter{font-size:10px;padding:4px 9px;}
+  .foot{font-size:10px;margin-top:20px;}
+  .dl-section{padding:12px 14px;margin-top:16px;}
+  .dl-title{font-size:10px;}
+  .dl-btn{font-size:10.5px;padding:6px 10px;}
 }
 </style>
 </head>
