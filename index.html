@@ -197,12 +197,34 @@ function deltaChip(label, val, unit, goodWhen){
 
 // ===== 1. 会员有效性 =====
 async function loadValidity(){
+  // 主源：直接读「会员有效性看板」HTML（与看板内容强制一致）
+  try{
+    const txt=await getText("d/index.html?_="+Date.now());
+    const v=extractValidity(txt);
+    if(!v || v.total==null) throw new Error("empty");
+    DATES.validity=v.date||"";
+    setCard("validity",
+      "数据日期 "+(v.date||""),
+      [
+        {num:fmt(v.total), lab:"会员订单总数"},
+        {num:(v.validRate!=null?v.validRate.toFixed(2):"—"), unit:"%", lab:"有效占比"},
+        {num:(v.invalidRate!=null?v.invalidRate.toFixed(2):"—"), unit:"%", lab:"无效占比"},
+      ],
+      v.delta==null
+        ? [{text:"对比昨日无效增减：—", type:"flat"}]
+        : [deltaChip("无效增减", v.delta, "笔", "down")]
+    );
+    const dlV=document.getElementById("dl-validity");
+    if(dlV && v.date) dlV.href="d/"+v.date+"_会员有效性分析.xlsx";
+    updateHeader();
+    return;
+  }catch(e){ /* 回退 latest.json */ }
+  // 回退：latest.json
   try{
     const j=await getJSON("d/latest.json?_="+Date.now());
     const k=j.kpi||{};
+    const invDelta=(k.prev_invalid!=null&&k.orders_invalid!=null)?k.orders_invalid-k.prev_invalid:null;
     DATES.validity=j.date||k.latest_date||"";
-    const invDelta = (k.prev_invalid!=null && k.orders_invalid!=null)
-      ? k.orders_invalid - k.prev_invalid : null; // 日增量=当日累计−前日累计
     setCard("validity",
       "数据日期 "+(k.latest_date||j.date||""),
       [
@@ -214,9 +236,7 @@ async function loadValidity(){
         ? [{text:"对比昨日无效增减：无数据", type:"flat"}]
         : [deltaChip("无效增减", invDelta, "笔", "down")]
     );
-    const dlV=document.getElementById("dl-validity");
-    if(dlV && DATES.validity) dlV.href="d/"+DATES.validity+"_会员有效性分析.xlsx";
-  }catch(e){
+  }catch(_){
     setCard("validity","—",[{num:"—",lab:"会员有效性(取数失败)"}],[]);
   }
   updateHeader();
@@ -237,61 +257,43 @@ async function fetchIndexWithFallback(subdir){
   return null;
 }
 async function loadDeposit(){
-  // 优先读实时数据源 latest.json（单日期模式，避免滞后）
+  // 主源：直接读「会员沉淀看板」HTML（与看板内容强制一致）
+  try{
+    const txt=await getText("member_deposit/会员沉淀看板.html?_="+Date.now());
+    const dp=extractDeposit(txt);
+    if(!dp || dp.total==null) throw new Error("empty");
+    DATES.deposit=dp.date||"";
+    setCard("deposit",
+      "快照日期 "+(dp.date||""),
+      [
+        {num:fmt(dp.total), lab:"会员沉淀总数"},
+        {num:(dp.unconsumed!=null?fmt(dp.unconsumed):"—"), lab:"未消费会员"},
+        {num:dp.branchCount, lab:"分公司数量"},
+      ],
+      [{text:`较昨日新增 ${fmt(dp.newSum)} 人`, type:"flat"}]
+    );
+    const c=document.getElementById("card-deposit");
+    if(c && dp.date) c.href="member_deposit/"+dp.date+"_会员沉淀分析.xlsx";
+    updateHeader();
+    return;
+  }catch(e){ /* 回退 latest.json */ }
+  // 回退：latest.json
   try{
     const j=await getJSON("member_deposit/latest.json?_="+Date.now());
     const k=j.kpi||{};
-    DATES.deposit=j.date||k.date||"";
     const total=k.total_distinct;
-    const branchCnt=k.branch_count;
-    const prevNew=k.prev_new;   // null 显示"—"
-    const deltas=[ prevNew==null
-      ? {text:"较昨日新增：—", type:"flat"}
-      : deltaChip("较昨日新增", prevNew, "人", "up") ];
+    const prevNew=k.prev_new;
     setCard("deposit",
       "快照日期 "+(j.date||""),
       [
         {num:fmt(total), lab:"去重会员总数"},
-        {num:(branchCnt==null?"—":branchCnt), lab:"分公司数量"},
+        {num:(k.branch_count==null?"—":k.branch_count), lab:"分公司数量"},
         {num:(prevNew==null?"—":fmt(prevNew)), lab:"较昨日新增"},
       ],
-      deltas
+      prevNew==null ? [{text:"较昨日新增：—",type:"flat"}] : [deltaChip("较昨日新增", prevNew, "人", "up")]
     );
     if(j.html) document.getElementById("card-deposit").href=j.html;
-    updateHeader();
-    return;
-  }catch(e){ /* 回退到原有 daily_index/daily JSON 逻辑 */ }
-  // 回退：原有 daily_index/daily JSON 逻辑
-  try{
-    const idx=await fetchIndexWithFallback("member_deposit");
-    if(!idx) throw new Error("no index");
-    const dates=idx.dates;
-    const last=dates[dates.length-1];                 // YYYYMMDD
-    const daily=await getJSON(`member_deposit/daily/${last}.json?_=${Date.now()}`);
-    DATES.deposit=daily.date||last;
-    const total=daily.total_distinct;
-    const branchCnt=Object.keys(daily.branches||{}).filter(k=>!DEP_SPECIAL.includes(k)).length;
-    let deltas=[], diff=null;
-    if(dates.length>=2){
-      const prev=dates[dates.length-2];
-      try{
-        const pd=await getJSON(`member_deposit/daily/${prev}.json?_=${Date.now()}`);
-        diff=(pd.total_distinct!=null&&total!=null)? total-pd.total_distinct : null;
-        deltas=[deltaChip("较昨日新增", diff, "人", "up")];
-      }catch(_){ deltas=[{text:"较昨日新增：—",type:"flat"}]; }
-    }else{
-      deltas=[{text:"较昨日新增：—",type:"flat"}];
-    }
-    setCard("deposit",
-      "快照日期 "+(daily.date||last),
-      [
-        {num:fmt(total), lab:"去重会员总数"},
-        {num:branchCnt, lab:"分公司数量"},
-        {num:(diff==null?"—":fmt(diff)), lab:"较昨日新增"},
-      ],
-      deltas
-    );
-  }catch(e){
+  }catch(_){
     setCard("deposit","—",[{num:"—",lab:"会员沉淀(取数失败)"}],[]);
   }
   updateHeader();
@@ -306,6 +308,30 @@ function extractCashier(txt){
   const D=dM?JSON.parse(dM[1]):null;
   const D1=d1M?JSON.parse(d1M[1]):null;
   return {D,D1,generated:gM?gM[1]:null, T:tM?tM[1]:null};
+}
+// 直接从「会员有效性看板」HTML 提取 KPI（与看板内容强制一致，消灭 latest.json 漂移）
+function extractValidity(txt){
+  const num=lab=>{ const m=txt.match(new RegExp(lab+'</div><div class="val">([\\d,]+)')); return m?parseInt(m[1].replace(/,/g,''),10):null; };
+  const rateOf=lab=>{ const m=txt.match(new RegExp(lab+'</div><div class="val">[\\d,]+<span[^>]*>[^<]*</span></div><div class="sub2">([\\d.]+)%')); return m?parseFloat(m[1]):null; };
+  const total=num('会员订单数');
+  const validRate=rateOf('有效会员订单');
+  const invalidRate=rateOf('无效会员订单');
+  const dm=txt.match(/对比昨日无效订单<\/div><div class="val"><span[^>]*>([+-]?\d+)/);
+  const delta=dm?parseInt(dm[1],10):null;
+  const dtm=txt.match(/统计日期：<b>([\d-]+)/);
+  return {total, validRate, invalidRate, delta, date:dtm?dtm[1]:null};
+}
+// 直接从「会员沉淀看板」HTML 提取 KPI
+function extractDeposit(txt){
+  const grab=lab=>{ const m=txt.match(new RegExp('<div class="v">([\\d,]+)</div><div class="l">'+lab)); return m?parseInt(m[1].replace(/,/g,''),10):null; };
+  const total=grab('会员沉淀总数（记录）');
+  const unconsumed=grab('未消费会员（无首购门店）');
+  const deltas=[...txt.matchAll(/class="delta up">\+?([\d,]+)</g)].map(x=>parseInt(x[1].replace(/,/g,''),10));
+  const newSum=deltas.reduce((a,b)=>a+b,0);
+  const branches=[...txt.matchAll(/<td class='bname'>([^<]+)<\/td>/g)].map(x=>x[1]);
+  const realBranches=branches.filter(b=>b!=='（未匹配门店）'&&b!=='未消费会员');
+  const dtm=txt.match(/统计日期：<b>([\d-]+)/);
+  return {total, unconsumed, newSum, branchCount:realBranches.length, date:dtm?dtm[1]:null};
 }
 async function loadCashier(){
   try{
