@@ -429,7 +429,8 @@ async function loadPaid(){
 function downloadCashierCSV(){
   if(!CASHIER_T){ alert("合规收银数据加载中，请稍候再试"); return; }
   fetch("cashier/daily/noncompliant_"+CASHIER_T+".json?_="+Date.now()).then(function(r){return r.json();}).then(function(j){
-    var rows=j.noncompliant_rows||[];
+    // 兼容两种格式：数组直接用 / 对象取 noncompliant_rows
+    var rows=Array.isArray(j)?j:(j.noncompliant_rows||[]);
     if(!rows.length){ alert("当前无不合格明细"); return; }
     var cols=["单据日期","业务组织","所属分公司","销售门店","单据编号","支付通道","收款方式","收款类型","会员手机号","第三方订单号","判定"];
     var esc=function(s){ s=String(s==null?"":s); return /[",\n]/.test(s)? '"'+s.replace(/"/g,'""')+'"' : s; };
