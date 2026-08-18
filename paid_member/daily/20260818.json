@@ -1,12 +1,12 @@
 {
   "date": "2026-08-18",
-  "generated": "2026-08-18 22:06",
+  "generated": "2026-08-18 22:41",
   "total": {
-    "denominator": 367.0,
-    "numerator": 104.0,
-    "order_denom": 364,
-    "order_num": 104,
-    "amount": 101299.0
+    "denominator": 376.0,
+    "numerator": 106.0,
+    "order_denom": 373,
+    "order_num": 106,
+    "amount": 102495.0
   },
   "branches": {
     "北京中恒": {
@@ -49,15 +49,15 @@
       "amount": 62502.0
     },
     "四川新跃": {
-      "denominator": 74.0,
-      "numerator": 29.0,
-      "order_denom": 74,
-      "order_num": 29,
+      "denominator": 76.0,
+      "numerator": 30.0,
+      "order_denom": 76,
+      "order_num": 30,
       "vip_items": [
         {
           "code": "SCXYVIP00001",
           "name": "698元悦享会员",
-          "qty": 18.0,
+          "qty": 19.0,
           "price": 698
         },
         {
@@ -79,27 +79,27 @@
           "price": 1598
         }
       ],
-      "amount": 26542.0
+      "amount": 27240.0
     },
     "北京易联": {
-      "denominator": 94.0,
-      "numerator": 19.0,
-      "order_denom": 92,
-      "order_num": 19,
+      "denominator": 99.0,
+      "numerator": 20.0,
+      "order_denom": 97,
+      "order_num": 20,
       "vip_items": [
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
-          "qty": 19.0,
+          "qty": 20.0,
           "price": 498
         }
       ],
-      "amount": 9462.0
+      "amount": 9960.0
     },
     "福建易联": {
-      "denominator": 43.0,
+      "denominator": 45.0,
       "numerator": 7.0,
-      "order_denom": 42,
+      "order_denom": 44,
       "order_num": 7,
       "vip_items": [
         {
@@ -709,19 +709,19 @@
     {
       "branch": "四川新跃",
       "store": "APR成都凯德魅力城",
-      "denominator": 0.0,
-      "numerator": 1.0,
-      "order_denom": 0,
-      "order_num": 1,
+      "denominator": 1.0,
+      "numerator": 2.0,
+      "order_denom": 1,
+      "order_num": 2,
       "vip_items": [
         {
           "code": "SCXYVIP00001",
           "name": "698元悦享会员",
-          "qty": 1.0,
+          "qty": 2.0,
           "price": 698
         }
       ],
-      "amount": 698.0
+      "amount": 1396.0
     },
     {
       "branch": "四川新跃",
@@ -1012,9 +1012,9 @@
     {
       "branch": "四川新跃",
       "store": "APR成都龙泉吾悦",
-      "denominator": 3.0,
+      "denominator": 4.0,
       "numerator": 3.0,
-      "order_denom": 3,
+      "order_denom": 4,
       "order_num": 3,
       "vip_items": [
         {
@@ -1079,9 +1079,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京东坝万达",
-      "denominator": 8.0,
+      "denominator": 9.0,
       "numerator": 4.0,
-      "order_denom": 7,
+      "order_denom": 8,
       "order_num": 4,
       "vip_items": [
         {
@@ -1097,18 +1097,18 @@
       "branch": "北京易联",
       "store": "华为北京东坝金隅",
       "denominator": 1.0,
-      "numerator": 1.0,
+      "numerator": 2.0,
       "order_denom": 1,
-      "order_num": 1,
+      "order_num": 2,
       "vip_items": [
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
-          "qty": 1.0,
+          "qty": 2.0,
           "price": 498
         }
       ],
-      "amount": 498.0
+      "amount": 996.0
     },
     {
       "branch": "北京易联",
@@ -1331,9 +1331,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京旧宫万科",
-      "denominator": 5.0,
+      "denominator": 7.0,
       "numerator": 1.0,
-      "order_denom": 4,
+      "order_denom": 6,
       "order_num": 1,
       "vip_items": [
         {
@@ -1368,9 +1368,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京槐房万达",
-      "denominator": 2.0,
+      "denominator": 3.0,
       "numerator": 2.0,
-      "order_denom": 2,
+      "order_denom": 3,
       "order_num": 2,
       "vip_items": [
         {
@@ -1506,9 +1506,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京门头沟长安天街",
-      "denominator": 5.0,
+      "denominator": 6.0,
       "numerator": 0.0,
-      "order_denom": 5,
+      "order_denom": 6,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
@@ -1650,9 +1650,9 @@
     {
       "branch": "福建易联",
       "store": "华为泉州石狮泰禾广场",
-      "denominator": 5.0,
+      "denominator": 6.0,
       "numerator": 2.0,
-      "order_denom": 5,
+      "order_denom": 6,
       "order_num": 2,
       "vip_items": [
         {
@@ -1667,9 +1667,9 @@
     {
       "branch": "福建易联",
       "store": "华为福州东街口",
-      "denominator": 4.0,
+      "denominator": 5.0,
       "numerator": 0.0,
-      "order_denom": 4,
+      "order_denom": 5,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
