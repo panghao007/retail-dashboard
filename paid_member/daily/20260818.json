@@ -1,18 +1,18 @@
 {
   "date": "2026-08-18",
-  "generated": "2026-08-18 22:41",
+  "generated": "2026-08-19 06:50",
   "total": {
-    "denominator": 376.0,
+    "denominator": 382.0,
     "numerator": 106.0,
-    "order_denom": 373,
+    "order_denom": 379,
     "order_num": 106,
     "amount": 102495.0
   },
   "branches": {
     "北京中恒": {
-      "denominator": 156.0,
+      "denominator": 157.0,
       "numerator": 49.0,
-      "order_denom": 156,
+      "order_denom": 157,
       "order_num": 49,
       "vip_items": [
         {
@@ -49,9 +49,9 @@
       "amount": 62502.0
     },
     "四川新跃": {
-      "denominator": 76.0,
+      "denominator": 77.0,
       "numerator": 30.0,
-      "order_denom": 76,
+      "order_denom": 77,
       "order_num": 30,
       "vip_items": [
         {
@@ -82,9 +82,9 @@
       "amount": 27240.0
     },
     "北京易联": {
-      "denominator": 99.0,
+      "denominator": 103.0,
       "numerator": 20.0,
-      "order_denom": 97,
+      "order_denom": 101,
       "order_num": 20,
       "vip_items": [
         {
@@ -578,9 +578,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京西三旗万象汇",
-      "denominator": 6.0,
+      "denominator": 7.0,
       "numerator": 3.0,
-      "order_denom": 6,
+      "order_denom": 7,
       "order_num": 3,
       "vip_items": [
         {
@@ -866,9 +866,9 @@
     {
       "branch": "四川新跃",
       "store": "APR成都温江旭辉",
-      "denominator": 5.0,
+      "denominator": 6.0,
       "numerator": 4.0,
-      "order_denom": 5,
+      "order_denom": 6,
       "order_num": 4,
       "vip_items": [
         {
@@ -1449,9 +1449,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京西铁营万达",
-      "denominator": 4.0,
+      "denominator": 8.0,
       "numerator": 0.0,
-      "order_denom": 4,
+      "order_denom": 8,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
