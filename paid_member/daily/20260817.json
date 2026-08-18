@@ -1,24 +1,24 @@
 {
   "date": "2026-08-17",
-  "generated": "2026-08-18 16:20",
+  "generated": "2026-08-18 22:06",
   "total": {
-    "denominator": 388.0,
-    "numerator": 82.0,
-    "order_denom": 381,
-    "order_num": 82,
-    "amount": 69145.0
+    "denominator": 387.0,
+    "numerator": 81.0,
+    "order_denom": 380,
+    "order_num": 81,
+    "amount": 67647.0
   },
   "branches": {
     "北京中恒": {
       "denominator": 132.0,
-      "numerator": 30.0,
+      "numerator": 29.0,
       "order_denom": 131,
-      "order_num": 30,
+      "order_num": 29,
       "vip_items": [
         {
           "code": "vip-iphone1498",
           "name": "ipone会员套餐1498",
-          "qty": 16.0,
+          "qty": 15.0,
           "price": 1498
         },
         {
@@ -40,7 +40,7 @@
           "price": 1798
         }
       ],
-      "amount": 37140.0
+      "amount": 35642.0
     },
     "四川新跃": {
       "denominator": 63.0,
@@ -70,9 +70,9 @@
       "amount": 13972.0
     },
     "北京易联": {
-      "denominator": 132.0,
+      "denominator": 131.0,
       "numerator": 29.0,
-      "order_denom": 130,
+      "order_denom": 129,
       "order_num": 29,
       "vip_items": [
         {
@@ -587,14 +587,14 @@
       "branch": "北京中恒",
       "store": "APR北京顺义华联",
       "denominator": 10.0,
-      "numerator": 5.0,
+      "numerator": 4.0,
       "order_denom": 10,
-      "order_num": 5,
+      "order_num": 4,
       "vip_items": [
         {
           "code": "vip-iphone1498",
           "name": "ipone会员套餐1498",
-          "qty": 4.0,
+          "qty": 3.0,
           "price": 1498
         },
         {
@@ -604,7 +604,7 @@
           "price": 698
         }
       ],
-      "amount": 6690.0
+      "amount": 5192.0
     },
     {
       "branch": "北京中恒",
@@ -1431,9 +1431,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京门头沟长安天街",
-      "denominator": 9.0,
+      "denominator": 8.0,
       "numerator": 0.0,
-      "order_denom": 9,
+      "order_denom": 8,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
