@@ -463,13 +463,17 @@ async function loadReturn(){
     const monthKeys=dates.filter(function(k){return k.indexOf(ym)===0;});
     const M=agg(monthKeys);
     const mRate=pct(M.return_count, M.sales_count);
-    const yk=shiftDays(today,1);
-    const Y=agg(dates.indexOf(yk)>=0?[yk]:[]);
-    const yRate=pct(Y.return_count, Y.sales_count);
+    // 环比用「最新数据日 T」与「其前一日 T1」做单日对比（避免月累计 vs 单日的错误差值）
+    const T=R.T||dates[dates.length-1];
+    const T1=R.T1||shiftDays(T,1);
+    const Td=agg(dates.indexOf(T)>=0?[T]:[]);
+    const T1d=agg(dates.indexOf(T1)>=0?[T1]:[]);
+    const tRate=pct(Td.return_count, Td.sales_count);
+    const t1Rate=pct(T1d.return_count, T1d.sales_count);
     DATES.return=(R.generated||"").slice(0,10);
     const deltas=[];
-    if(mRate!=null&&yRate!=null) deltas.push(deltaChip("退单率", +(mRate-yRate).toFixed(2), "pp", "down"));
-    if(M.return_count!=null) deltas.push(deltaChip("退货单", M.return_count-(Y.return_count||0), "单", "down"));
+    if(tRate!=null&&t1Rate!=null) deltas.push(deltaChip("退单率", +(tRate-t1Rate).toFixed(2), "pp", "down"));
+    deltas.push(deltaChip("退货单", (Td.return_count||0)-(T1d.return_count||0), "单", "down"));
     setCard("return",
       "数据日期 "+(R.generated?R.generated.slice(0,10):"—"),
       [
