@@ -151,10 +151,10 @@ function renderTable(w){
       if(!sList.length) return;
       st+='<tr class="brgrp" data-br="'+bn+'"><td colspan="6" style="background:#eef6f9;color:#1488a8;font-weight:700;text-align:left;padding:8px 10px">'+bn+'　退单率 '+br[3].toFixed(2)+'%　·　'+sList.length+' 家门店</td></tr>';
       sList.forEach(function(r,idx){
-        var style=(idx>=1)?' style="display:none"':'';
+        var style=(idx>=10)?' style="display:none"':'';
         st+='<tr class="srow" data-br="'+bn+'"'+style+'><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+fmt(r[2])+'</td><td>'+fmt(r[3])+'</td><td class="rate-cell '+rateClass(r[4])+'">'+r[4].toFixed(2)+'%</td><td>'+money(r[5])+'</td></tr>';
       });
-      if(sList.length>1){
+      if(sList.length>10){
         st+='<tr class="morerow" data-br="'+bn+'"><td colspan="6" style="text-align:center;padding:6px"><button class="morebtn" data-br="'+bn+'" data-exp="0" data-n="'+sList.length+'">更多（'+sList.length+' 家门店 ›）</button></td></tr>';
       }
     });
@@ -185,7 +185,7 @@ document.addEventListener("click", function(e){
     var bn=t.getAttribute("data-br");
     var rows=document.querySelectorAll('#tblStore tbody tr.srow[data-br="'+bn+'"]');
     if(t.getAttribute("data-exp")==="1"){
-      rows.forEach(function(tr,i){ if(i>=1) tr.style.display="none"; });
+      rows.forEach(function(tr,i){ if(i>=10) tr.style.display="none"; });
       t.textContent="更多（"+t.getAttribute("data-n")+" 家门店 ›）"; t.setAttribute("data-exp","0");
     }else{
       rows.forEach(function(tr){ tr.style.display=""; });
@@ -195,7 +195,7 @@ document.addEventListener("click", function(e){
 });
 
 document.getElementById("period").textContent=(GENERATED?GENERATED.slice(0,10):"")+" ｜ 共 "+RDATA.dates.length+" 个有效日期";
-document.getElementById("note").innerHTML="口径说明：① 退货单=单据类型为「零售退货单」；销售单=单据类型为「零售单/预订转销售单」。<br>② 分子分母均剔除：内部业务为买断/礼品机出库、线上订单（单据来源=线上平台或线上订单标记√）。<br>③ 门店所属分公司标记「剔除」的整条剔除；<b>ASP/内购店</b>（业务组织以 ASP/AS 结尾或含「内购店」）整条剔除。<br>④ 退单率=退货单数÷销售单数（按单据编号去重计数），退货金额取实收金额绝对值。统计维度为单据日期。<br>⑤ 门店退单率按分公司分组展示，每分公司默认显示退单率最高的 TOP1 门店，点「更多」展开该分公司全部门店。";
+document.getElementById("note").innerHTML="口径说明：① 退货单=单据类型为「零售退货单」；销售单=单据类型为「零售单/预订转销售单」。<br>② 分子分母均剔除：内部业务为买断/礼品机出库、线上订单（单据来源=线上平台或线上订单标记√）。<br>③ 门店所属分公司标记「剔除」的整条剔除；<b>ASP/内购店</b>（业务组织以 ASP/AS 结尾或含「内购店」）整条剔除。<br>④ 退单率=退货单数÷销售单数（按单据编号去重计数），退货金额取实收金额绝对值。统计维度为单据日期。<br>⑤ 门店退单率按分公司分组展示，每分公司默认显示退单率最高的 TOP10 门店，点「更多」展开该分公司全部门店。";
 renderOverview();
 setWin("month");
 </script>
