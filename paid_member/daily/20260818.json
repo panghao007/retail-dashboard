@@ -1,12 +1,12 @@
 {
   "date": "2026-08-18",
-  "generated": "2026-08-19 06:50",
+  "generated": "2026-08-19 16:02",
   "total": {
-    "denominator": 382.0,
-    "numerator": 106.0,
-    "order_denom": 379,
-    "order_num": 106,
-    "amount": 102495.0
+    "denominator": 380.0,
+    "numerator": 105.0,
+    "order_denom": 377,
+    "order_num": 105,
+    "amount": 101797.0
   },
   "branches": {
     "北京中恒": {
@@ -49,15 +49,15 @@
       "amount": 62502.0
     },
     "四川新跃": {
-      "denominator": 77.0,
-      "numerator": 30.0,
-      "order_denom": 77,
-      "order_num": 30,
+      "denominator": 76.0,
+      "numerator": 29.0,
+      "order_denom": 76,
+      "order_num": 29,
       "vip_items": [
         {
           "code": "SCXYVIP00001",
           "name": "698元悦享会员",
-          "qty": 19.0,
+          "qty": 18.0,
           "price": 698
         },
         {
@@ -79,12 +79,12 @@
           "price": 1598
         }
       ],
-      "amount": 27240.0
+      "amount": 26542.0
     },
     "北京易联": {
-      "denominator": 103.0,
+      "denominator": 102.0,
       "numerator": 20.0,
-      "order_denom": 101,
+      "order_denom": 100,
       "order_num": 20,
       "vip_items": [
         {
@@ -962,9 +962,9 @@
     {
       "branch": "四川新跃",
       "store": "APR成都金楠天街",
-      "denominator": 3.0,
+      "denominator": 2.0,
       "numerator": 2.0,
-      "order_denom": 3,
+      "order_denom": 2,
       "order_num": 2,
       "vip_items": [
         {
@@ -1013,18 +1013,18 @@
       "branch": "四川新跃",
       "store": "APR成都龙泉吾悦",
       "denominator": 4.0,
-      "numerator": 3.0,
+      "numerator": 2.0,
       "order_denom": 4,
-      "order_num": 3,
+      "order_num": 2,
       "vip_items": [
         {
           "code": "SCXYVIP00001",
           "name": "698元悦享会员",
-          "qty": 3.0,
+          "qty": 2.0,
           "price": 698
         }
       ],
-      "amount": 2094.0
+      "amount": 1396.0
     },
     {
       "branch": "四川新跃",
@@ -1123,9 +1123,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京丰台银泰",
-      "denominator": 9.0,
+      "denominator": 8.0,
       "numerator": 2.0,
-      "order_denom": 9,
+      "order_denom": 8,
       "order_num": 2,
       "vip_items": [
         {

@@ -1,10 +1,10 @@
 {
   "date": "2026-08-01",
-  "generated": "2026-08-19 06:50",
+  "generated": "2026-08-19 16:02",
   "total": {
-    "denominator": 554.0,
+    "denominator": 551.0,
     "numerator": 0.0,
-    "order_denom": 549,
+    "order_denom": 546,
     "order_num": 0,
     "amount": 0
   },
@@ -18,17 +18,17 @@
       "amount": 0
     },
     "四川新跃": {
-      "denominator": 91.0,
+      "denominator": 90.0,
       "numerator": 0.0,
-      "order_denom": 91,
+      "order_denom": 90,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
     },
     "北京易联": {
-      "denominator": 164.0,
+      "denominator": 162.0,
       "numerator": 0.0,
-      "order_denom": 160,
+      "order_denom": 158,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
@@ -596,9 +596,9 @@
     {
       "branch": "四川新跃",
       "store": "APR成都高新伊藤",
-      "denominator": 13.0,
+      "denominator": 12.0,
       "numerator": 0.0,
-      "order_denom": 13,
+      "order_denom": 12,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
@@ -666,9 +666,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京东坝万达",
-      "denominator": 17.0,
+      "denominator": 16.0,
       "numerator": 0.0,
-      "order_denom": 14,
+      "order_denom": 13,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
@@ -776,9 +776,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京回龙观一店",
-      "denominator": 2.0,
+      "denominator": 1.0,
       "numerator": 0.0,
-      "order_denom": 2,
+      "order_denom": 1,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
