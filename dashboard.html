@@ -231,6 +231,7 @@ const C = {
   cashier :{name:"合规收银",   color:"var(--orange)", href:"cashier/收银合规看板.html"},
   paid    :{name:"付费会员",   color:"var(--purple)", href:"paid_member/付费会员看板.html"},
   deposit :{name:"会员沉淀",   color:"var(--green)",  href:"member_deposit/会员沉淀看板.html"},
+  return  :{name:"零售退货",   color:"#ef4444",      href:"return_order/零售退货单看板.html"},
 };
 const DATES = {}; // 各看板最新日期
 const fmt = n => (n==null||isNaN(n)) ? "—" : Number(n).toLocaleString("en-US");
@@ -273,6 +274,7 @@ function updateHeader(){
   if(DATES.deposit)  parts.push("沉淀 "+DATES.deposit);
   if(DATES.cashier)  parts.push("收银 "+DATES.cashier);
   if(DATES.paid)     parts.push("付费 "+DATES.paid);
+  if(DATES.return)   parts.push("退货 "+DATES.return);
   document.getElementById("updated").innerHTML = "实时数据 · 更新于 " + (parts.length?parts.join(" · "):"<b>加载中…</b>");
 }
 
@@ -443,6 +445,46 @@ async function loadDeposit(){
   updateHeader();
 }
 
+// ===== 2.5 零售退货 =====
+function extractReturn(txt){
+  const m=txt.match(/var\s+RDATA\s*=\s*(\{[\s\S]*?\});/);
+  if(!m) return null;
+  try{ return JSON.parse(m[1]); }catch(_){ return null; }
+}
+async function loadReturn(){
+  try{
+    const txt=await getText("return_order/零售退货单看板.html?_="+Date.now());
+    const R=extractReturn(txt);
+    if(!R || !R.daily) throw new Error("empty");
+    const dates=R.dates||[];
+    const today=beijingYMD();
+    const ym=today.slice(0,6);
+    const agg=function(keys){ var r={return_count:0,sales_count:0}; keys.forEach(function(k){var d=R.daily[k]; if(!d)return; r.return_count+=d.return_count; r.sales_count+=d.sales_count;}); return r; };
+    const monthKeys=dates.filter(function(k){return k.indexOf(ym)===0;});
+    const M=agg(monthKeys);
+    const mRate=pct(M.return_count, M.sales_count);
+    const yk=shiftDays(today,1);
+    const Y=agg(dates.indexOf(yk)>=0?[yk]:[]);
+    const yRate=pct(Y.return_count, Y.sales_count);
+    DATES.return=(R.generated||"").slice(0,10);
+    const deltas=[];
+    if(mRate!=null&&yRate!=null) deltas.push(deltaChip("退单率", +(mRate-yRate).toFixed(2), "pp", "down"));
+    if(M.return_count!=null) deltas.push(deltaChip("退货单", M.return_count-(Y.return_count||0), "单", "down"));
+    setCard("return",
+      "数据日期 "+(R.generated?R.generated.slice(0,10):"—"),
+      [
+        {num:(mRate!=null?mRate.toFixed(2):"—"), unit:"%", lab:"当月退单率"},
+        {num:fmt(M.return_count), lab:"当月退货单数"},
+        {num:fmt(M.sales_count), lab:"当月销售单数"},
+      ],
+      deltas.length?deltas:[{text:"对比昨日：—",type:"flat"}]
+    );
+  }catch(e){
+    setCard("return","—",[{num:"—",lab:"零售退货(取数失败)"}],[]);
+  }
+  updateHeader();
+}
+
 // ===== 3. 合规收银 =====
 function extractCashier(txt){
   const dM=txt.match(/var\s+D\s*=\s*([\s\S]*?);\s*\n\s*var\s+D1/);
@@ -580,6 +622,7 @@ loadValidity();
 loadCashier();
 loadPaid();
 loadDeposit();
+loadReturn();
 </script>
 </body>
 </html>
