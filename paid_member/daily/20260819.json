@@ -1,18 +1,18 @@
 {
   "date": "2026-08-19",
-  "generated": "2026-08-20 16:14",
+  "generated": "2026-08-20 23:00",
   "total": {
-    "denominator": 458.0,
+    "denominator": 457.0,
     "numerator": 126.0,
-    "order_denom": 455,
+    "order_denom": 454,
     "order_num": 126,
     "amount": 122262.0
   },
   "branches": {
     "北京中恒": {
-      "denominator": 195.0,
+      "denominator": 194.0,
       "numerator": 56.0,
-      "order_denom": 194,
+      "order_denom": 193,
       "order_num": 56,
       "vip_items": [
         {
@@ -348,9 +348,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京延庆万达",
-      "denominator": 9.0,
+      "denominator": 8.0,
       "numerator": 3.0,
-      "order_denom": 9,
+      "order_denom": 8,
       "order_num": 3,
       "vip_items": [
         {
