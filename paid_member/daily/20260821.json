@@ -1,18 +1,18 @@
 {
   "date": "2026-08-21",
-  "generated": "2026-08-23 16:05",
+  "generated": "2026-08-23 23:01",
   "total": {
-    "denominator": 377.0,
+    "denominator": 374.0,
     "numerator": 102.0,
-    "order_denom": 370,
+    "order_denom": 367,
     "order_num": 102,
     "amount": 102802.0
   },
   "branches": {
     "北京中恒": {
-      "denominator": 153.0,
+      "denominator": 152.0,
       "numerator": 49.0,
-      "order_denom": 152,
+      "order_denom": 151,
       "order_num": 49,
       "vip_items": [
         {
@@ -76,9 +76,9 @@
       "amount": 32640.0
     },
     "北京易联": {
-      "denominator": 107.0,
+      "denominator": 106.0,
       "numerator": 17.0,
-      "order_denom": 104,
+      "order_denom": 103,
       "order_num": 17,
       "vip_items": [
         {
@@ -91,9 +91,9 @@
       "amount": 8466.0
     },
     "福建易联": {
-      "denominator": 35.0,
+      "denominator": 34.0,
       "numerator": 6.0,
-      "order_denom": 33,
+      "order_denom": 32,
       "order_num": 6,
       "vip_items": [
         {
@@ -323,9 +323,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京常营龙湖",
-      "denominator": 5.0,
+      "denominator": 4.0,
       "numerator": 2.0,
-      "order_denom": 5,
+      "order_denom": 4,
       "order_num": 2,
       "vip_items": [
         {
@@ -1492,9 +1492,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京通州乐堤港",
-      "denominator": 2.0,
+      "denominator": 1.0,
       "numerator": 0.0,
-      "order_denom": 2,
+      "order_denom": 1,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
@@ -1619,9 +1619,9 @@
     {
       "branch": "福建易联",
       "store": "华为厦门思明瑞景广场",
-      "denominator": 1.0,
+      "denominator": 0.0,
       "numerator": 0.0,
-      "order_denom": 1,
+      "order_denom": 0,
       "order_num": 0,
       "vip_items": [],
       "amount": 0

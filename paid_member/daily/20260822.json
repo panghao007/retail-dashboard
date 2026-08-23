@@ -1,18 +1,18 @@
 {
   "date": "2026-08-22",
-  "generated": "2026-08-23 16:05",
+  "generated": "2026-08-23 23:01",
   "total": {
-    "denominator": 490.0,
+    "denominator": 489.0,
     "numerator": 147.0,
-    "order_denom": 487,
+    "order_denom": 486,
     "order_num": 147,
     "amount": 125423.0
   },
   "branches": {
     "北京中恒": {
-      "denominator": 175.0,
+      "denominator": 174.0,
       "numerator": 53.0,
-      "order_denom": 175,
+      "order_denom": 174,
       "order_num": 53,
       "vip_items": [
         {
@@ -530,9 +530,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京海淀大悦城",
-      "denominator": 2.0,
+      "denominator": 1.0,
       "numerator": 0.0,
-      "order_denom": 2,
+      "order_denom": 1,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
