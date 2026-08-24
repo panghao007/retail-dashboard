@@ -1,18 +1,18 @@
 {
   "date": "2026-08-21",
-  "generated": "2026-08-24 16:05",
+  "generated": "2026-08-24 23:01",
   "total": {
-    "denominator": 419.0,
+    "denominator": 417.0,
     "numerator": 124.0,
-    "order_denom": 411,
+    "order_denom": 409,
     "order_num": 124,
     "amount": 106480.0
   },
   "branches": {
     "北京中恒": {
-      "denominator": 152.0,
+      "denominator": 151.0,
       "numerator": 49.0,
-      "order_denom": 151,
+      "order_denom": 150,
       "order_num": 49,
       "vip_items": [
         {
@@ -43,9 +43,9 @@
       "amount": 59302.0
     },
     "四川新跃": {
-      "denominator": 82.0,
+      "denominator": 81.0,
       "numerator": 30.0,
-      "order_denom": 81,
+      "order_denom": 80,
       "order_num": 30,
       "vip_items": [
         {
@@ -156,9 +156,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京东坝万达",
-      "denominator": 6.0,
+      "denominator": 5.0,
       "numerator": 2.0,
-      "order_denom": 6,
+      "order_denom": 5,
       "order_num": 2,
       "vip_items": [
         {
@@ -839,9 +839,9 @@
     {
       "branch": "四川新跃",
       "store": "APR成都时代天街",
-      "denominator": 3.0,
+      "denominator": 2.0,
       "numerator": 1.0,
-      "order_denom": 3,
+      "order_denom": 2,
       "order_num": 1,
       "vip_items": [
         {
