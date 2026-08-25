@@ -121,6 +121,13 @@ body{
   .dl-title{font-size:10px;}
   .dl-btn{font-size:10.5px;padding:6px 10px;}
 }
+  .ai-tabs{display:flex;gap:10px;margin:18px 0 14px;padding:0 2px;}
+  .ai-tab{font-size:13.5px;font-weight:700;color:#9fb2c4;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:7px 18px;cursor:pointer;transition:all .18s;}
+  .ai-tab:hover{color:#fff;background:rgba(255,255,255,.1);}
+  .ai-tab.active{color:#06121f;background:linear-gradient(120deg,#1AABCB,#16b8a6);border-color:transparent;box-shadow:0 6px 18px rgba(26,171,203,.35);}
+  .ai-panel{display:none;}
+  .ai-panel.ai-panel-active{display:block;}
+
 </style>
 </head>
 <body>
@@ -152,6 +159,8 @@ body{
       </div>
     </div>
     <div class="ai-grid"><!--AI_GRID_START-->
+<div class="ai-tabs"><button class="ai-tab active" data-period="day">当日</button><button class="ai-tab" data-period="week">本周</button><button class="ai-tab" data-period="month">本月</button></div>
+<div class="ai-panel ai-panel-active" data-period="day">
       <div class="ai-card" style="--c:#1AABCB">
         <div class="ai-card-head"><div class="ai-card-title">会员有效性</div><div class="ai-card-sub">广度·会员质量</div></div>
         <div class="ai-card-body"><p>1) 北京飞航无效占比9.4%居首，DJI业态系统性偏高，昨日TOP5中3家DJI门店无效占比超25%。</p>
@@ -225,6 +234,156 @@ body{
 <p>| 9 | 保持合规稳定，关注退货率5.05%偏高问题，排查原因 | 上海爱飞 |</p>
 <p>| 10 | 连带率17.5%偏低，优化套餐搭配逻辑，提升渗透率 | 福建易联 |</p></div>
       </div>
+      </div><div class="ai-panel" data-period="week">
+      <div class="ai-card" style="--c:#1AABCB">
+        <div class="ai-card-head"><div class="ai-card-title">会员有效性</div><div class="ai-card-sub">广度·会员质量</div></div>
+        <div class="ai-card-body"><p>1) 北京易联无效占比11.11%居首，显著高于均值3.05%，需核查其DJI业态是否系统性偏高。</p>
+<p>2) 北京易联（总单261）异常突出，无效29单；福建易联（55单）占比3.64%偏高，但样本偏小需观察。</p>
+<p>3) 无上期对比数据，无法判断环比趋势；本周仅覆盖周日-周一，勿与完整周直接比较。</p>
+<p>4) 建议对北京易联开展专项稽核，重点排查DJI品类下单流程及录入规范，降低无效占比。</p></div>
+      </div>
+      <div class="ai-card" style="--c:#F6AA00">
+        <div class="ai-card-head"><div class="ai-card-title">收银合规</div><div class="ai-card-sub">风险·收款规范</div></div>
+        <div class="ai-card-body"><p>1) 本周无数据，无法识别不合规最严重分公司，需确认数据采集是否正常。</p>
+<p>2) 无交易记录，无法统计禁用通道使用占比，请核查系统日志完整性。</p>
+<p>3) 无门店明细，建议先排查收银终端上报链路是否中断或漏传。</p>
+<p>4) 财务需重审收银流程，运营应建立日报监控，确保数据次日可查。</p></div>
+      </div>
+      <div class="ai-card" style="--c:#6C5CE7">
+        <div class="ai-card-head"><div class="ai-card-title">付费会员连带率</div><div class="ai-card-sub">深度·高价值产值</div></div>
+        <div class="ai-card-body"><div class='tag'>【维度一·连带率（广度：买套餐渗透率）】</div>
+<p>1) 本周整体连带率35.2%，无上期对比，无法判断环比趋势。</p>
+<p>2) 最高：北京飞航89.7%；最低：福建易联17.5%。</p>
+<div class='tag'>【维度二·产值（深度：高价值套餐金额贡献）】</div>
+<p>3) 总产值最高：北京中恒55904元，高价值占比67.5%。</p>
+<p>4) 高价值占比最高：北京中恒67.5%；北京飞航连带率89.7%但高价值产值0，印证高连带≠高产值。</p>
+<div class='tag'>【动作】</div>
+<p>5) 对高价值占比为0的北京飞航、上海爱飞、北京易联、福建易联，强化≥1498元高客单套餐推荐与考核。</p></div>
+      </div>
+      <div class="ai-card" style="--c:#FF6B6B">
+        <div class="ai-card-head"><div class="ai-card-title">零售退货单</div><div class="ai-card-sub">售后·退货风险</div></div>
+        <div class="ai-card-body"><p>1) 全集团本周退货率4.61%，无上期对比数据，无法判断环比趋势，需建立历史基线。</p>
+<p>2) 北京飞航退货率最高（5.31%），或与新品体验店集中、客户预期管理不足有关。</p>
+<p>3) APR成都时代天街退货率29.41%（5/17单），DJI北京北投新奥天虹20%（2/10单），样本偏小需警惕。</p>
+<p>4) 建议对退货率超15%的门店，48小时内逐单回访，锁定共性原因并优化销售话术。</p></div>
+      </div>
+      <div class="ai-card" style="--c:#E0567A">
+        <div class="ai-card-head"><div class="ai-card-title">跨看板关联</div><div class="ai-card-sub">决策·管理简报</div></div>
+        <div class="ai-card-body"><h4>1) 本周综合能力矩阵</h4>
+<p><strong>双优（会卖又会收）</strong></p>
+<ul>
+<li><strong>北京中恒</strong>：连带率37.5%，高价值占比67.5%，总产值最高（55,904），无效占比0.0%，退货率最低（3.88%），销售深度与收银合规双标杆。</li>
+</ul>
+<p><strong>会卖不会收</strong></p>
+<ul>
+<li><strong>北京易联</strong>：连带率29.1%尚可，但无效占比11.11%全场最高，收银合规严重拖累，需专项治理。</li>
+<li><strong>四川新跃</strong>：连带率24.7%，高价值占比54.4%，产值20,564，销售结构健康；但无效占比0.88%非零，收银规范性有提升空间。</li>
+</ul>
+<p><strong>会收不会卖（产值浅）</strong></p>
+<ul>
+<li><strong>福建易联</strong>：无效占比3.64%可控，退货率5.19%偏高；连带率17.5%偏低，高价值占比0.0%，产值仅2,793，销售深度明显不足。</li>
+<li><strong>北京飞航</strong>：无效占比0.0%，收银合规满分；但连带率89.7%属“广而浅”，高价值占比0.0%，产值仅2,674，销售结构待升级。</li>
+<li><strong>上海爱飞</strong>：无效占比0.78%，收银合规良好；连带率44.4%但高价值占比0.0%，产值仅1,188，销售深度最弱。</li>
+</ul>
+<p><strong>双弱</strong></p>
+<ul>
+<li>本期无符合双弱标准的分公司。</li>
+</ul>
+<p><strong>未开展付费会员业务</strong></p>
+<ul>
+<li>北京飞航、上海爱飞（仅按会员有效性与收银合规评价，不涉及付费维度）。</li>
+</ul>
+<h4>2) 行动清单</h4>
+<p><strong>P0</strong></p>
+<ul>
+<li>北京易联：无效占比11.11%全场最高，立即启动收银合规专项稽核，锁定问题门店限期整改。</li>
+<li>北京易联：针对DJI业态定制合规SOP，避免泛化要求，重点整治小票录入与会员绑定环节。</li>
+</ul>
+<p><strong>P1</strong></p>
+<ul>
+<li>北京飞航：连带率89.7%但高价值占比0%，主推≥1498元高客单套餐，优化套餐结构提升深度。</li>
+<li>上海爱飞：连带率44.4%但产值仅1,188，需引入高价值套餐组合，提升客单与连带质量。</li>
+<li>福建易联：连带率17.5%且高价值占比0%，重新设计套餐梯度，强化≥1498元档销售激励。</li>
+</ul>
+<p><strong>P2</strong></p>
+<ul>
+<li>四川新跃：无效占比0.88%虽低，仍建议每周抽查收银流水，保持合规零死角。</li>
+<li>北京中恒：保持双优标杆，提炼高价值套餐销售话术与合规流程，向全国复制推广。</li>
+</ul></div>
+      </div>
+      </div><div class="ai-panel" data-period="month">
+      <div class="ai-card" style="--c:#1AABCB">
+        <div class="ai-card-head"><div class="ai-card-title">会员有效性</div><div class="ai-card-sub">广度·会员质量</div></div>
+        <div class="ai-card-body"><p>1) 北京易联无效占比6.19%居首，显著高于均值3.2%，需核查其DJI业态是否因高客单、退换货规则导致系统性偏高。</p>
+<p>2) 上海爱飞无效占比3.85%异常（订单1168），高于北京飞航（3.44%），建议排查其会员录入或支付环节合规漏洞。</p>
+<p>3) 无上期对比，无法判断环比升降；本月周期含周末，若与上周比较需剔除周日/周一业务波动影响。</p>
+<p>4) 对北京易联开展专项稽核，重点抽查DJI品类订单有效性，并同步优化上海爱飞会员注册校验流程。</p></div>
+      </div>
+      <div class="ai-card" style="--c:#F6AA00">
+        <div class="ai-card-head"><div class="ai-card-title">收银合规</div><div class="ai-card-sub">风险·收款规范</div></div>
+        <div class="ai-card-body"><p>1) 北京易联不合规笔数312笔居首，需重点核查其收银流程及培训落地情况。</p>
+<p>2) 银联POS手动收款违规540笔，占违规总量71.6%，属禁用通道仍高频使用，须立即切断权限。</p>
+<p>3) 北京中恒违规233笔，建议调取门店监控复盘操作习惯，并强制切换合规通道。</p>
+<p>4) 财务重审禁用通道白名单，运营将合规率纳入分公司KPI，对连续违规门店停业整顿。</p></div>
+      </div>
+      <div class="ai-card" style="--c:#6C5CE7">
+        <div class="ai-card-head"><div class="ai-card-title">付费会员连带率</div><div class="ai-card-sub">深度·高价值产值</div></div>
+        <div class="ai-card-body"><div class='tag'>【维度一·连带率（广度：买套餐渗透率）】</div>
+<p>1) 本月整体连带率18.4%，无上期对比，暂无法判断环比趋势。</p>
+<p>2) 最高：北京飞航22.5%；最低：上海爱飞10.2%。</p>
+<div class='tag'>【维度二·产值（深度：高价值套餐金额贡献）】</div>
+<p>3) 总产值最高：北京中恒（76.99万），但连带率仅16.2%。</p>
+<p>4) 高价值占比最高：北京中恒72.3%；四川新跃43.7%。高连带率≠高产值，如北京飞航连带率最高但产值垫底。</p>
+<div class='tag'>【动作】</div>
+<p>5) 对高价值占比为0%的分公司（北京飞航、北京易联、福建易联、上海爱飞），加强≥1498元高客单套餐推荐与考核。</p></div>
+      </div>
+      <div class="ai-card" style="--c:#FF6B6B">
+        <div class="ai-card-head"><div class="ai-card-title">零售退货单</div><div class="ai-card-sub">售后·退货风险</div></div>
+        <div class="ai-card-body"><p>1) 全集团本月退货率4.91%，因无上期数据，无法环比，需建立历史基线跟踪趋势。</p>
+<p>2) 上海爱飞退货率9.71%最高，显著高于均值，或与区域售后政策宽松、商品适配问题相关。</p>
+<p>3) 北京双安（15.96%）、龙德广场（15.87%）退货率超15%，销量中等，需重点核查流程。</p>
+<p>4) 建议对上海爱飞及北京飞航高退货门店开展专项回访，定位共性原因并优化退换货审批规则。</p></div>
+      </div>
+      <div class="ai-card" style="--c:#E0567A">
+        <div class="ai-card-head"><div class="ai-card-title">跨看板关联</div><div class="ai-card-sub">决策·管理简报</div></div>
+        <div class="ai-card-body"><h4>集团零售会员经营 · 管理决策简报</h4>
+<h4>一、本月综合能力矩阵</h4>
+<p>| 类别 | 分公司 | 核心依据 |</p>
+<p>|------|--------|----------|</p>
+<p>| <strong>双优（会卖又会收）</strong> | 北京中恒 | 高价值占比72.3%居首，总产值76.99万领跑，深度广度兼备；无效占比仅1.23% |</p>
+<p>| <strong>会卖不会收</strong> | 四川新跃 | 高价值占比43.7%，总产值41.49万，深度达标；但无效占比0.23%最优的同时不合规30笔，退货率4.75%偏高 |</p>
+<p>| <strong>会收不会卖（产值浅）</strong> | 北京易联 | 无效占比6.19%偏高、不合规312笔居首，收银端失守；连带率21.3%但高价值占比0.0%，产值仅32.15万，深度不足 |</p>
+<p>| <strong>会收不会卖（产值浅）</strong> | 福建易联 | 退货率2.02%最低、无效占比1.41%较低，收银端稳健；但连带率16.1%、高价值占比0.0%，产值仅8.46万，深度明显不足 |</p>
+<p>| <strong>双弱</strong> | — | 本月无非付费会员分公司中无双弱案例 |</p>
+<p>| <strong>未开展付费会员业务</strong> | 北京飞航 | 仅按会员有效性及收银合规维度评价：无效占比3.44%，不合规79笔，退货率6.96%偏高，收银合规待改善 |</p>
+<p>| <strong>未开展付费会员业务</strong> | 上海爱飞 | 仅按会员有效性及收银合规维度评价：无效占比3.85%，不合规80笔，退货率9.71%为最高，收银合规待改善 |</p>
+<h4>二、行动清单</h4>
+<h4>P0（立即整改）</h4>
+<p>1. <strong>北京易联</strong>：收银合规专项整顿，312笔不合规居首，无效占比6.19%最高，两周内出整改方案。</p>
+<p>2. <strong>北京中恒</strong>：收银流程专项审计，233笔不合规与高产值不匹配，重点排查收银环节漏洞。</p>
+<h4>P1（本周启动）</h4>
+<p>3. <strong>北京易联</strong>：上线≥1498元高客单套餐，替换低价值主推款，提升深度销售能力。</p>
+<p>4. <strong>四川新跃</strong>：排查30笔不合规共性原因，收银操作规范复训，目标清零。</p>
+<p>5. <strong>北京飞航</strong>：退货率6.96%偏高，核查高退货商品及原因，优化售后流程。</p>
+<p>6. <strong>上海爱飞</strong>：退货率9.71%全场最高，启动退货专项分析，定位品类及门店。</p>
+<h4>P2（本月推进）</h4>
+<p>7. <strong>福建易联</strong>：保持收银优势，试点≥1498元套餐，培育高价值销售能力。</p>
+<p>8. <strong>北京飞航</strong>：无效占比3.44%需关注，加强会员信息录入准确性培训。</p>
+<p>9. <strong>上海爱飞</strong>：无效占比3.85%需改善，优化会员注册及信息维护流程。</p>
+<p>10. <strong>北京中恒</strong>：维持高价值占比优势，沉淀高客单销售话术，向其他分公司输出。</p></div>
+      </div>
+      </div>
+<script>
+(function(){
+  var tabs=document.querySelectorAll('.ai-tab');
+  var panels=document.querySelectorAll('.ai-panel');
+  function switchPeriod(k){
+    tabs.forEach(function(t){ t.classList.toggle('active', t.dataset.period===k); });
+    panels.forEach(function(p){ p.classList.toggle('ai-panel-active', p.dataset.period===k); });
+  }
+  tabs.forEach(function(t){ t.addEventListener('click',function(){ switchPeriod(t.dataset.period); }); });
+})();
+</script>
       <!--AI_GRID_END-->
     </div>
     <div class="ai-foot">AI 解读已自动剥离手机号等 PII，仅基于聚合占比指标 ｜ 环比采用「同星期几」对比以剔除周末效应 ｜ 付费模块按「连带率(广度)+产值(深度)」双维度</div>
