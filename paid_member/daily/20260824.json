@@ -1,19 +1,19 @@
 {
   "date": "2026-08-24",
-  "generated": "2026-08-24 23:01",
+  "generated": "2026-08-25 16:10",
   "total": {
-    "denominator": 400.0,
-    "numerator": 141.0,
-    "order_denom": 394,
-    "order_num": 141,
-    "amount": 98063.0
+    "denominator": 399.0,
+    "numerator": 142.0,
+    "order_denom": 393,
+    "order_num": 142,
+    "amount": 99061.0
   },
   "branches": {
     "北京中恒": {
       "denominator": 128.0,
-      "numerator": 48.0,
+      "numerator": 49.0,
       "order_denom": 127,
-      "order_num": 48,
+      "order_num": 49,
       "vip_items": [
         {
           "code": "vip-iphone1498",
@@ -28,16 +28,16 @@
           "price": 698
         },
         {
+          "code": "vip-iphone998",
+          "name": "ipone会员套餐998",
+          "qty": 3.0,
+          "price": 998
+        },
+        {
           "code": "vip-iphone1198",
           "name": "ipone会员套餐1198",
           "qty": 3.0,
           "price": 1198
-        },
-        {
-          "code": "vip-iphone998",
-          "name": "ipone会员套餐998",
-          "qty": 2.0,
-          "price": 998
         },
         {
           "code": "vip-iphone1798",
@@ -46,7 +46,7 @@
           "price": 1798
         }
       ],
-      "amount": 55904.0
+      "amount": 56902.0
     },
     "四川新跃": {
       "denominator": 73.0,
@@ -82,9 +82,9 @@
       "amount": 20564.0
     },
     "北京易联": {
-      "denominator": 103.0,
+      "denominator": 102.0,
       "numerator": 30.0,
-      "order_denom": 102,
+      "order_denom": 101,
       "order_num": 30,
       "vip_items": [
         {
@@ -644,10 +644,16 @@
       "branch": "北京中恒",
       "store": "APR北京通州万达",
       "denominator": 4.0,
-      "numerator": 1.0,
+      "numerator": 2.0,
       "order_denom": 4,
-      "order_num": 1,
+      "order_num": 2,
       "vip_items": [
+        {
+          "code": "vip-iphone998",
+          "name": "ipone会员套餐998",
+          "qty": 1.0,
+          "price": 998
+        },
         {
           "code": "vip-iphone1498",
           "name": "ipone会员套餐1498",
@@ -655,7 +661,7 @@
           "price": 1498
         }
       ],
-      "amount": 1498.0
+      "amount": 2496.0
     },
     {
       "branch": "北京中恒",
@@ -1227,9 +1233,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京大兴大族",
-      "denominator": 4.0,
+      "denominator": 3.0,
       "numerator": 3.0,
-      "order_denom": 4,
+      "order_denom": 3,
       "order_num": 3,
       "vip_items": [
         {

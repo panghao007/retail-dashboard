@@ -1,10 +1,10 @@
 {
   "date": "2026-08-23",
-  "generated": "2026-08-24 23:01",
+  "generated": "2026-08-25 16:10",
   "total": {
-    "denominator": 583.0,
+    "denominator": 581.0,
     "numerator": 256.0,
-    "order_denom": 580,
+    "order_denom": 578,
     "order_num": 256,
     "amount": 157206.0
   },
@@ -49,9 +49,9 @@
       "amount": 73378.0
     },
     "四川新跃": {
-      "denominator": 111.0,
+      "denominator": 110.0,
       "numerator": 42.0,
-      "order_denom": 110,
+      "order_denom": 109,
       "order_num": 42,
       "vip_items": [
         {
@@ -97,9 +97,9 @@
       "amount": 17430.0
     },
     "福建易联": {
-      "denominator": 70.0,
+      "denominator": 69.0,
       "numerator": 18.0,
-      "order_denom": 70,
+      "order_denom": 69,
       "order_num": 18,
       "vip_items": [
         {
@@ -1032,9 +1032,9 @@
     {
       "branch": "四川新跃",
       "store": "APR成都温江旭辉",
-      "denominator": 4.0,
+      "denominator": 3.0,
       "numerator": 3.0,
-      "order_denom": 4,
+      "order_denom": 3,
       "order_num": 3,
       "vip_items": [
         {
@@ -1972,9 +1972,9 @@
     {
       "branch": "福建易联",
       "store": "华为福州宜家荟聚",
-      "denominator": 2.0,
+      "denominator": 1.0,
       "numerator": 1.0,
-      "order_denom": 2,
+      "order_denom": 1,
       "order_num": 1,
       "vip_items": [
         {

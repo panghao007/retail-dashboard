@@ -1,10 +1,10 @@
 {
   "date": "2026-08-21",
-  "generated": "2026-08-24 23:01",
+  "generated": "2026-08-25 16:10",
   "total": {
-    "denominator": 417.0,
+    "denominator": 416.0,
     "numerator": 124.0,
-    "order_denom": 409,
+    "order_denom": 408,
     "order_num": 124,
     "amount": 106480.0
   },
@@ -127,9 +127,9 @@
       "amount": 2678.0
     },
     "上海爱飞": {
-      "denominator": 23.0,
+      "denominator": 22.0,
       "numerator": 0.0,
-      "order_denom": 23,
+      "order_denom": 22,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
@@ -2408,9 +2408,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海百联又一城授权体验店",
-      "denominator": 2.0,
+      "denominator": 1.0,
       "numerator": 0.0,
-      "order_denom": 2,
+      "order_denom": 1,
       "order_num": 0,
       "vip_items": [],
       "amount": 0

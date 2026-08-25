@@ -1,12 +1,12 @@
 {
   "date": "2026-08-15",
-  "generated": "2026-08-24 23:01",
+  "generated": "2026-08-25 16:10",
   "total": {
     "denominator": 609.0,
-    "numerator": 154.0,
+    "numerator": 153.0,
     "order_denom": 606,
-    "order_num": 154,
-    "amount": 137306.0
+    "order_num": 153,
+    "amount": 136308.0
   },
   "branches": {
     "北京中恒": {
@@ -50,9 +50,9 @@
     },
     "四川新跃": {
       "denominator": 86.0,
-      "numerator": 36.0,
+      "numerator": 35.0,
       "order_denom": 86,
-      "order_num": 36,
+      "order_num": 35,
       "vip_items": [
         {
           "code": "SCXYVIP00001",
@@ -63,7 +63,7 @@
         {
           "code": "SCXYVIP00002",
           "name": "998元尊享会员",
-          "qty": 7.0,
+          "qty": 6.0,
           "price": 998
         },
         {
@@ -79,7 +79,7 @@
           "price": 2398
         }
       ],
-      "amount": 40228.0
+      "amount": 39230.0
     },
     "北京易联": {
       "denominator": 168.0,
@@ -1024,18 +1024,11 @@
       "branch": "四川新跃",
       "store": "APR成都科华王府井",
       "denominator": 1.0,
-      "numerator": 1.0,
+      "numerator": 0.0,
       "order_denom": 1,
-      "order_num": 1,
-      "vip_items": [
-        {
-          "code": "SCXYVIP00002",
-          "name": "998元尊享会员",
-          "qty": 1.0,
-          "price": 998
-        }
-      ],
-      "amount": 998.0
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "四川新跃",
