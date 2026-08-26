@@ -1,10 +1,10 @@
 {
   "date": "2026-08-01",
-  "generated": "2026-08-25 23:00",
+  "generated": "2026-08-26 16:05",
   "total": {
-    "denominator": 1189.0,
+    "denominator": 1181.0,
     "numerator": 0.0,
-    "order_denom": 1179,
+    "order_denom": 1171,
     "order_num": 0,
     "amount": 0
   },
@@ -18,17 +18,17 @@
       "amount": 0
     },
     "四川新跃": {
-      "denominator": 91.0,
+      "denominator": 89.0,
       "numerator": 0.0,
-      "order_denom": 91,
+      "order_denom": 89,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
     },
     "北京易联": {
-      "denominator": 164.0,
+      "denominator": 162.0,
       "numerator": 0.0,
-      "order_denom": 160,
+      "order_denom": 158,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
@@ -42,17 +42,17 @@
       "amount": 0
     },
     "北京飞航": {
-      "denominator": 482.0,
+      "denominator": 479.0,
       "numerator": 0.0,
-      "order_denom": 479,
+      "order_denom": 476,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
     },
     "上海爱飞": {
-      "denominator": 151.0,
+      "denominator": 150.0,
       "numerator": 0.0,
-      "order_denom": 149,
+      "order_denom": 148,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
@@ -482,9 +482,9 @@
     {
       "branch": "四川新跃",
       "store": "APR成都天府大悦城",
-      "denominator": 2.0,
+      "denominator": 1.0,
       "numerator": 0.0,
-      "order_denom": 2,
+      "order_denom": 1,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
@@ -612,9 +612,9 @@
     {
       "branch": "四川新跃",
       "store": "APR成都高新伊藤",
-      "denominator": 13.0,
+      "denominator": 12.0,
       "numerator": 0.0,
-      "order_denom": 13,
+      "order_denom": 12,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
@@ -682,9 +682,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京东坝万达",
-      "denominator": 17.0,
+      "denominator": 16.0,
       "numerator": 0.0,
-      "order_denom": 14,
+      "order_denom": 13,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
@@ -792,9 +792,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京回龙观一店",
-      "denominator": 2.0,
+      "denominator": 1.0,
       "numerator": 0.0,
-      "order_denom": 2,
+      "order_denom": 1,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
@@ -1542,9 +1542,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京首都机场授权体验店",
-      "denominator": 10.0,
+      "denominator": 7.0,
       "numerator": 0.0,
-      "order_denom": 10,
+      "order_denom": 7,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
@@ -1872,9 +1872,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海静安大融城授权体验店",
-      "denominator": 5.0,
+      "denominator": 4.0,
       "numerator": 0.0,
-      "order_denom": 4,
+      "order_denom": 3,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
