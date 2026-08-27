@@ -1,12 +1,12 @@
 {
   "date": "2026-08-24",
-  "generated": "2026-08-27 00:05",
+  "generated": "2026-08-27 16:10",
   "total": {
-    "denominator": 621.0,
-    "numerator": 141.0,
-    "order_denom": 612,
-    "order_num": 141,
-    "amount": 97563.0
+    "denominator": 620.0,
+    "numerator": 140.0,
+    "order_denom": 611,
+    "order_num": 140,
+    "amount": 97464.0
   },
   "branches": {
     "北京中恒": {
@@ -133,19 +133,19 @@
       "amount": 2674.0
     },
     "上海爱飞": {
-      "denominator": 84.0,
-      "numerator": 12.0,
-      "order_denom": 83,
-      "order_num": 12,
+      "denominator": 83.0,
+      "numerator": 11.0,
+      "order_denom": 82,
+      "order_num": 11,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
           "name": "畅玩会员-99",
-          "qty": 12.0,
+          "qty": 11.0,
           "price": 99
         }
       ],
-      "amount": 1188.0
+      "amount": 1089.0
     }
   },
   "stores": [
@@ -2424,19 +2424,19 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海第一八佰伴授权体验店",
-      "denominator": 4.0,
-      "numerator": 2.0,
-      "order_denom": 4,
-      "order_num": 2,
+      "denominator": 3.0,
+      "numerator": 1.0,
+      "order_denom": 3,
+      "order_num": 1,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
           "name": "畅玩会员-99",
-          "qty": 2.0,
+          "qty": 1.0,
           "price": 99
         }
       ],
-      "amount": 198.0
+      "amount": 99.0
     },
     {
       "branch": "上海爱飞",

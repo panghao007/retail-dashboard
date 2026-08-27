@@ -1,6 +1,6 @@
 {
   "date": "2026-08-26",
-  "generated": "2026-08-27 00:05",
+  "generated": "2026-08-27 16:10",
   "total": {
     "denominator": 527.0,
     "numerator": 149.0,
@@ -2272,9 +2272,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京龙德广场授权体验店",
-      "denominator": 5.0,
+      "denominator": 6.0,
       "numerator": 1.0,
-      "order_denom": 5,
+      "order_denom": 6,
       "order_num": 1,
       "vip_items": [
         {
@@ -2397,9 +2397,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI大疆哈苏北京芳草地概念店",
-      "denominator": 2.0,
+      "denominator": 1.0,
       "numerator": 0.0,
-      "order_denom": 2,
+      "order_denom": 1,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
