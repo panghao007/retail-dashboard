@@ -1,10 +1,10 @@
 {
   "date": "2026-08-22",
-  "generated": "2026-08-27 16:21",
+  "generated": "2026-08-27 23:01",
   "total": {
-    "denominator": 932.0,
+    "denominator": 931.0,
     "numerator": 238.0,
-    "order_denom": 927,
+    "order_denom": 926,
     "order_num": 238,
     "amount": 134833.0
   },
@@ -91,9 +91,9 @@
       "amount": 22908.0
     },
     "福建易联": {
-      "denominator": 58.0,
+      "denominator": 57.0,
       "numerator": 17.0,
-      "order_denom": 58,
+      "order_denom": 57,
       "order_num": 17,
       "vip_items": [
         {
@@ -1899,9 +1899,9 @@
     {
       "branch": "福建易联",
       "store": "华为福州平潭吾悦",
-      "denominator": 3.0,
+      "denominator": 2.0,
       "numerator": 3.0,
-      "order_denom": 3,
+      "order_denom": 2,
       "order_num": 3,
       "vip_items": [
         {
