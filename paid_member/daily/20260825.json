@@ -1,24 +1,24 @@
 {
   "date": "2026-08-25",
-  "generated": "2026-08-27 23:01",
+  "generated": "2026-08-28 16:11",
   "total": {
     "denominator": 518.0,
-    "numerator": 156.0,
+    "numerator": 154.0,
     "order_denom": 515,
-    "order_num": 156,
-    "amount": 103644.0
+    "order_num": 154,
+    "amount": 100948.0
   },
   "branches": {
     "北京中恒": {
       "denominator": 111.0,
-      "numerator": 46.0,
+      "numerator": 44.0,
       "order_denom": 110,
-      "order_num": 46,
+      "order_num": 44,
       "vip_items": [
         {
           "code": "vip-iphone1498",
           "name": "ipone会员套餐1498",
-          "qty": 19.0,
+          "qty": 18.0,
           "price": 1498
         },
         {
@@ -30,7 +30,7 @@
         {
           "code": "vip-iphone1198",
           "name": "ipone会员套餐1198",
-          "qty": 6.0,
+          "qty": 5.0,
           "price": 1198
         },
         {
@@ -46,7 +46,7 @@
           "price": 1798
         }
       ],
-      "amount": 53708.0
+      "amount": 51012.0
     },
     "四川新跃": {
       "denominator": 62.0,
@@ -462,18 +462,11 @@
       "branch": "北京中恒",
       "store": "APR北京旧宫万科",
       "denominator": 4.0,
-      "numerator": 1.0,
+      "numerator": 0.0,
       "order_denom": 4,
-      "order_num": 1,
-      "vip_items": [
-        {
-          "code": "vip-iphone1498",
-          "name": "ipone会员套餐1498",
-          "qty": 1.0,
-          "price": 1498
-        }
-      ],
-      "amount": 1498.0
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京中恒",
@@ -614,9 +607,9 @@
       "branch": "北京中恒",
       "store": "APR北京西三旗万象汇",
       "denominator": 4.0,
-      "numerator": 4.0,
+      "numerator": 3.0,
       "order_denom": 4,
-      "order_num": 4,
+      "order_num": 3,
       "vip_items": [
         {
           "code": "vip-iphone1498",
@@ -627,11 +620,11 @@
         {
           "code": "vip-iphone1198",
           "name": "ipone会员套餐1198",
-          "qty": 3.0,
+          "qty": 2.0,
           "price": 1198
         }
       ],
-      "amount": 5092.0
+      "amount": 3894.0
     },
     {
       "branch": "北京中恒",
