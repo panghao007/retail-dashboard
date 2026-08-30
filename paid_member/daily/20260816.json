@@ -1,10 +1,10 @@
 {
   "date": "2026-08-16",
-  "generated": "2026-08-29 23:02",
+  "generated": "2026-08-30 16:11",
   "total": {
-    "denominator": 1008.0,
+    "denominator": 1009.0,
     "numerator": 166.0,
-    "order_denom": 998,
+    "order_denom": 999,
     "order_num": 166,
     "amount": 154581.0
   },
@@ -112,9 +112,9 @@
       "amount": 5187.0
     },
     "北京飞航": {
-      "denominator": 286.0,
+      "denominator": 287.0,
       "numerator": 0.0,
-      "order_denom": 285,
+      "order_denom": 286,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
@@ -2352,9 +2352,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI大疆哈苏北京朝阳合生汇概念店",
-      "denominator": 15.0,
+      "denominator": 16.0,
       "numerator": 0.0,
-      "order_denom": 15,
+      "order_denom": 16,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
