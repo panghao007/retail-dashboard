@@ -1,19 +1,19 @@
 {
   "date": "2026-08-11",
-  "generated": "2026-08-31 16:06",
+  "generated": "2026-08-31 23:03",
   "total": {
-    "denominator": 657.0,
-    "numerator": 47.0,
-    "order_denom": 650,
-    "order_num": 47,
-    "amount": 34861.0
+    "denominator": 656.0,
+    "numerator": 46.0,
+    "order_denom": 649,
+    "order_num": 46,
+    "amount": 34013.0
   },
   "branches": {
     "北京中恒": {
       "denominator": 125.0,
-      "numerator": 13.0,
+      "numerator": 12.0,
       "order_denom": 125,
-      "order_num": 13,
+      "order_num": 12,
       "vip_items": [
         {
           "code": "vip-iphone1498",
@@ -24,17 +24,17 @@
         {
           "code": "vip-iphone698",
           "name": "ipone会员套餐698",
-          "qty": 2.0,
+          "qty": 1.0,
           "price": 698
         },
         {
-          "code": "vip-iphone548",
-          "name": "ipone会员套餐548",
+          "code": "vip-iphone398",
+          "name": "iphone会员套餐398",
           "qty": 1.0,
-          "price": 548
+          "price": 398
         }
       ],
-      "amount": 16924.0
+      "amount": 16076.0
     },
     "四川新跃": {
       "denominator": 87.0,
@@ -88,9 +88,9 @@
       "amount": 1995.0
     },
     "北京飞航": {
-      "denominator": 212.0,
+      "denominator": 211.0,
       "numerator": 0.0,
-      "order_denom": 211,
+      "order_denom": 210,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
@@ -136,24 +136,18 @@
       "branch": "北京中恒",
       "store": "APR北京丽泽龙湖",
       "denominator": 2.0,
-      "numerator": 2.0,
+      "numerator": 1.0,
       "order_denom": 2,
-      "order_num": 2,
+      "order_num": 1,
       "vip_items": [
         {
           "code": "vip-iphone1498",
           "name": "ipone会员套餐1498",
           "qty": 1.0,
           "price": 1498
-        },
-        {
-          "code": "vip-iphone698",
-          "name": "ipone会员套餐698",
-          "qty": 1.0,
-          "price": 698
         }
       ],
-      "amount": 2196.0
+      "amount": 1498.0
     },
     {
       "branch": "北京中恒",
@@ -441,13 +435,13 @@
           "price": 1498
         },
         {
-          "code": "vip-iphone548",
-          "name": "ipone会员套餐548",
+          "code": "vip-iphone398",
+          "name": "iphone会员套餐398",
           "qty": 1.0,
-          "price": 548
+          "price": 398
         }
       ],
-      "amount": 5042.0
+      "amount": 4892.0
     },
     {
       "branch": "北京中恒",
@@ -1546,9 +1540,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京东方新天地授权体验店",
-      "denominator": 5.0,
+      "denominator": 4.0,
       "numerator": 0.0,
-      "order_denom": 5,
+      "order_denom": 4,
       "order_num": 0,
       "vip_items": [],
       "amount": 0

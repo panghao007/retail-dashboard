@@ -1,10 +1,10 @@
 {
   "date": "2026-08-26",
-  "generated": "2026-08-31 16:06",
+  "generated": "2026-08-31 23:03",
   "total": {
-    "denominator": 525.0,
+    "denominator": 524.0,
     "numerator": 149.0,
-    "order_denom": 520,
+    "order_denom": 519,
     "order_num": 149,
     "amount": 104153.0
   },
@@ -139,9 +139,9 @@
       "amount": 2674.0
     },
     "上海爱飞": {
-      "denominator": 68.0,
+      "denominator": 67.0,
       "numerator": 18.0,
-      "order_denom": 67,
+      "order_denom": 66,
       "order_num": 18,
       "vip_items": [
         {
@@ -2408,18 +2408,11 @@
       "branch": "上海爱飞",
       "store": "DJI上海FFC滨江悅里授权体验店",
       "denominator": 0.0,
-      "numerator": 1.0,
+      "numerator": 0.0,
       "order_denom": 0,
-      "order_num": 1,
-      "vip_items": [
-        {
-          "code": "FHQLVIP0003",
-          "name": "畅玩会员-99",
-          "qty": 1.0,
-          "price": 99
-        }
-      ],
-      "amount": 99.0
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "上海爱飞",
@@ -2694,9 +2687,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海静安大悦城授权体验店",
-      "denominator": 4.0,
+      "denominator": 3.0,
       "numerator": 0.0,
-      "order_denom": 4,
+      "order_denom": 3,
       "order_num": 0,
       "vip_items": [],
       "amount": 0

@@ -1,18 +1,18 @@
 {
   "date": "2026-08-13",
-  "generated": "2026-08-31 16:06",
+  "generated": "2026-08-31 23:03",
   "total": {
-    "denominator": 676.0,
+    "denominator": 675.0,
     "numerator": 102.0,
-    "order_denom": 673,
+    "order_denom": 672,
     "order_num": 102,
     "amount": 100202.0
   },
   "branches": {
     "北京中恒": {
-      "denominator": 116.0,
+      "denominator": 115.0,
       "numerator": 38.0,
-      "order_denom": 116,
+      "order_denom": 115,
       "order_num": 38,
       "vip_items": [
         {
@@ -149,9 +149,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京东坝万达",
-      "denominator": 4.0,
+      "denominator": 3.0,
       "numerator": 1.0,
-      "order_denom": 4,
+      "order_denom": 3,
       "order_num": 1,
       "vip_items": [
         {
@@ -2214,9 +2214,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海FFC滨江悅里授权体验店",
-      "denominator": 1.0,
+      "denominator": 0.0,
       "numerator": 0.0,
-      "order_denom": 1,
+      "order_denom": 0,
       "order_num": 0,
       "vip_items": [],
       "amount": 0

@@ -1,10 +1,10 @@
 {
   "date": "2026-08-27",
-  "generated": "2026-08-31 16:06",
+  "generated": "2026-08-31 23:03",
   "total": {
-    "denominator": 565.0,
+    "denominator": 563.0,
     "numerator": 151.0,
-    "order_denom": 557,
+    "order_denom": 555,
     "order_num": 151,
     "amount": 97451.0
   },
@@ -112,9 +112,9 @@
       "amount": 1197.0
     },
     "北京飞航": {
-      "denominator": 175.0,
+      "denominator": 174.0,
       "numerator": 33.0,
-      "order_denom": 173,
+      "order_denom": 172,
       "order_num": 33,
       "vip_items": [
         {
@@ -127,9 +127,9 @@
       "amount": 3267.0
     },
     "上海爱飞": {
-      "denominator": 65.0,
+      "denominator": 64.0,
       "numerator": 17.0,
-      "order_denom": 64,
+      "order_denom": 63,
       "order_num": 17,
       "vip_items": [
         {
@@ -2120,9 +2120,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京长楹天街授权体验店",
-      "denominator": 9.0,
+      "denominator": 8.0,
       "numerator": 1.0,
-      "order_denom": 9,
+      "order_denom": 8,
       "order_num": 1,
       "vip_items": [
         {
@@ -2309,9 +2309,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海FFC滨江悅里授权体验店",
-      "denominator": 1.0,
+      "denominator": 0.0,
       "numerator": 0.0,
-      "order_denom": 1,
+      "order_denom": 0,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
@@ -2336,9 +2336,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海世博天地授权体验店",
-      "denominator": 3.0,
+      "denominator": 2.0,
       "numerator": 0.0,
-      "order_denom": 3,
+      "order_denom": 2,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
