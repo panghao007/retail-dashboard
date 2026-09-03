@@ -82,6 +82,12 @@ function beijingYMD(){
   return bj.getUTCFullYear()+String(bj.getUTCMonth()+1).padStart(2,"0")+String(bj.getUTCDate()).padStart(2,"0");
 }
 function shiftDays(y,k){ var y0=+y.slice(0,4),m=+y.slice(4,6),d=+y.slice(6,8); var dt=new Date(y0,m-1,d); dt.setDate(dt.getDate()-k); return dt.getFullYear()+String(dt.getMonth()+1).padStart(2,"0")+String(dt.getDate()).padStart(2,"0"); }
+// ERP 数据为 T+1，看板每天 23:15 由定时任务刷新，白天「当日」必然没有数据。
+// 取数基准日：today 已有数据则用它，否则回退到 RDATA 里最新一天，避免整页空白。
+function latestKey(){ return RDATA.dates.length? RDATA.dates[RDATA.dates.length-1] : ""; }
+function baseKey(){ var t=beijingYMD(); return RDATA.dates.indexOf(t)>=0 ? t : latestKey(); }
+function isFallback(){ var t=beijingYMD(); return RDATA.dates.indexOf(t)<0; }
+function mdOf(k){ return k? (k.slice(4,6)+"-"+k.slice(6,8)) : ""; }
 function fmt(n){ return (n==null||isNaN(n))?"0":Number(n).toLocaleString("en-US"); }
 function money(n){ return (n==null)?"0":Math.abs(n).toLocaleString("en-US",{maximumFractionDigits:0}); }
 function ratePct(rc,sc){ return (sc>0)? rc/sc*100 : 0; }
@@ -103,10 +109,14 @@ function agg(keys){
   return R;
 }
 function windowKeys(w){
-  var today=beijingYMD();
-  if(w==="today") return RDATA.dates.indexOf(today)>=0?[today]:[];
+  var today=baseKey();
+  if(!today) return [];
+  if(w==="today") return [today];
   if(w==="yesterday"){ var y=shiftDays(today,1); return RDATA.dates.indexOf(y)>=0?[y]:[]; }
-  if(w==="month"){ var ym=today.slice(0,6); return RDATA.dates.filter(function(k){return k.indexOf(ym)===0;}); }
+  if(w==="month"){ var curYM=beijingYMD().slice(0,6);
+                   var cur=RDATA.dates.filter(function(k){return k.indexOf(curYM)===0;});
+                   if(cur.length) return cur;                       // 自然月有数据优先
+                   return RDATA.dates.filter(function(k){return k.indexOf(today.slice(0,6))===0;}); }
   if(w==="custom"){ var f=ymdToKey(document.getElementById("dfrom").value), t=ymdToKey(document.getElementById("dto").value);
     if(!f&&!t) return []; f=f||RDATA.dates[0]; t=t||RDATA.dates[RDATA.dates.length-1];
     return RDATA.dates.filter(function(k){return k>=f&&k<=t;}); }
@@ -115,9 +125,11 @@ function windowKeys(w){
 var CURRENT_W="month";
 function renderOverview(){
   var today=beijingYMD();
-  var defs=[["当日",RDATA.dates.indexOf(today)>=0?[today]:[]],
-            ["昨日",RDATA.dates.indexOf(shiftDays(today,1))>=0?[shiftDays(today,1)]:[]],
-            ["当月",RDATA.dates.filter(function(k){return k.indexOf(today.slice(0,6))===0;})]];
+  var base=baseKey(); var fb=isFallback();
+  var y=shiftDays(base,1);
+  var defs=[["当日"+(fb?(" "+mdOf(base)):""),[base]],
+            ["昨日"+(fb?(" "+mdOf(y)):""),RDATA.dates.indexOf(y)>=0?[y]:[]],
+            ["当月",windowKeys("month")]];
   var html="";
   defs.forEach(function(d){
     var R=agg(d[1]); var r=ratePct(R.return_count,R.sales_count);
@@ -129,9 +141,9 @@ function renderOverview(){
 function renderTable(w){
   var keys=windowKeys(w);
   if(w==="custom") document.getElementById("winlabel").textContent="（自定义）";
-  else if(w==="today") document.getElementById("winlabel").textContent="（当日）";
-  else if(w==="yesterday") document.getElementById("winlabel").textContent="（昨日）";
-  else document.getElementById("winlabel").textContent="（当月）";
+  else if(w==="today") document.getElementById("winlabel").textContent="（当日 "+keyToYmd(baseKey())+"）";
+  else if(w==="yesterday") document.getElementById("winlabel").textContent="（昨日 "+(keys.length?keyToYmd(keys[0]):"无数据")+"）";
+  else document.getElementById("winlabel").textContent="（当月 "+(keys.length?(keyToYmd(keys[0])+" ~ "+keyToYmd(keys[keys.length-1])):"无数据")+"）";
   var R=agg(keys);
   // 分公司
   var bArr=[]; for(var b in R.branch){ var v=R.branch[b]; bArr.push([b,v.return_count,v.sales_count,ratePct(v.return_count,v.sales_count),v.return_amount]); }
@@ -194,7 +206,8 @@ document.addEventListener("click", function(e){
   }
 });
 
-document.getElementById("period").textContent=(GENERATED?GENERATED.slice(0,10):"")+" ｜ 共 "+RDATA.dates.length+" 个有效日期";
+document.getElementById("period").textContent=(GENERATED?GENERATED.slice(0,10):"")+" ｜ 共 "+RDATA.dates.length+" 个有效日期"
+  +(isFallback()?("　⚠️ 当日（"+keyToYmd(beijingYMD())+"）数据尚未生成，ERP 为 T+1，「当日/昨日」按最新可用日期 "+keyToYmd(latestKey())+" 展示"):"");
 document.getElementById("note").innerHTML="口径说明：① 退货单=单据类型为「零售退货单」；销售单=单据类型为「零售单/预订转销售单」。<br>② 分子分母均剔除：内部业务为买断/礼品机出库、线上订单（单据来源=线上平台或线上订单标记√）。<br>③ 门店所属分公司标记「剔除」的整条剔除；<b>ASP/内购店</b>（业务组织以 ASP/AS 结尾或含「内购店」）整条剔除。<br>④ 退单率=退货单数÷销售单数（按单据编号去重计数），退货金额取实收金额绝对值。统计维度为单据日期。<br>⑤ 门店退单率按分公司分组展示，每分公司默认显示退单率最高的 TOP10 门店，点「更多」展开该分公司全部门店。";
 renderOverview();
 setWin("month");
