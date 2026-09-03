@@ -1,36 +1,816 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>会员数据驾驶舱 · 已停用</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>会员数据驾驶舱</title>
 <style>
-  *{margin:0;padding:0;box-sizing:border-box;-webkit-text-size-adjust:100%!important}
-  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
-       background:linear-gradient(135deg,#0b2540,#0f172a);color:#e2e8f0;
-       display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px}
-  .box{background:rgba(30,41,59,.92);padding:40px 34px;border-radius:18px;
-       box-shadow:0 16px 50px rgba(0,0,0,.5);max-width:440px;width:100%;text-align:center;
-       border:1px solid rgba(246,170,0,.3)}
-  .logo{width:48px;height:48px;border-radius:12px;margin:0 auto 16px;
-        background:linear-gradient(135deg,#1AABCB,#29C5E8);
-        display:flex;align-items:center;justify-content:center;color:#06283b;font-weight:800;font-size:22px}
-  .badge{display:inline-block;font-size:12px;color:#F6AA00;border:1px solid rgba(246,170,0,.5);
-         border-radius:20px;padding:3px 12px;margin-bottom:14px;letter-spacing:1px}
-  h2{margin:0 0 10px;font-size:20px;color:#fff}
-  p{font-size:14px;color:#94a3b8;line-height:1.8;margin:0 0 16px}
-  .highlight{color:#29C5E8;font-weight:600}
-  .tip{font-size:12px;color:#64748b;margin-top:4px}
+:root{
+  --cyan:#1AABCB; --orange:#F6AA00; --green:#10b981; --purple:#6366f1;
+  --bg1:#0b1a2e; --bg2:#0a1422;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%!important;}
+html,body{height:100%;}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;
+  background:linear-gradient(160deg,var(--bg1) 0%,var(--bg2) 100%);
+  background-attachment:fixed;
+  color:#e6edf3; min-height:100vh; padding:26px 18px 44px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;}
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:14px;margin-bottom:30px;
+  padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.08);
+}
+.brand{display:flex;align-items:center;gap:13px;}
+.logo{width:12px;height:36px;border-radius:4px;background:linear-gradient(180deg,var(--cyan),var(--orange));box-shadow:0 0 16px rgba(26,171,203,.5);}
+.title{font-size:25px;font-weight:800;letter-spacing:.5px;color:#fff;}
+.title small{display:block;font-size:11.5px;font-weight:500;color:#7e93a8;margin-top:4px;letter-spacing:1.5px;}
+.updated{font-size:13px;color:#8aa0b4;text-align:right;line-height:1.5;max-width:60%;}
+.updated b{color:var(--cyan);font-weight:600;}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+@media(max-width:760px){.grid{grid-template-columns:1fr;} .updated{max-width:100%;text-align:left;}}
+.card{
+  position:relative;display:block;text-decoration:none;color:inherit;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:18px;padding:22px 22px 18px;
+  overflow:hidden;cursor:pointer;
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.card::before{content:"";position:absolute;left:0;top:0;height:100%;width:5px;background:var(--c);opacity:.92;}
+.card:hover{transform:translateY(-6px);border-color:var(--c);box-shadow:0 16px 40px rgba(0,0,0,.5),0 0 0 1px var(--c) inset,0 0 30px -6px var(--c);}
+.card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;gap:10px;}
+.card-name{display:flex;align-items:center;gap:9px;font-size:16px;font-weight:700;color:#fff;}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--c);box-shadow:0 0 10px var(--c);flex-shrink:0;}
+.period{font-size:11.5px;color:#7e93a8;text-align:right;flex-shrink:0;}
+.kpis{display:flex;gap:14px;flex-wrap:wrap;}
+.kpi{flex:1;min-width:88px;}
+.kpi .num{font-size:33px;font-weight:800;line-height:1.05;color:#fff;letter-spacing:-.5px;}
+.kpi .num .u{font-size:14px;font-weight:600;color:#9fb2c4;margin-left:2px;}
+.kpi .lab{font-size:11.5px;color:#8aa0b4;margin-top:5px;}
+.deltas{margin-top:15px;display:flex;gap:8px;flex-wrap:wrap;min-height:0;}
+.chip{font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:20px;white-space:nowrap;}
+.chip.up{color:#34d399;background:rgba(52,211,153,.14);}
+.chip.down{color:#f87171;background:rgba(248,113,113,.14);}
+.chip.flat{color:#94a3b8;background:rgba(148,163,184,.13);}
+.enter{
+  margin-top:16px;display:inline-flex;align-items:center;gap:6px;
+  font-size:13px;font-weight:700;color:var(--c);
+  background:color-mix(in srgb,var(--c) 15%,transparent);
+  padding:7px 14px;border-radius:10px;transition:all .16s;
+}
+.card:hover .enter{background:var(--c);color:#06121f;}
+.enter .ar{transition:transform .16s;}
+.card:hover .enter .ar{transform:translateX(4px);}
+.ai-desc{margin-top:4px;padding:12px 2px 4px;font-size:13.5px;color:#9fb2c4;line-height:1.7;}
+.foot{margin-top:36px;text-align:center;color:#e02424;font-weight:700;font-size:13px;letter-spacing:.5px;}
+.dl-section{margin-top:30px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:18px 20px;}
+.dl-title{font-size:13px;font-weight:700;color:#9fb2c4;margin-bottom:12px;letter-spacing:1px;}
+.dl-row{display:flex;gap:12px;flex-wrap:wrap;}
+.dl-btn{font-size:13.5px;font-weight:700;color:var(--cyan);text-decoration:none;background:rgba(26,171,203,.12);padding:9px 16px;border-radius:10px;transition:all .16s;border:1px solid rgba(26,171,203,.25);}
+.dl-btn:hover{background:var(--cyan);color:#06121f;}
+/* ── AI 解读内嵌区块 ── */
+.ai-block{margin-top:34px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:22px 22px 24px;}
+.ai-block-head{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+.ai-bar{width:5px;height:30px;border-radius:3px;background:linear-gradient(180deg,#16b8a6,#1AABCB);flex-shrink:0;}
+.ai-block-title{font-size:18px;font-weight:800;color:#fff;letter-spacing:.5px;}
+.ai-block-sub{font-size:13.5px;color:#9fb2c4;margin-top:4px;line-height:1.7;}
+.ai-block-sub a,.ai-block-sub a:link,.ai-block-sub a:visited,.ai-block-sub a:hover{text-decoration:none!important;}
+.ai-block-sub a span,.ai-block-sub a:link span,.ai-block-sub a:visited span,.ai-block-sub a:hover span{color:#fff!important;font-weight:700;}
+.ai-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.ai-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;}
+.ai-card::before{content:"";display:block;height:4px;background:var(--c);}
+.ai-card-head{display:flex;align-items:baseline;gap:10px;padding:14px 18px 6px;}
+.ai-card-title{font-size:15.5px;font-weight:700;color:#fff;}
+.ai-card-sub{font-size:11.5px;color:#7e93a8;}
+.ai-card-body{padding:6px 18px 16px;font-size:13.5px;color:#c4d1de;line-height:1.75;}
+.ai-card-body p{margin:7px 0;}
+.ai-card-body .tag{display:inline-block;background:rgba(22,184,166,.15);color:#5eead4;font-weight:700;padding:3px 11px;border-radius:7px;margin:10px 0 4px;font-size:12.5px;}
+.ai-card-body .num{display:inline-block;width:20px;height:20px;line-height:20px;text-align:center;background:var(--orange);color:#06121f;border-radius:50%;font-size:11px;font-weight:800;margin-right:6px;}
+.ai-card-body ul{margin:6px 0 6px 2px;padding-left:18px;}
+.ai-card-body li{margin:5px 0;color:#c4d1de;}
+.ai-card-body li strong{color:#fff;}
+.ai-card-body h4{font-size:14px;color:#5eead4;margin:12px 0 5px;font-weight:700;}
+.ai-foot{margin-top:16px;font-size:11.5px;color:#7e93a8;text-align:center;line-height:1.7;}
+/* ── 移动端/云之家WebView适配：再缩小一档 ── */
+@media(max-width:768px){
+  .ai-block{margin-top:18px;padding:14px 14px 16px;}
+  .ai-block-title{font-size:15px;}
+  .ai-grid{grid-template-columns:1fr;gap:10px;}
+  .ai-card-body{font-size:12px;padding:4px 14px 12px;}
+  body{padding:14px 10px 26px;}
+  .topbar{margin-bottom:14px;gap:8px;}
+  .logo{height:24px;}
+  .title{font-size:19px;} .title small{font-size:9.5px;}
+  .updated{font-size:10px;}
+  .card{padding:14px 14px 12px;border-radius:12px;}
+  .card-head{margin-bottom:10px;}
+  .card-name{font-size:13px;} .period{font-size:9.5px;}
+  .kpis{gap:8px;}
+  .kpi .num{font-size:23px;} .kpi .num .u{font-size:11px;}
+  .kpi .lab{font-size:9.5px;}
+  .deltas{margin-top:8px;}
+  .chip{font-size:9.5px;padding:2px 7px;}
+  .enter{font-size:10px;padding:4px 9px;}
+  .foot{font-size:10px;margin-top:20px;}
+  .dl-section{padding:12px 14px;margin-top:16px;}
+  .dl-title{font-size:10px;}
+  .dl-btn{font-size:10.5px;padding:6px 10px;}
+}
+  .ai-tabs{display:flex;gap:10px;margin:18px 0 14px;padding:0 2px;}
+  .ai-tab{font-size:13.5px;font-weight:700;color:#9fb2c4;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:7px 18px;cursor:pointer;transition:all .18s;}
+  .ai-tab:hover{color:#fff;background:rgba(255,255,255,.1);}
+  .ai-tab.active{color:#06121f;background:linear-gradient(120deg,#1AABCB,#16b8a6);border-color:transparent;box-shadow:0 6px 18px rgba(26,171,203,.35);}
+  .ai-panel{display:none;}
+  .ai-panel.ai-panel-active{display:block;}
+
 </style>
 </head>
 <body>
-  <div class="box">
-    <div class="logo">首</div>
-    <span class="badge">链接已停用</span>
-    <h2>本公开地址已作废</h2>
-    <p>原会员数据驾驶舱的公开访问已关闭。</p>
-    <p>请前往<span class="highlight">首茂云 APP → 会员数据应用</span>查看。</p>
-    <p class="tip">原链接分享给他人已无效。</p>
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand">
+      <div class="logo"></div>
+      <div class="title">会员数据驾驶舱<small>RETAIL MEMBER COCKPIT ✅v2 · 四看板关键指标实时聚合</small></div>
+    </div>
+    <div class="updated" id="updated">实时数据 · 加载中…</div>
   </div>
+  <div class="grid" id="grid"></div>
+  <div class="dl-section">
+    <div class="dl-title">数据下载（各看板明细 Excel / CSV）</div>
+    <div class="dl-row">
+      <a class="dl-btn" id="dl-validity" href="#">⬇ 会员有效性分析.xlsx</a>
+      <a class="dl-btn" id="dl-deposit" href="member_deposit/会员沉淀分析.xlsx">⬇ 会员沉淀分析.xlsx</a>
+      <a class="dl-btn" id="dl-cashier-csv" href="javascript:void(0)">⬇ 合规收银不合规明细 CSV</a>
+    </div>
+  </div>
+  <div class="foot">内含会员与门店经营敏感数据，请勿外传</div>
+
+  <section class="ai-block" id="ai-insight">
+    <div class="ai-block-head">
+      <span class="ai-bar"></span>
+      <div>
+        <div class="ai-block-title">零售数据 AI 解读</div>
+        <div class="ai-block-sub">数据日期 2026-09-02 ｜ DeepSeek 实时生成（脱敏 · 同星期几环比 · 双维度评估）｜ <a href="ai-insight.html"><span>查看完整报告页 ›</span></a></div>
+      </div>
+    </div>
+    <div class="ai-grid"><!--AI_GRID_START-->
+<div class="ai-tabs"><button class="ai-tab active" data-period="day">当日</button><button class="ai-tab" data-period="week">本周</button><button class="ai-tab" data-period="month">本月</button></div>
+<div class="ai-panel ai-panel-active" data-period="day">
+      <div class="ai-card" style="--c:#1AABCB">
+        <div class="ai-card-head"><div class="ai-card-title">会员有效性</div><div class="ai-card-sub">广度·会员质量</div></div>
+        <div class="ai-card-body"><p>1. 本周无有效订单数据，无法定位无效占比最高的分公司，需确认数据源或统计口径是否异常。</p>
+<p>2. 门店TOP为空，无异常门店可识别，建议核查脱敏聚合流程是否遗漏门店层级输出。</p>
+<p>3. 无上期对比，无法判断有效/无效占比环比趋势，需补齐上周同期数据后再分析。</p>
+<p>4. 立即检查数据管道完整性，优先恢复分公司及门店维度统计，确保下期报告可正常生成。</p></div>
+      </div>
+      <div class="ai-card" style="--c:#F6AA00">
+        <div class="ai-card-head"><div class="ai-card-title">收银合规</div><div class="ai-card-sub">风险·收款规范</div></div>
+        <div class="ai-card-body"><p>1) 北京易联不合规7笔居首，需重点核查其收银流程执行漏洞。</p>
+<p>2) 银联POS手动收款占违规100%，属公司禁用通道仍高频使用。</p>
+<p>3) 北京易联、北京中恒门店违规集中，建议立即停用该通道并复查交易。</p>
+<p>4) 财务重审禁用通道审批流，运营将合规率纳入分公司月度考核。</p></div>
+      </div>
+      <div class="ai-card" style="--c:#2E9E8F">
+        <div class="ai-card-head"><div class="ai-card-title">会员沉淀</div><div class="ai-card-sub">资产·会员蓄水池</div></div>
+        <div class="ai-card-body"><p>1) 档案截至8/25未更新，本期新增建档不可比，暂无法评估增量分布。</p>
+<p>2) 北京飞航会员7.41万居首，北京易联5.50万次之，头部集中明显。</p>
+<p>3) 沉睡未消费会员1.19万，占去重会员5.3%，激活可提升复购与资产价值。</p>
+<p>4) 建议优先对沉睡会员推送专属权益，结合消费偏好分层召回，提升活跃度。</p></div>
+      </div>
+      <div class="ai-card" style="--c:#6C5CE7">
+        <div class="ai-card-head"><div class="ai-card-title">付费会员连带率</div><div class="ai-card-sub">深度·高价值产值</div></div>
+        <div class="ai-card-body"><div class='tag'>【维度一·连带率】</div>
+<p>1) 整体连带率24.1%，较上周同日28.4%降4.3pct，渗透率回落。</p>
+<p>2) 最高：北京中恒48.6%；最低：北京飞航9.0%。</p>
+<div class='tag'>【维度二·产值】</div>
+<p>3) 总产值最高：北京中恒51892元。</p>
+<p>4) 高价值占比最高：四川新跃52.0%；北京中恒连带率高但高价值占比仅46.8%，福建易联25%连带率却零高价值产值——高连带≠高产值。</p>
+<div class='tag'>【动作】</div>
+<p>5) 对福建易联、北京易联等高价值占比为0的门店，强化≥1498元高客单套餐推荐与考核。</p></div>
+      </div>
+      <div class="ai-card" style="--c:#FF6B6B">
+        <div class="ai-card-head"><div class="ai-card-title">零售退货单</div><div class="ai-card-sub">售后·退货风险</div></div>
+        <div class="ai-card-body"><p>1) 全集团退货率3.28%，较昨日3.17%上升0.11个百分点，整体略恶化。</p>
+<p>2) 四川新跃退货率4.81%居首，或与天府大悦城门店20%高退货相关。</p>
+<p>3) APR北京石景山万达、成都天府大悦城退货率均20%，销售仅15/20单，异常突出。</p>
+<p>4) 建议核查上述两店退货原因，若为质量问题需紧急下架并回访客户。</p></div>
+      </div>
+      <div class="ai-card" style="--c:#E0567A">
+        <div class="ai-card-head"><div class="ai-card-title">跨看板关联</div><div class="ai-card-sub">决策·管理简报</div></div>
+        <div class="ai-card-body"><h4>1) 综合能力矩阵</h4>
+<p>| 类别 | 分公司 | 依据 |</p>
+<p>|------|--------|------|</p>
+<p>| <strong>双优（会卖又会收）</strong> | 北京中恒 | 连带率48.6%+高价值占比46.8%，深度广度兼备；总产值51892居首；不合规仅4笔，收银合规良好 |</p>
+<p>| <strong>双优（会卖又会收）</strong> | 四川新跃 | 连带率30.9%+高价值占比52.0%，深度最优；总产值19966居次；无不合规记录，收银合规 |</p>
+<p>| <strong>会卖不会收</strong> | 福建易联 | 连带率25.0%尚可，但高价值占比0.0%，产值仅3192；无不合规记录，收银端无问题，问题在卖得浅 |</p>
+<p>| <strong>会收不会卖（产值浅）</strong> | 北京易联 | 不合规仅7笔，收银基本合规；但连带率19.8%偏低，高价值占比0.0%，总产值10458与其54995会员规模严重不匹配 |</p>
+<p>| <strong>双弱</strong> | 无 | — |</p>
+<p>| <strong>未开展付费会员业务</strong> | 北京飞航、上海爱飞 | 不纳入四类评价，仅按会员有效性与收银合规维度观察（飞航不合规1笔，爱飞无不合规记录） |</p>
+<h4>2) 行动清单</h4>
+<p><strong>P0（立即整改）</strong></p>
+<ul>
+<li>北京易联：54995会员仅贡献10458产值，连带率19.8%且高价值为0，需全面诊断套餐设计及销售话术，优先拉升客单深度。</li>
+<li>福建易联：连带率25%但高价值占比0%，立即上架≥1498元高客单套餐，并对导购做升单培训，避免“广而浅”持续。</li>
+</ul>
+<p><strong>P1（本周推进）</strong></p>
+<ul>
+<li>北京中恒：保持双优态势，总结其高价值占比46.8%的销售打法，形成标杆案例向全集团复制。</li>
+<li>四川新跃：高价值占比52%为全集团最佳，建议试点更高价位段产品，测试客单天花板，同时关注退货率4.81%偏高问题。</li>
+<li>北京易联：排查7笔不合规收银具体原因，完善收银稽核机制，防止同类问题扩大。</li>
+</ul>
+<p><strong>P2（本月优化）</strong></p>
+<ul>
+<li>福建易联：在提升高客单基础上，同步监控退货率1.55%的低位优势，避免因强推高套餐导致退货反弹。</li>
+<li>北京飞航、上海爱飞：暂不涉及付费会员维度，持续跟踪基础会员规模与收银合规即可，无需额外动作。</li>
+</ul></div>
+      </div>
+      </div><div class="ai-panel" data-period="week">
+      <div class="ai-card" style="--c:#1AABCB">
+        <div class="ai-card-head"><div class="ai-card-title">会员有效性</div><div class="ai-card-sub">广度·会员质量</div></div>
+        <div class="ai-card-body"><p>1) 北京易联无效占比6.58%居首，门店TOP显示其订单量最大，需核查录入流程。</p>
+<p>2) 北京飞航无效占比4.72%异常，订单量212非小样本，疑似系统校验缺失。</p>
+<p>3) 无上期对比，无法环比；本周仅覆盖周一至周三，勿与完整周直接比较。</p>
+<p>4) 建议对北京易联、飞航开展订单录入合规抽查，重点排查重复或测试单。</p></div>
+      </div>
+      <div class="ai-card" style="--c:#F6AA00">
+        <div class="ai-card-head"><div class="ai-card-title">收银合规</div><div class="ai-card-sub">风险·收款规范</div></div>
+        <div class="ai-card-body"><p>1) 北京易联不合规16笔，占总量70%，为最严重分公司，需重点督导。</p>
+<p>2) 银联POS手动收款违规22笔，占违规总量96%，属禁用通道仍高频使用。</p>
+<p>3) 北京易联门店违规集中，建议立即停用该通道并逐店核查操作规范。</p>
+<p>4) 财务重审禁用通道流程，运营将合规率纳入分公司及门店月度考核。</p></div>
+      </div>
+      <div class="ai-card" style="--c:#2E9E8F">
+        <div class="ai-card-head"><div class="ai-card-title">会员沉淀</div><div class="ai-card-sub">资产·会员蓄水池</div></div>
+        <div class="ai-card-body"><p>1) 本周新增建档会员为0，因档案截至8/25未更新，各分公司均无新增数据。</p>
+<p>2) 会员规模最大为北京飞航，达74109人，占全量31%，领先其他分公司。</p>
+<p>3) 沉睡未消费会员11890人，本期无新增，激活潜力可观，建议定向唤醒促首消。</p>
+<p>4) 建议优先激活沉睡会员，结合消费偏好推送专属优惠，提升复购与资产利用率。</p></div>
+      </div>
+      <div class="ai-card" style="--c:#6C5CE7">
+        <div class="ai-card-head"><div class="ai-card-title">付费会员连带率</div><div class="ai-card-sub">深度·高价值产值</div></div>
+        <div class="ai-card-body"><div class='tag'>【维度一·连带率（广度：买套餐渗透率）】</div>
+<p>1) 本周整体连带率24.0%，暂无上期对比，需后续跟踪周日效应。</p>
+<p>2) 最高北京中恒41.2%；最低北京飞航10.8%，差距显著。</p>
+<div class='tag'>【维度二·产值（深度：高价值套餐金额贡献）】</div>
+<p>3) 总产值最高北京中恒13.1万，四川新跃7.6万紧随其后。</p>
+<p>4) 高价值占比最高四川新跃58.5%；北京中恒连带率虽高但高价值占比仅50.5%，高连带≠高产值。</p>
+<div class='tag'>【动作】</div>
+<p>5) 对福建易联、北京易联等零高价值产值门店，强化≥1498元高客单套餐推荐与考核。</p></div>
+      </div>
+      <div class="ai-card" style="--c:#FF6B6B">
+        <div class="ai-card-head"><div class="ai-card-title">零售退货单</div><div class="ai-card-sub">售后·退货风险</div></div>
+        <div class="ai-card-body"><p>1) 本周退货率3.22%，无上期对比数据，无法判断环比变化，建议建立周度追踪基线。</p>
+<p>2) 北京中恒退货率3.91%居首，或与新品适配问题、售后政策宽松有关，需核查品类与客诉。</p>
+<p>3) DJI北京太阳宫凯德退货率28.57%（4/14单），APR北京海淀大悦城20%（2/10单），样本小但异常突出。</p>
+<p>4) 建议对退货率超10%门店，48小时内回访退货客户，定位产品/服务痛点并同步改进话术。</p></div>
+      </div>
+      <div class="ai-card" style="--c:#E0567A">
+        <div class="ai-card-head"><div class="ai-card-title">跨看板关联</div><div class="ai-card-sub">决策·管理简报</div></div>
+        <div class="ai-card-body"><h4>本周零售会员经营综合能力矩阵</h4>
+<h4>一、四类能力矩阵（仅含已开展付费会员业务分公司）</h4>
+<p>| 类型 | 分公司 | 判定依据 |</p>
+<p>|------|---------|----------|</p>
+<p>| <strong>双优（会卖又会收）</strong> | 北京中恒 | 连带率41.2%+高价值占比50.5%+总产值131,036（双维度均优）；无效占比0.54%+不合规4笔（收银质量优） |</p>
+<p>| <strong>双优（会卖又会收）</strong> | 四川新跃 | 连带率35.9%+高价值占比58.5%（深度最优）；无效占比0.0%（收银零污染） |</p>
+<p>| <strong>会收不会卖（产值浅）</strong> | 上海爱飞 | 无效占比0.79%+不合规0笔（会员质量优）；但连带率13.7%+高价值占比0.0%（广度深度均弱） |</p>
+<p>| <strong>广而浅（会收但深度不足）</strong> | 福建易联 | 连带率25.8%（广度尚可）但高价值占比0.0%（深度缺失）；无效占比0.0%（收银优） |</p>
+<p>| <strong>广而浅（会收但深度不足）</strong> | 北京易联 | 连带率22.4%（广度尚可）但高价值占比0.0%（深度缺失）；无效占比6.58%+不合规16笔（收银待改善） |</p>
+<p>| <strong>未开展付费会员业务</strong> | 北京飞航 | 仅评价收银合规：无效占比4.72%偏高，不合规3笔，需关注 |</p>
+<p>&gt; 说明：北京飞航未开展付费会员业务，不纳入&quot;会卖/不会卖&quot;评价体系，仅从收银合规维度客观提示。</p>
+<h4>二、行动清单</h4>
+<h4>P0（立即处置）</h4>
+<ul>
+<li><strong>北京易联</strong>：无效占比6.58%+不合规16笔双高，本周启动收银流程专项稽核，定位高频不合规门店并驻场整改</li>
+<li><strong>北京飞航</strong>：无效占比4.72%偏高，建议核查收银操作规范，重点排查录错/漏录环节</li>
+</ul>
+<h4>P1（本周重点推进）</h4>
+<ul>
+<li><strong>上海爱飞</strong>：会员质量优但产值浅，本周针对高活跃会员上线≥1498元高客单套餐，配套话术培训</li>
+<li><strong>福建易联</strong>：连带率25.8%基础好，本周将主推品升级至≥1498元档，考核高价值套餐渗透率</li>
+<li><strong>北京易联</strong>：连带率22.4%有基础，同步推进套餐升级，设定高价值占比≥20%周目标</li>
+</ul>
+<h4>P2（持续跟进）</h4>
+<ul>
+<li><strong>北京中恒</strong>：双优标杆，提炼高价值占比50.5%打法形成SOP，向广而浅分公司复制输出</li>
+<li><strong>四川新跃</strong>：高价值占比58.5%全集团最优，总结高客单转化经验，作为案例推广</li>
+<li><strong>上海爱飞</strong>：建立高客单转化周追踪机制，关注连带率与高价值占比双指标变化</li>
+</ul></div>
+      </div>
+      </div><div class="ai-panel" data-period="month">
+      <div class="ai-card" style="--c:#1AABCB">
+        <div class="ai-card-head"><div class="ai-card-title">会员有效性</div><div class="ai-card-sub">广度·会员质量</div></div>
+        <div class="ai-card-body"><p>1) 本周无订单数据，无法识别无效占比最高的分公司及门店业态归因。</p>
+<p>2) 门店/分公司层无有效样本，排除小样本后无异常可判定。</p>
+<p>3) 无上期对比，且本周订单为0，环比趋势不成立（注意周末/周初业务规律差异）。</p>
+<p>4) 建议核查数据源接入或门店上报链路，确认是否漏传订单，优先恢复数据完整性。</p></div>
+      </div>
+      <div class="ai-card" style="--c:#F6AA00">
+        <div class="ai-card-head"><div class="ai-card-title">收银合规</div><div class="ai-card-sub">风险·收款规范</div></div>
+        <div class="ai-card-body"><p>1) 北京易联不合规16笔居首，占总量69.6%，需重点约谈整改。</p>
+<p>2) 银联POS手动收款违规22笔，占95.7%，属公司禁用通道，须立即切断权限。</p>
+<p>3) 北京易联、北京中恒为高发门店，建议核查其收银流程并开展专项培训。</p>
+<p>4) 财务重审禁用通道白名单，运营将合规率纳入分公司及门店月度考核。</p></div>
+      </div>
+      <div class="ai-card" style="--c:#2E9E8F">
+        <div class="ai-card-head"><div class="ai-card-title">会员沉淀</div><div class="ai-card-sub">资产·会员蓄水池</div></div>
+        <div class="ai-card-body"><p>1) 因档案导出截至8/25，本期新增建档无法反映真实增量，暂不评估新增规模及分布。</p>
+<p>2) 会员规模最大为北京飞航，达74,109人，占全量31%，为头部资产池。</p>
+<p>3) 沉睡未消费会员11,890人，占去重会员5.3%，激活可提升复购与资产利用率。</p>
+<p>4) 建议优先对北京飞航沉睡会员做定向唤醒，结合消费偏好推送高匹配权益。</p></div>
+      </div>
+      <div class="ai-card" style="--c:#6C5CE7">
+        <div class="ai-card-head"><div class="ai-card-title">付费会员连带率</div><div class="ai-card-sub">深度·高价值产值</div></div>
+        <div class="ai-card-body"><div class='tag'>【维度一·连带率（广度：买套餐渗透率）】</div>
+<p>1) 本周整体连带率24.7%，暂无上期对比，需关注后续周日效应波动。</p>
+<p>2) 最高：北京中恒47.6%；最低：北京飞航9.4%，差距悬殊。</p>
+<div class='tag'>【维度二·产值（深度：高价值套餐金额贡献）】</div>
+<p>3) 总产值最高：北京中恒10.0万，远超其他分公司。</p>
+<p>4) 高价值占比最高：北京中恒52.5%；四川新跃42.0%次之。北京中恒连带率与产值双高，但福建易联连带率32.5%却无高价值产值，印证高连带≠高产值。</p>
+<div class='tag'>【动作】</div>
+<p>5) 对福建易联、北京易联等高价值占比为0的门店，强化≥1498元高客单套餐推荐与考核。</p></div>
+      </div>
+      <div class="ai-card" style="--c:#FF6B6B">
+        <div class="ai-card-head"><div class="ai-card-title">零售退货单</div><div class="ai-card-sub">售后·退货风险</div></div>
+        <div class="ai-card-body"><p>1) 全集团退货率3.22%，因无上期对比数据，无法判断环比升降趋势。</p>
+<p>2) 北京中恒退货率3.91%居首，或与新品体验差、售后政策宽松有关。</p>
+<p>3) DJI北京太阳宫凯德店退货率28.57%最突出，APR北京海淀大悦城20%次之，需重点核查。</p>
+<p>4) 建议对高退货门店开展专项回访，排查商品质量或销售话术问题，并优化退换流程。</p></div>
+      </div>
+      <div class="ai-card" style="--c:#E0567A">
+        <div class="ai-card-head"><div class="ai-card-title">跨看板关联</div><div class="ai-card-sub">决策·管理简报</div></div>
+        <div class="ai-card-body"><h4>本月零售会员经营综合能力矩阵</h4>
+<h4>一、综合能力矩阵</h4>
+<p>| 分类 | 分公司 | 判定依据 |</p>
+<p>|------|--------|----------|</p>
+<p>| <strong>双优（会卖又会收）</strong> | 北京中恒 | 连带率47.6%最高，总产值100,398元居首，高价值占比52.5%最高，退货率3.91%可控，不合规仅4笔 |</p>
+<p>| <strong>会卖不会收</strong> | 四川新跃 | 连带率34.8%较高，总产值41,822元尚可，高价值占比42.0%良好，但无效占比数据缺失，收银合规存在盲区 |</p>
+<p>| <strong>会收不会卖（产值浅）</strong> | 福建易联 | 退货率0.93%全场最低，收银合规无异常；但高价值占比0.0%，总产值仅10,674元，连带率32.5%未转化为高客单 |</p>
+<p>| <strong>双弱</strong> | 北京易联 | 连带率18.8%偏低，总产值19,920元弱，高价值占比0.0%，不合规16笔为全场最高，收银合规风险突出 |</p>
+<p>| <strong>未开展付费会员业务</strong> | 上海爱飞 | 未开展付费会员业务，不参与卖货能力评价；会员数25,426，总产值1,981元，收银合规无异常 |</p>
+<p>| <strong>未开展付费会员业务</strong> | 北京飞航 | 未开展付费会员业务，不参与卖货能力评价；会员数74,109为全场最高，总产值2,574元，不合规3笔 |</p>
+<h4>二、行动清单</h4>
+<h4>P0（立即处理）</h4>
+<p>1. <strong>北京易联</strong>：不合规16笔全场最高，立即排查收银漏洞，本周内完成整改并追责。</p>
+<p>2. <strong>北京易联</strong>：连带率仅18.8%且高价值占比0%，启动套餐话术专项培训，目标提升至30%+。</p>
+<p>3. <strong>福建易联</strong>：连带率32.5%但高价值为0，立即上架≥1498元高客单套餐并设计升级路径。</p>
+<h4>P1（本周重点推进）</h4>
+<p>4. <strong>四川新跃</strong>：高价值占比42%表现良好，补全无效占比数据监控，确保收银合规可视。</p>
+<p>5. <strong>北京中恒</strong>：作为标杆分公司，提炼连带率47.6%+高价值52.5%的销售话术，输出标准化手册。</p>
+<p>6. <strong>北京易联</strong>：会员基数54,995但产值仅19,920元，人均产值极低，需锁定沉睡会员激活。</p>
+<p>7. <strong>福建易联</strong>：退货率0.93%为最优，保持服务质量同时，重点攻坚高客单产品渗透。</p>
+<h4>P2（持续优化）</h4>
+<p>8. <strong>四川新跃</strong>：总产值41,822元仍有提升空间，可借鉴北京中恒的高价值会员运营策略。</p>
+<p>9. <strong>北京中恒</strong>：退货率3.91%略高于福建，关注售后体验，防止高连带伴随高退货。</p>
+<p>10. <strong>北京易联</strong>：会员基数大但产值弱，建议细分会员标签，精准推送高价值产品。</p>
+<p>11. <strong>福建易联</strong>：保持低退货优势，逐步提升客单价，避免陷入低价套餐依赖。</p></div>
+      </div>
+      </div>
+<script>
+(function(){
+  var tabs=document.querySelectorAll('.ai-tab');
+  var panels=document.querySelectorAll('.ai-panel');
+  function switchPeriod(k){
+    tabs.forEach(function(t){ t.classList.toggle('active', t.dataset.period===k); });
+    panels.forEach(function(p){ p.classList.toggle('ai-panel-active', p.dataset.period===k); });
+  }
+  tabs.forEach(function(t){ t.addEventListener('click',function(){ switchPeriod(t.dataset.period); }); });
+})();
+</script>
+      <!--AI_GRID_END-->
+    </div>
+    <div class="ai-foot">AI 解读已自动剥离手机号等 PII，仅基于聚合占比指标 ｜ 环比采用「同星期几」对比以剔除周末效应 ｜ 付费模块按「连带率(广度)+产值(深度)」双维度</div>
+  </section>
+</div>
+
+<script>
+"use strict";
+// ── 防陈旧页面：URL 无查询参数时自动跳转到带时间戳版本 ──
+// 解决浏览器/中间代理对本页 HTML 的磁盘缓存：GitHub Pages CDN 对同一路径缓存 10 分钟，
+// 且浏览器可能直接读本地旧文件不回源。带上 ?t= 时间戳 = 新 URL = 强制回源拿最新版。
+(function(){
+  try{
+    if(!location.search){
+      location.replace(location.href.split("#")[0] + "?t=" + Date.now());
+      return;
+    }
+  }catch(_){}
+})();
+const C = {
+  validity:{name:"会员有效性", color:"var(--cyan)",   href:"d/index.html"},
+  cashier :{name:"合规收银",   color:"var(--orange)", href:"cashier/收银合规看板.html"},
+  paid    :{name:"付费会员",   color:"var(--purple)", href:"paid_member/付费会员看板.html"},
+  return  :{name:"零售退货",   color:"#ef4444",      href:"return_order/零售退货单看板.html"},
+  deposit :{name:"会员沉淀",   color:"var(--green)",  href:"member_deposit/会员沉淀看板.html"},
+};
+const DATES = {}; // 各看板最新日期
+const fmt = n => (n==null||isNaN(n)) ? "—" : Number(n).toLocaleString("en-US");
+const pct = (n,d) => (n==null||d==null||d===0) ? null : n/d*100;
+const cb = (s)=> (s||"").replace(/[\s-]/g,""); // 去空格与连字符，用于 YYYYMMDD 文件名
+// 付费会员：本月（2026-08）新开分公司起始销售日，起始日之前的天数对该分公司不计入（剔除）；仅 2026-08 生效。
+const BRANCH_START_2026_08 = {
+  "北京易联":"2026-08-03", "福建易联":"2026-08-03",
+  "北京中恒":"2026-08-11", "四川新跃":"2026-08-11"
+};
+function branchStart(b, date){
+  if(date && date.indexOf("2026-08")===0) return BRANCH_START_2026_08[b]||null;
+  return null;
+}
+
+function beijingYMD(){ // 北京时间 YYYYMMDD（勿用 getTimezoneOffset——中国时区 -480 会抵消 +8h 导致返回昨天）
+  const now=new Date();
+  const bj=new Date(now.getTime() + 8*3600000);   // 绝对时间戳直接加 8 小时 = 北京时间
+  const y=bj.getUTCFullYear(), m=String(bj.getUTCMonth()+1).padStart(2,"0"), d=String(bj.getUTCDate()).padStart(2,"0");
+  return y+m+d;
+}
+function shiftDays(yyyymmdd, back){ // 返回 YYYYMMDD 往前 back 天
+  const y=+yyyymmdd.slice(0,4), m=+yyyymmdd.slice(4,6), d=+yyyymmdd.slice(6,8);
+  const dt=new Date(y,m-1,d); dt.setDate(dt.getDate()-back);
+  return dt.getFullYear()+String(dt.getMonth()+1).padStart(2,"0")+String(dt.getDate()).padStart(2,"0");
+}
+async function getJSON(url){
+  const r = await fetch(url, {cache:"no-store"});
+  if(!r.ok) throw new Error("HTTP "+r.status+" "+url);
+  return r.json();
+}
+async function getText(url){
+  const r = await fetch(url, {cache:"no-store"});
+  if(!r.ok) throw new Error("HTTP "+r.status+" "+url);
+  return r.text();
+}
+function updateHeader(){
+  const parts=[];
+  if(DATES.validity) parts.push("有效 "+DATES.validity);
+  if(DATES.cashier)  parts.push("收银 "+DATES.cashier);
+  if(DATES.paid)     parts.push("付费 "+DATES.paid);
+  if(DATES.return)   parts.push("退货 "+DATES.return);
+  if(DATES.deposit)  parts.push("沉淀 "+DATES.deposit);
+  document.getElementById("updated").innerHTML = "实时数据 · 更新于 " + (parts.length?parts.join(" · "):"<b>加载中…</b>");
+}
+
+// ---- 渲染卡片骨架 ----
+function buildCards(){
+  const grid=document.getElementById("grid");
+  for(const key in C){
+    const c=C[key];
+    const a=document.createElement("a");
+    a.className="card"; a.id="card-"+key; a.style.setProperty("--c",c.color);
+    a.href=c.href; a.target="_self";
+    a.innerHTML=`
+      <div class="card-head">
+        <div class="card-name"><span class="dot"></span>${c.name}</div>
+        <div class="period" id="period-${key}">加载中…</div>
+      </div>
+      <div class="kpis" id="kpis-${key}">
+        <div class="kpi"><div class="num">—</div><div class="lab">加载中…</div></div>
+      </div>
+      <div class="deltas" id="deltas-${key}"></div>
+      <span class="enter">进入看板 <span class="ar">›</span></span>`;
+    grid.appendChild(a);
+  }
+}
+function setCard(key, period, kpis, deltas){
+  const p=document.getElementById("period-"+key); if(p) p.textContent=period||"";
+  const kw=document.getElementById("kpis-"+key);
+  if(kw){
+    kw.innerHTML=kpis.map(k=>`
+      <div class="kpi">
+        <div class="num">${k.num}${k.unit?`<span class="u">${k.unit}</span>`:""}</div>
+        <div class="lab">${k.lab}</div>
+      </div>`).join("");
+  }
+  const dw=document.getElementById("deltas-"+key);
+  if(dw){
+    dw.innerHTML=(deltas||[]).map(d=>`<span class="chip ${d.type}">${d.text}</span>`).join("");
+  }
+}
+// delta type: up=绿(向好) down=红(变差) flat=灰
+function deltaChip(label, val, unit, goodWhen){
+  if(val==null||isNaN(val)) return {text:label+" 无对比", type:"flat"};
+  const arrow = val>0?"▲":(val<0?"▼":"＝");
+  let type="flat";
+  if(val!==0){
+    if(goodWhen==="up")  type = val>0?"up":"down";
+    if(goodWhen==="down")type = val<0?"up":"down";
+  }
+  const sign = val>0?"+":"";
+  return {text:`${label} ${arrow}${sign}${val}${unit||""}`, type};
+}
+
+// ===== 1. 会员有效性 =====
+async function loadValidity(){
+  // 主源：直接读「会员有效性看板」HTML（与看板内容强制一致）
+  try{
+    const txt=await getText("d/index.html?_="+Date.now());
+    const v=extractValidity(txt);
+    if(!v || v.total==null) throw new Error("empty");
+    DATES.validity=v.date||"";
+    setCard("validity",
+      "数据日期 "+(v.date||""),
+      [
+        {num:fmt(v.total), lab:"会员订单总数"},
+        {num:(v.validRate!=null?v.validRate.toFixed(2):"—"), unit:"%", lab:"有效占比"},
+        {num:(v.invalidRate!=null?v.invalidRate.toFixed(2):"—"), unit:"%", lab:"无效占比"},
+      ],
+      v.delta==null
+        ? [{text:"对比昨日无效增减：—", type:"flat"}]
+        : [deltaChip("无效增减", v.delta, "笔", "down")]
+    );
+    const dlV=document.getElementById("dl-validity");
+    if(dlV && v.date){
+      dlV.href="d/"+v.date+"_会员有效性分析.xlsx";
+      dlV.textContent="⬇ 会员有效性分析("+v.date+").xlsx";
+    }
+    updateHeader();
+    return;
+  }catch(e){ /* 回退 latest.json */ }
+  // 回退：latest.json
+  try{
+    const j=await getJSON("d/latest.json?_="+Date.now());
+    const k=j.kpi||{};
+    const invDelta=(k.prev_invalid!=null&&k.orders_invalid!=null)?k.orders_invalid-k.prev_invalid:null;
+    DATES.validity=j.date||k.latest_date||"";
+    var vDate=k.latest_date||j.date||"";
+    setCard("validity",
+      "数据日期 "+vDate,
+      [
+        {num:fmt(k.total_orders), lab:"会员订单总数"},
+        {num:(k.valid_rate!=null?k.valid_rate.toFixed(2):"—"), unit:"%", lab:"有效占比"},
+        {num:(k.invalid_rate!=null?k.invalid_rate.toFixed(2):"—"), unit:"%", lab:"无效占比"},
+      ],
+      invDelta==null
+        ? [{text:"对比昨日无效增减：无数据", type:"flat"}]
+        : [deltaChip("无效增减", invDelta, "笔", "down")]
+    );
+    // 回退分支也更新下载按钮
+    var dlV2=document.getElementById("dl-validity");
+    if(dlV2 && vDate){ dlV2.href="d/"+vDate+"_会员有效性分析.xlsx"; dlV2.textContent="⬇ 会员有效性分析("+vDate+").xlsx"; }
+  }catch(_){
+    setCard("validity","—",[{num:"—",lab:"会员有效性(取数失败)"}],[]);
+  }
+  updateHeader();
+}
+
+// ===== 2. 会员沉淀 =====
+const DEP_SPECIAL=["（未匹配门店）","未消费会员"];
+var CASHIER_T=null;
+async function fetchIndexWithFallback(subdir){
+  const today=beijingYMD();
+  for(let back=0; back<=60; back++){
+    const dt=shiftDays(today,back);
+    try{
+      const idx=await getJSON(`${subdir}/daily_index_${dt}.json?_=${Date.now()}`);
+      if(idx && idx.dates && idx.dates.length) return idx;
+    }catch(_){}
+  }
+  return null;
+}
+async function loadDeposit(){
+  // 主源：直接读「会员沉淀看板」HTML（与看板内容强制一致）
+  try{
+    const txt=await getText("member_deposit/会员沉淀看板.html?_="+Date.now());
+    const dp=extractDeposit(txt);
+    if(!dp || dp.total==null) throw new Error("empty");
+    DATES.deposit=dp.date||"";
+    setCard("deposit",
+      "快照日期 "+(dp.date||""),
+      [
+        {num:fmt(dp.total), lab:"会员沉淀总数"},
+        {num:(dp.unconsumed!=null?fmt(dp.unconsumed):"—"), lab:"未消费会员"},
+        {num:dp.branchCount, lab:"分公司数量"},
+      ],
+      [{text:`较昨日新增 ${fmt(dp.newSum)} 人`, type:"flat"}]
+    );
+    const c=document.getElementById("dl-deposit");
+    if(c && dp.date){
+      c.href="member_deposit/"+dp.date+"_会员沉淀分析.xlsx";
+      c.textContent="⬇ 会员沉淀分析("+dp.date+").xlsx";
+    }
+    updateHeader();
+    return;
+  }catch(e){ /* 回退 latest.json */ }
+  // 回退：latest.json
+  try{
+    const j=await getJSON("member_deposit/latest.json?_="+Date.now());
+    const k=j.kpi||{};
+    const total=k.total_distinct;
+    const prevNew=k.prev_new;
+    setCard("deposit",
+      "快照日期 "+(j.date||""),
+      [
+        {num:fmt(total), lab:"去重会员总数"},
+        {num:(k.branch_count==null?"—":k.branch_count), lab:"分公司数量"},
+        {num:(prevNew==null?"—":fmt(prevNew)), lab:"较昨日新增"},
+      ],
+      prevNew==null ? [{text:"较昨日新增：—",type:"flat"}] : [deltaChip("较昨日新增", prevNew, "人", "up")]
+    );
+    if(j.html) document.getElementById("card-deposit").href=j.html;
+    // 回退分支也更新下载按钮
+    var dpDate=j.date||"";
+    var dlD2=document.getElementById("dl-deposit");
+    if(dlD2 && dpDate){ dlD2.href="member_deposit/"+dpDate+"_会员沉淀分析.xlsx"; dlD2.textContent="⬇ 会员沉淀分析("+dpDate+").xlsx"; }
+  }catch(_){
+    setCard("deposit","—",[{num:"—",lab:"会员沉淀(取数失败)"}],[]);
+  }
+  updateHeader();
+}
+
+// ===== 2.5 零售退货 =====
+function extractReturn(txt){
+  const m=txt.match(/var\s+RDATA\s*=\s*(\{[\s\S]*?\});/);
+  if(!m) return null;
+  try{ return JSON.parse(m[1]); }catch(_){ return null; }
+}
+async function loadReturn(){
+  try{
+    const txt=await getText("return_order/零售退货单看板.html?_="+Date.now());
+    const R=extractReturn(txt);
+    if(!R || !R.daily) throw new Error("empty");
+    const dates=R.dates||[];
+    const today=beijingYMD();
+    const ym=today.slice(0,6);
+    const agg=function(keys){ var r={return_count:0,sales_count:0}; keys.forEach(function(k){var d=R.daily[k]; if(!d)return; r.return_count+=d.return_count; r.sales_count+=d.sales_count;}); return r; };
+    const monthKeys=dates.filter(function(k){return k.indexOf(ym)===0;});
+    const M=agg(monthKeys);
+    const mRate=pct(M.return_count, M.sales_count);
+    // 环比用「最新数据日 T」与「其前一日 T1」做单日对比（避免月累计 vs 单日的错误差值）
+    const T=R.T||dates[dates.length-1];
+    const T1=R.T1||shiftDays(T,1);
+    const Td=agg(dates.indexOf(T)>=0?[T]:[]);
+    const T1d=agg(dates.indexOf(T1)>=0?[T1]:[]);
+    const tRate=pct(Td.return_count, Td.sales_count);
+    const t1Rate=pct(T1d.return_count, T1d.sales_count);
+    DATES.return=(R.generated||"").slice(0,10);
+    const deltas=[];
+    if(tRate!=null&&t1Rate!=null) deltas.push(deltaChip("退单率", +(tRate-t1Rate).toFixed(2), "pp", "down"));
+    deltas.push(deltaChip("退货单", (Td.return_count||0)-(T1d.return_count||0), "单", "down"));
+    setCard("return",
+      "数据日期 "+(R.generated?R.generated.slice(0,10):"—"),
+      [
+        {num:(mRate!=null?mRate.toFixed(2):"—"), unit:"%", lab:"当月退单率"},
+        {num:fmt(M.return_count), lab:"当月退货单数"},
+        {num:fmt(M.sales_count), lab:"当月销售单数"},
+      ],
+      deltas.length?deltas:[{text:"对比昨日：—",type:"flat"}]
+    );
+  }catch(e){
+    setCard("return","—",[{num:"—",lab:"零售退货(取数失败)"}],[]);
+  }
+  updateHeader();
+}
+
+// ===== 3. 合规收银 =====
+function extractCashier(txt){
+  const dM=txt.match(/var\s+D\s*=\s*([\s\S]*?);\s*\n\s*var\s+D1/);
+  const d1M=txt.match(/var\s+D1\s*=\s*([\s\S]*?);\s*(?:\n|var|$)/);
+  const gM=txt.match(/var\s+GENERATED\s*=\s*"([^"]+)"/);
+  const tM=txt.match(/var\s+T\s*=\s*"([^"]+)"/);
+  const D=dM?JSON.parse(dM[1]):null;
+  const D1=d1M?JSON.parse(d1M[1]):null;
+  return {D,D1,generated:gM?gM[1]:null, T:tM?tM[1]:null};
+}
+// 直接从「会员有效性看板」HTML 提取 KPI（与看板内容强制一致，消灭 latest.json 漂移）
+// KPI DOM: <div class="kpi [good|bad]"><div class="label">L</div><div class="val">N<span class="unit">U</span></div>[<div class="sub2">…</div>]</div>
+function extractValidity(txt){
+  // 会员订单数：val 形如 "22,440<span class="unit">单</span>"
+  const totalM=txt.match(/会员订单数<\/div><div class="val">([\d,]+)<span class="unit">单<\/span>/);
+  const total=totalM?parseInt(totalM[1].replace(/,/g,''),10):null;
+  // 有效占比：val 形如 "93.85<span class="unit">%</span>"
+  const vrM=txt.match(/有效占比<\/div><div class="val">([\d.]+)<span class="unit">%<\/span>/);
+  const validRate=vrM?parseFloat(vrM[1]):null;
+  // 无效占比：val 形如 "6.15<span class="unit">%</span>"
+  const irM=txt.match(/无效占比<\/div><div class="val">([\d.]+)<span class="unit">%<\/span>/);
+  const invalidRate=irM?parseFloat(irM[1]):null;
+  // 对比昨日无效增减：在「无效会员订单」卡的 sub2：「对比昨日新增 +30 单」/「对比昨日新增 -12 单」
+  const dm=txt.match(/无效会员订单<\/div><div class="val">[\d,]+<span class="unit">单<\/span><\/div><div class="sub2">对比昨日新增 ([+\-]?\d+) 单/);
+  const delta=dm?parseInt(dm[1],10):null;
+  const dtm=txt.match(/统计日期：<b>([\d-]+)/);
+  return {total, validRate, invalidRate, delta, date:dtm?dtm[1]:null};
+}
+// 直接从「会员沉淀看板」HTML 提取 KPI
+function extractDeposit(txt){
+  const grab=lab=>{ const m=txt.match(new RegExp('<div class="v">([\\d,]+)</div><div class="l">'+lab)); return m?parseInt(m[1].replace(/,/g,''),10):null; };
+  const total=grab('会员沉淀总数（记录）');
+  const unconsumed=grab('未消费会员（无首购门店）');
+  const deltas=[...txt.matchAll(/class="delta up">\+?([\d,]+)</g)].map(x=>parseInt(x[1].replace(/,/g,''),10));
+  const newSum=deltas.reduce((a,b)=>a+b,0);
+  const branches=[...txt.matchAll(/<td class='bname'>([^<]+)<\/td>/g)].map(x=>x[1]);
+  const realBranches=branches.filter(b=>b!=='（未匹配门店）'&&b!=='未消费会员');
+  const dtm=txt.match(/统计日期：<b>([\d-]+)/);
+  return {total, unconsumed, newSum, branchCount:realBranches.length, date:dtm?dtm[1]:null};
+}
+async function loadCashier(){
+  try{
+    const txt=await getText("cashier/收银合规看板.html?_="+Date.now());
+    const {D,D1,generated,T}=extractCashier(txt);
+    if(!D) throw new Error("D not found");
+    if(T) CASHIER_T=T;
+    // 更新下载按钮文字（带日期）
+    var dlC=document.getElementById("dl-cashier-csv");
+    if(dlC && T) dlC.textContent="⬇ 合规收银不合规明细("+T+").csv";
+    DATES.cashier=(generated||"").slice(0,10);
+    const comp=D.compliant, nonc=D.noncompliant;
+    const rate=pct(comp, comp+nonc);
+    const deltas=[];
+    if(D1){
+      const c1=D1.compliant, n1=D1.noncompliant;
+      const rate1=pct(c1, c1+n1);
+      if(rate!=null&&rate1!=null) deltas.push(deltaChip("合规率", +(rate-rate1).toFixed(2), "pp", "up"));
+      if(nonc!=null&&n1!=null)     deltas.push(deltaChip("不合规", nonc-n1, "笔", "down"));
+    }
+    setCard("cashier",
+      "数据日期 "+(generated?generated.slice(0,10):"—"),
+      [
+        {num:(rate!=null?rate.toFixed(2):"—"), unit:"%", lab:"合规率"},
+        {num:fmt(nonc), lab:"不合规笔数"},
+        {num:fmt(comp), lab:"有效收款笔数"},
+      ],
+      deltas.length?deltas:[{text:"对比昨日：—",type:"flat"}]
+    );
+  }catch(e){
+    setCard("cashier","—",[{num:"—",lab:"合规收银(取数失败)"}],[]);
+  }
+  updateHeader();
+}
+
+// ===== 4. 付费会员 =====
+// 口径：单日（与"今日/昨日"自动切换——有当日用当日，没有就显示昨日）
+async function loadPaid(){
+  try{
+    const idx=await fetchIndexWithFallback("paid_member");
+    if(!idx) throw new Error("no index");
+    const dates=idx.dates;
+    if(!dates.length) throw new Error("empty dates");
+    // 自动选择显示日期：idx.dates 含 today → 当日；否则用 idx.dates 最大（昨日）
+    const today=beijingYMD();  // YYYYMMDD
+    const todayDash=today.slice(0,4)+"-"+today.slice(4,6)+"-"+today.slice(6,8);  // YYYY-MM-DD
+    let displayDate = dates.includes(todayDash) ? todayDash : dates[dates.length-1];
+    const d=await getJSON(`paid_member/daily/${cb(displayDate)}.json?_=${Date.now()}`);
+    // 单日按分公司起始销售日过滤；开单占比以 d.stores 长度为分母（当日所有主数据门店数）
+    let num=0, den=0, openStores=0, totalStores=0;
+    (d.stores||[]).forEach(s=>{
+      const st=branchStart(s.branch, displayDate);
+      if(st && displayDate<st) return;
+      num += (s.numerator||0); den += (s.denominator||0);
+      totalStores++;
+      if((s.numerator||0)>0) openStores++;
+    });
+    const rate=pct(num, den);
+    const ordRate = totalStores ? openStores/totalStores*100 : null;
+    DATES.paid=displayDate;
+    setCard("paid",
+      "数据日期 "+displayDate,
+      [
+        {num:(rate!=null?rate.toFixed(2):"—"), unit:"%", lab:"会员连带率"},
+        {num:(ordRate!=null?ordRate.toFixed(2):"—"), unit:"%", lab:"开单占比"},
+        {num:(num!=null?num:"—")+"/"+(den!=null?den:"—"), lab:"连带 分子/分母"},
+      ],
+      [{text:`门店 ${openStores}/${totalStores}`, type:"flat"}]
+    );
+  }catch(e){
+    setCard("paid","—",[{num:"—",lab:"付费会员(取数失败)"}],[]);
+  }
+  updateHeader();
+}
+
+// 合规收银不合规明细 CSV 下载（复用看板 daily/noncompliant_<T>.json，与看板口径一致）
+function downloadCashierCSV(){
+  if(!CASHIER_T){ alert("合规收银数据加载中，请稍候再试"); return; }
+  fetch("cashier/daily/noncompliant_"+CASHIER_T+".json?_="+Date.now()).then(function(r){return r.json();}).then(function(j){
+    // 兼容两种格式：数组直接用 / 对象取 noncompliant_rows
+    var rows=Array.isArray(j)?j:(j.noncompliant_rows||[]);
+    if(!rows.length){ alert("当前无不合格明细"); return; }
+    var cols=["单据日期","业务组织","所属分公司","销售门店","单据编号","支付通道","收款方式","收款类型","会员手机号","第三方订单号","判定"];
+    var esc=function(s){ s=String(s==null?"":s); return /[",\n]/.test(s)? '"'+s.replace(/"/g,'""')+'"' : s; };
+    var lines=[cols.join(",")];
+    rows.forEach(function(r){ lines.push(cols.map(function(c){return esc(r[c]);}).join(",")); });
+    var blob=new Blob(["\ufeff"+lines.join("\n")],{type:"text/csv;charset=utf-8"});
+    var a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="不合规明细_"+CASHIER_T+".csv"; a.click();
+  }).catch(function(){ alert("明细加载失败"); });
+}
+document.getElementById("dl-cashier-csv").addEventListener("click", downloadCashierCSV);
+
+buildCards();
+updateHeader();
+loadValidity();
+loadCashier();
+loadPaid();
+loadReturn();
+loadDeposit();
+</script>
+<!-- RETAIL_STATS_START -->
+<script>
+var _hmt=_hmt||[];
+var _hs=document.createElement("script");
+_hs.src="https://hm.baidu.com/hm.js?9fb3732b5569a23866184ac3af991e77";
+var _ss=document.getElementsByTagName("script")[0];
+_ss.parentNode.insertBefore(_hs,_ss);
+</script>
+<!-- RETAIL_STATS_END -->
 </body>
 </html>
+
