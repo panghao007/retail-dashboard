@@ -81,7 +81,7 @@
   <div class="head">
     <div><h1>会员有效性看板</h1><p>来源：ERP 零售单-零售单查询（当月-全部公司）｜ 判定依据：通报商品分类-新.xlsx·商品分类 · 会员有效性规则（&le;2次有效/&gt;2次无效/跨门店救回）</p></div>
   </div>
-  <div class="statbar">统计日期：<b>2026-09-02</b> ｜ 对比前一日：<b>2026-09-01</b> ｜ 数据更新于 <b>2026-09-03 22:20</b></div>
+  <div class="statbar">统计日期：<b>2026-09-02</b> ｜ 对比前一日：<b>2026-09-01</b> ｜ 数据更新于 <b>2026-09-03 22:30</b></div>
   <div class="kpis"><div class="kpi "><div class="label">会员订单数</div><div class="val">1,638<span class="unit">单</span></div><div class="sub2">已剔除无会员号订单 0 单 + 福建精准FX 12 单</div></div><div class="kpi good"><div class="label">有效会员订单</div><div class="val">1,593<span class="unit">单</span></div><div class="sub2">对比昨日新增 +771 单</div></div><div class="kpi bad"><div class="label">无效会员订单</div><div class="val">45<span class="unit">单</span></div><div class="sub2">对比昨日新增 +22 单</div></div><div class="kpi good"><div class="label">有效占比</div><div class="val">97.25<span class="unit">%</span></div></div><div class="kpi bad"><div class="label">无效占比</div><div class="val">2.75<span class="unit">%</span></div></div></div>
   <div class="card"><h2>无效会员每日新增趋势</h2>
     <div class="legend"><span><i class="dot" style="background:#dc2626"></i>无效会员每日新增订单数</span></div>
@@ -110,11 +110,11 @@
     <br><b>异常（新增）：</b>无效会员中，手机号涉及 <b>&ge;2 个不同门店</b> 且当月总次数 <b>&gt;4 次</b> 的，标记为跨门店高频异常号码（高危子集）。
     <br><b>内部业务剔除：</b>内部业务为 <b>买断</b> 或 <b>礼品机出库（内部业务礼品单）</b> 的订单已完全剔除，不计入订单/有效/无效/异常任何统计；礼品机出库明细见配套 Excel 的「内部业务礼品单」独立 sheet（共 220 单）。
     <br><b>已退货剔除：</b>订单行 <b>退货状态</b> 为 <b>已退货</b> 或 <b>部分退货</b> 的整行剔除，不计入会员有效性统计；退货明细见配套 Excel 的「退货订单明细」独立 sheet（共 182 行）。
-    <br><b>福建精准FX 剔除：</b>会员手机号 <b>17701033777</b> 且销售员为 <b>陈青松, 简国庆, 刘树恒</b> 之一的订单，单独列为「福建精准FX」，不计入有效/无效会员订单任何统计（明细见看板「福建精准FX」卡片与 Excel「福建精准FX(剔除)」sheet，共 12 单）。
+    <br><b>福建精准FX 剔除：</b>会员手机号 <b>17701033777</b> 且销售员为 <b>刘树恒, 简国庆, 陈青松</b> 之一的订单，单独列为「福建精准FX」，不计入有效/无效会员订单任何统计（明细见看板「福建精准FX」卡片与 Excel「福建精准FX(剔除)」sheet，共 12 单）。
   </div>
 </div>
   <div style="margin-top:28px;text-align:center;color:#e02424;font-weight:700;font-size:13px;letter-spacing:.5px;">⚠ 内含会员与门店经营敏感数据，请勿外传</div>
-<script>var VAL_TREND=[{"date": "2026-09-01", "invalid": 23, "valid": 822, "total": 845, "branches": {"北京飞航": {"invalid": 17, "valid": 185}, "北京易联": {"invalid": 1, "valid": 236}, "上海爱飞": {"invalid": 4, "valid": 99}, "北京中恒": {"invalid": 0, "valid": 160}, "福建易联": {"invalid": 1, "valid": 59}, "四川新跃": {"invalid": 0, "valid": 83}}}, {"date": "2026-09-02", "invalid": 22, "valid": 771, "total": 793, "branches": {"北京飞航": {"invalid": 12, "valid": 153}, "北京易联": {"invalid": 3, "valid": 228}, "上海爱飞": {"invalid": 6, "valid": 93}, "北京中恒": {"invalid": 1, "valid": 170}, "福建易联": {"invalid": 0, "valid": 42}, "四川新跃": {"invalid": 0, "valid": 85}}}];
+<script>var VAL_TREND=[{"date": "2026-09-01", "invalid": 23, "valid": 822, "total": 845, "branches": {"四川新跃": {"invalid": 0, "valid": 83}, "北京飞航": {"invalid": 17, "valid": 185}, "北京易联": {"invalid": 1, "valid": 236}, "福建易联": {"invalid": 1, "valid": 59}, "上海爱飞": {"invalid": 4, "valid": 99}, "北京中恒": {"invalid": 0, "valid": 160}}}, {"date": "2026-09-02", "invalid": 22, "valid": 771, "total": 793, "branches": {"四川新跃": {"invalid": 0, "valid": 85}, "北京飞航": {"invalid": 12, "valid": 153}, "北京易联": {"invalid": 3, "valid": 228}, "福建易联": {"invalid": 0, "valid": 42}, "上海爱飞": {"invalid": 6, "valid": 93}, "北京中恒": {"invalid": 1, "valid": 170}}}];
 
 (function(){
   var cv=document.getElementById('valTrend');
