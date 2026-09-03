@@ -1,19 +1,19 @@
 {
   "date": "2026-09-02",
-  "generated": "2026-09-02 23:00",
+  "generated": "2026-09-03 16:00",
   "total": {
-    "denominator": 490.0,
-    "numerator": 118.0,
-    "order_denom": 484,
-    "order_num": 118,
-    "amount": 87290.0
+    "denominator": 491.0,
+    "numerator": 119.0,
+    "order_denom": 485,
+    "order_num": 119,
+    "amount": 87688.0
   },
   "branches": {
     "北京中恒": {
       "denominator": 111.0,
-      "numerator": 54.0,
+      "numerator": 55.0,
       "order_denom": 109,
-      "order_num": 54,
+      "order_num": 55,
       "vip_items": [
         {
           "code": "vip-iphone698",
@@ -36,7 +36,7 @@
         {
           "code": "vip-iphone398",
           "name": "iphone会员套餐398",
-          "qty": 7.0,
+          "qty": 8.0,
           "price": 398
         },
         {
@@ -52,7 +52,7 @@
           "price": 1798
         }
       ],
-      "amount": 51892.0
+      "amount": 52290.0
     },
     "四川新跃": {
       "denominator": 55.0,
@@ -103,9 +103,9 @@
       "amount": 10458.0
     },
     "福建易联": {
-      "denominator": 32.0,
+      "denominator": 33.0,
       "numerator": 8.0,
-      "order_denom": 32,
+      "order_denom": 33,
       "order_num": 8,
       "vip_items": [
         {
@@ -265,11 +265,18 @@
       "branch": "北京中恒",
       "store": "APR北京北苑龙湖",
       "denominator": 2.0,
-      "numerator": 0.0,
+      "numerator": 1.0,
       "order_denom": 2,
-      "order_num": 0,
-      "vip_items": [],
-      "amount": 0
+      "order_num": 1,
+      "vip_items": [
+        {
+          "code": "vip-iphone398",
+          "name": "iphone会员套餐398",
+          "qty": 1.0,
+          "price": 398
+        }
+      ],
+      "amount": 398.0
     },
     {
       "branch": "北京中恒",
@@ -1749,9 +1756,9 @@
     {
       "branch": "福建易联",
       "store": "华为福州五四北泰禾广场",
-      "denominator": 8.0,
+      "denominator": 9.0,
       "numerator": 3.0,
-      "order_denom": 8,
+      "order_denom": 9,
       "order_num": 3,
       "vip_items": [
         {
