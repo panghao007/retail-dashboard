@@ -1175,15 +1175,15 @@
     {
       "date": "2026-09-03",
       "invalid": 4,
-      "valid": 2353,
+      "valid": 2352,
       "orders_invalid": 82,
-      "orders_valid": 2424,
-      "total": 2357,
+      "orders_valid": 2423,
+      "total": 2356,
       "branches": {
         "北京飞航": {
           "invalid": 53,
-          "valid": 563,
-          "total": 616
+          "valid": 562,
+          "total": 615
         },
         "上海爱飞": {
           "invalid": 16,
