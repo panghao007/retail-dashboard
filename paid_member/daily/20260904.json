@@ -1,10 +1,10 @@
 {
   "date": "2026-09-04",
-  "generated": "2026-09-04 23:00",
+  "generated": "2026-09-05 16:02",
   "total": {
-    "denominator": 529.0,
+    "denominator": 530.0,
     "numerator": 167.0,
-    "order_denom": 527,
+    "order_denom": 528,
     "order_num": 167,
     "amount": 103124.0
   },
@@ -103,9 +103,9 @@
       "amount": 12948.0
     },
     "福建易联": {
-      "denominator": 41.0,
+      "denominator": 42.0,
       "numerator": 10.0,
-      "order_denom": 41,
+      "order_denom": 42,
       "order_num": 10,
       "vip_items": [
         {
@@ -124,9 +124,9 @@
       "amount": 4290.0
     },
     "北京飞航": {
-      "denominator": 174.0,
+      "denominator": 173.0,
       "numerator": 35.0,
-      "order_denom": 174,
+      "order_denom": 173,
       "order_num": 35,
       "vip_items": [
         {
@@ -139,9 +139,9 @@
       "amount": 3465.0
     },
     "上海爱飞": {
-      "denominator": 62.0,
+      "denominator": 63.0,
       "numerator": 13.0,
-      "order_denom": 62,
+      "order_denom": 63,
       "order_num": 13,
       "vip_items": [
         {
@@ -1927,9 +1927,9 @@
     {
       "branch": "福建易联",
       "store": "华为福州平潭吾悦",
-      "denominator": 1.0,
+      "denominator": 2.0,
       "numerator": 1.0,
-      "order_denom": 1,
+      "order_denom": 2,
       "order_num": 1,
       "vip_items": [
         {
@@ -2132,9 +2132,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京王府井APM授权高级体验店",
-      "denominator": 29.0,
+      "denominator": 28.0,
       "numerator": 3.0,
-      "order_denom": 29,
+      "order_denom": 28,
       "order_num": 3,
       "vip_items": [
         {
@@ -2523,9 +2523,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海复地活力城授权体验店",
-      "denominator": 1.0,
+      "denominator": 2.0,
       "numerator": 2.0,
-      "order_denom": 1,
+      "order_denom": 2,
       "order_num": 2,
       "vip_items": [
         {
