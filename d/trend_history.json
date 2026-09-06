@@ -1295,10 +1295,10 @@
     {
       "date": "2026-09-06",
       "invalid": 9,
-      "valid": 6161,
+      "valid": 6162,
       "orders_invalid": 179,
-      "orders_valid": 6365,
-      "total": 6170,
+      "orders_valid": 6366,
+      "total": 6171,
       "branches": {
         "北京飞航": {
           "invalid": 100,
@@ -1327,8 +1327,8 @@
         },
         "四川新跃": {
           "invalid": 1,
-          "valid": 601,
-          "total": 602
+          "valid": 602,
+          "total": 603
         }
       }
     }
