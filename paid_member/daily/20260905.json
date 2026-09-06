@@ -1,6 +1,6 @@
 {
   "date": "2026-09-05",
-  "generated": "2026-09-05 23:00",
+  "generated": "2026-09-06 16:02",
   "total": {
     "denominator": 828.0,
     "numerator": 246.0,
@@ -88,9 +88,9 @@
       "amount": 34244.0
     },
     "北京易联": {
-      "denominator": 135.0,
+      "denominator": 134.0,
       "numerator": 20.0,
-      "order_denom": 135,
+      "order_denom": 134,
       "order_num": 20,
       "vip_items": [
         {
@@ -103,9 +103,9 @@
       "amount": 9960.0
     },
     "福建易联": {
-      "denominator": 57.0,
+      "denominator": 59.0,
       "numerator": 11.0,
-      "order_denom": 57,
+      "order_denom": 59,
       "order_num": 11,
       "vip_items": [
         {
@@ -145,9 +145,9 @@
       "amount": 7029.0
     },
     "上海爱飞": {
-      "denominator": 95.0,
+      "denominator": 94.0,
       "numerator": 17.0,
-      "order_denom": 95,
+      "order_denom": 94,
       "order_num": 17,
       "vip_items": [
         {
@@ -1671,9 +1671,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京牡丹园翠微",
-      "denominator": 5.0,
+      "denominator": 4.0,
       "numerator": 0.0,
-      "order_denom": 5,
+      "order_denom": 4,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
@@ -1930,9 +1930,9 @@
     {
       "branch": "福建易联",
       "store": "华为福州东街口",
-      "denominator": 3.0,
+      "denominator": 5.0,
       "numerator": 0.0,
-      "order_denom": 3,
+      "order_denom": 5,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
@@ -2842,9 +2842,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海静安大悦城授权体验店",
-      "denominator": 7.0,
+      "denominator": 6.0,
       "numerator": 0.0,
-      "order_denom": 7,
+      "order_denom": 6,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
