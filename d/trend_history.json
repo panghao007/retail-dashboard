@@ -1335,10 +1335,10 @@
     {
       "date": "2026-09-07",
       "invalid": 11,
-      "valid": 6904,
+      "valid": 6905,
       "orders_invalid": 202,
-      "orders_valid": 7132,
-      "total": 6915,
+      "orders_valid": 7133,
+      "total": 6916,
       "branches": {
         "北京飞航": {
           "invalid": 114,
@@ -1357,8 +1357,8 @@
         },
         "北京中恒": {
           "invalid": 6,
-          "valid": 1372,
-          "total": 1378
+          "valid": 1373,
+          "total": 1379
         },
         "福建易联": {
           "invalid": 2,
