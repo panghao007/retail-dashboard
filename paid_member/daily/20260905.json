@@ -1,12 +1,12 @@
 {
   "date": "2026-09-05",
-  "generated": "2026-09-07 16:25",
+  "generated": "2026-09-07 22:42",
   "total": {
-    "denominator": 824.0,
-    "numerator": 246.0,
-    "order_denom": 820,
-    "order_num": 246,
-    "amount": 155107.0
+    "denominator": 823.0,
+    "numerator": 245.0,
+    "order_denom": 819,
+    "order_num": 245,
+    "amount": 155008.0
   },
   "branches": {
     "北京中恒": {
@@ -130,19 +130,19 @@
       "amount": 5589.0
     },
     "北京飞航": {
-      "denominator": 295.0,
-      "numerator": 71.0,
-      "order_denom": 292,
-      "order_num": 71,
+      "denominator": 294.0,
+      "numerator": 70.0,
+      "order_denom": 291,
+      "order_num": 70,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
           "name": "畅玩会员-99",
-          "qty": 71.0,
+          "qty": 70.0,
           "price": 99
         }
       ],
-      "amount": 7029.0
+      "amount": 6930.0
     },
     "上海爱飞": {
       "denominator": 94.0,
@@ -2077,18 +2077,11 @@
       "branch": "北京飞航",
       "store": "DJI北京东方新天地授权体验店",
       "denominator": 6.0,
-      "numerator": 1.0,
+      "numerator": 0.0,
       "order_denom": 6,
-      "order_num": 1,
-      "vip_items": [
-        {
-          "code": "FHQLVIP0003",
-          "name": "畅玩会员-99",
-          "qty": 1.0,
-          "price": 99
-        }
-      ],
-      "amount": 99.0
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0
     },
     {
       "branch": "北京飞航",
@@ -2349,9 +2342,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京金源购物广场授权体验店",
-      "denominator": 13.0,
+      "denominator": 12.0,
       "numerator": 3.0,
-      "order_denom": 13,
+      "order_denom": 12,
       "order_num": 3,
       "vip_items": [
         {
