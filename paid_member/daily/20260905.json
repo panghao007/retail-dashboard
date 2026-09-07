@@ -1,10 +1,10 @@
 {
   "date": "2026-09-05",
-  "generated": "2026-09-07 09:21",
+  "generated": "2026-09-07 16:02",
   "total": {
-    "denominator": 828.0,
+    "denominator": 824.0,
     "numerator": 246.0,
-    "order_denom": 824,
+    "order_denom": 820,
     "order_num": 246,
     "amount": 155107.0
   },
@@ -88,9 +88,9 @@
       "amount": 34244.0
     },
     "北京易联": {
-      "denominator": 134.0,
+      "denominator": 133.0,
       "numerator": 20.0,
-      "order_denom": 134,
+      "order_denom": 133,
       "order_num": 20,
       "vip_items": [
         {
@@ -130,9 +130,9 @@
       "amount": 5589.0
     },
     "北京飞航": {
-      "denominator": 298.0,
+      "denominator": 295.0,
       "numerator": 71.0,
-      "order_denom": 295,
+      "order_denom": 292,
       "order_num": 71,
       "vip_items": [
         {
@@ -1651,9 +1651,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京沙河万达",
-      "denominator": 5.0,
+      "denominator": 4.0,
       "numerator": 0.0,
-      "order_denom": 5,
+      "order_denom": 4,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
@@ -2268,9 +2268,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京蓝色港湾授权体验店",
-      "denominator": 8.0,
+      "denominator": 7.0,
       "numerator": 0.0,
-      "order_denom": 8,
+      "order_denom": 7,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
@@ -2383,9 +2383,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京顺义华联授权体验店",
-      "denominator": 11.0,
+      "denominator": 9.0,
       "numerator": 1.0,
-      "order_denom": 11,
+      "order_denom": 9,
       "order_num": 1,
       "vip_items": [
         {
