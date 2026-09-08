@@ -1,12 +1,12 @@
 {
   "date": "2026-09-07",
-  "generated": "2026-09-07 23:00",
+  "generated": "2026-09-08 16:02",
   "total": {
-    "denominator": 451.0,
-    "numerator": 142.0,
-    "order_denom": 433,
-    "order_num": 142,
-    "amount": 74885.0
+    "denominator": 448.0,
+    "numerator": 141.0,
+    "order_denom": 430,
+    "order_num": 141,
+    "amount": 74786.0
   },
   "branches": {
     "北京中恒": {
@@ -82,9 +82,9 @@
       "amount": 11680.0
     },
     "北京易联": {
-      "denominator": 74.0,
+      "denominator": 72.0,
       "numerator": 13.0,
-      "order_denom": 72,
+      "order_denom": 70,
       "order_num": 13,
       "vip_items": [
         {
@@ -118,19 +118,19 @@
       "amount": 5190.0
     },
     "北京飞航": {
-      "denominator": 142.0,
-      "numerator": 43.0,
-      "order_denom": 138,
-      "order_num": 43,
+      "denominator": 141.0,
+      "numerator": 42.0,
+      "order_denom": 137,
+      "order_num": 42,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
           "name": "畅玩会员-99",
-          "qty": 43.0,
+          "qty": 42.0,
           "price": 99
         }
       ],
-      "amount": 4257.0
+      "amount": 4158.0
     },
     "上海爱飞": {
       "denominator": 63.0,
@@ -1241,9 +1241,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京大兴大族",
-      "denominator": 9.0,
+      "denominator": 7.0,
       "numerator": 1.0,
-      "order_denom": 9,
+      "order_denom": 7,
       "order_num": 1,
       "vip_items": [
         {
@@ -2173,9 +2173,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京颐堤港授权体验店",
-      "denominator": 3.0,
+      "denominator": 2.0,
       "numerator": 0.0,
-      "order_denom": 3,
+      "order_denom": 2,
       "order_num": 0,
       "vip_items": [],
       "amount": 0
@@ -2302,18 +2302,18 @@
       "branch": "北京飞航",
       "store": "DJI大疆哈苏北京朝阳合生汇概念店",
       "denominator": 12.0,
-      "numerator": 7.0,
+      "numerator": 6.0,
       "order_denom": 12,
-      "order_num": 7,
+      "order_num": 6,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
           "name": "畅玩会员-99",
-          "qty": 7.0,
+          "qty": 6.0,
           "price": 99
         }
       ],
-      "amount": 693.0
+      "amount": 594.0
     },
     {
       "branch": "北京飞航",
