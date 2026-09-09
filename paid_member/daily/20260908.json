@@ -1,18 +1,18 @@
 {
   "date": "2026-09-08",
-  "generated": "2026-09-09 16:25",
+  "generated": "2026-09-09 22:42",
   "total": {
-    "denominator": 473.0,
+    "denominator": 470.0,
     "numerator": 133.0,
-    "order_denom": 466,
+    "order_denom": 464,
     "order_num": 133,
     "amount": 83577.0
   },
   "branches": {
     "北京中恒": {
-      "denominator": 102.0,
+      "denominator": 100.0,
       "numerator": 57.0,
-      "order_denom": 100,
+      "order_denom": 99,
       "order_num": 57,
       "vip_items": [
         {
@@ -118,9 +118,9 @@
       "amount": 2793.0
     },
     "北京飞航": {
-      "denominator": 174.0,
+      "denominator": 173.0,
       "numerator": 31.0,
-      "order_denom": 171,
+      "order_denom": 170,
       "order_num": 31,
       "vip_items": [
         {
@@ -152,9 +152,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京万柳华联",
-      "denominator": 5.0,
+      "denominator": 3.0,
       "numerator": 2.0,
-      "order_denom": 3,
+      "order_denom": 2,
       "order_num": 2,
       "vip_items": [
         {
@@ -1870,9 +1870,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京东方新天地授权体验店",
-      "denominator": 6.0,
+      "denominator": 5.0,
       "numerator": 1.0,
-      "order_denom": 6,
+      "order_denom": 5,
       "order_num": 1,
       "vip_items": [
         {
