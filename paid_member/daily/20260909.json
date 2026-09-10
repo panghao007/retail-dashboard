@@ -1,12 +1,12 @@
 {
   "date": "2026-09-09",
-  "generated": "2026-09-09 23:00",
+  "generated": "2026-09-10 14:13",
   "total": {
     "denominator": 467.0,
-    "numerator": 130.0,
+    "numerator": 165.0,
     "order_denom": 462,
-    "order_num": 130,
-    "amount": 76707.0
+    "order_num": 165,
+    "amount": 94172.0
   },
   "branches": {
     "北京中恒": {
@@ -89,10 +89,16 @@
     },
     "北京易联": {
       "denominator": 81.0,
-      "numerator": 7.0,
+      "numerator": 42.0,
       "order_denom": 80,
-      "order_num": 7,
+      "order_num": 42,
       "vip_items": [
+        {
+          "code": "BJYLVIP0004",
+          "name": "499元套包",
+          "qty": 35.0,
+          "price": 499
+        },
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
@@ -100,7 +106,7 @@
           "price": 498
         }
       ],
-      "amount": 3486.0
+      "amount": 20951.0
     },
     "福建易联": {
       "denominator": 27.0,
@@ -1095,11 +1101,18 @@
       "branch": "北京易联",
       "store": "华为北京东坝金隅",
       "denominator": 0.0,
-      "numerator": 0.0,
+      "numerator": 1.0,
       "order_denom": 0,
-      "order_num": 0,
-      "vip_items": [],
-      "amount": 0
+      "order_num": 1,
+      "vip_items": [
+        {
+          "code": "BJYLVIP0004",
+          "name": "499元套包",
+          "qty": 1.0,
+          "price": 499
+        }
+      ],
+      "amount": 499.0
     },
     {
       "branch": "北京易联",
@@ -1115,10 +1128,16 @@
       "branch": "北京易联",
       "store": "华为北京丰台银泰",
       "denominator": 4.0,
-      "numerator": 1.0,
+      "numerator": 3.0,
       "order_denom": 4,
-      "order_num": 1,
+      "order_num": 3,
       "vip_items": [
+        {
+          "code": "BJYLVIP0004",
+          "name": "499元套包",
+          "qty": 2.0,
+          "price": 499
+        },
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
@@ -1126,7 +1145,7 @@
           "price": 498
         }
       ],
-      "amount": 498.0
+      "amount": 1496.0
     },
     {
       "branch": "北京易联",
@@ -1182,11 +1201,18 @@
       "branch": "北京易联",
       "store": "华为北京北苑龙湖",
       "denominator": 4.0,
-      "numerator": 0.0,
+      "numerator": 3.0,
       "order_denom": 4,
-      "order_num": 0,
-      "vip_items": [],
-      "amount": 0
+      "order_num": 3,
+      "vip_items": [
+        {
+          "code": "BJYLVIP0004",
+          "name": "499元套包",
+          "qty": 3.0,
+          "price": 499
+        }
+      ],
+      "amount": 1497.0
     },
     {
       "branch": "北京易联",
@@ -1232,11 +1258,18 @@
       "branch": "北京易联",
       "store": "华为北京大兴大族",
       "denominator": 3.0,
-      "numerator": 0.0,
+      "numerator": 4.0,
       "order_denom": 3,
-      "order_num": 0,
-      "vip_items": [],
-      "amount": 0
+      "order_num": 4,
+      "vip_items": [
+        {
+          "code": "BJYLVIP0004",
+          "name": "499元套包",
+          "qty": 4.0,
+          "price": 499
+        }
+      ],
+      "amount": 1996.0
     },
     {
       "branch": "北京易联",
@@ -1269,21 +1302,35 @@
       "branch": "北京易联",
       "store": "华为北京怀柔万达",
       "denominator": 6.0,
-      "numerator": 0.0,
+      "numerator": 2.0,
       "order_denom": 6,
-      "order_num": 0,
-      "vip_items": [],
-      "amount": 0
+      "order_num": 2,
+      "vip_items": [
+        {
+          "code": "BJYLVIP0004",
+          "name": "499元套包",
+          "qty": 2.0,
+          "price": 499
+        }
+      ],
+      "amount": 998.0
     },
     {
       "branch": "北京易联",
       "store": "华为北京房山万科",
       "denominator": 1.0,
-      "numerator": 0.0,
+      "numerator": 7.0,
       "order_denom": 1,
-      "order_num": 0,
-      "vip_items": [],
-      "amount": 0
+      "order_num": 7,
+      "vip_items": [
+        {
+          "code": "BJYLVIP0004",
+          "name": "499元套包",
+          "qty": 7.0,
+          "price": 499
+        }
+      ],
+      "amount": 3493.0
     },
     {
       "branch": "北京易联",
@@ -1299,18 +1346,24 @@
       "branch": "北京易联",
       "store": "华为北京方庄新城",
       "denominator": 4.0,
-      "numerator": 1.0,
+      "numerator": 4.0,
       "order_denom": 4,
-      "order_num": 1,
+      "order_num": 4,
       "vip_items": [
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
           "qty": 1.0,
           "price": 498
+        },
+        {
+          "code": "BJYLVIP0004",
+          "name": "499元套包",
+          "qty": 3.0,
+          "price": 499
         }
       ],
-      "amount": 498.0
+      "amount": 1995.0
     },
     {
       "branch": "北京易联",
@@ -1336,20 +1389,33 @@
       "branch": "北京易联",
       "store": "华为北京来福士",
       "denominator": 4.0,
-      "numerator": 0.0,
+      "numerator": 4.0,
       "order_denom": 4,
-      "order_num": 0,
-      "vip_items": [],
-      "amount": 0
+      "order_num": 4,
+      "vip_items": [
+        {
+          "code": "BJYLVIP0004",
+          "name": "499元套包",
+          "qty": 4.0,
+          "price": 499
+        }
+      ],
+      "amount": 1996.0
     },
     {
       "branch": "北京易联",
       "store": "华为北京槐房万达",
       "denominator": 1.0,
-      "numerator": 1.0,
+      "numerator": 2.0,
       "order_denom": 1,
-      "order_num": 1,
+      "order_num": 2,
       "vip_items": [
+        {
+          "code": "BJYLVIP0004",
+          "name": "499元套包",
+          "qty": 1.0,
+          "price": 499
+        },
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
@@ -1357,7 +1423,7 @@
           "price": 498
         }
       ],
-      "amount": 498.0
+      "amount": 997.0
     },
     {
       "branch": "北京易联",
@@ -1373,11 +1439,18 @@
       "branch": "北京易联",
       "store": "华为北京沙河万达",
       "denominator": 1.0,
-      "numerator": 0.0,
+      "numerator": 1.0,
       "order_denom": 1,
-      "order_num": 0,
-      "vip_items": [],
-      "amount": 0
+      "order_num": 1,
+      "vip_items": [
+        {
+          "code": "BJYLVIP0004",
+          "name": "499元套包",
+          "qty": 1.0,
+          "price": 499
+        }
+      ],
+      "amount": 499.0
     },
     {
       "branch": "北京易联",
@@ -1393,20 +1466,33 @@
       "branch": "北京易联",
       "store": "华为北京牡丹园翠微",
       "denominator": 7.0,
-      "numerator": 0.0,
+      "numerator": 1.0,
       "order_denom": 7,
-      "order_num": 0,
-      "vip_items": [],
-      "amount": 0
+      "order_num": 1,
+      "vip_items": [
+        {
+          "code": "BJYLVIP0004",
+          "name": "499元套包",
+          "qty": 1.0,
+          "price": 499
+        }
+      ],
+      "amount": 499.0
     },
     {
       "branch": "北京易联",
       "store": "华为北京石景山万达",
       "denominator": 6.0,
-      "numerator": 1.0,
+      "numerator": 4.0,
       "order_denom": 6,
-      "order_num": 1,
+      "order_num": 4,
       "vip_items": [
+        {
+          "code": "BJYLVIP0004",
+          "name": "499元套包",
+          "qty": 3.0,
+          "price": 499
+        },
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
@@ -1414,17 +1500,24 @@
           "price": 498
         }
       ],
-      "amount": 498.0
+      "amount": 1995.0
     },
     {
       "branch": "北京易联",
       "store": "华为北京西铁营万达",
       "denominator": 2.0,
-      "numerator": 0.0,
+      "numerator": 3.0,
       "order_denom": 2,
-      "order_num": 0,
-      "vip_items": [],
-      "amount": 0
+      "order_num": 3,
+      "vip_items": [
+        {
+          "code": "BJYLVIP0004",
+          "name": "499元套包",
+          "qty": 3.0,
+          "price": 499
+        }
+      ],
+      "amount": 1497.0
     },
     {
       "branch": "北京易联",
