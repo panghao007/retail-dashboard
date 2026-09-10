@@ -1,19 +1,19 @@
 {
   "date": "2026-09-08",
-  "generated": "2026-09-10 14:13",
+  "generated": "2026-09-10 16:02",
   "total": {
     "denominator": 470.0,
-    "numerator": 134.0,
+    "numerator": 133.0,
     "order_denom": 464,
-    "order_num": 134,
-    "amount": 84076.0
+    "order_num": 133,
+    "amount": 82878.0
   },
   "branches": {
     "北京中恒": {
       "denominator": 100.0,
-      "numerator": 57.0,
+      "numerator": 56.0,
       "order_denom": 99,
-      "order_num": 57,
+      "order_num": 56,
       "vip_items": [
         {
           "code": "vip-iphone698",
@@ -42,7 +42,7 @@
         {
           "code": "vip-iphone1198",
           "name": "ipone会员套餐1198",
-          "qty": 3.0,
+          "qty": 2.0,
           "price": 1198
         },
         {
@@ -52,7 +52,7 @@
           "price": 1798
         }
       ],
-      "amount": 51886.0
+      "amount": 50688.0
     },
     "四川新跃": {
       "denominator": 35.0,
@@ -209,16 +209,10 @@
       "branch": "北京中恒",
       "store": "APR北京五棵松华熙",
       "denominator": 5.0,
-      "numerator": 3.0,
+      "numerator": 2.0,
       "order_denom": 5,
-      "order_num": 3,
+      "order_num": 2,
       "vip_items": [
-        {
-          "code": "vip-iphone1198",
-          "name": "ipone会员套餐1198",
-          "qty": 1.0,
-          "price": 1198
-        },
         {
           "code": "vip-iphone1498",
           "name": "ipone会员套餐1498",
@@ -232,7 +226,7 @@
           "price": 998
         }
       ],
-      "amount": 3694.0
+      "amount": 2496.0
     },
     {
       "branch": "北京中恒",
