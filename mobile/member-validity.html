@@ -40,6 +40,8 @@ window.BUILD = function(period, dash, active){
   const bl=period.branchList||dash.branchList||[];
   const maxR=Math.max(0.01,...bl.map(b=>b.invalidRate));
   const branchHtml=bl.map((b,i)=>detailItem(i,b.name,b.invalidRate+'%',(b.invalidRate>=5?'c-red':'c-orange'),b.invalidRate/maxR*100,(b.invalidRate>=5?'#ff3b30':'#ff9500'))).join('');
+  // 分子/分母明细（与率同口径：无效会员订单 ÷ 会员订单总数）
+  const branchDist=bl.map(b=>`<div class="detail-item"><div class="detail-item-name">${esc(b.name)}</div><div class="detail-item-value c-gray">${fmt(b.invalid)}笔 / ${fmt(b.total)}笔</div></div>`).join('');
   const st=period.storeTop10||dash.storeTop10||[];
   const storeHtml=st.map(s=>storeItem(s.name,s.company+' · 总'+fmt(s.total)+'单',s.invalid,s.rate+'%',(s.rate>=10?'c-red':'c-orange'),s.rate>=10)).join('');
   const ph=period.phoneTop||dash.phoneTop||[];
@@ -71,6 +73,10 @@ window.BUILD = function(period, dash, active){
       <div><div class="card-title">各分公司明细</div><div class="card-subtitle">订单占比 · 无效排名 · ${esc(pname)}</div></div>
     </div></div>
     <div class="detail-list">${branchHtml}</div>
+    <div class="detail-section">
+      <div class="detail-title">分公司无效单数（无效 / 总单）</div>
+      <div class="detail-list">${branchDist}</div>
+    </div>
   </div>
   <div class="card">
     <div class="card-head"><div class="card-head-left">

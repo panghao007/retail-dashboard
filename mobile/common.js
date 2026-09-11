@@ -297,16 +297,38 @@ async function loadPaid(onlyPeriods){
     const sel=validDays.filter(d=>ds.includes(norm(d.date||'')));
     if(!sel.length) continue;
     const tot={denominator:0,numerator:0,order_denom:0,order_num:0,amount:0,profit:0};
-    const br={}; const st=[];
+    const br={}; const stMap={};
+    // VIP 档位（vip_items）按 code 归并：{code:{name,qty}}
+    function addTier(bucket, items){
+      (items||[]).forEach(it=>{
+        if(!it || !it.code) return;
+        const t=bucket[it.code]=bucket[it.code]||{name:(it.name||it.code).replace(/会员套餐?/,''),qty:0};
+        t.qty+=(it.qty||0);
+      });
+    }
+    // 档位对象 -> 按销量降序的数组
+    function tierArr(o){ return Object.keys(o||{}).map(k=>({code:k,name:o[k].name,qty:Math.round(o[k].qty)})).sort((a,b)=>b.qty-a.qty); }
     for(const d of sel){
       const t=d.total||{}; for(const k in tot) tot[k]+=(t[k]||0);
-      for(const [b,v] of Object.entries(d.branches||{})){ const acc=br[b]=br[b]||{denominator:0,numerator:0,order_denom:0,order_num:0,amount:0,profit:0}; for(const k in acc) acc[k]+=(v[k]||0); }
-      if(d.stores) st.push(...d.stores);
+      for(const [b,v] of Object.entries(d.branches||{})){
+        const acc=br[b]=br[b]||{denominator:0,numerator:0,order_denom:0,order_num:0,amount:0,profit:0,tiers:{}};
+        for(const k in tot) acc[k]+=(v[k]||0);
+        addTier(acc.tiers, v.vip_items);
+      }
+      // 门店按店名跨天合并（此前逐天 push 会让同一门店重复上榜 / 档位缺失）
+      (d.stores||[]).forEach(s=>{
+        if(!s || !s.store) return;
+        const o=stMap[s.store]=stMap[s.store]||{store:s.store,branch:s.branch||'',denominator:0,numerator:0,amount:0,profit:0,tiers:{}};
+        o.denominator+=(s.denominator||0); o.numerator+=(s.numerator||0);
+        o.amount+=(s.amount||0); o.profit+=(s.profit||0);
+        if(!o.branch && s.branch) o.branch=s.branch;
+        addTier(o.tiers, s.vip_items);
+      });
     }
     const rate=tot.denominator?+(tot.numerator/tot.denominator*100).toFixed(2):0;
     const orderRate=tot.order_denom?+(tot.order_num/tot.order_denom*100).toFixed(2):0;
-    const branchList=Object.entries(br).filter(([b])=>b).map(([b,v])=>({name:b, rate:v.denominator?+(v.numerator/v.denominator*100).toFixed(2):0, denominator:Math.round(v.denominator), numerator:Math.round(v.numerator), value:Math.round(v.amount), profit:Math.round(v.profit), meta:Math.round(v.denominator)+'台 · VIP'+Math.round(v.numerator)+' · 产值¥'+(v.amount/10000).toFixed(2)+'万 · 纯利¥'+(v.profit/10000).toFixed(2)+'万'})).sort((a,b)=>b.rate-a.rate);
-    const storeTop10=st.filter(s=>s.store && (s.denominator||0)>=5).map(s=>({name:s.store, company:s.branch||'', rate:s.denominator?+(s.numerator/s.denominator*100).toFixed(2):0, denominator:Math.round(s.denominator||0), numerator:Math.round(s.numerator||0)})).sort((a,b)=>b.rate-a.rate).slice(0,10);
+    const branchList=Object.entries(br).filter(([b])=>b).map(([b,v])=>({name:b, rate:v.denominator?+(v.numerator/v.denominator*100).toFixed(2):0, denominator:Math.round(v.denominator), numerator:Math.round(v.numerator), value:Math.round(v.amount), profit:Math.round(v.profit), tiers:tierArr(v.tiers), meta:Math.round(v.denominator)+'台 · VIP'+Math.round(v.numerator)+' · 产值¥'+(v.amount/10000).toFixed(2)+'万 · 纯利¥'+(v.profit/10000).toFixed(2)+'万'})).sort((a,b)=>b.rate-a.rate);
+    const storeTop10=Object.values(stMap).filter(s=>s.store && (s.denominator||0)>=5).map(s=>({name:s.store, company:s.branch||'', rate:s.denominator?+(s.numerator/s.denominator*100).toFixed(2):0, denominator:Math.round(s.denominator||0), numerator:Math.round(s.numerator||0), tiers:tierArr(s.tiers)})).sort((a,b)=>b.rate-a.rate).slice(0,10);
     periods[p]={ dates:ds.slice().sort(), denominator:Math.round(tot.denominator), numerator:Math.round(tot.numerator), rate, orderRate, value:Math.round(tot.amount), profit:Math.round(tot.profit), branchList, storeTop10 };
   }
   if(!Object.keys(periods).length) return null;

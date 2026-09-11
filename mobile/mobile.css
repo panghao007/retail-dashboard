@@ -80,3 +80,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .footer{text-align:center;padding:24px 20px 0;font-size:11px;color:#86868b;line-height:1.6}
 .footer-link{color:#0071E3;font-weight:600;text-decoration:none}
 .loading{padding:60px 20px;text-align:center;color:#86868b;font-size:13px}
+/* ---------- VIP 档位抽屉（付费会员页：分公司行 / 门店行点击展开） ---------- */
+.tier-head{cursor:pointer}
+.tier-head .exp{display:inline-block;font-size:10px;color:#86868b;margin-left:4px;transition:transform .2s}
+.tier-head.open .exp{transform:rotate(90deg)}
+.tier-drawer{display:none;margin:-2px 0 10px;padding:10px 12px;background:rgba(175,82,222,0.06);border:1px solid rgba(175,82,222,0.14);border-radius:10px;font-size:12px;color:#1d1d1f;line-height:1.9;font-variant-numeric:tabular-nums}
+.tier-drawer.open{display:block}
+.tier-drawer .tier-tag{margin-right:6px;vertical-align:1px}
+.tier-line{margin-top:2px}
