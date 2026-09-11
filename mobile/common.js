@@ -112,22 +112,39 @@ async function loadMember(){
   if(!html) return null;
   const VP = extractJsonVar(html, 'VAL_PERIODS');
   if(!VP) return null;
+  // 🔴 口径铁律（2026-09-12 修「切日期下面不变」）：
+  //    d/<日期>_dashboard_data.json 是「当月累计」快照（09-10→09-11 总量 9814→10845 递增），
+  //    把它当单日/单周口径用是错的。每个周期（当日/昨日/本周/本月/上月）的分公司口径只存在于
+  //    VAL_PERIODS[p].branches —— 与 PC 看板周期按钮联动分公司表用的是同一份数据，必须按周期取。
   const periods = {};
   for(const p of PERIOD_ORDER){
     const d = VP[p]; if(!d) continue;
     const dates=(d.dates||[]).map(norm);
     const total=d.total||0, valid=d.valid||0, invalid=d.invalid||0;
+    const branchList = Object.keys(d.branches||{}).filter(n=>n).map(n=>{
+      const v=(d.branches||{})[n]||{};
+      const vd=v.valid||0, iv=v.invalid||0, tt=v.total||(vd+iv);
+      return { name:n, valid:vd, invalid:iv, total:tt,
+        invalidRate: tt?+(iv/tt*100).toFixed(2):0,
+        validRate: tt?+(vd/tt*100).toFixed(2):0 };
+    }).sort((a,b)=>b.invalidRate-a.invalidRate);
     periods[p]={ dates, total, valid, invalid,
       validRate: total?+(valid/total*100).toFixed(2):0,
-      invalidRate: total?+(invalid/total*100).toFixed(2):0 };
+      invalidRate: total?+(invalid/total*100).toFixed(2):0,
+      branchList };
   }
+  if(!Object.keys(periods).length) return null;
   const latestDate = (VP.day && VP.day.dates && VP.day.dates[0]) ? VP.day.dates[0] : '';
-  let branchList=[], storeTop10=[], phoneTop=[], focusStore=null, rules='';
+  // 顶层 branchList = 本月口径（总览卡沿用）；门店/号码维度源只有当月累计快照（PC 同样是月口径、不随周期变）
+  let branchList = (periods.month && periods.month.branchList) || [];
+  let storeTop10=[], phoneTop=[], focusStore=null, rules='', detailScope='';
   try{
     const dd = await fetchJson(enc('../d/'+latestDate+'_dashboard_data.json'));
     if(dd){
       const bs = dd.branch_stats||[];
-      branchList = bs.filter(b=>b['分公司']).map(b=>({name:b['分公司'], invalidRate:+(b['无效占比']||0).toFixed(2), invalid:b['无效会员订单']||0, total:b['总订单数']||0})).sort((a,b)=>b.invalidRate-a.invalidRate).slice(0,6);
+      if(!branchList.length){
+        branchList = bs.filter(b=>b['分公司']).map(b=>({name:b['分公司'], invalidRate:+(b['无效占比']||0).toFixed(2), invalid:b['无效会员订单']||0, valid:0, total:b['总订单数']||0})).sort((a,b)=>b.invalidRate-a.invalidRate).slice(0,6);
+      }
       const ss = dd.store_stats||[];
       storeTop10 = ss.filter(s=>s['门店'] && (s['总订单数']||0)>=20).map(s=>({name:s['门店'], company:s['所属分公司']||'', total:s['总订单数']||0, invalid:s['无效会员订单']||0, rate:+(s['无效占比']||0).toFixed(2)})).sort((a,b)=>b.rate-a.rate).slice(0,10);
       const idl = dd.invalid_detail||[];
@@ -135,10 +152,11 @@ async function loadMember(){
       if(ss.length){ const top=ss[0]; focusStore={name:top['门店'], company:top['所属分公司']||'', phone:(top['无效号码']||[])[0]||'', rate:+(top['无效占比']||0).toFixed(2), invalid:top['无效会员订单']||0, total:top['总订单数']||0}; }
       const fx = dd.fx_count||0;
       rules='≤2次有效 / >2次无效 / 跨门店救回。已剔除无会员号订单与福建精准FX '+fx+'单。';
-      return { periods, latest_date: dd.latest_date||latestDate, branchList, storeTop10, phoneTop, focusStore, rules };
+      detailScope='本月累计（截至 '+(dd.latest_date||latestDate)+'）';
+      return { periods, latest_date: dd.latest_date||latestDate, branchList, storeTop10, phoneTop, focusStore, rules, detailScope };
     }
   }catch(e){ /* 明细缺失仍可显示周期汇总 */ }
-  return { periods, latest_date: latestDate, branchList, storeTop10, phoneTop, focusStore, rules };
+  return { periods, latest_date: latestDate, branchList, storeTop10, phoneTop, focusStore, rules, detailScope };
 }
 
 /* ---------- 合规收银 ---------- */
