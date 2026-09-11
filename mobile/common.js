@@ -157,16 +157,59 @@ function cashier100(D){
   const top=comp.sort((a,b)=>b[1].count-a[1].count).slice(0,5).map(([n,v])=>({name:n,count:v.count}));
   return {count:comp.length, total, pct: total?+(comp.length/total*100).toFixed(1):0, top5:top};
 }
-// 合规收银：PC 看板文件名含中文，GitHub Pages 对浏览器百分号编码的中文路径返回 404，
-// 故移动端改取 ASCII 镜像 cashier_data.json（由 gen_mobile_data.js 从线上抽取，随皮肤提交）。
+// 合规收银：直接 fetch 驾驶舱用的同一份 PC 看板（中文文件名，已验证 GitHub Pages 可取），
+// 与 dashboard.html 读同一源、同一 var PERIODS，数据逐字一致、自动跟随 PC。
 async function loadCashier(){
-  try{ return await fetchJson('./cashier_data.json'); }catch(e){ return null; }
+  const html = await fetchText('../cashier/收银合规看板.html');
+  if(!html) return null;
+  const P = extractJsonVar(html, 'PERIODS');
+  if(!P) return null;
+  const periods={};
+  for(const p of PERIOD_ORDER){
+    const d=P[p]; if(!d||!d.D) continue;
+    const D=d.D;
+    const total=D.total||0, comp=D.compliant||0, noncomp=D.noncompliant||0, excl=D.excluded||0;
+    const base=comp+noncomp;
+    periods[p]={ dates:(d.dates||[]).map(norm), total, compliant:comp, noncompliant:noncomp, excluded:excl,
+      compliantRate: base?+(comp/base*100).toFixed(2):0,
+      branchList: cashierBranch(D), storeTop10: cashierStore(D), channelList: cashierChannel(D), compliant100: cashier100(D) };
+  }
+  if(!Object.keys(periods).length) return null;
+  return { periods };
 }
 
 /* ---------- 零售退货 ---------- */
-// 零售退货：同上原因，改取 ASCII 镜像 return_data.json。
+// 零售退货：同上，直接 fetch 驾驶舱用的同一份 PC 看板（var RDATA），与 dashboard.html 同源一致。
 async function loadReturn(){
-  try{ return await fetchJson('./return_data.json'); }catch(e){ return null; }
+  const html = await fetchText('../return_order/零售退货单看板.html');
+  if(!html) return null;
+  const R = extractJsonVar(html, 'RDATA');
+  if(!R || !R.daily) return null;
+  const daily=R.daily;
+  const keys=Object.keys(daily).map(norm).sort();
+  if(!keys.length) return null;
+  const latest=norm(R.T||keys[keys.length-1]);
+  const sb=R.store_branch||{};
+  const periods={};
+  for(const p of PERIOD_ORDER){
+    let sel=keys.filter(k=>periodDateSet(keys,p,latest).includes(k));
+    if(!sel.length) sel=(p==='day'||p==='yest')?[latest]:[];
+    let rc=0,sc=0,ra=0; const br={},st={};
+    for(const k of sel){
+      const dk=daily[k]||{};
+      rc+=dk.return_count||0; sc+=dk.sales_count||0; ra+=dk.return_amount||0;
+      for(const [b,v] of Object.entries(dk.branch||{})){ br[b]=br[b]||{return_count:0,sales_count:0}; br[b].return_count+=(v.return_count||0); br[b].sales_count+=(v.sales_count||0); }
+      for(const [s,v] of Object.entries(dk.store||{})){ st[s]=st[s]||{return_count:0,sales_count:0,return_amount:0}; st[s].return_count+=(v.return_count||0); st[s].sales_count+=(v.sales_count||0); st[s].return_amount+=(v.return_amount||0); }
+    }
+    const branchList=Object.entries(br).filter(([b])=>b).map(([b,x])=>({name:b, rate:x.sales_count?+(x.return_count/x.sales_count*100).toFixed(2):0, returnCount:x.return_count, salesCount:x.sales_count})).sort((a,b)=>b.rate-a.rate).slice(0,6);
+    const storeTop10=Object.entries(st).filter(([s])=>s && st[s].sales_count>=20).map(([s,x])=>({name:s, company:sb[s]||'', rate:x.sales_count?+(x.return_count/x.sales_count*100).toFixed(2):0, returnCount:x.return_count, salesCount:x.sales_count, amount:Math.round(x.return_amount||0)})).sort((a,b)=>b.rate-a.rate).slice(0,10);
+    const compMap={};
+    for(const [s,x] of Object.entries(st)){ const c=sb[s]||'未知'; (compMap[c]=compMap[c]||[]).push({name:s, rate:x.sales_count?+(x.return_count/x.sales_count*100).toFixed(2):0, returnCount:x.return_count, salesCount:x.sales_count, amount:Math.round(x.return_amount||0)}); }
+    const branchStore=Object.entries(compMap).map(([c,lst])=>{ const lst2=lst.slice().sort((a,b)=>b.rate-a.rate).slice(0,5); const crc=lst2.reduce((a,x)=>a+x.returnCount,0), csc=lst2.reduce((a,x)=>a+x.salesCount,0); return {company:c, rate:csc?+(crc/csc*100).toFixed(2):0, stores:lst2}; }).sort((a,b)=>b.rate-a.rate);
+    periods[p]={ dates:sel.slice().sort(), returnCount:rc, salesCount:sc, rate:sc?+(rc/sc*100).toFixed(2):0, branchList, storeTop10, branchStore };
+  }
+  if(!Object.keys(periods).length) return null;
+  return { periods, latest_date: R.generated||latest };
 }
 
 /* ---------- 付费会员 ---------- */
