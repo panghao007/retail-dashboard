@@ -1495,10 +1495,10 @@
     {
       "date": "2026-09-11",
       "invalid": 24,
-      "valid": 10167,
+      "valid": 10169,
       "orders_invalid": 351,
-      "orders_valid": 10492,
-      "total": 10191,
+      "orders_valid": 10494,
+      "total": 10193,
       "branches": {
         "北京飞航": {
           "invalid": 182,
@@ -1512,8 +1512,8 @@
         },
         "北京易联": {
           "invalid": 74,
-          "valid": 2310,
-          "total": 2384
+          "valid": 2311,
+          "total": 2385
         },
         "北京中恒": {
           "invalid": 9,
@@ -1522,8 +1522,8 @@
         },
         "福建易联": {
           "invalid": 3,
-          "valid": 631,
-          "total": 634
+          "valid": 632,
+          "total": 635
         },
         "四川新跃": {
           "invalid": 1,
