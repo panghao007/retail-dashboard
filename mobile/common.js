@@ -82,6 +82,11 @@ function extractJsonVar(html, name){
 }
 function norm(d){ return String(d==null?'':d).replace(/-/g,''); }
 function md(d){ d=norm(d); return d.slice(4,6)+'-'+d.slice(6,8); }
+/* 北京时间 YYYYMMDD；offset = 往前推的天数 */
+function bjYMD(offset){
+  const bj=new Date(Date.now()+8*3600000-(offset||0)*86400000);
+  return bj.getUTCFullYear()+String(bj.getUTCMonth()+1).padStart(2,'0')+String(bj.getUTCDate()).padStart(2,'0');
+}
 function periodDateSet(allDates, kind, latest){
   allDates = allDates.map(norm); latest = norm(latest);
   if(!allDates.length || !latest) return [];
@@ -212,20 +217,55 @@ async function loadReturn(){
   return { periods, latest_date: R.generated||latest };
 }
 
+/* 零售退货·总览页专用轻量版：只取最近一天的退货明细（约 26KB），
+   与 dashboard.html 所用的 RDATA.daily 逐字同构（同一次管线同时生成），
+   仅为一张卡片避免下载 1.1MB 看板全文。失败则由调用方回退 loadReturn()。 */
+async function loadReturnLight(){
+  for(let back=0; back<=7; back++){
+    const dt=bjYMD(back);
+    let j=null;
+    try{ j=await fetchJson(enc('../return_order/daily/'+dt+'.json')); }catch(e){ continue; }
+    if(!j || j.return_count==null) continue;
+    const dk=norm(j.date||dt);
+    const br={};
+    for(const [b,v] of Object.entries(j.branch||{})){
+      if(!b) continue;
+      br[b]={return_count:v.return_count||0, sales_count:v.sales_count||0};
+    }
+    const branchList=Object.entries(br).map(([b,x])=>({
+      name:b,
+      rate:x.sales_count?+(x.return_count/x.sales_count*100).toFixed(2):0,
+      returnCount:x.return_count, salesCount:x.sales_count
+    })).sort((a,b)=>b.rate-a.rate).slice(0,6);
+    const period={
+      dates:[dk], returnCount:j.return_count||0, salesCount:j.sales_count||0,
+      rate:j.sales_count?+(j.return_count/j.sales_count*100).toFixed(2):0,
+      branchList, storeTop10:[], branchStore:[]
+    };
+    return { periods:{ day: period }, latest_date: dk };
+  }
+  return null;
+}
+
 /* ---------- 付费会员 ---------- */
-async function loadPaid(){
+async function loadPaid(onlyPeriods){
   let idx;
   try{ idx = await fetchJson(enc('../paid_member/daily_index.json')); }catch(e){ return null; }
   if(!idx || !idx.dates || !idx.dates.length) return null;
   const dates=idx.dates.map(norm).sort();
   const latest=dates[dates.length-1];
+  // 只算指定周期时，仅拉取这些周期覆盖的日期（总览页只看当月 → 从 42 天降到约 11 天）
+  const wantP=(Array.isArray(onlyPeriods)&&onlyPeriods.length)?onlyPeriods:PERIOD_ORDER;
+  const needSet=new Set();
+  for(const p of wantP) periodDateSet(dates,p,latest).forEach(d=>needSet.add(norm(d)));
+  const needDates=[...needSet].filter(d=>dates.includes(d)).sort();
   const cache={};
   async function getDay(dt){ if(cache[dt]) return cache[dt]; const j=await fetchJson(enc('../paid_member/daily/'+dt+'.json')); cache[dt]=j||null; return cache[dt]; }
-  const days=await Promise.all(dates.map(getDay));
+  const days=await Promise.all(needDates.map(getDay));
   const validDays=days.filter(Boolean);
   if(!validDays.length) return null;
   const periods={};
-  for(const p of PERIOD_ORDER){
+  for(const p of wantP){
     const ds=periodDateSet(dates,p,latest);
     const sel=validDays.filter(d=>ds.includes(norm(d.date||'')));
     if(!sel.length) continue;
