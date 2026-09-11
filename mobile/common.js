@@ -169,6 +169,8 @@ async function loadCashier(){
   if(!html) return null;
   const P = extractJsonVar(html, 'PERIODS');
   if(!P) return null;
+  const tM = html.match(/var\s+T\s*=\s*"([^"]+)"/);
+  const T = (tM && tM[1]) ? tM[1] : null;  // 合规收银数据日期 YYYYMMDD，供移动端"不合规明细 CSV"下载
   const periods={};
   for(const p of PERIOD_ORDER){
     const d=P[p]; if(!d||!d.D) continue;
@@ -180,7 +182,7 @@ async function loadCashier(){
       branchList: cashierBranch(D), storeTop10: cashierStore(D), channelList: cashierChannel(D), compliant100: cashier100(D) };
   }
   if(!Object.keys(periods).length) return null;
-  return { periods };
+  return { periods, latest_date: T || undefined };
 }
 
 /* ---------- 零售退货 ---------- */

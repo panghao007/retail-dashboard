@@ -15,6 +15,13 @@
   <div class="header-date" id="hdrDate"><span class="dot"></span>实时数据</div>
 </div>
 <div class="cards" id="cards"><div class="loading">数据加载中…</div></div>
+<div class="dl-section">
+  <div class="dl-title">数据下载（各看板明细 Excel / CSV）</div>
+  <div class="dl-row">
+    <a class="dl-btn disabled" id="dl-validity" href="javascript:void(0)">⬇ 会员有效性分析.xlsx</a>
+    <a class="dl-btn disabled" id="dl-cashier-csv" href="javascript:void(0)">⬇ 合规收银不合规明细 CSV</a>
+  </div>
+</div>
 <div class="footer">
   内含会员与门店经营敏感数据，请勿外传<br>
   <span id="genTime"></span>
@@ -98,6 +105,7 @@ function renderCard(c){
    cashier  单文件 379KB
    paid     只拉当月（约 11 天），不再拉全部 42 天
    return   只拉最近 1 天 26KB，不再拉 1.1MB 看板全文                       */
+const DATE_BY_KEY={};  // 各看板数据日期：member=有效性(YYYY-MM-DD) 用于 xlsx；cashier=合规收银 T(YYYYMMDD) 用于 CSV
 const SPECS=[
   {key:'member', run:loadMember,              build:cardMember},
   {key:'cashier',run:loadCashier,             build:cardCashier},
@@ -127,11 +135,50 @@ async function bootIndex(){
   SPECS.forEach(s=>{
     Promise.resolve()
       .then(()=>s.run())
-      .then(d=>{ const c=s.build(d); if(c) CARDS[s.key]=c; if(d&&d.latest_date) DATES.push(d.latest_date); })
+      .then(d=>{ const c=s.build(d); if(c) CARDS[s.key]=c; if(d&&d.latest_date){ DATES.push(d.latest_date); DATE_BY_KEY[s.key]=d.latest_date; } updateDownloads(); })
       .catch(()=>{ /* 单个看板失败：跳过，其余照常渲染 */ })
       .then(()=>{ settled++; paint(); });
   });
 }
+
+/* ---------- 数据下载（与驾驶舱一致：有效性 xlsx + 合规收银不合规明细 CSV） ---------- */
+let CASHIER_T=null;
+function updateDownloads(){
+  const vEl=document.getElementById('dl-validity');
+  const cEl=document.getElementById('dl-cashier-csv');
+  if(vEl){
+    const vd=DATE_BY_KEY.member;
+    if(vd){
+      const fn=vd+'_会员有效性分析.xlsx';
+      vEl.href='../d/'+encodeURIComponent(fn);
+      vEl.setAttribute('download', fn);
+      vEl.textContent='⬇ 会员有效性分析('+vd+').xlsx';
+      vEl.classList.remove('disabled');
+    } else { vEl.classList.add('disabled'); }
+  }
+  if(cEl){
+    if(DATE_BY_KEY.cashier){
+      CASHIER_T=DATE_BY_KEY.cashier;
+      cEl.textContent='⬇ 合规收银不合规明细('+DATE_BY_KEY.cashier+').csv';
+      cEl.classList.remove('disabled');
+    } else { cEl.classList.add('disabled'); }
+  }
+}
+function downloadCashierCSV(T){
+  if(!T){ alert('合规收银数据加载中，请稍候再试'); return; }
+  fetch('../cashier/daily/noncompliant_'+T+'.json?_='+Date.now()).then(function(r){return r.json();}).then(function(j){
+    var rows=Array.isArray(j)?j:(j.noncompliant_rows||[]);
+    if(!rows.length){ alert('当前无不合格明细'); return; }
+    var cols=["单据日期","业务组织","所属分公司","销售门店","单据编号","支付通道","收款方式","收款类型","会员手机号","第三方订单号","判定"];
+    var esc=function(s){ s=String(s==null?"":s); return /[",\n]/.test(s)? '"'+s.replace(/"/g,'""')+'"' : s; };
+    var lines=[cols.join(",")];
+    rows.forEach(function(r){ lines.push(cols.map(function(c){return esc(r[c]);}).join(",")); });
+    var blob=new Blob(["\ufeff"+lines.join("\n")],{type:"text/csv;charset=utf-8"});
+    var a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="不合规明细_"+T+".csv"; a.click();
+  }).catch(function(){ alert('明细加载失败'); });
+}
+document.getElementById('dl-cashier-csv').addEventListener('click', function(){ downloadCashierCSV(CASHIER_T); });
+
 bootIndex();
 </script>
 </body>

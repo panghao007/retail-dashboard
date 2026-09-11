@@ -71,6 +71,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .company-group{margin-bottom:12px}
 .company-header{display:flex;align-items:center;justify-content:space-between;padding:8px 0;font-size:13px;font-weight:700;border-bottom:1px solid rgba(0,0,0,0.04)}
 .company-header .company-name{display:flex;align-items:center;gap:6px}
+.dl-section{margin:14px 16px 0;background:rgba(255,255,255,0.72);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border:1px solid rgba(255,255,255,0.6);border-radius:16px;padding:16px;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+.dl-title{font-size:13px;font-weight:700;letter-spacing:-0.2px;margin-bottom:12px}
+.dl-row{display:flex;flex-direction:column;gap:10px}
+.dl-btn{display:flex;align-items:center;justify-content:center;gap:6px;padding:13px;text-align:center;font-size:14px;font-weight:600;color:#0071E3;background:rgba(0,113,227,0.06);border:1px solid rgba(0,113,227,0.14);border-radius:12px;text-decoration:none}
+.dl-btn:active{background:rgba(0,113,227,0.12)}
+.dl-btn.disabled{color:#86868b;background:rgba(0,0,0,0.04);border-color:rgba(0,0,0,0.06);pointer-events:none}
 .footer{text-align:center;padding:24px 20px 0;font-size:11px;color:#86868b;line-height:1.6}
 .footer-link{color:#0071E3;font-weight:600;text-decoration:none}
 .loading{padding:60px 20px;text-align:center;color:#86868b;font-size:13px}
