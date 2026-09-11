@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>会员有效性 · 移动端</title>
+<link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+<div class="header">
+  <div class="header-top">
+    <div class="header-back" onclick="location.href='index.html'">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 3L5 8l5 5"/></svg>返回
+    </div>
+    <div class="header-badge">v2</div>
+  </div>
+  <div class="header-title">会员有效性</div>
+  <div class="header-date" id="hdrDate"><span class="dot"></span></div>
+  <div class="tab-row" id="tabRow"></div>
+</div>
+<div class="cards" id="cards"></div>
+<div class="footer">
+  来源：ERP 零售单查询 · 判定依据：会员有效性规则<br>
+  <span id="genTime"></span><br>
+  <a class="footer-link" href="index.html">返回看板总览 ›</a>
+</div>
+<script src="common.js"></script>
+<script>
+window.BUILD = function(period, dash, active){
+  const de=document.getElementById('hdrDate');
+  if(de){ const ds=period.dates||[]; de.innerHTML='<span class="dot"></span>'+(ds.length?('本月/周期 '+ds[0].slice(4,6)+'-'+ds[0].slice(6,8)+' ~ '+ds[ds.length-1].slice(4,6)+'-'+ds[ds.length-1].slice(6,8)+' 共'+ds.length+'天'):(dash.latest_date||'')); }
+  const bl=dash.branchList||[];
+  const maxR=Math.max(0.01,...bl.map(b=>b.invalidRate));
+  const branchHtml=bl.map((b,i)=>detailItem(i,b.name,b.invalidRate+'%',(b.invalidRate>=5?'c-red':'c-orange'),b.invalidRate/maxR*100,(b.invalidRate>=5?'#ff3b30':'#ff9500'))).join('');
+  const st=dash.storeTop10||[];
+  const storeHtml=st.map(s=>storeItem(s.name,s.company+' · 总'+fmt(s.total)+'单',s.invalid,s.rate+'%',(s.rate>=10?'c-red':'c-orange'),s.rate>=10)).join('');
+  const ph=dash.phoneTop||[];
+  const phoneHtml=ph.map(p=>storeItem(p.phone,p.meta,fmt(p.count),'c-red','')).join('');
+  const fs=dash.focusStore;
+  const focusHtml = fs? `<div class="store-item" style="background:rgba(255,59,48,0.05);border:1px solid rgba(255,59,48,0.15)">
+      <div class="store-info"><div class="store-name">${esc(fs.name)}</div><div class="store-meta">所属 ${esc(fs.company)} · ${esc(fs.phone)} · 本店${fmt(fs.total)}单</div></div>
+      <div class="store-value"><div class="store-value-num c-red">${fs.rate}%</div><div class="store-value-label">无效占比</div></div></div>` : '';
+  const rules=dash.rules||'';
+  return `
+  <div class="card">
+    <div class="card-head"><div class="card-head-left">
+      <div class="card-icon bg-blue"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+      <div><div class="card-title">核心指标</div><div class="card-subtitle">广度 · 会员质量</div></div>
+    </div></div>
+    <div class="metrics-row">
+      ${metric(fmt(period.total),'会员订单总数','c-blue')}
+      ${metric(fmt(period.valid),'有效会员订单','c-green')}
+      ${metric(fmt(period.invalid),'无效会员订单','c-red')}
+      ${metric(period.validRate+'%','有效占比','c-green')}
+      ${metric(period.invalidRate+'%','无效占比','c-red')}
+    </div>
+    ${progress(period.validRate,'有效 '+fmt(period.valid)+' 笔','无效 '+fmt(period.invalid)+' 笔')}
+    ${insightBox('判定规则', esc(rules))}
+  </div>
+  <div class="card">
+    <div class="card-head"><div class="card-head-left">
+      <div class="card-icon bg-blue"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2"><path d="M3 21h18M3 7v14M21 7v14M3 7l9-4 9 4M9 21v-6h6v6"/></svg></div>
+      <div><div class="card-title">各分公司明细</div><div class="card-subtitle">订单占比 · 无效排名</div></div>
+    </div></div>
+    <div class="detail-list">${branchHtml}</div>
+  </div>
+  <div class="card">
+    <div class="card-head"><div class="card-head-left">
+      <div class="card-icon bg-red"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff3b30" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg></div>
+      <div><div class="card-title">无效会员订单 TOP 10</div><div class="card-subtitle">门店排名</div></div>
+    </div></div>
+    <div class="store-list">${storeHtml}</div>
+  </div>
+  <div class="card">
+    <div class="card-head"><div class="card-head-left">
+      <div class="card-icon bg-orange"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9500" stroke-width="2"><path d="M3 21h18M3 7v14M21 7v14M3 7l9-4 9 4M9 21v-6h6v6"/></svg></div>
+      <div><div class="card-title">异常门店聚焦</div><div class="card-subtitle">无效订单最多的门店</div></div>
+    </div></div>
+    ${focusHtml}
+    ${fs?insightBox('AI 解读','<span class="tag-red">'+esc(fs.name)+'</span> 无效占比'+fs.rate+'%远超均值，'+esc(fs.invalid)+'单/'+fmt(fs.total)+'单，疑同一会员号高频刷单，需立即核查。'):''}
+    ${actionBox('P0 · 对无效占比最高的分公司当日无效单逐单复盘，定位录入或资质环节问题并当日整改。')}
+  </div>
+  <div class="card">
+    <div class="card-head"><div class="card-head-left">
+      <div class="card-icon bg-purple"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#af52de" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+      <div><div class="card-title">无效会员号码明细</div><div class="card-subtitle">高频异常号码</div></div>
+    </div></div>
+    <div class="store-list">${phoneHtml}</div>
+  </div>`;
+};
+boot('member','month');
+</script>
+</body>
+</html>

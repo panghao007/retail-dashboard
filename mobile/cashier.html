@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>合规收银 · 移动端</title>
+<link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+<div class="header">
+  <div class="header-top">
+    <div class="header-back" onclick="location.href='index.html'">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 3L5 8l5 5"/></svg>返回
+    </div>
+    <div class="header-badge">v2</div>
+  </div>
+  <div class="header-title">合规收银</div>
+  <div class="header-date" id="hdrDate"><span class="dot"></span></div>
+  <div class="tab-row" id="tabRow"></div>
+</div>
+<div class="cards" id="cards"></div>
+<div class="footer">
+  来源：ERP 零售单-结算明细 · 判定依据：通报商品分类-新.xlsx·收款分类<br>
+  <span id="genTime"></span><br>
+  <a class="footer-link" href="index.html">返回看板总览 ›</a>
+</div>
+<script src="common.js"></script>
+<script>
+window.BUILD = function(period, dash, active){
+  const de=document.getElementById('hdrDate');
+  if(de){ const ds=period.dates||[]; de.innerHTML='<span class="dot"></span>'+(ds.length?('当月 '+ds[0].slice(4,6)+'-'+ds[0].slice(6,8)+' ~ '+ds[ds.length-1].slice(4,6)+'-'+ds[ds.length-1].slice(6,8)+' 共'+ds.length+'天'):(dash.latest_date||'')); }
+  const maxN=Math.max(1,...(dash.branchList||[]).map(b=>b.noncompliant));
+  const bl=(dash.branchList||[]).map((b,i)=>detailItem(i,b.name,b.noncompliant+'笔',(b.noncompliant>=3?'c-red':'c-orange'),b.noncompliant/maxN*100,(b.noncompliant>=3?'#ff3b30':'#ff9500'))).join('');
+  const blDist=(dash.branchList||[]).map(b=>`<div class="detail-item"><div class="detail-item-name">${esc(b.name)}</div><div class="detail-item-value c-gray">${fmt(b.total)}笔 · 不合规${(100-b.rate).toFixed(2)}%</div></div>`).join('');
+  const cl=(dash.channelList||[]).map(c=>storeItem(c.name,c.meta,c.count,'不合规笔',(c.meta.indexOf('不合规通道')>=0?'c-red':'c-orange'),c.meta.indexOf('不合规通道')>=0)).join('');
+  const st=(dash.storeTop10||[]).map(s=>{ const nr=100-s.rate; return storeItem(s.name,(s.company||'')+(s.company?' · ':'')+fmt(s.total)+'笔 · 合规率'+s.rate.toFixed(2)+'%',s.noncompliant,'不合规',(nr>=2?'c-red':'c-orange'),nr>=1); }).join('');
+  const c100=dash.compliant100||{count:0,total:0,pct:0,top5:[]};
+  const top5=(c100.top5||[]).map(s=>`<div class="detail-item"><div class="detail-item-name">${esc(s.name)}</div><div class="detail-item-value c-green">${fmt(s.count)}笔 · 100%</div></div>`).join('');
+  const top0=(dash.branchList||[])[0];
+  return `
+  <div class="card">
+    <div class="card-head"><div class="card-head-left">
+      <div class="card-icon bg-green"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
+      <div><div class="card-title">核心指标</div><div class="card-subtitle">风险 · 收款规范</div></div>
+    </div></div>
+    <div class="metrics-row">
+      ${metric(fmt(period.total),'有效收款笔数','c-blue')}
+      ${metric(fmt(period.compliant),'合规笔数','c-green')}
+      ${metric(fmt(period.noncompliant),'不合规笔数','c-red')}
+      ${metric(period.compliantRate+'%','合规率','c-green')}
+      ${metric(fmt(period.excluded),'剔除(现金/赠品/会员)','c-gray')}
+    </div>
+    ${progress(period.compliantRate,'合规 '+fmt(period.compliant)+' 笔','不合规 '+fmt(period.noncompliant)+' 笔')}
+    ${insightBox('判定规则','<b>合规</b>：华为APP、大疆汇付、京东秒送等43个通道。<b>不合规</b>：刷卡扫码-工行、银联POS手动收款。<b>有条件合规</b>：苹果XPOS、华为玲珑（需有第三方订单号）。')}
+  </div>
+  <div class="card">
+    <div class="card-head"><div class="card-head-left">
+      <div class="card-icon bg-green"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2"><path d="M3 21h18M3 7v14M21 7v14M3 7l9-4 9 4M9 21v-6h6v6"/></svg></div>
+      <div><div class="card-title">各分公司合规明细</div><div class="card-subtitle">当月累积 · 不合规排名</div></div>
+    </div></div>
+    <div class="detail-list">${bl}</div>
+    <div class="detail-section">
+      <div class="detail-title">分公司笔数分布</div>
+      <div class="detail-list">${blDist}</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head"><div class="card-head-left">
+      <div class="card-icon bg-red"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff3b30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div><div class="card-title">不合规支付通道</div><div class="card-subtitle">违规通道分布</div></div>
+    </div></div>
+    <div class="store-list">${cl}</div>
+    ${insightBox('AI 解读', top0?('<span class="tag-red">'+esc(top0.name)+'</span> 不合规'+top0.noncompliant+'笔最多，为当月合规风险最高分公司，须立即核查收款通道。'):'')}
+    ${actionBox('P0 · 立即停用银联POS手动收款等禁用通道。财务重审收款通道白名单流程，运营将合规率纳入分公司考核。')}
+  </div>
+  <div class="card">
+    <div class="card-head"><div class="card-head-left">
+      <div class="card-icon bg-orange"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M3 7v14M21 7v14M3 7l9-4 9 4M9 21v-6h6v6"/></svg></div>
+      <div><div class="card-title">不合规门店 TOP 10</div><div class="card-subtitle">当月累积 · 按不合规笔数排序</div></div>
+    </div></div>
+    <div class="store-list">${st}</div>
+  </div>
+  <div class="card">
+    <div class="card-head"><div class="card-head-left">
+      <div class="card-icon bg-green"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+      <div><div class="card-title">100%合规门店</div><div class="card-subtitle">${fmt(c100.count)}家 / 占全部${fmt(c100.total)}家 ${c100.pct}%</div></div>
+    </div></div>
+    <div class="metrics-row">
+      ${metric(fmt(c100.count),'100%合规门店','c-green')}
+      ${metric(fmt(c100.total),'总门店数','c-blue')}
+      ${metric(c100.pct+'%','合规门店占比','c-green')}
+    </div>
+    ${progress(c100.pct,'100%合规 '+fmt(c100.count)+'家','待改进 '+fmt(c100.total-c100.count)+'家')}
+    <div class="detail-section">
+      <div class="detail-title">TOP5 合规门店（按笔数）</div>
+      <div class="detail-list">${top5}</div>
+    </div>
+  </div>`;
+};
+boot('cashier','month');
+</script>
+</body>
+</html>

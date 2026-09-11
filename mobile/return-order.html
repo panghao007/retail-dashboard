@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>零售退货 · 移动端</title>
+<link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+<div class="header">
+  <div class="header-top">
+    <div class="header-back" onclick="location.href='index.html'">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 3L5 8l5 5"/></svg>返回
+    </div>
+    <div class="header-badge">v2</div>
+  </div>
+  <div class="header-title">零售退货单</div>
+  <div class="header-date" id="hdrDate"><span class="dot"></span></div>
+  <div class="tab-row" id="tabRow"></div>
+</div>
+<div class="cards" id="cards"></div>
+<div class="footer">
+  来源：ERP 零售单-结算明细 · 退单率=退货单数÷销售单数<br>
+  <span id="genTime"></span><br>
+  <a class="footer-link" href="index.html">返回看板总览 ›</a>
+</div>
+<script src="common.js"></script>
+<script>
+window.BUILD = function(period, dash, active){
+  const de=document.getElementById('hdrDate');
+  if(de){ const ds=period.dates||[]; de.innerHTML='<span class="dot"></span>'+(ds.length?('当月 '+ds[0].slice(4,6)+'-'+ds[0].slice(6,8)+' ~ '+ds[ds.length-1].slice(4,6)+'-'+ds[ds.length-1].slice(6,8)+' 共'+ds.length+'天'):(dash.latest_date||'')); }
+  const P=dash.periods||{};
+  const pd=P.day||period, py=P.yest||period, pm=P.month||period;
+  const maxR=Math.max(0.01,...(dash.branchList||[]).map(b=>b.rate));
+  const rateColor=r=>r>=4?'c-red':(r>=3?'c-orange':'c-blue');
+  const branchHtml=(dash.branchList||[]).map((b,i)=>detailItem(i,b.name,b.rate+'%',rateColor(b.rate),b.rate/maxR*100,(b.rate>=4?'#ff3b30':(b.rate>=3?'#ff9500':'#0071E3')))).join('');
+  const branchDist=(dash.branchList||[]).map(b=>`<div class="detail-item"><div class="detail-item-name">${esc(b.name)}</div><div class="detail-item-value c-gray">${fmt(b.returnCount)}退 / ${fmt(b.salesCount)}销</div></div>`).join('');
+  const storeHtml=(dash.storeTop10||[]).map(s=>storeItem(s.name,(s.company||'')+(s.company?' · ':'')+fmt(s.returnCount)+'退/'+fmt(s.salesCount)+'销 · ¥'+(Math.abs(s.amount)/10000).toFixed(2)+'万',s.rate+'%','退单率',rateColor(s.rate),s.rate>=8)).join('');
+  const bs=(dash.branchStore||[]).map((c,i)=>{
+    const stores=(c.stores||[]).map(s=>storeItem(s.name,fmt(s.returnCount)+'退/'+fmt(s.salesCount)+'销 · ¥'+(Math.abs(s.amount)/10000).toFixed(2)+'万',s.rate+'%','',rateColor(s.rate),s.rate>=8)).join('');
+    return `<div class="company-group"><div class="company-header"><div class="company-name"><span class="rank" style="background:${rankColor(i)};width:20px;height:20px;border-radius:5px;font-size:10px;display:flex;align-items:center;justify-content:center;color:#fff">${i+1}</span>${esc(c.company)} · ${c.rate}%</div></div><div class="store-list" style="margin-top:6px">${stores}</div></div>`;
+  }).join('');
+  const topB=(dash.branchList||[])[0];
+  return `
+  <div class="card">
+    <div class="card-head"><div class="card-head-left">
+      <div class="card-icon bg-red"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff3b30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v6a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4V7"/><path d="M3 7l4-4M21 7l-4-4"/></svg></div>
+      <div><div class="card-title">核心指标</div><div class="card-subtitle">售后 · 退货风险</div></div>
+    </div></div>
+    <div class="metrics-row">
+      ${metric(fmt(pd.returnCount),'当日退货单数','c-red')}
+      ${metric(pd.rate+'%','当日退单率','c-red')}
+      ${metric(fmt(py.returnCount),'昨日退货单数','c-orange')}
+      ${metric(py.rate+'%','昨日退单率','c-orange')}
+      ${metric(fmt(pm.returnCount),'当月退货单数','c-blue')}
+      ${metric(pm.rate+'%','当月退单率','c-blue')}
+    </div>
+    ${progress(Math.min(pd.rate*10,100),'较均值'+(pd.rate>=3?'偏高':'正常'),'')}
+    ${insightBox('口径说明','退单率 = 退货单数 ÷ 销售单数。分子分母均剔除买断/礼品机出库、线上订单、ASP/内购店。ERP为T+1，如当日数据尚未生成则按最新可用日期展示。')}
+  </div>
+  <div class="card">
+    <div class="card-head"><div class="card-head-left">
+      <div class="card-icon bg-red"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff3b30" stroke-width="2"><path d="M3 21h18M3 7v14M21 7v14M3 7l9-4 9 4M9 21v-6h6v6"/></svg></div>
+      <div><div class="card-title">分公司退单率</div><div class="card-subtitle">当月</div></div>
+    </div></div>
+    <div class="detail-list">${branchHtml}</div>
+    <div class="detail-section">
+      <div class="detail-title">分公司退货单数</div>
+      <div class="detail-list">${branchDist}</div>
+    </div>
+    ${insightBox('AI 解读', topB?('<span class="tag-red">'+esc(topB.name)+'</span> 退货率'+topB.rate+'%全场最高，'+fmt(topB.returnCount)+'单/'+fmt(topB.salesCount)+'单，需排查集中退单品类。'):'')}
+    ${actionBox('P0 · 退单率超8%门店售后48小时内回访退货客户，定位原因并反馈销售整改。')}
+  </div>
+  <div class="card">
+    <div class="card-head"><div class="card-head-left">
+      <div class="card-icon bg-orange"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M3 7v14M21 7v14M3 7l9-4 9 4M9 21v-6h6v6"/></svg></div>
+      <div><div class="card-title">异常门店 TOP 10</div><div class="card-subtitle">按退单率排序 · 当月</div></div>
+    </div></div>
+    <div class="store-list">${storeHtml}</div>
+  </div>
+  <div class="card">
+    <div class="card-head"><div class="card-head-left">
+      <div class="card-icon bg-blue"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2"><path d="M3 21h18M3 7v14M21 7v14M3 7l9-4 9 4M9 21v-6h6v6"/></svg></div>
+      <div><div class="card-title">分公司门店退单率</div><div class="card-subtitle">按分公司分组 · TOP5</div></div>
+    </div></div>
+    ${bs}
+  </div>`;
+};
+boot('return','month');
+</script>
+</body>
+</html>

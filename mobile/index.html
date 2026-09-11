@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>零售会员驾驶舱 · 移动端</title>
+<link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+<div class="header">
+  <div class="header-top">
+    <div class="header-title">零售会员驾驶舱</div>
+    <div class="header-badge">v2</div>
+  </div>
+  <div class="header-date" id="hdrDate"><span class="dot"></span>实时数据</div>
+</div>
+<div class="cards" id="cards"><div class="loading">数据加载中…</div></div>
+<div class="footer">
+  内含会员与门店经营敏感数据，请勿外传<br>
+  <span id="genTime"></span>
+</div>
+<script src="common.js"></script>
+<script>
+const ICON = {
+  blue:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>',
+  green:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>',
+  purple:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#af52de" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.5 2.3 7.1-6.3-4.6L5.7 21l2.3-7.1-6-4.5h7.6z"/></svg>',
+  red:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff3b30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v6a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4V7"/><path d="M3 7l4-4M21 7l-4-4"/></svg>'
+};
+const PAGE = {member:'member-validity.html', cashier:'cashier.html', paid:'paid-member.html', return:'return-order.html'};
+const COLOR = {member:'blue', cashier:'green', paid:'purple', return:'red'};
+async function bootIndex(){
+  const el = document.getElementById('cards');
+  try{ DATA = await fetch('./data.json',{cache:'no-store'}).then(r=>r.json()); }
+  catch(e){ el.innerHTML='<div class="loading">数据加载失败</div>'; return; }
+  const ov = DATA.overview||{};
+  if(ov.date) document.getElementById('hdrDate').innerHTML='<span class="dot"></span>实时数据 · '+esc(ov.date);
+  if(DATA.generated) document.getElementById('genTime').textContent='数据生成于 '+DATA.generated;
+  const cards = ov.cards||[];
+  if(!cards.length){ el.innerHTML='<div class="loading">暂无看板数据</div>'; return; }
+  el.innerHTML = cards.map(c=>{
+    const col = COLOR[c.key]||'blue';
+    const metrics = (c.metrics||[]).map(m=>metric(m.v,m.l,m.c,m.delta)).join('');
+    const top3 = (c.top3||[]).map((t,i)=>detailItem(i, t.name, t.v, (t.c||'c-red'))).join('');
+    return `<div class="card" onclick="location.href='${PAGE[c.key]}'">
+      <div class="card-head"><div class="card-head-left">
+        <div class="card-icon bg-${col}">${ICON[col]||''}</div>
+        <div><div class="card-title">${esc(c.title)}</div><div class="card-subtitle">${esc(c.subtitle)}</div></div>
+      </div><div class="card-link">进入看板 ›</div></div>
+      <div class="metrics-row">${metrics}</div>
+      ${progress(c.progress&&c.progress.pct||0, c.progress&&c.progress.left||'', c.progress&&c.progress.right||'')}
+      <div class="detail-section"><div class="detail-title">异常分公司 TOP 3</div><div class="detail-list">${top3}</div></div>
+      ${c.insight?insightBox('AI 解读', esc(c.insight).replace(/([^\s]+)(?=居首|最高|最多|最低)/,'<span class="tag-red">$1</span>')):''}
+      ${c.action?actionBox(esc(c.action)):''}
+    </div>`;
+  }).join('');
+  requestAnimationFrame(()=>{ document.querySelectorAll('.progress-fill').forEach(b=>{ const w=b.style.width; b.style.width='0'; setTimeout(()=>b.style.width=w,60); }); });
+}
+bootIndex();
+</script>
+</body>
+</html>
