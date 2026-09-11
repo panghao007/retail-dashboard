@@ -25,16 +25,15 @@ const ICON = {
   blue:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>',
   green:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>',
   purple:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#af52de" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.5 2.3 7.1-6.3-4.6L5.7 21l2.3-7.1-6-4.5h7.6z"/></svg>',
-  red:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff3b30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v6a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4V7"/><path d="M3 7l4-4M21 7l-4-4"/></svg>',
-  teal:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5ac8fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>'
+  red:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff3b30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v6a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4V7"/><path d="M3 7l4-4M21 7l-4-4"/></svg>'
 };
-const PAGE = {member:'member-validity.html', cashier:'cashier.html', paid:'paid-member.html', return:'return-order.html', deposit:'deposit.html'};
-const COLOR = {member:'blue', cashier:'green', paid:'purple', return:'red', deposit:'teal'};
+const PAGE = {member:'member-validity.html', cashier:'cashier.html', paid:'paid-member.html', return:'return-order.html'};
+const COLOR = {member:'blue', cashier:'green', paid:'purple', return:'red'};
 function lastPeriod(periods){ const ks=Object.keys(periods||{}); return periods[ks[ks.length-1]]||null; }
 async function bootIndex(){
   const el = document.getElementById('cards');
   el.innerHTML='<div class="loading">数据加载中…</div>';
-  const [member,cashier,paid,ret,dep] = await Promise.all([loadMember(),loadCashier(),loadPaid(),loadReturn(),loadDeposit()]);
+  const [member,cashier,paid,ret] = await Promise.all([loadMember(),loadCashier(),loadPaid(),loadReturn()]);
   const cards=[];
   // 会员
   if(member && member.periods){
@@ -80,18 +79,7 @@ async function bootIndex(){
       insight: bl.length?(bl[0].name+' 退货率'+bl[0].rate+'% 最高，疑集中退单。'):'',
       action:'P0 · 退货率超8%门店售后48小时内回访，定位原因并反馈销售整改。'});
   }
-  // 会员沉淀
-  if(dep && dep.periods){
-    const dp=dep.periods.day||lastPeriod(dep.periods);
-    const bl=(dp.branchList||[]).slice(0,3);
-    cards.push({key:'deposit',title:'会员沉淀',subtitle:'广度 · 累计会员资产',
-      metrics:[{v:fmt(dp.totalDistinct),l:'去重会员总数'},{v:dp.branchCount,l:'分公司数量',c:'teal'},{v:(dp.newSum>0?'+':'')+fmt(dp.newSum),l:'较昨日新增',c:'teal'}],
-      progress:{pct: dp.total?+(dp.totalDistinct/dp.total*100).toFixed(2):0, left:'去重 '+fmt(dp.totalDistinct), right:'未消费 '+fmt(dp.unconsumed)},
-      top3:bl.map(b=>({name:b.name,v:'沉淀'+fmt(b.count)+'人',c:'c-teal'})),
-      insight: bl.length?(bl[0].name+' 沉淀'+fmt(bl[0].count)+'人最多，累计会员资产最厚。'):'',
-      action:'P1 · 沉淀会员是复购基本盘，运营按分公司拆解沉睡会员激活任务，重点提升未消费会员首购转化。'});
-  }
-  const dates=[member,cashier,paid,ret,dep].map(d=>d&&d.latest_date).filter(Boolean);
+  const dates=[member,cashier,paid,ret].map(d=>d&&d.latest_date).filter(Boolean);
   if(dates.length) document.getElementById('hdrDate').innerHTML='<span class="dot"></span>实时数据 · '+esc(dates.sort().pop());
   document.getElementById('genTime').textContent='数据实时取自 PC 看板（纯展示，未改任何管线）';
   if(!cards.length){ el.innerHTML='<div class="loading">暂无看板数据</div>'; return; }
