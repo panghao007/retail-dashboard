@@ -246,6 +246,36 @@ async function loadPaid(){
   return { periods, latest_date: latest };
 }
 
+/* ---------- 会员沉淀（与驾驶舱同源：latest.json 主源 + daily/<date>.json 分公司明细） ---------- */
+async function loadDeposit(){
+  // 主源：与 dashboard.html 驾驶舱完全一致 —— 驾驶舱沉淀卡即读 member_deposit/latest.json
+  let latest;
+  try{ latest = await fetchJson('../member_deposit/latest.json'); }catch(e){ latest=null; }
+  if(!latest || !latest.kpi){ return null; }
+  const kpi=latest.kpi||{};
+  const dateRaw=(latest.date||'').replace(/-/g,'');      // YYYYMMDD
+  const totalDistinct=kpi.total_distinct!=null?kpi.total_distinct:0;  // 去重会员总数（驾驶舱卡首指标）
+  const branchCount  =kpi.branch_count!=null?kpi.branch_count:0;     // 分公司数量
+  const newSum       =kpi.prev_new!=null?kpi.prev_new:0;             // 较昨日新增
+  // 补充分公司明细（与「会员沉淀看板」正文同源：daily/<date>.json 快照）
+  const PSEUDO=new Set(['未消费会员','（未匹配门店）']);
+  let total=totalDistinct, unconsumed=0, branchList=[];
+  if(dateRaw){
+    try{
+      const snap=await fetchJson('../member_deposit/daily/'+dateRaw+'.json');
+      if(snap){
+        const branches=snap.branches||{}, distinct=snap.distinct||{};
+        const realB=Object.keys(branches).filter(b=>!PSEUDO.has(b));
+        total=Object.values(branches).reduce((a,b)=>a+(b||0),0);   // 会员沉淀总数（记录）= 各分公司之和
+        unconsumed=branches['未消费会员']||0;
+        branchList=realB.map(b=>({name:b, count:branches[b]||0, distinct:distinct[b]||0})).sort((a,b)=>b.count-a.count);
+      }
+    }catch(_){}
+  }
+  const period={ date:dateRaw, total, totalDistinct, unconsumed, branchCount, newSum, branchList };
+  return { periods:{ day: period }, latest_date: dateRaw };
+}
+
 /* ---------- 通用 boot（详情页） ---------- */
 async function boot(loader, defaultPeriod){
   const el=document.getElementById('cards');
