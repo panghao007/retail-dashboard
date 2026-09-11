@@ -1,13 +1,13 @@
 {
   "date": "2026-09-09",
-  "generated": "2026-09-10 23:00",
+  "generated": "2026-09-11 16:03",
   "total": {
-    "denominator": 466.0,
-    "numerator": 165.0,
-    "order_denom": 461,
-    "order_num": 165,
-    "amount": 92773.0,
-    "profit": 20157.0
+    "denominator": 465.0,
+    "numerator": 164.0,
+    "order_denom": 460,
+    "order_num": 164,
+    "amount": 92374.0,
+    "profit": 20046.0
   },
   "branches": {
     "北京中恒": {
@@ -126,14 +126,14 @@
     },
     "福建易联": {
       "denominator": 28.0,
-      "numerator": 21.0,
+      "numerator": 20.0,
       "order_denom": 28,
-      "order_num": 21,
+      "order_num": 20,
       "vip_items": [
         {
           "code": "FJYLVIP0001",
           "name": "399元礼包",
-          "qty": 20.0,
+          "qty": 19.0,
           "price": 399,
           "profit": 111.0
         },
@@ -145,8 +145,8 @@
           "profit": 136.0
         }
       ],
-      "amount": 8679.0,
-      "profit": 2356.0
+      "amount": 8280.0,
+      "profit": 2245.0
     },
     "北京飞航": {
       "denominator": 173.0,
@@ -166,9 +166,9 @@
       "profit": 2480.0
     },
     "上海爱飞": {
-      "denominator": 60.0,
+      "denominator": 59.0,
       "numerator": 7.0,
-      "order_denom": 60,
+      "order_denom": 59,
       "order_num": 7,
       "vip_items": [
         {
@@ -1958,20 +1958,12 @@
       "branch": "福建易联",
       "store": "华为福州东街口",
       "denominator": 6.0,
-      "numerator": 1.0,
+      "numerator": 0.0,
       "order_denom": 6,
-      "order_num": 1,
-      "vip_items": [
-        {
-          "code": "FJYLVIP0001",
-          "name": "399元礼包",
-          "qty": 1.0,
-          "price": 399,
-          "profit": 111.0
-        }
-      ],
-      "amount": 399.0,
-      "profit": 111.0
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
     },
     {
       "branch": "福建易联",
@@ -2956,9 +2948,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海静安大悦城授权体验店",
-      "denominator": 6.0,
+      "denominator": 5.0,
       "numerator": 2.0,
-      "order_denom": 6,
+      "order_denom": 5,
       "order_num": 2,
       "vip_items": [
         {
