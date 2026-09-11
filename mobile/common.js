@@ -107,6 +107,20 @@ function periodDateSet(allDates, kind, latest){
 }
 
 /* ---------- 会员有效性 ---------- */
+function buildStorePhone(ss, idl){
+  const storeTop10 = (ss||[]).filter(s=>(s && s['门店'] && (s['总订单数']||0)>=20)).map(s=>({
+    name:s['门店'], company:s['所属分公司']||'', total:s['总订单数']||0, invalid:s['无效会员订单']||0, rate:+(s['无效占比']||0).toFixed(2)
+  })).sort((a,b)=>b.rate-a.rate).slice(0,10);
+  const phoneTop = (idl||[]).slice(0,6).map(x=>({
+    phone:x['会员手机号']||'', count:x['当月使用次数']||0, stores:x['涉及门店数']||0, companies:x['涉及分公司']||'',
+    meta:'涉及'+(x['涉及门店数']||0)+'家门店 · '+(x['涉及分公司']||'')
+  }));
+  const focusStore = (ss&&ss.length)? (function(){ const top=ss[0]; return {
+    name:top['门店'], company:top['所属分公司']||'', phone:(top['无效号码']||[])[0]||'',
+    rate:+(top['无效占比']||0).toFixed(2), invalid:top['无效会员订单']||0, total:top['总订单数']||0
+  }; })() : null;
+  return { storeTop10, phoneTop, focusStore };
+}
 async function loadMember(){
   const html = await fetchText(enc('../d/index.html'));
   if(!html) return null;
@@ -116,47 +130,40 @@ async function loadMember(){
   //    d/<日期>_dashboard_data.json 是「当月累计」快照（09-10→09-11 总量 9814→10845 递增），
   //    把它当单日/单周口径用是错的。每个周期（当日/昨日/本周/本月/上月）的分公司口径只存在于
   //    VAL_PERIODS[p].branches —— 与 PC 看板周期按钮联动分公司表用的是同一份数据，必须按周期取。
-  const periods = {};
+  // 当月累计快照：门店/号码维度的兜底源（仅当新管线未注入周期口径时使用）
+  let monthSS=[], monthIDL=[], monthLatest='', fxCount=0;
+  const _ld = (VP.day && VP.day.dates && VP.day.dates[0]) ? VP.day.dates[0] : '';
+  if(_ld){ try{ const dd=await fetchJson(enc('../d/'+_ld+'_dashboard_data.json')); if(dd){ monthSS=dd.store_stats||[]; monthIDL=dd.invalid_detail||[]; monthLatest=dd.latest_date||_ld; fxCount=dd.fx_count||0; } }catch(e){} }
+  const periods={};
   for(const p of PERIOD_ORDER){
-    const d = VP[p]; if(!d) continue;
+    const d=VP[p]; if(!d) continue;
     const dates=(d.dates||[]).map(norm);
     const total=d.total||0, valid=d.valid||0, invalid=d.invalid||0;
-    const branchList = Object.keys(d.branches||{}).filter(n=>n).map(n=>{
+    const branchList=Object.keys(d.branches||{}).filter(n=>n).map(n=>{
       const v=(d.branches||{})[n]||{};
       const vd=v.valid||0, iv=v.invalid||0, tt=v.total||(vd+iv);
-      return { name:n, valid:vd, invalid:iv, total:tt,
-        invalidRate: tt?+(iv/tt*100).toFixed(2):0,
-        validRate: tt?+(vd/tt*100).toFixed(2):0 };
+      return {name:n, valid:vd, invalid:iv, total:tt, invalidRate: tt?+(iv/tt*100).toFixed(2):0, validRate: tt?+(vd/tt*100).toFixed(2):0};
     }).sort((a,b)=>b.invalidRate-a.invalidRate);
+    // 门店/号码维度：优先周期口径（新管线注入），否则回退当月累计
+    const ss=(d.store_stats&&d.store_stats.length)?d.store_stats:monthSS;
+    const idl=(d.invalid_detail&&d.invalid_detail.length)?d.invalid_detail:monthIDL;
+    const sp=buildStorePhone(ss, idl);
     periods[p]={ dates, total, valid, invalid,
       validRate: total?+(valid/total*100).toFixed(2):0,
       invalidRate: total?+(invalid/total*100).toFixed(2):0,
-      branchList };
+      branchList, storeTop10:sp.storeTop10, phoneTop:sp.phoneTop, focusStore:sp.focusStore };
   }
   if(!Object.keys(periods).length) return null;
-  const latestDate = (VP.day && VP.day.dates && VP.day.dates[0]) ? VP.day.dates[0] : '';
-  // 顶层 branchList = 本月口径（总览卡沿用）；门店/号码维度源只有当月累计快照（PC 同样是月口径、不随周期变）
-  let branchList = (periods.month && periods.month.branchList) || [];
-  let storeTop10=[], phoneTop=[], focusStore=null, rules='', detailScope='';
-  try{
-    const dd = await fetchJson(enc('../d/'+latestDate+'_dashboard_data.json'));
-    if(dd){
-      const bs = dd.branch_stats||[];
-      if(!branchList.length){
-        branchList = bs.filter(b=>b['分公司']).map(b=>({name:b['分公司'], invalidRate:+(b['无效占比']||0).toFixed(2), invalid:b['无效会员订单']||0, valid:0, total:b['总订单数']||0})).sort((a,b)=>b.invalidRate-a.invalidRate).slice(0,6);
-      }
-      const ss = dd.store_stats||[];
-      storeTop10 = ss.filter(s=>s['门店'] && (s['总订单数']||0)>=20).map(s=>({name:s['门店'], company:s['所属分公司']||'', total:s['总订单数']||0, invalid:s['无效会员订单']||0, rate:+(s['无效占比']||0).toFixed(2)})).sort((a,b)=>b.rate-a.rate).slice(0,10);
-      const idl = dd.invalid_detail||[];
-      phoneTop = idl.slice(0,6).map(x=>({phone:x['会员手机号']||'', count:x['当月使用次数']||0, stores:x['涉及门店数']||0, companies:x['涉及分公司']||'', meta:'涉及'+(x['涉及门店数']||0)+'家门店 · '+(x['涉及分公司']||'')}));
-      if(ss.length){ const top=ss[0]; focusStore={name:top['门店'], company:top['所属分公司']||'', phone:(top['无效号码']||[])[0]||'', rate:+(top['无效占比']||0).toFixed(2), invalid:top['无效会员订单']||0, total:top['总订单数']||0}; }
-      const fx = dd.fx_count||0;
-      rules='≤2次有效 / >2次无效 / 跨门店救回。已剔除无会员号订单与福建精准FX '+fx+'单。';
-      detailScope='本月累计（截至 '+(dd.latest_date||latestDate)+'）';
-      return { periods, latest_date: dd.latest_date||latestDate, branchList, storeTop10, phoneTop, focusStore, rules, detailScope };
-    }
-  }catch(e){ /* 明细缺失仍可显示周期汇总 */ }
-  return { periods, latest_date: latestDate, branchList, storeTop10, phoneTop, focusStore, rules, detailScope };
+  const latestDate = _ld || monthLatest;
+  const latest = monthLatest || latestDate;
+  let branchList=(periods.month&&periods.month.branchList)||[];
+  if(!branchList.length) branchList=(periods.day&&periods.day.branchList)||[];
+  const storeTop10=(periods.month&&periods.month.storeTop10)||[];
+  const phoneTop=(periods.month&&periods.month.phoneTop)||[];
+  const focusStore=(periods.month&&periods.month.focusStore)||null;
+  const rules='≤2次有效 / >2次无效 / 跨门店救回。已剔除无会员号订单与福建精准FX '+fxCount+'单。';
+  const detailScope='本月累计（截至 '+latest+'）';
+  return { periods, latest_date: latest, branchList, storeTop10, phoneTop, focusStore, rules, detailScope };
 }
 
 /* ---------- 合规收银 ---------- */

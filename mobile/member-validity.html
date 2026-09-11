@@ -28,7 +28,8 @@
 <script>
 window.BUILD = function(period, dash, active){
   const pname=PERIOD_LABEL[active]||'';
-  const scope=esc(dash.detailScope||'本月累计');
+  const _ds=period.dates||[];
+  const scope=esc(_ds.length ? (_ds.length>1 ? (md(_ds[0])+' ~ '+md(_ds[_ds.length-1])) : md(_ds[0])) : (PERIOD_LABEL[active]||'本月累计'));
   const de=document.getElementById('hdrDate');
   if(de){
     const ds=period.dates||[];
@@ -39,11 +40,11 @@ window.BUILD = function(period, dash, active){
   const bl=period.branchList||dash.branchList||[];
   const maxR=Math.max(0.01,...bl.map(b=>b.invalidRate));
   const branchHtml=bl.map((b,i)=>detailItem(i,b.name,b.invalidRate+'%',(b.invalidRate>=5?'c-red':'c-orange'),b.invalidRate/maxR*100,(b.invalidRate>=5?'#ff3b30':'#ff9500'))).join('');
-  const st=dash.storeTop10||[];
+  const st=period.storeTop10||dash.storeTop10||[];
   const storeHtml=st.map(s=>storeItem(s.name,s.company+' · 总'+fmt(s.total)+'单',s.invalid,s.rate+'%',(s.rate>=10?'c-red':'c-orange'),s.rate>=10)).join('');
-  const ph=dash.phoneTop||[];
+  const ph=period.phoneTop||dash.phoneTop||[];
   const phoneHtml=ph.map(p=>storeItem(p.phone,p.meta,fmt(p.count),'c-red','')).join('');
-  const fs=dash.focusStore;
+  const fs=period.focusStore||dash.focusStore;
   const focusHtml = fs? `<div class="store-item" style="background:rgba(255,59,48,0.05);border:1px solid rgba(255,59,48,0.15)">
       <div class="store-info"><div class="store-name">${esc(fs.name)}</div><div class="store-meta">所属 ${esc(fs.company)} · ${esc(fs.phone)} · 本店${fmt(fs.total)}单</div></div>
       <div class="store-value"><div class="store-value-num c-red">${fs.rate}%</div><div class="store-value-label">无效占比</div></div></div>` : '';
