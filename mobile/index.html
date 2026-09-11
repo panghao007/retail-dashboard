@@ -29,19 +29,64 @@ const ICON = {
 };
 const PAGE = {member:'member-validity.html', cashier:'cashier.html', paid:'paid-member.html', return:'return-order.html'};
 const COLOR = {member:'blue', cashier:'green', paid:'purple', return:'red'};
+function lastPeriod(periods){ const ks=Object.keys(periods||{}); return periods[ks[ks.length-1]]||null; }
 async function bootIndex(){
   const el = document.getElementById('cards');
-  try{ DATA = await fetch('./data.json',{cache:'no-store'}).then(r=>r.json()); }
-  catch(e){ el.innerHTML='<div class="loading">数据加载失败</div>'; return; }
-  const ov = DATA.overview||{};
-  if(ov.date) document.getElementById('hdrDate').innerHTML='<span class="dot"></span>实时数据 · '+esc(ov.date);
-  if(DATA.generated) document.getElementById('genTime').textContent='数据生成于 '+DATA.generated;
-  const cards = ov.cards||[];
+  el.innerHTML='<div class="loading">数据加载中…</div>';
+  const [member,cashier,paid,ret] = await Promise.all([loadMember(),loadCashier(),loadPaid(),loadReturn()]);
+  const cards=[];
+  // 会员
+  if(member && member.periods){
+    const mp=member.periods.month||lastPeriod(member.periods);
+    const bl=(member.branchList||[]).slice(0,3);
+    cards.push({key:'member',title:'会员有效性',subtitle:'广度 · 会员质量',
+      metrics:[{v:fmt(mp.total),l:'会员订单总数'},{v:mp.validRate+'%',l:'有效占比',c:'green'},{v:mp.invalidRate+'%',l:'无效占比',c:'red'}],
+      progress:{pct:mp.validRate,left:'有效 '+fmt(mp.valid)+' 笔',right:'无效 '+fmt(mp.invalid)+' 笔'},
+      top3:bl.map(b=>({name:b.name,v:b.invalidRate+'%',c:b.invalidRate>=5?'c-red':'c-orange'})),
+      insight: bl.length?(bl[0].name+' 无效占比'+bl[0].invalidRate+'% 居首，为当日合规风险最高分公司。'):'',
+      action:'P0 · 对无效占比最高的分公司当日无效单逐单复盘，定位录入或资质环节问题并当日整改。'});
+  }
+  // 合规收银
+  if(cashier && cashier.periods){
+    const cp=cashier.periods.month||lastPeriod(cashier.periods);
+    const bl=(cp.branchList||[]).slice(0,3);
+    cards.push({key:'cashier',title:'合规收银',subtitle:'风险 · 收款规范',
+      metrics:[{v:cp.compliantRate+'%',l:'合规率'},{v:fmt(cp.noncompliant),l:'不合规笔数',c:'red'},{v:fmt(cp.compliant),l:'有效收款笔数',c:'blue'}],
+      progress:{pct:cp.compliantRate,left:'合规 '+fmt(cp.compliant)+' 笔',right:'不合规 '+fmt(cp.noncompliant)+' 笔'},
+      top3:bl.map(b=>({name:b.name,v:b.noncompliant+'笔',c:b.noncompliant>=3?'c-red':'c-orange'})),
+      insight: bl.length?(bl[0].name+' 不合规'+bl[0].noncompliant+'笔最多，需重点督导整改。'):'',
+      action:'P0 · 财务重审收款通道白名单，运营将合规率纳入分公司考核。'});
+  }
+  // 付费会员
+  if(paid && paid.periods){
+    const pp=paid.periods.month||lastPeriod(paid.periods);
+    const bl=(pp.branchList||[]).slice(0,3);
+    cards.push({key:'paid',title:'付费会员',subtitle:'深度 · 高价值产值',
+      metrics:[{v:pp.rate+'%',l:'整体连带率'},{v:'¥'+(pp.value/10000).toFixed(2)+'万',l:'总产值',c:'teal'},{v:fmt(pp.numerator),l:'VIP商品数',c:'purple'}],
+      progress:{pct:pp.rate,left:'连带率 '+pp.rate+'%',right:''},
+      top3:bl.map(b=>({name:b.name,v:b.rate+'%',c:b.rate>=30?'c-green':'c-orange'})),
+      insight: bl.length?(bl[0].name+' 连带率'+bl[0].rate+'% 最高，产值领先。'):'',
+      action:'P1 · 对高价值占比低的门店，加强高客单套餐推荐与考核。'});
+  }
+  // 零售退货
+  if(ret && ret.periods){
+    const rp=ret.periods.day||lastPeriod(ret.periods);
+    const bl=(rp.branchList||[]).slice(0,3);
+    cards.push({key:'return',title:'零售退货',subtitle:'售后 · 退货风险',
+      metrics:[{v:rp.rate+'%',l:'当日退货率',c:'red'},{v:fmt(rp.returnCount),l:'当日退货单',c:'red'},{v:fmt(rp.salesCount),l:'当日销售单',c:'blue'}],
+      progress:{pct:Math.min(rp.rate*10,100),left:'较均值'+(rp.rate>3?'偏高':'正常'),right:''},
+      top3:bl.map(b=>({name:b.name,v:b.rate+'%',c:b.rate>=4?'c-red':'c-orange'})),
+      insight: bl.length?(bl[0].name+' 退货率'+bl[0].rate+'% 最高，疑集中退单。'):'',
+      action:'P0 · 退货率超8%门店售后48小时内回访，定位原因并反馈销售整改。'});
+  }
+  const dates=[member,cashier,paid,ret].map(d=>d&&d.latest_date).filter(Boolean);
+  if(dates.length) document.getElementById('hdrDate').innerHTML='<span class="dot"></span>实时数据 · '+esc(dates.sort().pop());
+  document.getElementById('genTime').textContent='数据实时取自 PC 看板（纯展示，未改任何管线）';
   if(!cards.length){ el.innerHTML='<div class="loading">暂无看板数据</div>'; return; }
   el.innerHTML = cards.map(c=>{
-    const col = COLOR[c.key]||'blue';
-    const metrics = (c.metrics||[]).map(m=>metric(m.v,m.l,m.c,m.delta)).join('');
-    const top3 = (c.top3||[]).map((t,i)=>detailItem(i, t.name, t.v, (t.c||'c-red'))).join('');
+    const col=COLOR[c.key]||'blue';
+    const metrics=(c.metrics||[]).map(m=>metric(m.v,m.l,m.c,m.delta)).join('');
+    const top3=(c.top3||[]).map((t,i)=>detailItem(i,t.name,t.v,(t.c||'c-red'))).join('');
     return `<div class="card" onclick="location.href='${PAGE[c.key]}'">
       <div class="card-head"><div class="card-head-left">
         <div class="card-icon bg-${col}">${ICON[col]||''}</div>
