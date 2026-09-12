@@ -1,19 +1,19 @@
 {
   "date": "2026-09-12",
-  "generated": "2026-09-12 22:43",
+  "generated": "2026-09-12 23:00",
   "total": {
-    "denominator": 833.0,
+    "denominator": 829.0,
     "numerator": 284.0,
-    "order_denom": 823,
+    "order_denom": 819,
     "order_num": 284,
     "amount": 187459.0,
     "profit": 28736.0
   },
   "branches": {
     "北京中恒": {
-      "denominator": 236.0,
+      "denominator": 233.0,
       "numerator": 114.0,
-      "order_denom": 235,
+      "order_denom": 232,
       "order_num": 114,
       "vip_items": [
         {
@@ -156,9 +156,9 @@
       "profit": 2160.0
     },
     "北京飞航": {
-      "denominator": 251.0,
+      "denominator": 250.0,
       "numerator": 71.0,
-      "order_denom": 249,
+      "order_denom": 248,
       "order_num": 71,
       "vip_items": [
         {
@@ -603,9 +603,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京怀柔万达",
-      "denominator": 9.0,
+      "denominator": 8.0,
       "numerator": 5.0,
-      "order_denom": 9,
+      "order_denom": 8,
       "order_num": 5,
       "vip_items": [
         {
@@ -886,9 +886,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京石景山万达",
-      "denominator": 9.0,
+      "denominator": 8.0,
       "numerator": 2.0,
-      "order_denom": 9,
+      "order_denom": 8,
       "order_num": 2,
       "vip_items": [
         {
@@ -912,9 +912,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京石景山喜隆多",
-      "denominator": 8.0,
+      "denominator": 7.0,
       "numerator": 5.0,
-      "order_denom": 8,
+      "order_denom": 7,
       "order_num": 5,
       "vip_items": [
         {
@@ -2923,9 +2923,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI大疆哈苏北京华熙LIVE概念店",
-      "denominator": 14.0,
+      "denominator": 13.0,
       "numerator": 9.0,
-      "order_denom": 14,
+      "order_denom": 13,
       "order_num": 9,
       "vip_items": [
         {
