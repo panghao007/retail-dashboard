@@ -3,6 +3,22 @@
 const PERIOD_ORDER = ['day', 'yest', 'week', 'month', 'lastmonth'];
 const PERIOD_LABEL = {day:'当日', yest:'昨日', week:'本周', month:'本月', lastmonth:'上月'};
 
+/* ---------- 分公司固定展示顺序（2026-09-12 逄总要求） ----------
+   所有涉及分公司的列表（有效性/合规收银/付费会员/零售退货，含驾驶舱卡片与派生排名）
+   一律按此固定顺序展示，不随指标高低浮动 —— 便于每日横向对比同一位置的变化。
+   不在清单内的分公司排在末尾（按名称排序）。 */
+const BRANCH_ORDER = ['北京中恒','北京易联','北京飞航','四川新跃','福建易联','上海爱飞'];
+function branchIdx(n){ const i=BRANCH_ORDER.indexOf(String(n==null?'':n).trim()); return i<0? BRANCH_ORDER.length : i; }
+function sortBranch(list, keyFn){
+  const k = keyFn || function(x){ return (x&&x.name)||''; };
+  return (list||[]).slice().sort((a,b)=>{
+    const ka=String(k(a)||''), kb=String(k(b)||'');
+    const ia=branchIdx(ka), ib=branchIdx(kb);
+    if(ia!==ib) return ia-ib;
+    return ka.localeCompare(kb,'zh');
+  });
+}
+
 /* ---------- 渲染辅助（不变） ---------- */
 function fmt(n){ if(n===null||n===undefined||n==='') return '-'; const x=Number(n); return isNaN(x)? String(n): x.toLocaleString('en-US'); }
 function esc(s){ return String(s===null?'':s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
@@ -38,6 +54,15 @@ function storeItem(name, meta, valNum, valLabel, valColor, highlight){
     +`<div class="store-meta">${esc(meta)}</div></div>`
     +`<div class="store-value"><div class="store-value-num ${valColor||''}">${esc(valNum)}</div>`
     +`<div class="store-value-label">${esc(valLabel)}</div></div></div>`;
+}
+/* 分公司条目（固定顺序版）：序号徽章用中性色，不再以红/橙/绿暗示排名优劣 ——
+   分公司列表已按 BRANCH_ORDER 固定排序，序号仅表示展示位置，不代表好坏。 */
+function branchItem(rankIdx, name, valueText, valueColor, barPct, barColor){
+  const bar = (typeof barPct==='number'&&barPct>0)
+    ? `<div class="mini-bar"><div class="mini-bar-fill" style="width:${Math.max(8,Math.min(100,Math.round(barPct)))}%;background:${barColor||'#0071E3'}"></div></div>` : '';
+  const rc = (typeof rankIdx==='number')? `<div class="rank" style="background:#8e8e93">${rankIdx+1}</div>`:'';
+  return `<div class="detail-item"><div class="detail-item-name">${rc}${esc(name)}</div>`
+    +`<div class="detail-item-bar">${bar}<div class="detail-item-value ${valueColor||''}">${esc(valueText)}</div></div></div>`;
 }
 function detailItem(rankIdx, name, valueText, valueColor, barPct, barColor){
   const bar = (typeof barPct==='number'&&barPct>0)
@@ -113,9 +138,14 @@ function periodDateSet(allDates, kind, latest){
 
 /* ---------- 会员有效性 ---------- */
 function buildStorePhone(ss, idl){
-  const storeTop10 = (ss||[]).filter(s=>(s && s['门店'] && (s['总订单数']||0)>=20)).map(s=>({
+  // 🔴 口径对齐 PC（2026-09-12 修「数据不对」）：PC 的 store_stats 按「无效会员订单笔数」降序
+  //    （零售会员分析.py: store_stats.sort(key=lambda x: x["无效会员订单"], reverse=True)），
+  //    卡片标题也是「无效会员订单最多门店 TOP20」。此前移动端按「无效占比」排、且额外加了
+  //    「总订单数≥20」过滤 —— 与 PC 完全不符，导致看到的小店占比高但笔数少。现已对齐：
+  //    不过滤、按无效订单笔数降序，展示值仍带无效占比供参考。
+  const storeTop10 = (ss||[]).filter(s=>s && s['门店']).map(s=>({
     name:s['门店'], company:s['所属分公司']||'', total:s['总订单数']||0, invalid:s['无效会员订单']||0, rate:+(s['无效占比']||0).toFixed(2)
-  })).sort((a,b)=>b.rate-a.rate).slice(0,10);
+  })).sort((a,b)=>(b.invalid-a.invalid)||(b.rate-a.rate)).slice(0,10);
   const phoneTop = (idl||[]).slice(0,6).map(x=>({
     phone:x['会员手机号']||'', count:x['当月使用次数']||0, stores:x['涉及门店数']||0, companies:x['涉及分公司']||'',
     meta:'涉及'+(x['涉及门店数']||0)+'家门店 · '+(x['涉及分公司']||'')
@@ -148,11 +178,12 @@ async function loadMember(opts){
     const d=VP[p]; if(!d) continue;
     const dates=(d.dates||[]).map(norm);
     const total=d.total||0, valid=d.valid||0, invalid=d.invalid||0;
-    const branchList=Object.keys(d.branches||{}).filter(n=>n).map(n=>{
+    const branchList=sortBranch(Object.keys(d.branches||{}).filter(n=>n).map(n=>{
       const v=(d.branches||{})[n]||{};
       const vd=v.valid||0, iv=v.invalid||0, tt=v.total||(vd+iv);
       return {name:n, valid:vd, invalid:iv, total:tt, invalidRate: tt?+(iv/tt*100).toFixed(2):0, validRate: tt?+(vd/tt*100).toFixed(2):0};
-    }).sort((a,b)=>b.invalidRate-a.invalidRate);
+    }));
+    // 分公司按固定顺序（不再按无效占比浮动）
     // 门店/号码维度：优先周期口径（新管线注入），否则回退当月累计
     const ss=(d.store_stats&&d.store_stats.length)?d.store_stats:monthSS;
     const idl=(d.invalid_detail&&d.invalid_detail.length)?d.invalid_detail:monthIDL;
@@ -178,11 +209,16 @@ async function loadMember(opts){
 /* ---------- 合规收银 ---------- */
 function cashierBranch(D){
   const bs=D.branch_stat||{};
-  return Object.keys(bs).filter(n=>n).map(n=>{ const v=bs[n]; return {name:n, noncompliant:v.noncomp||0, compliant:v.comp||0, total:v.count||0, rate:+(v.rate||0).toFixed(2)}; }).sort((a,b)=>b.noncompliant-a.noncompliant);
+  // 分公司按固定顺序（此前按不合规笔数降序浮动）
+  return sortBranch(Object.keys(bs).filter(n=>n).map(n=>{ const v=bs[n]; return {name:n, noncompliant:v.noncomp||0, compliant:v.comp||0, total:v.count||0, rate:+(v.rate||0).toFixed(2)}; }));
 }
 function cashierStore(D){
   const ss=D.store_stat||{};
-  return Object.keys(ss).filter(n=>n).map(n=>{ const v=ss[n]; return {name:n, company:'', total:v.count||0, noncompliant:v.noncomp||0, rate:+(v.rate||0).toFixed(2)}; }).sort((a,b)=>(-b.noncompliant)||(a.rate-b.rate)).slice(0,10);
+  // 🔴 口径对齐 PC（2026-09-12 修「数据不对」）：PC 门店表为
+  //    filter(noncomp>0) + sort(noncomp desc)（收银合规分析.py:650）。
+  //    此前移动端排序写成 (-b.noncompliant)||(a.rate-b.rate) —— 只用了 b、根本没比较 a，
+  //    等于乱序；且未过滤 noncomp=0 的门店，导致合规门店混进「不合规门店 TOP10」。
+  return Object.keys(ss).filter(n=>n && (ss[n].noncomp||0)>0).map(n=>{ const v=ss[n]; return {name:n, company:'', total:v.count||0, noncompliant:v.noncomp||0, rate:+(v.rate||0).toFixed(2)}; }).sort((a,b)=>(b.noncompliant-a.noncompliant)||(a.rate-b.rate)).slice(0,10);
 }
 function cashierChannel(D){
   const cs=D.channel_stat||{};
@@ -242,11 +278,13 @@ async function loadReturn(){
       for(const [b,v] of Object.entries(dk.branch||{})){ br[b]=br[b]||{return_count:0,sales_count:0}; br[b].return_count+=(v.return_count||0); br[b].sales_count+=(v.sales_count||0); }
       for(const [s,v] of Object.entries(dk.store||{})){ st[s]=st[s]||{return_count:0,sales_count:0,return_amount:0}; st[s].return_count+=(v.return_count||0); st[s].sales_count+=(v.sales_count||0); st[s].return_amount+=(v.return_amount||0); }
     }
-    const branchList=Object.entries(br).filter(([b])=>b).map(([b,x])=>({name:b, rate:x.sales_count?+(x.return_count/x.sales_count*100).toFixed(2):0, returnCount:x.return_count, salesCount:x.sales_count})).sort((a,b)=>b.rate-a.rate).slice(0,6);
+    // 分公司按固定顺序（不再按退货率浮动）
+    const branchList=sortBranch(Object.entries(br).filter(([b])=>b).map(([b,x])=>({name:b, rate:x.sales_count?+(x.return_count/x.sales_count*100).toFixed(2):0, returnCount:x.return_count, salesCount:x.sales_count})));
     const storeTop10=Object.entries(st).filter(([s])=>s && st[s].sales_count>=20).map(([s,x])=>({name:s, company:sb[s]||'', rate:x.sales_count?+(x.return_count/x.sales_count*100).toFixed(2):0, returnCount:x.return_count, salesCount:x.sales_count, amount:Math.round(x.return_amount||0)})).sort((a,b)=>b.rate-a.rate).slice(0,10);
     const compMap={};
     for(const [s,x] of Object.entries(st)){ const c=sb[s]||'未知'; (compMap[c]=compMap[c]||[]).push({name:s, rate:x.sales_count?+(x.return_count/x.sales_count*100).toFixed(2):0, returnCount:x.return_count, salesCount:x.sales_count, amount:Math.round(x.return_amount||0)}); }
-    const branchStore=Object.entries(compMap).map(([c,lst])=>{ const lst2=lst.slice().sort((a,b)=>b.rate-a.rate).slice(0,5); const crc=lst2.reduce((a,x)=>a+x.returnCount,0), csc=lst2.reduce((a,x)=>a+x.salesCount,0); return {company:c, rate:csc?+(crc/csc*100).toFixed(2):0, stores:lst2}; }).sort((a,b)=>b.rate-a.rate);
+    // 分公司→门店分组同样按固定顺序（此前按退货率浮动）
+    const branchStore=sortBranch(Object.entries(compMap).map(([c,lst])=>{ const lst2=lst.slice().sort((a,b)=>b.rate-a.rate).slice(0,5); const crc=lst2.reduce((a,x)=>a+x.returnCount,0), csc=lst2.reduce((a,x)=>a+x.salesCount,0); return {company:c, rate:csc?+(crc/csc*100).toFixed(2):0, stores:lst2}; }), x=>x.company);
     periods[p]={ dates:sel.slice().sort(), returnCount:rc, salesCount:sc, rate:sc?+(rc/sc*100).toFixed(2):0, branchList, storeTop10, branchStore };
   }
   if(!Object.keys(periods).length) return null;
@@ -268,11 +306,12 @@ async function loadReturnLight(){
       if(!b) continue;
       br[b]={return_count:v.return_count||0, sales_count:v.sales_count||0};
     }
-    const branchList=Object.entries(br).map(([b,x])=>({
+    // 分公司按固定顺序（此前按退货率浮动）
+    const branchList=sortBranch(Object.entries(br).map(([b,x])=>({
       name:b,
       rate:x.sales_count?+(x.return_count/x.sales_count*100).toFixed(2):0,
       returnCount:x.return_count, salesCount:x.sales_count
-    })).sort((a,b)=>b.rate-a.rate).slice(0,6);
+    }))).slice(0,6);
     const period={
       dates:[dk], returnCount:j.return_count||0, salesCount:j.sales_count||0,
       rate:j.sales_count?+(j.return_count/j.sales_count*100).toFixed(2):0,
@@ -336,7 +375,8 @@ async function loadPaid(onlyPeriods){
     }
     const rate=tot.denominator?+(tot.numerator/tot.denominator*100).toFixed(2):0;
     const orderRate=tot.order_denom?+(tot.order_num/tot.order_denom*100).toFixed(2):0;
-    const branchList=Object.entries(br).filter(([b])=>b).map(([b,v])=>({name:b, rate:v.denominator?+(v.numerator/v.denominator*100).toFixed(2):0, denominator:Math.round(v.denominator), numerator:Math.round(v.numerator), value:Math.round(v.amount), profit:Math.round(v.profit), tiers:tierArr(v.tiers), meta:Math.round(v.denominator)+'台 · VIP'+Math.round(v.numerator)+' · 产值¥'+(v.amount/10000).toFixed(2)+'万 · 纯利¥'+(v.profit/10000).toFixed(2)+'万'})).sort((a,b)=>b.rate-a.rate);
+    // 分公司按固定顺序（此前按连带率浮动）
+    const branchList=sortBranch(Object.entries(br).filter(([b])=>b).map(([b,v])=>({name:b, rate:v.denominator?+(v.numerator/v.denominator*100).toFixed(2):0, denominator:Math.round(v.denominator), numerator:Math.round(v.numerator), value:Math.round(v.amount), profit:Math.round(v.profit), tiers:tierArr(v.tiers), meta:Math.round(v.denominator)+'台 · VIP'+Math.round(v.numerator)+' · 产值¥'+(v.amount/10000).toFixed(2)+'万 · 纯利¥'+(v.profit/10000).toFixed(2)+'万'})));
     const storeTop10=Object.values(stMap).filter(s=>s.store && (s.denominator||0)>=5).map(s=>({name:s.store, company:s.branch||'', rate:s.denominator?+(s.numerator/s.denominator*100).toFixed(2):0, denominator:Math.round(s.denominator||0), numerator:Math.round(s.numerator||0), tiers:tierArr(s.tiers)})).sort((a,b)=>b.rate-a.rate).slice(0,10);
     periods[p]={ dates:ds.slice().sort(), denominator:Math.round(tot.denominator), numerator:Math.round(tot.numerator), rate, orderRate, value:Math.round(tot.amount), profit:Math.round(tot.profit), branchList, storeTop10 };
   }

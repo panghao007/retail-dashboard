@@ -39,7 +39,9 @@ window.BUILD = function(period, dash, active){
   // 分公司明细跟随所选周期（源：VAL_PERIODS[p].branches，与 PC 看板周期按钮同一口径）
   const bl=period.branchList||dash.branchList||[];
   const maxR=Math.max(0.01,...bl.map(b=>b.invalidRate));
-  const branchHtml=bl.map((b,i)=>detailItem(i,b.name,b.invalidRate+'%',(b.invalidRate>=5?'c-red':'c-orange'),b.invalidRate/maxR*100,(b.invalidRate>=5?'#ff3b30':'#ff9500'))).join('');
+  const branchHtml=bl.map((b,i)=>branchItem(i,b.name,b.invalidRate+'%',(b.invalidRate>=5?'c-red':'c-orange'),b.invalidRate/maxR*100,(b.invalidRate>=5?'#ff3b30':'#ff9500'))).join('');
+  // AI 解读取「无效占比最高」的分公司（分公司列表已按固定顺序展示，不能再用 bl[0]）
+  const worstB=bl.slice().sort((a,b)=>b.invalidRate-a.invalidRate)[0];
   // 分子/分母明细（与率同口径：无效会员订单 ÷ 会员订单总数）
   const branchDist=bl.map(b=>`<div class="detail-item"><div class="detail-item-name">${esc(b.name)}</div><div class="detail-item-value c-gray">${fmt(b.invalid)}笔 / ${fmt(b.total)}笔</div></div>`).join('');
   const st=period.storeTop10||dash.storeTop10||[];

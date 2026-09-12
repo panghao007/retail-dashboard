@@ -46,7 +46,7 @@ window.BUILD = function(period, dash, active){
     const attrs=tiers.length?` class="detail-item tier-head" onclick="__tierToggle('${tid}',this)"`:' class="detail-item"';
     return `<div${attrs} style="flex-direction:column;align-items:flex-start;padding:10px 0">
       <div style="width:100%;display:flex;justify-content:space-between;align-items:center">
-        <div class="detail-item-name"><div class="rank" style="background:${rankColor(i)}">${i+1}</div>${esc(b.name)}${tiers.length?'<span class="exp">▸</span>':''}</div>
+        <div class="detail-item-name"><div class="rank" style="background:#8e8e93">${i+1}</div>${esc(b.name)}${tiers.length?'<span class="exp">▸</span>':''}</div>
         <div class="detail-item-value ${rateColor(b.rate)}">${b.rate}%</div>
       </div>
       <div style="font-size:11px;color:#86868b;margin-left:24px;margin-top:4px">${esc(b.meta)|| (fmt(b.denominator)+'台 · VIP'+fmt(b.numerator)+' · 产值¥'+(b.value/10000).toFixed(2)+'万 · 纯利¥'+(b.profit/10000).toFixed(2)+'万')}</div>
@@ -65,10 +65,10 @@ window.BUILD = function(period, dash, active){
       <div class="store-value"><div class="store-value-num ${rateColor(s.rate)}">${s.rate}%</div><div class="store-value-label">连带率</div></div>
     </div>${tiers.length?`<div class="tier-drawer" id="${tid}"><span class="tier-tag">VIP 档位</span>${tiers.map(tierLine).join('　·　')}</div>`:''}`;
   }).join('');
-  // 产值排名（按产值降序）
-  const valRank=(period.branchList||[]).slice().sort((a,b)=>b.value-a.value);
+  // 分公司产值：同样按固定分公司顺序展示（数值照常，条形反映相对大小）
+  const valRank=period.branchList||[];
   const maxV=Math.max(1,...valRank.map(b=>b.value));
-  const valHtml=valRank.map((b,i)=>detailItem(i,b.name,'¥'+(b.value/10000).toFixed(2)+'万',(b.profit>0?'c-green':'c-orange'),b.value/maxV*100,'#af52de')).join('');
+  const valHtml=valRank.map((b,i)=>branchItem(i,b.name,'¥'+(b.value/10000).toFixed(2)+'万',(b.profit>0?'c-green':'c-orange'),b.value/maxV*100,'#af52de')).join('');
   const top1=(period.branchList||[]).slice().sort((a,b)=>b.rate-a.rate)[0];
   return `
   <div class="card">

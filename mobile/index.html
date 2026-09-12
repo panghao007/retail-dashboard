@@ -42,7 +42,8 @@ function lastPeriod(periods){ const ks=Object.keys(periods||{}); return periods[
 function cardMember(m){
   if(!m || !m.periods) return null;
   const mp=m.periods.month||lastPeriod(m.periods);
-  const bl=(m.branchList||[]).slice(0,3);
+  // 分公司已按固定顺序展示，AI 解读需取「无效占比最高」者（不能再用 bl[0]）
+  const bl=(m.branchList||[]).slice().sort((a,b)=>b.invalidRate-a.invalidRate);
   return {key:'member',title:'会员有效性',subtitle:'广度 · 会员质量',
     metrics:[{v:fmt(mp.total),l:'会员订单总数'},{v:mp.validRate+'%',l:'有效占比',c:'green'},{v:mp.invalidRate+'%',l:'无效占比',c:'red'}],
     progress:{pct:mp.validRate,left:'有效 '+fmt(mp.valid)+' 笔',right:'无效 '+fmt(mp.invalid)+' 笔'},
@@ -52,7 +53,7 @@ function cardMember(m){
 function cardCashier(c){
   if(!c || !c.periods) return null;
   const cp=c.periods.month||lastPeriod(c.periods);
-  const bl=(cp.branchList||[]).slice(0,3);
+  const bl=(cp.branchList||[]).slice().sort((a,b)=>b.noncompliant-a.noncompliant);
   return {key:'cashier',title:'合规收银',subtitle:'风险 · 收款规范',
     metrics:[{v:cp.compliantRate+'%',l:'合规率'},{v:fmt(cp.noncompliant),l:'不合规笔数',c:'red'},{v:fmt(cp.compliant),l:'有效收款笔数',c:'blue'}],
     progress:{pct:cp.compliantRate,left:'合规 '+fmt(cp.compliant)+' 笔',right:'不合规 '+fmt(cp.noncompliant)+' 笔'},
@@ -62,7 +63,7 @@ function cardCashier(c){
 function cardPaid(p){
   if(!p || !p.periods) return null;
   const pp=p.periods.month||lastPeriod(p.periods);
-  const bl=(pp.branchList||[]).slice(0,3);
+  const bl=(pp.branchList||[]).slice().sort((a,b)=>b.rate-a.rate);
   return {key:'paid',title:'付费会员',subtitle:'深度 · 高价值产值',
     metrics:[{v:pp.rate+'%',l:'整体连带率'},{v:'¥'+(pp.value/10000).toFixed(2)+'万',l:'总产值',c:'teal'},{v:fmt(pp.numerator),l:'VIP商品数',c:'purple'}],
     progress:{pct:pp.rate,left:'连带率 '+pp.rate+'%',right:''},
@@ -72,7 +73,7 @@ function cardPaid(p){
 function cardReturn(r){
   if(!r || !r.periods) return null;
   const rp=r.periods.day||lastPeriod(r.periods);
-  const bl=(rp.branchList||[]).slice(0,3);
+  const bl=(rp.branchList||[]).slice().sort((a,b)=>b.rate-a.rate);
   return {key:'return',title:'零售退货',subtitle:'售后 · 退货风险',
     metrics:[{v:rp.rate+'%',l:'当日退货率',c:'red'},{v:fmt(rp.returnCount),l:'当日退货单',c:'red'},{v:fmt(rp.salesCount),l:'当日销售单',c:'blue'}],
     progress:{pct:Math.min(rp.rate*10,100),left:'较均值'+(rp.rate>3?'偏高':'正常'),right:''},

@@ -31,14 +31,15 @@ window.BUILD = function(period, dash, active){
   if(de){ const ds=period.dates||[]; de.innerHTML='<span class="dot"></span>'+(ds.length?('当月 '+ds[0].slice(4,6)+'-'+ds[0].slice(6,8)+' ~ '+ds[ds.length-1].slice(4,6)+'-'+ds[ds.length-1].slice(6,8)+' 共'+ds.length+'天'):(dash.latest_date||'')); }
   const maxR=Math.max(0.01,...(period.branchList||[]).map(b=>b.rate));
   const rateColor=r=>r>=4?'c-red':(r>=3?'c-orange':'c-blue');
-  const branchHtml=(period.branchList||[]).map((b,i)=>detailItem(i,b.name,b.rate+'%',rateColor(b.rate),b.rate/maxR*100,(b.rate>=4?'#ff3b30':(b.rate>=3?'#ff9500':'#0071E3')))).join('');
+  const branchHtml=(period.branchList||[]).map((b,i)=>branchItem(i,b.name,b.rate+'%',rateColor(b.rate),b.rate/maxR*100,(b.rate>=4?'#ff3b30':(b.rate>=3?'#ff9500':'#0071E3')))).join('');
   const branchDist=(period.branchList||[]).map(b=>`<div class="detail-item"><div class="detail-item-name">${esc(b.name)}</div><div class="detail-item-value c-gray">${fmt(b.returnCount)}退 / ${fmt(b.salesCount)}销</div></div>`).join('');
   const storeHtml=(period.storeTop10||[]).map(s=>storeItem(s.name,(s.company||'')+(s.company?' · ':'')+fmt(s.returnCount)+'退/'+fmt(s.salesCount)+'销 · 退货额¥'+(Math.abs(s.amount)/10000).toFixed(2)+'万',s.rate+'%','退单率',rateColor(s.rate),s.rate>=8)).join('');
   const bs=(period.branchStore||[]).map((c,i)=>{
     const stores=(c.stores||[]).map(s=>storeItem(s.name,fmt(s.returnCount)+'退/'+fmt(s.salesCount)+'销 · 退货额¥'+(Math.abs(s.amount)/10000).toFixed(2)+'万',s.rate+'%','',rateColor(s.rate),s.rate>=8)).join('');
-    return `<div class="company-group"><div class="company-header"><div class="company-name"><span class="rank" style="background:${rankColor(i)};width:20px;height:20px;border-radius:5px;font-size:10px;display:flex;align-items:center;justify-content:center;color:#fff">${i+1}</span>${esc(c.company)} · ${c.rate}%</div></div><div class="store-list" style="margin-top:6px">${stores}</div></div>`;
+    return `<div class="company-group"><div class="company-header"><div class="company-name"><span class="rank" style="background:#8e8e93;width:20px;height:20px;border-radius:5px;font-size:10px;display:flex;align-items:center;justify-content:center;color:#fff">${i+1}</span>${esc(c.company)} · ${c.rate}%</div></div><div class="store-list" style="margin-top:6px">${stores}</div></div>`;
   }).join('');
-  const topB=(period.branchList||[])[0];
+  // 分公司已按固定顺序展示，AI 解读要的是「退货率最高」，故按指标取 max（不能用 [0]）
+  const topB=(period.branchList||[]).slice().sort((a,b)=>b.rate-a.rate)[0];
   const periodName=PERIOD_LABEL[active]||'';
   return `
   <div class="card">
