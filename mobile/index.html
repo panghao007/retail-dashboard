@@ -101,7 +101,7 @@ function renderCard(c){
    return   只拉最近 1 天 26KB，不再拉 1.1MB 看板全文                       */
 const DATE_BY_KEY={};  // 各看板数据日期：member=有效性(YYYY-MM-DD) 用于 xlsx；cashier=合规收银 T(YYYYMMDD) 用于 CSV
 const SPECS=[
-  {key:'member', run:loadMember,              build:cardMember},
+  {key:'member', run:()=>loadMember({light:true}), build:cardMember},
   {key:'cashier',run:loadCashier,             build:cardCashier},
   {key:'paid',   run:()=>loadPaid(['month']), build:cardPaid},
   {key:'return', run:loadReturnLight,         build:cardReturn}

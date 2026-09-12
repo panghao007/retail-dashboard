@@ -48,13 +48,18 @@ function detailItem(rankIdx, name, valueText, valueColor, barPct, barColor){
 }
 
 /* ---------- 底层取数 ---------- */
+/* 缓存策略（2026-09-12 提速）：GitHub Pages 响应带 ETag + cache-control:max-age=600。
+   原用 cache:'no-store' → 每次进入都强制全量重下（d/index.html 357KB、cashier 379KB、
+   paid 11 天×68KB…），移动端每次进都很慢。
+   改用 cache:'no-cache'（no-cache = 每次向服务端重验证，而非禁用缓存）：
+   文件未变更时服务端回 304（0 字节，~0.6s），既大幅省流量又保证数据新鲜（变更即 200 取新）。 */
 async function fetchText(url){
-  const r = await fetch(url, {cache:'no-store'});
+  const r = await fetch(url, {cache:'no-cache'});
   if(!r.ok) throw new Error('HTTP '+r.status+' '+url);
   return await r.text();
 }
 async function fetchJson(url){
-  const r = await fetch(url, {cache:'no-store'});
+  const r = await fetch(url, {cache:'no-cache'});
   if(!r.ok) throw new Error('HTTP '+r.status+' '+url);
   return await r.json();
 }
@@ -121,7 +126,11 @@ function buildStorePhone(ss, idl){
   }; })() : null;
   return { storeTop10, phoneTop, focusStore };
 }
-async function loadMember(){
+async function loadMember(opts){
+  // 提速（2026-09-12）：opts.light=true 时跳过 188KB 详情 JSON。
+  // 驾驶舱卡片只用周期 KPI/分公司（全在 VAL_PERIODS 里），那份额外的
+  // store_stats/invalid_detail 兜底 JSON 只有详情页需要；省下一次请求与 188KB 下载。
+  const light = !!(opts && opts.light);
   const html = await fetchText(enc('../d/index.html'));
   if(!html) return null;
   const VP = extractJsonVar(html, 'VAL_PERIODS');
@@ -133,7 +142,7 @@ async function loadMember(){
   // 当月累计快照：门店/号码维度的兜底源（仅当新管线未注入周期口径时使用）
   let monthSS=[], monthIDL=[], monthLatest='', fxCount=0;
   const _ld = (VP.day && VP.day.dates && VP.day.dates[0]) ? VP.day.dates[0] : '';
-  if(_ld){ try{ const dd=await fetchJson(enc('../d/'+_ld+'_dashboard_data.json')); if(dd){ monthSS=dd.store_stats||[]; monthIDL=dd.invalid_detail||[]; monthLatest=dd.latest_date||_ld; fxCount=dd.fx_count||0; } }catch(e){} }
+  if(!light && _ld){ try{ const dd=await fetchJson(enc('../d/'+_ld+'_dashboard_data.json')); if(dd){ monthSS=dd.store_stats||[]; monthIDL=dd.invalid_detail||[]; monthLatest=dd.latest_date||_ld; fxCount=dd.fx_count||0; } }catch(e){} }
   const periods={};
   for(const p of PERIOD_ORDER){
     const d=VP[p]; if(!d) continue;
