@@ -393,6 +393,67 @@ async function loadPaid(onlyPeriods){
   return { periods, latest_date: latest };
 }
 
+/* ---------- 预订单（频繁预订风险识别） ----------
+   直读 ghpages_repo/preorder/ 的索引 + 每日原子 JSON（与 PC 同一次管线生成），
+   复用 periodDateSet 周期拉齐（含「上周」），分公司固定顺序、ASP 已在 Python 侧剔除。
+   重点：会员手机号维度识别同号码周期内频繁预订（≥freq_threshold 红标风险）。 */
+async function loadPreorder(onlyPeriods){
+  let idx;
+  try{ idx = await fetchJson(enc('../preorder/preorder_index.json')); }catch(e){ return null; }
+  if(!idx || !idx.dates || !idx.dates.length) return null;
+  const dates=idx.dates.map(norm).sort();
+  const latest=dates[dates.length-1];
+  const freq=idx.freq_threshold||3;
+  const wantP=(Array.isArray(onlyPeriods)&&onlyPeriods.length)?onlyPeriods:PERIOD_ORDER;
+  const needSet=new Set();
+  for(const p of wantP) periodDateSet(dates,p,latest).forEach(d=>needSet.add(norm(d)));
+  const needDates=[...needSet].filter(d=>dates.includes(d)).sort();
+  const cache={};
+  async function getDay(dt){ if(cache[dt]) return cache[dt]; const j=await fetchJson(enc('../preorder/daily/'+dt+'.json')); cache[dt]=j||null; return cache[dt]; }
+  const days=await Promise.all(needDates.map(getDay));
+  const validDays=days.filter(Boolean);
+  if(!validDays.length) return null;
+  const periods={};
+  for(const p of wantP){
+    const ds=periodDateSet(dates,p,latest);
+    const sel=validDays.filter(d=>ds.includes(norm(d.date||'')));
+    if(!sel.length) continue;
+    let count=0, amount=0;
+    const br={}, st={}, ph={};
+    for(const d of sel){
+      count+=(d.count||0); amount+=(d.amount||0);
+      for(const [b,v] of Object.entries(d.branch||{})){
+        if(!b) continue;
+        const acc=br[b]=br[b]||{count:0,amount:0};
+        acc.count+=(v.count||0); acc.amount+=(v.amount||0);
+      }
+      for(const [s,v] of Object.entries(d.store||{})){
+        if(!s) continue;
+        const acc=st[s]=st[s]||{count:0,amount:0,branch:''};
+        acc.count+=(v.count||0); acc.amount+=(v.amount||0);
+        if(!acc.branch && v.branch) acc.branch=v.branch;
+      }
+      for(const [phn,v] of Object.entries(d.phone||{})){
+        if(!phn) continue;
+        const acc=ph[phn]=ph[phn]||{count:0,amount:0,stores:new Set()};
+        acc.count+=(v.count||0); acc.amount+=(v.amount||0);
+        (v.stores||[]).forEach(s=>acc.stores.add(s));
+      }
+    }
+    // 分公司按固定顺序（此前按笔数浮动）
+    const branchList=sortBranch(Object.entries(br).filter(([b])=>b).map(([b,v])=>({name:b, count:v.count, amount:Math.round(v.amount)})));
+    // 门店 TOP10（按预订单数降序，展示值带金额）
+    const storeTop10=Object.entries(st).filter(([s])=>s).map(([s,v])=>({name:s, company:v.branch||'', count:v.count, amount:Math.round(v.amount)})).sort((a,b)=>b.count-a.count).slice(0,10);
+    // 会员手机号维度：全量按次数降序，频繁(≥freq)红标风险
+    const phoneList=Object.keys(ph).map(phn=>{ const v=ph[phn]; return {phone:phn, count:v.count, amount:Math.round(v.amount), stores:[...v.stores], risk:v.count>=freq}; }).sort((a,b)=>b.count-a.count);
+    const riskCount=phoneList.filter(x=>x.risk).length;
+    const storeCount=Object.keys(st).length;
+    periods[p]={ dates:ds.slice().sort(), count, amount:Math.round(amount), storeCount, branchList, storeTop10, phoneList, riskCount, freq };
+  }
+  if(!Object.keys(periods).length) return null;
+  return { periods, latest_date: idx.latest_date||latest, freq };
+}
+
 /* ---------- 通用 boot（详情页） ---------- */
 async function boot(loader, defaultPeriod){
   const el=document.getElementById('cards');

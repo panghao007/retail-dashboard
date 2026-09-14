@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>预订单 · 移动端</title>
+<link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+<div class="header">
+  <div class="header-top">
+    <div class="header-back" onclick="location.href='index.html'">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 3L5 8l5 5"/></svg>返回
+    </div>
+    <div class="header-badge">v1</div>
+  </div>
+  <div class="header-title">预订单</div>
+  <div class="header-date" id="hdrDate"><span class="dot"></span></div>
+  <div class="tab-row" id="tabRow"></div>
+</div>
+<div class="cards" id="cards"></div>
+<div class="footer">
+  来源：ERP 预订单查询-导出数据（按列表）· 已剔除 ASP/内购店<br>
+  频繁预订 = 同手机号周期内预订 ≥ <span id="freqTh">3</span> 次（疑似虚假预订/收款不过账，类储值风险）<br>
+  <span id="genTime"></span><br>
+  <a class="footer-link" href="index.html">返回看板总览 ›</a>
+</div>
+<script src="common.js"></script>
+<script>
+window.BUILD = function(period, dash, active){
+  const de=document.getElementById('hdrDate');
+  if(de){ const ds=period.dates||[]; de.innerHTML='<span class="dot"></span>'+(ds.length?('当月 '+ds[0].slice(4,6)+'-'+ds[0].slice(6,8)+' ~ '+ds[ds.length-1].slice(4,6)+'-'+ds[ds.length-1].slice(6,8)+' 共'+ds.length+'天'):(dash.latest_date||'')); }
+  const freqEl=document.getElementById('freqTh'); if(freqEl) freqEl.textContent=(period.freq||3);
+  const freq=(period.freq||3);
+  const maxC=Math.max(1,...(period.branchList||[]).map(b=>b.count));
+  const branchHtml=(period.branchList||[]).map((b,i)=>branchItem(i,b.name,fmt(b.count)+'单','c-blue',b.count/maxC*100,'#0071E3')).join('');
+  const branchDist=(period.branchList||[]).map(b=>`<div class="detail-item"><div class="detail-item-name">${esc(b.name)}</div><div class="detail-item-value c-gray">${fmt(b.count)}单${b.amount>0?' · ¥'+(b.amount/10000).toFixed(2)+'万':''}</div></div>`).join('');
+  const storeHtml=(period.storeTop10||[]).map(s=>storeItem(s.name,(s.company||'')+(s.company?' · ':'')+fmt(s.count)+'单'+(s.amount>0?' · 预收¥'+(Math.abs(s.amount)/10000).toFixed(2)+'万':''),fmt(s.count),'预订单数','c-blue',false)).join('');
+  // 手机号维度：频繁(风险)置顶红标，其后列 TOP20 正常号
+  const riskPhones=(period.phoneList||[]).filter(p=>p.risk);
+  const normalPhones=(period.phoneList||[]).filter(p=>!p.risk).slice(0,20);
+  const showPhones=riskPhones.concat(normalPhones);
+  const phoneHtml=showPhones.map(p=>{
+    const hc=p.risk?' style="background:rgba(255,59,48,0.05);border:1px solid rgba(255,59,48,0.18)"':'';
+    const badge=p.risk?' <span class="badge badge-red">风险</span>':'';
+    return `<div class="store-item"${hc}><div class="store-info"><div class="store-name">${esc(p.phone)}${badge}</div>`
+      +`<div class="store-meta">${fmt(p.count)}次预订 · 涉及${p.stores.length}家门店 · 预收¥${(p.amount/10000).toFixed(2)}万</div></div>`
+      +`<div class="store-value"><div class="store-value-num ${p.risk?'c-red':''}">${p.risk?'⚠ 频繁':'正常'}</div>`
+      +`<div class="store-value-label">${fmt(p.count)}次</div></div></div>`;
+  }).join('');
+  const topC=(period.branchList||[]).slice().sort((a,b)=>b.count-a.count)[0];
+  const periodName=PERIOD_LABEL[active]||'';
+  const riskInfo = period.riskCount>0
+    ? `<span class="tag-red">${period.riskCount}</span> 个手机号周期内预订 ≥${freq} 次，疑似虚假预订/收款不过账，类储值风险，需逐单核查。`
+    : '当前周期内无频繁预订手机号（均 < '+freq+' 次），预订行为正常。';
+  return `
+  <div class="card">
+    <div class="card-head"><div class="card-head-left">
+      <div class="card-icon bg-teal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5ac8fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+      <div><div class="card-title">核心指标</div><div class="card-subtitle">预售 · 频繁预订风险 · ${esc(periodName)}</div></div>
+    </div></div>
+    <div class="metrics-row">
+      ${metric(fmt(period.count),'预订单数','c-blue')}
+      ${metric(fmt(period.storeCount),'涉及门店数','c-teal')}
+      ${metric(fmt(period.riskCount),'频繁手机号','c-red')}
+      ${metric(String((period.dates||[]).length),'统计天数','c-gray')}
+    </div>
+    ${progress(Math.min(period.riskCount*8,100),'频繁手机号 '+fmt(period.riskCount)+' 个','预订单 '+fmt(period.count)+' 笔')}
+    ${insightBox('风险口径','同手机号在「'+esc(periodName)+'」内预订 ≥'+freq+' 次即标红「风险」：疑似员工/渠道刷单、虚假预订或收款不过账，性质类似违规储值，须逐单核查收款与履约。')}
+  </div>
+  <div class="card">
+    <div class="card-head"><div class="card-head-left">
+      <div class="card-icon bg-blue"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M3 7v14M21 7v14M3 7l9-4 9 4M9 21v-6h6v6"/></svg></div>
+      <div><div class="card-title">分公司预订单</div><div class="card-subtitle">${esc(periodName)}</div></div>
+    </div></div>
+    <div class="detail-list">${branchHtml}</div>
+    <div class="detail-section">
+      <div class="detail-title">分公司预收金额</div>
+      <div class="detail-list">${branchDist}</div>
+    </div>
+    ${topC?insightBox('AI 解读','<span class="tag-blue">'+esc(topC.name)+'</span> 预订单'+fmt(topC.count)+'笔居首，贡献最高。'):''}
+  </div>
+  <div class="card">
+    <div class="card-head"><div class="card-head-left">
+      <div class="card-icon bg-orange"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M3 7v14M21 7v14M3 7l9-4 9 4M9 21v-6h6v6"/></svg></div>
+      <div><div class="card-title">门店预订单 TOP 10</div><div class="card-subtitle">按预订单数排序 · ${esc(periodName)}</div></div>
+    </div></div>
+    <div class="store-list">${storeHtml}</div>
+  </div>
+  <div class="card">
+    <div class="card-head"><div class="card-head-left">
+      <div class="card-icon bg-red"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff3b30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.5 2.3 7.1-6.3-4.6L5.7 21l2.3-7.1-6-4.5h7.6z"/></svg></div>
+      <div><div class="card-title">会员手机号 · 频繁预订</div><div class="card-subtitle">风险置顶 · ${esc(periodName)}</div></div>
+    </div></div>
+    <div class="insight-text" style="font-size:12px;margin:2px 0 10px;color:#1d1d1f;line-height:1.6">${riskInfo}</div>
+    <div class="store-list">${phoneHtml}</div>
+    ${actionBox('P0 · 频繁预订手机号逐单核查：确认是否真实收款、是否履约发货；发现收款不过账或无履约立即冻结并上报，参照储值违规处置。')}
+  </div>`;
+};
+boot(loadPreorder,'month');
+</script>
+</body>
+</html>

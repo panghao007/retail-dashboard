@@ -32,10 +32,11 @@ const ICON = {
   blue:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>',
   green:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>',
   purple:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#af52de" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.5 2.3 7.1-6.3-4.6L5.7 21l2.3-7.1-6-4.5h7.6z"/></svg>',
-  red:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff3b30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v6a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4V7"/><path d="M3 7l4-4M21 7l-4-4"/></svg>'
+  red:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff3b30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v6a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4V7"/><path d="M3 7l4-4M21 7l-4-4"/></svg>',
+  teal:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5ac8fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>'
 };
-const PAGE = {member:'member-validity.html', cashier:'cashier.html', paid:'paid-member.html', return:'return-order.html'};
-const COLOR = {member:'blue', cashier:'green', paid:'purple', return:'red'};
+const PAGE = {member:'member-validity.html', cashier:'cashier.html', paid:'paid-member.html', return:'return-order.html', preorder:'preorder.html'};
+const COLOR = {member:'blue', cashier:'green', paid:'purple', return:'red', preorder:'teal'};
 function lastPeriod(periods){ const ks=Object.keys(periods||{}); return periods[ks[ks.length-1]]||null; }
 
 /* ---------- 卡片数据构建（各自独立，某一项取数失败不影响其余） ---------- */
@@ -80,6 +81,16 @@ function cardReturn(r){
     insight: bl.length?(bl[0].name+' 退货率'+bl[0].rate+'% 最高，疑集中退单。'):'',
     action:'P0 · 退货率超8%门店售后48小时内回访，定位原因并反馈销售整改。'};
 }
+function cardPreorder(r){
+  if(!r || !r.periods) return null;
+  const rp=r.periods.month||lastPeriod(r.periods);
+  const bl=(rp.branchList||[]).slice().sort((a,b)=>b.count-a.count);
+  return {key:'preorder',title:'预订单',subtitle:'预售 · 频繁预订风险',
+    metrics:[{v:fmt(rp.count),l:'预订单数',c:'blue'},{v:fmt(rp.storeCount),l:'涉及门店',c:'teal'},{v:fmt(rp.riskCount),l:'频繁手机号',c:rp.riskCount>0?'red':''}],
+    progress:{pct:Math.min(rp.riskCount*8,100),left:'频繁 '+fmt(rp.riskCount)+' 个',right:''},
+    insight: rp.riskCount>0?(rp.riskCount+' 个手机号本月预订 ≥'+(rp.freq||3)+' 次，疑似虚假预订/收款不过账，类储值风险，需逐单核查。'):'当前无频繁预订手机号，预订行为正常。',
+    action:'P0 · 频繁预订手机号逐单核查收款与履约，发现收款不过账立即冻结并上报。'};
+}
 function renderCard(c){
   const col=COLOR[c.key]||'blue';
   const metrics=(c.metrics||[]).map(m=>metric(m.v,m.l,m.c,m.delta)).join('');
@@ -105,7 +116,8 @@ const SPECS=[
   {key:'member', run:()=>loadMember({light:true}), build:cardMember},
   {key:'cashier',run:loadCashier,             build:cardCashier},
   {key:'paid',   run:()=>loadPaid(['month']), build:cardPaid},
-  {key:'return', run:loadReturnLight,         build:cardReturn}
+  {key:'return', run:loadReturnLight,         build:cardReturn},
+  {key:'preorder',run:()=>loadPreorder(['month']), build:cardPreorder}
 ];
 async function bootIndex(){
   const el=document.getElementById('cards');
