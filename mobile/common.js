@@ -1,7 +1,9 @@
 /* 移动端共享逻辑：直读已发布 PC 看板（纯皮肤，零中间数据文件）
    各看板取数均来自 ghpages_repo 已发布的 PC 看板，PC 一更新手机自动跟随。 */
 const PERIOD_ORDER = ['day', 'yest', 'week', 'lastweek', 'month', 'lastmonth'];
-const PERIOD_LABEL = {day:'当日', yest:'昨日', week:'本周', lastweek:'上周', month:'本月', lastmonth:'上月'};
+const PERIOD_LABEL = {day:'当日', yest:'昨日', week:'本周', lastweek:'上周', month:'本月', lastmonth:'上月', all:'全部'};
+/* 预订单专用周期：在通用 6 档后追加「全部」（数据走服务端预聚合的 all_period.json，不逐日拉取） */
+const PREORDER_PERIODS = PERIOD_ORDER.concat(['all']);
 
 /* ---------- 分公司固定展示顺序（2026-09-12 逄总要求） ----------
    所有涉及分公司的列表（有效性/合规收银/付费会员/零售退货，含驾驶舱卡片与派生排名）
@@ -137,6 +139,7 @@ function periodDateSet(allDates, kind, latest){
     return allDates.filter(x=>x>=a && x<=b);
   }
   if(kind==='month') return allDates.filter(x=>x.slice(0,6)===latest.slice(0,6));
+  if(kind==='all') return allDates.slice();   // 全部（预订单用；其数据由 all_period.json 预聚合，不走逐日）
   if(kind==='lastmonth'){
     const d=new Date(latest.slice(0,4)+'-'+latest.slice(4,6)+'-01'); d.setDate(0);
     const lm=d.getFullYear()+('0'+(d.getMonth()+1)).slice(-2);
@@ -404,9 +407,10 @@ async function loadPreorder(onlyPeriods){
   const dates=idx.dates.map(norm).sort();
   const latest=dates[dates.length-1];
   const freq=idx.freq_threshold||3;
-  const wantP=(Array.isArray(onlyPeriods)&&onlyPeriods.length)?onlyPeriods:PERIOD_ORDER;
+  const wantP=(Array.isArray(onlyPeriods)&&onlyPeriods.length)?onlyPeriods:PREORDER_PERIODS;
   const needSet=new Set();
-  for(const p of wantP) periodDateSet(dates,p,latest).forEach(d=>needSet.add(norm(d)));
+  // 「全部」不逐日拉取（280 个请求太重），改用服务端预聚合的 all_period.json
+  for(const p of wantP){ if(p==='all') continue; periodDateSet(dates,p,latest).forEach(d=>needSet.add(norm(d))); }
   const needDates=[...needSet].filter(d=>dates.includes(d)).sort();
   const cache={};
   async function getDay(dt){ if(cache[dt]) return cache[dt]; const j=await fetchJson(enc('../preorder/daily/'+dt+'.json')); cache[dt]=j||null; return cache[dt]; }
@@ -450,6 +454,30 @@ async function loadPreorder(onlyPeriods){
     const storeCount=Object.keys(st).length;
     periods[p]={ dates:ds.slice().sort(), count, amount:Math.round(amount), recv:Math.round(recv), verified:Math.round(verified), refund:Math.round(refund), storeCount, branchList, storeTop10, phoneList, riskCount, freq };
   }
+  // 「全部」周期：读服务端预聚合快照（单请求），保证与逐日口径一致且不压垮移动端
+  if(wantP.includes('all')){
+    try{
+      const ap=await fetchJson(enc('../preorder/all_period.json'));
+      if(ap){
+        periods.all={
+          dates:[ap.first_date, ap.last_date].filter(Boolean),
+          days:ap.days||0,
+          count:ap.count||0,
+          amount:Math.round(ap.amount||0), recv:Math.round(ap.recv||0),
+          verified:Math.round(ap.verified||0), refund:Math.round(ap.refund||0),
+          storeCount:ap.storeCount||0,
+          branchList:sortBranch((ap.branch||[]).map(b=>({name:b.name, count:b.count, amount:Math.round(b.amount||0),
+            recv:Math.round(b.recv||0), verified:Math.round(b.verified||0), refund:Math.round(b.refund||0)}))),
+          storeTop10:(ap.storeTop10||[]).map(s=>({name:s.name, company:s.company||'', count:s.count,
+            amount:Math.round(s.amount||0), recv:Math.round(s.recv||0), verified:Math.round(s.verified||0), refund:Math.round(s.refund||0)})),
+          phoneList:(ap.phoneList||[]).map(x=>({phone:x.phone, count:x.count, amount:Math.round(x.amount||0),
+            recv:Math.round(x.recv||0), verified:Math.round(x.verified||0), refund:Math.round(x.refund||0),
+            stores:x.stores||[], risk:!!x.risk})),
+          riskCount:ap.riskCount||0, freq,
+        };
+      }
+    }catch(e){}
+  }
   // 充值未核销（沉淀）快照：独立快照，不随周期切换
   let rechargeUnused=null;
   try{ rechargeUnused=await fetchJson(enc('../preorder/recharge_unused.json')); }catch(e){}
@@ -481,6 +509,8 @@ async function boot(loader, defaultPeriod){
     document.querySelectorAll('.tab-item').forEach(t=>t.classList.toggle('active',t.dataset.p===active));
     try{ el.innerHTML=window.BUILD(periods[active], dash, active); }
     catch(e){ el.innerHTML='<div class="loading">渲染出错：'+esc(e.message)+'</div>'; return; }
+    // 页面可选钩子：BUILD 返回纯字符串，需在插入 DOM 后再做交互初始化/懒渲染（如预订单的沉淀分档列表）
+    if(typeof window.AFTER_BUILD==='function'){ try{ window.AFTER_BUILD(periods[active], dash, active); }catch(e){} }
     requestAnimationFrame(()=>{ document.querySelectorAll('.progress-fill').forEach(b=>{ const w=b.style.width; b.style.width='0'; setTimeout(()=>b.style.width=w,60); }); });
   }
   tabRow.addEventListener('click',e=>{ const t=e.target.closest('.tab-item'); if(!t) return; active=t.dataset.p; render(); });

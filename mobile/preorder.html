@@ -9,6 +9,14 @@
 .store-item.tappable{cursor:pointer}
 .store-item.tappable:active{background:rgba(0,113,227,0.09)!important}
 .store-tap-hint{color:#0071E3;font-size:11px}
+/* 沉淀时长分档选择器 */
+.bucket-row{display:flex;gap:6px;overflow-x:auto;padding:2px 0 10px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.bucket-row::-webkit-scrollbar{display:none}
+.bucket-chip{flex:0 0 auto;padding:7px 11px;border-radius:15px;background:#f2f2f4;color:#515154;font-size:12px;line-height:1;white-space:nowrap;cursor:pointer;border:1px solid transparent}
+.bucket-chip.active{background:#ff3b30;color:#fff;font-weight:700}
+.bucket-chip:active{opacity:.65}
+.bucket-sum{font-size:12px;color:#1d1d1f;margin:0 0 9px;line-height:1.6}
+.bucket-empty{font-size:12px;color:#86868b;padding:14px 0;text-align:center}
 .drawer-mask{position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;visibility:hidden;transition:opacity .25s;z-index:900}
 .drawer-mask.open{opacity:1;visibility:visible}
 .drawer{position:fixed;left:0;right:0;bottom:0;max-height:84vh;background:#fff;border-radius:18px 18px 0 0;box-shadow:0 -6px 30px rgba(0,0,0,.2);transform:translateY(105%);transition:transform .28s cubic-bezier(.22,.61,.36,1);z-index:910;display:flex;flex-direction:column;overflow:hidden}
@@ -40,7 +48,7 @@
     <div class="header-back" onclick="location.href='index.html'" data-page-node-id="88qnA3yMJVifGScZmz7ZeU">
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" data-page-node-id="MqLoISgsgV96zHzA3sqVu1"><path d="M10 3L5 8l5 5" data-page-node-id="lA0r3JtNxqbJwEUFCBibqr"/></svg>返回
     </div>
-    <div class="header-badge" data-page-node-id="GsKTxP5RF5UuHYIiUGLkK1">v1.1</div>
+    <div class="header-badge" data-page-node-id="GsKTxP5RF5UuHYIiUGLkK1">v1.2</div>
   </div>
   <div class="header-title" data-page-node-id="SgvyaakE0Muv9qubGOk1rm">预订单</div>
   <div class="header-date" id="hdrDate" data-page-node-id="DY7nSZwvE6MTfATVLdZ46F"><span class="dot" data-page-node-id="vdVnZcdqFXbtMhyuDL4vPL"></span></div>
@@ -69,18 +77,41 @@ function ageDays(fd, asof){
   }catch(e){ return 0; }
 }
 function wan(v){ return '¥'+(Math.abs(v)/10000).toFixed(2)+'万'; }
+/* 沉淀时长分档定义：gtN = 最早订金日距今 > N 天（累计）；le7 = ≤7 天（刚充值未满一周） */
+const BUCKET_DEFS=[
+  {k:'gt90', label:'90天以上', test:a=>a>90, tip:'越久未核销风险越高（>90天深度沉淀）'},
+  {k:'gt60', label:'60天以上', test:a=>a>60, tip:'越久未核销风险越高（>60天标红）'},
+  {k:'gt30', label:'30天以上', test:a=>a>30, tip:'越久未核销风险越高（>60天标红）'},
+  {k:'gt14', label:'14天以上', test:a=>a>14, tip:'越久未核销风险越高（>60天标红）'},
+  {k:'gt7',  label:'7天以上',  test:a=>a>7,  tip:'越久未核销风险越高（>60天标红）'},
+  {k:'le7',  label:'7天内',    test:a=>a<=7, tip:'刚充值未满一周，尚未构成沉淀风险'},
+];
+let _PB=null;      // 沉淀快照（BUILD 时填充）：{as_of, phones[]}
+let _bk='gt90';    // 当前选中的分档
 window.BUILD = function(period, dash, active){
+  const periodName=PERIOD_LABEL[active]||'';
+  const ds=period.dates||[];
+  const dayN=period.days||ds.length;
   const de=document.getElementById('hdrDate');
-  if(de){ const ds=period.dates||[]; de.innerHTML='<span class="dot"></span>'+(ds.length?('当月 '+ds[0].slice(4,6)+'-'+ds[0].slice(6,8)+' ~ '+ds[ds.length-1].slice(4,6)+'-'+ds[ds.length-1].slice(6,8)+' 共'+ds.length+'天'):(dash.latest_date||'')); }
+  if(de){
+    let rng=String(dash.latest_date||'');
+    if(ds.length){
+      const f=ds[0], l=ds[ds.length-1];
+      const head=(active==='all'||ds.length>31)?(f.slice(0,4)+'-'+f.slice(4,6)+'-'+f.slice(6,8)):(f.slice(4,6)+'-'+f.slice(6,8));
+      rng=periodName+' '+head+' ~ '+l.slice(4,6)+'-'+l.slice(6,8)+' 共'+dayN+'天';
+    }
+    de.innerHTML='<span class="dot"></span>'+esc(rng);
+  }
   const freqEl=document.getElementById('freqTh'); if(freqEl) freqEl.textContent=(period.freq||3);
   const freq=(period.freq||3);
   const maxC=Math.max(1,...(period.branchList||[]).map(b=>b.count));
   const branchHtml=(period.branchList||[]).map((b,i)=>branchItem(i,b.name,fmt(b.count)+'单','c-blue',b.count/maxC*100,'#0071E3')).join('');
   const branchDist=(period.branchList||[]).map(b=>`<div class="detail-item"><div class="detail-item-name">${esc(b.name)}</div><div class="detail-item-value c-gray">${fmt(b.count)}单 · 净未消费${wan(b.amount)}</div></div>`).join('');
-  const storeHtml=(period.storeTop10||[]).map(s=>storeItem(s.name,(s.company||'')+(s.company?' · ':'')+fmt(s.count)+'单 · 净未消费'+wan(s.amount),fmt(s.count),'预订单数','c-blue',false)).join('');
   // 手机号维度：频繁(风险)置顶红标，其后列 TOP20 正常号（手机号脱敏展示）
-  const riskPhones=(period.phoneList||[]).filter(p=>p.risk);
-  const normalPhones=(period.phoneList||[]).filter(p=>!p.risk).slice(0,20);
+  const allPh=period.phoneList||[];
+  const riskAll=allPh.filter(p=>p.risk);
+  const riskPhones=riskAll.slice(0,60);
+  const normalPhones=allPh.filter(p=>!p.risk).slice(0,20);
   const showPhones=riskPhones.concat(normalPhones);
   const phoneHtml=showPhones.map(p=>{
     const hc=p.risk?' style="background:rgba(255,59,48,0.05);border:1px solid rgba(255,59,48,0.18)"':'';
@@ -90,26 +121,22 @@ window.BUILD = function(period, dash, active){
       +`<div class="store-value"><div class="store-value-num ${p.risk?'c-red':''}">${p.risk?'⚠ 频繁':'正常'}</div>`
       +`<div class="store-value-label">${fmt(p.count)}次</div></div></div>`;
   }).join('');
+  const phoneNote=(riskAll.length>riskPhones.length)
+    ? `<div class="insight-text" style="font-size:11px;color:#86868b;margin-top:6px">风险号共 ${fmt(riskAll.length)} 个，此处展示前 ${riskPhones.length} 个（按预订次数降序）。</div>` : '';
   const topC=(period.branchList||[]).slice().sort((a,b)=>b.count-a.count)[0];
-  const periodName=PERIOD_LABEL[active]||'';
   const riskInfo = period.riskCount>0
     ? `<span class="tag-red">${period.riskCount}</span> 个手机号周期内预订 ≥${freq} 次，疑似虚假预订/收款不过账，类储值风险，需逐单核查。`
     : '当前周期内无频繁预订手机号（均 < '+freq+' 次），预订行为正常。';
-  // 充值未核销（沉淀）快照
+
+  /* ---------- 会员充值未核销（沉淀）：按最早订金日分档，点选项切换（列表懒渲染，只渲染当前档） ---------- */
   const ru=dash.rechargeUnused||null;
   let rechargeHtml='';
   if(ru){
-    const B=ru.buckets||{};
-    const bk=(k,label,color)=>{ const o=B[k]||{phones:0,amount:0}; return metric(fmt(o.phones), label+' · '+wan(o.amount), color); };
-    const phones=(ru.phones||[]).slice(0,60).map(p=>{
-      const age=ageDays(p.first_date, ru.as_of||'');
-      const hot=age>60;
-      const meta='最早订金 '+p.first_date+' · '+p.stores.length+'家店 · '+p.count+'笔 · 沉淀'+age+'天';
-      return `<div class="store-item tappable"${hot?' style="background:rgba(255,59,48,0.05);border:1px solid rgba(255,59,48,0.15)"':''} onclick="openPhoneDrawer('${p.phone}')">`
-        +`<div class="store-info"><div class="store-name">${esc(maskPhone(p.phone))}${hot?' <span class="badge badge-red">超60天</span>':''}</div>`
-        +`<div class="store-meta">${esc(meta)} <span class="store-tap-hint">· 查看明细›</span></div></div>`
-        +`<div class="store-value"><div class="store-value-num ${hot?'c-red':''}">${wan(p.amount)}</div>`
-        +`<div class="store-value-label">净未消费</div></div></div>`;
+    _PB={ as_of: ru.as_of||'', phones:(ru.phones||[]).slice().sort((a,b)=>b.amount-a.amount) };
+    const chk=ru.buckets||{};
+    const chips=BUCKET_DEFS.map(b=>{
+      const o=chk[b.k]||{phones:0,amount:0};
+      return `<div class="bucket-chip${b.k===_bk?' active':''}" data-bk="${b.k}" onclick="selectBucket('${b.k}')">${b.label} · ${fmt(o.phones)}</div>`;
     }).join('');
     rechargeHtml = `
   <div class="card">
@@ -117,18 +144,12 @@ window.BUILD = function(period, dash, active){
       <div class="card-icon bg-red"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff3b30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v4H3zM3 10h18v11H3zM7 14h2M11 14h2M15 14h2"/></svg></div>
       <div><div class="card-title">会员充值未核销（沉淀）</div><div class="card-subtitle">截至 ${esc(ru.as_of||'')} · 净未消费订金(实收−已核销−已退)&gt;0</div></div>
     </div></div>
-    <div class="metrics-row">
-      ${bk('gt7','>7天','c-teal')}
-      ${bk('gt14','>14天','c-blue')}
-      ${bk('gt30','>30天','c-orange')}
-      ${bk('gt60','>60天','c-red')}
-    </div>
-    <div class="insight-text" style="font-size:12px;margin:2px 0 10px;color:#1d1d1f;line-height:1.6">
+    <div class="insight-text" style="font-size:12px;margin:0 0 10px;color:#1d1d1f;line-height:1.6">
       共 <span class="tag-red">${fmt(ru.total_phones||0)}</span> 个手机号、沉淀 <b>${wan(ru.total_amount||0)}</b> 订金长期未核销/未退；
-      四档为<b>累计口径</b>（&gt;60天含更久）。收款不过账或挪作他用即构成储值类资金风险，须逐单核查。
+      按最早订金日分档（60天以上含90天以上，为累计口径）—— 点击下方选项查看对应档位。
     </div>
-    <div class="store-list">${phones}</div>
-    ${(ru.phones||[]).length>60?`<div class="insight-text" style="font-size:11px;color:#86868b;margin-top:6px">仅展示金额 TOP60，全量 ${fmt(ru.phones.length)} 个详见导出数据。</div>`:''}
+    <div class="bucket-row">${chips}</div>
+    <div id="bucketBody"></div>
     ${actionBox('P0 · 充值未核销逐单核查：核对订金是否真实到账、是否对应真实意向商品；&gt;30天未核销的须联系客户履约或清退，发现资金异常立即上报。')}
   </div>`;
   }
@@ -149,7 +170,7 @@ window.BUILD = function(period, dash, active){
     </div>
     <div class="metrics-row">
       ${metric(fmt(period.storeCount),'涉及门店数','c-teal')}
-      ${metric(String((period.dates||[]).length),'统计天数','c-gray')}
+      ${metric(String(dayN),'统计天数','c-gray')}
       ${metric(wan(period.verified),'已核销金额','c-gray')}
       ${metric(wan(period.refund),'已退金额','c-gray')}
     </div>
@@ -168,13 +189,7 @@ window.BUILD = function(period, dash, active){
     </div>
     ${topC?insightBox('AI 解读','<span class="tag-blue">'+esc(topC.name)+'</span> 预订单'+fmt(topC.count)+'笔居首，贡献最高。'):''}
   </div>
-  <div class="card">
-    <div class="card-head"><div class="card-head-left">
-      <div class="card-icon bg-orange"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M3 7v14M21 7v14M3 7l9-4 9 4M9 21v-6h6v6"/></svg></div>
-      <div><div class="card-title">门店预订单 TOP 10</div><div class="card-subtitle">按预订单数排序 · ${esc(periodName)}</div></div>
-    </div></div>
-    <div class="store-list">${storeHtml}</div>
-  </div>
+  ${rechargeHtml}
   <div class="card">
     <div class="card-head"><div class="card-head-left">
       <div class="card-icon bg-red"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff3b30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.5 2.3 7.1-6.3-4.6L5.7 21l2.3-7.1-6-4.5h7.6z"/></svg></div>
@@ -182,9 +197,9 @@ window.BUILD = function(period, dash, active){
     </div></div>
     <div class="insight-text" style="font-size:12px;margin:2px 0 10px;color:#1d1d1f;line-height:1.6">${riskInfo}</div>
     <div class="store-list">${phoneHtml}</div>
+    ${phoneNote}
     ${actionBox('P0 · 频繁预订手机号逐单核查：确认是否真实收款、是否履约发货；发现收款不过账或无履约立即冻结并上报，参照储值违规处置。')}
-  </div>
-  ${rechargeHtml}`;
+  </div>`;
 };
 boot(loadPreorder,'month');
 </script>
@@ -198,6 +213,37 @@ boot(loadPreorder,'month');
 </div>
 <script>
 function money(v){ return fmt(Math.round(Number(v)||0)); }
+/* 沉淀分档切换：点击对应选项 → 只渲染该档手机号清单（懒渲染，避免 6 档全塞进 DOM） */
+function selectBucket(k){
+  _bk=k;
+  document.querySelectorAll('.bucket-chip').forEach(c=>c.classList.toggle('active',c.dataset.bk===k));
+  renderBucketList(k);
+}
+function renderBucketList(k){
+  const box=document.getElementById('bucketBody');
+  if(!box || !_PB) return;
+  const def=BUCKET_DEFS.find(d=>d.k===k)||BUCKET_DEFS[0];
+  const asof=_PB.as_of||'';
+  const list=(_PB.phones||[]).filter(p=>def.test(ageDays(p.first_date, asof)));
+  const sum=list.reduce((a,x)=>a+(Number(x.amount)||0),0);
+  const rows=list.slice(0,60).map(p=>{
+    const age=ageDays(p.first_date, asof);
+    const hot=age>60;
+    const bg=age>90?'超90天':(age>60?'超60天':(age>30?'超30天':''));
+    const meta='最早订金 '+p.first_date+' · 距今'+age+'天 · '+p.stores.length+'家店 · '+p.count+'笔';
+    return `<div class="store-item tappable"${hot?' style="background:rgba(255,59,48,0.05);border:1px solid rgba(255,59,48,0.15)"':''} onclick="openPhoneDrawer('${p.phone}')">`
+      +`<div class="store-info"><div class="store-name">${esc(maskPhone(p.phone))}${bg?` <span class="badge badge-red">${bg}</span>`:''}</div>`
+      +`<div class="store-meta">${esc(meta)} <span class="store-tap-hint">· 查看明细›</span></div></div>`
+      +`<div class="store-value"><div class="store-value-num ${hot?'c-red':''}">${wan(p.amount)}</div>`
+      +`<div class="store-value-label">净未消费</div></div></div>`;
+  }).join('');
+  box.innerHTML=`<div class="bucket-sum">${def.label}：<span class="tag-red">${fmt(list.length)}</span> 个手机号 · 沉淀 <b>${wan(sum)}</b>
+      <span style="color:#86868b;font-size:11px">（按最早订金日；${def.tip}）</span></div>`
+    +`<div class="store-list">${rows||'<div class="bucket-empty">该档位暂无手机号</div>'}</div>`
+    +(list.length>60?`<div class="insight-text" style="font-size:11px;color:#86868b;margin-top:6px">仅展示金额 TOP60 / 共 ${fmt(list.length)} 个。</div>`:'');
+}
+/* BUILD 返回字符串、DOM 插入后才可操作 → 用 AFTER_BUILD 钩子渲染当前档列表 */
+window.AFTER_BUILD=function(){ if(_PB) renderBucketList(_bk); };
 let _poCache=null, _poLoading=null;
 async function loadPhoneOrders(){
   if(_poCache) return _poCache;
