@@ -5,6 +5,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" data-page-node-id="fe2D5foLSMaYAvwNReJGW5">
 <title>预订单 · 移动端</title>
 <link rel="stylesheet" href="mobile.css" data-page-node-id="w8KLl3XmE8CR4WHzylSDNc">
+<style>
+.store-item.tappable{cursor:pointer}
+.store-item.tappable:active{background:rgba(0,113,227,0.09)!important}
+.store-tap-hint{color:#0071E3;font-size:11px}
+.drawer-mask{position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;visibility:hidden;transition:opacity .25s;z-index:900}
+.drawer-mask.open{opacity:1;visibility:visible}
+.drawer{position:fixed;left:0;right:0;bottom:0;max-height:84vh;background:#fff;border-radius:18px 18px 0 0;box-shadow:0 -6px 30px rgba(0,0,0,.2);transform:translateY(105%);transition:transform .28s cubic-bezier(.22,.61,.36,1);z-index:910;display:flex;flex-direction:column;overflow:hidden}
+.drawer.open{transform:translateY(0)}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 10px;border-bottom:1px solid #f0f0f2}
+.drawer-title{font-size:17px;font-weight:700;color:#1d1d1f;letter-spacing:.5px}
+.drawer-sub{font-size:12px;color:#86868b;margin-top:2px}
+.drawer-close{width:30px;height:30px;line-height:28px;text-align:center;border-radius:50%;background:#f2f2f4;color:#555;font-size:14px;cursor:pointer;flex:0 0 auto}
+.drawer-body{overflow-y:auto;-webkit-overflow-scrolling:touch;padding:6px 16px 24px}
+.drawer-sum{display:flex;gap:6px;margin:12px 0 4px;flex-wrap:wrap}
+.drawer-sum .cell{background:#f7f8fa;border-radius:10px;padding:8px 6px;flex:1;min-width:60px;text-align:center}
+.drawer-sum .cell b{display:block;font-size:15px;color:#1d1d1f}
+.drawer-sum .cell span{font-size:11px;color:#86868b}
+.olist{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:6px}
+.olist th,.olist td{padding:9px 4px;border-bottom:1px solid #f0f0f2;text-align:right;white-space:nowrap}
+.olist th{color:#86868b;font-weight:500;font-size:11px}
+.olist td:first-child,.olist th:first-child,.olist td.store{text-align:left}
+.olist td.store{color:#515154;max-width:96px;overflow:hidden;text-overflow:ellipsis}
+.olist .net{font-weight:700;color:#0071E3}
+.olist .net.zero{color:#b0b0b5;font-weight:400}
+.drawer-loading{text-align:center;color:#86868b;padding:44px 0;font-size:13px}
+.drawer-empty{text-align:center;color:#86868b;padding:34px 0;font-size:13px}
+.drawer-note{font-size:11px;color:#86868b;margin-top:10px;line-height:1.6}
+</style>
 </head>
 <body data-page-node-id="sljD1WMsfKzlbJmGkBXitz">
 <div class="header" data-page-node-id="j1a2tL4mJW4KmH31LgdqPM">
@@ -57,8 +85,8 @@ window.BUILD = function(period, dash, active){
   const phoneHtml=showPhones.map(p=>{
     const hc=p.risk?' style="background:rgba(255,59,48,0.05);border:1px solid rgba(255,59,48,0.18)"':'';
     const badge=p.risk?' <span class="badge badge-red">风险</span>':'';
-    return `<div class="store-item"${hc}><div class="store-info"><div class="store-name">${esc(maskPhone(p.phone))}${badge}</div>`
-      +`<div class="store-meta">${fmt(p.count)}次预订 · 涉及${p.stores.length}家门店 · 净未消费${wan(p.amount)}</div></div>`
+    return `<div class="store-item tappable"${hc} onclick="openPhoneDrawer('${p.phone}')"><div class="store-info"><div class="store-name">${esc(maskPhone(p.phone))}${badge}</div>`
+      +`<div class="store-meta">${fmt(p.count)}次预订 · 涉及${p.stores.length}家门店 · 净未消费${wan(p.amount)} <span class="store-tap-hint">· 查看明细›</span></div></div>`
       +`<div class="store-value"><div class="store-value-num ${p.risk?'c-red':''}">${p.risk?'⚠ 频繁':'正常'}</div>`
       +`<div class="store-value-label">${fmt(p.count)}次</div></div></div>`;
   }).join('');
@@ -77,9 +105,9 @@ window.BUILD = function(period, dash, active){
       const age=ageDays(p.first_date, ru.as_of||'');
       const hot=age>60;
       const meta='最早订金 '+p.first_date+' · '+p.stores.length+'家店 · '+p.count+'笔 · 沉淀'+age+'天';
-      return `<div class="store-item"${hot?' style="background:rgba(255,59,48,0.05);border:1px solid rgba(255,59,48,0.15)"':''}>`
+      return `<div class="store-item tappable"${hot?' style="background:rgba(255,59,48,0.05);border:1px solid rgba(255,59,48,0.15)"':''} onclick="openPhoneDrawer('${p.phone}')">`
         +`<div class="store-info"><div class="store-name">${esc(maskPhone(p.phone))}${hot?' <span class="badge badge-red">超60天</span>':''}</div>`
-        +`<div class="store-meta">${esc(meta)}</div></div>`
+        +`<div class="store-meta">${esc(meta)} <span class="store-tap-hint">· 查看明细›</span></div></div>`
         +`<div class="store-value"><div class="store-value-num ${hot?'c-red':''}">${wan(p.amount)}</div>`
         +`<div class="store-value-label">净未消费</div></div></div>`;
     }).join('');
@@ -159,6 +187,61 @@ window.BUILD = function(period, dash, active){
   ${rechargeHtml}`;
 };
 boot(loadPreorder,'month');
+</script>
+<div class="drawer-mask" id="drawerMask" onclick="closePhoneDrawer()"></div>
+<div class="drawer" id="phoneDrawer">
+  <div class="drawer-head">
+    <div><div class="drawer-title" id="dwTitle">—</div><div class="drawer-sub" id="dwSub">逐笔预订单明细</div></div>
+    <div class="drawer-close" onclick="closePhoneDrawer()">✕</div>
+  </div>
+  <div class="drawer-body" id="dwBody"></div>
+</div>
+<script>
+function money(v){ return fmt(Math.round(Number(v)||0)); }
+let _poCache=null, _poLoading=null;
+async function loadPhoneOrders(){
+  if(_poCache) return _poCache;
+  if(_poLoading) return _poLoading;
+  _poLoading=(async()=>{ try{ const j=await fetchJson(enc('../preorder/phone_orders.json')); _poCache=j||{}; }catch(e){ _poCache={}; } return _poCache; })();
+  return _poLoading;
+}
+function openPhoneDrawer(phone){
+  const raw=String(phone||'');
+  document.getElementById('dwTitle').textContent=maskPhone(raw);
+  document.getElementById('dwSub').textContent='逐笔预订单明细（点遮罩 / ✕ 关闭）';
+  document.getElementById('dwBody').innerHTML='<div class="drawer-loading">加载明细中…</div>';
+  document.getElementById('drawerMask').classList.add('open');
+  document.getElementById('phoneDrawer').classList.add('open');
+  loadPhoneOrders().then(data=>renderPhoneOrders(raw,data[raw]||[]));
+}
+function closePhoneDrawer(){
+  document.getElementById('drawerMask').classList.remove('open');
+  document.getElementById('phoneDrawer').classList.remove('open');
+}
+function renderPhoneOrders(phone, arr){
+  const body=document.getElementById('dwBody');
+  if(!arr.length){ body.innerHTML='<div class="drawer-empty">该手机号在导出中无有效预订单明细</div>'; return; }
+  let R=0,V=0,F=0;
+  const rows=arr.map(o=>{
+    const r=Number(o.r)||0, v=Number(o.v)||0, f=Number(o.f)||0, net=r-v-f;
+    R+=r; V+=v; F+=f;
+    const ds=String(o.d||'').replace(/^(\d{4})(\d{2})(\d{2})$/,'$1-$2-$3');
+    return `<tr><td>${ds}</td><td class="store" title="${esc(o.s)}">${esc(o.s)}</td>`
+      +`<td>${money(r)}</td><td>${money(v)}</td><td>${money(f)}</td>`
+      +`<td class="net${net>0?'':' zero'}">${money(net)}</td></tr>`;
+  }).join('');
+  const net=R-V-F;
+  body.innerHTML=`
+    <div class="drawer-sum">
+      <div class="cell"><b>${fmt(arr.length)}</b><span>笔数</span></div>
+      <div class="cell"><b>${money(R)}</b><span>实收</span></div>
+      <div class="cell"><b>${money(V)}</b><span>已核销</span></div>
+      <div class="cell"><b>${money(F)}</b><span>已退</span></div>
+      <div class="cell"><b style="color:#0071E3">${money(net)}</b><span>净未消费</span></div>
+    </div>
+    <table class="olist"><thead><tr><th>日期</th><th class="store">门店</th><th>实收</th><th>核销</th><th>退</th><th>净额</th></tr></thead><tbody>${rows}</tbody></table>
+    <div class="drawer-note">净未消费 = 实收 − 已核销(已转销) − 已退，逐笔口径已按单据编号去重。金额单位：元。</div>`;
+}
 </script>
 </body>
 </html>
