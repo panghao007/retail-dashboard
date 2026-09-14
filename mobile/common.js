@@ -418,40 +418,43 @@ async function loadPreorder(onlyPeriods){
     const ds=periodDateSet(dates,p,latest);
     const sel=validDays.filter(d=>ds.includes(norm(d.date||'')));
     if(!sel.length) continue;
-    let count=0, amount=0;
+    let count=0, amount=0, recv=0, verified=0, refund=0;
     const br={}, st={}, ph={};
     for(const d of sel){
-      count+=(d.count||0); amount+=(d.amount||0);
+      count+=(d.count||0); amount+=(d.amount||0); recv+=(d.recv||0); verified+=(d.verified||0); refund+=(d.refund||0);
       for(const [b,v] of Object.entries(d.branch||{})){
         if(!b) continue;
-        const acc=br[b]=br[b]||{count:0,amount:0};
-        acc.count+=(v.count||0); acc.amount+=(v.amount||0);
+        const acc=br[b]=br[b]||{count:0,amount:0,recv:0,verified:0,refund:0};
+        acc.count+=(v.count||0); acc.amount+=(v.amount||0); acc.recv+=(v.recv||0); acc.verified+=(v.verified||0); acc.refund+=(v.refund||0);
       }
       for(const [s,v] of Object.entries(d.store||{})){
         if(!s) continue;
-        const acc=st[s]=st[s]||{count:0,amount:0,branch:''};
-        acc.count+=(v.count||0); acc.amount+=(v.amount||0);
+        const acc=st[s]=st[s]||{count:0,amount:0,recv:0,verified:0,refund:0,branch:''};
+        acc.count+=(v.count||0); acc.amount+=(v.amount||0); acc.recv+=(v.recv||0); acc.verified+=(v.verified||0); acc.refund+=(v.refund||0);
         if(!acc.branch && v.branch) acc.branch=v.branch;
       }
       for(const [phn,v] of Object.entries(d.phone||{})){
         if(!phn) continue;
-        const acc=ph[phn]=ph[phn]||{count:0,amount:0,stores:new Set()};
-        acc.count+=(v.count||0); acc.amount+=(v.amount||0);
+        const acc=ph[phn]=ph[phn]||{count:0,amount:0,recv:0,verified:0,refund:0,stores:new Set()};
+        acc.count+=(v.count||0); acc.amount+=(v.amount||0); acc.recv+=(v.recv||0); acc.verified+=(v.verified||0); acc.refund+=(v.refund||0);
         (v.stores||[]).forEach(s=>acc.stores.add(s));
       }
     }
     // 分公司按固定顺序（此前按笔数浮动）
-    const branchList=sortBranch(Object.entries(br).filter(([b])=>b).map(([b,v])=>({name:b, count:v.count, amount:Math.round(v.amount)})));
+    const branchList=sortBranch(Object.entries(br).filter(([b])=>b).map(([b,v])=>({name:b, count:v.count, amount:Math.round(v.amount), recv:Math.round(v.recv), verified:Math.round(v.verified), refund:Math.round(v.refund)})));
     // 门店 TOP10（按预订单数降序，展示值带金额）
-    const storeTop10=Object.entries(st).filter(([s])=>s).map(([s,v])=>({name:s, company:v.branch||'', count:v.count, amount:Math.round(v.amount)})).sort((a,b)=>b.count-a.count).slice(0,10);
+    const storeTop10=Object.entries(st).filter(([s])=>s).map(([s,v])=>({name:s, company:v.branch||'', count:v.count, amount:Math.round(v.amount), recv:Math.round(v.recv), verified:Math.round(v.verified), refund:Math.round(v.refund)})).sort((a,b)=>b.count-a.count).slice(0,10);
     // 会员手机号维度：全量按次数降序，频繁(≥freq)红标风险
-    const phoneList=Object.keys(ph).map(phn=>{ const v=ph[phn]; return {phone:phn, count:v.count, amount:Math.round(v.amount), stores:[...v.stores], risk:v.count>=freq}; }).sort((a,b)=>b.count-a.count);
+    const phoneList=Object.keys(ph).map(phn=>{ const v=ph[phn]; return {phone:phn, count:v.count, amount:Math.round(v.amount), recv:Math.round(v.recv), verified:Math.round(v.verified), refund:Math.round(v.refund), stores:[...v.stores], risk:v.count>=freq}; }).sort((a,b)=>b.count-a.count);
     const riskCount=phoneList.filter(x=>x.risk).length;
     const storeCount=Object.keys(st).length;
-    periods[p]={ dates:ds.slice().sort(), count, amount:Math.round(amount), storeCount, branchList, storeTop10, phoneList, riskCount, freq };
+    periods[p]={ dates:ds.slice().sort(), count, amount:Math.round(amount), recv:Math.round(recv), verified:Math.round(verified), refund:Math.round(refund), storeCount, branchList, storeTop10, phoneList, riskCount, freq };
   }
+  // 充值未核销（沉淀）快照：独立快照，不随周期切换
+  let rechargeUnused=null;
+  try{ rechargeUnused=await fetchJson(enc('../preorder/recharge_unused.json')); }catch(e){}
   if(!Object.keys(periods).length) return null;
-  return { periods, latest_date: idx.latest_date||latest, freq };
+  return { periods, latest_date: idx.latest_date||latest, freq, rechargeUnused };
 }
 
 /* ---------- 通用 boot（详情页） ---------- */
