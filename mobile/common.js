@@ -1,7 +1,7 @@
 /* 移动端共享逻辑：直读已发布 PC 看板（纯皮肤，零中间数据文件）
    各看板取数均来自 ghpages_repo 已发布的 PC 看板，PC 一更新手机自动跟随。 */
-const PERIOD_ORDER = ['day', 'yest', 'week', 'month', 'lastmonth'];
-const PERIOD_LABEL = {day:'当日', yest:'昨日', week:'本周', month:'本月', lastmonth:'上月'};
+const PERIOD_ORDER = ['day', 'yest', 'week', 'lastweek', 'month', 'lastmonth'];
+const PERIOD_LABEL = {day:'当日', yest:'昨日', week:'本周', lastweek:'上周', month:'本月', lastmonth:'上月'};
 
 /* ---------- 分公司固定展示顺序（2026-09-12 逄总要求） ----------
    所有涉及分公司的列表（有效性/合规收银/付费会员/零售退货，含驾驶舱卡片与派生排名）
@@ -124,8 +124,17 @@ function periodDateSet(allDates, kind, latest){
   if(kind==='yest'){ const i=allDates.indexOf(latest); return i>0?[allDates[i-1]]:[]; }
   if(kind==='week'){
     const d=new Date(latest.slice(0,4)+'-'+latest.slice(4,6)+'-'+latest.slice(6,8));
-    const mon=new Date(d); mon.setDate(d.getDate()-d.getDay());
+    const mon=new Date(d); mon.setDate(d.getDate()-((d.getDay()+6)%7)); // 周一基准（周日=0→移6天）
     return allDates.filter(x=>{ const t=new Date(x.slice(0,4)+'-'+x.slice(4,6)+'-'+x.slice(6,8)); return t>=mon && t<=d; });
+  }
+  if(kind==='lastweek'){
+    const d=new Date(latest.slice(0,4)+'-'+latest.slice(4,6)+'-'+latest.slice(6,8));
+    const mon=new Date(d); mon.setDate(d.getDate()-((d.getDay()+6)%7));
+    const pmon=new Date(mon); pmon.setDate(mon.getDate()-7);
+    const psun=new Date(pmon); psun.setDate(pmon.getDate()+6);
+    const fmt=x=>x.getFullYear()+('0'+(x.getMonth()+1)).slice(-2)+('0'+x.getDate()).slice(-2);
+    const a=fmt(pmon), b=fmt(psun);
+    return allDates.filter(x=>x>=a && x<=b);
   }
   if(kind==='month') return allDates.filter(x=>x.slice(0,6)===latest.slice(0,6));
   if(kind==='lastmonth'){

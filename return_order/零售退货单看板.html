@@ -55,6 +55,7 @@ th{background:#f0f6f8;color:#456} tbody tr:hover{background:#fafdff}
   <div class="ct-btns" id="ctbtns">
     <button class="ct-btn" data-w="today">当日</button>
     <button class="ct-btn" data-w="yesterday">昨日</button>
+    <button class="ct-btn" data-w="lastweek">上周</button>
     <button class="ct-btn ct-act" data-w="month">当月</button>
     <button class="ct-btn" data-w="custom">自定义</button>
   </div>
@@ -108,11 +109,23 @@ function agg(keys){
   });
   return R;
 }
+function prevWeekKeys(){
+  // 上一自然周：本周一往前 7 天为上周一，+6 天为上周日
+  var today=baseKey(); if(!today) return [];
+  var d=new Date(today.slice(0,4)+'-'+today.slice(4,6)+'-'+today.slice(6,8));
+  var mon=new Date(d); mon.setDate(d.getDate()-((d.getDay()+6)%7)); // 周一基准
+  var pmon=new Date(mon); pmon.setDate(mon.getDate()-7);
+  var psun=new Date(pmon); psun.setDate(pmon.getDate()+6);
+  var fmt=function(x){ return x.getFullYear()+('0'+(x.getMonth()+1)).slice(-2)+('0'+x.getDate()).slice(-2); };
+  var a=fmt(pmon), b=fmt(psun);
+  return RDATA.dates.filter(function(k){ return k>=a && k<=b; });
+}
 function windowKeys(w){
   var today=baseKey();
   if(!today) return [];
   if(w==="today") return [today];
   if(w==="yesterday"){ var y=shiftDays(today,1); return RDATA.dates.indexOf(y)>=0?[y]:[]; }
+  if(w==="lastweek") return prevWeekKeys();
   if(w==="month"){ var curYM=beijingYMD().slice(0,6);
                    var cur=RDATA.dates.filter(function(k){return k.indexOf(curYM)===0;});
                    if(cur.length) return cur;                       // 自然月有数据优先
@@ -143,6 +156,7 @@ function renderTable(w){
   if(w==="custom") document.getElementById("winlabel").textContent="（自定义）";
   else if(w==="today") document.getElementById("winlabel").textContent="（当日 "+keyToYmd(baseKey())+"）";
   else if(w==="yesterday") document.getElementById("winlabel").textContent="（昨日 "+(keys.length?keyToYmd(keys[0]):"无数据")+"）";
+  else if(w==="lastweek") document.getElementById("winlabel").textContent="（上周 "+(keys.length?(keyToYmd(keys[0])+" ~ "+keyToYmd(keys[keys.length-1])):"无数据")+"）";
   else document.getElementById("winlabel").textContent="（当月 "+(keys.length?(keyToYmd(keys[0])+" ~ "+keyToYmd(keys[keys.length-1])):"无数据")+"）";
   var R=agg(keys);
   // 分公司
