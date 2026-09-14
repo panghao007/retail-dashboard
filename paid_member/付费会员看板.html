@@ -96,7 +96,6 @@
       <div class="seg" id="seg">
         <button data-mode="当日">当日</button>
         <button data-mode="昨日">昨日</button>
-        <button data-mode="上周">上周</button>
         <button data-mode="当月" class="active">当月</button>
         <button data-mode="自定义">自定义</button>
       </div>
@@ -154,24 +153,10 @@ async function loadDay(date){
   const r = await fetch('daily/'+fmtDate(date)+'.json', {cache:'no-store'});
   const j = await r.json(); DAILY[date]=j; return j;
 }
-function prevWeekDates(){
-  // 上一自然周：本周一往前 7 天为上周一，+6 天为上周日（周一基准，北京时区用本地分量格式化）
-  if(!INDEX.length) return [];
-  const normD = s => (s.length===8 && s.indexOf('-')<0) ? s.slice(0,4)+'-'+s.slice(4,6)+'-'+s.slice(6,8) : s;
-  const last=normD(INDEX[INDEX.length-1]);
-  const d=new Date(last+'T00:00:00');
-  const mon=new Date(d); mon.setDate(d.getDate()-((d.getDay()+6)%7));
-  const pmon=new Date(mon); pmon.setDate(mon.getDate()-7);
-  const psun=new Date(pmon); psun.setDate(pmon.getDate()+6);
-  const fmt=x=>x.getFullYear()+'-'+('0'+(x.getMonth()+1)).slice(-2)+'-'+('0'+x.getDate()).slice(-2);
-  const f=fmt(pmon), t=fmt(psun);
-  return INDEX.filter(x=>{ const nx=normD(x); return nx>=f && nx<=t; });
-}
 function wantDates(){
   const t=todayBJ(), y=prevDay(t), ms=t.slice(0,8)+"01";
   if(MODE==="当日") return [t];
   if(MODE==="昨日") return [y];
-  if(MODE==="上周") return prevWeekDates();
   if(MODE==="当月") return INDEX.filter(d=>d>=ms && d<=y);
   if(MODE==="自定义") return INDEX.filter(d=>d>=(CUSTOM.start||"0000") && d<=(CUSTOM.end||"9999"));
   return [];
@@ -185,7 +170,6 @@ function selectedLabel(want){
   if(want.length===0) return "（无数据）";
   if(MODE==="当日") return "当日（"+want[0]+"）";
   if(MODE==="昨日") return "昨日（"+want[0]+"）";
-  if(MODE==="上周") return "上周（"+want[0]+" ~ "+want[want.length-1]+"）";
   if(MODE==="当月") return "当月累积（"+want[0]+" ~ "+want[want.length-1]+"）";
   if(MODE==="自定义") return "自定义（"+(CUSTOM.start||"?")+" ~ "+(CUSTOM.end||"?")+"）";
   return "";

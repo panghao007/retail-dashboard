@@ -1,13 +1,13 @@
 {
   "date": "2026-09-12",
-  "generated": "2026-09-13 23:00",
+  "generated": "2026-09-14 16:03",
   "total": {
-    "denominator": 835.0,
-    "numerator": 288.0,
-    "order_denom": 825,
-    "order_num": 288,
-    "amount": 192651.0,
-    "profit": 29136.0
+    "denominator": 834.0,
+    "numerator": 287.0,
+    "order_denom": 824,
+    "order_num": 287,
+    "amount": 192552.0,
+    "profit": 29074.0
   },
   "branches": {
     "北京中恒": {
@@ -156,15 +156,15 @@
       "profit": 2160.0
     },
     "北京飞航": {
-      "denominator": 250.0,
-      "numerator": 71.0,
-      "order_denom": 248,
-      "order_num": 71,
+      "denominator": 249.0,
+      "numerator": 70.0,
+      "order_denom": 247,
+      "order_num": 70,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
           "name": "畅玩会员-99",
-          "qty": 69.0,
+          "qty": 68.0,
           "price": 99,
           "profit": 62.0
         },
@@ -176,8 +176,8 @@
           "profit": 117.0
         }
       ],
-      "amount": 7229.0,
-      "profit": 4512.0
+      "amount": 7130.0,
+      "profit": 4450.0
     },
     "上海爱飞": {
       "denominator": 97.0,
@@ -2614,20 +2614,20 @@
       "branch": "北京飞航",
       "store": "DJI北京王府井APM授权高级体验店",
       "denominator": 25.0,
-      "numerator": 6.0,
+      "numerator": 5.0,
       "order_denom": 25,
-      "order_num": 6,
+      "order_num": 5,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
           "name": "畅玩会员-99",
-          "qty": 6.0,
+          "qty": 5.0,
           "price": 99,
           "profit": 62.0
         }
       ],
-      "amount": 594.0,
-      "profit": 372.0
+      "amount": 495.0,
+      "profit": 310.0
     },
     {
       "branch": "北京飞航",
@@ -2918,9 +2918,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京龙湖长安天街授权体验店",
-      "denominator": 5.0,
+      "denominator": 4.0,
       "numerator": 6.0,
-      "order_denom": 5,
+      "order_denom": 4,
       "order_num": 6,
       "vip_items": [
         {
