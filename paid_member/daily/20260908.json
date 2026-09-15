@@ -1,10 +1,10 @@
 {
   "date": "2026-09-08",
-  "generated": "2026-09-15 16:03",
+  "generated": "2026-09-15 22:43",
   "total": {
-    "denominator": 422.0,
+    "denominator": 421.0,
     "numerator": 136.0,
-    "order_denom": 413,
+    "order_denom": 412,
     "order_num": 136,
     "amount": 84172.0,
     "profit": 14074.0
@@ -63,9 +63,9 @@
       "profit": 5500.0
     },
     "四川新跃": {
-      "denominator": 35.0,
+      "denominator": 34.0,
       "numerator": 18.0,
-      "order_denom": 35,
+      "order_denom": 34,
       "order_num": 18,
       "vip_items": [
         {
@@ -1215,9 +1215,9 @@
     {
       "branch": "四川新跃",
       "store": "APR成都金牛凯德",
-      "denominator": 5.0,
+      "denominator": 4.0,
       "numerator": 5.0,
-      "order_denom": 5,
+      "order_denom": 4,
       "order_num": 5,
       "vip_items": [
         {
