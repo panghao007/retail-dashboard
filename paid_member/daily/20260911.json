@@ -1,17 +1,17 @@
 {
   "date": "2026-09-11",
-  "generated": "2026-09-14 22:43",
+  "generated": "2026-09-15 10:54",
   "total": {
-    "denominator": 613.0,
+    "denominator": 553.0,
     "numerator": 184.0,
-    "order_denom": 608,
+    "order_denom": 542,
     "order_num": 184,
     "amount": 125908.0,
     "profit": 19172.0
   },
   "branches": {
     "北京中恒": {
-      "denominator": 169.0,
+      "denominator": 172.0,
       "numerator": 76.0,
       "order_denom": 167,
       "order_num": 76,
@@ -94,7 +94,7 @@
       "profit": 1900.0
     },
     "北京易联": {
-      "denominator": 93.0,
+      "denominator": 95.0,
       "numerator": 25.0,
       "order_denom": 92,
       "order_num": 25,
@@ -135,9 +135,9 @@
       "profit": 666.0
     },
     "北京飞航": {
-      "denominator": 190.0,
+      "denominator": 149.0,
       "numerator": 46.0,
-      "order_denom": 188,
+      "order_denom": 146,
       "order_num": 46,
       "vip_items": [
         {
@@ -159,9 +159,9 @@
       "profit": 3072.0
     },
     "上海爱飞": {
-      "denominator": 69.0,
+      "denominator": 45.0,
       "numerator": 12.0,
-      "order_denom": 69,
+      "order_denom": 45,
       "order_num": 12,
       "vip_items": [
         {
@@ -263,7 +263,7 @@
     {
       "branch": "北京中恒",
       "store": "APR北京五道口购物中心",
-      "denominator": 4.0,
+      "denominator": 5.0,
       "numerator": 2.0,
       "order_denom": 4,
       "order_num": 2,
@@ -429,7 +429,7 @@
     {
       "branch": "北京中恒",
       "store": "APR北京大族广场",
-      "denominator": 9.0,
+      "denominator": 11.0,
       "numerator": 2.0,
       "order_denom": 9,
       "order_num": 2,
@@ -1535,7 +1535,7 @@
     {
       "branch": "北京易联",
       "store": "华为北京回龙观华联",
-      "denominator": 2.0,
+      "denominator": 4.0,
       "numerator": 0.0,
       "order_denom": 2,
       "order_num": 0,
@@ -2180,9 +2180,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京东方新天地授权体验店",
-      "denominator": 9.0,
+      "denominator": 7.0,
       "numerator": 1.0,
-      "order_denom": 9,
+      "order_denom": 7,
       "order_num": 1,
       "vip_items": [
         {
@@ -2199,9 +2199,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京中关村大融城授权体验店",
-      "denominator": 4.0,
+      "denominator": 3.0,
       "numerator": 3.0,
-      "order_denom": 4,
+      "order_denom": 3,
       "order_num": 3,
       "vip_items": [
         {
@@ -2244,9 +2244,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京丽泽天街授权体验店",
-      "denominator": 7.0,
+      "denominator": 6.0,
       "numerator": 2.0,
-      "order_denom": 7,
+      "order_denom": 6,
       "order_num": 2,
       "vip_items": [
         {
@@ -2263,9 +2263,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京京西大悦城授权体验店",
-      "denominator": 9.0,
+      "denominator": 7.0,
       "numerator": 3.0,
-      "order_denom": 9,
+      "order_denom": 7,
       "order_num": 3,
       "vip_items": [
         {
@@ -2315,9 +2315,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京昌平悦荟授权体验店",
-      "denominator": 6.0,
+      "denominator": 4.0,
       "numerator": 0.0,
-      "order_denom": 6,
+      "order_denom": 4,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2326,9 +2326,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京昌平超级合生汇授权体验店",
-      "denominator": 7.0,
+      "denominator": 5.0,
       "numerator": 2.0,
-      "order_denom": 7,
+      "order_denom": 5,
       "order_num": 2,
       "vip_items": [
         {
@@ -2345,9 +2345,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京望京凯德MALL授权体验店",
-      "denominator": 5.0,
+      "denominator": 2.0,
       "numerator": 0.0,
-      "order_denom": 5,
+      "order_denom": 2,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2367,7 +2367,7 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京王府井APM授权高级体验店",
-      "denominator": 16.0,
+      "denominator": 15.0,
       "numerator": 0.0,
       "order_denom": 14,
       "order_num": 0,
@@ -2408,9 +2408,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京蓝色港湾授权体验店",
-      "denominator": 8.0,
+      "denominator": 3.0,
       "numerator": 0.0,
-      "order_denom": 8,
+      "order_denom": 3,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2438,9 +2438,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京西单大悦城授权体验店",
-      "denominator": 6.0,
+      "denominator": 5.0,
       "numerator": 0.0,
-      "order_denom": 6,
+      "order_denom": 5,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2490,9 +2490,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京金源购物广场授权体验店",
-      "denominator": 7.0,
+      "denominator": 5.0,
       "numerator": 2.0,
-      "order_denom": 7,
+      "order_denom": 5,
       "order_num": 2,
       "vip_items": [
         {
@@ -2569,9 +2569,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京龙德广场授权体验店",
-      "denominator": 2.0,
+      "denominator": 1.0,
       "numerator": 0.0,
-      "order_denom": 2,
+      "order_denom": 1,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2580,9 +2580,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京龙湖亦庄天街授权体验店",
-      "denominator": 7.0,
+      "denominator": 8.0,
       "numerator": 0.0,
-      "order_denom": 7,
+      "order_denom": 6,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2591,9 +2591,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京龙湖大兴天街授权体验店",
-      "denominator": 4.0,
+      "denominator": 2.0,
       "numerator": 1.0,
-      "order_denom": 4,
+      "order_denom": 2,
       "order_num": 1,
       "vip_items": [
         {
@@ -2610,9 +2610,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京龙湖房山天街授权体验店",
-      "denominator": 6.0,
+      "denominator": 4.0,
       "numerator": 2.0,
-      "order_denom": 6,
+      "order_denom": 4,
       "order_num": 2,
       "vip_items": [
         {
@@ -2629,9 +2629,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京龙湖熙悦天街授权体验店",
-      "denominator": 5.0,
+      "denominator": 4.0,
       "numerator": 0.0,
-      "order_denom": 5,
+      "order_denom": 4,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2640,9 +2640,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京龙湖长安天街授权体验店",
-      "denominator": 4.0,
+      "denominator": 2.0,
       "numerator": 1.0,
-      "order_denom": 4,
+      "order_denom": 2,
       "order_num": 1,
       "vip_items": [
         {
@@ -2659,9 +2659,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI大疆哈苏北京华熙LIVE概念店",
-      "denominator": 9.0,
+      "denominator": 6.0,
       "numerator": 6.0,
-      "order_denom": 9,
+      "order_denom": 6,
       "order_num": 6,
       "vip_items": [
         {
@@ -2678,9 +2678,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI大疆哈苏北京大兴机场概念店",
-      "denominator": 10.0,
+      "denominator": 9.0,
       "numerator": 5.0,
-      "order_denom": 10,
+      "order_denom": 9,
       "order_num": 5,
       "vip_items": [
         {
@@ -2697,9 +2697,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI大疆哈苏北京朝阳合生汇概念店",
-      "denominator": 12.0,
+      "denominator": 4.0,
       "numerator": 5.0,
-      "order_denom": 12,
+      "order_denom": 4,
       "order_num": 5,
       "vip_items": [
         {
@@ -2795,9 +2795,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海久光中心授权体验店",
-      "denominator": 2.0,
+      "denominator": 0.0,
       "numerator": 0.0,
-      "order_denom": 2,
+      "order_denom": 0,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2806,9 +2806,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海凯德晶萃授权体验店",
-      "denominator": 4.0,
+      "denominator": 3.0,
       "numerator": 0.0,
-      "order_denom": 4,
+      "order_denom": 3,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2817,9 +2817,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海复地活力城授权体验店",
-      "denominator": 3.0,
+      "denominator": 1.0,
       "numerator": 1.0,
-      "order_denom": 3,
+      "order_denom": 1,
       "order_num": 1,
       "vip_items": [
         {
@@ -2836,9 +2836,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海天荟广场授权体验店",
-      "denominator": 2.0,
+      "denominator": 1.0,
       "numerator": 0.0,
-      "order_denom": 2,
+      "order_denom": 1,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2847,9 +2847,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海徐汇万科广场授权体验店",
-      "denominator": 3.0,
+      "denominator": 1.0,
       "numerator": 1.0,
-      "order_denom": 3,
+      "order_denom": 1,
       "order_num": 1,
       "vip_items": [
         {
@@ -2877,9 +2877,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海漕河泾印象城授权体验店",
-      "denominator": 2.0,
+      "denominator": 1.0,
       "numerator": 0.0,
-      "order_denom": 2,
+      "order_denom": 1,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2918,9 +2918,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海第一八佰伴授权体验店",
-      "denominator": 5.0,
+      "denominator": 4.0,
       "numerator": 2.0,
-      "order_denom": 5,
+      "order_denom": 4,
       "order_num": 2,
       "vip_items": [
         {
@@ -2937,9 +2937,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海维璟印象城授权体验店",
-      "denominator": 2.0,
+      "denominator": 0.0,
       "numerator": 0.0,
-      "order_denom": 2,
+      "order_denom": 0,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2948,9 +2948,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海美罗城授权体验店",
-      "denominator": 6.0,
+      "denominator": 4.0,
       "numerator": 1.0,
-      "order_denom": 6,
+      "order_denom": 4,
       "order_num": 1,
       "vip_items": [
         {
@@ -2967,9 +2967,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海虹口凯德授权体验店",
-      "denominator": 5.0,
+      "denominator": 4.0,
       "numerator": 1.0,
-      "order_denom": 5,
+      "order_denom": 4,
       "order_num": 1,
       "vip_items": [
         {
@@ -2986,9 +2986,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海长宁龙之梦授权体验店",
-      "denominator": 6.0,
+      "denominator": 3.0,
       "numerator": 0.0,
-      "order_denom": 6,
+      "order_denom": 3,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2997,9 +2997,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海长泰广场授权体验店",
-      "denominator": 5.0,
+      "denominator": 3.0,
       "numerator": 0.0,
-      "order_denom": 5,
+      "order_denom": 3,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -3019,9 +3019,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海陆家嘴中心L+mall授权体验店",
-      "denominator": 4.0,
+      "denominator": 1.0,
       "numerator": 1.0,
-      "order_denom": 4,
+      "order_denom": 1,
       "order_num": 1,
       "vip_items": [
         {
@@ -3038,9 +3038,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海静安大悦城授权体验店",
-      "denominator": 5.0,
+      "denominator": 4.0,
       "numerator": 0.0,
-      "order_denom": 5,
+      "order_denom": 4,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
