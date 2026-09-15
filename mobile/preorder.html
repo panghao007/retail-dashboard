@@ -17,6 +17,11 @@
 .bucket-chip:active{opacity:.65}
 .bucket-sum{font-size:12px;color:#1d1d1f;margin:0 0 9px;line-height:1.6}
 .bucket-empty{font-size:12px;color:#86868b;padding:14px 0;text-align:center}
+.more-row{margin-top:10px;padding:11px 14px;border-radius:12px;background:#f2f2f4;color:#0071E3;font-size:13px;font-weight:600;text-align:center;cursor:pointer}
+.more-row:active{opacity:.65}
+.more-row .more-cnt{color:#86868b;font-weight:400;font-size:12px}
+.drawer-back{display:inline-block;margin:2px 0 8px;color:#0071E3;font-size:12.5px;font-weight:600;cursor:pointer;padding:2px 0}
+.drawer-back:active{opacity:.6}
 .drawer-mask{position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;visibility:hidden;transition:opacity .25s;z-index:900}
 .drawer-mask.open{opacity:1;visibility:visible}
 .drawer{position:fixed;left:0;right:0;bottom:0;max-height:84vh;background:#fff;border-radius:18px 18px 0 0;box-shadow:0 -6px 30px rgba(0,0,0,.2);transform:translateY(105%);transition:transform .28s cubic-bezier(.22,.61,.36,1);z-index:910;display:flex;flex-direction:column;overflow:hidden}
@@ -48,7 +53,7 @@
     <div class="header-back" onclick="location.href='index.html'" data-page-node-id="88qnA3yMJVifGScZmz7ZeU">
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" data-page-node-id="MqLoISgsgV96zHzA3sqVu1"><path d="M10 3L5 8l5 5" data-page-node-id="lA0r3JtNxqbJwEUFCBibqr"/></svg>返回
     </div>
-    <div class="header-badge" data-page-node-id="GsKTxP5RF5UuHYIiUGLkK1">v1.2</div>
+    <div class="header-badge" data-page-node-id="GsKTxP5RF5UuHYIiUGLkK1">v1.3</div>
   </div>
   <div class="header-title" data-page-node-id="SgvyaakE0Muv9qubGOk1rm">预订单</div>
   <div class="header-date" id="hdrDate" data-page-node-id="DY7nSZwvE6MTfATVLdZ46F"><span class="dot" data-page-node-id="vdVnZcdqFXbtMhyuDL4vPL"></span></div>
@@ -219,28 +224,49 @@ function selectBucket(k){
   document.querySelectorAll('.bucket-chip').forEach(c=>c.classList.toggle('active',c.dataset.bk===k));
   renderBucketList(k);
 }
+const BUCKET_TOP=10;   // 每个档位默认只展示金额 TOP10，其余走「更多数据」抽屉
+function bucketRow(p, asof, bkKey){
+  const age=ageDays(p.first_date, asof);
+  const hot=age>60;
+  const bg=age>90?'超90天':(age>60?'超60天':(age>30?'超30天':''));
+  const meta='最早订金 '+p.first_date+' · 距今'+age+'天 · '+p.stores.length+'家店 · '+p.count+'笔';
+  return `<div class="store-item tappable"${hot?' style="background:rgba(255,59,48,0.05);border:1px solid rgba(255,59,48,0.15)"':''} onclick="openPhoneDrawer('${p.phone}','${bkKey}')">`
+    +`<div class="store-info"><div class="store-name">${esc(maskPhone(p.phone))}${bg?` <span class="badge badge-red">${bg}</span>`:''}</div>`
+    +`<div class="store-meta">${esc(meta)} <span class="store-tap-hint">· 查看明细›</span></div></div>`
+    +`<div class="store-value"><div class="store-value-num ${hot?'c-red':''}">${wan(p.amount)}</div>`
+    +`<div class="store-value-label">净未消费</div></div></div>`;
+}
+function bucketPhones(k){
+  const def=BUCKET_DEFS.find(d=>d.k===k)||BUCKET_DEFS[0];
+  const asof=(_PB&&_PB.as_of)||'';
+  const list=((_PB&&_PB.phones)||[]).filter(p=>def.test(ageDays(p.first_date, asof)));
+  return {def, asof, list};
+}
 function renderBucketList(k){
   const box=document.getElementById('bucketBody');
   if(!box || !_PB) return;
-  const def=BUCKET_DEFS.find(d=>d.k===k)||BUCKET_DEFS[0];
-  const asof=_PB.as_of||'';
-  const list=(_PB.phones||[]).filter(p=>def.test(ageDays(p.first_date, asof)));
+  const {def, asof, list}=bucketPhones(k);
   const sum=list.reduce((a,x)=>a+(Number(x.amount)||0),0);
-  const rows=list.slice(0,60).map(p=>{
-    const age=ageDays(p.first_date, asof);
-    const hot=age>60;
-    const bg=age>90?'超90天':(age>60?'超60天':(age>30?'超30天':''));
-    const meta='最早订金 '+p.first_date+' · 距今'+age+'天 · '+p.stores.length+'家店 · '+p.count+'笔';
-    return `<div class="store-item tappable"${hot?' style="background:rgba(255,59,48,0.05);border:1px solid rgba(255,59,48,0.15)"':''} onclick="openPhoneDrawer('${p.phone}')">`
-      +`<div class="store-info"><div class="store-name">${esc(maskPhone(p.phone))}${bg?` <span class="badge badge-red">${bg}</span>`:''}</div>`
-      +`<div class="store-meta">${esc(meta)} <span class="store-tap-hint">· 查看明细›</span></div></div>`
-      +`<div class="store-value"><div class="store-value-num ${hot?'c-red':''}">${wan(p.amount)}</div>`
-      +`<div class="store-value-label">净未消费</div></div></div>`;
-  }).join('');
+  const top=list.slice(0,BUCKET_TOP).map(p=>bucketRow(p,asof,k)).join('');
+  const more=list.length>BUCKET_TOP
+    ? `<div class="more-row" onclick="openBucketDrawer('${k}')">更多数据 · 共 ${fmt(list.length)} 个 <span class="more-cnt">（点击查看全部）</span> ›</div>`
+    : '';
   box.innerHTML=`<div class="bucket-sum">${def.label}：<span class="tag-red">${fmt(list.length)}</span> 个手机号 · 沉淀 <b>${wan(sum)}</b>
       <span style="color:#86868b;font-size:11px">（按最早订金日；${def.tip}）</span></div>`
-    +`<div class="store-list">${rows||'<div class="bucket-empty">该档位暂无手机号</div>'}</div>`
-    +(list.length>60?`<div class="insight-text" style="font-size:11px;color:#86868b;margin-top:6px">仅展示金额 TOP60 / 共 ${fmt(list.length)} 个。</div>`:'');
+    +`<div class="store-list">${top||'<div class="bucket-empty">该档位暂无手机号</div>'}</div>`
+    +more
+    +`<div class="insight-text" style="font-size:11px;color:#86868b;margin-top:8px">列表仅展示金额 TOP${BUCKET_TOP}；点任一行查看该手机号逐笔明细。</div>`;
+}
+/* 「更多数据」抽屉：展示该档位全部手机号（金额降序），点行可继续下钻逐笔明细 */
+function openBucketDrawer(k){
+  if(!_PB) return;
+  const {def, asof, list}=bucketPhones(k);
+  const sum=list.reduce((a,x)=>a+(Number(x.amount)||0),0);
+  const rows=list.map(p=>bucketRow(p,asof,k)).join('');
+  showDrawer('全部 · '+def.label,
+    `${fmt(list.length)} 个手机号 · 沉淀 ${wan(sum)}（按净未消费降序）`,
+    `<div class="store-list">${rows||'<div class="drawer-empty">该档位暂无手机号</div>'}</div>`
+    +`<div class="drawer-note">按最早订金日归档；${def.tip}。金额单位：元。点任一行查看该手机号逐笔明细。</div>`);
 }
 /* BUILD 返回字符串、DOM 插入后才可操作 → 用 AFTER_BUILD 钩子渲染当前档列表 */
 window.AFTER_BUILD=function(){ if(_PB) renderBucketList(_bk); };
@@ -251,13 +277,19 @@ async function loadPhoneOrders(){
   _poLoading=(async()=>{ try{ const j=await fetchJson(enc('../preorder/phone_orders.json')); _poCache=j||{}; }catch(e){ _poCache={}; } return _poCache; })();
   return _poLoading;
 }
-function openPhoneDrawer(phone){
-  const raw=String(phone||'');
-  document.getElementById('dwTitle').textContent=maskPhone(raw);
-  document.getElementById('dwSub').textContent='逐笔预订单明细（点遮罩 / ✕ 关闭）';
-  document.getElementById('dwBody').innerHTML='<div class="drawer-loading">加载明细中…</div>';
+let _dwBack=null;   // 抽屉返回回调（从「全部」抽屉下钻逐笔明细时，可返回上一层档位列表）
+function showDrawer(title, sub, bodyHtml){
+  document.getElementById('dwTitle').textContent=title;
+  document.getElementById('dwSub').textContent=sub;
+  document.getElementById('dwBody').innerHTML=bodyHtml;
   document.getElementById('drawerMask').classList.add('open');
   document.getElementById('phoneDrawer').classList.add('open');
+}
+function backRow(){ return _dwBack?'<div class="drawer-back" onclick="_dwBack&&_dwBack()">‹ 返回全部</div>':''; }
+function openPhoneDrawer(phone, fromBucket){
+  const raw=String(phone||'');
+  _dwBack=fromBucket?function(){openBucketDrawer(fromBucket);}:null;
+  showDrawer(maskPhone(raw),'逐笔预订单明细（点遮罩 / ✕ 关闭）','<div class="drawer-loading">加载明细中…</div>');
   loadPhoneOrders().then(data=>renderPhoneOrders(raw,data[raw]||[]));
 }
 function closePhoneDrawer(){
@@ -266,7 +298,7 @@ function closePhoneDrawer(){
 }
 function renderPhoneOrders(phone, arr){
   const body=document.getElementById('dwBody');
-  if(!arr.length){ body.innerHTML='<div class="drawer-empty">该手机号在导出中无有效预订单明细</div>'; return; }
+  if(!arr.length){ body.innerHTML=backRow()+'<div class="drawer-empty">该手机号在导出中无有效预订单明细</div>'; return; }
   let R=0,V=0,F=0;
   const rows=arr.map(o=>{
     const r=Number(o.r)||0, v=Number(o.v)||0, f=Number(o.f)||0, net=r-v-f;
@@ -277,7 +309,7 @@ function renderPhoneOrders(phone, arr){
       +`<td class="net${net>0?'':' zero'}">${money(net)}</td></tr>`;
   }).join('');
   const net=R-V-F;
-  body.innerHTML=`
+  body.innerHTML=backRow()+`
     <div class="drawer-sum">
       <div class="cell"><b>${fmt(arr.length)}</b><span>笔数</span></div>
       <div class="cell"><b>${money(R)}</b><span>实收</span></div>
