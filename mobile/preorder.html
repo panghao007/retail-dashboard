@@ -50,9 +50,30 @@
 .drawer-loading{text-align:center;color:#86868b;padding:44px 0;font-size:13px}
 .drawer-empty{text-align:center;color:#86868b;padding:34px 0;font-size:13px}
 .drawer-note{font-size:11px;color:#86868b;margin-top:10px;line-height:1.6}
+/* 预订单数据加密门（输密码本地解密后渲染） */
+.po-gate{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;background:rgba(245,245,247,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.po-gate-box{width:84%;max-width:340px;background:#fff;border-radius:20px;padding:30px 22px;box-shadow:0 12px 40px rgba(0,0,0,.16);text-align:center}
+.po-gate-icon{font-size:34px;margin-bottom:6px}
+.po-gate-title{font-size:18px;font-weight:700;color:#1d1d1f;letter-spacing:.5px}
+.po-gate-sub{font-size:13px;color:#86868b;margin:6px 0 18px}
+.po-gate-input{width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid #e3e3e6;border-radius:12px;font-size:15px;outline:none;-webkit-appearance:none}
+.po-gate-input:focus{border-color:#ff3b30}
+.po-gate-btn{width:100%;margin-top:12px;padding:13px;border:none;border-radius:12px;background:#ff3b30;color:#fff;font-size:15px;font-weight:700;cursor:pointer}
+.po-gate-btn:active{opacity:.85}
+.po-gate-err{display:none;margin-top:12px;color:#ff3b30;font-size:12.5px}
 </style>
 </head>
 <body data-page-node-id="sljD1WMsfKzlbJmGkBXitz">
+<div class="po-gate" id="poGate">
+  <div class="po-gate-box">
+    <div class="po-gate-icon">🔒</div>
+    <div class="po-gate-title">预订单数据已加密</div>
+    <div class="po-gate-sub">请输入访问密码后查看</div>
+    <input class="po-gate-input" id="poGateInput" type="password" placeholder="访问密码" autocomplete="off">
+    <button class="po-gate-btn" id="poGateBtn" onclick="poUnlock()">解 锁</button>
+    <div class="po-gate-err" id="poGateErr"></div>
+  </div>
+</div>
 <div class="header" data-page-node-id="j1a2tL4mJW4KmH31LgdqPM">
   <div class="header-top" data-page-node-id="QK9FZNMj09zdizPy2FE08j">
     <div class="header-back" onclick="location.href='index.html'" data-page-node-id="88qnA3yMJVifGScZmz7ZeU">
@@ -213,7 +234,42 @@ window.BUILD = function(period, dash, active){
     ${actionBox('P0 · 频繁预订手机号逐单核查：确认是否真实收款、是否履约发货；发现收款不过账或无履约立即冻结并上报，参照储值违规处置。')}
   </div>`;
 };
-boot(loadPreorder,'month');
+/* ---------- 预订单加密门：输密码本地解密后渲染（数据已加密为 preorder_bundle.enc） ---------- */
+const PO_SESS='po_bundle_v1';
+async function poDeriveKey(pw, salt){
+  const bk=await crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']);
+  return crypto.subtle.deriveKey({name:'PBKDF2', salt, iterations:100000, hash:'SHA-256'}, bk, {name:'AES-GCM', length:256}, false, ['decrypt']);
+}
+async function poDecryptBundle(b64, pw){
+  const bin=new Uint8Array(atob(b64).split('').map(c=>c.charCodeAt(0)));
+  const salt=bin.slice(0,16), iv=bin.slice(16,28), data=bin.slice(28);
+  const key=await poDeriveKey(pw, salt);
+  const plain=await crypto.subtle.decrypt({name:'AES-GCM', iv}, key, data);
+  return JSON.parse(new TextDecoder().decode(plain));
+}
+function poShowErr(msg){ const e=document.getElementById('poGateErr'); if(e){ e.textContent=msg; e.style.display='block'; } }
+function poHideGate(){ const g=document.getElementById('poGate'); if(g) g.style.display='none'; }
+async function poUnlock(){
+  const pw=document.getElementById('poGateInput').value;
+  if(!pw){ poShowErr('请输入密码'); return; }
+  poShowErr('');
+  try{
+    const b64=await (await fetch(enc('../preorder/preorder_bundle.enc'))).text();
+    const bundle=await poDecryptBundle(b64, pw);
+    window.__PO=bundle.files;
+    try{ sessionStorage.setItem(PO_SESS, JSON.stringify(bundle.files)); }catch(e){}
+    poHideGate();
+    boot(loadPreorder,'month');
+  }catch(e){ poShowErr('密码错误或数据损坏，请重试'); }
+}
+function poInitGate(){
+  const cached=sessionStorage.getItem(PO_SESS);
+  if(cached){ try{ window.__PO=JSON.parse(cached); boot(loadPreorder,'month'); return; }catch(e){ try{ sessionStorage.removeItem(PO_SESS); }catch(_){} } }
+  const g=document.getElementById('poGate'); if(g) g.style.display='flex';
+  const inp=document.getElementById('poGateInput');
+  if(inp){ inp.focus(); inp.addEventListener('keydown', ev=>{ if(ev.key==='Enter') poUnlock(); }); }
+}
+poInitGate();
 </script>
 <div class="drawer-mask" id="drawerMask" onclick="closePhoneDrawer()"></div>
 <div class="drawer" id="phoneDrawer">
@@ -302,7 +358,7 @@ let _poCache=null, _poLoading=null;
 async function loadPhoneOrders(){
   if(_poCache) return _poCache;
   if(_poLoading) return _poLoading;
-  _poLoading=(async()=>{ try{ const j=await fetchJson(enc('../preorder/phone_orders.json')); _poCache=j||{}; }catch(e){ _poCache={}; } return _poCache; })();
+  _poLoading=(async()=>{ try{ _poCache=poFile('phone_orders.json')||{}; }catch(e){ _poCache={}; } return _poCache; })();
   return _poLoading;
 }
 let _dwBack=null;   // 抽屉返回回调（从「全部」抽屉下钻逐笔明细时，可返回上一层档位列表）

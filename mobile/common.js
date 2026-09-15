@@ -400,9 +400,12 @@ async function loadPaid(onlyPeriods){
    直读 ghpages_repo/preorder/ 的索引 + 每日原子 JSON（与 PC 同一次管线生成），
    复用 periodDateSet 周期拉齐（含「上周」），分公司固定顺序、ASP 已在 Python 侧剔除。
    重点：会员手机号维度识别同号码周期内频繁预订（≥freq_threshold 红标风险）。 */
+/* 预订单加密后，所有数据来自本地解密包 window.__PO（preorder.html 输密码后注入）。
+   明文 JSON 已不再发布，此处改为读内存对象。 */
+function poFile(rel){ return (window.__PO && window.__PO[rel]) || null; }
 async function loadPreorder(onlyPeriods){
   let idx;
-  try{ idx = await fetchJson(enc('../preorder/preorder_index.json')); }catch(e){ return null; }
+  try{ idx = poFile('preorder_index.json'); }catch(e){ return null; }
   if(!idx || !idx.dates || !idx.dates.length) return null;
   const dates=idx.dates.map(norm).sort();
   const latest=dates[dates.length-1];
@@ -413,7 +416,7 @@ async function loadPreorder(onlyPeriods){
   for(const p of wantP){ if(p==='all') continue; periodDateSet(dates,p,latest).forEach(d=>needSet.add(norm(d))); }
   const needDates=[...needSet].filter(d=>dates.includes(d)).sort();
   const cache={};
-  async function getDay(dt){ if(cache[dt]) return cache[dt]; const j=await fetchJson(enc('../preorder/daily/'+dt+'.json')); cache[dt]=j||null; return cache[dt]; }
+  async function getDay(dt){ if(cache[dt]) return cache[dt]; const j=poFile('daily/'+dt+'.json'); cache[dt]=j||null; return cache[dt]; }
   const days=await Promise.all(needDates.map(getDay));
   const validDays=days.filter(Boolean);
   if(!validDays.length) return null;
@@ -457,7 +460,7 @@ async function loadPreorder(onlyPeriods){
   // 「全部」周期：读服务端预聚合快照（单请求），保证与逐日口径一致且不压垮移动端
   if(wantP.includes('all')){
     try{
-      const ap=await fetchJson(enc('../preorder/all_period.json'));
+      const ap=poFile('all_period.json');
       if(ap){
         periods.all={
           dates:[ap.first_date, ap.last_date].filter(Boolean),
@@ -480,7 +483,7 @@ async function loadPreorder(onlyPeriods){
   }
   // 充值未核销（沉淀）快照：独立快照，不随周期切换
   let rechargeUnused=null;
-  try{ rechargeUnused=await fetchJson(enc('../preorder/recharge_unused.json')); }catch(e){}
+  try{ rechargeUnused=poFile('recharge_unused.json'); }catch(e){}
   if(!Object.keys(periods).length) return null;
   return { periods, latest_date: idx.latest_date||latest, freq, rechargeUnused };
 }
