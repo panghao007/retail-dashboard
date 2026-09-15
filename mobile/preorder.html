@@ -15,6 +15,11 @@
 .bucket-chip{flex:0 0 auto;padding:7px 11px;border-radius:15px;background:#f2f2f4;color:#515154;font-size:12px;line-height:1;white-space:nowrap;cursor:pointer;border:1px solid transparent}
 .bucket-chip.active{background:#ff3b30;color:#fff;font-weight:700}
 .bucket-chip:active{opacity:.65}
+/* 分公司筛选（全部 + 6 分公司）：换行铺开，一屏可见，与下方时长档做视觉区分 */
+.br-row{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 9px}
+.br-chip{padding:6px 10px;border-radius:14px;background:rgba(0,0,0,0.045);color:#515154;font-size:12px;line-height:1;white-space:nowrap;cursor:pointer;border:1px solid transparent;font-weight:500}
+.br-chip.active{background:#1d1d1f;color:#fff;font-weight:700}
+.br-chip:active{opacity:.65}
 .bucket-sum{font-size:12px;color:#1d1d1f;margin:0 0 9px;line-height:1.6}
 .bucket-empty{font-size:12px;color:#86868b;padding:14px 0;text-align:center}
 .more-row{margin-top:10px;padding:11px 14px;border-radius:12px;background:#f2f2f4;color:#0071E3;font-size:13px;font-weight:600;text-align:center;cursor:pointer}
@@ -53,7 +58,7 @@
     <div class="header-back" onclick="location.href='index.html'" data-page-node-id="88qnA3yMJVifGScZmz7ZeU">
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" data-page-node-id="MqLoISgsgV96zHzA3sqVu1"><path d="M10 3L5 8l5 5" data-page-node-id="lA0r3JtNxqbJwEUFCBibqr"/></svg>返回
     </div>
-    <div class="header-badge" data-page-node-id="GsKTxP5RF5UuHYIiUGLkK1">v1.3</div>
+    <div class="header-badge" data-page-node-id="GsKTxP5RF5UuHYIiUGLkK1">v1.4</div>
   </div>
   <div class="header-title" data-page-node-id="SgvyaakE0Muv9qubGOk1rm">预订单</div>
   <div class="header-date" id="hdrDate" data-page-node-id="DY7nSZwvE6MTfATVLdZ46F"><span class="dot" data-page-node-id="vdVnZcdqFXbtMhyuDL4vPL"></span></div>
@@ -91,8 +96,9 @@ const BUCKET_DEFS=[
   {k:'gt7',  label:'7天以上',  test:a=>a>7,  tip:'越久未核销风险越高（>60天标红）'},
   {k:'le7',  label:'7天内',    test:a=>a<=7, tip:'刚充值未满一周，尚未构成沉淀风险'},
 ];
-let _PB=null;      // 沉淀快照（BUILD 时填充）：{as_of, phones[]}
-let _bk='gt90';    // 当前选中的分档
+let _PB=null;      // 沉淀快照（BUILD 时填充）：{as_of, phones[], branches[]}
+let _bk='gt90';    // 当前选中的时长分档
+let _br='';        // 当前选中的分公司（'' = 全部）
 window.BUILD = function(period, dash, active){
   const periodName=PERIOD_LABEL[active]||'';
   const ds=period.dates||[];
@@ -133,26 +139,27 @@ window.BUILD = function(period, dash, active){
     ? `<span class="tag-red">${period.riskCount}</span> 个手机号周期内预订 ≥${freq} 次，疑似虚假预订/收款不过账，类储值风险，需逐单核查。`
     : '当前周期内无频繁预订手机号（均 < '+freq+' 次），预订行为正常。';
 
-  /* ---------- 会员充值未核销（沉淀）：按最早订金日分档，点选项切换（列表懒渲染，只渲染当前档） ---------- */
+  /* ---------- 会员充值未核销（沉淀）：可先按「全部/6分公司」筛选，再按最早订金日分档（列表懒渲染） ---------- */
   const ru=dash.rechargeUnused||null;
   let rechargeHtml='';
   if(ru){
-    _PB={ as_of: ru.as_of||'', phones:(ru.phones||[]).slice().sort((a,b)=>b.amount-a.amount) };
-    const chk=ru.buckets||{};
-    const chips=BUCKET_DEFS.map(b=>{
-      const o=chk[b.k]||{phones:0,amount:0};
-      return `<div class="bucket-chip${b.k===_bk?' active':''}" data-bk="${b.k}" onclick="selectBucket('${b.k}')">${b.label} · ${fmt(o.phones)}</div>`;
-    }).join('');
+    const brs=sortBranch((ru.branchList||[]).map(b=>({name:b}))).map(x=>x.name);
+    _PB={ as_of: ru.as_of||'', phones:(ru.phones||[]).slice().sort((a,b)=>b.amount-a.amount), branches:brs };
+    if(_br && brs.indexOf(_br)<0) _br='';   // 快照里不存在该分公司 → 回落「全部」
+    const brChips=[''].concat(brs).map(b=>
+      `<div class="br-chip${_br===b?' active':''}" data-br="${esc(b)}" onclick="selectBranch('${esc(b)}')">${esc(b||'全部')}</div>`
+    ).join('');
+    const chips=BUCKET_DEFS.map(b=>
+      `<div class="bucket-chip${b.k===_bk?' active':''}" data-bk="${b.k}" onclick="selectBucket('${b.k}')">${b.label}</div>`
+    ).join('');
     rechargeHtml = `
   <div class="card">
     <div class="card-head"><div class="card-head-left">
       <div class="card-icon bg-red"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff3b30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v4H3zM3 10h18v11H3zM7 14h2M11 14h2M15 14h2"/></svg></div>
       <div><div class="card-title">会员充值未核销（沉淀）</div><div class="card-subtitle">截至 ${esc(ru.as_of||'')} · 净未消费订金(实收−已核销−已退)&gt;0</div></div>
     </div></div>
-    <div class="insight-text" style="font-size:12px;margin:0 0 10px;color:#1d1d1f;line-height:1.6">
-      共 <span class="tag-red">${fmt(ru.total_phones||0)}</span> 个手机号、沉淀 <b>${wan(ru.total_amount||0)}</b> 订金长期未核销/未退；
-      按最早订金日分档（60天以上含90天以上，为累计口径）—— 点击下方选项查看对应档位。
-    </div>
+    <div class="br-row">${brChips}</div>
+    <div class="insight-text" id="ruSum" style="font-size:12px;margin:0 0 10px;color:#1d1d1f;line-height:1.6">${ruSumHtml(_br)}</div>
     <div class="bucket-row">${chips}</div>
     <div id="bucketBody"></div>
     ${actionBox('P0 · 充值未核销逐单核查：核对订金是否真实到账、是否对应真实意向商品；&gt;30天未核销的须联系客户履约或清退，发现资金异常立即上报。')}
@@ -218,6 +225,26 @@ boot(loadPreorder,'month');
 </div>
 <script>
 function money(v){ return fmt(Math.round(Number(v)||0)); }
+/* 沉淀口径聚合：按当前分公司筛选（''=全部）→ 号数 / 沉淀金额 / 手机号清单（金额降序） */
+function ruAgg(b){
+  const all=(_PB&&_PB.phones)||[];
+  const list=b?all.filter(p=>p.branch===b):all;
+  const amount=list.reduce((a,x)=>a+(Number(x.amount)||0),0);
+  return {list, count:list.length, amount};
+}
+function ruSumHtml(b){
+  const g=ruAgg(b);
+  const head=b?`<b>${esc(b)}</b> · `:'';
+  return `${head}共 <span class="tag-red">${fmt(g.count)}</span> 个手机号、沉淀 <b>${wan(g.amount)}</b> 订金长期未核销/未退；`
+    +`按最早订金日分档（60天以上含90天以上，为累计口径）—— 点击下方选项查看对应档位。`;
+}
+/* 分公司筛选：点击「全部/某分公司」→ 同步刷新概览数字 + 当前时长档列表（时长档选项保持不动） */
+function selectBranch(b){
+  _br=b||'';
+  document.querySelectorAll('.br-chip').forEach(c=>c.classList.toggle('active',(c.dataset.br||'')===_br));
+  const s=document.getElementById('ruSum'); if(s) s.innerHTML=ruSumHtml(_br);
+  renderBucketList(_bk);
+}
 /* 沉淀分档切换：点击对应选项 → 只渲染该档手机号清单（懒渲染，避免 6 档全塞进 DOM） */
 function selectBucket(k){
   _bk=k;
@@ -239,7 +266,7 @@ function bucketRow(p, asof, bkKey){
 function bucketPhones(k){
   const def=BUCKET_DEFS.find(d=>d.k===k)||BUCKET_DEFS[0];
   const asof=(_PB&&_PB.as_of)||'';
-  const list=((_PB&&_PB.phones)||[]).filter(p=>def.test(ageDays(p.first_date, asof)));
+  const list=ruAgg(_br).list.filter(p=>def.test(ageDays(p.first_date, asof)));
   return {def, asof, list};
 }
 function renderBucketList(k){
@@ -251,19 +278,20 @@ function renderBucketList(k){
   const more=list.length>BUCKET_TOP
     ? `<div class="more-row" onclick="openBucketDrawer('${k}')">更多数据 · 共 ${fmt(list.length)} 个 <span class="more-cnt">（点击查看全部）</span> ›</div>`
     : '';
-  box.innerHTML=`<div class="bucket-sum">${def.label}：<span class="tag-red">${fmt(list.length)}</span> 个手机号 · 沉淀 <b>${wan(sum)}</b>
+  const scope=_br?esc(_br)+' · ':'';
+  box.innerHTML=`<div class="bucket-sum">${scope}${def.label}：<span class="tag-red">${fmt(list.length)}</span> 个手机号 · 沉淀 <b>${wan(sum)}</b>
       <span style="color:#86868b;font-size:11px">（按最早订金日；${def.tip}）</span></div>`
     +`<div class="store-list">${top||'<div class="bucket-empty">该档位暂无手机号</div>'}</div>`
     +more
     +`<div class="insight-text" style="font-size:11px;color:#86868b;margin-top:8px">列表仅展示金额 TOP${BUCKET_TOP}；点任一行查看该手机号逐笔明细。</div>`;
 }
-/* 「更多数据」抽屉：展示该档位全部手机号（金额降序），点行可继续下钻逐笔明细 */
+/* 「更多数据」抽屉：展示当前分公司+该档位全部手机号（金额降序），点行可继续下钻逐笔明细 */
 function openBucketDrawer(k){
   if(!_PB) return;
   const {def, asof, list}=bucketPhones(k);
   const sum=list.reduce((a,x)=>a+(Number(x.amount)||0),0);
   const rows=list.map(p=>bucketRow(p,asof,k)).join('');
-  showDrawer('全部 · '+def.label,
+  showDrawer((_br?_br+' · ':'全部 · ')+def.label,
     `${fmt(list.length)} 个手机号 · 沉淀 ${wan(sum)}（按净未消费降序）`,
     `<div class="store-list">${rows||'<div class="drawer-empty">该档位暂无手机号</div>'}</div>`
     +`<div class="drawer-note">按最早订金日归档；${def.tip}。金额单位：元。点任一行查看该手机号逐笔明细。</div>`);
