@@ -1,13 +1,13 @@
 {
   "date": "2026-09-07",
-  "generated": "2026-09-15 10:54",
+  "generated": "2026-09-15 16:03",
   "total": {
-    "denominator": 403.0,
-    "numerator": 140.0,
-    "order_denom": 374,
-    "order_num": 140,
-    "amount": 74388.0,
-    "profit": 13124.0
+    "denominator": 402.0,
+    "numerator": 146.0,
+    "order_denom": 373,
+    "order_num": 146,
+    "amount": 77376.0,
+    "profit": 13724.0
   },
   "branches": {
     "北京中恒": {
@@ -18,14 +18,14 @@
       "vip_items": [
         {
           "code": "vip-iphone698",
-          "name": "ipone会员套餐698",
+          "name": "iPhone会员套餐698",
           "qty": 16.0,
           "price": 698,
           "profit": 100.0
         },
         {
           "code": "vip-iphone1498",
-          "name": "ipone会员套餐1498",
+          "name": "iphone会员套餐1498",
           "qty": 12.0,
           "price": 1498,
           "profit": 100.0
@@ -39,14 +39,14 @@
         },
         {
           "code": "vip-iphone998",
-          "name": "ipone会员套餐998",
+          "name": "iPhone会员套餐998",
           "qty": 9.0,
           "price": 998,
           "profit": 100.0
         },
         {
           "code": "vip-iphone1198",
-          "name": "ipone会员套餐1198",
+          "name": "iPhone会员套餐1198",
           "qty": 3.0,
           "price": 1198,
           "profit": 100.0
@@ -57,10 +57,17 @@
     },
     "四川新跃": {
       "denominator": 40.0,
-      "numerator": 10.0,
+      "numerator": 16.0,
       "order_denom": 40,
-      "order_num": 10,
+      "order_num": 16,
       "vip_items": [
+        {
+          "code": "SCXYVIP00005",
+          "name": "498元-iPhone17专享会员",
+          "qty": 6.0,
+          "price": 498,
+          "profit": 100.0
+        },
         {
           "code": "SCXYVIP00001",
           "name": "698元悦享会员",
@@ -90,8 +97,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 11680.0,
-      "profit": 1000.0
+      "amount": 14668.0,
+      "profit": 1600.0
     },
     "北京易联": {
       "denominator": 74.0,
@@ -135,9 +142,9 @@
       "profit": 1210.0
     },
     "北京飞航": {
-      "denominator": 109.0,
+      "denominator": 108.0,
       "numerator": 42.0,
-      "order_denom": 104,
+      "order_denom": 103,
       "order_num": 42,
       "vip_items": [
         {
@@ -180,7 +187,7 @@
       "vip_items": [
         {
           "code": "vip-iphone998",
-          "name": "ipone会员套餐998",
+          "name": "iPhone会员套餐998",
           "qty": 1.0,
           "price": 998,
           "profit": 100.0
@@ -221,14 +228,14 @@
       "vip_items": [
         {
           "code": "vip-iphone698",
-          "name": "ipone会员套餐698",
+          "name": "iPhone会员套餐698",
           "qty": 1.0,
           "price": 698,
           "profit": 100.0
         },
         {
           "code": "vip-iphone998",
-          "name": "ipone会员套餐998",
+          "name": "iPhone会员套餐998",
           "qty": 2.0,
           "price": 998,
           "profit": 100.0
@@ -247,7 +254,7 @@
       "vip_items": [
         {
           "code": "vip-iphone698",
-          "name": "ipone会员套餐698",
+          "name": "iPhone会员套餐698",
           "qty": 1.0,
           "price": 698,
           "profit": 100.0
@@ -304,28 +311,28 @@
       "vip_items": [
         {
           "code": "vip-iphone698",
-          "name": "ipone会员套餐698",
+          "name": "iPhone会员套餐698",
           "qty": 2.0,
           "price": 698,
           "profit": 100.0
         },
         {
           "code": "vip-iphone998",
-          "name": "ipone会员套餐998",
+          "name": "iPhone会员套餐998",
           "qty": 1.0,
           "price": 998,
           "profit": 100.0
         },
         {
           "code": "vip-iphone1498",
-          "name": "ipone会员套餐1498",
+          "name": "iphone会员套餐1498",
           "qty": 1.0,
           "price": 1498,
           "profit": 100.0
         },
         {
           "code": "vip-iphone1198",
-          "name": "ipone会员套餐1198",
+          "name": "iPhone会员套餐1198",
           "qty": 1.0,
           "price": 1198,
           "profit": 100.0
@@ -384,14 +391,14 @@
       "vip_items": [
         {
           "code": "vip-iphone1498",
-          "name": "ipone会员套餐1498",
+          "name": "iphone会员套餐1498",
           "qty": 1.0,
           "price": 1498,
           "profit": 100.0
         },
         {
           "code": "vip-iphone998",
-          "name": "ipone会员套餐998",
+          "name": "iPhone会员套餐998",
           "qty": 3.0,
           "price": 998,
           "profit": 100.0
@@ -410,14 +417,14 @@
       "vip_items": [
         {
           "code": "vip-iphone1198",
-          "name": "ipone会员套餐1198",
+          "name": "iPhone会员套餐1198",
           "qty": 1.0,
           "price": 1198,
           "profit": 100.0
         },
         {
           "code": "vip-iphone698",
-          "name": "ipone会员套餐698",
+          "name": "iPhone会员套餐698",
           "qty": 1.0,
           "price": 698,
           "profit": 100.0
@@ -436,7 +443,7 @@
       "vip_items": [
         {
           "code": "vip-iphone698",
-          "name": "ipone会员套餐698",
+          "name": "iPhone会员套餐698",
           "qty": 1.0,
           "price": 698,
           "profit": 100.0
@@ -455,7 +462,7 @@
       "vip_items": [
         {
           "code": "vip-iphone1498",
-          "name": "ipone会员套餐1498",
+          "name": "iphone会员套餐1498",
           "qty": 2.0,
           "price": 1498,
           "profit": 100.0
@@ -481,7 +488,7 @@
         },
         {
           "code": "vip-iphone698",
-          "name": "ipone会员套餐698",
+          "name": "iPhone会员套餐698",
           "qty": 2.0,
           "price": 698,
           "profit": 100.0
@@ -526,7 +533,7 @@
         },
         {
           "code": "vip-iphone698",
-          "name": "ipone会员套餐698",
+          "name": "iPhone会员套餐698",
           "qty": 2.0,
           "price": 698,
           "profit": 100.0
@@ -575,7 +582,7 @@
       "vip_items": [
         {
           "code": "vip-iphone698",
-          "name": "ipone会员套餐698",
+          "name": "iPhone会员套餐698",
           "qty": 1.0,
           "price": 698,
           "profit": 100.0
@@ -594,7 +601,7 @@
       "vip_items": [
         {
           "code": "vip-iphone1498",
-          "name": "ipone会员套餐1498",
+          "name": "iphone会员套餐1498",
           "qty": 1.0,
           "price": 1498,
           "profit": 100.0
@@ -613,7 +620,7 @@
       "vip_items": [
         {
           "code": "vip-iphone698",
-          "name": "ipone会员套餐698",
+          "name": "iPhone会员套餐698",
           "qty": 1.0,
           "price": 698,
           "profit": 100.0
@@ -632,14 +639,14 @@
       "vip_items": [
         {
           "code": "vip-iphone1498",
-          "name": "ipone会员套餐1498",
+          "name": "iphone会员套餐1498",
           "qty": 2.0,
           "price": 1498,
           "profit": 100.0
         },
         {
           "code": "vip-iphone698",
-          "name": "ipone会员套餐698",
+          "name": "iPhone会员套餐698",
           "qty": 1.0,
           "price": 698,
           "profit": 100.0
@@ -702,7 +709,7 @@
       "vip_items": [
         {
           "code": "vip-iphone698",
-          "name": "ipone会员套餐698",
+          "name": "iPhone会员套餐698",
           "qty": 2.0,
           "price": 698,
           "profit": 100.0
@@ -721,7 +728,7 @@
       "vip_items": [
         {
           "code": "vip-iphone1498",
-          "name": "ipone会员套餐1498",
+          "name": "iphone会员套餐1498",
           "qty": 1.0,
           "price": 1498,
           "profit": 100.0
@@ -740,7 +747,7 @@
       "vip_items": [
         {
           "code": "vip-iphone1498",
-          "name": "ipone会员套餐1498",
+          "name": "iphone会员套餐1498",
           "qty": 1.0,
           "price": 1498,
           "profit": 100.0
@@ -770,7 +777,7 @@
       "vip_items": [
         {
           "code": "vip-iphone1198",
-          "name": "ipone会员套餐1198",
+          "name": "iPhone会员套餐1198",
           "qty": 1.0,
           "price": 1198,
           "profit": 100.0
@@ -796,14 +803,14 @@
       "vip_items": [
         {
           "code": "vip-iphone998",
-          "name": "ipone会员套餐998",
+          "name": "iPhone会员套餐998",
           "qty": 1.0,
           "price": 998,
           "profit": 100.0
         },
         {
           "code": "vip-iphone698",
-          "name": "ipone会员套餐698",
+          "name": "iPhone会员套餐698",
           "qty": 1.0,
           "price": 698,
           "profit": 100.0
@@ -822,7 +829,7 @@
       "vip_items": [
         {
           "code": "vip-iphone1498",
-          "name": "ipone会员套餐1498",
+          "name": "iphone会员套餐1498",
           "qty": 2.0,
           "price": 1498,
           "profit": 100.0
@@ -852,14 +859,14 @@
       "vip_items": [
         {
           "code": "vip-iphone998",
-          "name": "ipone会员套餐998",
+          "name": "iPhone会员套餐998",
           "qty": 1.0,
           "price": 998,
           "profit": 100.0
         },
         {
           "code": "vip-iphone1498",
-          "name": "ipone会员套餐1498",
+          "name": "iphone会员套餐1498",
           "qty": 1.0,
           "price": 1498,
           "profit": 100.0
@@ -872,23 +879,39 @@
       "branch": "四川新跃",
       "store": "APR成都三利爱琴海",
       "denominator": 4.0,
-      "numerator": 0.0,
+      "numerator": 2.0,
       "order_denom": 4,
-      "order_num": 0,
-      "vip_items": [],
-      "amount": 0,
-      "profit": 0
+      "order_num": 2,
+      "vip_items": [
+        {
+          "code": "SCXYVIP00005",
+          "name": "498元-iPhone17专享会员",
+          "qty": 2.0,
+          "price": 498,
+          "profit": 100.0
+        }
+      ],
+      "amount": 996.0,
+      "profit": 200.0
     },
     {
       "branch": "四川新跃",
       "store": "APR成都东安天街",
       "denominator": 1.0,
-      "numerator": 0.0,
+      "numerator": 1.0,
       "order_denom": 1,
-      "order_num": 0,
-      "vip_items": [],
-      "amount": 0,
-      "profit": 0
+      "order_num": 1,
+      "vip_items": [
+        {
+          "code": "SCXYVIP00005",
+          "name": "498元-iPhone17专享会员",
+          "qty": 1.0,
+          "price": 498,
+          "profit": 100.0
+        }
+      ],
+      "amount": 498.0,
+      "profit": 100.0
     },
     {
       "branch": "四川新跃",
@@ -1055,10 +1078,17 @@
       "branch": "四川新跃",
       "store": "APR成都科华王府井",
       "denominator": 1.0,
-      "numerator": 1.0,
+      "numerator": 2.0,
       "order_denom": 1,
-      "order_num": 1,
+      "order_num": 2,
       "vip_items": [
+        {
+          "code": "SCXYVIP00005",
+          "name": "498元-iPhone17专享会员",
+          "qty": 1.0,
+          "price": 498,
+          "profit": 100.0
+        },
         {
           "code": "SCXYVIP00002",
           "name": "998元尊享会员",
@@ -1067,8 +1097,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 998.0,
-      "profit": 100.0
+      "amount": 1496.0,
+      "profit": 200.0
     },
     {
       "branch": "四川新跃",
@@ -1096,26 +1126,41 @@
       "branch": "四川新跃",
       "store": "APR成都金楠天街",
       "denominator": 2.0,
-      "numerator": 0.0,
+      "numerator": 1.0,
       "order_denom": 2,
-      "order_num": 0,
-      "vip_items": [],
-      "amount": 0,
-      "profit": 0
+      "order_num": 1,
+      "vip_items": [
+        {
+          "code": "SCXYVIP00005",
+          "name": "498元-iPhone17专享会员",
+          "qty": 1.0,
+          "price": 498,
+          "profit": 100.0
+        }
+      ],
+      "amount": 498.0,
+      "profit": 100.0
     },
     {
       "branch": "四川新跃",
       "store": "APR成都金牛凯德",
       "denominator": 3.0,
-      "numerator": 2.0,
+      "numerator": 3.0,
       "order_denom": 3,
-      "order_num": 2,
+      "order_num": 3,
       "vip_items": [
         {
           "code": "SCXYVIP00004",
           "name": "2398元奢享会员",
           "qty": 1.0,
           "price": 2398,
+          "profit": 100.0
+        },
+        {
+          "code": "SCXYVIP00005",
+          "name": "498元-iPhone17专享会员",
+          "qty": 1.0,
+          "price": 498,
           "profit": 100.0
         },
         {
@@ -1126,8 +1171,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 3996.0,
-      "profit": 200.0
+      "amount": 4494.0,
+      "profit": 300.0
     },
     {
       "branch": "四川新跃",
@@ -2564,9 +2609,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI大疆哈苏北京朝阳合生汇概念店",
-      "denominator": 9.0,
+      "denominator": 8.0,
       "numerator": 6.0,
-      "order_denom": 9,
+      "order_denom": 8,
       "order_num": 6,
       "vip_items": [
         {
