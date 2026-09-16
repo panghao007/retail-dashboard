@@ -1,25 +1,25 @@
 {
   "date": "2026-09-12",
-  "generated": "2026-09-15 22:43",
+  "generated": "2026-09-16 23:07",
   "total": {
-    "denominator": 755.0,
-    "numerator": 299.0,
-    "order_denom": 741,
-    "order_num": 299,
-    "amount": 197328.0,
-    "profit": 30274.0
+    "denominator": 765.0,
+    "numerator": 298.0,
+    "order_denom": 751,
+    "order_num": 298,
+    "amount": 195830.0,
+    "profit": 30174.0
   },
   "branches": {
     "北京中恒": {
       "denominator": 239.0,
-      "numerator": 116.0,
+      "numerator": 115.0,
       "order_denom": 237,
-      "order_num": 116,
+      "order_num": 115,
       "vip_items": [
         {
           "code": "vip-iphone1498",
           "name": "iphone会员套餐1498",
-          "qty": 55.0,
+          "qty": 54.0,
           "price": 1498,
           "profit": 100.0
         },
@@ -59,8 +59,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 129268.0,
-      "profit": 11600.0
+      "amount": 127770.0,
+      "profit": 11500.0
     },
     "四川新跃": {
       "denominator": 82.0,
@@ -108,9 +108,9 @@
       "profit": 4400.0
     },
     "北京易联": {
-      "denominator": 125.0,
+      "denominator": 135.0,
       "numerator": 29.0,
-      "order_denom": 123,
+      "order_denom": 133,
       "order_num": 29,
       "vip_items": [
         {
@@ -710,20 +710,12 @@
       "branch": "北京中恒",
       "store": "APR北京新奥天虹",
       "denominator": 4.0,
-      "numerator": 1.0,
+      "numerator": 0.0,
       "order_denom": 4,
-      "order_num": 1,
-      "vip_items": [
-        {
-          "code": "vip-iphone1498",
-          "name": "iphone会员套餐1498",
-          "qty": 1.0,
-          "price": 1498,
-          "profit": 100.0
-        }
-      ],
-      "amount": 1498.0,
-      "profit": 100.0
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
     },
     {
       "branch": "北京中恒",
@@ -1691,9 +1683,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京丰科万达",
-      "denominator": 0.0,
+      "denominator": 10.0,
       "numerator": 0.0,
-      "order_denom": 0,
+      "order_denom": 10,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,

@@ -1,20 +1,20 @@
 {
   "date": "2026-09-15",
-  "generated": "2026-09-15 22:43",
+  "generated": "2026-09-16 23:07",
   "total": {
-    "denominator": 393.0,
+    "denominator": 400.0,
     "numerator": 146.0,
-    "order_denom": 379,
+    "order_denom": 386,
     "order_num": 146,
-    "amount": 117956.0,
+    "amount": 116256.0,
     "profit": 15498.0
   },
   "branches": {
     "北京中恒": {
       "denominator": 102.0,
-      "numerator": 59.0,
+      "numerator": 58.0,
       "order_denom": 99,
-      "order_num": 59,
+      "order_num": 58,
       "vip_items": [
         {
           "code": "vip-iphone1498",
@@ -33,7 +33,7 @@
         {
           "code": "vip-iphone2198",
           "name": "iPhone会员套餐2198",
-          "qty": 8.0,
+          "qty": 7.0,
           "price": 2198,
           "profit": 100.0
         },
@@ -66,14 +66,14 @@
           "profit": 100.0
         }
       ],
-      "amount": 72682.0,
-      "profit": 5900.0
+      "amount": 70484.0,
+      "profit": 5800.0
     },
     "四川新跃": {
       "denominator": 48.0,
-      "numerator": 31.0,
+      "numerator": 32.0,
       "order_denom": 47,
-      "order_num": 31,
+      "order_num": 32,
       "vip_items": [
         {
           "code": "SCXYVIP00001",
@@ -85,7 +85,7 @@
         {
           "code": "SCXYVIP00005",
           "name": "498元-iPhone17专享会员",
-          "qty": 7.0,
+          "qty": 8.0,
           "price": 498,
           "profit": 100.0
         },
@@ -111,13 +111,13 @@
           "profit": 100.0
         }
       ],
-      "amount": 30138.0,
-      "profit": 3100.0
+      "amount": 30636.0,
+      "profit": 3200.0
     },
     "北京易联": {
-      "denominator": 78.0,
+      "denominator": 87.0,
       "numerator": 18.0,
-      "order_denom": 78,
+      "order_denom": 87,
       "order_num": 18,
       "vip_items": [
         {
@@ -163,9 +163,9 @@
       "profit": 716.0
     },
     "北京飞航": {
-      "denominator": 98.0,
+      "denominator": 97.0,
       "numerator": 22.0,
-      "order_denom": 93,
+      "order_denom": 92,
       "order_num": 22,
       "vip_items": [
         {
@@ -180,9 +180,9 @@
       "profit": 1364.0
     },
     "上海爱飞": {
-      "denominator": 40.0,
+      "denominator": 39.0,
       "numerator": 10.0,
-      "order_denom": 35,
+      "order_denom": 34,
       "order_num": 10,
       "vip_items": [
         {
@@ -333,14 +333,14 @@
       "branch": "北京中恒",
       "store": "APR北京合生汇",
       "denominator": 8.0,
-      "numerator": 6.0,
+      "numerator": 5.0,
       "order_denom": 8,
-      "order_num": 6,
+      "order_num": 5,
       "vip_items": [
         {
           "code": "vip-iphone2198",
           "name": "iPhone会员套餐2198",
-          "qty": 3.0,
+          "qty": 2.0,
           "price": 2198,
           "profit": 100.0
         },
@@ -359,8 +359,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 9988.0,
-      "profit": 600.0
+      "amount": 7790.0,
+      "profit": 500.0
     },
     {
       "branch": "北京中恒",
@@ -1068,12 +1068,20 @@
       "branch": "四川新跃",
       "store": "APR成都天府大悦城",
       "denominator": 1.0,
-      "numerator": 0.0,
+      "numerator": 1.0,
       "order_denom": 1,
-      "order_num": 0,
-      "vip_items": [],
-      "amount": 0,
-      "profit": 0
+      "order_num": 1,
+      "vip_items": [
+        {
+          "code": "SCXYVIP00005",
+          "name": "498元-iPhone17专享会员",
+          "qty": 1.0,
+          "price": 498,
+          "profit": 100.0
+        }
+      ],
+      "amount": 498.0,
+      "profit": 100.0
     },
     {
       "branch": "四川新跃",
@@ -1483,9 +1491,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京丰科万达",
-      "denominator": 0.0,
+      "denominator": 9.0,
       "numerator": 0.0,
-      "order_denom": 0,
+      "order_denom": 9,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2550,9 +2558,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京长楹天街授权体验店",
-      "denominator": 4.0,
+      "denominator": 3.0,
       "numerator": 1.0,
-      "order_denom": 4,
+      "order_denom": 3,
       "order_num": 1,
       "vip_items": [
         {
@@ -3014,9 +3022,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海长泰广场授权体验店",
-      "denominator": 5.0,
+      "denominator": 4.0,
       "numerator": 1.0,
-      "order_denom": 5,
+      "order_denom": 4,
       "order_num": 1,
       "vip_items": [
         {

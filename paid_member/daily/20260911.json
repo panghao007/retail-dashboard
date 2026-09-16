@@ -1,10 +1,10 @@
 {
   "date": "2026-09-11",
-  "generated": "2026-09-15 22:43",
+  "generated": "2026-09-16 23:07",
   "total": {
-    "denominator": 553.0,
+    "denominator": 565.0,
     "numerator": 194.0,
-    "order_denom": 542,
+    "order_denom": 554,
     "order_num": 194,
     "amount": 130888.0,
     "profit": 20172.0
@@ -101,9 +101,9 @@
       "profit": 2900.0
     },
     "北京易联": {
-      "denominator": 95.0,
+      "denominator": 107.0,
       "numerator": 25.0,
-      "order_denom": 92,
+      "order_denom": 104,
       "order_num": 25,
       "vip_items": [
         {
@@ -1455,9 +1455,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京丰科万达",
-      "denominator": 0.0,
+      "denominator": 12.0,
       "numerator": 0.0,
-      "order_denom": 0,
+      "order_denom": 12,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,

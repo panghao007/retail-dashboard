@@ -1,13 +1,13 @@
 {
   "date": "2026-09-13",
-  "generated": "2026-09-15 22:43",
+  "generated": "2026-09-16 23:07",
   "total": {
-    "denominator": 716.0,
-    "numerator": 281.0,
-    "order_denom": 707,
-    "order_num": 281,
-    "amount": 183553.0,
-    "profit": 28886.0
+    "denominator": 731.0,
+    "numerator": 280.0,
+    "order_denom": 722,
+    "order_num": 280,
+    "amount": 181155.0,
+    "profit": 28786.0
   },
   "branches": {
     "北京中恒": {
@@ -64,9 +64,9 @@
     },
     "四川新跃": {
       "denominator": 105.0,
-      "numerator": 47.0,
+      "numerator": 46.0,
       "order_denom": 99,
-      "order_num": 47,
+      "order_num": 46,
       "vip_items": [
         {
           "code": "SCXYVIP00001",
@@ -99,18 +99,18 @@
         {
           "code": "SCXYVIP00004",
           "name": "2398元奢享会员",
-          "qty": 3.0,
+          "qty": 2.0,
           "price": 2398,
           "profit": 100.0
         }
       ],
-      "amount": 46306.0,
-      "profit": 4700.0
+      "amount": 43908.0,
+      "profit": 4600.0
     },
     "北京易联": {
-      "denominator": 115.0,
+      "denominator": 130.0,
       "numerator": 35.0,
-      "order_denom": 113,
+      "order_denom": 128,
       "order_num": 35,
       "vip_items": [
         {
@@ -1453,22 +1453,15 @@
       "branch": "四川新跃",
       "store": "APR成都蜀新天街",
       "denominator": 6.0,
-      "numerator": 4.0,
+      "numerator": 3.0,
       "order_denom": 6,
-      "order_num": 4,
+      "order_num": 3,
       "vip_items": [
         {
           "code": "SCXYVIP00001",
           "name": "698元悦享会员",
           "qty": 1.0,
           "price": 698,
-          "profit": 100.0
-        },
-        {
-          "code": "SCXYVIP00004",
-          "name": "2398元奢享会员",
-          "qty": 1.0,
-          "price": 2398,
           "profit": 100.0
         },
         {
@@ -1479,8 +1472,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 5092.0,
-      "profit": 400.0
+      "amount": 2694.0,
+      "profit": 300.0
     },
     {
       "branch": "四川新跃",
@@ -1723,9 +1716,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京丰科万达",
-      "denominator": 0.0,
+      "denominator": 16.0,
       "numerator": 0.0,
-      "order_denom": 0,
+      "order_denom": 16,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -1827,9 +1820,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京回龙观万科",
-      "denominator": 1.0,
+      "denominator": 0.0,
       "numerator": 0.0,
-      "order_denom": 1,
+      "order_denom": 0,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
