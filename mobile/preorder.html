@@ -4,7 +4,7 @@
 <meta charset="UTF-8" data-page-node-id="L2IEXGZKHpksXIDAEtG4el">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" data-page-node-id="fe2D5foLSMaYAvwNReJGW5">
 <title>预订单 · 移动端</title>
-<link rel="stylesheet" href="mobile.css" data-page-node-id="w8KLl3XmE8CR4WHzylSDNc">
+<link rel="stylesheet" href="mobile.css?v=20260916b" data-page-node-id="w8KLl3XmE8CR4WHzylSDNc">
 <style>
 .store-item.tappable{cursor:pointer}
 .store-item.tappable:active{background:rgba(0,113,227,0.09)!important}
@@ -93,7 +93,7 @@
   <span id="genTime" data-page-node-id="drj0mkdXqBOgsnNdUdFneY"></span><br data-page-node-id="hxITkynZbHxbPEzNyB7976">
   <a class="footer-link" href="index.html" data-page-node-id="hZ3TjdIjJCZ5i3teLQ8emE">返回看板总览 ›</a>
 </div>
-<script src="common.js"></script>
+<script src="common.js?v=20260916b"></script>
 <script>
 function maskPhone(p){
   p=String(p||'');
@@ -277,7 +277,7 @@ async function poUnlock(){
     poHideGate();
     boot(loadPreorder,'month');
   }catch(e){
-    poShowErr('密码错误或数据损坏，请重试');
+    poShowErr((e && e.message==='BROWSER_TOO_OLD') ? '浏览器版本过低，请升级系统/浏览器后再试' : '密码错误或数据损坏，请重试');
     if(btn){ btn.disabled=false; btn.textContent='解 锁'; }
   }
 }

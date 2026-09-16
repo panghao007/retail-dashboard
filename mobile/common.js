@@ -413,50 +413,52 @@ async function loadPaid(onlyPeriods){
    复用 periodDateSet 周期拉齐（含「上周」），分公司固定顺序、ASP 已在 Python 侧剔除。
    重点：会员手机号维度识别同号码周期内频繁预订（≥freq_threshold 红标风险）。 */
 /* ---------- 预订单加密包：解密 / 会话缓存（index 与 preorder 页共用） ----------
-   预订单明文 JSON 已不再发布，全部数据加密为 ../preorder/preorder_bundle.enc
-   （PBKDF2-SHA256 10万次 → AES-256-GCM，格式 base64(salt16‖iv12‖ct‖tag16)）。
-   🔴 解密包 JSON 约 10.9MB，远超 sessionStorage 约 5MB 配额（会抛 QuotaExceededError），
-   故会话内只缓存「访问密码」（几十字节），两页均以密码静默重解密，避免重复输入。 */
+   预订单明文 JSON 已不再发布，全部数据加密为 ../preorder/preorder_bundle.bin
+   （v2/2026-09-16：先 gzip 明文 JSON 再 AES-256-GCM，PBKDF2-SHA256 10万次；
+    格式为二进制 salt16‖iv12‖ct‖tag16，其中 ct=AES-GCM(gzip(JSON))）。
+   🔴 传输体积从旧版 base64 的 10MB 降到 ~0.84MB（12×）：旧版 base64(密文) 因
+   content-type=octet-stream 不被 CDN gzip，10MB 原样下发 → 国内加载几十秒甚至卡死。
+   🔴 解密包仍远超 sessionStorage 5MB 配额（会抛 QuotaExceededError），故会话内
+   只缓存「访问密码」（几十字节），两页均以密码静默重解密，避免重复输入。 */
 const PO_PWKEY='po_pw_v1';
-const PO_ENC_PATH='../preorder/preorder_bundle.enc';
+const PO_ENC_PATH='../preorder/preorder_bundle.bin';
 async function poDeriveKey(pw, salt){
   const bk=await crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']);
   return crypto.subtle.deriveKey({name:'PBKDF2', salt, iterations:100000, hash:'SHA-256'}, bk, {name:'AES-GCM', length:256}, false, ['decrypt']);
 }
-/* base64 → Uint8Array：逐字节写入预分配数组，避免对超大字符串 split('')+map 产生
-   数百万元素的临时数组——移动端 WebView 会因此 OOM / 主线程冻结，表现为「一直解密中」。 */
-function b64ToBytes(b64){
-  const bin = atob(b64);
-  const len = bin.length;
-  const out = new Uint8Array(len);
-  for (let i = 0; i < len; i++) out[i] = bin.charCodeAt(i);
-  return out;
+/* gzip 解压：优先原生 DecompressionStream（Safari 16.4+ / Chrome 80+ / Firefox 113+）。
+   不支持时抛 BROWSER_TOO_OLD，由密码门提示升级浏览器，避免静默卡在「解密中」。 */
+async function gunzipToText(buf){
+  if(typeof DecompressionStream==='undefined') throw new Error('BROWSER_TOO_OLD');
+  const stream=new Blob([buf]).stream().pipeThrough(new DecompressionStream('gzip'));
+  return await new Response(stream).text();
 }
-async function poDecryptBundle(b64, pw){
-  const bin=b64ToBytes(b64);
+/* v2：入参为 fetch 的 ArrayBuffer（二进制密文 salt‖iv‖ct‖tag），解密后 gunzip 得 JSON。 */
+async function poDecryptBundle(ab, pw){
+  const bin=new Uint8Array(ab);
   const salt=bin.slice(0,16), iv=bin.slice(16,28), data=bin.slice(28);
   const key=await poDeriveKey(pw, salt);
-  const plain=await crypto.subtle.decrypt({name:'AES-GCM', iv}, key, data);
-  return JSON.parse(new TextDecoder().decode(plain));
+  const gzBuf=await crypto.subtle.decrypt({name:'AES-GCM', iv}, key, data);
+  return JSON.parse(await gunzipToText(gzBuf));
 }
 function poCachedPass(){ try{ return sessionStorage.getItem(PO_PWKEY)||null; }catch(e){ return null; } }
 function poRememberPass(pw){ try{ sessionStorage.setItem(PO_PWKEY, pw); }catch(e){} }
 function poForgetPass(){ try{ sessionStorage.removeItem(PO_PWKEY); }catch(e){} }
 /* 用密码解密并落地（成功返回 true；密码错误 / 数据损坏抛异常） */
-/* 带超时的文本拉取：避免大文件 fetch 在网络层静默挂起时永久卡在「解密中」 */
-async function poFetchText(url, ms){
+/* 带超时的二进制拉取：避免大文件 fetch 在网络层静默挂起时永久卡在「解密中」 */
+async function poFetchAB(url, ms){
   const ctrl = (typeof AbortController!=='undefined') ? new AbortController() : null;
   let id;
   if(ctrl) id=setTimeout(()=>ctrl.abort(), ms);
   try{
     const r = await fetch(url, Object.assign({cache:'no-cache'}, ctrl?{signal:ctrl.signal}:{}));
     if(!r.ok) throw new Error('HTTP '+r.status);
-    return await r.text();
+    return await r.arrayBuffer();
   } finally { if(id) clearTimeout(id); }
 }
 async function poUnlockWith(pw){
-  const b64=await poFetchText(enc(PO_ENC_PATH), 60000);
-  const bundle=await poDecryptBundle(b64, pw);
+  const ab=await poFetchAB(enc(PO_ENC_PATH), 60000);
+  const bundle=await poDecryptBundle(ab, pw);
   if(!bundle || !bundle.files) throw new Error('bad bundle');
   window.__PO=bundle.files;
   poRememberPass(pw);

@@ -4,7 +4,7 @@
 <meta charset="UTF-8" data-page-node-id="ebpjMpA3kHMm7dOs4ksc6m">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" data-page-node-id="TUMNRhorqikQOtqUk7oKXn">
 <title>零售会员驾驶舱 · 移动端</title>
-<link rel="stylesheet" href="mobile.css" data-page-node-id="k875FJWuPFgZj3AssZMOid">
+<link rel="stylesheet" href="mobile.css?v=20260916b" data-page-node-id="k875FJWuPFgZj3AssZMOid">
 <style>
 /* 预订单密码门（与 preorder.html 一致）：点击右上角版本号「v2」隐蔽入口弹出，输密码解密后进入看板 */
 .po-gate{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;background:rgba(245,245,247,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
@@ -56,7 +56,7 @@
     <div class="po-gate-err" id="poGateErr"></div>
   </div>
 </div>
-<script src="common.js"></script>
+<script src="common.js?v=20260916b"></script>
 <script>
 const ICON = {
   blue:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>',
@@ -242,7 +242,7 @@ async function poIndexUnlock(){
     await poUnlockWith(pw);
     location.href='preorder.html';
   }catch(e){
-    poGateErr('密码错误或数据损坏，请重试');
+    poGateErr((e && e.message==='BROWSER_TOO_OLD') ? '浏览器版本过低，请升级系统/浏览器后再试' : '密码错误或数据损坏，请重试');
     if(btn){ btn.disabled=false; btn.textContent='解 锁'; }
   }
 }
