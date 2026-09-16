@@ -2,9 +2,12 @@
 <html lang="zh-CN" data-page-node-id="MrSl1EtBFahqJNNv3Az4rZ">
 <head data-page-node-id="TTi3OxN4FdCzRTyLOmdBjU">
 <meta charset="UTF-8" data-page-node-id="L2IEXGZKHpksXIDAEtG4el">
+<!-- 防旧页面缓存：GitHub Pages 给 HTML 约 10 分钟缓存，曾出现用户拿到旧 preorder.html 导致「渲染出错」 -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" data-page-node-id="L2IEXGZKHpksXIDAEtG4el">
+<meta http-equiv="Pragma" content="no-cache" data-page-node-id="L2IEXGZKHpksXIDAEtG4el">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" data-page-node-id="fe2D5foLSMaYAvwNReJGW5">
 <title>预订单 · 移动端</title>
-<link rel="stylesheet" href="mobile.css?v=20260916c" data-page-node-id="w8KLl3XmE8CR4WHzylSDNc">
+<link rel="stylesheet" href="mobile.css?v=20260916d" data-page-node-id="w8KLl3XmE8CR4WHzylSDNc">
 <style>
 .store-item.tappable{cursor:pointer}
 .store-item.tappable:active{background:rgba(0,113,227,0.09)!important}
@@ -50,6 +53,33 @@
 .drawer-loading{text-align:center;color:#86868b;padding:44px 0;font-size:13px}
 .drawer-empty{text-align:center;color:#86868b;padding:34px 0;font-size:13px}
 .drawer-note{font-size:11px;color:#86868b;margin-top:10px;line-height:1.6}
+/* 维度风险洞察：门店 / 销售员 / 号码 切换 + 四类异常筛选 + 风险优先列表 */
+.dim-row{display:flex;gap:6px;margin:0 0 8px}
+.dim-chip{flex:1;text-align:center;padding:8px 0;border-radius:11px;background:#f2f2f4;color:#515154;font-size:12.5px;line-height:1;cursor:pointer;border:1px solid transparent;font-weight:600}
+.dim-chip.active{background:#1d1d1f;color:#fff}
+.dim-chip:active{opacity:.65}
+.risk-row{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+.risk-chip{padding:5px 9px;border-radius:13px;background:rgba(255,59,48,0.07);color:#c7362c;font-size:11.5px;line-height:1;cursor:pointer;border:1px solid transparent;font-weight:500}
+.risk-chip b{font-weight:700}
+.risk-chip.active{background:#ff3b30;color:#fff;border-color:#ff3b30}
+.risk-chip.zero{background:rgba(0,0,0,0.04);color:#a1a1a6}
+.risk-chip:active{opacity:.65}
+.dim-sum{font-size:12px;color:#1d1d1f;line-height:1.7;margin:0 0 10px}
+.dim-sum .k{color:#86868b}
+.dim-item{padding:10px 12px;border-radius:11px;background:rgba(0,0,0,0.03);margin-bottom:8px;cursor:pointer}
+.dim-item:active{background:rgba(0,113,227,0.09)}
+.dim-item-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.dim-item-name{font-size:13px;font-weight:600;color:#1d1d1f;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dim-branch{font-size:10.5px;font-weight:500;color:#0071E3;background:rgba(0,113,227,0.08);padding:1px 5px;border-radius:4px;margin-left:4px}
+.dim-item-net{font-size:14px;font-weight:700;color:#0071E3;font-variant-numeric:tabular-nums;white-space:nowrap}
+.dim-item-net .dim-item-net-l{display:block;font-size:10px;font-weight:400;color:#86868b;text-align:right}
+.dim-item-meta{font-size:11.5px;color:#515154;margin-top:4px;font-variant-numeric:tabular-nums}
+.dim-item-risk{margin-top:6px;display:flex;flex-wrap:wrap;gap:4px}
+.risk-tag{font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;background:rgba(255,59,48,0.1);color:#ff3b30}
+.risk-tag.freq{background:rgba(255,149,0,0.12);color:#ff9500}
+.risk-tag.aged{background:rgba(175,82,222,0.12);color:#af52de}
+.risk-tag.lowConv{background:rgba(255,59,48,0.1);color:#ff3b30}
+.risk-tag.highRefund{background:rgba(0,113,227,0.1);color:#0071E3}
 /* 预订单数据加密门（输密码本地解密后渲染） */
 .po-gate{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;background:rgba(245,245,247,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .po-gate-box{width:84%;max-width:340px;background:#fff;border-radius:20px;padding:30px 22px;box-shadow:0 12px 40px rgba(0,0,0,.16);text-align:center}
@@ -76,10 +106,10 @@
 </div>
 <div class="header" data-page-node-id="j1a2tL4mJW4KmH31LgdqPM">
   <div class="header-top" data-page-node-id="QK9FZNMj09zdizPy2FE08j">
-    <div class="header-back" onclick="location.href='index.html'" data-page-node-id="88qnA3yMJVifGScZmz7ZeU">
+    <div class="header-back" onclick="location.href='index.html?v=20260916d'" data-page-node-id="88qnA3yMJVifGScZmz7ZeU">
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" data-page-node-id="MqLoISgsgV96zHzA3sqVu1"><path d="M10 3L5 8l5 5" data-page-node-id="lA0r3JtNxqbJwEUFCBibqr"/></svg>返回
     </div>
-    <div class="header-badge" data-page-node-id="GsKTxP5RF5UuHYIiUGLkK1">v1.4</div>
+    <div class="header-badge" data-page-node-id="GsKTxP5RF5UuHYIiUGLkK1">v1.5</div>
   </div>
   <div class="header-title" data-page-node-id="SgvyaakE0Muv9qubGOk1rm">预订单</div>
   <div class="header-date" id="hdrDate" data-page-node-id="DY7nSZwvE6MTfATVLdZ46F"><span class="dot" data-page-node-id="vdVnZcdqFXbtMhyuDL4vPL"></span></div>
@@ -91,9 +121,9 @@
   频繁预订 = 同手机号周期内预订 ≥ <span id="freqTh" data-page-node-id="ODlumHBGcFQqCpdA0oNMEg">3</span> 次（疑似虚假预订/收款不过账，类储值风险）<br data-page-node-id="vWygE8h1YirYYABD2QlU4S">
   净未消费金额 = 实收金额 − 已核销(已转销)金额 − 已退金额；会员手机号脱敏展示（前三后五，中间3位***）<br data-page-node-id="hxITkynZbHxbPEzNyB7976">
   <span id="genTime" data-page-node-id="drj0mkdXqBOgsnNdUdFneY"></span><br data-page-node-id="hxITkynZbHxbPEzNyB7976">
-  <a class="footer-link" href="index.html" data-page-node-id="hZ3TjdIjJCZ5i3teLQ8emE">返回看板总览 ›</a>
+  <a class="footer-link" href="index.html?v=20260916d" data-page-node-id="hZ3TjdIjJCZ5i3teLQ8emE">返回看板总览 ›</a>
 </div>
-<script src="common.js?v=20260916c"></script>
+<script src="common.js?v=20260916d"></script>
 <script>
 function maskPhone(p){
   p=String(p||'');
@@ -120,6 +150,9 @@ const BUCKET_DEFS=[
 let _PB=null;      // 沉淀快照（BUILD 时填充）：{as_of, phones[], branches[]}
 let _bk='gt90';    // 当前选中的时长分档
 let _br='';        // 当前选中的分公司（'' = 全部）
+let _PD=null;      // 维度风险洞察快照（BUILD 时填充）：{store,seller,phone}
+let _dim='store';  // 当前维度：store 门店 / seller 销售员 / phone 号码
+let _drisk='';     // 当前异常筛选：'' = 全部，否则 freq/aged/lowConv/highRefund
 window.BUILD = function(period, dash, active){
   const periodName=PERIOD_LABEL[active]||'';
   const ds=period.dates||[];
@@ -186,6 +219,26 @@ window.BUILD = function(period, dash, active){
     ${actionBox('P0 · 充值未核销逐单核查：核对订金是否真实到账、是否对应真实意向商品；&gt;30天未核销的须联系客户履约或清退，发现资金异常立即上报。')}
   </div>`;
   }
+
+  /* ---------- 维度风险洞察：门店 / 销售员 / 号码（内容由 renderDim() 在插入 DOM 后填充） ---------- */
+  const dims=period.dims||null;
+  let dimHtml='';
+  if(dims){
+    _PD=dims;
+    if(!dims[_dim]) _dim='store';
+    dimHtml=`
+  <div class="card">
+    <div class="card-head"><div class="card-head-left">
+      <div class="card-icon bg-purple"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#af52de" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg></div>
+      <div><div class="card-title">维度风险洞察</div><div class="card-subtitle">门店 · 销售员 · 号码 · 金额口径 · ${esc(periodName)}</div></div>
+    </div></div>
+    <div class="dim-row" id="dimChips"></div>
+    <div class="risk-row" id="dimRiskChips"></div>
+    <div class="dim-sum" id="dimSum"></div>
+    <div id="dimBody"></div>
+  </div>`;
+  }
+
   return `
   <div class="card">
     <div class="card-head"><div class="card-head-left">
@@ -226,6 +279,7 @@ window.BUILD = function(period, dash, active){
     </div>
     ${topC?insightBox('AI 解读','<span class="tag-blue">'+esc(topC.name)+'</span> 预订单'+fmt(topC.count)+'笔居首，贡献最高。'):''}
   </div>
+  ${dimHtml}
   ${rechargeHtml}
   <div class="card">
     <div class="card-head"><div class="card-head-left">
@@ -370,8 +424,107 @@ function openBucketDrawer(k){
     `<div class="store-list">${rows||'<div class="drawer-empty">该档位暂无手机号</div>'}</div>`
     +`<div class="drawer-note">按最早订金日归档；${def.tip}。金额单位：元。点任一行查看该手机号逐笔明细。</div>`);
 }
+/* ---------- 维度风险洞察：门店 / 销售员 / 号码 ----------
+   口径（金额口径）：转效率 = 已转销 ÷ 实收；退订率 = 已退 ÷ 实收
+   长期未转销未退 = 单据日期距今 >90 天且净额>0 的净额合计（全量时点口径，不随周期切换）
+   异常门槛（标准档）：长期≥¥1万；实收≥¥1万且转效率<50%；实收≥¥1万且退订率>30%
+   频繁：号码 ≥3 次；门店/销售员 ≥ max(3, 同维度中位数×3)。判定逻辑统一在 common.js 的 dimRows()。 */
+const DIM_TOP=12;                     // 默认展示条数（风险优先排序），其余走「更多数据」抽屉
+const DIM_LABEL={store:'门店',seller:'销售员',phone:'号码'};
+const DIM_UNIT={store:'家',seller:'位',phone:'个'};
+const DIM_RISK_DEFS=[
+  {k:'freq',       label:'频繁预订'},
+  {k:'aged',       label:'长期未转销未退'},
+  {k:'lowConv',    label:'转效率偏低'},
+  {k:'highRefund', label:'退订率偏高'},
+];
+const DIM_RISK_LABEL={freq:'频繁预订',aged:'长期未转销未退',lowConv:'转效率偏低',highRefund:'退订率偏高'};
+function dimCur(){ return (_PD && _PD[_dim]) || null; }
+function dimFiltered(){
+  const d=dimCur(); if(!d) return null;
+  return _drisk ? (d.rows||[]).filter(r=>(r.risk||[]).indexOf(_drisk)>=0) : (d.rows||[]);
+}
+function dimPct(v){ return (v==null)?'—':(Math.round(v*100)+'%'); }
+function dimRowHtml(r,i){
+  const nm=(_dim==='phone')?maskPhone(r.name):r.name;
+  const tags=(r.risk||[]).map(k=>`<span class="risk-tag ${k}">${DIM_RISK_LABEL[k]||k}</span>`).join('');
+  const rate=(r.recv>0)?(dimPct(r.conv)+' / '+dimPct(r.refundRate)):'—';
+  const br=r.branch?`<span class="dim-branch">${esc(r.branch)}</span>`:'';
+  const oa=r.onlyAged?`<span class="dim-branch">本周期无单</span>`:'';
+  return `<div class="dim-item" onclick="openDimDrawer(${i})">`
+    +`<div class="dim-item-top"><div class="dim-item-name">${i+1}. ${esc(nm)}${br}${oa}</div>`
+    +`<div class="dim-item-net">${wan(r.net)}<span class="dim-item-net-l">净未消费</span></div></div>`
+    +`<div class="dim-item-meta">${fmt(r.count)}单 · 实收${wan(r.recv)} · 转效率/退订率 <b>${rate}</b>`
+    +`${r.aged>0?(' · 长期 <b>'+wan(r.aged)+'</b>'):''}</div>`
+    +(tags?`<div class="dim-item-risk">${tags}</div>`:'')+`</div>`;
+}
+function renderDim(){
+  const box=document.getElementById('dimBody'); if(!box) return;
+  const d=dimCur();
+  const chips=document.getElementById('dimChips');
+  if(chips) chips.innerHTML=['store','seller','phone'].map(k=>
+    `<div class="dim-chip${_dim===k?' active':''}" onclick="selectDim('${k}')">${DIM_LABEL[k]}</div>`).join('');
+  if(!d){ box.innerHTML='<div class="bucket-empty">暂无维度数据</div>'; return; }
+  const cnt=dimCounts(d);
+  const rc=document.getElementById('dimRiskChips');
+  if(rc) rc.innerHTML=DIM_RISK_DEFS.map(x=>{
+    const n=cnt[x.k]||0;
+    return `<div class="risk-chip${_drisk===x.k?' active':''}${n?'':' zero'}" onclick="selectDimRisk('${x.k}')">${x.label} <b>${n}</b></div>`;
+  }).join('');
+  const s=document.getElementById('dimSum');
+  if(s){
+    const riskN=d.riskTotal||0;
+    s.innerHTML=`共 <b>${fmt(d.total)}</b> ${DIM_UNIT[_dim]}${DIM_LABEL[_dim]}（有风险 <span class="tag-red">${fmt(riskN)}</span> ${DIM_UNIT[_dim]}）`
+      +` · 长期未转销未退（全量口径）<b>${wan(d.agedTotal)}</b>`
+      +`<br><span class="k">转效率/退订率按金额口径（分母=实收）；频繁阈值：`
+      +(_dim==='phone'?('≥'+d.freqTh+' 次'):('≥'+d.freqTh+' 单（中位数 '+d.median+' × 3）'))
+      +`；长期门槛 ¥1万、转效率 <50%、退订率 >30%（均要求实收≥¥1万）</span>`
+      +(_dim==='phone'?'<br><span class="k">号码维度仅列「有风险标记 / 有长期沉淀 / 大额」的号码，完整号码清单见下方「会员充值未核销」卡。</span>':'');
+  }
+  const list=dimFiltered()||[];
+  const top=list.slice(0,DIM_TOP);
+  const scoped=_drisk?('「'+DIM_RISK_LABEL[_drisk]+'」共 <span class="tag-red">'+fmt(list.length)+'</span> '+DIM_UNIT[_dim]+'：'):'';
+  box.innerHTML=`<div class="bucket-sum">${scoped}${_drisk?'':'风险优先排序，'}展示前 ${Math.min(DIM_TOP,list.length)} / ${fmt(list.length)} 条</div>`
+    +(top.length?`<div>${top.map((r,i)=>dimRowHtml(r,i)).join('')}</div>`:'<div class="bucket-empty">该筛选下暂无数据</div>')
+    +(list.length>DIM_TOP?`<div class="more-row" onclick="openDimDrawer(-1)">更多数据 · 共 ${fmt(list.length)} 条 <span class="more-cnt">（点击查看全部）</span> ›</div>`:'');
+}
+function selectDim(k){ _dim=k; renderDim(); }
+function selectDimRisk(k){ _drisk=(_drisk===k?'':k); renderDim(); }
+function openDimDrawer(i){
+  const d=dimCur(); if(!d) return;
+  const list=dimFiltered()||[];
+  if(i>=0 && _dim==='phone'){ openPhoneDrawer(list[i].name); return; }   // 号码 → 复用逐笔明细抽屉
+  const note=`<div class="drawer-note">转效率 = 已转销金额 ÷ 实收金额；退订率 = 已退金额 ÷ 实收金额（金额口径）。`
+    +`<br>长期未转销未退 = 单据日期距今 &gt;90 天且净额(实收−已转销−已退)&gt;0 的净额合计（全量时点口径，不随周期切换）。`
+    +`<br>异常门槛：长期≥¥1万；实收≥¥1万且转效率&lt;50%；实收≥¥1万且退订率&gt;30%。</div>`;
+  if(i<0){   // 查看全部（当前筛选下的全量）
+    showDrawer(DIM_LABEL[_dim]+' · 全部',
+      (_drisk?DIM_RISK_LABEL[_drisk]+' · ':'')+fmt(list.length)+' '+DIM_UNIT[_dim]+'（风险优先）',
+      (list.length?`<div>${list.map((r,k)=>dimRowHtml(r,k)).join('')}</div>`:'<div class="drawer-empty">暂无数据</div>')+note);
+    return;
+  }
+  const r=list[i];
+  const nm=(_dim==='phone')?maskPhone(r.name):r.name;
+  showDrawer(nm, DIM_LABEL[_dim]+(r.branch?(' · '+r.branch):'')+(r.onlyAged?' · 本周期无单':'')+(r.stores&&r.stores.length?(' · 涉及 '+r.stores.length+' 家门店'):''),
+    `<div class="drawer-sum">
+       <div class="cell"><b>${fmt(r.count)}</b><span>单量</span></div>
+       <div class="cell"><b>${wan(r.recv)}</b><span>实收</span></div>
+       <div class="cell"><b>${wan(r.verified)}</b><span>已转销</span></div>
+       <div class="cell"><b>${wan(r.refund)}</b><span>已退</span></div>
+       <div class="cell"><b style="color:#0071E3">${wan(r.net)}</b><span>净未消费</span></div>
+     </div>
+     <div class="drawer-sum">
+       <div class="cell"><b>${r.recv>0?dimPct(r.conv):'—'}</b><span>转效率</span></div>
+       <div class="cell"><b>${r.recv>0?dimPct(r.refundRate):'—'}</b><span>退订率</span></div>
+       <div class="cell"><b style="color:#af52de">${wan(r.aged)}</b><span>长期未转销未退</span></div>
+       <div class="cell"><b>${fmt(r.agedCnt)}</b><span>长期笔数</span></div>
+     </div>`
+    +((r.risk||[]).length?`<div class="dim-item-risk" style="margin-top:10px">${r.risk.map(k=>`<span class="risk-tag ${k}">${DIM_RISK_LABEL[k]}</span>`).join('')}</div>`:'')
+    +(r.stores&&r.stores.length?`<div class="drawer-note">涉及门店（${r.stores.length} 家）：${r.stores.slice(0,12).map(esc).join('、')}${r.stores.length>12?' 等':''}</div>`:'')
+    +note);
+}
 /* BUILD 返回字符串、DOM 插入后才可操作 → 用 AFTER_BUILD 钩子渲染当前档列表 */
-window.AFTER_BUILD=function(){ if(_PB) renderBucketList(_bk); };
+window.AFTER_BUILD=function(){ if(_PB) renderBucketList(_bk); renderDim(); };
 let _poCache=null, _poLoading=null;
 async function loadPhoneOrders(){
   if(_poCache) return _poCache;

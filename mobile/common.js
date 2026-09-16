@@ -477,6 +477,69 @@ async function poAutoUnlock(){
 /* 预订单加密后，所有数据来自本地解密包 window.__PO（输密码后注入，或会话内静默解密）。
    明文 JSON 已不再发布，此处改为读内存对象。 */
 function poFile(rel){ return (window.__PO && window.__PO[rel]) || null; }
+/* ---------- 维度风险洞察（门店 / 销售员 / 号码） ----------
+   口径（金额口径，2026-09-16 与用户确认）：
+     转效率 = 已转销金额 ÷ 实收金额 ； 退订率 = 已退金额 ÷ 实收金额
+     长期未转销未退 = 单据日期距今 > 90 天、且该单净额(实收−已转销−已退) > 0 的净额合计
+       ⚠️ 这是「时点存量」指标——本月新开的单不可能满 90 天，故按**全量口径**统计（dim_aging.json）、
+          不随周期切换，界面上标注「全量口径」。
+   异常门槛（标准档）：长期 ≥ ¥1万；实收 ≥ ¥1万且转效率 <50%；实收 ≥ ¥1万且退订率 >30%
+   频繁使用预订：号码 ≥ freq 次；门店/销售员 ≥ max(3, 同维度中位数 ×3)（相对阈值，避免大促日绝对阈值失真） */
+const DIM_AGED_MIN=10000, DIM_MIN_RECV=10000, DIM_LOW_CONV=0.5, DIM_HIGH_REFUND=0.3, DIM_FREQ_MULT=3;
+function dimRows(map, agedMap, kind, freqTh, totalOverride){
+  const rows=[];
+  for(const k in (map||{})){
+    if(!k) continue;
+    const v=map[k]||{};
+    const recv=+(v.recv||0), verified=+(v.verified||0), refund=+(v.refund||0);
+    const ag=(agedMap&&agedMap[k])||null;
+    const st=v.stores;
+    rows.push({name:k, branch:v.branch||'', count:v.count||0, recv, verified, refund, net:+(v.amount||0),
+      aged: ag?+(ag.aged||0):+(v.aged||0), agedCnt: ag?+(ag.agedCnt||0):+(v.agedCnt||0),
+      stores: Array.isArray(st)?st:(st?[...st]:[]),
+      conv: recv>0? verified/recv : 0, refundRate: recv>0? refund/recv : 0});
+  }
+  // 本周期无单、但有历史长期沉淀的主体（已停业/静默门店）也纳入，否则「长期未转销未退」会漏掉它们
+  for(const k in (agedMap||{})){
+    if(!k || (map&&map[k])) continue;
+    const ag=agedMap[k]||{};
+    if(+(ag.aged||0) < DIM_AGED_MIN) continue;
+    rows.push({name:k, branch:ag.branch||'', count:0, recv:0, verified:0, refund:0, net:0,
+      aged:+(ag.aged||0), agedCnt:ag.agedCnt||0, stores:[], conv:0, refundRate:0, onlyAged:true});
+  }
+  let th=freqTh||3, med=0;
+  if(kind!=='phone'){   // 门店/销售员用「中位数×3」判频繁（相对阈值）
+    const cs=rows.map(r=>r.count).filter(c=>c>0).sort((a,b)=>a-b);
+    med=cs.length? cs[Math.floor(cs.length/2)] : 0;
+    th=Math.max(3, Math.round(med*DIM_FREQ_MULT));
+  }
+  for(const r of rows){
+    const risk=[];
+    if(r.count>=th) risk.push('freq');
+    if(r.aged>=DIM_AGED_MIN) risk.push('aged');
+    if(r.recv>=DIM_MIN_RECV && r.conv<DIM_LOW_CONV) risk.push('lowConv');
+    if(r.recv>=DIM_MIN_RECV && r.refundRate>DIM_HIGH_REFUND) risk.push('highRefund');
+    r.risk=risk;
+  }
+  // agedTotal 必须用「账龄全量快照」求和：只统计入选行会漏掉「本周期无单、且长期额<1万」的主体
+  let agedTotal=0, netTotal=0, recvTotal=0, riskTotal=0;
+  for(const r of rows){ netTotal+=r.net; recvTotal+=r.recv; if(r.risk.length) riskTotal++; }
+  if(agedMap){ for(const k in agedMap) agedTotal+=+(agedMap[k]&&agedMap[k].aged||0); }
+  else { for(const r of rows) agedTotal+=r.aged; }
+  // 号码维度只留「有风险标记 / 有长期沉淀 / 大额」的号，避免上千行噪声（全量号码清单见「会员充值未核销」卡）
+  const out=(kind==='phone')
+    ? rows.filter(r=>r.risk.length||r.aged>0||r.net>=DIM_AGED_MIN||r.recv>=DIM_MIN_RECV)
+    : rows;
+  out.sort((a,b)=>(b.risk.length-a.risk.length)||(b.aged-a.aged)||(b.net-a.net)||(b.count-a.count));
+  return {rows:out, freqTh:th, median:med, total:(totalOverride||rows.length), riskTotal,
+          agedTotal:Math.round(agedTotal), netTotal:Math.round(netTotal), recvTotal:Math.round(recvTotal)};
+}
+function dimCounts(d){
+  const c={freq:0, aged:0, lowConv:0, highRefund:0};
+  const rows=(d&&d.rows)||[];
+  for(const r of rows) for(const k of (r.risk||[])) if(c[k]!==undefined) c[k]++;
+  return c;
+}
 async function loadPreorder(onlyPeriods){
   let idx;
   try{ idx = poFile('preorder_index.json'); }catch(e){ return null; }
@@ -484,6 +547,8 @@ async function loadPreorder(onlyPeriods){
   const dates=idx.dates.map(norm).sort();
   const latest=dates[dates.length-1];
   const freq=idx.freq_threshold||3;
+  // 长期未转销未退（全量时点口径，不随周期切换）
+  let AGING=null; try{ AGING=poFile('dim_aging.json'); }catch(e){}
   const wantP=(Array.isArray(onlyPeriods)&&onlyPeriods.length)?onlyPeriods:PREORDER_PERIODS;
   const needSet=new Set();
   // 「全部」不逐日拉取（280 个请求太重），改用服务端预聚合的 all_period.json
@@ -500,7 +565,7 @@ async function loadPreorder(onlyPeriods){
     const sel=validDays.filter(d=>ds.includes(norm(d.date||'')));
     if(!sel.length) continue;
     let count=0, amount=0, recv=0, verified=0, refund=0;
-    const br={}, st={}, ph={};
+    const br={}, st={}, ph={}, se={};   // se = 销售员维度
     for(const d of sel){
       count+=(d.count||0); amount+=(d.amount||0); recv+=(d.recv||0); verified+=(d.verified||0); refund+=(d.refund||0);
       for(const [b,v] of Object.entries(d.branch||{})){
@@ -513,6 +578,11 @@ async function loadPreorder(onlyPeriods){
         const acc=st[s]=st[s]||{count:0,amount:0,recv:0,verified:0,refund:0,branch:''};
         acc.count+=(v.count||0); acc.amount+=(v.amount||0); acc.recv+=(v.recv||0); acc.verified+=(v.verified||0); acc.refund+=(v.refund||0);
         if(!acc.branch && v.branch) acc.branch=v.branch;
+      }
+      for(const [sl,v] of Object.entries(d.seller||{})){
+        if(!sl) continue;
+        const acc=se[sl]=se[sl]||{count:0,amount:0,recv:0,verified:0,refund:0};
+        acc.count+=(v.count||0); acc.amount+=(v.amount||0); acc.recv+=(v.recv||0); acc.verified+=(v.verified||0); acc.refund+=(v.refund||0);
       }
       for(const [phn,v] of Object.entries(d.phone||{})){
         if(!phn) continue;
@@ -530,7 +600,13 @@ async function loadPreorder(onlyPeriods){
     const riskCount=phoneList.filter(x=>x.risk).length;
     const storeCount=Object.keys(st).length;
     const storeBreakdown=Object.entries(st).filter(([s])=>s).map(([s,v])=>({company:v.branch||'', count:v.count, amount:Math.round(v.amount)}));
-    periods[p]={ dates:ds.slice().sort(), count, amount:Math.round(amount), recv:Math.round(recv), verified:Math.round(verified), refund:Math.round(refund), storeCount, branchList, storeTop10, phoneList, riskCount, freq, storeBreakdown };
+    // 维度风险洞察：门店 / 销售员 / 号码（门槛与口径见 dimRows 注释）
+    const dims={
+      store:  dimRows(st, AGING&&AGING.store,  'store',  freq),
+      seller: dimRows(se, AGING&&AGING.seller, 'seller', freq),
+      phone:  dimRows(ph, AGING&&AGING.phone,  'phone',  freq),
+    };
+    periods[p]={ dates:ds.slice().sort(), count, amount:Math.round(amount), recv:Math.round(recv), verified:Math.round(verified), refund:Math.round(refund), storeCount, branchList, storeTop10, phoneList, riskCount, freq, storeBreakdown, dims };
   }
   // 「全部」周期：读服务端预聚合快照（单请求），保证与逐日口径一致且不压垮移动端
   if(wantP.includes('all')){
@@ -553,6 +629,12 @@ async function loadPreorder(onlyPeriods){
             stores:x.stores||[], risk:!!x.risk})),
           riskCount:ap.riskCount||0, freq,
           storeBreakdown: ap.storeBreakdown||{},
+          // 「全部」周期的三维度：用服务端预聚合的原始映射（ap.dims），口径与前端口径同一套 dimRows()
+          dims:{
+            store:  dimRows((ap.dims||{}).store,  AGING&&AGING.store,  'store',  freq),
+            seller: dimRows((ap.dims||{}).seller, AGING&&AGING.seller, 'seller', freq),
+            phone:  dimRows((ap.dims||{}).phone,  AGING&&AGING.phone,  'phone',  freq, (ap.dims||{}).phoneTotal),
+          },
         };
       }
     }catch(e){}
