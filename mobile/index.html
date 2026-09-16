@@ -5,12 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" data-page-node-id="TUMNRhorqikQOtqUk7oKXn">
 <title>零售会员驾驶舱 · 移动端</title>
 <link rel="stylesheet" href="mobile.css" data-page-node-id="k875FJWuPFgZj3AssZMOid">
+<style>
+/* 预订单密码门（与 preorder.html 一致）：点击首页加密卡片弹出，输密码解密后进入看板 */
+.po-gate{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;background:rgba(245,245,247,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.po-gate-box{width:84%;max-width:340px;background:#fff;border-radius:20px;padding:30px 22px;box-shadow:0 12px 40px rgba(0,0,0,.16);text-align:center}
+.po-gate-icon{font-size:34px;margin-bottom:6px}
+.po-gate-title{font-size:18px;font-weight:700;color:#1d1d1f;letter-spacing:.5px}
+.po-gate-sub{font-size:13px;color:#86868b;margin:6px 0 18px}
+.po-gate-input{width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid #e3e3e6;border-radius:12px;font-size:15px;outline:none;-webkit-appearance:none}
+.po-gate-input:focus{border-color:#ff3b30}
+.po-gate-btn{width:100%;margin-top:12px;padding:13px;border:none;border-radius:12px;background:#ff3b30;color:#fff;font-size:15px;font-weight:700;cursor:pointer}
+.po-gate-btn:active{opacity:.85}
+.po-gate-btn:disabled{opacity:.6}
+.po-gate-cancel{margin-top:12px;color:#86868b;font-size:13px;cursor:pointer}
+.po-gate-err{display:none;margin-top:10px;color:#ff3b30;font-size:12.5px}
+.card.locked{cursor:pointer}
+/* 右上角版本号 = 预订单看板隐蔽入口（外观不变，仅可点） */
+.header-badge{cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none}
+.header-badge:active{opacity:.6}
+</style>
 </head>
 <body data-page-node-id="4WmCT1ScUU8XGtrL8bEXqH">
 <div class="header" data-page-node-id="boo4uFhZi7xxHQD482IvKc">
   <div class="header-top" data-page-node-id="3jkRV6syPx1AIFaicbzyGm">
     <div class="header-title" data-page-node-id="aUIGnhikAYeJsuilGOZav3">零售会员驾驶舱</div>
-    <div class="header-badge" data-page-node-id="PBHZJ2OIUAbNbqX6mCHKtO">v2</div>
+    <div class="header-badge" id="verBadge" onclick="openPreorderGate()" data-page-node-id="PBHZJ2OIUAbNbqX6mCHKtO">v2</div>
   </div>
   <div class="header-date" id="hdrDate" data-page-node-id="XcoaCqgjpo9W5p5aOHIEUA"><span class="dot" data-page-node-id="37wKEsSnPPAIQ7jIH3mmyu"></span>实时数据</div>
 </div>
@@ -25,6 +44,17 @@
 <div class="footer" data-page-node-id="PnrPSIpZ5L6UqTHZKIArLb">
   内含会员与门店经营敏感数据，请勿外传<br data-page-node-id="w3BORbRDLX738vP6S46gf4">
   <span id="genTime" data-page-node-id="oE9oSngYYCwECRaM9GJZWo"></span>
+</div>
+<div class="po-gate" id="poGate">
+  <div class="po-gate-box">
+    <div class="po-gate-icon">🔒</div>
+    <div class="po-gate-title">预订单数据已加密</div>
+    <div class="po-gate-sub">请输入访问密码后进入看板</div>
+    <input class="po-gate-input" id="poGateInput" type="password" placeholder="访问密码" autocomplete="off">
+    <button class="po-gate-btn" id="poGateBtn" onclick="poIndexUnlock()">解 锁</button>
+    <div class="po-gate-cancel" onclick="poGateClose()">取消</div>
+    <div class="po-gate-err" id="poGateErr"></div>
+  </div>
 </div>
 <script src="common.js"></script>
 <script>
@@ -94,18 +124,28 @@ function cardPreorder(r){
       + (rp.riskCount>0?(rp.riskCount+' 个手机号本月预订 ≥'+(rp.freq||3)+' 次，疑似虚假预订/收款不过账，需逐单核查。'):'当前无频繁预订手机号，预订行为正常。'),
     action:'P0 · 频繁预订与充值未核销手机号逐单核查收款与履约，发现收款不过账立即冻结并上报。'};
 }
+function cardPreorderLocked(){
+  return {key:'preorder',title:'预订单',subtitle:'预售 · 频繁预订风险',locked:true,
+    metrics:[{v:'🔒',l:'数据已加密'},{v:'—',l:'预订单数'},{v:'—',l:'净未消费'},{v:'—',l:'频繁手机号'}],
+    progress:{pct:0,left:'点击卡片输入访问密码后查看',right:''},
+    insight:'', action:''};
+}
 function renderCard(c){
   const col=COLOR[c.key]||'blue';
   const metrics=(c.metrics||[]).map(m=>metric(m.v,m.l,m.c,m.delta)).join('');
-  return `<div class="card" onclick="location.href='${PAGE[c.key]}'">
+  const act=c.locked?'onclick="openPreorderGate()"':`onclick="location.href='${PAGE[c.key]}'"`;
+  const link=c.locked?'🔒 输入密码 ›':'进入看板 ›';
+  const note=c.locked?insightBox('数据已加密','预订单含会员手机号与订金敏感数据，已加密存储。<span class="tag-red">点击卡片输入访问密码</span>后进入看板查看。'):'';
+  return `<div class="card${c.locked?' locked':''}" ${act}>
     <div class="card-head"><div class="card-head-left">
       <div class="card-icon bg-${col}">${ICON[col]||''}</div>
       <div><div class="card-title">${esc(c.title)}</div><div class="card-subtitle">${esc(c.subtitle)}</div></div>
-    </div><div class="card-link">进入看板 ›</div></div>
+    </div><div class="card-link">${link}</div></div>
     <div class="metrics-row">${metrics}</div>
     ${progress(c.progress&&c.progress.pct||0, c.progress&&c.progress.left||'', c.progress&&c.progress.right||'')}
     ${c.insight?insightBox('AI 解读', esc(c.insight).replace(/([^\s]+)(?=居首|最高|最多|最低)/,'<span class="tag-red">$1</span>')):''}
     ${c.action?actionBox(esc(c.action)):''}
+    ${note}
   </div>`;
 }
 
@@ -120,7 +160,11 @@ const SPECS=[
   {key:'cashier',run:loadCashier,             build:cardCashier},
   {key:'paid',   run:()=>loadPaid(['month']), build:cardPaid},
   {key:'return', run:loadReturnLight,         build:cardReturn},
-  {key:'preorder',run:()=>loadPreorder(['month']), build:cardPreorder}
+  {key:'preorder',run:async()=>{
+     // 会话内已解锁过 → 用缓存密码静默解密取数；否则返回 null → 渲染锁态卡片
+     if(!window.__PO) await poAutoUnlock();
+     return window.__PO ? loadPreorder(['month']) : null;
+   }, build:r=>cardPreorder(r)||cardPreorderLocked()}
 ];
 async function bootIndex(){
   const el=document.getElementById('cards');
@@ -188,6 +232,37 @@ function downloadCashierCSV(T){
   }).catch(function(){ alert('明细加载失败'); });
 }
 document.getElementById('dl-cashier-csv').addEventListener('click', function(){ downloadCashierCSV(CASHIER_T); });
+
+/* ---------- 预订单密码门：点击加密卡片 → 弹框输密码 → 解密并进入看板 ----------
+   成功解密后把包写入 sessionStorage，跳转 preorder.html 时免二次输入。 */
+function openPreorderGate(){
+  const g=document.getElementById('poGate'); if(!g) return;
+  const e=document.getElementById('poGateErr'); if(e){ e.style.display='none'; e.textContent=''; }
+  const btn=document.getElementById('poGateBtn'); if(btn){ btn.disabled=false; btn.textContent='解 锁'; }
+  g.style.display='flex';
+  const inp=document.getElementById('poGateInput'); if(inp){ inp.value=''; inp.focus(); }
+}
+function poGateClose(){ const g=document.getElementById('poGate'); if(g) g.style.display='none'; }
+function poGateErr(msg){ const e=document.getElementById('poGateErr'); if(e){ e.textContent=msg; e.style.display='block'; } }
+async function poIndexUnlock(){
+  const inp=document.getElementById('poGateInput');
+  const pw=inp?inp.value:'';
+  if(!pw){ poGateErr('请输入密码'); return; }
+  poGateErr('');
+  const btn=document.getElementById('poGateBtn');
+  if(btn){ btn.disabled=true; btn.textContent='解密中…'; }
+  try{
+    await poUnlockWith(pw);
+    location.href='preorder.html';
+  }catch(e){
+    poGateErr('密码错误或数据损坏，请重试');
+    if(btn){ btn.disabled=false; btn.textContent='解 锁'; }
+  }
+}
+(function bindGateEnter(){
+  const inp=document.getElementById('poGateInput');
+  if(inp) inp.addEventListener('keydown', ev=>{ if(ev.key==='Enter') poIndexUnlock(); });
+})();
 
 bootIndex();
 </script>

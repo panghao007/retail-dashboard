@@ -234,37 +234,28 @@ window.BUILD = function(period, dash, active){
     ${actionBox('P0 · 频繁预订手机号逐单核查：确认是否真实收款、是否履约发货；发现收款不过账或无履约立即冻结并上报，参照储值违规处置。')}
   </div>`;
 };
-/* ---------- 预订单加密门：输密码本地解密后渲染（数据已加密为 preorder_bundle.enc） ---------- */
-const PO_SESS='po_bundle_v1';
-async function poDeriveKey(pw, salt){
-  const bk=await crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']);
-  return crypto.subtle.deriveKey({name:'PBKDF2', salt, iterations:100000, hash:'SHA-256'}, bk, {name:'AES-GCM', length:256}, false, ['decrypt']);
-}
-async function poDecryptBundle(b64, pw){
-  const bin=new Uint8Array(atob(b64).split('').map(c=>c.charCodeAt(0)));
-  const salt=bin.slice(0,16), iv=bin.slice(16,28), data=bin.slice(28);
-  const key=await poDeriveKey(pw, salt);
-  const plain=await crypto.subtle.decrypt({name:'AES-GCM', iv}, key, data);
-  return JSON.parse(new TextDecoder().decode(plain));
-}
+/* ---------- 预订单加密门：输密码本地解密后渲染 ----------
+   解密/缓存（poUnlockWith / poAutoUnlock / poCachedPass）定义在 common.js，与首页共用。 */
 function poShowErr(msg){ const e=document.getElementById('poGateErr'); if(e){ e.textContent=msg; e.style.display='block'; } }
 function poHideGate(){ const g=document.getElementById('poGate'); if(g) g.style.display='none'; }
 async function poUnlock(){
-  const pw=document.getElementById('poGateInput').value;
+  const inp=document.getElementById('poGateInput');
+  const pw=inp?inp.value:'';
   if(!pw){ poShowErr('请输入密码'); return; }
   poShowErr('');
+  const btn=document.getElementById('poGateBtn');
+  if(btn){ btn.disabled=true; btn.textContent='解密中…'; }
   try{
-    const b64=await (await fetch(enc('../preorder/preorder_bundle.enc'))).text();
-    const bundle=await poDecryptBundle(b64, pw);
-    window.__PO=bundle.files;
-    try{ sessionStorage.setItem(PO_SESS, JSON.stringify(bundle.files)); }catch(e){}
+    await poUnlockWith(pw);
     poHideGate();
     boot(loadPreorder,'month');
-  }catch(e){ poShowErr('密码错误或数据损坏，请重试'); }
+  }catch(e){
+    poShowErr('密码错误或数据损坏，请重试');
+    if(btn){ btn.disabled=false; btn.textContent='解 锁'; }
+  }
 }
-function poInitGate(){
-  const cached=sessionStorage.getItem(PO_SESS);
-  if(cached){ try{ window.__PO=JSON.parse(cached); boot(loadPreorder,'month'); return; }catch(e){ try{ sessionStorage.removeItem(PO_SESS); }catch(_){} } }
+async function poInitGate(){
+  if(await poAutoUnlock()){ boot(loadPreorder,'month'); return; }
   const g=document.getElementById('poGate'); if(g) g.style.display='flex';
   const inp=document.getElementById('poGateInput');
   if(inp){ inp.focus(); inp.addEventListener('keydown', ev=>{ if(ev.key==='Enter') poUnlock(); }); }

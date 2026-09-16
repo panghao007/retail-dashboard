@@ -400,7 +400,45 @@ async function loadPaid(onlyPeriods){
    直读 ghpages_repo/preorder/ 的索引 + 每日原子 JSON（与 PC 同一次管线生成），
    复用 periodDateSet 周期拉齐（含「上周」），分公司固定顺序、ASP 已在 Python 侧剔除。
    重点：会员手机号维度识别同号码周期内频繁预订（≥freq_threshold 红标风险）。 */
-/* 预订单加密后，所有数据来自本地解密包 window.__PO（preorder.html 输密码后注入）。
+/* ---------- 预订单加密包：解密 / 会话缓存（index 与 preorder 页共用） ----------
+   预订单明文 JSON 已不再发布，全部数据加密为 ../preorder/preorder_bundle.enc
+   （PBKDF2-SHA256 10万次 → AES-256-GCM，格式 base64(salt16‖iv12‖ct‖tag16)）。
+   🔴 解密包 JSON 约 10.9MB，远超 sessionStorage 约 5MB 配额（会抛 QuotaExceededError），
+   故会话内只缓存「访问密码」（几十字节），两页均以密码静默重解密，避免重复输入。 */
+const PO_PWKEY='po_pw_v1';
+const PO_ENC_PATH='../preorder/preorder_bundle.enc';
+async function poDeriveKey(pw, salt){
+  const bk=await crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']);
+  return crypto.subtle.deriveKey({name:'PBKDF2', salt, iterations:100000, hash:'SHA-256'}, bk, {name:'AES-GCM', length:256}, false, ['decrypt']);
+}
+async function poDecryptBundle(b64, pw){
+  const bin=new Uint8Array(atob(b64).split('').map(c=>c.charCodeAt(0)));
+  const salt=bin.slice(0,16), iv=bin.slice(16,28), data=bin.slice(28);
+  const key=await poDeriveKey(pw, salt);
+  const plain=await crypto.subtle.decrypt({name:'AES-GCM', iv}, key, data);
+  return JSON.parse(new TextDecoder().decode(plain));
+}
+function poCachedPass(){ try{ return sessionStorage.getItem(PO_PWKEY)||null; }catch(e){ return null; } }
+function poRememberPass(pw){ try{ sessionStorage.setItem(PO_PWKEY, pw); }catch(e){} }
+function poForgetPass(){ try{ sessionStorage.removeItem(PO_PWKEY); }catch(e){} }
+/* 用密码解密并落地（成功返回 true；密码错误 / 数据损坏抛异常） */
+async function poUnlockWith(pw){
+  const b64=await (await fetch(enc(PO_ENC_PATH), {cache:'no-cache'})).text();
+  const bundle=await poDecryptBundle(b64, pw);
+  if(!bundle || !bundle.files) throw new Error('bad bundle');
+  window.__PO=bundle.files;
+  poRememberPass(pw);
+  return true;
+}
+/* 会话内已解锁过 → 用缓存密码静默解密；成功返回 true，无缓存/失败返回 false */
+async function poAutoUnlock(){
+  if(window.__PO) return true;
+  const pw=poCachedPass();
+  if(!pw) return false;
+  try{ await poUnlockWith(pw); return true; }
+  catch(e){ poForgetPass(); return false; }
+}
+/* 预订单加密后，所有数据来自本地解密包 window.__PO（输密码后注入，或会话内静默解密）。
    明文 JSON 已不再发布，此处改为读内存对象。 */
 function poFile(rel){ return (window.__PO && window.__PO[rel]) || null; }
 async function loadPreorder(onlyPeriods){
