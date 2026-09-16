@@ -138,10 +138,10 @@ function renderCard(c){
    return   只拉最近 1 天 26KB，不再拉 1.1MB 看板全文                       */
 const DATE_BY_KEY={};  // 各看板数据日期：member=有效性(YYYY-MM-DD) 用于 xlsx；cashier=合规收银 T(YYYYMMDD) 用于 CSV
 const SPECS=[
-  {key:'member', run:()=>loadMember({light:true}), build:cardMember},
-  {key:'cashier',run:loadCashier,             build:cardCashier},
-  {key:'paid',   run:()=>loadPaid(['month']), build:cardPaid},
-  {key:'return', run:loadReturnLight,         build:cardReturn}
+  {key:'member', run:()=>loadMember({light:true}), build:cardMember,  fresh:'../d/fresh.txt'},
+  {key:'cashier',run:loadCashier,             build:cardCashier, fresh:'../cashier/fresh.txt'},
+  {key:'paid',   run:()=>loadPaid(['month']), build:cardPaid,    fresh:'../paid_member/fresh.txt'},
+  {key:'return', run:loadReturnLight,         build:cardReturn,  fresh:'../return_order/fresh.txt'}
 ];
 async function bootIndex(){
   const el=document.getElementById('cards');
@@ -166,7 +166,17 @@ async function bootIndex(){
   SPECS.forEach(s=>{
     Promise.resolve()
       .then(()=>s.run())
-      .then(d=>{ const c=s.build(d); if(c) CARDS[s.key]=c; if(d&&d.latest_date){ DATES.push(d.latest_date); DATE_BY_KEY[s.key]=d.latest_date; } updateDownloads(); })
+      .then(async d=>{
+        const c=s.build(d);
+        if(c){
+          // 卡片标题下的灰色小字追加「数据更新时间」（管线推送前写入的 fresh.txt）
+          const t=await loadFresh(s.fresh, d);
+          if(t) c.subtitle=c.subtitle+' · 更新 '+t;
+          CARDS[s.key]=c;
+        }
+        if(d&&d.latest_date){ DATES.push(d.latest_date); DATE_BY_KEY[s.key]=d.latest_date; }
+        updateDownloads();
+      })
       .catch(()=>{ /* 单个看板失败：跳过，其余照常渲染 */ })
       .then(()=>{ settled++; paint(); });
   });

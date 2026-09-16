@@ -92,6 +92,18 @@ async function fetchJson(url){
 }
 function enc(url){ return url.split('/').map(encodeURIComponent).join('/'); }
 
+/* 数据更新时间：读取各看板目录下由管线在推送前写入的 fresh.txt（内容 "YYYY-MM-DD HH:MM"，
+   即该看板分析实际跑完的时刻）。文件缺失时回退为数据日期（latest_date），仅到「日」。
+   返回形如 "09月15日 22:34" 的展示串；取不到任何时间则返回 ''（调用方不拼接）。 */
+async function loadFresh(path, dash){
+  let t='';
+  try{ t=(await fetchText(path)).trim(); }catch(e){ /* 文件不存在 → 回退数据日期 */ }
+  if(/^\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}/.test(t)) return t.slice(5,7)+'月'+t.slice(8,10)+'日 '+t.slice(11,16);
+  const ld=(dash&&dash.latest_date)?String(dash.latest_date):'';
+  const m=ld.match(/(\d{4})-?(\d{2})-?(\d{2})/);
+  return m ? (m[2]+'月'+m[3]+'日') : '';
+}
+
 // 从 HTML 中抽取 var/let/const X = {...}|[...]; 的干净 JSON（括号配平方式，抗字符串内分号）
 function extractJsonVar(html, name){
   const re = new RegExp('(?:var|let|const)\\s+'+name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\s*=\\s*');
