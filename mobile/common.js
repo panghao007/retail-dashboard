@@ -493,7 +493,8 @@ async function loadPreorder(onlyPeriods){
     const phoneList=Object.keys(ph).map(phn=>{ const v=ph[phn]; return {phone:phn, count:v.count, amount:Math.round(v.amount), recv:Math.round(v.recv), verified:Math.round(v.verified), refund:Math.round(v.refund), stores:[...v.stores], risk:v.count>=freq}; }).sort((a,b)=>b.count-a.count);
     const riskCount=phoneList.filter(x=>x.risk).length;
     const storeCount=Object.keys(st).length;
-    periods[p]={ dates:ds.slice().sort(), count, amount:Math.round(amount), recv:Math.round(recv), verified:Math.round(verified), refund:Math.round(refund), storeCount, branchList, storeTop10, phoneList, riskCount, freq };
+    const storeBreakdown=Object.entries(st).filter(([s])=>s).map(([s,v])=>({company:v.branch||'', count:v.count, amount:Math.round(v.amount)}));
+    periods[p]={ dates:ds.slice().sort(), count, amount:Math.round(amount), recv:Math.round(recv), verified:Math.round(verified), refund:Math.round(refund), storeCount, branchList, storeTop10, phoneList, riskCount, freq, storeBreakdown };
   }
   // 「全部」周期：读服务端预聚合快照（单请求），保证与逐日口径一致且不压垮移动端
   if(wantP.includes('all')){
@@ -515,6 +516,7 @@ async function loadPreorder(onlyPeriods){
             recv:Math.round(x.recv||0), verified:Math.round(x.verified||0), refund:Math.round(x.refund||0),
             stores:x.stores||[], risk:!!x.risk})),
           riskCount:ap.riskCount||0, freq,
+          storeBreakdown: ap.storeBreakdown||{},
         };
       }
     }catch(e){}

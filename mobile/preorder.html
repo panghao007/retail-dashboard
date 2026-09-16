@@ -87,7 +87,7 @@
 </div>
 <div class="cards" id="cards" data-page-node-id="DBxbPAo9aQ1bKPwD5TK6gS"></div>
 <div class="footer" data-page-node-id="JF34WenecNNJO2mboPrLZl">
-  来源：ERP 预订单查询-导出数据（按列表）· 已剔除 ASP/内购店<br data-page-node-id="Sab5hl3G0H1hJsSx450YEd">
+  来源：ERP 预订单查询-导出数据（按列表）· 已纳入集团全部门店（含 ASP/大疆授权店，仅剔除内购店）<br data-page-node-id="Sab5hl3G0H1hJsSx450YEd">
   频繁预订 = 同手机号周期内预订 ≥ <span id="freqTh" data-page-node-id="ODlumHBGcFQqCpdA0oNMEg">3</span> 次（疑似虚假预订/收款不过账，类储值风险）<br data-page-node-id="vWygE8h1YirYYABD2QlU4S">
   净未消费金额 = 实收金额 − 已核销(已转销)金额 − 已退金额；会员手机号脱敏展示（前三后五，中间3位***）<br data-page-node-id="hxITkynZbHxbPEzNyB7976">
   <span id="genTime" data-page-node-id="drj0mkdXqBOgsnNdUdFneY"></span><br data-page-node-id="hxITkynZbHxbPEzNyB7976">
@@ -220,6 +220,10 @@ window.BUILD = function(period, dash, active){
       <div class="detail-title">分公司净未消费金额</div>
       <div class="detail-list">${branchDist}</div>
     </div>
+    <div class="detail-section">
+      <div class="detail-title" onclick="toggleStoreBd()" style="cursor:pointer;user-select:none">门店明细（点击展开 · 同名不同店分开看）▾</div>
+      <div class="detail-list" id="storeBd" style="display:none">${storeBdHtml(period.storeBreakdown)}</div>
+    </div>
     ${topC?insightBox('AI 解读','<span class="tag-blue">'+esc(topC.name)+'</span> 预订单'+fmt(topC.count)+'笔居首，贡献最高。'):''}
   </div>
   ${rechargeHtml}
@@ -234,6 +238,29 @@ window.BUILD = function(period, dash, active){
     ${actionBox('P0 · 频繁预订手机号逐单核查：确认是否真实收款、是否履约发货；发现收款不过账或无履约立即冻结并上报，参照储值违规处置。')}
   </div>`;
 };
+/* ---------- 门店明细（按分公司分组，同名不同店作为独立行，分开看） ---------- */
+function storeBdHtml(sb){
+  if(!sb) return '<div class="drawer-empty">无门店明细</div>';
+  const byC={};
+  for(const [s,v] of Object.entries(sb)){
+    const c=v.company||'未归属';
+    (byC[c]=byC[c]||[]).push({s, amount:(v.amount||0), count:(v.count||0)});
+  }
+  let html='';
+  for(const c of sortBranch(Object.keys(byC))){
+    const arr=byC[c].sort((a,b)=>b.amount-a.amount);
+    html += `<div style="font-size:11px;font-weight:600;color:#1d1d1f;margin:8px 0 4px;padding-left:2px">${esc(c)}（${arr.length} 家门店）</div>`;
+    for(const x of arr){
+      html += `<div class="detail-item"><div class="detail-item-name">${esc(x.s)}</div>`
+            + `<div class="detail-item-value c-gray">${fmt(x.count)}单 · 净未消费${wan(x.amount)}</div></div>`;
+    }
+  }
+  return html;
+}
+function toggleStoreBd(){
+  const el=document.getElementById('storeBd');
+  if(el) el.style.display = (el.style.display==='none') ? 'block' : 'none';
+}
 /* ---------- 预订单加密门：输密码本地解密后渲染 ----------
    解密/缓存（poUnlockWith / poAutoUnlock / poCachedPass）定义在 common.js，与首页共用。 */
 function poShowErr(msg){ const e=document.getElementById('poGateErr'); if(e){ e.textContent=msg; e.style.display='block'; } }
