@@ -451,11 +451,17 @@ function dimRowHtml(r,i){
   const rate=(r.recv>0)?(dimPct(r.conv)+' / '+dimPct(r.refundRate)):'—';
   const br=r.branch?`<span class="dim-branch">${esc(r.branch)}</span>`:'';
   const oa=r.onlyAged?`<span class="dim-branch">本周期无单</span>`:'';
+  // 「本周期无单」的主体只在账龄口径下有值：净额/单量/实收显示「—」，避免出现一排 ¥0.00万 的噪声
+  const netCell=r.onlyAged?`—<span class="dim-item-net-l">本周期净未消费</span>`
+    :`${wan(r.net)}<span class="dim-item-net-l">净未消费</span>`;
+  const meta=r.onlyAged
+    ? `本周期无预订单 · 长期未转销未退 <b>${wan(r.aged)}</b>（${fmt(r.agedCnt)} 笔）`
+    : `${fmt(r.count)}单 · 实收${wan(r.recv)} · 转效率/退订率 <b>${rate}</b>`
+      +`${r.aged>0?(' · 长期 <b>'+wan(r.aged)+'</b>'):''}`;
   return `<div class="dim-item" onclick="openDimDrawer(${i})">`
     +`<div class="dim-item-top"><div class="dim-item-name">${i+1}. ${esc(nm)}${br}${oa}</div>`
-    +`<div class="dim-item-net">${wan(r.net)}<span class="dim-item-net-l">净未消费</span></div></div>`
-    +`<div class="dim-item-meta">${fmt(r.count)}单 · 实收${wan(r.recv)} · 转效率/退订率 <b>${rate}</b>`
-    +`${r.aged>0?(' · 长期 <b>'+wan(r.aged)+'</b>'):''}</div>`
+    +`<div class="dim-item-net">${netCell}</div></div>`
+    +`<div class="dim-item-meta">${meta}</div>`
     +(tags?`<div class="dim-item-risk">${tags}</div>`:'')+`</div>`;
 }
 function renderDim(){
