@@ -6,7 +6,7 @@
 <title>零售会员驾驶舱 · 移动端</title>
 <link rel="stylesheet" href="mobile.css" data-page-node-id="k875FJWuPFgZj3AssZMOid">
 <style>
-/* 预订单密码门（与 preorder.html 一致）：点击首页加密卡片弹出，输密码解密后进入看板 */
+/* 预订单密码门（与 preorder.html 一致）：点击右上角版本号「v2」隐蔽入口弹出，输密码解密后进入看板 */
 .po-gate{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;background:rgba(245,245,247,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .po-gate-box{width:84%;max-width:340px;background:#fff;border-radius:20px;padding:30px 22px;box-shadow:0 12px 40px rgba(0,0,0,.16);text-align:center}
 .po-gate-icon{font-size:34px;margin-bottom:6px}
@@ -111,25 +111,7 @@ function cardReturn(r){
     insight: bl.length?(bl[0].name+' 退货率'+bl[0].rate+'% 最高，疑集中退单。'):'',
     action:'P0 · 退货率超8%门店售后48小时内回访，定位原因并反馈销售整改。'};
 }
-function cardPreorder(r){
-  if(!r || !r.periods) return null;
-  const rp=r.periods.month||lastPeriod(r.periods);
-  const ru=r.rechargeUnused||null;
-  const settlePhones=ru?ru.total_phones||0:0;
-  const settleAmt=ru?ru.total_amount||0:0;
-  return {key:'preorder',title:'预订单',subtitle:'预售 · 频繁预订风险',
-    metrics:[{v:fmt(rp.count),l:'预订单数',c:'blue'},{v:'¥'+(rp.amount/10000).toFixed(1)+'万',l:'净未消费',c:'teal'},{v:fmt(rp.riskCount),l:'频繁手机号',c:rp.riskCount>0?'red':''},{v:fmt(settlePhones),l:'充值未核销',c:settlePhones>0?'red':''}],
-    progress:{pct:Math.min(rp.riskCount*8,100),left:'频繁 '+fmt(rp.riskCount)+' 个',right:''},
-    insight: (settlePhones>0?('沉淀 '+fmt(settlePhones)+' 个手机号、¥'+(settleAmt/10000).toFixed(1)+'万订金长期未核销/未退，类储值风险。'):'')
-      + (rp.riskCount>0?(rp.riskCount+' 个手机号本月预订 ≥'+(rp.freq||3)+' 次，疑似虚假预订/收款不过账，需逐单核查。'):'当前无频繁预订手机号，预订行为正常。'),
-    action:'P0 · 频繁预订与充值未核销手机号逐单核查收款与履约，发现收款不过账立即冻结并上报。'};
-}
-function cardPreorderLocked(){
-  return {key:'preorder',title:'预订单',subtitle:'预售 · 频繁预订风险',locked:true,
-    metrics:[{v:'🔒',l:'数据已加密'},{v:'—',l:'预订单数'},{v:'—',l:'净未消费'},{v:'—',l:'频繁手机号'}],
-    progress:{pct:0,left:'点击卡片输入访问密码后查看',right:''},
-    insight:'', action:''};
-}
+/* 预订单卡片已从首页移除（2026-09-16）：首页不再展示预订单磁贴；预订单仅通过右上角版本号「v2」隐蔽入口 → 输密码进入 preorder.html。密码门逻辑 openPreorderGate / poGate / poIndexUnlock 保留供 V2 入口使用。 */
 function renderCard(c){
   const col=COLOR[c.key]||'blue';
   const metrics=(c.metrics||[]).map(m=>metric(m.v,m.l,m.c,m.delta)).join('');
@@ -159,12 +141,7 @@ const SPECS=[
   {key:'member', run:()=>loadMember({light:true}), build:cardMember},
   {key:'cashier',run:loadCashier,             build:cardCashier},
   {key:'paid',   run:()=>loadPaid(['month']), build:cardPaid},
-  {key:'return', run:loadReturnLight,         build:cardReturn},
-  {key:'preorder',run:async()=>{
-     // 会话内已解锁过 → 用缓存密码静默解密取数；否则返回 null → 渲染锁态卡片
-     if(!window.__PO) await poAutoUnlock();
-     return window.__PO ? loadPreorder(['month']) : null;
-   }, build:r=>cardPreorder(r)||cardPreorderLocked()}
+  {key:'return', run:loadReturnLight,         build:cardReturn}
 ];
 async function bootIndex(){
   const el=document.getElementById('cards');
