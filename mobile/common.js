@@ -451,7 +451,9 @@ async function poFetchAB(url, ms){
   let id;
   if(ctrl) id=setTimeout(()=>ctrl.abort(), ms);
   try{
-    const r = await fetch(url, Object.assign({cache:'no-cache'}, ctrl?{signal:ctrl.signal}:{}));
+    // 用浏览器默认缓存（.bin 响应头 max-age=600）：首页解锁下载一次后，preorder.html
+    // 静默重解密直接命中缓存，避免同一会话重复下载 ~0.78MB（慢网下可省十几秒）。
+    const r = await fetch(url, ctrl?{signal:ctrl.signal}:{});
     if(!r.ok) throw new Error('HTTP '+r.status);
     return await r.arrayBuffer();
   } finally { if(id) clearTimeout(id); }
