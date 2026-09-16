@@ -423,8 +423,17 @@ async function poDeriveKey(pw, salt){
   const bk=await crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']);
   return crypto.subtle.deriveKey({name:'PBKDF2', salt, iterations:100000, hash:'SHA-256'}, bk, {name:'AES-GCM', length:256}, false, ['decrypt']);
 }
+/* base64 → Uint8Array：逐字节写入预分配数组，避免对超大字符串 split('')+map 产生
+   数百万元素的临时数组——移动端 WebView 会因此 OOM / 主线程冻结，表现为「一直解密中」。 */
+function b64ToBytes(b64){
+  const bin = atob(b64);
+  const len = bin.length;
+  const out = new Uint8Array(len);
+  for (let i = 0; i < len; i++) out[i] = bin.charCodeAt(i);
+  return out;
+}
 async function poDecryptBundle(b64, pw){
-  const bin=new Uint8Array(atob(b64).split('').map(c=>c.charCodeAt(0)));
+  const bin=b64ToBytes(b64);
   const salt=bin.slice(0,16), iv=bin.slice(16,28), data=bin.slice(28);
   const key=await poDeriveKey(pw, salt);
   const plain=await crypto.subtle.decrypt({name:'AES-GCM', iv}, key, data);
@@ -434,8 +443,19 @@ function poCachedPass(){ try{ return sessionStorage.getItem(PO_PWKEY)||null; }ca
 function poRememberPass(pw){ try{ sessionStorage.setItem(PO_PWKEY, pw); }catch(e){} }
 function poForgetPass(){ try{ sessionStorage.removeItem(PO_PWKEY); }catch(e){} }
 /* 用密码解密并落地（成功返回 true；密码错误 / 数据损坏抛异常） */
+/* 带超时的文本拉取：避免大文件 fetch 在网络层静默挂起时永久卡在「解密中」 */
+async function poFetchText(url, ms){
+  const ctrl = (typeof AbortController!=='undefined') ? new AbortController() : null;
+  let id;
+  if(ctrl) id=setTimeout(()=>ctrl.abort(), ms);
+  try{
+    const r = await fetch(url, Object.assign({cache:'no-cache'}, ctrl?{signal:ctrl.signal}:{}));
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    return await r.text();
+  } finally { if(id) clearTimeout(id); }
+}
 async function poUnlockWith(pw){
-  const b64=await (await fetch(enc(PO_ENC_PATH), {cache:'no-cache'})).text();
+  const b64=await poFetchText(enc(PO_ENC_PATH), 60000);
   const bundle=await poDecryptBundle(b64, pw);
   if(!bundle || !bundle.files) throw new Error('bad bundle');
   window.__PO=bundle.files;
