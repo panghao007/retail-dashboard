@@ -1,10 +1,10 @@
 {
   "date": "2026-09-04",
-  "generated": "2026-09-18 15:24",
+  "generated": "2026-09-18 23:06",
   "total": {
-    "denominator": 513.0,
+    "denominator": 512.0,
     "numerator": 179.0,
-    "order_denom": 499,
+    "order_denom": 498,
     "order_num": 179,
     "amount": 108701.0,
     "profit": 18323.0
@@ -149,9 +149,9 @@
       "profit": 1135.0
     },
     "北京飞航": {
-      "denominator": 155.0,
+      "denominator": 154.0,
       "numerator": 35.0,
-      "order_denom": 148,
+      "order_denom": 147,
       "order_num": 35,
       "vip_items": [
         {
@@ -2118,6 +2118,50 @@
     },
     {
       "branch": "福建易联",
+      "store": "华为宁德古田中央名城",
+      "denominator": 0.0,
+      "numerator": 0.0,
+      "order_denom": 0,
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
+    },
+    {
+      "branch": "福建易联",
+      "store": "华为宁德霞浦太康路一店",
+      "denominator": 0.0,
+      "numerator": 0.0,
+      "order_denom": 0,
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
+    },
+    {
+      "branch": "福建易联",
+      "store": "华为宁德霞浦太康路二店",
+      "denominator": 0.0,
+      "numerator": 0.0,
+      "order_denom": 0,
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
+    },
+    {
+      "branch": "福建易联",
+      "store": "华为宁德霞浦方圆荟",
+      "denominator": 0.0,
+      "numerator": 0.0,
+      "order_denom": 0,
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
+    },
+    {
+      "branch": "福建易联",
       "store": "华为泉州石狮泰禾广场",
       "denominator": 4.0,
       "numerator": 1.0,
@@ -2447,9 +2491,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京朝阳大悦城授权体验店",
-      "denominator": 8.0,
+      "denominator": 7.0,
       "numerator": 0.0,
-      "order_denom": 8,
+      "order_denom": 7,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,

@@ -1,25 +1,25 @@
 {
   "date": "2026-09-14",
-  "generated": "2026-09-18 15:24",
+  "generated": "2026-09-18 23:06",
   "total": {
-    "denominator": 395.0,
-    "numerator": 161.0,
-    "order_denom": 382,
-    "order_num": 161,
-    "amount": 116942.0,
-    "profit": 16303.0
+    "denominator": 394.0,
+    "numerator": 160.0,
+    "order_denom": 381,
+    "order_num": 160,
+    "amount": 115444.0,
+    "profit": 16203.0
   },
   "branches": {
     "北京中恒": {
       "denominator": 96.0,
-      "numerator": 66.0,
+      "numerator": 65.0,
       "order_denom": 95,
-      "order_num": 66,
+      "order_num": 65,
       "vip_items": [
         {
           "code": "vip-iphone1498",
           "name": "iphone会员套餐1498",
-          "qty": 24.0,
+          "qty": 23.0,
           "price": 1498,
           "profit": 100.0
         },
@@ -66,8 +66,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 77168.0,
-      "profit": 6600.0
+      "amount": 75670.0,
+      "profit": 6500.0
     },
     "四川新跃": {
       "denominator": 53.0,
@@ -156,9 +156,9 @@
       "profit": 777.0
     },
     "北京飞航": {
-      "denominator": 101.0,
+      "denominator": 100.0,
       "numerator": 35.0,
-      "order_denom": 96,
+      "order_denom": 95,
       "order_num": 35,
       "vip_items": [
         {
@@ -880,17 +880,10 @@
       "branch": "北京中恒",
       "store": "APR北京顺义华联",
       "denominator": 1.0,
-      "numerator": 3.0,
+      "numerator": 2.0,
       "order_denom": 1,
-      "order_num": 3,
+      "order_num": 2,
       "vip_items": [
-        {
-          "code": "vip-iphone1498",
-          "name": "iphone会员套餐1498",
-          "qty": 1.0,
-          "price": 1498,
-          "profit": 100.0
-        },
         {
           "code": "vip-iphone698",
           "name": "iPhone会员套餐698",
@@ -906,8 +899,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 3994.0,
-      "profit": 300.0
+      "amount": 2496.0,
+      "profit": 200.0
     },
     {
       "branch": "北京中恒",
@@ -1985,6 +1978,50 @@
     },
     {
       "branch": "福建易联",
+      "store": "华为宁德古田中央名城",
+      "denominator": 0.0,
+      "numerator": 0.0,
+      "order_denom": 0,
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
+    },
+    {
+      "branch": "福建易联",
+      "store": "华为宁德霞浦太康路一店",
+      "denominator": 0.0,
+      "numerator": 0.0,
+      "order_denom": 0,
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
+    },
+    {
+      "branch": "福建易联",
+      "store": "华为宁德霞浦太康路二店",
+      "denominator": 0.0,
+      "numerator": 0.0,
+      "order_denom": 0,
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
+    },
+    {
+      "branch": "福建易联",
+      "store": "华为宁德霞浦方圆荟",
+      "denominator": 0.0,
+      "numerator": 0.0,
+      "order_denom": 0,
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
+    },
+    {
+      "branch": "福建易联",
       "store": "华为泉州石狮泰禾广场",
       "denominator": 4.0,
       "numerator": 4.0,
@@ -2123,9 +2160,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京万柳华联授权体验店",
-      "denominator": 2.0,
+      "denominator": 1.0,
       "numerator": 0.0,
-      "order_denom": 2,
+      "order_denom": 1,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
