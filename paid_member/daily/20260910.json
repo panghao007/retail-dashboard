@@ -1,10 +1,10 @@
 {
   "date": "2026-09-10",
-  "generated": "2026-09-17 23:06",
+  "generated": "2026-09-18 11:18",
   "total": {
-    "denominator": 490.0,
+    "denominator": 491.0,
     "numerator": 174.0,
-    "order_denom": 467,
+    "order_denom": 468,
     "order_num": 174,
     "amount": 113121.0,
     "profit": 17242.0
@@ -63,9 +63,9 @@
       "profit": 6700.0
     },
     "四川新跃": {
-      "denominator": 71.0,
+      "denominator": 72.0,
       "numerator": 32.0,
-      "order_denom": 71,
+      "order_denom": 72,
       "order_num": 32,
       "vip_items": [
         {
@@ -287,6 +287,17 @@
       ],
       "amount": 3092.0,
       "profit": 400.0
+    },
+    {
+      "branch": "北京中恒",
+      "store": "APR北京五棵松华熙ASP",
+      "denominator": 0.0,
+      "numerator": 0.0,
+      "order_denom": 0,
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
     },
     {
       "branch": "北京中恒",
@@ -1388,6 +1399,17 @@
       "denominator": 0.0,
       "numerator": 0.0,
       "order_denom": 0,
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
+    },
+    {
+      "branch": "四川新跃",
+      "store": "四川新跃内购店",
+      "denominator": 1.0,
+      "numerator": 0.0,
+      "order_denom": 1,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -3114,6 +3136,17 @@
       ],
       "amount": 99.0,
       "profit": 62.0
+    },
+    {
+      "branch": "上海爱飞",
+      "store": "DJI大疆哈苏上海新嘉中心概念店",
+      "denominator": 0.0,
+      "numerator": 0.0,
+      "order_denom": 0,
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
     }
   ]
 }
