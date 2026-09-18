@@ -1747,8 +1747,8 @@
         },
         "上海爱飞": {
           "invalid": 130,
-          "valid": 2018,
-          "total": 2148
+          "valid": 2027,
+          "total": 2157
         },
         "北京易联": {
           "invalid": 104,
@@ -1756,19 +1756,19 @@
           "total": 3566
         },
         "北京中恒": {
-          "invalid": 19,
+          "invalid": 20,
           "valid": 3362,
-          "total": 3381
+          "total": 3382
+        },
+        "四川新跃": {
+          "invalid": 12,
+          "valid": 1597,
+          "total": 1609
         },
         "福建易联": {
           "invalid": 4,
           "valid": 984,
           "total": 988
-        },
-        "四川新跃": {
-          "invalid": 3,
-          "valid": 1597,
-          "total": 1600
         }
       }
     }
