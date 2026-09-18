@@ -1,6 +1,6 @@
 {
   "date": "2026-09-13",
-  "generated": "2026-09-18 11:18",
+  "generated": "2026-09-18 15:24",
   "total": {
     "denominator": 730.0,
     "numerator": 280.0,
@@ -1600,17 +1600,6 @@
       ],
       "amount": 1494.0,
       "profit": 300.0
-    },
-    {
-      "branch": "四川新跃",
-      "store": "四川新跃内购店",
-      "denominator": 0.0,
-      "numerator": 0.0,
-      "order_denom": 0,
-      "order_num": 0,
-      "vip_items": [],
-      "amount": 0,
-      "profit": 0
     },
     {
       "branch": "四川新跃",

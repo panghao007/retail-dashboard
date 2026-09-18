@@ -1,10 +1,10 @@
 {
   "date": "2026-09-09",
-  "generated": "2026-09-18 11:18",
+  "generated": "2026-09-18 15:24",
   "total": {
-    "denominator": 441.0,
+    "denominator": 439.0,
     "numerator": 169.0,
-    "order_denom": 418,
+    "order_denom": 417,
     "order_num": 169,
     "amount": 94864.0,
     "profit": 20546.0
@@ -63,9 +63,9 @@
       "profit": 4500.0
     },
     "四川新跃": {
-      "denominator": 43.0,
+      "denominator": 41.0,
       "numerator": 15.0,
-      "order_denom": 41,
+      "order_denom": 40,
       "order_num": 15,
       "vip_items": [
         {
@@ -1204,17 +1204,6 @@
       ],
       "amount": 998.0,
       "profit": 100.0
-    },
-    {
-      "branch": "四川新跃",
-      "store": "四川新跃内购店",
-      "denominator": 2.0,
-      "numerator": 0.0,
-      "order_denom": 1,
-      "order_num": 0,
-      "vip_items": [],
-      "amount": 0,
-      "profit": 0
     },
     {
       "branch": "四川新跃",
