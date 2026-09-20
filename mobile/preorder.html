@@ -91,15 +91,19 @@
 .po-gate-btn{width:100%;margin-top:12px;padding:13px;border:none;border-radius:12px;background:#ff3b30;color:#fff;font-size:15px;font-weight:700;cursor:pointer}
 .po-gate-btn:active{opacity:.85}
 .po-gate-err{display:none;margin-top:12px;color:#ff3b30;font-size:12.5px}
+/* 等待转圈标识：解密/拉取期间显示，避免「看着像卡死」 */
+.po-spinner{width:36px;height:36px;margin:0 auto 14px;border:3px solid #e6e6ea;border-top-color:#0071E3;border-radius:50%;animation:po-spin .8s linear infinite}
+@keyframes po-spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion: reduce){.po-spinner{animation-duration:1.6s}}
 </style>
 </head>
 <body data-page-node-id="sljD1WMsfKzlbJmGkBXitz">
-<div class="po-gate" id="poGate">
+<div class="po-gate" id="poGate" style="display:flex">
   <div class="po-gate-box">
-    <div class="po-gate-icon" id="poGateIcon">🔒</div>
+    <div class="po-spinner" id="poGateSpin"></div>
+    <div class="po-gate-icon" id="poGateIcon" style="display:none">🔒</div>
     <div class="po-gate-title" id="poGateTitle">预订单数据</div>
-    <div class="po-gate-sub" id="poGateSub">正在加载数据…</div>
-    <div class="po-gate-loading" id="poGateLoading" style="display:none;font-size:14px;color:#86868b;margin:14px 0 4px">⏳ 数据加载中…</div>
+    <div class="po-gate-sub" id="poGateSub">数据加载中…</div>
     <div id="poGateForm" style="display:none">
       <input class="po-gate-input" id="poGateInput" type="password" placeholder="访问密码" autocomplete="off">
       <button class="po-gate-btn" id="poGateBtn" onclick="poUnlock()">解 锁</button>
@@ -109,7 +113,7 @@
 </div>
 <div class="header" data-page-node-id="j1a2tL4mJW4KmH31LgdqPM">
   <div class="header-top" data-page-node-id="QK9FZNMj09zdizPy2FE08j">
-    <div class="header-back" onclick="location.href='index.html?v=20260920c'" data-page-node-id="88qnA3yMJVifGScZmz7ZeU">
+    <div class="header-back" onclick="location.href='index.html?v=20260920d'" data-page-node-id="88qnA3yMJVifGScZmz7ZeU">
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" data-page-node-id="MqLoISgsgV96zHzA3sqVu1"><path d="M10 3L5 8l5 5" data-page-node-id="lA0r3JtNxqbJwEUFCBibqr"/></svg>返回
     </div>
     <div class="header-badge" data-page-node-id="GsKTxP5RF5UuHYIiUGLkK1">v1.5</div>
@@ -124,9 +128,9 @@
   频繁预订 = 同手机号周期内预订 ≥ <span id="freqTh" data-page-node-id="ODlumHBGcFQqCpdA0oNMEg">3</span> 次（疑似虚假预订/收款不过账，类储值风险）<br data-page-node-id="vWygE8h1YirYYABD2QlU4S">
   净未消费金额 = 实收金额 − 已核销(已转销)金额 − 已退金额；会员手机号脱敏展示（前三后五，中间3位***）<br data-page-node-id="hxITkynZbHxbPEzNyB7976">
   <span id="genTime" data-page-node-id="drj0mkdXqBOgsnNdUdFneY"></span><br data-page-node-id="hxITkynZbHxbPEzNyB7976">
-  <a class="footer-link" href="index.html?v=20260920c" data-page-node-id="hZ3TjdIJJCZ5i3teLQ8emE">返回看板总览 ›</a>
+  <a class="footer-link" href="index.html?v=20260920d" data-page-node-id="hZ3TjdIJJCZ5i3teLQ8emE">返回看板总览 ›</a>
 </div>
-<script src="common.js?v=20260920c"></script>
+<script src="common.js?v=20260920d"></script>
 <script>
 function maskPhone(p){
   p=String(p||'');
@@ -344,28 +348,30 @@ async function poUnlock(){
    仅在自动解密失败（浏览器过旧/网络超时）时，才退化显示手动密码输入。 */
 function poShowLoading(msg){
   const g=document.getElementById('poGate'); if(g) g.style.display='flex';
+  const ic=document.getElementById('poGateIcon'), sp=document.getElementById('poGateSpin');
   const ti=document.getElementById('poGateTitle'), su=document.getElementById('poGateSub');
-  const lo=document.getElementById('poGateLoading'), fm=document.getElementById('poGateForm');
+  const fm=document.getElementById('poGateForm');
+  if(ic) ic.style.display='none';
+  if(sp) sp.style.display='block';
   if(ti) ti.textContent='预订单数据';
-  if(su) su.textContent=msg||'正在加载数据…';
-  if(lo) lo.style.display='block';
+  if(su) su.textContent=msg||'数据加载中…';
   if(fm) fm.style.display='none';
 }
 function poShowGateFallback(e){
-  const ic=document.getElementById('poGateIcon'), ti=document.getElementById('poGateTitle'), su=document.getElementById('poGateSub');
-  const lo=document.getElementById('poGateLoading'), fm=document.getElementById('poGateForm'), inp=document.getElementById('poGateInput');
-  if(ic) ic.textContent='🔒';
+  const ic=document.getElementById('poGateIcon'), sp=document.getElementById('poGateSpin'), ti=document.getElementById('poGateTitle'), su=document.getElementById('poGateSub');
+  const fm=document.getElementById('poGateForm'), inp=document.getElementById('poGateInput');
+  if(sp) sp.style.display='none';
+  if(ic){ ic.style.display='block'; ic.textContent='🔒'; }
   if(ti) ti.textContent='预订单数据已加密';
   if(su) su.textContent='请输入访问密码后查看';
-  if(lo) lo.style.display='none';
   if(fm) fm.style.display='block';
   poShowErr((e && e.message==='BROWSER_TOO_OLD') ? '浏览器版本过低，请升级系统/浏览器后再试' : '自动加载失败，请手动输入密码');
   if(inp){ inp.value=''; inp.focus(); inp.addEventListener('keydown', ev=>{ if(ev.key==='Enter') poUnlock(); }); }
 }
 async function poInitGate(){
-  if(window.__PO){ poHideGate(); boot(loadPreorder,'month'); return; }
+  poShowLoading('数据加载中…');   // 进入即显示转圈，避免「看着像卡死」
+  // 优先用会话内已缓存的密码静默解密（命中则仅一次 PBKDF2）
   if(await poAutoUnlock()){ poHideGate(); boot(loadPreorder,'month'); return; }
-  poShowLoading('数据加载中…');
   try{
     await poUnlockDefault();
     poHideGate();
