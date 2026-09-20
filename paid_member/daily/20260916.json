@@ -1,13 +1,13 @@
 {
   "date": "2026-09-16",
-  "generated": "2026-09-19 23:06",
+  "generated": "2026-09-20 23:06",
   "total": {
-    "denominator": 397.0,
-    "numerator": 160.0,
-    "order_denom": 360,
-    "order_num": 160,
-    "amount": 98662.0,
-    "profit": 17166.0
+    "denominator": 455.0,
+    "numerator": 157.0,
+    "order_denom": 414,
+    "order_num": 157,
+    "amount": 97566.0,
+    "profit": 16687.0
   },
   "branches": {
     "北京中恒": {
@@ -122,33 +122,33 @@
       "profit": 1400.0
     },
     "北京易联": {
-      "denominator": 100.0,
-      "numerator": 30.0,
-      "order_denom": 83,
-      "order_num": 30,
+      "denominator": 151.0,
+      "numerator": 28.0,
+      "order_denom": 131,
+      "order_num": 28,
       "vip_items": [
         {
           "code": "BJYLVIP0004",
           "name": "499元套包",
-          "qty": 16.0,
+          "qty": 15.0,
           "price": 499,
           "profit": 231.0
         },
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
-          "qty": 14.0,
+          "qty": 13.0,
           "price": 498,
           "profit": 186.0
         }
       ],
-      "amount": 14956.0,
-      "profit": 6300.0
+      "amount": 13959.0,
+      "profit": 5883.0
     },
     "福建易联": {
-      "denominator": 40.0,
+      "denominator": 47.0,
       "numerator": 6.0,
-      "order_denom": 35,
+      "order_denom": 41,
       "order_num": 6,
       "vip_items": [
         {
@@ -171,14 +171,14 @@
     },
     "北京飞航": {
       "denominator": 105.0,
-      "numerator": 43.0,
+      "numerator": 42.0,
       "order_denom": 90,
-      "order_num": 43,
+      "order_num": 42,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
           "name": "畅玩会员-99",
-          "qty": 42.0,
+          "qty": 41.0,
           "price": 99,
           "profit": 62.0
         },
@@ -190,8 +190,8 @@
           "profit": 117.0
         }
       ],
-      "amount": 4357.0,
-      "profit": 2721.0
+      "amount": 4258.0,
+      "profit": 2659.0
     },
     "上海爱飞": {
       "denominator": 24.0,
@@ -1327,9 +1327,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京上德银泰",
-      "denominator": 1.0,
+      "denominator": 2.0,
       "numerator": 3.0,
-      "order_denom": 1,
+      "order_denom": 2,
       "order_num": 3,
       "vip_items": [
         {
@@ -1353,9 +1353,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京东坝万达",
-      "denominator": 4.0,
+      "denominator": 8.0,
       "numerator": 4.0,
-      "order_denom": 4,
+      "order_denom": 8,
       "order_num": 4,
       "vip_items": [
         {
@@ -1390,9 +1390,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京丰台鑫嘉汇",
-      "denominator": 0.0,
+      "denominator": 1.0,
       "numerator": 0.0,
-      "order_denom": 0,
+      "order_denom": 1,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -1401,9 +1401,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京丰台银泰",
-      "denominator": 9.0,
+      "denominator": 10.0,
       "numerator": 0.0,
-      "order_denom": 9,
+      "order_denom": 10,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -1412,9 +1412,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京丰科万达",
-      "denominator": 23.0,
+      "denominator": 26.0,
       "numerator": 0.0,
-      "order_denom": 9,
+      "order_denom": 11,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -1467,9 +1467,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京北苑龙湖",
-      "denominator": 2.0,
+      "denominator": 3.0,
       "numerator": 2.0,
-      "order_denom": 2,
+      "order_denom": 3,
       "order_num": 2,
       "vip_items": [
         {
@@ -1486,9 +1486,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京同成街华联",
-      "denominator": 1.0,
+      "denominator": 2.0,
       "numerator": 0.0,
-      "order_denom": 1,
+      "order_denom": 2,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -1497,9 +1497,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京回龙观一店",
-      "denominator": 5.0,
+      "denominator": 6.0,
       "numerator": 0.0,
-      "order_denom": 2,
+      "order_denom": 3,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -1527,9 +1527,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京回龙观华联",
-      "denominator": 2.0,
+      "denominator": 4.0,
       "numerator": 0.0,
-      "order_denom": 2,
+      "order_denom": 4,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -1538,9 +1538,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京大兴大族",
-      "denominator": 6.0,
+      "denominator": 9.0,
       "numerator": 3.0,
-      "order_denom": 6,
+      "order_denom": 9,
       "order_num": 3,
       "vip_items": [
         {
@@ -1564,9 +1564,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京平谷万达",
-      "denominator": 3.0,
+      "denominator": 4.0,
       "numerator": 0.0,
-      "order_denom": 3,
+      "order_denom": 4,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -1575,9 +1575,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京延庆万达",
-      "denominator": 2.0,
+      "denominator": 4.0,
       "numerator": 0.0,
-      "order_denom": 2,
+      "order_denom": 4,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -1586,9 +1586,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京怀柔万达",
-      "denominator": 3.0,
+      "denominator": 5.0,
       "numerator": 0.0,
-      "order_denom": 3,
+      "order_denom": 5,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -1630,9 +1630,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京旧宫万科",
-      "denominator": 5.0,
+      "denominator": 11.0,
       "numerator": 2.0,
-      "order_denom": 5,
+      "order_denom": 11,
       "order_num": 2,
       "vip_items": [
         {
@@ -1660,9 +1660,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京来福士",
-      "denominator": 3.0,
+      "denominator": 7.0,
       "numerator": 1.0,
-      "order_denom": 3,
+      "order_denom": 7,
       "order_num": 1,
       "vip_items": [
         {
@@ -1717,9 +1717,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京沙河万达",
-      "denominator": 0.0,
+      "denominator": 1.0,
       "numerator": 0.0,
-      "order_denom": 0,
+      "order_denom": 1,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -1739,9 +1739,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京牡丹园翠微",
-      "denominator": 7.0,
+      "denominator": 13.0,
       "numerator": 5.0,
-      "order_denom": 7,
+      "order_denom": 11,
       "order_num": 5,
       "vip_items": [
         {
@@ -1765,35 +1765,35 @@
     {
       "branch": "北京易联",
       "store": "华为北京石景山万达",
-      "denominator": 8.0,
-      "numerator": 4.0,
-      "order_denom": 8,
-      "order_num": 4,
+      "denominator": 10.0,
+      "numerator": 2.0,
+      "order_denom": 10,
+      "order_num": 2,
       "vip_items": [
         {
           "code": "BJYLVIP0001",
           "name": "498元套包",
-          "qty": 2.0,
+          "qty": 1.0,
           "price": 498,
           "profit": 186.0
         },
         {
           "code": "BJYLVIP0004",
           "name": "499元套包",
-          "qty": 2.0,
+          "qty": 1.0,
           "price": 499,
           "profit": 231.0
         }
       ],
-      "amount": 1994.0,
-      "profit": 834.0
+      "amount": 997.0,
+      "profit": 417.0
     },
     {
       "branch": "北京易联",
       "store": "华为北京西铁营万达",
-      "denominator": 1.0,
+      "denominator": 3.0,
       "numerator": 1.0,
-      "order_denom": 1,
+      "order_denom": 3,
       "order_num": 1,
       "vip_items": [
         {
@@ -1821,9 +1821,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京通州乐堤港",
-      "denominator": 1.0,
+      "denominator": 5.0,
       "numerator": 0.0,
-      "order_denom": 1,
+      "order_denom": 5,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -1854,9 +1854,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京门头沟长安天街",
-      "denominator": 3.0,
+      "denominator": 6.0,
       "numerator": 1.0,
-      "order_denom": 3,
+      "order_denom": 6,
       "order_num": 1,
       "vip_items": [
         {
@@ -1884,9 +1884,9 @@
     {
       "branch": "福建易联",
       "store": "华为南平建阳建发悦城",
-      "denominator": 3.0,
+      "denominator": 4.0,
       "numerator": 1.0,
-      "order_denom": 3,
+      "order_denom": 4,
       "order_num": 1,
       "vip_items": [
         {
@@ -1944,9 +1944,9 @@
     {
       "branch": "福建易联",
       "store": "华为厦门思明大西洋天虹",
-      "denominator": 0.0,
+      "denominator": 1.0,
       "numerator": 0.0,
-      "order_denom": 0,
+      "order_denom": 1,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2004,9 +2004,9 @@
     {
       "branch": "福建易联",
       "store": "华为厦门思明罗宾森广场",
-      "denominator": 4.0,
+      "denominator": 6.0,
       "numerator": 0.0,
-      "order_denom": 3,
+      "order_denom": 4,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2081,9 +2081,9 @@
     {
       "branch": "福建易联",
       "store": "华为泉州石狮泰禾广场",
-      "denominator": 2.0,
+      "denominator": 3.0,
       "numerator": 0.0,
-      "order_denom": 2,
+      "order_denom": 3,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2092,9 +2092,9 @@
     {
       "branch": "福建易联",
       "store": "华为福州东街口",
-      "denominator": 2.0,
+      "denominator": 3.0,
       "numerator": 0.0,
-      "order_denom": 2,
+      "order_denom": 3,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2188,9 +2188,9 @@
     {
       "branch": "福建易联",
       "store": "华为福州砂之船奥莱",
-      "denominator": 6.0,
+      "denominator": 7.0,
       "numerator": 0.0,
-      "order_denom": 2,
+      "order_denom": 3,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2404,20 +2404,20 @@
       "branch": "北京飞航",
       "store": "DJI北京王府井APM授权高级体验店",
       "denominator": 6.0,
-      "numerator": 5.0,
+      "numerator": 4.0,
       "order_denom": 6,
-      "order_num": 5,
+      "order_num": 4,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
           "name": "畅玩会员-99",
-          "qty": 5.0,
+          "qty": 4.0,
           "price": 99,
           "profit": 62.0
         }
       ],
-      "amount": 495.0,
-      "profit": 310.0
+      "amount": 396.0,
+      "profit": 248.0
     },
     {
       "branch": "北京飞航",
