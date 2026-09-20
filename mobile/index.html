@@ -29,7 +29,7 @@
 <div class="header" data-page-node-id="boo4uFhZi7xxHQD482IvKc">
   <div class="header-top" data-page-node-id="3jkRV6syPx1AIFaicbzyGm">
     <div class="header-title" data-page-node-id="aUIGnhikAYeJsuilGOZav3">零售会员驾驶舱</div>
-    <div class="header-badge" id="verBadge" onclick="openPreorderGate()" data-page-node-id="PBHZJ2OIUAbNbqX6mCHKtO">v2</div>
+    <div class="header-badge" id="verBadge" onclick="openPreorderDirect()" data-page-node-id="PBHZJ2OIUAbNbqX6mCHKtO">v2</div>
   </div>
   <div class="header-date" id="hdrDate" data-page-node-id="XcoaCqgjpo9W5p5aOHIEUA"><span class="dot" data-page-node-id="37wKEsSnPPAIQ7jIH3mmyu"></span>实时数据</div>
 </div>
@@ -56,7 +56,7 @@
     <div class="po-gate-err" id="poGateErr"></div>
   </div>
 </div>
-<script src="common.js?v=20260916d"></script>
+<script src="common.js?v=20260920b"></script>
 <script>
 const ICON = {
   blue:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>',
@@ -67,7 +67,7 @@ const ICON = {
 };
 /* 页面资源版本号：改 common.js / mobile.css / 各详情页后必须 bump——
    GitHub Pages 给 HTML 约 10 分钟缓存，不带版本号时用户会拿到旧页面（曾导致「渲染出错」）。 */
-const PAGE_VER = '20260916e';
+const PAGE_VER = '20260920b';
 const PAGE = {member:'member-validity.html', cashier:'cashier.html', paid:'paid-member.html', return:'return-order.html', preorder:'preorder.html'};
 const COLOR = {member:'blue', cashier:'green', paid:'purple', return:'red', preorder:'teal'};
 function lastPeriod(periods){ const ks=Object.keys(periods||{}); return periods[ks[ks.length-1]]||null; }
@@ -231,6 +231,14 @@ function openPreorderGate(){
   const btn=document.getElementById('poGateBtn'); if(btn){ btn.disabled=false; btn.textContent='解 锁'; }
   g.style.display='flex';
   const inp=document.getElementById('poGateInput'); if(inp){ inp.value=''; inp.focus(); }
+}
+/* V2 密码控制已关闭：点击 v2 用内置默认密码静默解密后直接进入，不弹密码框；
+   仅在自动解密失败（浏览器过旧/网络超时）时退化到手动密码门。 */
+async function openPreorderDirect(){
+  try{
+    await poUnlockDefault();
+    location.href='preorder.html?v='+PAGE_VER;
+  }catch(e){ openPreorderGate(); }
 }
 function poGateClose(){ const g=document.getElementById('poGate'); if(g) g.style.display='none'; }
 function poGateErr(msg){ const e=document.getElementById('poGateErr'); if(e){ e.textContent=msg; e.style.display='block'; } }

@@ -422,6 +422,11 @@ async function loadPaid(onlyPeriods){
    只缓存「访问密码」（几十字节），两页均以密码静默重解密，避免重复输入。 */
 const PO_PWKEY='po_pw_v1';
 const PO_ENC_PATH='../preorder/preorder_bundle.bin';
+/* V2 密码控制已关闭（2026-09-20 用户要求）：前端内置默认访问密码，点击 V2 静默解密直接进入，不弹密码框。
+   密码框仅在极端情况（浏览器过旧/网络超时导致自动解密失败）才退化出现。
+   注：加密包本就随 GitHub Pages 公开下载，密码仅为轻度混淆，内置前端不改变实际威胁模型。 */
+const PO_DEFAULT_PW='smkj6688';
+async function poUnlockDefault(){ return poUnlockWith(PO_DEFAULT_PW); }
 async function poDeriveKey(pw, salt){
   const bk=await crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']);
   return crypto.subtle.deriveKey({name:'PBKDF2', salt, iterations:100000, hash:'SHA-256'}, bk, {name:'AES-GCM', length:256}, false, ['decrypt']);
@@ -448,15 +453,19 @@ function poForgetPass(){ try{ sessionStorage.removeItem(PO_PWKEY); }catch(e){} }
 /* 带超时的二进制拉取：避免大文件 fetch 在网络层静默挂起时永久卡在「解密中」 */
 async function poFetchAB(url, ms){
   const ctrl = (typeof AbortController!=='undefined') ? new AbortController() : null;
-  let id;
-  if(ctrl) id=setTimeout(()=>ctrl.abort(), ms);
+  // 双保险：即便某些手机 WebView 的 fetch 不响应 abort 信号（Promise 永久 pending），
+  // 这个 timeout 也保证 ms 毫秒后必然 reject，前端不会永远卡在「解密中」。
+  const timeout = new Promise((_, reject) => setTimeout(() => reject(new Error('TIMEOUT')), ms));
   try{
     // 用浏览器默认缓存（.bin 响应头 max-age=600）：首页解锁下载一次后，preorder.html
     // 静默重解密直接命中缓存，避免同一会话重复下载 ~0.78MB（慢网下可省十几秒）。
-    const r = await fetch(url, ctrl?{signal:ctrl.signal}:{});
+    const f = fetch(url, ctrl ? {signal:ctrl.signal} : {});
+    const r = await Promise.race([f, timeout]);
     if(!r.ok) throw new Error('HTTP '+r.status);
     return await r.arrayBuffer();
-  } finally { if(id) clearTimeout(id); }
+  } finally {
+    if(ctrl) { try{ ctrl.abort(); }catch(e){} }   // 无论成功/超时都显式 abort，释放连接
+  }
 }
 async function poUnlockWith(pw){
   const ab=await poFetchAB(enc(PO_ENC_PATH), 60000);
