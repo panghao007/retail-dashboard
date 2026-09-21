@@ -1,13 +1,13 @@
 {
   "date": "2026-09-15",
-  "generated": "2026-09-20 23:06",
+  "generated": "2026-09-21 23:06",
   "total": {
-    "denominator": 433.0,
-    "numerator": 144.0,
-    "order_denom": 419,
-    "order_num": 144,
-    "amount": 114759.0,
-    "profit": 15167.0
+    "denominator": 430.0,
+    "numerator": 142.0,
+    "order_denom": 416,
+    "order_num": 142,
+    "amount": 113363.0,
+    "profit": 14967.0
   },
   "branches": {
     "北京中恒": {
@@ -70,15 +70,15 @@
       "profit": 5800.0
     },
     "四川新跃": {
-      "denominator": 48.0,
-      "numerator": 31.0,
-      "order_denom": 47,
-      "order_num": 31,
+      "denominator": 46.0,
+      "numerator": 29.0,
+      "order_denom": 45,
+      "order_num": 29,
       "vip_items": [
         {
           "code": "SCXYVIP00001",
           "name": "698元悦享会员",
-          "qty": 11.0,
+          "qty": 9.0,
           "price": 698,
           "profit": 100.0
         },
@@ -111,8 +111,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 29638.0,
-      "profit": 3100.0
+      "amount": 28242.0,
+      "profit": 2900.0
     },
     "北京易联": {
       "denominator": 109.0,
@@ -180,9 +180,9 @@
       "profit": 1364.0
     },
     "上海爱飞": {
-      "denominator": 40.0,
+      "denominator": 39.0,
       "numerator": 10.0,
-      "order_denom": 35,
+      "order_denom": 34,
       "order_num": 10,
       "vip_items": [
         {
@@ -1048,21 +1048,13 @@
     {
       "branch": "四川新跃",
       "store": "APR成都北城天街",
-      "denominator": 2.0,
-      "numerator": 2.0,
-      "order_denom": 2,
-      "order_num": 2,
-      "vip_items": [
-        {
-          "code": "SCXYVIP00001",
-          "name": "698元悦享会员",
-          "qty": 2.0,
-          "price": 698,
-          "profit": 100.0
-        }
-      ],
-      "amount": 1396.0,
-      "profit": 200.0
+      "denominator": 0.0,
+      "numerator": 0.0,
+      "order_denom": 0,
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
     },
     {
       "branch": "四川新跃",
@@ -3088,9 +3080,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海长风大悦城授权体验店",
-      "denominator": 1.0,
+      "denominator": 0.0,
       "numerator": 0.0,
-      "order_denom": 1,
+      "order_denom": 0,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,

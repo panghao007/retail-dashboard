@@ -1,20 +1,20 @@
 {
   "date": "2026-09-13",
-  "generated": "2026-09-20 23:06",
+  "generated": "2026-09-21 23:06",
   "total": {
-    "denominator": 805.0,
-    "numerator": 277.0,
-    "order_denom": 796,
-    "order_num": 277,
-    "amount": 176661.0,
-    "profit": 28486.0
+    "denominator": 804.0,
+    "numerator": 276.0,
+    "order_denom": 795,
+    "order_num": 276,
+    "amount": 174863.0,
+    "profit": 28386.0
   },
   "branches": {
     "北京中恒": {
       "denominator": 203.0,
-      "numerator": 96.0,
+      "numerator": 95.0,
       "order_denom": 203,
-      "order_num": 96,
+      "order_num": 95,
       "vip_items": [
         {
           "code": "vip-iphone698",
@@ -47,7 +47,7 @@
         {
           "code": "vip-iphone1798",
           "name": "iPhone会员套餐1798",
-          "qty": 7.0,
+          "qty": 6.0,
           "price": 1798,
           "profit": 100.0
         },
@@ -59,8 +59,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 100508.0,
-      "profit": 9600.0
+      "amount": 98710.0,
+      "profit": 9500.0
     },
     "四川新跃": {
       "denominator": 105.0,
@@ -139,9 +139,9 @@
       "profit": 7296.0
     },
     "福建易联": {
-      "denominator": 53.0,
+      "denominator": 52.0,
       "numerator": 15.0,
-      "order_denom": 53,
+      "order_denom": 52,
       "order_num": 15,
       "vip_items": [
         {
@@ -950,9 +950,9 @@
       "branch": "北京中恒",
       "store": "APR北京西三旗万象汇",
       "denominator": 4.0,
-      "numerator": 6.0,
+      "numerator": 5.0,
       "order_denom": 4,
-      "order_num": 6,
+      "order_num": 5,
       "vip_items": [
         {
           "code": "vip-iphone698",
@@ -971,13 +971,13 @@
         {
           "code": "vip-iphone1798",
           "name": "iPhone会员套餐1798",
-          "qty": 2.0,
+          "qty": 1.0,
           "price": 1798,
           "profit": 100.0
         }
       ],
-      "amount": 7988.0,
-      "profit": 600.0
+      "amount": 6190.0,
+      "profit": 500.0
     },
     {
       "branch": "北京中恒",
@@ -2412,9 +2412,9 @@
     {
       "branch": "福建易联",
       "store": "华为泉州石狮泰禾广场",
-      "denominator": 14.0,
+      "denominator": 13.0,
       "numerator": 5.0,
-      "order_denom": 14,
+      "order_denom": 13,
       "order_num": 5,
       "vip_items": [
         {

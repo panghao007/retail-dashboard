@@ -1,20 +1,20 @@
 {
   "date": "2026-09-17",
-  "generated": "2026-09-20 23:06",
+  "generated": "2026-09-21 23:06",
   "total": {
     "denominator": 377.0,
-    "numerator": 152.0,
+    "numerator": 150.0,
     "order_denom": 366,
-    "order_num": 152,
-    "amount": 99775.0,
-    "profit": 15791.0
+    "order_num": 150,
+    "amount": 95379.0,
+    "profit": 15591.0
   },
   "branches": {
     "北京中恒": {
       "denominator": 78.0,
-      "numerator": 41.0,
+      "numerator": 39.0,
       "order_denom": 75,
-      "order_num": 41,
+      "order_num": 39,
       "vip_items": [
         {
           "code": "vip-iphone1498",
@@ -28,13 +28,6 @@
           "name": "iPhone会员套餐698",
           "qty": 8.0,
           "price": 698,
-          "profit": 100.0
-        },
-        {
-          "code": "vip-iphone2198",
-          "name": "iPhone会员套餐2198",
-          "qty": 6.0,
-          "price": 2198,
           "profit": 100.0
         },
         {
@@ -52,6 +45,13 @@
           "profit": 100.0
         },
         {
+          "code": "vip-iphone2198",
+          "name": "iPhone会员套餐2198",
+          "qty": 4.0,
+          "price": 2198,
+          "profit": 100.0
+        },
+        {
           "code": "vip-iphone1198",
           "name": "iPhone会员套餐1198",
           "qty": 3.0,
@@ -66,8 +66,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 49818.0,
-      "profit": 4100.0
+      "amount": 45422.0,
+      "profit": 3900.0
     },
     "四川新跃": {
       "denominator": 19.0,
@@ -342,20 +342,12 @@
       "branch": "北京中恒",
       "store": "APR北京合生汇",
       "denominator": 9.0,
-      "numerator": 2.0,
+      "numerator": 0.0,
       "order_denom": 9,
-      "order_num": 2,
-      "vip_items": [
-        {
-          "code": "vip-iphone2198",
-          "name": "iPhone会员套餐2198",
-          "qty": 2.0,
-          "price": 2198,
-          "profit": 100.0
-        }
-      ],
-      "amount": 4396.0,
-      "profit": 200.0
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
     },
     {
       "branch": "北京中恒",

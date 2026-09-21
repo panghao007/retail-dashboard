@@ -1,20 +1,20 @@
 {
   "date": "2026-09-18",
-  "generated": "2026-09-20 23:06",
+  "generated": "2026-09-21 23:06",
   "total": {
-    "denominator": 1436.0,
-    "numerator": 751.0,
-    "order_denom": 1400,
-    "order_num": 751,
-    "amount": 922983.0,
-    "profit": 74174.0
+    "denominator": 1434.0,
+    "numerator": 750.0,
+    "order_denom": 1398,
+    "order_num": 750,
+    "amount": 922585.0,
+    "profit": 74074.0
   },
   "branches": {
     "北京中恒": {
-      "denominator": 713.0,
-      "numerator": 468.0,
-      "order_denom": 697,
-      "order_num": 468,
+      "denominator": 711.0,
+      "numerator": 467.0,
+      "order_denom": 695,
+      "order_num": 467,
       "vip_items": [
         {
           "code": "vip-iphone1498",
@@ -54,7 +54,7 @@
         {
           "code": "vip-iphone398",
           "name": "iphone会员套餐398",
-          "qty": 31.0,
+          "qty": 30.0,
           "price": 398,
           "profit": 100.0
         },
@@ -66,8 +66,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 626464.0,
-      "profit": 46800.0
+      "amount": 626066.0,
+      "profit": 46700.0
     },
     "四川新跃": {
       "denominator": 377.0,
@@ -1535,17 +1535,10 @@
       "branch": "北京中恒",
       "store": "APR北京通州万达",
       "denominator": 26.0,
-      "numerator": 19.0,
+      "numerator": 18.0,
       "order_denom": 25,
-      "order_num": 19,
+      "order_num": 18,
       "vip_items": [
-        {
-          "code": "vip-iphone398",
-          "name": "iphone会员套餐398",
-          "qty": 1.0,
-          "price": 398,
-          "profit": 100.0
-        },
         {
           "code": "vip-iphone1798",
           "name": "iPhone会员套餐1798",
@@ -1575,15 +1568,15 @@
           "profit": 100.0
         }
       ],
-      "amount": 30762.0,
-      "profit": 1900.0
+      "amount": 30364.0,
+      "profit": 1800.0
     },
     {
       "branch": "北京中恒",
       "store": "APR北京长安龙湖",
-      "denominator": 24.0,
+      "denominator": 22.0,
       "numerator": 12.0,
-      "order_denom": 24,
+      "order_denom": 22,
       "order_num": 12,
       "vip_items": [
         {
