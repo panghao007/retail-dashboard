@@ -1,19 +1,19 @@
 {
   "date": "2026-09-22",
-  "generated": "2026-09-22 23:06",
+  "generated": "2026-09-23 23:06",
   "total": {
-    "denominator": 576.0,
-    "numerator": 216.0,
-    "order_denom": 553,
-    "order_num": 216,
-    "amount": 187017.0,
-    "profit": 22217.0
+    "denominator": 586.0,
+    "numerator": 217.0,
+    "order_denom": 561,
+    "order_num": 217,
+    "amount": 187416.0,
+    "profit": 22328.0
   },
   "branches": {
     "北京中恒": {
-      "denominator": 194.0,
+      "denominator": 195.0,
       "numerator": 107.0,
-      "order_denom": 190,
+      "order_denom": 191,
       "order_num": 107,
       "vip_items": [
         {
@@ -146,21 +146,21 @@
       "profit": 3939.0
     },
     "福建易联": {
-      "denominator": 37.0,
-      "numerator": 2.0,
-      "order_denom": 36,
-      "order_num": 2,
+      "denominator": 46.0,
+      "numerator": 3.0,
+      "order_denom": 43,
+      "order_num": 3,
       "vip_items": [
         {
           "code": "FJYLVIP0001",
           "name": "399元礼包",
-          "qty": 2.0,
+          "qty": 3.0,
           "price": 399,
           "profit": 111.0
         }
       ],
-      "amount": 798.0,
-      "profit": 222.0
+      "amount": 1197.0,
+      "profit": 333.0
     },
     "北京飞航": {
       "denominator": 121.0,
@@ -1049,9 +1049,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京通州万达",
-      "denominator": 5.0,
+      "denominator": 6.0,
       "numerator": 4.0,
-      "order_denom": 5,
+      "order_denom": 6,
       "order_num": 4,
       "vip_items": [
         {
@@ -2355,20 +2355,28 @@
     {
       "branch": "福建易联",
       "store": "华为宁德古田中央名城",
-      "denominator": 0.0,
-      "numerator": 0.0,
-      "order_denom": 0,
-      "order_num": 0,
-      "vip_items": [],
-      "amount": 0,
-      "profit": 0
+      "denominator": 4.0,
+      "numerator": 1.0,
+      "order_denom": 2,
+      "order_num": 1,
+      "vip_items": [
+        {
+          "code": "FJYLVIP0001",
+          "name": "399元礼包",
+          "qty": 1.0,
+          "price": 399,
+          "profit": 111.0
+        }
+      ],
+      "amount": 399.0,
+      "profit": 111.0
     },
     {
       "branch": "福建易联",
       "store": "华为宁德霞浦太康路一店",
-      "denominator": 0.0,
+      "denominator": 1.0,
       "numerator": 0.0,
-      "order_denom": 0,
+      "order_denom": 1,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2377,9 +2385,9 @@
     {
       "branch": "福建易联",
       "store": "华为宁德霞浦太康路二店",
-      "denominator": 0.0,
+      "denominator": 2.0,
       "numerator": 0.0,
-      "order_denom": 0,
+      "order_denom": 2,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2388,9 +2396,9 @@
     {
       "branch": "福建易联",
       "store": "华为宁德霞浦方圆荟",
-      "denominator": 0.0,
+      "denominator": 1.0,
       "numerator": 0.0,
-      "order_denom": 0,
+      "order_denom": 1,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2399,9 +2407,9 @@
     {
       "branch": "福建易联",
       "store": "华为泉州石狮泰禾广场",
-      "denominator": 3.0,
+      "denominator": 4.0,
       "numerator": 0.0,
-      "order_denom": 3,
+      "order_denom": 4,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2801,9 +2809,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京西单大悦城授权体验店",
-      "denominator": 3.0,
+      "denominator": 2.0,
       "numerator": 2.0,
-      "order_denom": 3,
+      "order_denom": 2,
       "order_num": 2,
       "vip_items": [
         {
@@ -3033,9 +3041,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI大疆哈苏北京大兴机场概念店",
-      "denominator": 5.0,
+      "denominator": 6.0,
       "numerator": 1.0,
-      "order_denom": 5,
+      "order_denom": 6,
       "order_num": 1,
       "vip_items": [
         {

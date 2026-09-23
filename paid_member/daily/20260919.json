@@ -1,13 +1,13 @@
 {
   "date": "2026-09-19",
-  "generated": "2026-09-22 23:06",
+  "generated": "2026-09-23 23:06",
   "total": {
-    "denominator": 1288.0,
-    "numerator": 630.0,
-    "order_denom": 1276,
-    "order_num": 630,
-    "amount": 581590.0,
-    "profit": 64762.0
+    "denominator": 1303.0,
+    "numerator": 631.0,
+    "order_denom": 1291,
+    "order_num": 631,
+    "amount": 581989.0,
+    "profit": 64873.0
   },
   "branches": {
     "北京中恒": {
@@ -146,15 +146,15 @@
       "profit": 11535.0
     },
     "福建易联": {
-      "denominator": 47.0,
-      "numerator": 5.0,
-      "order_denom": 47,
-      "order_num": 5,
+      "denominator": 62.0,
+      "numerator": 6.0,
+      "order_denom": 62,
+      "order_num": 6,
       "vip_items": [
         {
           "code": "FJYLVIP0001",
           "name": "399元礼包",
-          "qty": 4.0,
+          "qty": 5.0,
           "price": 399,
           "profit": 111.0
         },
@@ -166,8 +166,8 @@
           "profit": 136.0
         }
       ],
-      "amount": 2295.0,
-      "profit": 580.0
+      "amount": 2694.0,
+      "profit": 691.0
     },
     "北京飞航": {
       "denominator": 293.0,
@@ -2907,9 +2907,9 @@
     {
       "branch": "福建易联",
       "store": "华为南平建阳建发悦城",
-      "denominator": 1.0,
+      "denominator": 2.0,
       "numerator": 0.0,
-      "order_denom": 1,
+      "order_denom": 2,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -3044,13 +3044,21 @@
     {
       "branch": "福建易联",
       "store": "华为宁德古田中央名城",
-      "denominator": 0.0,
-      "numerator": 0.0,
-      "order_denom": 0,
-      "order_num": 0,
-      "vip_items": [],
-      "amount": 0,
-      "profit": 0
+      "denominator": 4.0,
+      "numerator": 1.0,
+      "order_denom": 4,
+      "order_num": 1,
+      "vip_items": [
+        {
+          "code": "FJYLVIP0001",
+          "name": "399元礼包",
+          "qty": 1.0,
+          "price": 399,
+          "profit": 111.0
+        }
+      ],
+      "amount": 399.0,
+      "profit": 111.0
     },
     {
       "branch": "福建易联",
@@ -3066,9 +3074,9 @@
     {
       "branch": "福建易联",
       "store": "华为宁德霞浦太康路二店",
-      "denominator": 0.0,
+      "denominator": 1.0,
       "numerator": 0.0,
-      "order_denom": 0,
+      "order_denom": 1,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -3077,9 +3085,9 @@
     {
       "branch": "福建易联",
       "store": "华为宁德霞浦方圆荟",
-      "denominator": 0.0,
+      "denominator": 9.0,
       "numerator": 0.0,
-      "order_denom": 0,
+      "order_denom": 9,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,

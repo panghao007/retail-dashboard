@@ -1,10 +1,10 @@
 {
   "date": "2026-09-21",
-  "generated": "2026-09-22 23:06",
+  "generated": "2026-09-23 23:06",
   "total": {
-    "denominator": 712.0,
+    "denominator": 720.0,
     "numerator": 270.0,
-    "order_denom": 704,
+    "order_denom": 710,
     "order_num": 270,
     "amount": 241518.0,
     "profit": 26897.0
@@ -122,9 +122,9 @@
       "profit": 5500.0
     },
     "北京易联": {
-      "denominator": 94.0,
+      "denominator": 93.0,
       "numerator": 13.0,
-      "order_denom": 94,
+      "order_denom": 93,
       "order_num": 13,
       "vip_items": [
         {
@@ -153,9 +153,9 @@
       "profit": 2799.0
     },
     "福建易联": {
-      "denominator": 48.0,
+      "denominator": 57.0,
       "numerator": 6.0,
-      "order_denom": 48,
+      "order_denom": 55,
       "order_num": 6,
       "vip_items": [
         {
@@ -2038,9 +2038,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京平谷万达",
-      "denominator": 4.0,
+      "denominator": 3.0,
       "numerator": 1.0,
-      "order_denom": 4,
+      "order_denom": 3,
       "order_num": 1,
       "vip_items": [
         {
@@ -2465,9 +2465,9 @@
     {
       "branch": "福建易联",
       "store": "华为宁德古田中央名城",
-      "denominator": 0.0,
+      "denominator": 3.0,
       "numerator": 0.0,
-      "order_denom": 0,
+      "order_denom": 3,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2498,9 +2498,9 @@
     {
       "branch": "福建易联",
       "store": "华为宁德霞浦方圆荟",
-      "denominator": 0.0,
+      "denominator": 6.0,
       "numerator": 0.0,
-      "order_denom": 0,
+      "order_denom": 4,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,

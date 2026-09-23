@@ -1,13 +1,13 @@
 {
   "date": "2026-09-11",
-  "generated": "2026-09-22 23:06",
+  "generated": "2026-09-23 23:06",
   "total": {
-    "denominator": 661.0,
-    "numerator": 194.0,
-    "order_denom": 639,
-    "order_num": 194,
-    "amount": 130888.0,
-    "profit": 20172.0
+    "denominator": 683.0,
+    "numerator": 189.0,
+    "order_denom": 655,
+    "order_num": 189,
+    "amount": 130193.0,
+    "profit": 19752.0
   },
   "branches": {
     "北京中恒": {
@@ -125,9 +125,9 @@
       "profit": 5190.0
     },
     "福建易联": {
-      "denominator": 49.0,
+      "denominator": 71.0,
       "numerator": 6.0,
-      "order_denom": 41,
+      "order_denom": 57,
       "order_num": 6,
       "vip_items": [
         {
@@ -143,27 +143,27 @@
     },
     "北京飞航": {
       "denominator": 149.0,
-      "numerator": 46.0,
+      "numerator": 41.0,
       "order_denom": 146,
-      "order_num": 46,
+      "order_num": 41,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
           "name": "畅玩会员-99",
-          "qty": 42.0,
+          "qty": 39.0,
           "price": 99,
           "profit": 62.0
         },
         {
           "code": "FHQLVIP0004",
           "name": "畅享会员-199",
-          "qty": 4.0,
+          "qty": 2.0,
           "price": 199,
           "profit": 117.0
         }
       ],
-      "amount": 4954.0,
-      "profit": 3072.0
+      "amount": 4259.0,
+      "profit": 2652.0
     },
     "上海爱飞": {
       "denominator": 45.0,
@@ -2059,9 +2059,9 @@
     {
       "branch": "福建易联",
       "store": "华为宁德古田中央名城",
-      "denominator": 0.0,
+      "denominator": 6.0,
       "numerator": 0.0,
-      "order_denom": 0,
+      "order_denom": 5,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2081,9 +2081,9 @@
     {
       "branch": "福建易联",
       "store": "华为宁德霞浦太康路二店",
-      "denominator": 0.0,
+      "denominator": 7.0,
       "numerator": 0.0,
-      "order_denom": 0,
+      "order_denom": 2,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2092,9 +2092,9 @@
     {
       "branch": "福建易联",
       "store": "华为宁德霞浦方圆荟",
-      "denominator": 0.0,
+      "denominator": 9.0,
       "numerator": 0.0,
-      "order_denom": 0,
+      "order_denom": 9,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2317,27 +2317,27 @@
       "branch": "北京飞航",
       "store": "DJI北京丰科万达广场授权体验店",
       "denominator": 6.0,
-      "numerator": 7.0,
+      "numerator": 4.0,
       "order_denom": 6,
-      "order_num": 7,
+      "order_num": 4,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
           "name": "畅玩会员-99",
-          "qty": 4.0,
+          "qty": 3.0,
           "price": 99,
           "profit": 62.0
         },
         {
           "code": "FHQLVIP0004",
           "name": "畅享会员-199",
-          "qty": 3.0,
+          "qty": 1.0,
           "price": 199,
           "profit": 117.0
         }
       ],
-      "amount": 993.0,
-      "profit": 599.0
+      "amount": 496.0,
+      "profit": 303.0
     },
     {
       "branch": "北京飞航",
@@ -2488,20 +2488,12 @@
       "branch": "北京飞航",
       "store": "DJI北京翠微百货授权体验店",
       "denominator": 2.0,
-      "numerator": 1.0,
+      "numerator": 0.0,
       "order_denom": 2,
-      "order_num": 1,
-      "vip_items": [
-        {
-          "code": "FHQLVIP0003",
-          "name": "畅玩会员-99",
-          "qty": 1.0,
-          "price": 99,
-          "profit": 62.0
-        }
-      ],
-      "amount": 99.0,
-      "profit": 62.0
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
     },
     {
       "branch": "北京飞航",
@@ -2758,20 +2750,20 @@
       "branch": "北京飞航",
       "store": "DJI大疆哈苏北京华熙LIVE概念店",
       "denominator": 6.0,
-      "numerator": 6.0,
+      "numerator": 5.0,
       "order_denom": 6,
-      "order_num": 6,
+      "order_num": 5,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
           "name": "畅玩会员-99",
-          "qty": 6.0,
+          "qty": 5.0,
           "price": 99,
           "profit": 62.0
         }
       ],
-      "amount": 594.0,
-      "profit": 372.0
+      "amount": 495.0,
+      "profit": 310.0
     },
     {
       "branch": "北京飞航",

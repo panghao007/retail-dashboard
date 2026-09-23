@@ -1,13 +1,13 @@
 {
   "date": "2026-09-03",
-  "generated": "2026-09-22 23:06",
+  "generated": "2026-09-23 23:06",
   "total": {
-    "denominator": 451.0,
-    "numerator": 129.0,
-    "order_denom": 433,
-    "order_num": 129,
-    "amount": 86585.0,
-    "profit": 13243.0
+    "denominator": 466.0,
+    "numerator": 128.0,
+    "order_denom": 448,
+    "order_num": 128,
+    "amount": 87686.0,
+    "profit": 13440.0
   },
   "branches": {
     "北京中恒": {
@@ -111,10 +111,10 @@
       "profit": 3162.0
     },
     "福建易联": {
-      "denominator": 39.0,
-      "numerator": 10.0,
-      "order_denom": 31,
-      "order_num": 10,
+      "denominator": 54.0,
+      "numerator": 11.0,
+      "order_denom": 46,
+      "order_num": 11,
       "vip_items": [
         {
           "code": "FJYLVIP0001",
@@ -129,44 +129,51 @@
           "qty": 1.0,
           "price": 699,
           "profit": 136.0
+        },
+        {
+          "code": "FJYLVIP0003",
+          "name": "1299元礼包",
+          "qty": 1.0,
+          "price": 1299,
+          "profit": 321.0
         }
       ],
-      "amount": 4290.0,
-      "profit": 1135.0
+      "amount": 5589.0,
+      "profit": 1456.0
     },
     "北京飞航": {
       "denominator": 133.0,
-      "numerator": 20.0,
+      "numerator": 19.0,
       "order_denom": 128,
-      "order_num": 20,
+      "order_num": 19,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
           "name": "畅玩会员-99",
-          "qty": 20.0,
+          "qty": 19.0,
           "price": 99,
           "profit": 62.0
         }
       ],
-      "amount": 1980.0,
-      "profit": 1240.0
+      "amount": 1881.0,
+      "profit": 1178.0
     },
     "上海爱飞": {
       "denominator": 40.0,
-      "numerator": 13.0,
+      "numerator": 12.0,
       "order_denom": 38,
-      "order_num": 13,
+      "order_num": 12,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
           "name": "畅玩会员-99",
-          "qty": 13.0,
+          "qty": 12.0,
           "price": 99,
           "profit": 62.0
         }
       ],
-      "amount": 1287.0,
-      "profit": 806.0
+      "amount": 1188.0,
+      "profit": 744.0
     }
   },
   "stores": [
@@ -1918,9 +1925,9 @@
     {
       "branch": "福建易联",
       "store": "华为宁德古田中央名城",
-      "denominator": 0.0,
+      "denominator": 8.0,
       "numerator": 0.0,
-      "order_denom": 0,
+      "order_denom": 8,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -1929,9 +1936,9 @@
     {
       "branch": "福建易联",
       "store": "华为宁德霞浦太康路一店",
-      "denominator": 0.0,
+      "denominator": 1.0,
       "numerator": 0.0,
-      "order_denom": 0,
+      "order_denom": 1,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -1940,9 +1947,9 @@
     {
       "branch": "福建易联",
       "store": "华为宁德霞浦太康路二店",
-      "denominator": 0.0,
+      "denominator": 1.0,
       "numerator": 0.0,
-      "order_denom": 0,
+      "order_denom": 1,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -1951,13 +1958,21 @@
     {
       "branch": "福建易联",
       "store": "华为宁德霞浦方圆荟",
-      "denominator": 0.0,
-      "numerator": 0.0,
-      "order_denom": 0,
-      "order_num": 0,
-      "vip_items": [],
-      "amount": 0,
-      "profit": 0
+      "denominator": 5.0,
+      "numerator": 1.0,
+      "order_denom": 5,
+      "order_num": 1,
+      "vip_items": [
+        {
+          "code": "FJYLVIP0003",
+          "name": "1299元礼包",
+          "qty": 1.0,
+          "price": 1299,
+          "profit": 321.0
+        }
+      ],
+      "amount": 1299.0,
+      "profit": 321.0
     },
     {
       "branch": "福建易联",
@@ -2537,20 +2552,20 @@
       "branch": "北京飞航",
       "store": "DJI北京龙湖房山天街授权体验店",
       "denominator": 4.0,
-      "numerator": 4.0,
+      "numerator": 3.0,
       "order_denom": 4,
-      "order_num": 4,
+      "order_num": 3,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
           "name": "畅玩会员-99",
-          "qty": 4.0,
+          "qty": 3.0,
           "price": 99,
           "profit": 62.0
         }
       ],
-      "amount": 396.0,
-      "profit": 248.0
+      "amount": 297.0,
+      "profit": 186.0
     },
     {
       "branch": "北京飞航",
@@ -2687,20 +2702,12 @@
       "branch": "上海爱飞",
       "store": "DJI上海中庚漫游城授权体验店",
       "denominator": 0.0,
-      "numerator": 1.0,
+      "numerator": 0.0,
       "order_denom": 0,
-      "order_num": 1,
-      "vip_items": [
-        {
-          "code": "FHQLVIP0003",
-          "name": "畅玩会员-99",
-          "qty": 1.0,
-          "price": 99,
-          "profit": 62.0
-        }
-      ],
-      "amount": 99.0,
-      "profit": 62.0
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
     },
     {
       "branch": "上海爱飞",
