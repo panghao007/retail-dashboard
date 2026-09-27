@@ -1,13 +1,13 @@
 {
   "date": "2026-09-25",
-  "generated": "2026-09-26 23:06",
+  "generated": "2026-09-27 23:10",
   "total": {
     "denominator": 1332.0,
-    "numerator": 454.0,
+    "numerator": 453.0,
     "order_denom": 1316,
-    "order_num": 454,
-    "amount": 403128.0,
-    "profit": 45098.0
+    "order_num": 453,
+    "amount": 401230.0,
+    "profit": 44998.0
   },
   "branches": {
     "北京中恒": {
@@ -71,14 +71,14 @@
     },
     "四川新跃": {
       "denominator": 159.0,
-      "numerator": 100.0,
+      "numerator": 99.0,
       "order_denom": 159,
-      "order_num": 100,
+      "order_num": 99,
       "vip_items": [
         {
           "code": "SCXYVIP00006",
           "name": "1898元音享会员",
-          "qty": 51.0,
+          "qty": 50.0,
           "price": 1898,
           "profit": 100.0
         },
@@ -118,8 +118,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 157900.0,
-      "profit": 10000.0
+      "amount": 156002.0,
+      "profit": 9900.0
     },
     "北京易联": {
       "denominator": 199.0,
@@ -1725,9 +1725,9 @@
       "branch": "四川新跃",
       "store": "APR成都温江旭辉",
       "denominator": 15.0,
-      "numerator": 17.0,
+      "numerator": 16.0,
       "order_denom": 15,
-      "order_num": 17,
+      "order_num": 16,
       "vip_items": [
         {
           "code": "SCXYVIP00003",
@@ -1739,13 +1739,13 @@
         {
           "code": "SCXYVIP00006",
           "name": "1898元音享会员",
-          "qty": 13.0,
+          "qty": 12.0,
           "price": 1898,
           "profit": 100.0
         }
       ],
-      "amount": 31066.0,
-      "profit": 1700.0
+      "amount": 29168.0,
+      "profit": 1600.0
     },
     {
       "branch": "四川新跃",
