@@ -1,13 +1,13 @@
 {
   "date": "2026-09-26",
-  "generated": "2026-09-27 23:10",
+  "generated": "2026-09-28 00:39",
   "total": {
-    "denominator": 968.0,
-    "numerator": 316.0,
-    "order_denom": 963,
-    "order_num": 316,
-    "amount": 266761.0,
-    "profit": 30842.0
+    "denominator": 974.0,
+    "numerator": 317.0,
+    "order_denom": 969,
+    "order_num": 317,
+    "amount": 267459.0,
+    "profit": 30942.0
   },
   "branches": {
     "北京中恒": {
@@ -70,10 +70,10 @@
       "profit": 14800.0
     },
     "四川新跃": {
-      "denominator": 132.0,
-      "numerator": 62.0,
-      "order_denom": 131,
-      "order_num": 62,
+      "denominator": 134.0,
+      "numerator": 63.0,
+      "order_denom": 133,
+      "order_num": 63,
       "vip_items": [
         {
           "code": "SCXYVIP00006",
@@ -85,7 +85,7 @@
         {
           "code": "SCXYVIP00001",
           "name": "698元悦享会员",
-          "qty": 13.0,
+          "qty": 14.0,
           "price": 698,
           "profit": 100.0
         },
@@ -118,8 +118,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 86776.0,
-      "profit": 6200.0
+      "amount": 87474.0,
+      "profit": 6300.0
     },
     "北京易联": {
       "denominator": 204.0,
@@ -163,9 +163,9 @@
       "profit": 444.0
     },
     "北京飞航": {
-      "denominator": 240.0,
+      "denominator": 241.0,
       "numerator": 62.0,
-      "order_denom": 240,
+      "order_denom": 241,
       "order_num": 62,
       "vip_items": [
         {
@@ -187,9 +187,9 @@
       "profit": 3954.0
     },
     "上海爱飞": {
-      "denominator": 70.0,
+      "denominator": 73.0,
       "numerator": 19.0,
-      "order_denom": 70,
+      "order_denom": 73,
       "order_num": 19,
       "vip_items": [
         {
@@ -1459,6 +1459,25 @@
         }
       ],
       "amount": 1898.0,
+      "profit": 100.0
+    },
+    {
+      "branch": "四川新跃",
+      "store": "APR成都新光天地",
+      "denominator": 2.0,
+      "numerator": 1.0,
+      "order_denom": 2,
+      "order_num": 1,
+      "vip_items": [
+        {
+          "code": "SCXYVIP00001",
+          "name": "698元悦享会员",
+          "qty": 1.0,
+          "price": 698,
+          "profit": 100.0
+        }
+      ],
+      "amount": 698.0,
       "profit": 100.0
     },
     {
@@ -3228,6 +3247,17 @@
     },
     {
       "branch": "北京飞航",
+      "store": "DJI大疆北京西直门凯德mall授权体验店",
+      "denominator": 1.0,
+      "numerator": 0.0,
+      "order_denom": 1,
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
+    },
+    {
+      "branch": "北京飞航",
       "store": "DJI大疆哈苏北京华熙LIVE概念店",
       "denominator": 9.0,
       "numerator": 3.0,
@@ -3508,6 +3538,17 @@
       ],
       "amount": 198.0,
       "profit": 124.0
+    },
+    {
+      "branch": "上海爱飞",
+      "store": "DJI上海百联青浦奥莱授权体验店",
+      "denominator": 3.0,
+      "numerator": 0.0,
+      "order_denom": 3,
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
     },
     {
       "branch": "上海爱飞",

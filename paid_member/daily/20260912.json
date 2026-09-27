@@ -1,13 +1,13 @@
 {
   "date": "2026-09-12",
-  "generated": "2026-09-27 23:10",
+  "generated": "2026-09-28 00:39",
   "total": {
-    "denominator": 958.0,
-    "numerator": 296.0,
-    "order_denom": 940,
-    "order_num": 296,
-    "amount": 191935.0,
-    "profit": 29979.0
+    "denominator": 961.0,
+    "numerator": 299.0,
+    "order_denom": 943,
+    "order_num": 299,
+    "amount": 194329.0,
+    "profit": 30279.0
   },
   "branches": {
     "北京中恒": {
@@ -63,15 +63,15 @@
       "profit": 11200.0
     },
     "四川新跃": {
-      "denominator": 81.0,
-      "numerator": 44.0,
-      "order_denom": 80,
-      "order_num": 44,
+      "denominator": 84.0,
+      "numerator": 47.0,
+      "order_denom": 83,
+      "order_num": 47,
       "vip_items": [
         {
           "code": "SCXYVIP00001",
           "name": "698元悦享会员",
-          "qty": 16.0,
+          "qty": 18.0,
           "price": 698,
           "profit": 100.0
         },
@@ -85,7 +85,7 @@
         {
           "code": "SCXYVIP00002",
           "name": "998元尊享会员",
-          "qty": 10.0,
+          "qty": 11.0,
           "price": 998,
           "profit": 100.0
         },
@@ -104,8 +104,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 35312.0,
-      "profit": 4400.0
+      "amount": 37706.0,
+      "profit": 4700.0
     },
     "北京易联": {
       "denominator": 245.0,
@@ -1277,6 +1277,32 @@
       ],
       "amount": 2596.0,
       "profit": 200.0
+    },
+    {
+      "branch": "四川新跃",
+      "store": "APR成都新光天地",
+      "denominator": 3.0,
+      "numerator": 3.0,
+      "order_denom": 3,
+      "order_num": 3,
+      "vip_items": [
+        {
+          "code": "SCXYVIP00001",
+          "name": "698元悦享会员",
+          "qty": 2.0,
+          "price": 698,
+          "profit": 100.0
+        },
+        {
+          "code": "SCXYVIP00002",
+          "name": "998元尊享会员",
+          "qty": 1.0,
+          "price": 998,
+          "profit": 100.0
+        }
+      ],
+      "amount": 2394.0,
+      "profit": 300.0
     },
     {
       "branch": "四川新跃",
@@ -3065,6 +3091,17 @@
     },
     {
       "branch": "北京飞航",
+      "store": "DJI大疆北京西直门凯德mall授权体验店",
+      "denominator": 0.0,
+      "numerator": 0.0,
+      "order_denom": 0,
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
+    },
+    {
+      "branch": "北京飞航",
       "store": "DJI大疆哈苏北京华熙LIVE概念店",
       "denominator": 12.0,
       "numerator": 9.0,
@@ -3321,6 +3358,17 @@
       ],
       "amount": 198.0,
       "profit": 124.0
+    },
+    {
+      "branch": "上海爱飞",
+      "store": "DJI上海百联青浦奥莱授权体验店",
+      "denominator": 0.0,
+      "numerator": 0.0,
+      "order_denom": 0,
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
     },
     {
       "branch": "上海爱飞",

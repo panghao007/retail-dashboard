@@ -1,13 +1,13 @@
 {
   "date": "2026-09-04",
-  "generated": "2026-09-27 23:10",
+  "generated": "2026-09-28 00:39",
   "total": {
-    "denominator": 530.0,
-    "numerator": 181.0,
-    "order_denom": 516,
-    "order_num": 181,
-    "amount": 109499.0,
-    "profit": 18545.0
+    "denominator": 531.0,
+    "numerator": 182.0,
+    "order_denom": 517,
+    "order_num": 182,
+    "amount": 109997.0,
+    "profit": 18645.0
   },
   "branches": {
     "北京中恒": {
@@ -63,10 +63,10 @@
       "profit": 5600.0
     },
     "四川新跃": {
-      "denominator": 64.0,
-      "numerator": 39.0,
-      "order_denom": 64,
-      "order_num": 39,
+      "denominator": 65.0,
+      "numerator": 40.0,
+      "order_denom": 65,
+      "order_num": 40,
       "vip_items": [
         {
           "code": "SCXYVIP00001",
@@ -78,7 +78,7 @@
         {
           "code": "SCXYVIP00005",
           "name": "498元-iPhone17专享会员",
-          "qty": 12.0,
+          "qty": 13.0,
           "price": 498,
           "profit": 100.0
         },
@@ -104,8 +104,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 35122.0,
-      "profit": 3900.0
+      "amount": 35620.0,
+      "profit": 4000.0
     },
     "北京易联": {
       "denominator": 96.0,
@@ -1120,6 +1120,25 @@
       ],
       "amount": 1694.0,
       "profit": 300.0
+    },
+    {
+      "branch": "四川新跃",
+      "store": "APR成都新光天地",
+      "denominator": 1.0,
+      "numerator": 1.0,
+      "order_denom": 1,
+      "order_num": 1,
+      "vip_items": [
+        {
+          "code": "SCXYVIP00005",
+          "name": "498元-iPhone17专享会员",
+          "qty": 1.0,
+          "price": 498,
+          "profit": 100.0
+        }
+      ],
+      "amount": 498.0,
+      "profit": 100.0
     },
     {
       "branch": "四川新跃",
@@ -2801,6 +2820,17 @@
     },
     {
       "branch": "北京飞航",
+      "store": "DJI大疆北京西直门凯德mall授权体验店",
+      "denominator": 0.0,
+      "numerator": 0.0,
+      "order_denom": 0,
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
+    },
+    {
+      "branch": "北京飞航",
       "store": "DJI大疆哈苏北京华熙LIVE概念店",
       "denominator": 4.0,
       "numerator": 2.0,
@@ -3057,6 +3087,17 @@
       ],
       "amount": 198.0,
       "profit": 124.0
+    },
+    {
+      "branch": "上海爱飞",
+      "store": "DJI上海百联青浦奥莱授权体验店",
+      "denominator": 0.0,
+      "numerator": 0.0,
+      "order_denom": 0,
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
     },
     {
       "branch": "上海爱飞",

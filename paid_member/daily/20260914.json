@@ -1,10 +1,10 @@
 {
   "date": "2026-09-14",
-  "generated": "2026-09-27 23:10",
+  "generated": "2026-09-28 00:39",
   "total": {
-    "denominator": 455.0,
+    "denominator": 456.0,
     "numerator": 160.0,
-    "order_denom": 440,
+    "order_denom": 441,
     "order_num": 160,
     "amount": 114945.0,
     "profit": 16424.0
@@ -70,9 +70,9 @@
       "profit": 6400.0
     },
     "四川新跃": {
-      "denominator": 53.0,
+      "denominator": 54.0,
       "numerator": 24.0,
-      "order_denom": 53,
+      "order_denom": 54,
       "order_num": 24,
       "vip_items": [
         {
@@ -1057,6 +1057,17 @@
       "denominator": 0.0,
       "numerator": 0.0,
       "order_denom": 0,
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
+    },
+    {
+      "branch": "四川新跃",
+      "store": "APR成都新光天地",
+      "denominator": 1.0,
+      "numerator": 0.0,
+      "order_denom": 1,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2660,6 +2671,17 @@
     },
     {
       "branch": "北京飞航",
+      "store": "DJI大疆北京西直门凯德mall授权体验店",
+      "denominator": 0.0,
+      "numerator": 0.0,
+      "order_denom": 0,
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
+    },
+    {
+      "branch": "北京飞航",
       "store": "DJI大疆哈苏北京华熙LIVE概念店",
       "denominator": 2.0,
       "numerator": 2.0,
@@ -2869,6 +2891,17 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海百联又一城授权体验店",
+      "denominator": 0.0,
+      "numerator": 0.0,
+      "order_denom": 0,
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
+    },
+    {
+      "branch": "上海爱飞",
+      "store": "DJI上海百联青浦奥莱授权体验店",
       "denominator": 0.0,
       "numerator": 0.0,
       "order_denom": 0,
