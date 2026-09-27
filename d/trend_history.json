@@ -2142,8 +2142,8 @@
       "branches": {
         "北京飞航": {
           "invalid": 448,
-          "valid": 8044,
-          "total": 8492
+          "valid": 8059,
+          "total": 8507
         },
         "北京易联": {
           "invalid": 214,
@@ -2151,9 +2151,9 @@
           "total": 5655
         },
         "上海爱飞": {
-          "invalid": 198,
-          "valid": 3585,
-          "total": 3783
+          "invalid": 199,
+          "valid": 3642,
+          "total": 3841
         },
         "北京中恒": {
           "invalid": 24,
@@ -2167,8 +2167,8 @@
         },
         "四川新跃": {
           "invalid": 10,
-          "valid": 2251,
-          "total": 2261
+          "valid": 2277,
+          "total": 2287
         }
       }
     }
