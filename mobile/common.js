@@ -595,9 +595,11 @@ async function loadPreorder(onlyPeriods){
       }
       for(const [phn,v] of Object.entries(d.phone||{})){
         if(!phn) continue;
-        const acc=ph[phn]=ph[phn]||{count:0,amount:0,recv:0,verified:0,refund:0,stores:new Set()};
+        const acc=ph[phn]=ph[phn]||{count:0,amount:0,recv:0,verified:0,refund:0,stores:new Set(),fd:''};
         acc.count+=(v.count||0); acc.amount+=(v.amount||0); acc.recv+=(v.recv||0); acc.verified+=(v.verified||0); acc.refund+=(v.refund||0);
         (v.stores||[]).forEach(s=>acc.stores.add(s));
+        // 该号最早订金日：跨日取最早（供灰字「最早订金 X · 距今 N 天」，与充值卡口径一致）
+        if(v.fd && (!acc.fd || v.fd<acc.fd)) acc.fd=v.fd;
       }
     }
     // 分公司按固定顺序（此前按笔数浮动）
@@ -605,7 +607,7 @@ async function loadPreorder(onlyPeriods){
     // 门店 TOP10（按预订单数降序，展示值带金额）
     const storeTop10=Object.entries(st).filter(([s])=>s).map(([s,v])=>({name:s, company:v.branch||'', count:v.count, amount:Math.round(v.amount), recv:Math.round(v.recv), verified:Math.round(v.verified), refund:Math.round(v.refund)})).sort((a,b)=>b.count-a.count).slice(0,10);
     // 会员手机号维度：全量按次数降序，频繁(≥freq)红标风险
-    const phoneList=Object.keys(ph).map(phn=>{ const v=ph[phn]; return {phone:phn, count:v.count, amount:Math.round(v.amount), recv:Math.round(v.recv), verified:Math.round(v.verified), refund:Math.round(v.refund), stores:[...v.stores], risk:v.count>=freq}; }).sort((a,b)=>b.count-a.count);
+    const phoneList=Object.keys(ph).map(phn=>{ const v=ph[phn]; return {phone:phn, count:v.count, amount:Math.round(v.amount), recv:Math.round(v.recv), verified:Math.round(v.verified), refund:Math.round(v.refund), stores:[...v.stores], first_date:v.fd||'', risk:v.count>=freq}; }).sort((a,b)=>b.count-a.count);
     const riskCount=phoneList.filter(x=>x.risk).length;
     const storeCount=Object.keys(st).length;
     const storeBreakdown=Object.entries(st).filter(([s])=>s).map(([s,v])=>({company:v.branch||'', count:v.count, amount:Math.round(v.amount)}));
@@ -635,7 +637,7 @@ async function loadPreorder(onlyPeriods){
             amount:Math.round(s.amount||0), recv:Math.round(s.recv||0), verified:Math.round(s.verified||0), refund:Math.round(s.refund||0)})),
           phoneList:(ap.phoneList||[]).map(x=>({phone:x.phone, count:x.count, amount:Math.round(x.amount||0),
             recv:Math.round(x.recv||0), verified:Math.round(x.verified||0), refund:Math.round(x.refund||0),
-            stores:x.stores||[], risk:!!x.risk})),
+            stores:x.stores||[], first_date:x.first_date||'', risk:!!x.risk})),
           riskCount:ap.riskCount||0, freq,
           storeBreakdown: ap.storeBreakdown||{},
           // 「全部」周期的三维度：用服务端预聚合的原始映射（ap.dims），口径与前端口径同一套 dimRows()

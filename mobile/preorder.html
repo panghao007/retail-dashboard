@@ -113,7 +113,7 @@
 </div>
 <div class="header" data-page-node-id="j1a2tL4mJW4KmH31LgdqPM">
   <div class="header-top" data-page-node-id="QK9FZNMj09zdizPy2FE08j">
-    <div class="header-back" onclick="location.href='index.html?v=20260920d'" data-page-node-id="88qnA3yMJVifGScZmz7ZeU">
+    <div class="header-back" onclick="location.href='index.html?v=20260928a'" data-page-node-id="88qnA3yMJVifGScZmz7ZeU">
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" data-page-node-id="MqLoISgsgV96zHzA3sqVu1"><path d="M10 3L5 8l5 5" data-page-node-id="lA0r3JtNxqbJwEUFCBibqr"/></svg>返回
     </div>
     <div class="header-badge" data-page-node-id="GsKTxP5RF5UuHYIiUGLkK1">v1.5</div>
@@ -128,9 +128,9 @@
   频繁预订 = 同手机号周期内预订 ≥ <span id="freqTh" data-page-node-id="ODlumHBGcFQqCpdA0oNMEg">3</span> 次（疑似虚假预订/收款不过账，类储值风险）<br data-page-node-id="vWygE8h1YirYYABD2QlU4S">
   净未消费金额 = 实收金额 − 已核销(已转销)金额 − 已退金额；会员手机号脱敏展示（前三后五，中间3位***）<br data-page-node-id="hxITkynZbHxbPEzNyB7976">
   <span id="genTime" data-page-node-id="drj0mkdXqBOgsnNdUdFneY"></span><br data-page-node-id="hxITkynZbHxbPEzNyB7976">
-  <a class="footer-link" href="index.html?v=20260920d" data-page-node-id="hZ3TjdIJJCZ5i3teLQ8emE">返回看板总览 ›</a>
+  <a class="footer-link" href="index.html?v=20260928a" data-page-node-id="hZ3TjdIJJCZ5i3teLQ8emE">返回看板总览 ›</a>
 </div>
-<script src="common.js?v=20260920d"></script>
+<script src="common.js?v=20260928a"></script>
 <script>
 function maskPhone(p){
   p=String(p||'');
@@ -145,6 +145,19 @@ function ageDays(fd, asof){
   }catch(e){ return 0; }
 }
 function wan(v){ return '¥'+(Math.abs(v)/10000).toFixed(2)+'万'; }
+/* ---------- 统一行灰字（两处列表共用） ----------
+   格式：最早订金 YYYYMMDD · 距今N天 · S家店 · C笔 · 净未消费¥X.XX万
+   口径：最早订金/距今 = 该号（当期周期内）最早订金日，与「会员充值未核销」卡同源；
+        S家店/C笔/净未消费 = 当前列表自身口径（充值卡为全量沉淀口径，手机号卡为当前周期口径）。
+   字段缺失自动省略该段（如该号从无净未核销订金时只显示笔数与金额）。 */
+function poMeta(o, asof){
+  const parts=[];
+  if(o && o.first_date) parts.push('最早订金 '+o.first_date, '距今'+ageDays(o.first_date, asof)+'天');
+  if(o && o.stores && o.stores.length) parts.push(o.stores.length+'家店');
+  if(o && o.count) parts.push(o.count+'笔');
+  parts.push('净未消费'+wan((o&&o.amount)||0));
+  return parts.join(' · ');
+}
 /* 沉淀时长分档定义：gtN = 最早订金日距今 > N 天（累计）；le7 = ≤7 天（刚充值未满一周） */
 const BUCKET_DEFS=[
   {k:'gt90', label:'90天以上', test:a=>a>90, tip:'越久未核销风险越高（>90天深度沉淀）'},
@@ -185,11 +198,13 @@ window.BUILD = function(period, dash, active){
   const riskPhones=riskAll.slice(0,60);
   const normalPhones=allPh.filter(p=>!p.risk).slice(0,20);
   const showPhones=riskPhones.concat(normalPhones);
+  // 灰字基准日：与「会员充值未核销」快照同源（缺失则回落最新数据日），保证两处「距今 N 天」口径一致
+  const poAsOf=(dash.rechargeUnused&&dash.rechargeUnused.as_of)||dash.latest_date||'';
   const phoneHtml=showPhones.map(p=>{
     const hc=p.risk?' style="background:rgba(255,59,48,0.05);border:1px solid rgba(255,59,48,0.18)"':'';
     const badge=p.risk?' <span class="badge badge-red">风险</span>':'';
     return `<div class="store-item tappable"${hc} onclick="openPhoneDrawer('${p.phone}')"><div class="store-info"><div class="store-name">${esc(maskPhone(p.phone))}${badge}</div>`
-      +`<div class="store-meta">${fmt(p.count)}次预订 · 涉及${p.stores.length}家门店 · 净未消费${wan(p.amount)} <span class="store-tap-hint">· 查看明细›</span></div></div>`
+      +`<div class="store-meta">${esc(poMeta(p,poAsOf))} <span class="store-tap-hint">· 查看明细›</span></div></div>`
       +`<div class="store-value"><div class="store-value-num ${p.risk?'c-red':''}">${p.risk?'⚠ 频繁':'正常'}</div>`
       +`<div class="store-value-label">${fmt(p.count)}次</div></div></div>`;
   }).join('');
@@ -421,7 +436,7 @@ function bucketRow(p, asof, bkKey){
   const age=ageDays(p.first_date, asof);
   const hot=age>60;
   const bg=age>90?'超90天':(age>60?'超60天':(age>30?'超30天':''));
-  const meta='最早订金 '+p.first_date+' · 距今'+age+'天 · '+p.stores.length+'家店 · '+p.count+'笔';
+  const meta=poMeta(p, asof);   // 与手机号卡统一：最早订金 · 距今N天 · S家店 · C笔 · 净未消费
   return `<div class="store-item tappable"${hot?' style="background:rgba(255,59,48,0.05);border:1px solid rgba(255,59,48,0.15)"':''} onclick="openPhoneDrawer('${p.phone}','${bkKey}')">`
     +`<div class="store-info"><div class="store-name">${esc(maskPhone(p.phone))}${bg?` <span class="badge badge-red">${bg}</span>`:''}</div>`
     +`<div class="store-meta">${esc(meta)} <span class="store-tap-hint">· 查看明细›</span></div></div>`
