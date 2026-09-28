@@ -1,13 +1,13 @@
 {
   "date": "2026-09-19",
-  "generated": "2026-09-28 00:39",
+  "generated": "2026-09-28 23:06",
   "total": {
     "denominator": 1306.0,
-    "numerator": 636.0,
+    "numerator": 635.0,
     "order_denom": 1294,
-    "order_num": 636,
-    "amount": 586979.0,
-    "profit": 65373.0
+    "order_num": 635,
+    "amount": 585981.0,
+    "profit": 65273.0
   },
   "branches": {
     "北京中恒": {
@@ -71,9 +71,9 @@
     },
     "四川新跃": {
       "denominator": 221.0,
-      "numerator": 140.0,
+      "numerator": 139.0,
       "order_denom": 220,
-      "order_num": 140,
+      "order_num": 139,
       "vip_items": [
         {
           "code": "SCXYVIP00001",
@@ -85,7 +85,7 @@
         {
           "code": "SCXYVIP00002",
           "name": "998元尊享会员",
-          "qty": 28.0,
+          "qty": 27.0,
           "price": 998,
           "profit": 100.0
         },
@@ -118,8 +118,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 178420.0,
-      "profit": 14000.0
+      "amount": 177422.0,
+      "profit": 13900.0
     },
     "北京易联": {
       "denominator": 187.0,
@@ -212,6 +212,17 @@
     }
   },
   "stores": [
+    {
+      "branch": "北京中恒",
+      "store": "AAR北京五棵松店",
+      "denominator": 0.0,
+      "numerator": 0.0,
+      "order_denom": 0,
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
+    },
     {
       "branch": "北京中恒",
       "store": "APR北京万柳华联",
@@ -1851,14 +1862,14 @@
       "branch": "四川新跃",
       "store": "APR成都时代天街",
       "denominator": 9.0,
-      "numerator": 10.0,
+      "numerator": 9.0,
       "order_denom": 9,
-      "order_num": 10,
+      "order_num": 9,
       "vip_items": [
         {
           "code": "SCXYVIP00002",
           "name": "998元尊享会员",
-          "qty": 4.0,
+          "qty": 3.0,
           "price": 998,
           "profit": 100.0
         },
@@ -1884,8 +1895,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 13880.0,
-      "profit": 1000.0
+      "amount": 12882.0,
+      "profit": 900.0
     },
     {
       "branch": "四川新跃",

@@ -1,10 +1,10 @@
 {
   "date": "2026-09-25",
-  "generated": "2026-09-28 00:39",
+  "generated": "2026-09-28 23:06",
   "total": {
-    "denominator": 1347.0,
+    "denominator": 1343.0,
     "numerator": 458.0,
-    "order_denom": 1331,
+    "order_denom": 1327,
     "order_num": 458,
     "amount": 408920.0,
     "profit": 45498.0
@@ -122,9 +122,9 @@
       "profit": 10400.0
     },
     "北京易联": {
-      "denominator": 199.0,
+      "denominator": 196.0,
       "numerator": 26.0,
-      "order_denom": 199,
+      "order_denom": 196,
       "order_num": 26,
       "vip_items": [
         {
@@ -177,9 +177,9 @@
       "profit": 1889.0
     },
     "北京飞航": {
-      "denominator": 399.0,
+      "denominator": 398.0,
       "numerator": 87.0,
-      "order_denom": 387,
+      "order_denom": 386,
       "order_num": 87,
       "vip_items": [
         {
@@ -219,6 +219,17 @@
     }
   },
   "stores": [
+    {
+      "branch": "北京中恒",
+      "store": "AAR北京五棵松店",
+      "denominator": 0.0,
+      "numerator": 0.0,
+      "order_denom": 0,
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
+    },
     {
       "branch": "北京中恒",
       "store": "APR北京万柳华联",
@@ -2148,9 +2159,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京丰科万达",
-      "denominator": 36.0,
+      "denominator": 35.0,
       "numerator": 0.0,
-      "order_denom": 36,
+      "order_denom": 35,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2293,9 +2304,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京平谷万达",
-      "denominator": 10.0,
+      "denominator": 9.0,
       "numerator": 0.0,
-      "order_denom": 10,
+      "order_denom": 9,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2568,9 +2579,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京门头沟长安天街",
-      "denominator": 10.0,
+      "denominator": 9.0,
       "numerator": 0.0,
-      "order_denom": 10,
+      "order_denom": 9,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2941,9 +2952,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京东坝万达广场授权体验店",
-      "denominator": 5.0,
+      "denominator": 4.0,
       "numerator": 1.0,
-      "order_denom": 5,
+      "order_denom": 4,
       "order_num": 1,
       "vip_items": [
         {
