@@ -1,10 +1,10 @@
 {
   "date": "2026-09-26",
-  "generated": "2026-09-28 23:06",
+  "generated": "2026-09-29 23:06",
   "total": {
-    "denominator": 973.0,
+    "denominator": 971.0,
     "numerator": 317.0,
-    "order_denom": 968,
+    "order_denom": 966,
     "order_num": 317,
     "amount": 267459.0,
     "profit": 30942.0
@@ -70,9 +70,9 @@
       "profit": 14800.0
     },
     "四川新跃": {
-      "denominator": 134.0,
+      "denominator": 133.0,
       "numerator": 63.0,
-      "order_denom": 133,
+      "order_denom": 132,
       "order_num": 63,
       "vip_items": [
         {
@@ -122,9 +122,9 @@
       "profit": 6300.0
     },
     "北京易联": {
-      "denominator": 204.0,
+      "denominator": 203.0,
       "numerator": 21.0,
-      "order_denom": 203,
+      "order_denom": 202,
       "order_num": 21,
       "vip_items": [
         {
@@ -1520,9 +1520,9 @@
     {
       "branch": "四川新跃",
       "store": "APR成都武侯吾悦",
-      "denominator": 6.0,
+      "denominator": 5.0,
       "numerator": 2.0,
-      "order_denom": 6,
+      "order_denom": 5,
       "order_num": 2,
       "vip_items": [
         {
@@ -2377,9 +2377,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京门头沟长安天街",
-      "denominator": 14.0,
+      "denominator": 13.0,
       "numerator": 1.0,
-      "order_denom": 14,
+      "order_denom": 13,
       "order_num": 1,
       "vip_items": [
         {
