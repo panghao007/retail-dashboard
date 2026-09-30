@@ -1,19 +1,19 @@
 {
   "date": "2026-09-27",
-  "generated": "2026-09-29 23:06",
+  "generated": "2026-09-30 23:28",
   "total": {
-    "denominator": 931.0,
+    "denominator": 930.0,
     "numerator": 322.0,
-    "order_denom": 925,
+    "order_denom": 924,
     "order_num": 322,
     "amount": 286838.0,
     "profit": 31441.0
   },
   "branches": {
     "北京中恒": {
-      "denominator": 279.0,
+      "denominator": 278.0,
       "numerator": 150.0,
-      "order_denom": 276,
+      "order_denom": 275,
       "order_num": 150,
       "vip_items": [
         {
@@ -1166,9 +1166,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京顺义华联",
-      "denominator": 18.0,
+      "denominator": 17.0,
       "numerator": 13.0,
-      "order_denom": 18,
+      "order_denom": 17,
       "order_num": 13,
       "vip_items": [
         {
