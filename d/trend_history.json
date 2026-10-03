@@ -2295,15 +2295,15 @@
     {
       "date": "2026-10-03",
       "invalid": 2,
-      "valid": 3216,
+      "valid": 3218,
       "orders_invalid": 60,
-      "orders_valid": 3276,
-      "total": 3218,
+      "orders_valid": 3278,
+      "total": 3220,
       "branches": {
         "上海爱飞": {
           "invalid": 24,
-          "valid": 543,
-          "total": 567
+          "valid": 544,
+          "total": 568
         },
         "北京飞航": {
           "invalid": 20,
@@ -2327,8 +2327,8 @@
         },
         "北京中恒": {
           "invalid": 0,
-          "valid": 326,
-          "total": 326
+          "valid": 327,
+          "total": 327
         }
       }
     }
