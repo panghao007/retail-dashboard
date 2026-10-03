@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-30",
+  "updated": "2026-10-03",
   "points": [
     {
       "date": "2026-08-01",
@@ -2289,6 +2289,46 @@
           "invalid": 9,
           "valid": 2410,
           "total": 2419
+        }
+      }
+    },
+    {
+      "date": "2026-10-03",
+      "invalid": 2,
+      "valid": 2817,
+      "orders_invalid": 52,
+      "orders_valid": 2866,
+      "total": 2819,
+      "branches": {
+        "上海爱飞": {
+          "invalid": 21,
+          "valid": 472,
+          "total": 493
+        },
+        "北京飞航": {
+          "invalid": 16,
+          "valid": 1209,
+          "total": 1225
+        },
+        "北京易联": {
+          "invalid": 14,
+          "valid": 487,
+          "total": 501
+        },
+        "四川新跃": {
+          "invalid": 1,
+          "valid": 162,
+          "total": 163
+        },
+        "北京中恒": {
+          "invalid": 0,
+          "valid": 267,
+          "total": 267
+        },
+        "福建易联": {
+          "invalid": 0,
+          "valid": 244,
+          "total": 244
         }
       }
     }
