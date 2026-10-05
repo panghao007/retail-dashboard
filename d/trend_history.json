@@ -2335,10 +2335,10 @@
     {
       "date": "2026-10-05",
       "invalid": 3,
-      "valid": 4679,
+      "valid": 4682,
       "orders_invalid": 84,
-      "orders_valid": 4769,
-      "total": 4682,
+      "orders_valid": 4772,
+      "total": 4685,
       "branches": {
         "上海爱飞": {
           "invalid": 35,
@@ -2357,8 +2357,8 @@
         },
         "福建易联": {
           "invalid": 1,
-          "valid": 429,
-          "total": 430
+          "valid": 432,
+          "total": 433
         },
         "四川新跃": {
           "invalid": 0,
