@@ -1,20 +1,20 @@
 {
   "date": "2026-10-04",
-  "generated": "2026-10-05 16:02",
+  "generated": "2026-10-05 23:00",
   "total": {
     "denominator": 995.0,
-    "numerator": 422.0,
+    "numerator": 421.0,
     "order_denom": 980,
-    "order_num": 422,
-    "amount": 346005.0,
-    "profit": 33421.0
+    "order_num": 421,
+    "amount": 345607.0,
+    "profit": 33321.0
   },
   "branches": {
     "北京中恒": {
       "denominator": 350.0,
-      "numerator": 209.0,
+      "numerator": 208.0,
       "order_denom": 347,
-      "order_num": 209,
+      "order_num": 208,
       "vip_items": [
         {
           "code": "vip-iphone1498",
@@ -31,17 +31,17 @@
           "profit": 100.0
         },
         {
-          "code": "vip-iphone398",
-          "name": "iphone会员套餐398",
-          "qty": 17.0,
-          "price": 398,
-          "profit": 100.0
-        },
-        {
           "code": "vip-iphone998",
           "name": "iPhone会员套餐998",
           "qty": 17.0,
           "price": 998,
+          "profit": 100.0
+        },
+        {
+          "code": "vip-iphone398",
+          "name": "iphone会员套餐398",
+          "qty": 16.0,
+          "price": 398,
           "profit": 100.0
         },
         {
@@ -66,8 +66,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 235482.0,
-      "profit": 20900.0
+      "amount": 235084.0,
+      "profit": 20800.0
     },
     "四川新跃": {
       "denominator": 157.0,
@@ -669,9 +669,9 @@
       "branch": "北京中恒",
       "store": "APR北京常营龙湖",
       "denominator": 20.0,
-      "numerator": 12.0,
+      "numerator": 11.0,
       "order_denom": 20,
-      "order_num": 12,
+      "order_num": 11,
       "vip_items": [
         {
           "code": "vip-iphone1498",
@@ -688,13 +688,6 @@
           "profit": 100.0
         },
         {
-          "code": "vip-iphone398",
-          "name": "iphone会员套餐398",
-          "qty": 1.0,
-          "price": 398,
-          "profit": 100.0
-        },
-        {
           "code": "vip-iphone698",
           "name": "iPhone会员套餐698",
           "qty": 1.0,
@@ -702,8 +695,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 16676.0,
-      "profit": 1200.0
+      "amount": 16278.0,
+      "profit": 1100.0
     },
     {
       "branch": "北京中恒",
