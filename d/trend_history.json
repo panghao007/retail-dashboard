@@ -2335,40 +2335,40 @@
     {
       "date": "2026-10-05",
       "invalid": 3,
-      "valid": 3999,
-      "orders_invalid": 75,
-      "orders_valid": 4075,
-      "total": 4002,
+      "valid": 4679,
+      "orders_invalid": 84,
+      "orders_valid": 4769,
+      "total": 4682,
       "branches": {
         "上海爱飞": {
-          "invalid": 31,
-          "valid": 659,
-          "total": 690
+          "invalid": 35,
+          "valid": 752,
+          "total": 787
         },
         "北京飞航": {
-          "invalid": 28,
-          "valid": 1619,
-          "total": 1647
+          "invalid": 34,
+          "valid": 1826,
+          "total": 1860
         },
         "北京易联": {
           "invalid": 14,
-          "valid": 692,
-          "total": 706
+          "valid": 828,
+          "total": 842
         },
         "福建易联": {
           "invalid": 1,
-          "valid": 360,
-          "total": 361
+          "valid": 429,
+          "total": 430
         },
         "四川新跃": {
-          "invalid": 1,
-          "valid": 262,
-          "total": 263
+          "invalid": 0,
+          "valid": 340,
+          "total": 340
         },
         "北京中恒": {
           "invalid": 0,
-          "valid": 449,
-          "total": 449
+          "valid": 559,
+          "total": 559
         }
       }
     }
