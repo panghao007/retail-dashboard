@@ -80,6 +80,24 @@
 .risk-tag.aged{background:rgba(175,82,222,0.12);color:#af52de}
 .risk-tag.lowConv{background:rgba(255,59,48,0.1);color:#ff3b30}
 .risk-tag.highRefund{background:rgba(0,113,227,0.1);color:#0071E3}
+/* 维度联动明细（门店↔销售员↔号码 互相下钻，2026-10-07） */
+.rel-sec{margin:14px 0 2px}
+.rel-title{font-size:12px;font-weight:600;color:#1d1d1f;margin:0 0 6px}
+.rel-item{display:flex;align-items:baseline;gap:8px;padding:8px 10px;border-radius:9px;background:rgba(0,0,0,0.03);margin-bottom:5px;cursor:pointer}
+.rel-item:active{background:rgba(0,113,227,0.09)}
+.rel-name{flex:1;font-size:12.5px;color:#1d1d1f;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rel-cnt{font-size:11px;color:#86868b;font-variant-numeric:tabular-nums;white-space:nowrap}
+.rel-net{font-size:12.5px;font-weight:700;color:#0071E3;font-variant-numeric:tabular-nums;min-width:54px;text-align:right;white-space:nowrap}
+.rel-net.zero{color:#b0b0b5;font-weight:400}
+.rel-more{font-size:11px;color:#86868b;padding:3px 2px 0}
+.rel-note-tip{font-size:10.5px;color:#a1a1a6;margin-top:6px;line-height:1.55}
+.rel-empty{font-size:11.5px;color:#86868b;padding:4px 2px}
+.rel-chips{display:flex;flex-wrap:wrap;gap:5px}
+.rel-chip{font-size:11px;color:#515154;background:rgba(0,0,0,0.04);border-radius:6px;padding:3px 7px;line-height:1.35}
+.rel-chip b{color:#0071E3;font-weight:600}
+.olist td.seller,.olist th.seller{text-align:left}
+.olist td.seller{color:#515154;max-width:74px;overflow:hidden;text-overflow:ellipsis}
+.dim-closed{font-size:11px;color:#86868b;margin:4px 0 0;line-height:1.6}
 /* 预订单数据加密门（输密码本地解密后渲染） */
 .po-gate{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;background:rgba(245,245,247,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .po-gate-box{width:84%;max-width:340px;background:#fff;border-radius:20px;padding:30px 22px;box-shadow:0 12px 40px rgba(0,0,0,.16);text-align:center}
@@ -173,6 +191,7 @@ let _br='';        // 当前选中的分公司（'' = 全部）
 let _PD=null;      // 维度风险洞察快照（BUILD 时填充）：{store,seller,phone}
 let _dim='store';  // 当前维度：store 门店 / seller 销售员 / phone 号码
 let _drisk='';     // 当前异常筛选：'' = 全部，否则 freq/aged/lowConv/highRefund
+let _pKey='', _pDash=null;   // 当前周期 key / 整包数据（维度联动抽屉按周期过滤日期用，BUILD 时填充）
 window.BUILD = function(period, dash, active){
   const periodName=PERIOD_LABEL[active]||'';
   const ds=period.dates||[];
@@ -537,7 +556,8 @@ function renderDim(){
       +`<br><span class="k">转效率/退订率按金额口径（分母=实收）；频繁阈值：`
       +(_dim==='phone'?('≥'+d.freqTh+' 次'):('≥'+d.freqTh+' 单（中位数 '+d.median+' × 3）'))
       +`；长期门槛 ¥1万、转效率 <50%、退订率 >30%（均要求实收≥¥1万）</span>`
-      +(_dim==='phone'?'<br><span class="k">号码维度仅列「有风险标记 / 有长期沉淀 / 大额」的号码，完整号码清单见下方「会员充值未核销」卡。</span>':'');
+      +(_dim==='phone'?'<br><span class="k">号码维度仅列「有风险标记 / 有长期沉淀 / 大额」的号码，完整号码清单见下方「会员充值未核销」卡。</span>':'')
+      +(_dim==='store'?'<br><span class="k">已闭店门店已在数据管线侧剔除，不在本表展示。</span>':'');
   }
   const list=dimFiltered()||[];
   const top=list.slice(0,DIM_TOP);
@@ -561,10 +581,34 @@ function openDimDrawer(i){
       (list.length?`<div>${list.map((r,k)=>dimRowHtml(r,k)).join('')}</div>`:'<div class="drawer-empty">暂无数据</div>')+note);
     return;
   }
-  const r=list[i];
-  const nm=(_dim==='phone')?maskPhone(r.name):r.name;
-  showDrawer(nm, DIM_LABEL[_dim]+(r.branch?(' · '+r.branch):'')+(r.onlyAged?' · 本周期无单':'')+(r.stores&&r.stores.length?(' · 涉及 '+r.stores.length+' 家门店'):''),
-    `<div class="drawer-sum">
+  openDimRow(_dim, list[i]);
+}
+/* 联动明细：门店抽屉 → 销售员 + 手机号；销售员抽屉 → 门店 + 手机号（号码抽屉见 renderPhoneOrders） */
+function relSections(kind,name,idx){
+  const tip=`<div class="rel-note-tip">口径：按「${esc(_periodLabel())}」逐笔预订单反查，金额为净未消费（实收−已转销−已退）。`
+    +`因 ERP 部分单未登记会员手机号，这类单计入「门店/销售员」的单量与金额，但不进入「手机号」列表。</div>`;
+  if(kind==='store'){
+    const e=idx.byStore[name];
+    if(!e) return '<div class="rel-sec"><div class="rel-empty">本周期该门店无预订单，无法反查销售员/号码。</div></div>';
+    return relItemsHtml('销售员',_relList(e.sellers),'seller','单')
+         + relItemsHtml('手机号',_relList(e.phones),'phone','单')+tip;
+  }
+  if(kind==='seller'){
+    const e=idx.bySeller[name];
+    if(!e) return '<div class="rel-sec"><div class="rel-empty">本周期该销售员无预订单，无法反查门店/号码。</div></div>';
+    return relItemsHtml('门店',_relList(e.stores),'store','单')
+         + relItemsHtml('手机号',_relList(e.phones),'phone','单')+tip;
+  }
+  return '';
+}
+function _periodLabel(){ return (typeof PERIOD_LABEL!=='undefined' && PERIOD_LABEL[_pKey])||_pKey||''; }
+function openDimRow(kind, r){
+  if(kind==='phone'){ openPhoneDrawer(r.name); return; }
+  const nm=r.name;
+  const note=`<div class="drawer-note">转效率 = 已转销金额 ÷ 实收金额；退订率 = 已退金额 ÷ 实收金额（金额口径）。`
+    +`<br>长期未转销未退 = 单据日期距今 &gt;90 天且净额(实收−已转销−已退)&gt;0 的净额合计（全量时点口径，不随周期切换）。`
+    +`<br>异常门槛：长期≥¥1万；实收≥¥1万且转效率&lt;50%；实收≥¥1万且退订率&gt;30%。</div>`;
+  const head=`<div class="drawer-sum">
        <div class="cell"><b>${fmt(r.count)}</b><span>单量</span></div>
        <div class="cell"><b>${wan(r.recv)}</b><span>实收</span></div>
        <div class="cell"><b>${wan(r.verified)}</b><span>已转销</span></div>
@@ -576,13 +620,124 @@ function openDimDrawer(i){
        <div class="cell"><b>${r.recv>0?dimPct(r.refundRate):'—'}</b><span>退订率</span></div>
        <div class="cell"><b style="color:#af52de">${wan(r.aged)}</b><span>长期未转销未退</span></div>
        <div class="cell"><b>${fmt(r.agedCnt)}</b><span>长期笔数</span></div>
-     </div>`
-    +((r.risk||[]).length?`<div class="dim-item-risk" style="margin-top:10px">${r.risk.map(k=>`<span class="risk-tag ${k}">${DIM_RISK_LABEL[k]}</span>`).join('')}</div>`:'')
-    +(r.stores&&r.stores.length?`<div class="drawer-note">涉及门店（${r.stores.length} 家）：${r.stores.slice(0,12).map(esc).join('、')}${r.stores.length>12?' 等':''}</div>`:'')
-    +note);
+     </div>`;
+  const tail=((r.risk||[]).length?`<div class="dim-item-risk" style="margin-top:10px">${r.risk.map(k=>`<span class="risk-tag ${k}">${DIM_RISK_LABEL[k]}</span>`).join('')}</div>`:'')
+    +(r.noRow?`<div class="drawer-note">该主体在本周期维度列表中无独立行（未达展示门槛或本周期无单），上方为联动明细聚合值。</div>`:'')
+    +(r.stores&&r.stores.length?`<div class="drawer-note">本周期涉及门店（${r.stores.length} 家）：${r.stores.slice(0,12).map(esc).join('、')}${r.stores.length>12?' 等':''}</div>`:'')
+    +note;
+  const sub=DIM_LABEL[kind]+(r.branch?(' · '+r.branch):'')+(r.onlyAged?' · 本周期无单':'')
+    +' · '+_periodLabel();
+  showDrawer(nm, sub, head+'<div class="drawer-loading">联动明细加载中…</div>'+tail);
+  const tk=++_relToken;
+  relIndex().then(function(idx){
+    if(tk!==_relToken) return;                      // 已被下一次点击顶替 → 丢弃过期结果
+    const body=document.getElementById('dwBody'); if(!body) return;
+    body.innerHTML=head+relSections(kind,nm,idx)+tail;
+  });
 }
 /* BUILD 返回字符串、DOM 插入后才可操作 → 用 AFTER_BUILD 钩子渲染当前档列表 */
-window.AFTER_BUILD=function(){ if(_PB) renderBucketList(_bk); renderDim(); };
+window.AFTER_BUILD=function(period, dash, active){
+  if(active) _pKey=active;      // 当前周期 key（维度联动按周期过滤日期）
+  if(dash) _pDash=dash;         // 整包数据（取该周期的日期集合）
+  if(_PB) renderBucketList(_bk);
+  renderDim();
+};
+/* ---------- 维度联动：门店 ↔ 销售员 ↔ 号码（2026-10-07） ----------
+   数据源 = phone_orders.json 逐笔明细（日期/门店/销售员/实收/核销/退），按当前周期过滤日期后反查，
+   一份明细即可同时得出三种关系，且与卡片口径（当前周期）严格一致。
+   口径：仅覆盖「有会员手机号」的预订单（实测约占 96.7%，无手机号单不进联动列表）；
+        金额为净未消费（实收−已转销−已退），按净未消费降序、最多列 REL_TOP 条。 */
+const REL_TOP=30;
+let _relIdx=null, _relIdxKey='', _relIdxLoading=null, _relToken=0;
+function dimDateSet(){
+  if(_pKey==='all') return null;                 // 「全部」周期 → 不按日期过滤
+  const p=(_pDash&&_pDash.periods&&_pDash.periods[_pKey])||null;
+  const ds=(p&&p.dates)||[];
+  if(!ds.length || ds.length>40) return null;    // 兜底：拿不到周期日期集就不过滤
+  return new Set(ds.map(norm));
+}
+function _relAdd(m,k,net){ const e=m[k]||(m[k]={c:0,net:0}); e.c++; e.net+=net; }
+function _relList(m){ return Object.keys(m).map(k=>({k:k, c:m[k].c, net:m[k].net})).sort((a,b)=>b.net-a.net); }
+function buildRelIndex(orders, dateSet){
+  const byStore={}, bySeller={}, byPhone={};
+  for(const ph in orders){
+    const arr=orders[ph]||[];
+    for(let i=0;i<arr.length;i++){
+      const o=arr[i];
+      if(dateSet && !dateSet.has(o.d)) continue;
+      const net=(+o.r||0)-(+o.v||0)-(+o.f||0);
+      const s=o.s||'', l=o.l||'';
+      // 注：ph 为空串 = 「无会员手机号」的预订单（服务端挂在 "" 键下）。
+      //     这类单必须计入门店/销售员的单量与金额（否则门店抽屉金额远小于卡片值），
+      //     但绝不能当作一个"号码"出现在号码维度里。
+      if(s){
+        const bs=byStore[s]||(byStore[s]={cnt:0,net:0,sellers:{},phones:{}});
+        bs.cnt++; bs.net+=net;
+        if(l) _relAdd(bs.sellers,l,net);
+        if(ph) _relAdd(bs.phones,ph,net);
+      }
+      if(l){
+        const bl=bySeller[l]||(bySeller[l]={cnt:0,net:0,stores:{},phones:{}});
+        bl.cnt++; bl.net+=net;
+        if(s) _relAdd(bl.stores,s,net);
+        if(ph) _relAdd(bl.phones,ph,net);
+      }
+      if(ph){
+        const bp=byPhone[ph]||(byPhone[ph]={stores:{},sellers:{}});
+        if(s) _relAdd(bp.stores,s,net);
+        if(l) _relAdd(bp.sellers,l,net);
+      }
+    }
+  }
+  return {byStore:byStore, bySeller:bySeller, byPhone:byPhone};
+}
+function relIndex(){
+  const ds=dimDateSet();
+  const key=(_pKey||'-')+'#'+(ds?ds.size:'all');
+  if(_relIdx && _relIdxKey===key) return Promise.resolve(_relIdx);
+  if(_relIdxLoading) return _relIdxLoading;
+  _relIdxLoading=loadPhoneOrders().then(function(orders){
+    _relIdx=buildRelIndex(orders||{}, ds); _relIdxKey=key; _relIdxLoading=null; return _relIdx;
+  }).catch(function(){ _relIdxLoading=null; return {byStore:{},bySeller:{},byPhone:{}}; });
+  return _relIdxLoading;
+}
+/* 联动列表：kind 决定点击后钻取到哪个抽屉（seller→销售员 / phone→号码 / store→门店） */
+function relClick(kind,k){ return kind+'|'+encodeURIComponent(String(k)); }
+function relItemsHtml(title,arr,kind,unit){
+  if(!arr||!arr.length) return `<div class="rel-sec"><div class="rel-title">${esc(title)}</div><div class="rel-empty">本周期无数据</div></div>`;
+  const show=arr.slice(0,REL_TOP);
+  const rows=show.map(function(x){
+    const nm=(kind==='phone')?maskPhone(x.k):x.k;
+    return `<div class="rel-item" onclick="relGo('${relClick(kind,x.k)}')">`
+      +`<span class="rel-name">${esc(nm)}</span>`
+      +`<span class="rel-cnt">${fmt(x.c)}${esc(unit)}</span>`
+      +`<span class="rel-net${x.net>0?'':' zero'}">${wan(x.net)}</span></div>`;
+  }).join('');
+  const more=(arr.length>show.length)
+    ? `<div class="rel-more">… 共 ${fmt(arr.length)} ${esc(unit)}，此处显示净未消费 TOP${REL_TOP}</div>` : '';
+  return `<div class="rel-sec"><div class="rel-title">${esc(title)}（${fmt(arr.length)}）</div>${rows}${more}</div>`;
+}
+function relGo(token){
+  if(!token) return;
+  const i=token.indexOf('|'); if(i<0) return;
+  const kind=token.slice(0,i);
+  let k=''; try{ k=decodeURIComponent(token.slice(i+1)); }catch(e){ k=token.slice(i+1); }
+  if(kind==='phone'){ openPhoneDrawer(k); return; }
+  if(kind==='seller'){ openSellerDrawer(k); return; }
+  openStoreDrawer(k);
+}
+/* 按名字打开门店/销售员抽屉（联动列表入口）：优先复用维度列表里的行数据，找不到则现取联动聚合值 */
+function openStoreDrawer(name){ openNamedDimDrawer('store',name); }
+function openSellerDrawer(name){ openNamedDimDrawer('seller',name); }
+function openNamedDimDrawer(kind,name){
+  const rows=(_PD&&_PD[kind]&&_PD[kind].rows)||[];
+  for(let i=0;i<rows.length;i++) if(rows[i].name===name){ openDimRow(kind,rows[i]); return; }
+  relIndex().then(function(idx){
+    const e=(kind==='store'?idx.byStore:idx.bySeller)[name]||null;
+    openDimRow(kind,{name:name, branch:'', count:e?e.cnt:0, recv:0, verified:0, refund:0, net:e?e.net:0,
+                     aged:0, agedCnt:0, risk:[], noRow:true});
+  });
+}
 let _poCache=null, _poLoading=null;
 async function loadPhoneOrders(){
   if(_poCache) return _poCache;
@@ -613,15 +768,23 @@ function renderPhoneOrders(phone, arr){
   const body=document.getElementById('dwBody');
   if(!arr.length){ body.innerHTML=backRow()+'<div class="drawer-empty">该手机号在导出中无有效预订单明细</div>'; return; }
   let R=0,V=0,F=0;
+  const stMap={}, slMap={};   // 号码维度 → 涉及门店 / 涉及销售员（2026-10-07 逄总要求）
   const rows=arr.map(o=>{
     const r=Number(o.r)||0, v=Number(o.v)||0, f=Number(o.f)||0, net=r-v-f;
     R+=r; V+=v; F+=f;
     const ds=String(o.d||'').replace(/^(\d{4})(\d{2})(\d{2})$/,'$1-$2-$3');
-    return `<tr><td>${ds}</td><td class="store" title="${esc(o.s)}">${esc(o.s)}</td>`
+    const sn=String(o.s||''), sl=String(o.l||'');
+    if(sn) _relAdd(stMap,sn,net);
+    if(sl) _relAdd(slMap,sl,net);
+    return `<tr><td>${ds}</td><td class="store" title="${esc(sn)}">${esc(sn)}</td>`
+      +`<td class="seller" title="${esc(sl)}">${esc(sl||'—')}</td>`
       +`<td>${money(r)}</td><td>${money(v)}</td><td>${money(f)}</td>`
       +`<td class="net${net>0?'':' zero'}">${money(net)}</td></tr>`;
   }).join('');
   const net=R-V-F;
+  const stArr=_relList(stMap), slArr=_relList(slMap);
+  const stChips=stArr.slice(0,6).map(x=>`<span class="rel-chip" onclick="openStoreDrawer(${esc(JSON.stringify(x.k))})">${esc(x.k)} <b>${wan(x.net)}</b></span>`).join('');
+  const slChips=slArr.slice(0,6).map(x=>`<span class="rel-chip" onclick="openSellerDrawer(${esc(JSON.stringify(x.k))})">${esc(x.k)} <b>${wan(x.net)}</b></span>`).join('');
   body.innerHTML=backRow()+`
     <div class="drawer-sum">
       <div class="cell"><b>${fmt(arr.length)}</b><span>笔数</span></div>
@@ -630,8 +793,16 @@ function renderPhoneOrders(phone, arr){
       <div class="cell"><b>${money(F)}</b><span>已退</span></div>
       <div class="cell"><b style="color:#0071E3">${money(net)}</b><span>净未消费</span></div>
     </div>
-    <table class="olist"><thead><tr><th>日期</th><th class="store">门店</th><th>实收</th><th>核销</th><th>退</th><th>净额</th></tr></thead><tbody>${rows}</tbody></table>
-    <div class="drawer-note">净未消费 = 实收 − 已核销(已转销) − 已退，逐笔口径已按单据编号去重。金额单位：元。</div>`;
+    <div class="rel-sec">
+      <div class="rel-title">涉及门店（${fmt(stArr.length)} 家）· 金额为净未消费</div>
+      <div class="rel-chips">${stChips||'<span class="rel-empty">—</span>'}${stArr.length>6?`<span class="rel-chip">等 ${fmt(stArr.length)} 家</span>`:''}</div>
+    </div>
+    <div class="rel-sec">
+      <div class="rel-title">涉及销售员（${fmt(slArr.length)} 位）· 金额为净未消费</div>
+      <div class="rel-chips">${slChips||'<span class="rel-empty">—</span>'}${slArr.length>6?`<span class="rel-chip">等 ${fmt(slArr.length)} 位</span>`:''}</div>
+    </div>
+    <table class="olist"><thead><tr><th>日期</th><th class="store">门店</th><th class="seller">销售员</th><th>实收</th><th>核销</th><th>退</th><th>净额</th></tr></thead><tbody>${rows}</tbody></table>
+    <div class="drawer-note">净未消费 = 实收 − 已核销(已转销) − 已退，逐笔口径已按单据编号去重。金额单位：元。门店/销售员为全量逐笔口径（该号历史全部预订单）。</div>`;
 }
 </script>
 </body>
