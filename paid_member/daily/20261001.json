@@ -1,13 +1,13 @@
 {
   "date": "2026-10-01",
-  "generated": "2026-10-05 23:06",
+  "generated": "2026-10-07 16:16",
   "total": {
-    "denominator": 2411.0,
-    "numerator": 854.0,
-    "order_denom": 2359,
-    "order_num": 850,
-    "amount": 721277.0,
-    "profit": 69485.0
+    "denominator": 2410.0,
+    "numerator": 853.0,
+    "order_denom": 2358,
+    "order_num": 849,
+    "amount": 720778.0,
+    "profit": 69254.0
   },
   "branches": {
     "北京中恒": {
@@ -115,10 +115,10 @@
       "profit": 15100.0
     },
     "北京易联": {
-      "denominator": 728.0,
-      "numerator": 156.0,
-      "order_denom": 714,
-      "order_num": 152,
+      "denominator": 727.0,
+      "numerator": 155.0,
+      "order_denom": 713,
+      "order_num": 151,
       "vip_items": [
         {
           "code": "BJYLVIP0006",
@@ -130,7 +130,7 @@
         {
           "code": "BJYLVIP0004",
           "name": "499元套包",
-          "qty": 27.0,
+          "qty": 26.0,
           "price": 499,
           "profit": 231.0
         },
@@ -149,8 +149,8 @@
           "profit": 0.0
         }
       ],
-      "amount": 58044.0,
-      "profit": 6237.0
+      "amount": 57545.0,
+      "profit": 6006.0
     },
     "福建易联": {
       "denominator": 230.0,
@@ -2758,9 +2758,9 @@
       "branch": "北京易联",
       "store": "华为北京旧宫万科",
       "denominator": 41.0,
-      "numerator": 19.0,
+      "numerator": 18.0,
       "order_denom": 41,
-      "order_num": 19,
+      "order_num": 18,
       "vip_items": [
         {
           "code": "BJYLVIP0006",
@@ -2772,20 +2772,20 @@
         {
           "code": "BJYLVIP0004",
           "name": "499元套包",
-          "qty": 9.0,
+          "qty": 8.0,
           "price": 499,
           "profit": 231.0
         }
       ],
-      "amount": 7481.0,
-      "profit": 2079.0
+      "amount": 6982.0,
+      "profit": 1848.0
     },
     {
       "branch": "北京易联",
       "store": "华为北京昌平政府街",
-      "denominator": 16.0,
+      "denominator": 15.0,
       "numerator": 0.0,
-      "order_denom": 16,
+      "order_denom": 15,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
