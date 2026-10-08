@@ -40,6 +40,11 @@
     <a class="dl-btn disabled" id="dl-validity" href="javascript:void(0)" data-page-node-id="SlihDfpjyZCVEGv51pC3Wd">⬇ 会员有效性分析.xlsx</a>
     <a class="dl-btn disabled" id="dl-cashier-csv" href="javascript:void(0)" data-page-node-id="UhYbvxo6GsX3nr61F1XdsG">⬇ 合规收银不合规明细 CSV</a>
   </div>
+  <div class="dl-sub" data-page-node-id="dlSubPrev">上月全月（每月 1 日自动归档，保留上月最后一天数据）</div>
+  <div class="dl-row" data-page-node-id="dlRowPrev">
+    <a class="dl-btn disabled" id="dl-prev-validity" href="javascript:void(0)" data-page-node-id="dlPrevValidity">⬇ 会员有效性分析(上月全月).xlsx</a>
+    <a class="dl-btn disabled" id="dl-prev-cashier" href="javascript:void(0)" data-page-node-id="dlPrevCashier">⬇ 合规收银不合规明细(上月全月).xlsx</a>
+  </div>
 </div>
 <div class="footer" data-page-node-id="PnrPSIpZ5L6UqTHZKIArLb">
   内含会员与门店经营敏感数据，请勿外传<br data-page-node-id="w3BORbRDLX738vP6S46gf4">
@@ -262,7 +267,34 @@ async function poIndexUnlock(){
   if(inp) inp.addEventListener('keydown', ev=>{ if(ev.key==='Enter') poIndexUnlock(); });
 })();
 
+/* 上月全月归档下载：每月 1 日由 monthly_rollup.py 自动生成并写入 monthly_archive/manifest.json。
+   移动端 loader 直连 PC 源，路径须带 ../ 前缀。 */
+function updatePrevMonthDownloads(){
+  fetch("../monthly_archive/manifest.json?_="+Date.now())
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(mf){
+      if(!mf || !mf.months || !mf.latest) return;
+      var mo=mf.latest, e=mf.months[mo]||{};
+      var vEl=document.getElementById("dl-prev-validity");
+      var cEl=document.getElementById("dl-prev-cashier");
+      if(vEl && e.validity && e.validity.file){
+        vEl.href="../monthly_archive/"+encodeURIComponent(e.validity.file);
+        vEl.setAttribute("download", e.validity.file);
+        vEl.textContent="⬇ 会员有效性分析("+mo+" 全月).xlsx";
+        vEl.classList.remove("disabled");
+      }
+      if(cEl && e.cashier && e.cashier.file){
+        cEl.href="../monthly_archive/"+encodeURIComponent(e.cashier.file);
+        cEl.setAttribute("download", e.cashier.file);
+        cEl.textContent="⬇ 合规收银不合规明细("+mo+" 全月).xlsx";
+        cEl.classList.remove("disabled");
+      }
+    })
+    .catch(function(){ /* 归档未就绪：保持原样，不报错 */ });
+}
+
 bootIndex();
+updatePrevMonthDownloads();
 </script>
 </body>
 </html>

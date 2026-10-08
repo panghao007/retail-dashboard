@@ -70,6 +70,7 @@ body{
 .foot{margin-top:36px;text-align:center;color:#e02424;font-weight:700;font-size:13px;letter-spacing:.5px;}
 .dl-section{margin-top:30px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:18px 20px;}
 .dl-title{font-size:13px;font-weight:700;color:#9fb2c4;margin-bottom:12px;letter-spacing:1px;}
+.dl-sub{font-size:11px;font-weight:700;color:#8a9bb0;margin:14px 0 8px;letter-spacing:1px;}
 .dl-row{display:flex;gap:12px;flex-wrap:wrap;}
 .dl-btn{font-size:13.5px;font-weight:700;color:var(--cyan);text-decoration:none;background:rgba(26,171,203,.12);padding:9px 16px;border-radius:10px;transition:all .16s;border:1px solid rgba(26,171,203,.25);}
 .dl-btn:hover{background:var(--cyan);color:#06121f;}
@@ -145,6 +146,11 @@ body{
     <div class="dl-row">
       <a class="dl-btn" id="dl-validity" href="#">⬇ 会员有效性分析.xlsx</a>
       <a class="dl-btn" id="dl-cashier-csv" href="javascript:void(0)">⬇ 合规收银不合规明细 CSV</a>
+    </div>
+    <div class="dl-sub">上月全月（每月 1 日自动归档，保留上月最后一天数据）</div>
+    <div class="dl-row">
+      <a class="dl-btn" id="dl-prev-validity" href="javascript:void(0)">⬇ 会员有效性分析(上月全月).xlsx</a>
+      <a class="dl-btn" id="dl-prev-cashier" href="javascript:void(0)">⬇ 合规收银不合规明细(上月全月).xlsx</a>
     </div>
   </div>
   <div class="foot">内含会员与门店经营敏感数据，请勿外传</div>
@@ -714,6 +720,30 @@ function downloadCashierCSV(){
   }).catch(function(){ alert("明细加载失败"); });
 }
 document.getElementById("dl-cashier-csv").addEventListener("click", downloadCashierCSV);
+
+/* ── 上月全月归档下载（monthly_archive/manifest.json 驱动，永远指向最新归档月） ── */
+function updatePrevMonthDownloads(){
+  fetch("monthly_archive/manifest.json?_="+Date.now())
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(mf){
+      if(!mf || !mf.months || !mf.latest) return;
+      var mo=mf.latest, e=mf.months[mo]||{};
+      var vEl=document.getElementById("dl-prev-validity");
+      var cEl=document.getElementById("dl-prev-cashier");
+      if(vEl && e.validity && e.validity.file){
+        vEl.href="monthly_archive/"+encodeURIComponent(e.validity.file);
+        vEl.setAttribute("download", e.validity.file);
+        vEl.textContent="⬇ 会员有效性分析("+mo+" 全月).xlsx";
+      }
+      if(cEl && e.cashier && e.cashier.file){
+        cEl.href="monthly_archive/"+encodeURIComponent(e.cashier.file);
+        cEl.setAttribute("download", e.cashier.file);
+        cEl.textContent="⬇ 合规收银不合规明细("+mo+" 全月).xlsx";
+      }
+    })
+    .catch(function(){ /* 归档未就绪：保持原样，不报错 */ });
+}
+updatePrevMonthDownloads();
 
 buildCards();
 updateHeader();
