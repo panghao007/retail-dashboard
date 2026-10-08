@@ -1,19 +1,19 @@
 {
   "date": "2026-10-02",
-  "generated": "2026-10-07 23:05",
+  "generated": "2026-10-08 16:02",
   "total": {
-    "denominator": 1445.0,
+    "denominator": 1443.0,
     "numerator": 604.0,
-    "order_denom": 1430,
+    "order_denom": 1428,
     "order_num": 601,
     "amount": 514678.0,
     "profit": 49495.0
   },
   "branches": {
     "北京中恒": {
-      "denominator": 551.0,
+      "denominator": 550.0,
       "numerator": 321.0,
-      "order_denom": 542,
+      "order_denom": 541,
       "order_num": 321,
       "vip_items": [
         {
@@ -122,9 +122,9 @@
       "profit": 9700.0
     },
     "北京易联": {
-      "denominator": 300.0,
+      "denominator": 299.0,
       "numerator": 83.0,
-      "order_denom": 299,
+      "order_denom": 298,
       "order_num": 80,
       "vip_items": [
         {
@@ -1404,9 +1404,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京长安龙湖",
-      "denominator": 20.0,
+      "denominator": 19.0,
       "numerator": 9.0,
-      "order_denom": 20,
+      "order_denom": 19,
       "order_num": 9,
       "vip_items": [
         {
@@ -2228,9 +2228,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京丰台鑫嘉汇",
-      "denominator": 5.0,
+      "denominator": 4.0,
       "numerator": 0.0,
-      "order_denom": 5,
+      "order_denom": 4,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,

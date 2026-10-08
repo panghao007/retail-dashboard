@@ -1,12 +1,12 @@
 {
   "date": "2026-10-03",
-  "generated": "2026-10-07 23:05",
+  "generated": "2026-10-08 16:02",
   "total": {
     "denominator": 1100.0,
-    "numerator": 492.0,
+    "numerator": 490.0,
     "order_denom": 1092,
-    "order_num": 492,
-    "amount": 386695.0,
+    "order_num": 490,
+    "amount": 386097.0,
     "profit": 39725.0
   },
   "branches": {
@@ -116,14 +116,14 @@
     },
     "北京易联": {
       "denominator": 243.0,
-      "numerator": 77.0,
+      "numerator": 75.0,
       "order_denom": 243,
-      "order_num": 77,
+      "order_num": 75,
       "vip_items": [
         {
           "code": "BJYLVIP0006",
           "name": "299元套包",
-          "qty": 58.0,
+          "qty": 56.0,
           "price": 299,
           "profit": 0.0
         },
@@ -149,7 +149,7 @@
           "profit": 0.0
         }
       ],
-      "amount": 29123.0,
+      "amount": 28525.0,
       "profit": 3003.0
     },
     "福建易联": {
@@ -2202,20 +2202,12 @@
       "branch": "北京易联",
       "store": "华为北京丽泽龙湖",
       "denominator": 0.0,
-      "numerator": 2.0,
+      "numerator": 0.0,
       "order_denom": 0,
-      "order_num": 2,
-      "vip_items": [
-        {
-          "code": "BJYLVIP0006",
-          "name": "299元套包",
-          "qty": 2.0,
-          "price": 299,
-          "profit": 0.0
-        }
-      ],
-      "amount": 598.0,
-      "profit": 0.0
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
     },
     {
       "branch": "北京易联",
