@@ -1,25 +1,25 @@
 {
   "date": "2026-10-06",
-  "generated": "2026-10-10 16:03",
+  "generated": "2026-10-10 23:00",
   "total": {
-    "denominator": 947.0,
-    "numerator": 392.0,
-    "order_denom": 937,
-    "order_num": 392,
-    "amount": 309046.0,
-    "profit": 31621.0
+    "denominator": 944.0,
+    "numerator": 391.0,
+    "order_denom": 934,
+    "order_num": 391,
+    "amount": 307548.0,
+    "profit": 31521.0
   },
   "branches": {
     "北京中恒": {
-      "denominator": 329.0,
-      "numerator": 189.0,
-      "order_denom": 324,
-      "order_num": 189,
+      "denominator": 326.0,
+      "numerator": 188.0,
+      "order_denom": 321,
+      "order_num": 188,
       "vip_items": [
         {
           "code": "vip-iphone1498",
           "name": "iphone会员套餐1498",
-          "qty": 75.0,
+          "qty": 74.0,
           "price": 1498,
           "profit": 100.0
         },
@@ -66,8 +66,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 203022.0,
-      "profit": 18900.0
+      "amount": 201524.0,
+      "profit": 18800.0
     },
     "四川新跃": {
       "denominator": 172.0,
@@ -441,9 +441,9 @@
       "branch": "北京中恒",
       "store": "APR北京合生汇",
       "denominator": 21.0,
-      "numerator": 13.0,
+      "numerator": 12.0,
       "order_denom": 21,
-      "order_num": 13,
+      "order_num": 12,
       "vip_items": [
         {
           "code": "vip-iphone698",
@@ -455,7 +455,7 @@
         {
           "code": "vip-iphone1498",
           "name": "iphone会员套餐1498",
-          "qty": 10.0,
+          "qty": 9.0,
           "price": 1498,
           "profit": 100.0
         },
@@ -467,8 +467,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 17374.0,
-      "profit": 1300.0
+      "amount": 15876.0,
+      "profit": 1200.0
     },
     {
       "branch": "北京中恒",
@@ -866,9 +866,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京旧宫万科",
-      "denominator": 10.0,
+      "denominator": 9.0,
       "numerator": 4.0,
-      "order_denom": 10,
+      "order_denom": 9,
       "order_num": 4,
       "vip_items": [
         {
@@ -1010,9 +1010,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京海淀大悦城",
-      "denominator": 7.0,
+      "denominator": 6.0,
       "numerator": 3.0,
-      "order_denom": 7,
+      "order_denom": 6,
       "order_num": 3,
       "vip_items": [
         {
@@ -1036,9 +1036,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京牡丹园翠微",
-      "denominator": 6.0,
+      "denominator": 5.0,
       "numerator": 4.0,
-      "order_denom": 6,
+      "order_denom": 5,
       "order_num": 4,
       "vip_items": [
         {

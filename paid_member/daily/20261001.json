@@ -1,6 +1,6 @@
 {
   "date": "2026-10-01",
-  "generated": "2026-10-10 16:03",
+  "generated": "2026-10-10 23:00",
   "total": {
     "denominator": 2404.0,
     "numerator": 853.0,
@@ -115,9 +115,9 @@
       "profit": 15100.0
     },
     "北京易联": {
-      "denominator": 725.0,
+      "denominator": 724.0,
       "numerator": 155.0,
-      "order_denom": 711,
+      "order_denom": 710,
       "order_num": 151,
       "vip_items": [
         {
@@ -184,9 +184,9 @@
       "profit": 1099.0
     },
     "北京飞航": {
-      "denominator": 308.0,
+      "denominator": 309.0,
       "numerator": 57.0,
-      "order_denom": 308,
+      "order_denom": 309,
       "order_num": 57,
       "vip_items": [
         {
@@ -2909,9 +2909,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京牡丹园翠微",
-      "denominator": 47.0,
+      "denominator": 46.0,
       "numerator": 6.0,
-      "order_denom": 46,
+      "order_denom": 45,
       "order_num": 6,
       "vip_items": [
         {
@@ -4118,9 +4118,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI大疆哈苏北京大兴机场概念店",
-      "denominator": 16.0,
+      "denominator": 17.0,
       "numerator": 1.0,
-      "order_denom": 16,
+      "order_denom": 17,
       "order_num": 1,
       "vip_items": [
         {
