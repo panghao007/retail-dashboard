@@ -2495,20 +2495,20 @@
     {
       "date": "2026-10-10",
       "invalid": 7,
-      "valid": 7430,
+      "valid": 7432,
       "orders_invalid": 175,
-      "orders_valid": 7603,
-      "total": 7437,
+      "orders_valid": 7605,
+      "total": 7439,
       "branches": {
         "北京飞航": {
           "invalid": 91,
-          "valid": 2648,
-          "total": 2739
+          "valid": 2649,
+          "total": 2740
         },
         "上海爱飞": {
           "invalid": 48,
-          "valid": 1160,
-          "total": 1208
+          "valid": 1161,
+          "total": 1209
         },
         "北京易联": {
           "invalid": 25,
