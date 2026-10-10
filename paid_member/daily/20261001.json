@@ -1,10 +1,10 @@
 {
   "date": "2026-10-01",
-  "generated": "2026-10-09 23:05",
+  "generated": "2026-10-10 16:03",
   "total": {
-    "denominator": 2405.0,
+    "denominator": 2404.0,
     "numerator": 853.0,
-    "order_denom": 2353,
+    "order_denom": 2352,
     "order_num": 849,
     "amount": 720778.0,
     "profit": 69254.0
@@ -184,9 +184,9 @@
       "profit": 1099.0
     },
     "北京飞航": {
-      "denominator": 309.0,
+      "denominator": 308.0,
       "numerator": 57.0,
-      "order_denom": 309,
+      "order_denom": 308,
       "order_num": 57,
       "vip_items": [
         {
@@ -4118,9 +4118,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI大疆哈苏北京大兴机场概念店",
-      "denominator": 17.0,
+      "denominator": 16.0,
       "numerator": 1.0,
-      "order_denom": 17,
+      "order_denom": 16,
       "order_num": 1,
       "vip_items": [
         {

@@ -1,25 +1,25 @@
 {
   "date": "2026-10-04",
-  "generated": "2026-10-09 23:05",
+  "generated": "2026-10-10 16:03",
   "total": {
     "denominator": 993.0,
-    "numerator": 419.0,
+    "numerator": 418.0,
     "order_denom": 978,
-    "order_num": 419,
-    "amount": 344610.0,
-    "profit": 33221.0
+    "order_num": 418,
+    "amount": 343112.0,
+    "profit": 33121.0
   },
   "branches": {
     "北京中恒": {
       "denominator": 349.0,
-      "numerator": 207.0,
+      "numerator": 206.0,
       "order_denom": 346,
-      "order_num": 207,
+      "order_num": 206,
       "vip_items": [
         {
           "code": "vip-iphone1498",
           "name": "iphone会员套餐1498",
-          "qty": 89.0,
+          "qty": 88.0,
           "price": 1498,
           "profit": 100.0
         },
@@ -66,8 +66,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 234386.0,
-      "profit": 20700.0
+      "amount": 232888.0,
+      "profit": 20600.0
     },
     "四川新跃": {
       "denominator": 157.0,
@@ -497,14 +497,14 @@
       "branch": "北京中恒",
       "store": "APR北京合生汇",
       "denominator": 25.0,
-      "numerator": 21.0,
+      "numerator": 20.0,
       "order_denom": 25,
-      "order_num": 21,
+      "order_num": 20,
       "vip_items": [
         {
           "code": "vip-iphone1498",
           "name": "iphone会员套餐1498",
-          "qty": 12.0,
+          "qty": 11.0,
           "price": 1498,
           "profit": 100.0
         },
@@ -537,8 +537,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 27558.0,
-      "profit": 2100.0
+      "amount": 26060.0,
+      "profit": 2000.0
     },
     {
       "branch": "北京中恒",
