@@ -1,20 +1,20 @@
 {
   "date": "2026-10-10",
-  "generated": "2026-10-10 23:06",
+  "generated": "2026-10-11 16:03",
   "total": {
-    "denominator": 904.0,
+    "denominator": 906.0,
     "numerator": 380.0,
-    "order_denom": 877,
+    "order_denom": 879,
     "order_num": 380,
-    "amount": 330422.0,
-    "profit": 33064.0
+    "amount": 330323.0,
+    "profit": 32964.0
   },
   "branches": {
     "北京中恒": {
       "denominator": 444.0,
-      "numerator": 228.0,
+      "numerator": 227.0,
       "order_denom": 436,
-      "order_num": 228,
+      "order_num": 227,
       "vip_items": [
         {
           "code": "vip-iphone1498",
@@ -33,7 +33,7 @@
         {
           "code": "vip-iphone398",
           "name": "iphone会员套餐398",
-          "qty": 28.0,
+          "qty": 27.0,
           "price": 398,
           "profit": 100.0
         },
@@ -59,8 +59,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 239044.0,
-      "profit": 22800.0
+      "amount": 238646.0,
+      "profit": 22700.0
     },
     "四川新跃": {
       "denominator": 175.0,
@@ -146,15 +146,15 @@
       "profit": 462.0
     },
     "福建易联": {
-      "denominator": 57.0,
-      "numerator": 12.0,
-      "order_denom": 45,
-      "order_num": 12,
+      "denominator": 59.0,
+      "numerator": 13.0,
+      "order_denom": 47,
+      "order_num": 13,
       "vip_items": [
         {
           "code": "FJYLVIP0004",
           "name": "299元礼包",
-          "qty": 10.0,
+          "qty": 11.0,
           "price": 299,
           "profit": 0.0
         },
@@ -173,7 +173,7 @@
           "profit": 111.0
         }
       ],
-      "amount": 4088.0,
+      "amount": 4387.0,
       "profit": 247.0
     },
     "北京飞航": {
@@ -1124,17 +1124,10 @@
       "branch": "北京中恒",
       "store": "APR北京石景山喜隆多",
       "denominator": 16.0,
-      "numerator": 5.0,
+      "numerator": 4.0,
       "order_denom": 16,
-      "order_num": 5,
+      "order_num": 4,
       "vip_items": [
-        {
-          "code": "vip-iphone398",
-          "name": "iphone会员套餐398",
-          "qty": 1.0,
-          "price": 398,
-          "profit": 100.0
-        },
         {
           "code": "vip-iphone698",
           "name": "iPhone会员套餐698",
@@ -1150,8 +1143,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 4790.0,
-      "profit": 500.0
+      "amount": 4392.0,
+      "profit": 400.0
     },
     {
       "branch": "北京中恒",
@@ -2663,13 +2656,21 @@
     {
       "branch": "福建易联",
       "store": "华为宁德古田中央名城",
-      "denominator": 1.0,
-      "numerator": 0.0,
-      "order_denom": 1,
-      "order_num": 0,
-      "vip_items": [],
-      "amount": 0,
-      "profit": 0
+      "denominator": 2.0,
+      "numerator": 1.0,
+      "order_denom": 2,
+      "order_num": 1,
+      "vip_items": [
+        {
+          "code": "FJYLVIP0004",
+          "name": "299元礼包",
+          "qty": 1.0,
+          "price": 299,
+          "profit": 0.0
+        }
+      ],
+      "amount": 299.0,
+      "profit": 0.0
     },
     {
       "branch": "福建易联",
@@ -2741,9 +2742,9 @@
     {
       "branch": "福建易联",
       "store": "华为福州东街口",
-      "denominator": 6.0,
+      "denominator": 7.0,
       "numerator": 3.0,
-      "order_denom": 6,
+      "order_denom": 7,
       "order_num": 3,
       "vip_items": [
         {
