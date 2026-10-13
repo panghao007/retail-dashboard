@@ -1,19 +1,19 @@
 {
   "date": "2026-10-12",
-  "generated": "2026-10-13 16:03",
+  "generated": "2026-10-13 23:00",
   "total": {
-    "denominator": 603.0,
+    "denominator": 601.0,
     "numerator": 275.0,
-    "order_denom": 593,
+    "order_denom": 591,
     "order_num": 275,
     "amount": 228038.0,
     "profit": 22546.0
   },
   "branches": {
     "北京中恒": {
-      "denominator": 212.0,
+      "denominator": 211.0,
       "numerator": 133.0,
-      "order_denom": 209,
+      "order_denom": 208,
       "order_num": 133,
       "vip_items": [
         {
@@ -163,9 +163,9 @@
       "profit": 136.0
     },
     "北京飞航": {
-      "denominator": 112.0,
+      "denominator": 111.0,
       "numerator": 29.0,
-      "order_denom": 110,
+      "order_denom": 109,
       "order_num": 29,
       "vip_items": [
         {
@@ -614,9 +614,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京常营龙湖",
-      "denominator": 15.0,
+      "denominator": 14.0,
       "numerator": 9.0,
-      "order_denom": 15,
+      "order_denom": 14,
       "order_num": 9,
       "vip_items": [
         {
@@ -3136,9 +3136,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京龙湖长安天街授权体验店",
-      "denominator": 2.0,
+      "denominator": 1.0,
       "numerator": 3.0,
-      "order_denom": 2,
+      "order_denom": 1,
       "order_num": 3,
       "vip_items": [
         {
