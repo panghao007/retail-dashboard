@@ -2695,15 +2695,15 @@
     {
       "date": "2026-10-15",
       "invalid": 15,
-      "valid": 10009,
+      "valid": 10008,
       "orders_invalid": 313,
-      "orders_valid": 10241,
-      "total": 10024,
+      "orders_valid": 10240,
+      "total": 10023,
       "branches": {
         "北京飞航": {
           "invalid": 173,
-          "valid": 3576,
-          "total": 3749
+          "valid": 3575,
+          "total": 3748
         },
         "上海爱飞": {
           "invalid": 77,
