@@ -1,12 +1,12 @@
 {
   "date": "2026-10-14",
-  "generated": "2026-10-14 23:06",
+  "generated": "2026-10-15 16:03",
   "total": {
-    "denominator": 715.0,
-    "numerator": 320.0,
-    "order_denom": 695,
-    "order_num": 320,
-    "amount": 255559.0,
+    "denominator": 716.0,
+    "numerator": 318.0,
+    "order_denom": 696,
+    "order_num": 318,
+    "amount": 254961.0,
     "profit": 26125.0
   },
   "branches": {
@@ -123,14 +123,14 @@
     },
     "北京易联": {
       "denominator": 120.0,
-      "numerator": 46.0,
+      "numerator": 44.0,
       "order_denom": 115,
-      "order_num": 46,
+      "order_num": 44,
       "vip_items": [
         {
           "code": "BJYLVIP0006",
           "name": "299元套包",
-          "qty": 40.0,
+          "qty": 38.0,
           "price": 299,
           "profit": 0.0
         },
@@ -156,7 +156,7 @@
           "profit": 0.0
         }
       ],
-      "amount": 16054.0,
+      "amount": 15456.0,
       "profit": 924.0
     },
     "福建易联": {
@@ -208,9 +208,9 @@
       "profit": 2259.0
     },
     "上海爱飞": {
-      "denominator": 19.0,
+      "denominator": 20.0,
       "numerator": 10.0,
-      "order_denom": 19,
+      "order_denom": 20,
       "order_num": 10,
       "vip_items": [
         {
@@ -1912,20 +1912,12 @@
       "branch": "北京易联",
       "store": "华为北京丽泽龙湖",
       "denominator": 0.0,
-      "numerator": 2.0,
+      "numerator": 0.0,
       "order_denom": 0,
-      "order_num": 2,
-      "vip_items": [
-        {
-          "code": "BJYLVIP0006",
-          "name": "299元套包",
-          "qty": 2.0,
-          "price": 299,
-          "profit": 0.0
-        }
-      ],
-      "amount": 598.0,
-      "profit": 0.0
+      "order_num": 0,
+      "vip_items": [],
+      "amount": 0,
+      "profit": 0
     },
     {
       "branch": "北京易联",
@@ -3179,9 +3171,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京龙湖房山天街授权体验店",
-      "denominator": 4.0,
+      "denominator": 3.0,
       "numerator": 2.0,
-      "order_denom": 4,
+      "order_denom": 3,
       "order_num": 2,
       "vip_items": [
         {
@@ -3326,9 +3318,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI大疆哈苏北京芳草地概念店",
-      "denominator": 2.0,
+      "denominator": 3.0,
       "numerator": 0.0,
-      "order_denom": 2,
+      "order_denom": 3,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -3553,9 +3545,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海美罗城授权体验店",
-      "denominator": 2.0,
+      "denominator": 3.0,
       "numerator": 1.0,
-      "order_denom": 2,
+      "order_denom": 3,
       "order_num": 1,
       "vip_items": [
         {

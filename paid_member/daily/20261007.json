@@ -1,6 +1,6 @@
 {
   "date": "2026-10-07",
-  "generated": "2026-10-14 23:06",
+  "generated": "2026-10-15 16:03",
   "total": {
     "denominator": 979.0,
     "numerator": 420.0,
@@ -11,9 +11,9 @@
   },
   "branches": {
     "北京中恒": {
-      "denominator": 355.0,
+      "denominator": 357.0,
       "numerator": 205.0,
-      "order_denom": 352,
+      "order_denom": 354,
       "order_num": 205,
       "vip_items": [
         {
@@ -122,9 +122,9 @@
       "profit": 6700.0
     },
     "北京易联": {
-      "denominator": 205.0,
+      "denominator": 203.0,
       "numerator": 63.0,
-      "order_denom": 202,
+      "order_denom": 200,
       "order_num": 63,
       "vip_items": [
         {
@@ -395,9 +395,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京亦庄龙湖",
-      "denominator": 6.0,
+      "denominator": 8.0,
       "numerator": 4.0,
-      "order_denom": 6,
+      "order_denom": 8,
       "order_num": 4,
       "vip_items": [
         {
@@ -2025,9 +2025,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京东坝金隅",
-      "denominator": 5.0,
+      "denominator": 3.0,
       "numerator": 1.0,
-      "order_denom": 5,
+      "order_denom": 3,
       "order_num": 1,
       "vip_items": [
         {

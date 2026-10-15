@@ -1,19 +1,19 @@
 {
   "date": "2026-10-13",
-  "generated": "2026-10-14 23:06",
+  "generated": "2026-10-15 16:03",
   "total": {
-    "denominator": 901.0,
+    "denominator": 897.0,
     "numerator": 317.0,
-    "order_denom": 869,
+    "order_denom": 865,
     "order_num": 317,
     "amount": 241567.0,
     "profit": 24652.0
   },
   "branches": {
     "北京中恒": {
-      "denominator": 380.0,
+      "denominator": 377.0,
       "numerator": 165.0,
-      "order_denom": 367,
+      "order_denom": 364,
       "order_num": 165,
       "vip_items": [
         {
@@ -115,9 +115,9 @@
       "profit": 5100.0
     },
     "北京易联": {
-      "denominator": 178.0,
+      "denominator": 177.0,
       "numerator": 47.0,
-      "order_denom": 175,
+      "order_denom": 174,
       "order_num": 47,
       "vip_items": [
         {
@@ -440,9 +440,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京合生汇",
-      "denominator": 32.0,
+      "denominator": 31.0,
       "numerator": 7.0,
-      "order_denom": 31,
+      "order_denom": 30,
       "order_num": 7,
       "vip_items": [
         {
@@ -1039,9 +1039,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京通州万达",
-      "denominator": 14.0,
+      "denominator": 13.0,
       "numerator": 10.0,
-      "order_denom": 13,
+      "order_denom": 12,
       "order_num": 10,
       "vip_items": [
         {
@@ -1152,9 +1152,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京颐堤港",
-      "denominator": 11.0,
+      "denominator": 10.0,
       "numerator": 3.0,
-      "order_denom": 11,
+      "order_denom": 10,
       "order_num": 3,
       "vip_items": [
         {
@@ -2155,9 +2155,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京石景山万达",
-      "denominator": 12.0,
+      "denominator": 11.0,
       "numerator": 4.0,
-      "order_denom": 12,
+      "order_denom": 11,
       "order_num": 4,
       "vip_items": [
         {
