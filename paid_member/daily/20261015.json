@@ -1,25 +1,25 @@
 {
   "date": "2026-10-15",
-  "generated": "2026-10-15 23:06",
+  "generated": "2026-10-16 16:04",
   "total": {
-    "denominator": 660.0,
-    "numerator": 261.0,
-    "order_denom": 623,
-    "order_num": 261,
-    "amount": 195369.0,
-    "profit": 21369.0
+    "denominator": 662.0,
+    "numerator": 262.0,
+    "order_denom": 625,
+    "order_num": 262,
+    "amount": 196667.0,
+    "profit": 21531.0
   },
   "branches": {
     "北京中恒": {
-      "denominator": 284.0,
-      "numerator": 134.0,
-      "order_denom": 262,
-      "order_num": 134,
+      "denominator": 285.0,
+      "numerator": 135.0,
+      "order_denom": 263,
+      "order_num": 135,
       "vip_items": [
         {
           "code": "vip-iphone1498",
           "name": "iphone会员套餐1498",
-          "qty": 54.0,
+          "qty": 55.0,
           "price": 1498,
           "profit": 100.0
         },
@@ -59,8 +59,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 140432.0,
-      "profit": 13400.0
+      "amount": 141930.0,
+      "profit": 13500.0
     },
     "四川新跃": {
       "denominator": 93.0,
@@ -108,9 +108,9 @@
       "profit": 3600.0
     },
     "北京易联": {
-      "denominator": 93.0,
+      "denominator": 94.0,
       "numerator": 35.0,
-      "order_denom": 93,
+      "order_denom": 94,
       "order_num": 35,
       "vip_items": [
         {
@@ -133,31 +133,31 @@
     },
     "福建易联": {
       "denominator": 64.0,
-      "numerator": 18.0,
+      "numerator": 17.0,
       "order_denom": 52,
-      "order_num": 18,
+      "order_num": 17,
       "vip_items": [
         {
           "code": "FJYLVIP0004",
           "name": "299元礼包",
-          "qty": 18.0,
+          "qty": 17.0,
           "price": 299,
           "profit": 0.0
         }
       ],
-      "amount": 5382.0,
+      "amount": 5083.0,
       "profit": 0.0
     },
     "北京飞航": {
       "denominator": 96.0,
-      "numerator": 30.0,
+      "numerator": 31.0,
       "order_denom": 94,
-      "order_num": 30,
+      "order_num": 31,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
           "name": "畅玩会员-99",
-          "qty": 27.0,
+          "qty": 28.0,
           "price": 99,
           "profit": 62.0
         },
@@ -169,8 +169,8 @@
           "profit": 117.0
         }
       ],
-      "amount": 3270.0,
-      "profit": 2025.0
+      "amount": 3369.0,
+      "profit": 2087.0
     },
     "上海爱飞": {
       "denominator": 30.0,
@@ -1112,15 +1112,15 @@
     {
       "branch": "北京中恒",
       "store": "APR北京顺义华联",
-      "denominator": 18.0,
-      "numerator": 6.0,
-      "order_denom": 14,
-      "order_num": 6,
+      "denominator": 19.0,
+      "numerator": 7.0,
+      "order_denom": 15,
+      "order_num": 7,
       "vip_items": [
         {
           "code": "vip-iphone1498",
           "name": "iphone会员套餐1498",
-          "qty": 3.0,
+          "qty": 4.0,
           "price": 1498,
           "profit": 100.0
         },
@@ -1132,8 +1132,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 6588.0,
-      "profit": 600.0
+      "amount": 8086.0,
+      "profit": 700.0
     },
     {
       "branch": "北京中恒",
@@ -1972,9 +1972,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京昌平政府街",
-      "denominator": 3.0,
+      "denominator": 4.0,
       "numerator": 1.0,
-      "order_denom": 3,
+      "order_denom": 4,
       "order_num": 1,
       "vip_items": [
         {
@@ -2519,19 +2519,19 @@
       "branch": "福建易联",
       "store": "华为福州大洋晶典",
       "denominator": 0.0,
-      "numerator": 3.0,
+      "numerator": 2.0,
       "order_denom": 0,
-      "order_num": 3,
+      "order_num": 2,
       "vip_items": [
         {
           "code": "FJYLVIP0004",
           "name": "299元礼包",
-          "qty": 3.0,
+          "qty": 2.0,
           "price": 299,
           "profit": 0.0
         }
       ],
-      "amount": 897.0,
+      "amount": 598.0,
       "profit": 0.0
     },
     {
@@ -2873,20 +2873,20 @@
       "branch": "北京飞航",
       "store": "DJI北京西红门荟聚中心授权体验店",
       "denominator": 7.0,
-      "numerator": 3.0,
+      "numerator": 4.0,
       "order_denom": 7,
-      "order_num": 3,
+      "order_num": 4,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
           "name": "畅玩会员-99",
-          "qty": 3.0,
+          "qty": 4.0,
           "price": 99,
           "profit": 62.0
         }
       ],
-      "amount": 297.0,
-      "profit": 186.0
+      "amount": 396.0,
+      "profit": 248.0
     },
     {
       "branch": "北京飞航",
