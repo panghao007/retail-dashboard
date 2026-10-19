@@ -1,19 +1,19 @@
 {
   "date": "2026-10-07",
-  "generated": "2026-10-19 16:05",
+  "generated": "2026-10-19 23:00",
   "total": {
-    "denominator": 979.0,
+    "denominator": 978.0,
     "numerator": 419.0,
-    "order_denom": 964,
+    "order_denom": 963,
     "order_num": 419,
     "amount": 294810.0,
     "profit": 33274.0
   },
   "branches": {
     "北京中恒": {
-      "denominator": 357.0,
+      "denominator": 356.0,
       "numerator": 204.0,
-      "order_denom": 354,
+      "order_denom": 353,
       "order_num": 204,
       "vip_items": [
         {
@@ -1104,9 +1104,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京石景山万达",
-      "denominator": 16.0,
+      "denominator": 15.0,
       "numerator": 11.0,
-      "order_denom": 16,
+      "order_denom": 15,
       "order_num": 11,
       "vip_items": [
         {
