@@ -2855,10 +2855,10 @@
     {
       "date": "2026-10-19",
       "invalid": 18,
-      "valid": 12364,
+      "valid": 12365,
       "orders_invalid": 452,
-      "orders_valid": 12651,
-      "total": 12382,
+      "orders_valid": 12652,
+      "total": 12383,
       "branches": {
         "北京飞航": {
           "invalid": 263,
@@ -2877,8 +2877,8 @@
         },
         "福建易联": {
           "invalid": 13,
-          "valid": 1115,
-          "total": 1128
+          "valid": 1116,
+          "total": 1129
         },
         "北京中恒": {
           "invalid": 6,
