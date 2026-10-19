@@ -1,10 +1,10 @@
 {
   "date": "2026-10-18",
-  "generated": "2026-10-18 23:06",
+  "generated": "2026-10-19 16:05",
   "total": {
-    "denominator": 955.0,
+    "denominator": 956.0,
     "numerator": 439.0,
-    "order_denom": 941,
+    "order_denom": 942,
     "order_num": 439,
     "amount": 326585.0,
     "profit": 34009.0
@@ -70,9 +70,9 @@
       "profit": 21600.0
     },
     "四川新跃": {
-      "denominator": 138.0,
+      "denominator": 139.0,
       "numerator": 60.0,
-      "order_denom": 135,
+      "order_denom": 136,
       "order_num": 60,
       "vip_items": [
         {
@@ -146,9 +146,9 @@
       "profit": 1386.0
     },
     "福建易联": {
-      "denominator": 47.0,
+      "denominator": 48.0,
       "numerator": 16.0,
-      "order_denom": 47,
+      "order_denom": 48,
       "order_num": 16,
       "vip_items": [
         {
@@ -170,9 +170,9 @@
       "profit": 222.0
     },
     "北京飞航": {
-      "denominator": 144.0,
+      "denominator": 143.0,
       "numerator": 58.0,
-      "order_denom": 143,
+      "order_denom": 142,
       "order_num": 58,
       "vip_items": [
         {
@@ -1509,9 +1509,9 @@
     {
       "branch": "四川新跃",
       "store": "APR成都天府大悦城",
-      "denominator": 1.0,
+      "denominator": 2.0,
       "numerator": 1.0,
-      "order_denom": 1,
+      "order_denom": 2,
       "order_num": 1,
       "vip_items": [
         {
@@ -2784,9 +2784,9 @@
     {
       "branch": "福建易联",
       "store": "华为泉州石狮泰禾广场",
-      "denominator": 6.0,
+      "denominator": 7.0,
       "numerator": 3.0,
-      "order_denom": 6,
+      "order_denom": 7,
       "order_num": 3,
       "vip_items": [
         {
@@ -3122,9 +3122,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京太阳宫凯德授权体验店",
-      "denominator": 4.0,
+      "denominator": 3.0,
       "numerator": 0.0,
-      "order_denom": 4,
+      "order_denom": 3,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
