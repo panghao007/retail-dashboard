@@ -1,13 +1,13 @@
 {
   "date": "2026-10-01",
-  "generated": "2026-10-19 23:07",
+  "generated": "2026-10-20 16:04",
   "total": {
-    "denominator": 2398.0,
-    "numerator": 852.0,
-    "order_denom": 2346,
-    "order_num": 848,
-    "amount": 720080.0,
-    "profit": 69154.0
+    "denominator": 2396.0,
+    "numerator": 851.0,
+    "order_denom": 2344,
+    "order_num": 847,
+    "amount": 719981.0,
+    "profit": 69092.0
   },
   "branches": {
     "北京中恒": {
@@ -184,15 +184,15 @@
       "profit": 1099.0
     },
     "北京飞航": {
-      "denominator": 309.0,
-      "numerator": 57.0,
-      "order_denom": 309,
-      "order_num": 57,
+      "denominator": 307.0,
+      "numerator": 56.0,
+      "order_denom": 307,
+      "order_num": 56,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
           "name": "畅玩会员-99",
-          "qty": 54.0,
+          "qty": 53.0,
           "price": 99,
           "profit": 62.0
         },
@@ -204,8 +204,8 @@
           "profit": 117.0
         }
       ],
-      "amount": 5943.0,
-      "profit": 3699.0
+      "amount": 5844.0,
+      "profit": 3637.0
     },
     "上海爱飞": {
       "denominator": 97.0,
@@ -3901,20 +3901,20 @@
       "branch": "北京飞航",
       "store": "DJI北京通州万达授权体验店",
       "denominator": 10.0,
-      "numerator": 4.0,
+      "numerator": 3.0,
       "order_denom": 10,
-      "order_num": 4,
+      "order_num": 3,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
           "name": "畅玩会员-99",
-          "qty": 4.0,
+          "qty": 3.0,
           "price": 99,
           "profit": 62.0
         }
       ],
-      "amount": 396.0,
-      "profit": 248.0
+      "amount": 297.0,
+      "profit": 186.0
     },
     {
       "branch": "北京飞航",
@@ -3987,9 +3987,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京首都机场授权体验店",
-      "denominator": 2.0,
+      "denominator": 1.0,
       "numerator": 0.0,
-      "order_denom": 2,
+      "order_denom": 1,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -4118,9 +4118,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI大疆哈苏北京大兴机场概念店",
-      "denominator": 17.0,
+      "denominator": 16.0,
       "numerator": 1.0,
-      "order_denom": 17,
+      "order_denom": 16,
       "order_num": 1,
       "vip_items": [
         {
