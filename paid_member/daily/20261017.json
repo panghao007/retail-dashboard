@@ -1,13 +1,13 @@
 {
   "date": "2026-10-17",
-  "generated": "2026-10-21 16:28",
+  "generated": "2026-10-21 23:00",
   "total": {
-    "denominator": 871.0,
-    "numerator": 375.0,
-    "order_denom": 865,
-    "order_num": 375,
-    "amount": 292785.0,
-    "profit": 31044.0
+    "denominator": 841.0,
+    "numerator": 362.0,
+    "order_denom": 835,
+    "order_num": 362,
+    "amount": 291298.0,
+    "profit": 30128.0
   },
   "branches": {
     "北京中恒": {
@@ -170,45 +170,45 @@
       "profit": 568.0
     },
     "北京飞航": {
-      "denominator": 136.0,
-      "numerator": 46.0,
-      "order_denom": 136,
-      "order_num": 46,
+      "denominator": 106.0,
+      "numerator": 34.0,
+      "order_denom": 106,
+      "order_num": 34,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
           "name": "畅玩会员-99",
-          "qty": 38.0,
+          "qty": 28.0,
           "price": 99,
           "profit": 62.0
         },
         {
           "code": "FHQLVIP0004",
           "name": "畅享会员-199",
-          "qty": 8.0,
+          "qty": 6.0,
           "price": 199,
           "profit": 117.0
         }
       ],
-      "amount": 5354.0,
-      "profit": 3292.0
+      "amount": 3966.0,
+      "profit": 2438.0
     },
     "上海爱飞": {
       "denominator": 65.0,
-      "numerator": 29.0,
+      "numerator": 28.0,
       "order_denom": 65,
-      "order_num": 29,
+      "order_num": 28,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
           "name": "畅玩会员-99",
-          "qty": 29.0,
+          "qty": 28.0,
           "price": 99,
           "profit": 62.0
         }
       ],
-      "amount": 2871.0,
-      "profit": 1798.0
+      "amount": 2772.0,
+      "profit": 1736.0
     }
   },
   "stores": [
@@ -3601,20 +3601,20 @@
       "branch": "上海爱飞",
       "store": "DJI上海百联青浦奥莱授权体验店",
       "denominator": 7.0,
-      "numerator": 4.0,
+      "numerator": 3.0,
       "order_denom": 7,
-      "order_num": 4,
+      "order_num": 3,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
           "name": "畅玩会员-99",
-          "qty": 4.0,
+          "qty": 3.0,
           "price": 99,
           "profit": 62.0
         }
       ],
-      "amount": 396.0,
-      "profit": 248.0
+      "amount": 297.0,
+      "profit": 186.0
     },
     {
       "branch": "上海爱飞",

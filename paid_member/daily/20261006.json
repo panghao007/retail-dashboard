@@ -1,13 +1,13 @@
 {
   "date": "2026-10-06",
-  "generated": "2026-10-21 16:28",
+  "generated": "2026-10-21 23:00",
   "total": {
-    "denominator": 943.0,
-    "numerator": 391.0,
-    "order_denom": 933,
-    "order_num": 391,
-    "amount": 307548.0,
-    "profit": 31521.0
+    "denominator": 925.0,
+    "numerator": 381.0,
+    "order_denom": 915,
+    "order_num": 381,
+    "amount": 306458.0,
+    "profit": 30846.0
   },
   "branches": {
     "北京中恒": {
@@ -70,9 +70,9 @@
       "profit": 18800.0
     },
     "四川新跃": {
-      "denominator": 172.0,
+      "denominator": 171.0,
       "numerator": 73.0,
-      "order_denom": 170,
+      "order_denom": 169,
       "order_num": 73,
       "vip_items": [
         {
@@ -184,28 +184,28 @@
       "profit": 222.0
     },
     "北京飞航": {
-      "denominator": 96.0,
-      "numerator": 33.0,
-      "order_denom": 96,
-      "order_num": 33,
+      "denominator": 79.0,
+      "numerator": 23.0,
+      "order_denom": 79,
+      "order_num": 23,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
           "name": "畅玩会员-99",
-          "qty": 27.0,
+          "qty": 18.0,
           "price": 99,
           "profit": 62.0
         },
         {
           "code": "FHQLVIP0004",
           "name": "畅享会员-199",
-          "qty": 6.0,
+          "qty": 5.0,
           "price": 199,
           "profit": 117.0
         }
       ],
-      "amount": 3867.0,
-      "profit": 2376.0
+      "amount": 2777.0,
+      "profit": 1701.0
     },
     "上海爱飞": {
       "denominator": 33.0,
@@ -1473,9 +1473,9 @@
     {
       "branch": "四川新跃",
       "store": "APR成都天府大悦城",
-      "denominator": 6.0,
+      "denominator": 5.0,
       "numerator": 4.0,
-      "order_denom": 6,
+      "order_denom": 5,
       "order_num": 4,
       "vip_items": [
         {

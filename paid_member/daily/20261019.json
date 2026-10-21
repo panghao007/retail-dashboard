@@ -1,13 +1,13 @@
 {
   "date": "2026-10-19",
-  "generated": "2026-10-21 16:28",
+  "generated": "2026-10-21 23:00",
   "total": {
-    "denominator": 546.0,
-    "numerator": 253.0,
-    "order_denom": 544,
-    "order_num": 253,
-    "amount": 185074.0,
-    "profit": 20571.0
+    "denominator": 538.0,
+    "numerator": 244.0,
+    "order_denom": 536,
+    "order_num": 244,
+    "amount": 184083.0,
+    "profit": 19958.0
   },
   "branches": {
     "北京中恒": {
@@ -156,28 +156,28 @@
       "profit": 222.0
     },
     "北京飞航": {
-      "denominator": 53.0,
-      "numerator": 22.0,
-      "order_denom": 53,
-      "order_num": 22,
+      "denominator": 45.0,
+      "numerator": 13.0,
+      "order_denom": 45,
+      "order_num": 13,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
           "name": "畅玩会员-99",
-          "qty": 18.0,
+          "qty": 10.0,
           "price": 99,
           "profit": 62.0
         },
         {
           "code": "FHQLVIP0004",
           "name": "畅享会员-199",
-          "qty": 4.0,
+          "qty": 3.0,
           "price": 199,
           "profit": 117.0
         }
       ],
-      "amount": 2578.0,
-      "profit": 1584.0
+      "amount": 1587.0,
+      "profit": 971.0
     },
     "上海爱飞": {
       "denominator": 25.0,
