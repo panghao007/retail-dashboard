@@ -1,0 +1,8 @@
+# ---- 本地工作副本（含明文手机号 / 原始明细），绝不公开 ----
+# 说明：这些文件由分析脚本直接写进 ghpages_repo/d/，是管线的中间产物；
+#       对外只发布脱敏副本 d/YYYY-MM-DD.html 与 d/YYYY-MM-DD_会员有效性分析.xlsx。
+d/会员有效性数据看板.html
+d/会员有效性分析.xlsx
+d/零售单数据底表_主机.xlsx
+d/会员有效性通报.txt
+d/dashboard_data.json
