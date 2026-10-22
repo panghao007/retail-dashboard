@@ -1,6 +1,6 @@
 {
   "date": "2026-10-21",
-  "generated": "2026-10-22 14:04",
+  "generated": "2026-10-22 16:03",
   "total": {
     "denominator": 582.0,
     "numerator": 271.0,
@@ -1779,17 +1779,17 @@
       "order_num": 2,
       "vip_items": [
         {
-          "code": "SCXYVIP00002",
-          "name": "998元尊享会员",
-          "qty": 1.0,
-          "price": 998,
-          "profit": 100.0
-        },
-        {
           "code": "SCXYVIP00001",
           "name": "698元悦享会员",
           "qty": 1.0,
           "price": 698,
+          "profit": 100.0
+        },
+        {
+          "code": "SCXYVIP00002",
+          "name": "998元尊享会员",
+          "qty": 1.0,
+          "price": 998,
           "profit": 100.0
         }
       ],
