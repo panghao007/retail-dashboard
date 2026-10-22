@@ -2894,81 +2894,81 @@
     },
     {
       "date": "2026-10-20",
-      "invalid": 18,
-      "valid": 12741,
-      "orders_invalid": 485,
-      "orders_valid": 13034,
-      "total": 12759,
+      "invalid": 342,
+      "valid": 29986,
+      "orders_invalid": 1819,
+      "orders_valid": 31933,
+      "total": 30328,
       "branches": {
+        "北京易联": {
+          "invalid": 1115,
+          "valid": 9465,
+          "total": 10580
+        },
         "北京飞航": {
-          "invalid": 290,
-          "valid": 4504,
-          "total": 4794
+          "invalid": 383,
+          "valid": 5344,
+          "total": 5727
         },
         "上海爱飞": {
-          "invalid": 129,
-          "valid": 2018,
-          "total": 2147
-        },
-        "北京易联": {
-          "invalid": 46,
-          "valid": 2468,
-          "total": 2514
-        },
-        "福建易联": {
-          "invalid": 13,
-          "valid": 1148,
-          "total": 1161
-        },
-        "北京中恒": {
-          "invalid": 6,
-          "valid": 1849,
-          "total": 1855
+          "invalid": 181,
+          "valid": 2319,
+          "total": 2500
         },
         "四川新跃": {
-          "invalid": 1,
-          "valid": 968,
-          "total": 969
+          "invalid": 61,
+          "valid": 3772,
+          "total": 3833
+        },
+        "福建易联": {
+          "invalid": 41,
+          "valid": 2844,
+          "total": 2885
+        },
+        "北京中恒": {
+          "invalid": 38,
+          "valid": 8102,
+          "total": 8140
         }
       }
     },
     {
       "date": "2026-10-21",
-      "invalid": 20,
-      "valid": 13130,
-      "orders_invalid": 525,
-      "orders_valid": 13437,
-      "total": 13150,
+      "invalid": 358,
+      "valid": 30866,
+      "orders_invalid": 1916,
+      "orders_valid": 32875,
+      "total": 31224,
       "branches": {
+        "北京易联": {
+          "invalid": 1161,
+          "valid": 9732,
+          "total": 10893
+        },
         "上海爱飞": {
-          "invalid": 153,
-          "valid": 2089,
-          "total": 2242
+          "invalid": 207,
+          "valid": 2400,
+          "total": 2607
         },
         "北京飞航": {
-          "invalid": 139,
-          "valid": 3786,
-          "total": 3925
-        },
-        "北京易联": {
-          "invalid": 49,
-          "valid": 2541,
-          "total": 2590
-        },
-        "福建易联": {
-          "invalid": 13,
-          "valid": 1182,
-          "total": 1195
-        },
-        "北京中恒": {
-          "invalid": 6,
-          "valid": 1909,
-          "total": 1915
+          "invalid": 204,
+          "valid": 4512,
+          "total": 4716
         },
         "四川新跃": {
-          "invalid": 1,
-          "valid": 988,
-          "total": 989
+          "invalid": 61,
+          "valid": 3867,
+          "total": 3928
+        },
+        "福建易联": {
+          "invalid": 44,
+          "valid": 2928,
+          "total": 2972
+        },
+        "北京中恒": {
+          "invalid": 39,
+          "valid": 8339,
+          "total": 8378
         }
       }
     }
