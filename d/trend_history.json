@@ -2945,15 +2945,15 @@
           "valid": 9732,
           "total": 10893
         },
+        "北京飞航": {
+          "invalid": 404,
+          "valid": 5520,
+          "total": 5924
+        },
         "上海爱飞": {
           "invalid": 207,
-          "valid": 2400,
-          "total": 2607
-        },
-        "北京飞航": {
-          "invalid": 204,
-          "valid": 4512,
-          "total": 4716
+          "valid": 2489,
+          "total": 2696
         },
         "四川新跃": {
           "invalid": 61,
