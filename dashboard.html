@@ -418,6 +418,8 @@ const C = {
   cashier :{name:"合规收银",   color:"var(--orange)", href:"cashier/收银合规看板.html"},
   paid    :{name:"付费会员",   color:"var(--purple)", href:"paid_member/付费会员看板.html"},
   return  :{name:"零售退货",   color:"#ef4444",      href:"return_order/零售退货单看板.html"},
+  deposit :{name:"会员沉淀",   color:"#16a34a",      href:"member_deposit/会员沉淀看板.html"},
+  preorder:{name:"预订单",     color:"#0ea5e9",      href:"preorder/index.html"},
 };
 const DATES = {}; // 各看板最新日期
 const fmt = n => (n==null||isNaN(n)) ? "—" : Number(n).toLocaleString("en-US");
@@ -460,6 +462,8 @@ function updateHeader(){
   if(DATES.cashier)  parts.push("收银 "+DATES.cashier);
   if(DATES.paid)     parts.push("付费 "+DATES.paid);
   if(DATES.return)   parts.push("退货 "+DATES.return);
+  if(DATES.deposit)  parts.push("沉淀 "+DATES.deposit);
+  if(DATES.preorder) parts.push("预订 "+DATES.preorder);
   document.getElementById("updated").innerHTML = "实时数据 · 更新于 " + (parts.length?parts.join(" · "):"<b>加载中…</b>");
 }
 
@@ -766,12 +770,83 @@ function updatePrevMonthDownloads(){
 }
 updatePrevMonthDownloads();
 
+// ===== 5. 会员沉淀（2026-10-22 新增卡） =====
+// 口径：截至某日的累计会员数「快照」，不可加总；「未消费会员」为档案里尚未产生消费的人数。
+// 索引 member_deposit/daily_index_YYYYMMDD.json → daily/YYYYMMDD.json
+async function loadDeposit(){
+  try{
+    const idx=await fetchIndexWithFallback("member_deposit");
+    if(!idx) throw new Error("no index");
+    const dates=(idx.dates||[]).slice().sort();
+    if(!dates.length) throw new Error("empty dates");
+    const cur=dates[dates.length-1];
+    const prev=dates.length>1?dates[dates.length-2]:null;
+    const snap=await getJSON(`member_deposit/daily/${cb(cur)}.json?_=${Date.now()}`);
+    let prevSnap=null;
+    if(prev){ try{ prevSnap=await getJSON(`member_deposit/daily/${cb(prev)}.json?_=${Date.now()}`); }catch(_){} }
+    const total=snap.total_distinct||0;
+    const nonc=(snap.branches||{})["未消费会员"]||0;
+    const nb=Object.keys(snap.branches||{}).filter(function(b){return b!=="未消费会员"&&b!=="（未匹配门店）";}).length;
+    const dash=cb(cur).slice(0,4)+"-"+cb(cur).slice(4,6)+"-"+cb(cur).slice(6,8);
+    DATES.deposit=dash;
+    const deltas=[];
+    if(prevSnap){
+      deltas.push(deltaChip("累计会员", total-(prevSnap.total_distinct||0), "人", "up"));
+      deltas.push(deltaChip("未消费会员", nonc-((prevSnap.branches||{})["未消费会员"]||0), "人", "down"));
+    }
+    setCard("deposit",
+      "快照日期 "+dash,
+      [
+        {num:(total/10000).toFixed(2), unit:"万", lab:"累计会员"},
+        {num:fmt(nonc), lab:"未消费会员"},
+        {num:fmt(nb), unit:"家", lab:"分公司"},
+      ],
+      deltas.length?deltas:[{text:"对比上一快照：—",type:"flat"}]
+    );
+  }catch(e){
+    setCard("deposit","—",[{num:"—",lab:"会员沉淀(取数失败)"}],[]);
+  }
+  updateHeader();
+}
+
+// ===== 6. 预订单（2026-10-22 新增卡） =====
+// 明细走加密包（0.9MB，首页不解密）；此卡只读 backstage 产出的汇总 KPI preorder/kpi.json（无手机号）。
+async function loadPreorder(){
+  try{
+    const k=await getJSON("preorder/kpi.json?_="+Date.now());
+    const asOf=String(k.as_of||"").replace(/^(\d{4})(\d{2})(\d{2})$/,"$1-$2-$3");
+    DATES.preorder=asOf||null;
+    const net=(k.net_amount||0)/10000;
+    const aged=(k.aged_amount||0)/10000;
+    const conv = k.recv ? (k.verified||0)/k.recv*100 : null;
+    const refd = k.recv ? (k.refund||0)/k.recv*100 : null;
+    const deltas=[];
+    if(conv!=null) deltas.push({text:"全量转效率 "+conv.toFixed(2)+"%",type:"flat"});
+    if(refd!=null) deltas.push({text:"全量退订率 "+refd.toFixed(2)+"%",type:"flat"});
+    deltas.push({text:"加密明细 · 点进入查看",type:"flat"});
+    setCard("preorder",
+      "数据日期 "+(asOf||"—"),
+      [
+        {num:net.toFixed(2), unit:"万", lab:"净未消费"},
+        {num:fmt(k.phones), unit:"号", lab:"未消费号码"},
+        {num:aged.toFixed(2), unit:"万", lab:(k.aged_days||90)+"天未转未退"},
+      ],
+      deltas
+    );
+  }catch(e){
+    setCard("preorder","—",[{num:"—",lab:"预订单(汇总未就绪)"}],[{text:"加密明细 · 点进入查看",type:"flat"}]);
+  }
+  updateHeader();
+}
+
 buildCards();
 updateHeader();
 loadValidity();
 loadCashier();
 loadPaid();
 loadReturn();
+loadDeposit();
+loadPreorder();
 </script>
 </body>
 </html>
