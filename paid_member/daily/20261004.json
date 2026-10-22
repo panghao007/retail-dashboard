@@ -1,17 +1,17 @@
 {
   "date": "2026-10-04",
-  "generated": "2026-10-21 23:06",
+  "generated": "2026-10-22 14:04",
   "total": {
-    "denominator": 962.0,
+    "denominator": 979.0,
     "numerator": 405.0,
-    "order_denom": 948,
+    "order_denom": 964,
     "order_num": 405,
     "amount": 339727.0,
-    "profit": 32184.0
+    "profit": 49797.0
   },
   "branches": {
     "北京中恒": {
-      "denominator": 348.0,
+      "denominator": 349.0,
       "numerator": 204.0,
       "order_denom": 345,
       "order_num": 204,
@@ -132,25 +132,25 @@
           "name": "299元套包",
           "qty": 54.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 204.0
         },
         {
           "code": "BJYLVIP0004",
           "name": "499元套包",
           "qty": 7.0,
           "price": 499,
-          "profit": 231.0
+          "profit": 337.0
         },
         {
           "code": "BJYLVIP0008",
           "name": "1299元套包",
           "qty": 4.0,
           "price": 1299,
-          "profit": 0.0
+          "profit": 731.0
         }
       ],
       "amount": 24835.0,
-      "profit": 1617.0
+      "profit": 16299.0
     },
     "福建易联": {
       "denominator": 71.0,
@@ -163,30 +163,30 @@
           "name": "299元礼包",
           "qty": 15.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 174.0
         },
         {
           "code": "FJYLVIP0001",
           "name": "399元礼包",
           "qty": 1.0,
           "price": 399,
-          "profit": 111.0
+          "profit": 211.5
         },
         {
           "code": "FJYLVIP0002",
           "name": "699元礼包",
           "qty": 1.0,
           "price": 699,
-          "profit": 136.0
+          "profit": 356.5
         }
       ],
       "amount": 5583.0,
-      "profit": 247.0
+      "profit": 3178.0
     },
     "北京飞航": {
-      "denominator": 99.0,
+      "denominator": 115.0,
       "numerator": 38.0,
-      "order_denom": 98,
+      "order_denom": 114,
       "order_num": 38,
       "vip_items": [
         {
@@ -580,7 +580,7 @@
     {
       "branch": "北京中恒",
       "store": "APR北京大兴龙湖",
-      "denominator": 11.0,
+      "denominator": 12.0,
       "numerator": 6.0,
       "order_denom": 11,
       "order_num": 6,
@@ -1847,11 +1847,11 @@
           "name": "299元套包",
           "qty": 1.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 204.0
         }
       ],
       "amount": 299.0,
-      "profit": 0.0
+      "profit": 204.0
     },
     {
       "branch": "北京易联",
@@ -1866,11 +1866,11 @@
           "name": "299元套包",
           "qty": 1.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 204.0
         }
       ],
       "amount": 299.0,
-      "profit": 0.0
+      "profit": 204.0
     },
     {
       "branch": "北京易联",
@@ -1907,11 +1907,11 @@
           "name": "299元套包",
           "qty": 1.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 204.0
         }
       ],
       "amount": 299.0,
-      "profit": 0.0
+      "profit": 204.0
     },
     {
       "branch": "北京易联",
@@ -1926,11 +1926,11 @@
           "name": "299元套包",
           "qty": 1.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 204.0
         }
       ],
       "amount": 299.0,
-      "profit": 0.0
+      "profit": 204.0
     },
     {
       "branch": "北京易联",
@@ -1967,11 +1967,11 @@
           "name": "299元套包",
           "qty": 1.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 204.0
         }
       ],
       "amount": 299.0,
-      "profit": 0.0
+      "profit": 204.0
     },
     {
       "branch": "北京易联",
@@ -1986,11 +1986,11 @@
           "name": "299元套包",
           "qty": 3.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 204.0
         }
       ],
       "amount": 897.0,
-      "profit": 0.0
+      "profit": 612.0
     },
     {
       "branch": "北京易联",
@@ -2005,11 +2005,11 @@
           "name": "299元套包",
           "qty": 1.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 204.0
         }
       ],
       "amount": 299.0,
-      "profit": 0.0
+      "profit": 204.0
     },
     {
       "branch": "北京易联",
@@ -2024,11 +2024,11 @@
           "name": "299元套包",
           "qty": 2.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 204.0
         }
       ],
       "amount": 598.0,
-      "profit": 0.0
+      "profit": 408.0
     },
     {
       "branch": "北京易联",
@@ -2054,11 +2054,11 @@
           "name": "299元套包",
           "qty": 1.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 204.0
         }
       ],
       "amount": 299.0,
-      "profit": 0.0
+      "profit": 204.0
     },
     {
       "branch": "北京易联",
@@ -2073,11 +2073,11 @@
           "name": "299元套包",
           "qty": 1.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 204.0
         }
       ],
       "amount": 299.0,
-      "profit": 0.0
+      "profit": 204.0
     },
     {
       "branch": "北京易联",
@@ -2092,18 +2092,18 @@
           "name": "299元套包",
           "qty": 2.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 204.0
         },
         {
           "code": "BJYLVIP0004",
           "name": "499元套包",
           "qty": 1.0,
           "price": 499,
-          "profit": 231.0
+          "profit": 337.0
         }
       ],
       "amount": 1097.0,
-      "profit": 231.0
+      "profit": 745.0
     },
     {
       "branch": "北京易联",
@@ -2118,11 +2118,11 @@
           "name": "299元套包",
           "qty": 7.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 204.0
         }
       ],
       "amount": 2093.0,
-      "profit": 0.0
+      "profit": 1428.0
     },
     {
       "branch": "北京易联",
@@ -2148,18 +2148,18 @@
           "name": "1299元套包",
           "qty": 3.0,
           "price": 1299,
-          "profit": 0.0
+          "profit": 731.0
         },
         {
           "code": "BJYLVIP0004",
           "name": "499元套包",
           "qty": 1.0,
           "price": 499,
-          "profit": 231.0
+          "profit": 337.0
         }
       ],
       "amount": 4396.0,
-      "profit": 231.0
+      "profit": 2530.0
     },
     {
       "branch": "北京易联",
@@ -2174,18 +2174,18 @@
           "name": "299元套包",
           "qty": 2.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 204.0
         },
         {
           "code": "BJYLVIP0004",
           "name": "499元套包",
           "qty": 2.0,
           "price": 499,
-          "profit": 231.0
+          "profit": 337.0
         }
       ],
       "amount": 1596.0,
-      "profit": 462.0
+      "profit": 1082.0
     },
     {
       "branch": "北京易联",
@@ -2211,11 +2211,11 @@
           "name": "299元套包",
           "qty": 2.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 204.0
         }
       ],
       "amount": 598.0,
-      "profit": 0.0
+      "profit": 408.0
     },
     {
       "branch": "北京易联",
@@ -2230,11 +2230,11 @@
           "name": "299元套包",
           "qty": 2.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 204.0
         }
       ],
       "amount": 598.0,
-      "profit": 0.0
+      "profit": 408.0
     },
     {
       "branch": "北京易联",
@@ -2249,11 +2249,11 @@
           "name": "499元套包",
           "qty": 1.0,
           "price": 499,
-          "profit": 231.0
+          "profit": 337.0
         }
       ],
       "amount": 499.0,
-      "profit": 231.0
+      "profit": 337.0
     },
     {
       "branch": "北京易联",
@@ -2268,18 +2268,18 @@
           "name": "299元套包",
           "qty": 3.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 204.0
         },
         {
           "code": "BJYLVIP0004",
           "name": "499元套包",
           "qty": 1.0,
           "price": 499,
-          "profit": 231.0
+          "profit": 337.0
         }
       ],
       "amount": 1396.0,
-      "profit": 231.0
+      "profit": 949.0
     },
     {
       "branch": "北京易联",
@@ -2294,18 +2294,18 @@
           "name": "299元套包",
           "qty": 2.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 204.0
         },
         {
           "code": "BJYLVIP0008",
           "name": "1299元套包",
           "qty": 1.0,
           "price": 1299,
-          "profit": 0.0
+          "profit": 731.0
         }
       ],
       "amount": 1897.0,
-      "profit": 0.0
+      "profit": 1139.0
     },
     {
       "branch": "北京易联",
@@ -2353,11 +2353,11 @@
           "name": "299元套包",
           "qty": 5.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 204.0
         }
       ],
       "amount": 1495.0,
-      "profit": 0.0
+      "profit": 1020.0
     },
     {
       "branch": "北京易联",
@@ -2372,18 +2372,18 @@
           "name": "299元套包",
           "qty": 2.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 204.0
         },
         {
           "code": "BJYLVIP0004",
           "name": "499元套包",
           "qty": 1.0,
           "price": 499,
-          "profit": 231.0
+          "profit": 337.0
         }
       ],
       "amount": 1097.0,
-      "profit": 231.0
+      "profit": 745.0
     },
     {
       "branch": "北京易联",
@@ -2398,11 +2398,11 @@
           "name": "299元套包",
           "qty": 1.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 204.0
         }
       ],
       "amount": 299.0,
-      "profit": 0.0
+      "profit": 204.0
     },
     {
       "branch": "北京易联",
@@ -2428,11 +2428,11 @@
           "name": "299元套包",
           "qty": 1.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 204.0
         }
       ],
       "amount": 299.0,
-      "profit": 0.0
+      "profit": 204.0
     },
     {
       "branch": "北京易联",
@@ -2447,11 +2447,11 @@
           "name": "299元套包",
           "qty": 3.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 204.0
         }
       ],
       "amount": 897.0,
-      "profit": 0.0
+      "profit": 612.0
     },
     {
       "branch": "北京易联",
@@ -2477,11 +2477,11 @@
           "name": "299元套包",
           "qty": 8.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 204.0
         }
       ],
       "amount": 2392.0,
-      "profit": 0.0
+      "profit": 1632.0
     },
     {
       "branch": "北京易联",
@@ -2496,11 +2496,11 @@
           "name": "299元套包",
           "qty": 1.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 204.0
         }
       ],
       "amount": 299.0,
-      "profit": 0.0
+      "profit": 204.0
     },
     {
       "branch": "福建易联",
@@ -2570,11 +2570,11 @@
           "name": "299元礼包",
           "qty": 1.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 174.0
         }
       ],
       "amount": 299.0,
-      "profit": 0.0
+      "profit": 174.0
     },
     {
       "branch": "福建易联",
@@ -2688,18 +2688,18 @@
           "name": "699元礼包",
           "qty": 1.0,
           "price": 699,
-          "profit": 136.0
+          "profit": 356.5
         },
         {
           "code": "FJYLVIP0004",
           "name": "299元礼包",
           "qty": 3.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 174.0
         }
       ],
       "amount": 1596.0,
-      "profit": 136.0
+      "profit": 878.5
     },
     {
       "branch": "福建易联",
@@ -2714,11 +2714,11 @@
           "name": "299元礼包",
           "qty": 2.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 174.0
         }
       ],
       "amount": 598.0,
-      "profit": 0.0
+      "profit": 348.0
     },
     {
       "branch": "福建易联",
@@ -2744,18 +2744,18 @@
           "name": "399元礼包",
           "qty": 1.0,
           "price": 399,
-          "profit": 111.0
+          "profit": 211.5
         },
         {
           "code": "FJYLVIP0004",
           "name": "299元礼包",
           "qty": 6.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 174.0
         }
       ],
       "amount": 2193.0,
-      "profit": 111.0
+      "profit": 1255.5
     },
     {
       "branch": "福建易联",
@@ -2814,11 +2814,11 @@
           "name": "299元礼包",
           "qty": 3.0,
           "price": 299,
-          "profit": 0.0
+          "profit": 174.0
         }
       ],
       "amount": 897.0,
-      "profit": 0.0
+      "profit": 522.0
     },
     {
       "branch": "福建易联",
@@ -2856,9 +2856,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京东坝万达广场授权体验店",
-      "denominator": 1.0,
+      "denominator": 2.0,
       "numerator": 0.0,
-      "order_denom": 1,
+      "order_denom": 2,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2935,9 +2935,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京京西大悦城授权体验店",
-      "denominator": 3.0,
+      "denominator": 4.0,
       "numerator": 1.0,
-      "order_denom": 3,
+      "order_denom": 4,
       "order_num": 1,
       "vip_items": [
         {
@@ -2954,9 +2954,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京北投新奥天虹授权体验店",
-      "denominator": 0.0,
+      "denominator": 1.0,
       "numerator": 2.0,
-      "order_denom": 0,
+      "order_denom": 1,
       "order_num": 2,
       "vip_items": [
         {
@@ -2992,9 +2992,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京太阳宫凯德授权体验店",
-      "denominator": 2.0,
+      "denominator": 3.0,
       "numerator": 0.0,
-      "order_denom": 2,
+      "order_denom": 3,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -3003,9 +3003,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京昌平悦荟授权体验店",
-      "denominator": 1.0,
+      "denominator": 2.0,
       "numerator": 0.0,
-      "order_denom": 1,
+      "order_denom": 2,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -3036,9 +3036,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京朝阳大悦城授权体验店",
-      "denominator": 6.0,
+      "denominator": 8.0,
       "numerator": 0.0,
-      "order_denom": 6,
+      "order_denom": 8,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -3103,9 +3103,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京蓝色港湾授权体验店",
-      "denominator": 7.0,
+      "denominator": 9.0,
       "numerator": 0.0,
-      "order_denom": 6,
+      "order_denom": 8,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -3125,9 +3125,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京西单大悦城授权体验店",
-      "denominator": 9.0,
+      "denominator": 10.0,
       "numerator": 6.0,
-      "order_denom": 9,
+      "order_denom": 10,
       "order_num": 6,
       "vip_items": [
         {
@@ -3166,9 +3166,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京通州万达授权体验店",
-      "denominator": 4.0,
+      "denominator": 5.0,
       "numerator": 1.0,
-      "order_denom": 4,
+      "order_denom": 5,
       "order_num": 1,
       "vip_items": [
         {
@@ -3185,9 +3185,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京金源购物广场授权体验店",
-      "denominator": 1.0,
+      "denominator": 2.0,
       "numerator": 3.0,
-      "order_denom": 1,
+      "order_denom": 2,
       "order_num": 3,
       "vip_items": [
         {
@@ -3256,9 +3256,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京龙德广场授权体验店",
-      "denominator": 0.0,
+      "denominator": 1.0,
       "numerator": 0.0,
-      "order_denom": 0,
+      "order_denom": 1,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -3289,9 +3289,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京龙湖房山天街授权体验店",
-      "denominator": 4.0,
+      "denominator": 6.0,
       "numerator": 1.0,
-      "order_denom": 4,
+      "order_denom": 6,
       "order_num": 1,
       "vip_items": [
         {
@@ -3360,9 +3360,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI大疆哈苏北京大兴机场概念店",
-      "denominator": 3.0,
+      "denominator": 4.0,
       "numerator": 1.0,
-      "order_denom": 3,
+      "order_denom": 4,
       "order_num": 1,
       "vip_items": [
         {
