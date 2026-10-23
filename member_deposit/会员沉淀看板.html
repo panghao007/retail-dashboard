@@ -14,7 +14,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .cust input{border:0;border-radius:7px;padding:6px 8px;font-size:13px;color:#1f2d3d}
 .kpis{display:flex;gap:14px;padding:18px 24px;flex-wrap:wrap}
 .kpi{flex:1;min-width:150px;background:#fff;border-radius:14px;box-shadow:0 1px 3px rgba(16,24,40,.08);padding:16px 18px}
-.kpi .v{font-size:28px;font-weight:800;color:#12A150} .kpi .l{font-size:12px;color:#5B6875;margin-top:2px}
+.kpi .v{font-size:28px;font-weight:800;color:#1B2733} .kpi .l{font-size:12px;color:#5B6875;margin-top:2px}
 .kpi.warn-k .v{color:#D64545}
 .sec{background:#fff;margin:0 24px 16px;border-radius:14px;padding:16px 18px;box-shadow:0 1px 3px rgba(16,24,40,.08)}
 .sec h2{font-size:16px;font-weight:700;margin:0 0 12px;display:flex;align-items:center;gap:8px;}
@@ -53,7 +53,7 @@ td.bname{font-weight:600}
 var BRANCH_ORDER = ["上海爱飞", "北京中恒", "北京易联", "北京飞航", "四川新跃", "福建易联", "（未匹配门店）", "未消费会员"];
 var EXCLUDED_KW = ["丰管路", "内购店"];
 var NOTE = "会员沉淀为「截至某日的累计会员数」快照，不可加总；时间维度=快照日期。历史每日快照自 2026-08-11 起累积，更早日期暂无快照（会员档案为时点拉取）。";
-var GENERATED = "2026-10-22 23:36";
+var GENERATED = "2026-10-23 23:36";
 var MODE = "当日";
 var INDEX = [];
 var SNAPS = {};
@@ -135,6 +135,8 @@ function renderSingle(snap, prev, isRangeMain){
     bottom+='<div class="branch-block" data-branch="'+b+'"><div class="branch-name">'+b+'</div><table><thead><tr><th>门店</th><th class="num">会员数</th></tr></thead><tbody>'+sub+'</tbody></table></div>';
   });
   var prevLbl = prev? ("对比 "+keyToYmd(prev.date)) : "对比上一可用快照";
+  var _bsf='<button class="sf-btn sf-act" data-b="" onclick="sfBranch(this.getAttribute(\'data-b\'))">全部分公司</button>';
+  BRANCH_ORDER.forEach(function(b){ if(b in store_cnt) _bsf+='<button class="sf-btn" data-b="'+b+'" onclick="sfBranch(this.getAttribute(\'data-b\'))">'+b+'</button>'; });
   var html='<h2 class="sum-h"><span class="seq">①</span>全部分公司汇总</h2><div class="kpis">'
     +'<div class="kpi"><div class="v">'+fmt(total)+'</div><div class="l">会员沉淀总数（记录）</div></div>'
     +'<div class="kpi"><div class="v">'+fmt(totalDist)+'</div><div class="l">去重会员数</div></div>'
@@ -142,8 +144,6 @@ function renderSingle(snap, prev, isRangeMain){
     +'<div class="kpi"><div class="v">'+nb+'</div><div class="l">分公司数量</div></div></div>'
     +'<div class="sec"><div class="section-title"><span class="seq">②</span>分公司明细 · 会员沉淀（'+keyToYmd(snap.date)+'）</div>'
     +'<table><thead><tr><th>分公司</th><th class="num">会员沉淀（记录）</th><th class="num">去重会员</th><th class="num">'+prevLbl+'</th><th class="num">上一快照</th></tr></thead><tbody>'+rows+'</tbody></table>'+notes+'</div>';
-  var _bsf='<button class="sf-btn sf-act" data-b="" onclick="sfBranch(this.getAttribute(\'data-b\'))">全部分公司</button>';
-  BRANCH_ORDER.forEach(function(b){ if(b in store_cnt) _bsf+='<button class="sf-btn" data-b="'+b+'" onclick="sfBranch(this.getAttribute(\'data-b\'))">'+b+'</button>'; });
   if(bottom) html+='<div class="sec"><div class="section-title"><span class="seq">③</span>门店明细 · 按分公司筛选（各分公司会员最少的 5 家）</div>'
     +'<div class="sf" id="storeBar">'+_bsf+'</div>'+bottom+'</div>';
   return html;
@@ -176,7 +176,7 @@ async function render(){
     document.getElementById('content').innerHTML=html;
     document.getElementById('period').textContent=selectedLabel(dates);
     document.getElementById('noteUpd').textContent=(GENERATED?("数据更新于 "+GENERATED):"")+(NOTE?(" ｜ "+NOTE):"");
-    sfBranch(window.SF_BRANCH||'');
+    sfBranch(window.SF_BRANCH||'');   // 重绘后恢复分公司筛选状态
   }catch(e){ document.getElementById('content').innerHTML='<div class="note" style="padding:18px 24px">数据加载失败：'+e+'</div>'; }
 }
 function loadSnapSync(k){ return k? SNAPS[k]||null : null; }
@@ -216,5 +216,6 @@ var _ss=document.getElementsByTagName("script")[0];
 _ss.parentNode.insertBefore(_hs,_ss);
 </script>
 <!-- RETAIL_STATS_END -->
-<div class="srcline">来源：ERP 会员档案导出（会员管理→会员档案→导出数据）｜ 以「首次购买门店」归属分公司 ｜ 截至所选日期的累计会员数（快照，不可加总）</div>
+<!-- RETAIL_STATS_END -->
+<div class="srcline">来源：ERP 会员档案导出（会员管理→会员档案→导出数据）｜ 口径：以「首次购买门店」归属分公司 ｜ 截至所选日期的累计会员数（快照，不可加总）</div>
 </body></html>
