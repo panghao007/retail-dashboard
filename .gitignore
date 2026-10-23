@@ -6,3 +6,6 @@ d/会员有效性分析.xlsx
 d/零售单数据底表_主机.xlsx
 d/会员有效性通报.txt
 d/dashboard_data.json
+# 周报管线中间产物（gen_weekly_apple.py 读写，无页面引用，不公开）
+_weekly_agg.json
+_weekly_agg.py
