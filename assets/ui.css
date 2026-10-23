@@ -101,6 +101,33 @@ p,.sub,.note,.hint,.legend,.muted,.subject,.memo{
 }
 .note,.foot,.drw-foot{font-size:var(--ui-fs-sm)!important;}
 
+/* 分公司筛选器（门店/号码等明细表通用，六页统一青色调） */
+.sf{display:flex!important;gap:7px;flex-wrap:wrap;margin:0 0 10px!important;}
+.sf-btn{
+  border:1px solid var(--ui-line)!important;background:var(--ui-card)!important;border-radius:999px;
+  padding:6px 16px;font-size:var(--ui-fs-sm)!important;font-weight:600;color:#3f4652;
+  cursor:pointer;line-height:1.35;transition:all .15s;
+}
+.sf-btn:hover{border-color:var(--ui-accent)!important;color:var(--ui-accent-deep,#0E8FA8)!important;}
+.sf-btn.sf-act{background:var(--ui-accent)!important;border-color:var(--ui-accent)!important;color:#fff!important;}
+
+/* 布局层级序号：① 全公司汇总 → ② 分公司明细 → ③ 门店明细（六页统一，2026-10-23） */
+.sum-h{
+  display:flex!important;align-items:center;
+  font-size:var(--ui-fs-h2)!important;line-height:1.4!important;font-weight:700!important;
+  color:var(--ui-text)!important;margin:0 0 10px!important;
+}
+.seq{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:19px;height:19px;margin-right:8px;flex:0 0 auto;
+  border-radius:50%;background:var(--ui-accent);color:#fff;
+  font-size:11.5px;font-weight:700;line-height:1;
+}
+/* 有些页的 h2 是 display:flex + space-between，会把序号和标题拉到两端 → 含序号时强制左对齐 */
+h2:has(> .seq),.section-title:has(> .seq),.bd-title:has(> .seq),.card-title:has(> .seq){
+  justify-content:flex-start!important;gap:0!important;text-align:left!important;
+}
+
 /* ---------------------------------------------------------- 3. 顶部标题条 */
 /* 六页原本各写一套：有效性/合规/退货是青色渐变，沉淀是绿底，付费是白底，
    预订单是毛玻璃。统一为白底 + 底部细线，标题左侧青色竖条。 */

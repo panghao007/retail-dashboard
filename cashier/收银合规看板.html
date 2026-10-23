@@ -52,9 +52,9 @@ th{background:#f0f6f8;color:#456} tbody tr:hover{background:#fafdff}
     table,th,td{font-size:10.5px;} th,td{padding:6px 8px;}
     .vt-tip,.vt-tip .vt-tip-d,.vt-tip .vt-tip-row b{font-size:10px;}
   }
-</style><!-- UNIFIED-UI v=20261023f BEGIN（统一界面层，勿手改，改 assets/ui.css） -->
-<link rel="stylesheet" href="../assets/ui.css?v=20261023f">
-<script defer src="../assets/ui.js?v=20261023f"></script>
+</style><!-- UNIFIED-UI v=20261023h BEGIN（统一界面层，勿手改，改 assets/ui.css） -->
+<link rel="stylesheet" href="../assets/ui.css?v=20261023h">
+<script defer src="../assets/ui.js?v=20261023h"></script>
 <!-- UNIFIED-UI END -->
 </head><body>
 <div class="head">
@@ -110,7 +110,8 @@ function dPP(cur, prev){
 function draw(D, D1, T, T1){
   var rT=ratePct(D.compliant,D.noncompliant);
   var r1=D1? ratePct(D1.compliant,D1.noncompliant):null;
-  var kpi='<div class="kpis">'
+  var kpi='<h2 class="sum-h"><span class="seq">①</span>全部分公司汇总</h2>'
+    +'<div class="kpis">'
     +'<div class="card"><div class="n">'+fmt(D.total)+'</div><div class="l">有效收款笔数</div><div class="d">较前一天 '+dBadge(D.total,D1&&D1.total,'neutral')+'</div></div>'
     +'<div class="card good"><div class="n">'+fmt(D.compliant)+'</div><div class="l">合规笔数</div><div class="d">较前一天 '+dBadge(D.compliant,D1&&D1.compliant,'up')+'</div></div>'
     +'<div class="card bad"><div class="n">'+fmt(D.noncompliant)+'</div><div class="l">不合规笔数</div><div class="d">较前一天 '+dBadge(D.noncompliant,D1&&D1.noncompliant,'down')+'</div></div>'
@@ -135,9 +136,12 @@ function draw(D, D1, T, T1){
       +'<td style="text-align:right">'+dBadge(v.noncomp,v1&&v1.noncomp,'down')+'</td></tr>';
   });
   var store_rows="";
+  var sf_btns='<button class="sf-btn sf-act" data-b="">全部分公司</button>';
+  Object.keys(D.branch_stat).forEach(function(b){ sf_btns+='<button class="sf-btn" data-b="'+b+'">'+b+'</button>'; });
   Object.keys(D.store_stat).filter(function(s){return D.store_stat[s].noncomp>0;}).sort(function(a,b){return D.store_stat[b].noncomp-D.store_stat[a].noncomp;}).forEach(function(s){
     var v=D.store_stat[s]; var v1=D1?D1.store_stat[s]:null;
-    store_rows+='<tr><td>'+s+'</td><td style="text-align:right">'+fmt(v.count)+'</td><td style="text-align:right">'+fmt(v.comp)+'</td><td style="text-align:right;color:#D64545"><b>'+fmt(v.noncomp)+'</b></td><td style="text-align:right;color:#888">'+fmt(v.excl)+'</td><td style="text-align:right">'+v.rate+'%</td><td style="text-align:right">'+dBadge(v.noncomp,v1&&v1.noncomp,'down')+'</td></tr>';
+    var _br=STORE_BRANCH[s]||'';
+    store_rows+='<tr class="st-row" data-br="'+_br+'"><td>'+s+'</td><td>'+(_br||'—')+'</td><td style="text-align:right">'+fmt(v.count)+'</td><td style="text-align:right">'+fmt(v.comp)+'</td><td style="text-align:right;color:#D64545"><b>'+fmt(v.noncomp)+'</b></td><td style="text-align:right;color:#888">'+fmt(v.excl)+'</td><td style="text-align:right">'+v.rate+'%</td><td style="text-align:right">'+dBadge(v.noncomp,v1&&v1.noncomp,'down')+'</td></tr>';
   });
   var chan_rows="";
   Object.keys(D.channel_stat).sort(function(a,b){return D.channel_stat[b].count-D.channel_stat[a].count;}).slice(0,40).forEach(function(ch){
@@ -149,12 +153,14 @@ function draw(D, D1, T, T1){
   var perfect_pct=(total_stores>0)? Math.round(perfect.length/total_stores*1000)/10 : 0;
   var perfect_rows=perfect.map(function(s){var v=D.store_stat[s];return '<tr><td>'+s+'</td><td style="text-align:right">'+fmt(v.count)+'</td><td style="text-align:right;color:#12A150">'+fmt(v.comp)+'</td><td style="text-align:right;color:#12A150"><b>100%</b></td></tr>';}).join("");
   var html=kpi
+    +'<div class="sec"><h2><span class="seq">②</span>分公司明细（当月累积 · 右列为日环比对比前一天）</h2><table><thead><tr><th>所属分公司</th><th style="text-align:right">合规门店数量</th><th style="text-align:right">不合规门店数量</th><th style="text-align:right">100%合规门店占比</th><th style="text-align:right">笔数</th><th style="text-align:right">合规</th><th style="text-align:right">不合规</th><th style="text-align:right">不合规占比</th><th style="text-align:right">对比昨日增加</th></tr></thead><tbody>'+(branch_rows||'<tr><td colspan=9 style="text-align:center;color:#12A150">✅ 各分公司均合规</td></tr>')+'</tbody></table></div>'
+    +'<div class="sec"><h2 id="hStore"><span class="seq">③</span>门店明细 · 按分公司筛选（当月累积 · 右列为日环比对比前一天）</h2>'
+    +'<div class="sf" id="storeBar">'+sf_btns+'</div>'
+    +'<table id="tblStore"><thead><tr><th>销售门店</th><th>所属分公司</th><th style="text-align:right">笔数</th><th style="text-align:right">合规</th><th style="text-align:right">不合规</th><th style="text-align:right">剔除</th><th style="text-align:right">门店合规率</th><th style="text-align:right">不合规Δ</th></tr></thead><tbody>'+(store_rows||'<tr><td colspan=8 style="text-align:center;color:#12A150">✅ 各门店均合规</td></tr>')+'</tbody></table></div>'
     +'<div class="sec" id="trendSec"><h2>不合规数量趋势（每日 · 仅本月/上月 · 从1号起）</h2>'
     +'<div class="legend"><span><i class="dot" style="background:#D64545"></i>每日不合规笔数</span></div>'
     +'<div class="trend-btns"><button class="trend-btn active" data-vt-branch="全部">全部</button></div>'
     +'<div style="position:relative;width:100%;height:320px;"><canvas id="valTrend"></canvas><div id="vtTip" class="vt-tip"></div></div></div>'
-    +'<div class="sec"><h2>按所属分公司（当月累积 · 右列为日环比对比前一天）</h2><table><thead><tr><th>所属分公司</th><th style="text-align:right">合规门店数量</th><th style="text-align:right">不合规门店数量</th><th style="text-align:right">100%合规门店占比</th><th style="text-align:right">笔数</th><th style="text-align:right">合规</th><th style="text-align:right">不合规</th><th style="text-align:right">不合规占比</th><th style="text-align:right">对比昨日增加</th></tr></thead><tbody>'+(branch_rows||'<tr><td colspan=9 style="text-align:center;color:#12A150">✅ 各分公司均合规</td></tr>')+'</tbody></table></div>'
-    +'<div class="sec"><h2>按门店（当月累积 · 右列为日环比对比前一天）</h2><table><thead><tr><th>销售门店</th><th style="text-align:right">笔数</th><th style="text-align:right">合规</th><th style="text-align:right">不合规</th><th style="text-align:right">剔除</th><th style="text-align:right">门店合规率</th><th style="text-align:right">不合规Δ</th></tr></thead><tbody>'+(store_rows||'<tr><td colspan=7 style="text-align:center;color:#12A150">✅ 各门店均合规</td></tr>')+'</tbody></table></div>'
     +'<div class="sec"><h2>按支付通道分布（Top40 · 右列为日环比对比前一天不合规Δ）</h2><table><thead><tr><th>支付通道</th><th style="text-align:right">笔数</th><th style="text-align:right">合规</th><th style="text-align:right">不合规</th><th style="text-align:right">剔除</th><th style="text-align:right">不合规Δ</th></tr></thead><tbody>'+chan_rows+'</tbody></table></div>'
     +'<div class="sec"><h2>✅ 100% 合规门店（共 '+fmt(perfect.length)+' 家 / 占全部 '+fmt(total_stores)+' 家门店的 '+perfect_pct+'%）</h2><p style="font-size:13px;color:#667;margin:0 0 10px;line-height:1.7">以下门店在统计日<b>合规收款笔数 &gt; 0</b> 且 <b>不合规笔数 = 0</b>，即 100% 合规。</p><table><thead><tr><th>销售门店</th><th style="text-align:right">收款笔数</th><th style="text-align:right">合规</th><th style="text-align:right">门店合规率</th></tr></thead><tbody>'+(perfect_rows||'<tr><td colspan=4 style="text-align:center;color:#D64545">暂无 100% 合规门店</td></tr>')+'</tbody></table></div>'
     +'<div class="sec"><h2>不合规概览（共 '+fmt(D.noncompliant)+' 笔）</h2><p style="font-size:13px;color:#667;margin:0 0 10px;line-height:1.7">逐笔明细（单据、门店、会员号等）可下载 CSV 查看；不合规按所属分公司分布见上方表格。</p><button class="dlbtn" onclick="downloadCSV()">⬇ 下载不合规明细 CSV</button></div>'
@@ -165,6 +171,32 @@ function draw(D, D1, T, T1){
     +'判定规则（依据《通报商品分类-新.xlsx·收款分类》，随规则表动态更新）：<br>'
     +ruleDesc()+'· 规则未覆盖（sheet3 无此支付通道）单列示，不计入合规率分母。</div>';
   document.getElementById('content').innerHTML=html;
+  bindStoreFilter();
+}
+// 门店明细「所属分公司」筛选（纯前端按行 data-br 显隐，不改口径；逄总 2026-10-23）
+window.CB_FILTER='';
+function bindStoreFilter(){
+  var bar=document.getElementById('storeBar'); if(!bar) return;
+  var tb=document.getElementById('tblStore'); if(!tb) return;
+  var hd=document.getElementById('hStore');
+  function apply(){
+    var f=window.CB_FILTER||'', n=0, all=tb.querySelectorAll('tbody tr.st-row').length;
+    tb.querySelectorAll('tbody tr.st-row').forEach(function(tr){
+      var ok = !f || tr.getAttribute('data-br')===f;
+      tr.style.display = ok? '' : 'none';
+      if(ok) n++;
+    });
+    if(hd){
+      hd.innerHTML='<span class="seq">\u2462</span>\u95e8\u5e97\u660e\u7ec6 \u00b7 '+((f)?(f+' '+n+' \u5bb6 / \u5168\u516c\u53f8 '+all+' \u5bb6'):'\u6309\u5206\u516c\u53f8\u7b5b\u9009')+'\uff08\u5f53\u6708\u7d2f\u79ef \u00b7 \u53f3\u5217\u4e3a\u65e5\u73af\u6bd4\u5bf9\u6bd4\u524d\u4e00\u5929\uff09';
+    }
+    bar.querySelectorAll('.sf-btn').forEach(function(x){ x.classList.toggle('sf-act', (x.getAttribute('data-b')||'')===f); });
+  }
+  bar.addEventListener('click', function(e){
+    var b=e.target.closest('.sf-btn'); if(!b) return;
+    window.CB_FILTER=b.getAttribute('data-b')||'';
+    apply();
+  });
+  apply();
 }
 function ruleDesc(){
   var groups={合规:[],不合规:[],"有条件合规":[],剔除:[]};

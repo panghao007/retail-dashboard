@@ -31,9 +31,9 @@ td.bname{font-weight:600}
 .branch-name{font-size:13px;font-weight:700;color:#12A150;margin-bottom:6px;padding-left:8px;border-left:3px solid #12A150}
 #period{font-weight:600;color:#fff}
 #mwrap{padding:8px 24px 0;font-size:13px;color:#fff}
-</style><!-- UNIFIED-UI v=20261023f BEGIN（统一界面层，勿手改，改 assets/ui.css） -->
-<link rel="stylesheet" href="../assets/ui.css?v=20261023f">
-<script defer src="../assets/ui.js?v=20261023f"></script>
+</style><!-- UNIFIED-UI v=20261023h BEGIN（统一界面层，勿手改，改 assets/ui.css） -->
+<link rel="stylesheet" href="../assets/ui.css?v=20261023h">
+<script defer src="../assets/ui.js?v=20261023h"></script>
 <!-- UNIFIED-UI END -->
 </head><body>
 <div class="head">
@@ -132,17 +132,20 @@ function renderSingle(snap, prev, isRangeMain){
     var items=Object.keys(store_cnt[b]).map(function(s){return [s,store_cnt[b][s]];}).sort(function(a,b){return a[1]-b[1];}).slice(0,5);
     if(!items.length) return;
     var sub=items.map(function(it){return '<tr><td>'+it[0]+'</td><td class="num">'+it[1]+'</td></tr>';}).join("");
-    bottom+='<div class="branch-block"><div class="branch-name">'+b+'</div><table><thead><tr><th>门店</th><th class="num">会员数</th></tr></thead><tbody>'+sub+'</tbody></table></div>';
+    bottom+='<div class="branch-block" data-branch="'+b+'"><div class="branch-name">'+b+'</div><table><thead><tr><th>门店</th><th class="num">会员数</th></tr></thead><tbody>'+sub+'</tbody></table></div>';
   });
   var prevLbl = prev? ("对比 "+keyToYmd(prev.date)) : "对比上一可用快照";
-  var html='<div class="kpis">'
+  var html='<h2 class="sum-h"><span class="seq">①</span>全部分公司汇总</h2><div class="kpis">'
     +'<div class="kpi"><div class="v">'+fmt(total)+'</div><div class="l">会员沉淀总数（记录）</div></div>'
     +'<div class="kpi"><div class="v">'+fmt(totalDist)+'</div><div class="l">去重会员数</div></div>'
     +'<div class="kpi warn-k"><div class="v">'+fmt(nonconsume)+'</div><div class="l">未消费会员（无首购门店）</div></div>'
     +'<div class="kpi"><div class="v">'+nb+'</div><div class="l">分公司数量</div></div></div>'
-    +'<div class="sec"><div class="section-title"><span class="branddot"></span>各分公司会员沉淀（'+keyToYmd(snap.date)+'）</div>'
+    +'<div class="sec"><div class="section-title"><span class="seq">②</span>分公司明细 · 会员沉淀（'+keyToYmd(snap.date)+'）</div>'
     +'<table><thead><tr><th>分公司</th><th class="num">会员沉淀（记录）</th><th class="num">去重会员</th><th class="num">'+prevLbl+'</th><th class="num">上一快照</th></tr></thead><tbody>'+rows+'</tbody></table>'+notes+'</div>';
-  if(bottom) html+='<div class="sec"><div class="section-title"><span class="branddot" style="background:#F6AA00"></span>各分公司会员数量最少的 5 个门店</div>'+bottom+'</div>';
+  var _bsf='<button class="sf-btn sf-act" data-b="" onclick="sfBranch(this.getAttribute(\'data-b\'))">全部分公司</button>';
+  BRANCH_ORDER.forEach(function(b){ if(b in store_cnt) _bsf+='<button class="sf-btn" data-b="'+b+'" onclick="sfBranch(this.getAttribute(\'data-b\'))">'+b+'</button>'; });
+  if(bottom) html+='<div class="sec"><div class="section-title"><span class="seq">③</span>门店明细 · 按分公司筛选（各分公司会员最少的 5 家）</div>'
+    +'<div class="sf" id="storeBar">'+_bsf+'</div>'+bottom+'</div>';
   return html;
 }
 function renderRange(snaps){
@@ -173,9 +176,21 @@ async function render(){
     document.getElementById('content').innerHTML=html;
     document.getElementById('period').textContent=selectedLabel(dates);
     document.getElementById('noteUpd').textContent=(GENERATED?("数据更新于 "+GENERATED):"")+(NOTE?(" ｜ "+NOTE):"");
+    sfBranch(window.SF_BRANCH||'');
   }catch(e){ document.getElementById('content').innerHTML='<div class="note" style="padding:18px 24px">数据加载失败：'+e+'</div>'; }
 }
 function loadSnapSync(k){ return k? SNAPS[k]||null : null; }
+// 门店明细「所属分公司」筛选（纯前端显隐分公司区块；逄总 2026-10-23）
+window.SF_BRANCH='';
+function sfBranch(b){
+  window.SF_BRANCH=b||'';
+  document.querySelectorAll('.branch-block').forEach(function(el){
+    el.style.display=(!window.SF_BRANCH || el.getAttribute('data-branch')===window.SF_BRANCH)?'':'none';
+  });
+  document.querySelectorAll('#storeBar .sf-btn').forEach(function(x){
+    x.classList.toggle('sf-act',(x.getAttribute('data-b')||'')===window.SF_BRANCH);
+  });
+}
 function setMode(m){
   MODE=m;
   document.querySelectorAll('.bar button').forEach(function(b){ b.classList.toggle('on', b.dataset.m===m); });

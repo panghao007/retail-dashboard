@@ -82,9 +82,9 @@
   .trend-tip{position:absolute;pointer-events:none;background:rgba(31,41,51,.92);color:#fff;font-size:12px;
     padding:7px 10px;border-radius:8px;line-height:1.6;white-space:nowrap;display:none;z-index:9;transform:translate(-50%,-100%);}
 </style>
-<!-- UNIFIED-UI v=20261023f BEGIN（统一界面层，勿手改，改 assets/ui.css） -->
-<link rel="stylesheet" href="../assets/ui.css?v=20261023f">
-<script defer src="../assets/ui.js?v=20261023f"></script>
+<!-- UNIFIED-UI v=20261023h BEGIN（统一界面层，勿手改，改 assets/ui.css） -->
+<link rel="stylesheet" href="../assets/ui.css?v=20261023h">
+<script defer src="../assets/ui.js?v=20261023h"></script>
 <!-- UNIFIED-UI END -->
 </head>
 <body>
@@ -237,7 +237,7 @@ function draw(agg, dates, want){
   const totOpenRate = totalStores? openStores/totalStores : 0;
   // KPI
   const fmtAmt = n => (n>=10000 ? (n/10000).toFixed(2)+'万' : n.toFixed(0));
-  let kpi = '<div class="kpis">'
+  let kpi = '<h2 class="sum-h"><span class="seq">①</span>全部分公司汇总</h2><div class="kpis">'
     + '<div class="kpi"><div class="v">'+total.denominator.toFixed(0)+'</div><div class="l">主机台量（分母）</div></div>'
     + '<div class="kpi"><div class="v">'+total.numerator.toFixed(0)+'</div><div class="l">VIP会员商品数（分子）</div></div>'
     + '<div class="kpi"><div class="v">'+pct(totRate)+'</div><div class="l">合计会员连带率</div></div>'
@@ -286,21 +286,24 @@ function draw(agg, dates, want){
   let branchTable='<table><thead><tr><th>所属分公司</th><th style="text-align:right">主机台量</th>'
     +'<th style="text-align:right">VIP数</th><th>会员连带率</th><th style="text-align:right">付费会员开单(门店)</th><th style="text-align:right">会员产值金额合计</th><th style="text-align:right">会员纯利合计</th></tr></thead><tbody>'+rows+'</tbody></table>';
 
-  let html = kpi + branchTable;
+  let html = kpi
+    + '<div class="bd"><div class="bd-title"><span class="seq">②</span>分公司明细（点行展开档位明细）</div>'+branchTable+'</div>';
 
-  // 每日趋势（区间模式）—— 折线图 + 分公司切换
+  // 每日趋势（区间模式）—— 折线图 + 分公司切换（排在门店明细之后）
+  let trendHtml='';
   if(agg.isRange){
     const trendBtns = ['全部', ...BRANCHES].map(b =>
       '<button class="trend-btn'+(b==='全部'?' active':'')+'" data-trend-branch="'+b+'">'+b+'</button>'
     ).join('');
-    html+='<div class="bd"><div class="bd-title">每日趋势（会员连带率 / 开单占比）</div>'
+    trendHtml='<div class="bd"><div class="bd-title">每日趋势（会员连带率 / 开单占比）</div>'
       +'<div class="trend-btns">'+trendBtns+'</div>'
       +'<div class="trend-legend"><span data-line="rate"><i style="background:#1AABCB"></i>会员连带率(%)</span>'
       +'<span data-line="open"><i style="background:#F6AA00"></i>开单占比(%)</span></div>'
       +'<div class="chart-wrap"><canvas id="trendChart"></canvas><div class="trend-tip" id="trendTip"></div></div></div>';
   }
 
-  // 门店明细 + 未售（区间模式展示未售清单）
+  // 门店明细 + 未售（区间模式展示未售清单）—— 先收集，最后按 ③ 区块（带分公司筛选器）输出
+  let storeHtml='';
   BRANCHES.forEach(b=>{
     const bd=agg.branches[b];
     const items=Object.keys(bd.stores).map(s=>({store:s, ...bd.stores[s]}))
@@ -309,7 +312,7 @@ function draw(agg, dates, want){
     const master=Object.keys(bd.stores).length;
     let sold=0, unsold=[];
     Object.keys(bd.stores).forEach(s=>{ const o=bd.stores[s]; if(o.denominator>0||o.numerator>0) sold++; else unsold.push(s); });
-    let sec='<div class="bd"><div class="bd-title">'+b+' · 门店明细（销售 '+sold+'/'+master+' 家）</div>';
+    let sec='<div class="bd branch-block" data-branch="'+b+'"><div class="bd-title">'+b+' · 门店明细（销售 '+sold+'/'+master+' 家）</div>';
     if(items.length){
       let maxr=Math.max.apply(null, items.map(o=>o.denominator?o.numerator/o.denominator:0))||1;
       let sr="";
@@ -364,8 +367,17 @@ function draw(agg, dates, want){
       }
     }
     sec+='</div>';
-    html+=sec;
+    storeHtml+=sec;
   });
+
+  // ③ 门店明细：统一标题 + 分公司筛选器（默认全部）
+  const storeBtns = ['全部分公司', ...BRANCHES].map(b =>
+    '<button class="sf-btn'+(b==='全部分公司'?' sf-act':'')+'" data-b="'+(b==='全部分公司'?'':b)+'">'+b+'</button>'
+  ).join('');
+  html += '<div class="bd"><div class="bd-title"><span class="seq">③</span>门店明细 · 按分公司筛选（点门店行展开 VIP 档位）</div>'
+        + '<div class="sf" id="storeBar">'+storeBtns+'</div></div>';
+  html += storeHtml;
+  html += trendHtml;
 
   html+='<div class="note"><h3>口径说明</h3><p>'
     +'· <b>分母（主机台量）</b>：依据《通报商品分类-新.xlsx》sheet4 主机清单，商品编码命中的行；剔除「买断 / 礼品机出库 / 线上订单」，按销售数量正项求和；<b>门店 sheet「属性」=生活馆 的门店（11 个）不计入分母</b>（其 VIP 销售仍计入分子）。<br>'
@@ -379,6 +391,25 @@ function draw(agg, dates, want){
     +'· <b>会员纯利</b>：依据《通报商品分类-新.xlsx》sheet「付费会员商品」新增列「会员纯利」（每 VIP 商品的单件纯利润），与会员产值金额同一计算逻辑 = Σ(单件纯利 × 销售数量)；产值金额 = Σ(套餐单价 × 销售数量)，两者口径对齐。</p></div>';
   html+='<div class="foot">数据来源：ERP 零售单导出（与会员有效性同源）· <span class="warn">内含经营敏感数据，请勿外传</span></div>';
   document.getElementById('content').innerHTML = html;
+  // 门店明细的「所属分公司」筛选（纯前端显隐分公司区块；逄总 2026-10-23）
+  (function(){
+    var bar=document.getElementById('storeBar'); if(!bar) return;
+    function apply(){
+      var f=window.PAID_SF||'';
+      document.querySelectorAll('.branch-block').forEach(function(el){
+        el.style.display = (!f || el.getAttribute('data-branch')===f) ? '' : 'none';
+      });
+      bar.querySelectorAll('.sf-btn').forEach(function(x){
+        x.classList.toggle('sf-act', (x.getAttribute('data-b')||'')===f);
+      });
+    }
+    bar.addEventListener('click', function(e){
+      var b=e.target.closest('.sf-btn'); if(!b) return;
+      window.PAID_SF=b.getAttribute('data-b')||'';
+      apply();
+    });
+    apply();
+  })();
   // 点击行展开/收起 VIP 档位抽屉（分公司汇总行 + 门店行同款交互）
   document.querySelectorAll('.branch-row.has-tier,.store-row.has-tier').forEach(function(tr){
     tr.addEventListener('click', function(){
