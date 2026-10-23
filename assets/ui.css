@@ -221,6 +221,18 @@ canvas{display:block;max-width:100%!important;}
   .kpis{grid-template-columns:repeat(2,1fr)!important;}
 }
 
+/* ------------------------------------------- 12. 页脚「来源 / 口径」说明 */
+/* 各看板原来把「来源：…」写在标题下面，2026-10-23 统一挪到页面最底部 */
+.srcline{
+  margin:0!important;padding:10px var(--ui-pad) 18px!important;
+  font-size:var(--ui-fs-xs)!important;color:var(--ui-faint)!important;
+  line-height:1.8!important;background:transparent!important;
+  border-top:1px solid var(--ui-line)!important;
+}
+@media (max-width:640px){
+  .srcline{padding:9px var(--ui-pad) 16px!important;line-height:1.75!important;}
+}
+
 /* ------------------------------------------------------------- 11. 打印 */
 @media print{
   html,body{background:#fff!important;}
