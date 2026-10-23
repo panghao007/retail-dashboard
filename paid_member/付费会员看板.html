@@ -81,16 +81,11 @@
   .trend-tip{position:absolute;pointer-events:none;background:rgba(31,41,51,.92);color:#fff;font-size:12px;
     padding:7px 10px;border-radius:8px;line-height:1.6;white-space:nowrap;display:none;z-index:9;transform:translate(-50%,-100%);}
 </style>
-<!-- UNIFIED-UI v=20261023c BEGIN（统一界面层，勿手改，改 assets/ui.css） -->
-<link rel="stylesheet" href="../assets/ui.css?v=20261023c">
-<script defer src="../assets/ui.js?v=20261023c"></script>
-<!-- UNIFIED-UI END -->
 </head>
 <body>
   <div class="wrap">
     <div class="brandbar"></div>
     <h1>付费会员销售看板 · 会员连带率</h1>
-    
     <div class="selbar">
       <div class="ct-btns" id="tf">
         <button class="ct-btn" data-mode="当日" id="tfDay">当日</button>
@@ -104,6 +99,7 @@
     <div class="period" id="period"></div>
     <div class="note-upd" id="noteUpd"></div>
     <div id="content"><div class="loading">加载中…</div></div>
+    <div class="srcline">来源：ERP 零售单-零售单查询（当月-全部公司）｜ 口径：通报商品分类-新.xlsx·主机清单 + VIP商品编码 ｜ 统计北京中恒 / 四川新跃 / 北京易联 / 福建易联 / 北京飞航 / 上海爱飞 六家分公司</div>
   </div>
 <script>
 const BRANCHES = ["北京中恒","四川新跃","北京易联","福建易联","北京飞航","上海爱飞"];
@@ -564,6 +560,5 @@ document.getElementById('tf').addEventListener('click', e=>{
   render();
 })();
 </script>
-<div class="srcline">来源：ERP 零售单-零售单查询（当月-全部公司）｜ 口径：通报商品分类-新.xlsx·主机清单 + VIP商品编码 ｜ 统计北京中恒 / 四川新跃 / 北京易联 / 福建易联 / 北京飞航 / 上海爱飞 六家分公司</div>
 </body>
 </html>
