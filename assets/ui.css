@@ -1,23 +1,41 @@
 /* ==========================================================================
-   首茂零售数据看板 · 统一界面层  v=20261023
+   首茂零售数据看板 · 统一界面层  v=20261023d
    六个看板（会员有效性 / 收银合规 / 付费会员 / 零售退货 / 会员沉淀 / 预订单）
    共用这一份样式。由 apply_ui.py 注入到每个页面 </head> 最后，覆盖各页原有样式。
+
    设计原则：
      1. 左右不留白：卡片满宽贴边，区块之间用 6px 页面底色自然分隔；
      2. 字号统一且只求看清：正文 13px、表格 13px、手机 12.5px，KPI 23px；
-     3. 手机端表格横向滚动（.tblx），禁止中文被挤成竖排。
+     3. 手机端表格横向滚动（.tblx），禁止中文被挤成竖排；
+     4. 一套色板：青（品牌/金额）+ 绿（正向）+ 红（负向）+ 橙（警示），
+        不再出现紫、天蓝、各页自选绿红；
+     5. 一套版式：白底页头 + 青竖条标题 / 白卡 / 表头浅灰 / 胶囊筛选。
    改版只改这一个文件，六个看板同时生效。
    ========================================================================== */
 
 :root{
   --ui-font:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  /* 底色 / 卡片 / 线 */
   --ui-bg:#f2f4f7;
   --ui-card:#ffffff;
-  --ui-line:#eceff3;
-  --ui-text:#1f2937;
-  --ui-muted:#65707d;
-  --ui-faint:#98a2b0;
+  --ui-line:#e8edf3;
+  --ui-th:#f6f8fa;          /* 表头底色 */
+  --ui-hover:#f7fbfc;       /* 表格行悬停 */
+  /* 文字 */
+  --ui-text:#1b2733;
+  --ui-muted:#5b6875;
+  --ui-faint:#94a1ae;
+  /* 品牌与语义色（六页唯一真源） */
   --ui-accent:#1aabcb;
+  --ui-accent-d:#0e8fa8;
+  --ui-accent-l:#e9f8fb;
+  --ui-pos:#12a150;
+  --ui-pos-l:#eaf7f0;
+  --ui-neg:#d64545;
+  --ui-neg-l:#fcefef;
+  --ui-warn:#f6aa00;
+  --ui-warn-l:#fff7e6;
+  /* 字号 */
   --ui-fs:13px;
   --ui-fs-sm:12px;
   --ui-fs-xs:11px;
@@ -25,6 +43,7 @@
   --ui-fs-h2:15px;
   --ui-fs-h3:13px;
   --ui-fs-kpi:23px;
+  /* 间距 */
   --ui-gap:6px;
   --ui-pad:12px;
   --ui-row:8px;
@@ -53,44 +72,92 @@ img,canvas,svg{max-width:100%;}
 }
 
 /* -------------------------------------------------- 2. 标题 / 说明文字层级 */
-h1{font-size:var(--ui-fs-h1)!important;line-height:1.35!important;font-weight:700!important;margin:0!important;}
-h2,.sec h2,.card h2,.section-title,.bd-title{
-  font-size:var(--ui-fs-h2)!important;line-height:1.4!important;font-weight:700!important;
-  margin:0 0 8px!important;
+h1,.header-title,.page-title{
+  font-size:var(--ui-fs-h1)!important;line-height:1.35!important;font-weight:700!important;
+  margin:0!important;color:var(--ui-text)!important;
+  position:relative;padding-left:11px!important;
 }
-h3,.sec h3{font-size:var(--ui-fs-h3)!important;line-height:1.45!important;font-weight:700!important;margin:12px 0 6px!important;}
+/* 标题左侧统一青色竖条（六页同一识别元素） */
+h1::before,.header-title::before,.page-title::before{
+  content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:4px;height:.86em;background:var(--ui-accent);border-radius:2px;
+}
+h2,.sec h2,.card h2,.section-title,.bd-title,.sec-title{
+  font-size:var(--ui-fs-h2)!important;line-height:1.4!important;font-weight:700!important;
+  color:var(--ui-text)!important;
+  margin:0 0 8px!important;
+  padding-left:8px!important;
+  border-left:3px solid var(--ui-accent)!important;
+}
+h3,.sec h3{
+  font-size:var(--ui-fs-h3)!important;line-height:1.45!important;font-weight:700!important;
+  color:var(--ui-text)!important;margin:12px 0 6px!important;
+}
 p,.sub,.note,.hint,.legend,.muted,.subject,.memo{
   font-size:var(--ui-fs)!important;line-height:1.6!important;
 }
-.note,.sub,.legend,.hint,.muted,.st-hint,.note-upd,.period-hint,.drw-s,.drw-foot,.foot{color:var(--ui-muted)!important;}
+.note,.sub,.legend,.hint,.muted,.st-hint,.note-upd,.period-hint,.drw-s,.drw-foot,.foot,.srcline{
+  color:var(--ui-muted)!important;
+}
 .note,.foot,.drw-foot{font-size:var(--ui-fs-sm)!important;}
 
 /* ---------------------------------------------------------- 3. 顶部标题条 */
+/* 六页原本各写一套：有效性/合规/退货是青色渐变，沉淀是绿底，付费是白底，
+   预订单是毛玻璃。统一为白底 + 底部细线，标题左侧青色竖条。 */
 .head,.header,.topbar,.hero{
-  padding:10px var(--ui-pad)!important;
+  background:var(--ui-card)!important;
+  background-image:none!important;
+  color:var(--ui-text)!important;
+  padding:11px var(--ui-pad)!important;
   margin:0 0 var(--ui-gap)!important;
+  border:0!important;
+  border-bottom:1px solid var(--ui-line)!important;
   border-radius:0!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
 }
-.head h1,.header h1{font-size:var(--ui-fs-h1)!important;}
-.head p,.header p{font-size:var(--ui-fs-sm)!important;line-height:1.5!important;margin:2px 0 0!important;}
+.head h1,.header h1,.header-title,.page-title{color:var(--ui-text)!important;font-size:var(--ui-fs-h1)!important;}
+.head p,.header p{font-size:var(--ui-fs-sm)!important;line-height:1.5!important;margin:2px 0 0!important;color:var(--ui-muted)!important;}
+.head .sub,.header .sub,.header-sub{color:var(--ui-muted)!important;font-size:var(--ui-fs-sm)!important;}
 
 /* 顶部条里的胶囊切换（沉淀的 .bar / 预订单的 tab-row）保持换行不溢出 */
-.bar,.tab-row,.seg{max-width:100%!important;flex-wrap:wrap!important;}
-.bar button,.seg button,.tab-row button{font-size:var(--ui-fs-sm)!important;padding:6px 12px!important;}
+.bar,.tab-row,.seg{max-width:100%!important;flex-wrap:wrap!important;background:transparent!important;padding:0!important;gap:6px!important;}
 
 /* ------------------------------------------------------- 4. 周期/筛选按钮 */
 .period-bar,.ct-btns,.trend-btns,.sf,.br-row,.bucket-row{
   gap:6px!important;margin:0!important;padding:8px var(--ui-pad)!important;flex-wrap:wrap!important;
 }
-.ct-btn,.trend-btn,.sf-btn,.bucket-chip,.br-chip,.morebtn{
-  font-size:var(--ui-fs-sm)!important;padding:6px 14px!important;border-radius:16px!important;line-height:1.2!important;
+.ct-btn,.trend-btn,.sf-btn,.bucket-chip,.br-chip,.morebtn,
+.bar button,.seg button,.tab-row button,.tab-row .tab-item,
+.dim-chip,.risk-chip,.rel-chip,.rel-more{
+  font-size:var(--ui-fs-sm)!important;
+  padding:6px 14px!important;border-radius:16px!important;line-height:1.2!important;
+  background:var(--ui-card)!important;
+  border:1px solid #e1e8ef!important;
+  color:var(--ui-muted)!important;
+  box-shadow:none!important;
+  font-weight:600!important;
+  cursor:pointer;
+}
+.ct-btn.ct-act,.trend-btn.active,.sf-btn.act,.sf-btn.active,
+.bucket-chip.active,.br-chip.active,.bar button.active,.seg button.active,
+.tab-row button.active,.tab-row .tab-item.active,
+.dim-chip.active,.risk-chip.active,.rel-chip.active{
+  background:var(--ui-accent)!important;
+  border-color:var(--ui-accent)!important;
+  color:#fff!important;
+  box-shadow:none!important;
+}
+.ct-btn:not(.ct-act):hover,.trend-btn:not(.active):hover,.sf-btn:not(.act):hover{
+  background:var(--ui-accent-l)!important;border-color:#cfeef5!important;
 }
 .period-label,.period-hint,#period,#noteUpd,.cmp{
   font-size:var(--ui-fs-sm)!important;
 }
 
 /* 纯文字条（统计口径、更新时间等）：只留左右内边距，不加白底 */
-#mwrap,#owrap,.statbar,.cmp,.note,#cmp{
+#mwrap,#owrap,.statbar,.cmp,.note,#cmp,.header-date{
   margin:0!important;
   padding:8px var(--ui-pad)!important;
   background:transparent!important;
@@ -110,9 +177,12 @@ p,.sub,.note,.hint,.legend,.muted,.subject,.memo{
   border:0!important;
   border-radius:0!important;
   box-shadow:0 1px 0 var(--ui-line)!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
 }
 #content,#cards,.cards{padding:0!important;margin:0!important;}
-/* 卡片之间的标题、说明留出呼吸但不留白 */
+/* 预订单页 .cards 是 flex 纵向布局，gap 收成统一 6px */
+.cards{display:flex!important;flex-direction:column!important;gap:var(--ui-gap)!important;}
 .card>.legend,.sec>.legend{margin:0 0 6px!important;}
 
 /* --------------------------------------------------------------- 6. KPI */
@@ -124,7 +194,7 @@ p,.sub,.note,.hint,.legend,.muted,.subject,.memo{
   margin:0!important;
   background:transparent!important;
 }
-.kpis>*,.kpi,.kpis .card{
+.kpis>*,.kpi,.kpis .card,.metric{
   margin:0!important;
   padding:10px var(--ui-pad)!important;
   background:var(--ui-card)!important;
@@ -133,13 +203,29 @@ p,.sub,.note,.hint,.legend,.muted,.subject,.memo{
   box-shadow:0 1px 0 var(--ui-line)!important;
   min-width:0!important;
   flex:none!important;
+  text-align:left!important;
 }
-.kpi .val,.kpi .v,.kpi .n,.card .n,.kpis .v,.kpis .n{
+.kpi .val,.kpi .v,.kpi .n,.card .n,.kpis .v,.kpis .n,.metric-value{
   font-size:var(--ui-fs-kpi)!important;line-height:1.25!important;font-weight:700!important;
+  font-variant-numeric:tabular-nums;
+  letter-spacing:0!important;
 }
-.kpi .label,.kpi .l,.kpi .sub2,.card .l,.kpis .l,.card .d,.kpi .d{
+.kpi .label,.kpi .l,.kpi .sub2,.card .l,.kpis .l,.card .d,.kpi .d,.metric-label{
   font-size:var(--ui-fs-sm)!important;line-height:1.45!important;
+  color:var(--ui-muted)!important;
+  font-weight:400!important;
+  margin-top:4px!important;
+  justify-content:flex-start!important;
 }
+.metric-delta{justify-content:flex-start!important;}
+
+/* 数值语义色：绿=正向 / 红=负向 / 青=金额与品牌指标 / 墨=中性规模 */
+.kpi .v,.kpi .val,.metric-value,.card .n{color:var(--ui-text);}
+.v-pos,.c-green,.pos{color:var(--ui-pos)!important;}
+.v-neg,.c-red,.neg{color:var(--ui-neg)!important;}
+.v-brand,.c-blue,.c-teal,.c-purple{color:var(--ui-accent)!important;}
+.c-orange,.c-warn{color:var(--ui-warn)!important;}
+.c-gray{color:var(--ui-muted)!important;}
 
 /* --------------------------------------------------------------- 7. 表格 */
 .tblx{width:100%;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0;padding:0;}
@@ -163,10 +249,23 @@ th,td{
   border-bottom:1px solid var(--ui-line)!important;
   word-break:normal!important;
   overflow-wrap:normal!important;
+  text-align:left!important;
 }
-th{font-size:var(--ui-fs-sm)!important;font-weight:600!important;color:var(--ui-muted)!important;background:#fafbfc!important;}
+th{
+  font-size:var(--ui-fs-sm)!important;font-weight:600!important;
+  color:var(--ui-muted)!important;background:var(--ui-th)!important;
+  border-top:1px solid var(--ui-line)!important;
+}
+th:first-child{border-top-left-radius:0;}
 td{color:var(--ui-text)!important;}
 tr:last-child td{border-bottom:0!important;}
+/* 首列（门店/分公司/商品名）：加粗一点点，视线有落点 */
+tbody td:first-child{font-weight:600!important;}
+/* 数字列：ui.js 按内容自动打 .ui-num，表头与数值同向右对齐 */
+td.ui-num,th.ui-num{text-align:right!important;font-variant-numeric:tabular-nums;}
+/* 行悬停：轻微青调，不干扰读数 */
+tbody tr:hover>td{background:var(--ui-hover)!important;}
+tbody tr:hover>td.drawer-cell{background:#f4f9fa!important;}
 /* 长文本单元格（ui.js 按字数自动加 .ui-w）允许换行，但给足最小宽度，
    不会出现「北/京/易/联」一字一行；短文本一律不换行。 */
 td.ui-w,th.ui-w{white-space:normal!important;min-width:7em;max-width:16em;}
@@ -176,11 +275,18 @@ td.store-name,td.name{min-width:8em;white-space:normal!important;}
 .badge{font-size:var(--ui-fs-xs)!important;padding:2px 7px!important;border-radius:5px!important;}
 .num{font-variant-numeric:tabular-nums;}
 
+/* 语义小标签：红/橙/绿/青四色统一 */
+.tag,.tag-red,.badge-red,.risk-tag,.dim-closed{
+  border-radius:6px!important;
+}
+.tag-red,.badge-red{background:var(--ui-neg-l)!important;color:var(--ui-neg)!important;border:1px solid #f2d4d4!important;}
+
 /* --------------------------------------------------------- 8. 抽屉/弹层 */
 .drw,.drawer,.mask,.drawer-mask{border-radius:0!important;}
-.drw-t,.drawer-title{font-size:16px!important;}
+.drw-t,.drawer-title,.drawer-title{font-size:16px!important;}
 .drw-s,.drawer-sub{font-size:var(--ui-fs-sm)!important;}
 .drw-body table,.drawer-body table{font-size:var(--ui-fs-sm)!important;}
+.drawer-head,.drawer-sum{border-color:var(--ui-line)!important;}
 
 /* ------------------------------------------------- 9. 图例/提示/图表容器 */
 .vt-leg,.trend-legend{font-size:var(--ui-fs-sm)!important;gap:12px!important;}
@@ -206,16 +312,21 @@ canvas{display:block;max-width:100%!important;}
   .kpis{grid-template-columns:repeat(2,1fr)!important;}
   /* 单数个 KPI 时，最后一个占满整行，避免右下留一块空白 */
   .kpis>:last-child:nth-child(odd){grid-column:1 / -1;}
-  .kpis>*,.kpi,.kpis .card{padding:8px 10px!important;}
-  .kpi .val,.kpi .v,.kpi .n,.card .n,.kpis .v,.kpis .n{font-size:var(--ui-fs-kpi)!important;}
+  .kpis>*,.kpi,.kpis .card,.metric{padding:8px 10px!important;}
+  .kpi .val,.kpi .v,.kpi .n,.card .n,.kpis .v,.kpis .n,.metric-value{font-size:var(--ui-fs-kpi)!important;}
   th,td{padding:var(--ui-row) 7px!important;font-size:var(--ui-fs)!important;}
   th{font-size:var(--ui-fs-sm)!important;}
   td.ui-w,th.ui-w{min-width:6em;max-width:10em;}
   td.store-name,td.name{min-width:7em;}
   .drw{width:100%!important;max-width:100%!important;}
   .drawer{left:0!important;right:0!important;}
-  .head,.header{padding:9px var(--ui-pad)!important;}
-  .ct-btn,.trend-btn,.sf-btn,.bucket-chip,.br-chip{font-size:var(--ui-fs-sm)!important;padding:5px 11px!important;}
+  .head,.header{padding:9px var(--ui-pad)!important;flex-wrap:wrap!important;}
+  /* 手机端标题与右侧按钮组不再挤一行：按钮组换到标题下方整行 */
+  .head .bar,.header .bar,.head .seg,.head .tab-row{width:100%!important;margin-top:6px!important;}
+  .ct-btn,.trend-btn,.sf-btn,.bucket-chip,.br-chip,.bar button,.seg button,.tab-row .tab-item{
+    font-size:var(--ui-fs-sm)!important;padding:5px 11px!important;
+  }
+  h1{font-size:var(--ui-fs-h1)!important;}
 }
 @media (max-width:400px){
   .kpis{grid-template-columns:repeat(2,1fr)!important;}
@@ -232,6 +343,45 @@ canvas{display:block;max-width:100%!important;}
 @media (max-width:640px){
   .srcline{padding:9px var(--ui-pad) 16px!important;line-height:1.75!important;}
 }
+
+/* ------------------------------------------------------ 13. 预订单页专项 */
+/* 这一页自带一套 Apple 风样式（mobile.css：#0071E3 蓝 / #F5F5F7 底 /
+   16px 毛玻璃圆角卡 / 大分段 tab）。这里把它拉回与其余五页一致：
+   白底页头、满宽零圆角卡、胶囊筛选、同一套语义色。 */
+.header{position:sticky!important;top:0;z-index:100;}
+.header-back{color:var(--ui-accent)!important;font-size:var(--ui-fs-sm)!important;}
+.header-badge{color:var(--ui-accent)!important;background:var(--ui-accent-l)!important;border-radius:6px!important;font-size:10px!important;}
+.header-date{font-size:var(--ui-fs-xs)!important;padding:4px 0 0!important;display:flex;align-items:center;gap:6px;}
+.header-date .dot{background:var(--ui-pos)!important;}
+.tab-row{display:flex!important;gap:6px!important;margin-top:9px!important;padding:0!important;background:transparent!important;border-radius:0!important;overflow-x:auto;}
+.tab-row .tab-item{flex:0 0 auto!important;min-width:0!important;}
+.card-head{margin-bottom:10px!important;}
+.card-icon{width:22px!important;height:22px!important;border-radius:5px!important;font-size:12px!important;background:var(--ui-accent-l)!important;}
+.card-title{font-size:var(--ui-fs-h2)!important;font-weight:700!important;color:var(--ui-text)!important;}
+.card-subtitle{font-size:var(--ui-fs-xs)!important;color:var(--ui-muted)!important;}
+.metrics-row{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(140px,1fr))!important;gap:var(--ui-gap)!important;margin:0 0 var(--ui-gap)!important;}
+/* 指标行里混排的说明文字（如「实收 X · 已核销 Y」）单独占一整行，不占一格 */
+.metrics-row>*:not(.metric){grid-column:1/-1!important;}
+.metrics-row>.metric{background:var(--ui-card)!important;border-radius:0!important;}
+.detail-title{font-size:var(--ui-fs-sm)!important;color:var(--ui-muted)!important;text-transform:none!important;letter-spacing:0!important;}
+.detail-item{font-size:var(--ui-fs)!important;padding:4px 0!important;}
+.detail-item-name{color:var(--ui-text)!important;}
+.progress-bar{height:5px!important;background:#eef1f5!important;margin:8px 0 10px!important;}
+.progress-label{font-size:var(--ui-fs-xs)!important;color:var(--ui-muted)!important;}
+.insight-box{background:var(--ui-accent-l)!important;border:1px solid #d3eef5!important;border-radius:0!important;}
+.insight-label{color:var(--ui-accent-d)!important;font-size:10px!important;}
+.insight-text{font-size:var(--ui-fs-sm)!important;color:var(--ui-text)!important;}
+.olist th{background:var(--ui-th)!important;color:var(--ui-muted)!important;font-size:var(--ui-fs-sm)!important;}
+.olist th,.olist td{border-bottom:1px solid var(--ui-line)!important;padding:7px 9px!important;}
+.rel-title{font-size:var(--ui-fs-sm)!important;color:var(--ui-muted)!important;}
+.rel-chip{background:var(--ui-card)!important;border:1px solid #e1e8ef!important;color:var(--ui-muted)!important;}
+.rel-chip.active{background:var(--ui-accent)!important;color:#fff!important;border-color:var(--ui-accent)!important;}
+.store-item{background:var(--ui-card)!important;border:1px solid var(--ui-line)!important;border-radius:0!important;}
+.bucket-sum,.drawer-sum{background:transparent!important;}
+.drawer{border-radius:0!important;}
+.drawer-head{border-bottom:1px solid var(--ui-line)!important;}
+.po-gate-box{border-radius:0!important;box-shadow:0 6px 24px rgba(15,23,42,.12)!important;}
+.po-gate-btn{background:var(--ui-accent)!important;border-radius:0!important;}
 
 /* ------------------------------------------------------------- 11. 打印 */
 @media print{

@@ -3,32 +3,32 @@
 <title>收银合规看板</title>
 <style>
 *{box-sizing:border-box} html{-webkit-text-size-adjust:100%!important;} body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;margin:0;background:#f5f7fa;color:#1f2d3d;-webkit-text-size-adjust:100%!important;}
-.head{background:linear-gradient(120deg,#1AABCB,#1488a8);color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.head{background:linear-gradient(120deg,#1AABCB,#0E8FA8);color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
 .head h1{margin:0;font-size:21px} .head p{margin:3px 0 0;opacity:.92;font-size:12.5px}
 .kpis{display:flex;gap:14px;padding:18px 24px;flex-wrap:wrap}
 .card{background:#fff;border-radius:12px;padding:16px 20px;flex:1;min-width:150px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
-.card .n{font-size:28px;font-weight:700} .card .l{font-size:12.5px;color:#667} .card.bad .n{color:#c0392b} .card.good .n{color:#1a9e4b}
-.card .d{display:block;margin-top:6px;font-size:12px;font-weight:700;color:#9ca3af}
+.card .n{font-size:28px;font-weight:700} .card .l{font-size:12.5px;color:#667} .card.bad .n{color:#D64545} .card.good .n{color:#12A150}
+.card .d{display:block;margin-top:6px;font-size:12px;font-weight:700;color:#94A1AE}
 .sec{background:#fff;margin:0 24px 18px;border-radius:12px;padding:14px 18px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
 .sec h2{font-size:15.5px;margin:0 0 10px;color:#1AABCB;border-left:4px solid #F6AA00;padding-left:10px;display:flex;justify-content:space-between;align-items:center}
 table{width:100%;border-collapse:collapse;font-size:13px} th,td{padding:6px 8px;border-bottom:1px solid #eef;text-align:left}
 th{background:#f0f6f8;color:#456} tbody tr:hover{background:#fafdff}
 .note{font-size:12px;color:#889;padding:0 24px 22px;line-height:1.7}
 .dlbtn{display:inline-block;margin:0 0 10px;font-size:13px;font-weight:600;color:#fff;background:#1AABCB;text-decoration:none;padding:8px 16px;border-radius:9px;border:0;cursor:pointer}
-.dlbtn:hover{background:#1488a8}
-#mwrap{padding:0 24px 8px;font-size:13px;color:#456} #period{font-weight:600;color:#1488a8}
+.dlbtn:hover{background:#0E8FA8}
+#mwrap{padding:0 24px 8px;font-size:13px;color:#456} #period{font-weight:600;color:#0E8FA8}
 .cmp{margin:0 24px 6px;background:#fff;border-radius:12px;padding:12px 18px;font-size:13px;color:#456;box-shadow:0 2px 10px rgba(0,0,0,.06)}
-.cmp b{color:#1488a8}
+.cmp b{color:#0E8FA8}
 .ct-btns{display:flex;gap:8px;margin:10px 0 6px;flex-wrap:wrap;}
-.ct-btn{border:1px solid #e5e9ef;background:#fff;border-radius:20px;padding:6px 16px;font-size:13px;font-weight:600;color:#4b5563;cursor:pointer;transition:all .12s;}
+.ct-btn{border:1px solid #e5e9ef;background:#fff;border-radius:20px;padding:6px 16px;font-size:13px;font-weight:600;color:#5B6875;cursor:pointer;transition:all .12s;}
 .ct-btn:hover{background:#eef0fe;}
 .ct-btn.ct-act{background:#F6AA00;color:#fff;border-color:#F6AA00;}
-  .legend{font-size:12.5px;color:#6b7280;margin-bottom:12px;}
+  .legend{font-size:12.5px;color:#5B6875;margin-bottom:12px;}
   .legend span{display:inline-flex;align-items:center;gap:5px;}
   .legend .dot{display:inline-block;width:10px;height:10px;border-radius:50%;}
   .trend-btns{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
-  .trend-btn{border:1px solid #e5e9ef;background:#fff;border-radius:20px;padding:6px 16px;font-size:13px;font-weight:600;cursor:pointer;color:#4b5563;transition:all .15s;}
-  .trend-btn.active{background:#c0392b;color:#fff;border-color:#c0392b;}
+  .trend-btn{border:1px solid #e5e9ef;background:#fff;border-radius:20px;padding:6px 16px;font-size:13px;font-weight:600;cursor:pointer;color:#5B6875;transition:all .15s;}
+  .trend-btn.active{background:#D64545;color:#fff;border-color:#D64545;}
   .trend-btn:not(.active):hover{background:#fdecea;}
   #valTrend{display:block;width:100%;cursor:default;}
   .vt-tip{position:absolute;z-index:20;display:none;pointer-events:none;background:rgba(17,24,39,.94);color:#fff;border-radius:8px;padding:8px 11px;font-size:12px;line-height:1.6;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,.22);}
@@ -52,9 +52,9 @@ th{background:#f0f6f8;color:#456} tbody tr:hover{background:#fafdff}
     table,th,td{font-size:10.5px;} th,td{padding:6px 8px;}
     .vt-tip,.vt-tip .vt-tip-d,.vt-tip .vt-tip-row b{font-size:10px;}
   }
-</style><!-- UNIFIED-UI v=20261023c BEGIN（统一界面层，勿手改，改 assets/ui.css） -->
-<link rel="stylesheet" href="../assets/ui.css?v=20261023c">
-<script defer src="../assets/ui.js?v=20261023c"></script>
+</style><!-- UNIFIED-UI v=20261023f BEGIN（统一界面层，勿手改，改 assets/ui.css） -->
+<link rel="stylesheet" href="../assets/ui.css?v=20261023f">
+<script defer src="../assets/ui.js?v=20261023f"></script>
 <!-- UNIFIED-UI END -->
 </head><body>
 <div class="head">
@@ -96,14 +96,14 @@ function dBadge(cur, prev, kind){
   if(d===0) return '<span class="d flat">±0</span>';
   var up=d>0;
   var good = kind==='neutral' ? null : (kind==='up'? up : !up);
-  var col = good==null? '#9ca3af' : (good? '#1a9e4b':'#c0392b');
+  var col = good==null? '#94A1AE' : (good? '#12A150':'#D64545');
   return '<span class="d" style="color:'+col+'">'+(up?'▲':'▼')+Math.abs(d)+'</span>';
 }
 function dPP(cur, prev){
   if(prev==null) return '<span class="d flat">— 无前日</span>';
   var d=Math.round((cur-prev)*100)/100;
   if(d===0) return '<span class="d flat">±0.00pp</span>';
-  var up=d>0; var col= up?'#1a9e4b':'#c0392b';
+  var up=d>0; var col= up?'#12A150':'#D64545';
   return '<span class="d" style="color:'+col+'">'+(up?'▲':'▼')+Math.abs(d).toFixed(2)+'pp</span>';
 }
 
@@ -125,38 +125,38 @@ function draw(D, D1, T, T1){
   Object.keys(D.branch_stat).sort(function(a,b){return (D.branch_stat[b].noncomp-D.branch_stat[a].noncomp)||(D.branch_stat[b].count-D.branch_stat[a].count);}).forEach(function(br){
     var v=D.branch_stat[br]; var v1=D1?D1.branch_stat[br]:null;
     branch_rows+='<tr><td><b>'+br+'</b></td>'
-      +'<td style="text-align:right;color:#1a9e4b">'+fmt(v.stores_comp)+'</td>'
-      +'<td style="text-align:right;color:#c0392b">'+fmt(v.stores_noncomp)+'</td>'
-      +'<td style="text-align:right;color:#1a9e4b"><b>'+(v.perfect_pct||0)+'%</b></td>'
+      +'<td style="text-align:right;color:#12A150">'+fmt(v.stores_comp)+'</td>'
+      +'<td style="text-align:right;color:#D64545">'+fmt(v.stores_noncomp)+'</td>'
+      +'<td style="text-align:right;color:#12A150"><b>'+(v.perfect_pct||0)+'%</b></td>'
       +'<td style="text-align:right">'+fmt(v.count)+'</td>'
-      +'<td style="text-align:right;color:#1a9e4b">'+fmt(v.comp)+'</td>'
-      +'<td style="text-align:right;color:#c0392b"><b>'+fmt(v.noncomp)+'</b></td>'
-      +'<td style="text-align:right;color:#c0392b">'+((v.comp+v.noncomp)>0? (v.noncomp/(v.comp+v.noncomp)*100).toFixed(2):'0.00')+'%</td>'
+      +'<td style="text-align:right;color:#12A150">'+fmt(v.comp)+'</td>'
+      +'<td style="text-align:right;color:#D64545"><b>'+fmt(v.noncomp)+'</b></td>'
+      +'<td style="text-align:right;color:#D64545">'+((v.comp+v.noncomp)>0? (v.noncomp/(v.comp+v.noncomp)*100).toFixed(2):'0.00')+'%</td>'
       +'<td style="text-align:right">'+dBadge(v.noncomp,v1&&v1.noncomp,'down')+'</td></tr>';
   });
   var store_rows="";
   Object.keys(D.store_stat).filter(function(s){return D.store_stat[s].noncomp>0;}).sort(function(a,b){return D.store_stat[b].noncomp-D.store_stat[a].noncomp;}).forEach(function(s){
     var v=D.store_stat[s]; var v1=D1?D1.store_stat[s]:null;
-    store_rows+='<tr><td>'+s+'</td><td style="text-align:right">'+fmt(v.count)+'</td><td style="text-align:right">'+fmt(v.comp)+'</td><td style="text-align:right;color:#c0392b"><b>'+fmt(v.noncomp)+'</b></td><td style="text-align:right;color:#888">'+fmt(v.excl)+'</td><td style="text-align:right">'+v.rate+'%</td><td style="text-align:right">'+dBadge(v.noncomp,v1&&v1.noncomp,'down')+'</td></tr>';
+    store_rows+='<tr><td>'+s+'</td><td style="text-align:right">'+fmt(v.count)+'</td><td style="text-align:right">'+fmt(v.comp)+'</td><td style="text-align:right;color:#D64545"><b>'+fmt(v.noncomp)+'</b></td><td style="text-align:right;color:#888">'+fmt(v.excl)+'</td><td style="text-align:right">'+v.rate+'%</td><td style="text-align:right">'+dBadge(v.noncomp,v1&&v1.noncomp,'down')+'</td></tr>';
   });
   var chan_rows="";
   Object.keys(D.channel_stat).sort(function(a,b){return D.channel_stat[b].count-D.channel_stat[a].count;}).slice(0,40).forEach(function(ch){
     var v=D.channel_stat[ch]; var v1=D1?D1.channel_stat[ch]:null;
-    chan_rows+='<tr><td>'+ch+'</td><td style="text-align:right">'+fmt(v.count)+'</td><td style="text-align:right;color:#1a9e4b">'+fmt(v.cat["合规"]||0)+'</td><td style="text-align:right;color:#c0392b">'+fmt(v.cat["不合规"]||0)+'</td><td style="text-align:right;color:#888">'+fmt(v.cat["剔除"]||0)+'</td><td style="text-align:right">'+dBadge(v.cat["不合规"]||0,v1&&v1.cat&&v1.cat["不合规"]||0,'down')+'</td></tr>';
+    chan_rows+='<tr><td>'+ch+'</td><td style="text-align:right">'+fmt(v.count)+'</td><td style="text-align:right;color:#12A150">'+fmt(v.cat["合规"]||0)+'</td><td style="text-align:right;color:#D64545">'+fmt(v.cat["不合规"]||0)+'</td><td style="text-align:right;color:#888">'+fmt(v.cat["剔除"]||0)+'</td><td style="text-align:right">'+dBadge(v.cat["不合规"]||0,v1&&v1.cat&&v1.cat["不合规"]||0,'down')+'</td></tr>';
   });
   var perfect=Object.keys(D.store_stat).filter(function(s){return D.store_stat[s].noncomp===0 && D.store_stat[s].comp>0;}).sort(function(a,b){return D.store_stat[b].count-D.store_stat[a].count;});
   var total_stores=Object.keys(D.store_stat).length;
   var perfect_pct=(total_stores>0)? Math.round(perfect.length/total_stores*1000)/10 : 0;
-  var perfect_rows=perfect.map(function(s){var v=D.store_stat[s];return '<tr><td>'+s+'</td><td style="text-align:right">'+fmt(v.count)+'</td><td style="text-align:right;color:#1a9e4b">'+fmt(v.comp)+'</td><td style="text-align:right;color:#1a9e4b"><b>100%</b></td></tr>';}).join("");
+  var perfect_rows=perfect.map(function(s){var v=D.store_stat[s];return '<tr><td>'+s+'</td><td style="text-align:right">'+fmt(v.count)+'</td><td style="text-align:right;color:#12A150">'+fmt(v.comp)+'</td><td style="text-align:right;color:#12A150"><b>100%</b></td></tr>';}).join("");
   var html=kpi
     +'<div class="sec" id="trendSec"><h2>不合规数量趋势（每日 · 仅本月/上月 · 从1号起）</h2>'
-    +'<div class="legend"><span><i class="dot" style="background:#c0392b"></i>每日不合规笔数</span></div>'
+    +'<div class="legend"><span><i class="dot" style="background:#D64545"></i>每日不合规笔数</span></div>'
     +'<div class="trend-btns"><button class="trend-btn active" data-vt-branch="全部">全部</button></div>'
     +'<div style="position:relative;width:100%;height:320px;"><canvas id="valTrend"></canvas><div id="vtTip" class="vt-tip"></div></div></div>'
-    +'<div class="sec"><h2>按所属分公司（当月累积 · 右列为日环比对比前一天）</h2><table><thead><tr><th>所属分公司</th><th style="text-align:right">合规门店数量</th><th style="text-align:right">不合规门店数量</th><th style="text-align:right">100%合规门店占比</th><th style="text-align:right">笔数</th><th style="text-align:right">合规</th><th style="text-align:right">不合规</th><th style="text-align:right">不合规占比</th><th style="text-align:right">对比昨日增加</th></tr></thead><tbody>'+(branch_rows||'<tr><td colspan=9 style="text-align:center;color:#1a9e4b">✅ 各分公司均合规</td></tr>')+'</tbody></table></div>'
-    +'<div class="sec"><h2>按门店（当月累积 · 右列为日环比对比前一天）</h2><table><thead><tr><th>销售门店</th><th style="text-align:right">笔数</th><th style="text-align:right">合规</th><th style="text-align:right">不合规</th><th style="text-align:right">剔除</th><th style="text-align:right">门店合规率</th><th style="text-align:right">不合规Δ</th></tr></thead><tbody>'+(store_rows||'<tr><td colspan=7 style="text-align:center;color:#1a9e4b">✅ 各门店均合规</td></tr>')+'</tbody></table></div>'
+    +'<div class="sec"><h2>按所属分公司（当月累积 · 右列为日环比对比前一天）</h2><table><thead><tr><th>所属分公司</th><th style="text-align:right">合规门店数量</th><th style="text-align:right">不合规门店数量</th><th style="text-align:right">100%合规门店占比</th><th style="text-align:right">笔数</th><th style="text-align:right">合规</th><th style="text-align:right">不合规</th><th style="text-align:right">不合规占比</th><th style="text-align:right">对比昨日增加</th></tr></thead><tbody>'+(branch_rows||'<tr><td colspan=9 style="text-align:center;color:#12A150">✅ 各分公司均合规</td></tr>')+'</tbody></table></div>'
+    +'<div class="sec"><h2>按门店（当月累积 · 右列为日环比对比前一天）</h2><table><thead><tr><th>销售门店</th><th style="text-align:right">笔数</th><th style="text-align:right">合规</th><th style="text-align:right">不合规</th><th style="text-align:right">剔除</th><th style="text-align:right">门店合规率</th><th style="text-align:right">不合规Δ</th></tr></thead><tbody>'+(store_rows||'<tr><td colspan=7 style="text-align:center;color:#12A150">✅ 各门店均合规</td></tr>')+'</tbody></table></div>'
     +'<div class="sec"><h2>按支付通道分布（Top40 · 右列为日环比对比前一天不合规Δ）</h2><table><thead><tr><th>支付通道</th><th style="text-align:right">笔数</th><th style="text-align:right">合规</th><th style="text-align:right">不合规</th><th style="text-align:right">剔除</th><th style="text-align:right">不合规Δ</th></tr></thead><tbody>'+chan_rows+'</tbody></table></div>'
-    +'<div class="sec"><h2>✅ 100% 合规门店（共 '+fmt(perfect.length)+' 家 / 占全部 '+fmt(total_stores)+' 家门店的 '+perfect_pct+'%）</h2><p style="font-size:13px;color:#667;margin:0 0 10px;line-height:1.7">以下门店在统计日<b>合规收款笔数 &gt; 0</b> 且 <b>不合规笔数 = 0</b>，即 100% 合规。</p><table><thead><tr><th>销售门店</th><th style="text-align:right">收款笔数</th><th style="text-align:right">合规</th><th style="text-align:right">门店合规率</th></tr></thead><tbody>'+(perfect_rows||'<tr><td colspan=4 style="text-align:center;color:#c0392b">暂无 100% 合规门店</td></tr>')+'</tbody></table></div>'
+    +'<div class="sec"><h2>✅ 100% 合规门店（共 '+fmt(perfect.length)+' 家 / 占全部 '+fmt(total_stores)+' 家门店的 '+perfect_pct+'%）</h2><p style="font-size:13px;color:#667;margin:0 0 10px;line-height:1.7">以下门店在统计日<b>合规收款笔数 &gt; 0</b> 且 <b>不合规笔数 = 0</b>，即 100% 合规。</p><table><thead><tr><th>销售门店</th><th style="text-align:right">收款笔数</th><th style="text-align:right">合规</th><th style="text-align:right">门店合规率</th></tr></thead><tbody>'+(perfect_rows||'<tr><td colspan=4 style="text-align:center;color:#D64545">暂无 100% 合规门店</td></tr>')+'</tbody></table></div>'
     +'<div class="sec"><h2>不合规概览（共 '+fmt(D.noncompliant)+' 笔）</h2><p style="font-size:13px;color:#667;margin:0 0 10px;line-height:1.7">逐笔明细（单据、门店、会员号等）可下载 CSV 查看；不合规按所属分公司分布见上方表格。</p><button class="dlbtn" onclick="downloadCSV()">⬇ 下载不合规明细 CSV</button></div>'
     +'<div class="note">'
     +'· 已剔除<b>退货订单</b> <b>'+fmt(D.excluded_return)+'</b> 笔（不计入任何统计）。<br>'
@@ -276,7 +276,7 @@ function drawTrend(){
     });
     var maxV=0; data.forEach(function(d){maxV=Math.max(maxV,d.invalid||0);});
     maxV=Math.ceil(maxV/10)*10||10;
-    ctx.strokeStyle='#eef0f3'; ctx.fillStyle='#9aa3ad'; ctx.font='11px sans-serif';
+    ctx.strokeStyle='#eef0f3'; ctx.fillStyle='#94A1AE'; ctx.font='11px sans-serif';
     ctx.textAlign='right'; ctx.textBaseline='middle';
     for(var i=0;i<=5;i++){var val=maxV*i/5,y=pt+ch-val/maxV*ch;ctx.beginPath();ctx.moveTo(pl,y);ctx.lineTo(pl+cw,y);ctx.stroke();ctx.fillText(val,pl-6,y);}
     ctx.textAlign='center'; ctx.textBaseline='top';
@@ -285,13 +285,13 @@ function drawTrend(){
     // 现在按可用宽度自动降采样（每格至少 34px 才标日期），首末必标，永远水平书写。
     ctx.textAlign='center'; ctx.textBaseline='top';
     var labStep=Math.max(1, Math.ceil(34/Math.max(step,1)));
-    data.forEach(function(d,i){ if(i%labStep!==0 && i!==n-1) return; ctx.fillStyle='#9aa3ad'; ctx.fillText(fmtDay(d.date), pl+step*i, pt+ch+7); });
+    data.forEach(function(d,i){ if(i%labStep!==0 && i!==n-1) return; ctx.fillStyle='#94A1AE'; ctx.fillText(fmtDay(d.date), pl+step*i, pt+ch+7); });
     // 固定显示当前维度「当日」不合规笔数（与折线一致，每天变化，非区间累计）
     // 2026-10-22 移至右上角：从 1 号起画后 1 号常为月内最高点，左上会压线
     var lastV=data[data.length-1].invalid||0;
-    ctx.fillStyle='#c0392b'; ctx.font='bold 13px sans-serif'; ctx.textAlign='right'; ctx.textBaseline='top';
+    ctx.fillStyle='#D64545'; ctx.font='bold 13px sans-serif'; ctx.textAlign='right'; ctx.textBaseline='top';
     ctx.fillText('当日: '+fmt(lastV)+' 笔', pl+cw, pt-2);
-    ctx.fillStyle='#9aa3ad'; ctx.font='10px sans-serif';
+    ctx.fillStyle='#94A1AE'; ctx.font='10px sans-serif';
     ctx.fillText(activeBranch==='全部'?'(全部)': '('+activeBranch+')', pl+cw, pt+12);
     data.forEach(function(d,i){ var x=pl+step*i, v=d.invalid||0, y=pt+ch-v/maxV*ch; gPts.push({x:x,y:y,date:d.date,invalid:v,p:_src[i]}); });
     function plot(key,color,width){
@@ -300,7 +300,7 @@ function drawTrend(){
       ctx.stroke();
       data.forEach(function(d,i){var v=d[key];if(v==null||v==undefined)return;var x=pl+step*i;var y=pt+ch-v/maxV*ch;ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(x,y,3,0,Math.PI*2);ctx.fill();ctx.strokeStyle=color;ctx.lineWidth=2;ctx.beginPath();ctx.arc(x,y,3,0,Math.PI*2);ctx.stroke();});
     }
-    plot('invalid','#c0392b',2.6);
+    plot('invalid','#D64545',2.6);
   }
 
   function showTip(pt){

@@ -5,35 +5,35 @@
 <style>
 *{box-sizing:border-box;}
 body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f4f6fa;color:#1f2937;margin:0;padding:0;}
-.head{background:linear-gradient(120deg,#10b981,#0e9f6e);color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.head{background:linear-gradient(120deg,#12A150,#12A150);color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
 .head h1{margin:0;font-size:21px} .head p{margin:3px 0 0;opacity:.92;font-size:12.5px}
 .bar{display:flex;gap:8px;background:rgba(255,255,255,.18);padding:6px;border-radius:11px;flex-wrap:wrap}
 .bar button{border:0;background:transparent;color:#fff;font-size:13.5px;font-weight:600;padding:7px 14px;border-radius:8px;cursor:pointer;opacity:.8}
-.bar button.on{background:#fff;color:#0e9f6e;opacity:1}
+.bar button.on{background:#fff;color:#12A150;opacity:1}
 .cust{display:none;gap:8px;align-items:center;margin-left:6px;color:#fff;font-size:13px}
 .cust input{border:0;border-radius:7px;padding:6px 8px;font-size:13px;color:#1f2d3d}
 .kpis{display:flex;gap:14px;padding:18px 24px;flex-wrap:wrap}
 .kpi{flex:1;min-width:150px;background:#fff;border-radius:14px;box-shadow:0 1px 3px rgba(16,24,40,.08);padding:16px 18px}
-.kpi .v{font-size:28px;font-weight:800;color:#10b981} .kpi .l{font-size:12px;color:#6b7280;margin-top:2px}
-.kpi.warn-k .v{color:#f97316}
+.kpi .v{font-size:28px;font-weight:800;color:#12A150} .kpi .l{font-size:12px;color:#5B6875;margin-top:2px}
+.kpi.warn-k .v{color:#D64545}
 .sec{background:#fff;margin:0 24px 16px;border-radius:14px;padding:16px 18px;box-shadow:0 1px 3px rgba(16,24,40,.08)}
 .sec h2{font-size:16px;font-weight:700;margin:0 0 12px;display:flex;align-items:center;gap:8px;}
-.branddot{width:10px;height:10px;border-radius:3px;background:#10b981;display:inline-block;}
+.branddot{width:10px;height:10px;border-radius:3px;background:#12A150;display:inline-block;}
 table{width:100%;border-collapse:collapse;font-size:14px}
 th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #eef1f5}
-th{color:#6b7280;font-weight:600;font-size:12px;background:#fafbfc}
+th{color:#5B6875;font-weight:600;font-size:12px;background:#fafbfc}
 td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
 td.bname{font-weight:600}
-.delta{font-weight:700} .delta.up{color:#10b981} .delta.down{color:#ef4444} .delta.flat{color:#9ca3af}
-.note{color:#6b7280;font-size:12px;margin-top:10px;line-height:1.7}
+.delta{font-weight:700} .delta.up{color:#12A150} .delta.down{color:#D64545} .delta.flat{color:#94A1AE}
+.note{color:#5B6875;font-size:12px;margin-top:10px;line-height:1.7}
 .warn{background:#fff4f4;border:1px solid #f3c9c9;color:#b42318;padding:10px 14px;border-radius:10px;font-size:13px;margin-top:8px}
 .branch-block{margin-top:14px}
-.branch-name{font-size:13px;font-weight:700;color:#10b981;margin-bottom:6px;padding-left:8px;border-left:3px solid #10b981}
+.branch-name{font-size:13px;font-weight:700;color:#12A150;margin-bottom:6px;padding-left:8px;border-left:3px solid #12A150}
 #period{font-weight:600;color:#fff}
 #mwrap{padding:8px 24px 0;font-size:13px;color:#fff}
-</style><!-- UNIFIED-UI v=20261023c BEGIN（统一界面层，勿手改，改 assets/ui.css） -->
-<link rel="stylesheet" href="../assets/ui.css?v=20261023c">
-<script defer src="../assets/ui.js?v=20261023c"></script>
+</style><!-- UNIFIED-UI v=20261023f BEGIN（统一界面层，勿手改，改 assets/ui.css） -->
+<link rel="stylesheet" href="../assets/ui.css?v=20261023f">
+<script defer src="../assets/ui.js?v=20261023f"></script>
 <!-- UNIFIED-UI END -->
 </head><body>
 <div class="head">
@@ -43,7 +43,7 @@ td.bname{font-weight:600}
     <button data-m="昨日" onclick="setMode('昨日')">昨日</button>
     <button data-m="当月" onclick="setMode('当月')">当月</button>
     <button data-m="自定义" onclick="setMode('自定义')">自定义</button>
-    <span class="cust" id="cust"><input type="date" id="cstart"> ~ <input type="date" id="cend"><button class="dl" style="padding:5px 12px;background:#fff;color:#0e9f6e;border:0;border-radius:8px;cursor:pointer;font-weight:600" onclick="applyCustom()">应用</button></span>
+    <span class="cust" id="cust"><input type="date" id="cstart"> ~ <input type="date" id="cend"><button class="dl" style="padding:5px 12px;background:#fff;color:#12A150;border:0;border-radius:8px;cursor:pointer;font-weight:600" onclick="applyCustom()">应用</button></span>
   </div>
 </div>
 <div id="mwrap">统计周期：<span id="period">加载中…</span> ｜ <span id="noteUpd"></span></div>

@@ -9,25 +9,25 @@
   body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
     background:#f4f6f8;color:#1f2933;padding:0 16px;-webkit-font-smoothing:antialiased;}
   .wrap{max-width:900px;margin:0 auto;padding:44px 0 56px;}
-  .brandbar{display:inline-block;width:44px;height:5px;border-radius:3px;background:#6366f1;margin-bottom:14px;}
+  .brandbar{display:inline-block;width:44px;height:5px;border-radius:3px;background:#1AABCB;margin-bottom:14px;}
   h1{font-size:25px;font-weight:800;letter-spacing:-.3px;}
-  .sub{color:#6b7280;font-size:13.5px;margin-top:8px;line-height:1.6;}
+  .sub{color:#5B6875;font-size:13.5px;margin-top:8px;line-height:1.6;}
   .selbar{display:flex;align-items:center;gap:10px;margin:24px 0 6px;flex-wrap:wrap;}
-  .selbar .lab{font-size:13px;color:#6b7280;font-weight:600;margin-right:4px;}
+  .selbar .lab{font-size:13px;color:#5B6875;font-weight:600;margin-right:4px;}
   .ct-btns{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
   .ct-btn{border:1px solid #e5e9ef;background:#fff;border-radius:16px;padding:8px 18px;font-size:14px;font-weight:600;color:#374151;cursor:pointer;transition:all .15s;}
   .ct-btn.ct-act{background:#1AABCB;border-color:#1AABCB;color:#fff;}
   .ct-btn:not(.ct-act):hover{background:#eef6f9;}
-  .period{font-size:13px;color:#6366f1;font-weight:700;margin:10px 0 2px;}
-  .note-upd{font-size:12px;color:#9aa3ad;margin-bottom:8px;}
+  .period{font-size:13px;color:#1AABCB;font-weight:700;margin:10px 0 2px;}
+  .note-upd{font-size:12px;color:#94A1AE;margin-bottom:8px;}
   .kpis{display:flex;gap:14px;margin:14px 0 6px;flex-wrap:wrap;}
   .kpi{flex:1;min-width:150px;background:#fff;border:1px solid #e5e9ef;border-radius:14px;padding:18px 20px;}
-  .kpi .v{font-size:30px;font-weight:800;color:#6366f1;}
-  .kpi .v.o{color:#F6AA00;}
-  .kpi .l{font-size:13px;color:#9099a5;margin-top:6px;}
+  .kpi .v{font-size:30px;font-weight:800;color:#1B2733;}
+  .kpi .v.o{color:#1AABCB;}
+  .kpi .l{font-size:13px;color:#94A1AE;margin-top:6px;}
   table{width:100%;border-collapse:collapse;margin-top:20px;background:#fff;border-radius:14px;overflow:hidden;border:1px solid #e5e9ef;}
   th,td{padding:13px 18px;text-align:left;font-size:14.5px;border-bottom:1px solid #f0f2f5;}
-  th{background:#fafbfc;color:#6b7280;font-weight:700;font-size:13px;}
+  th{background:#fafbfc;color:#5B6875;font-weight:700;font-size:13px;}
   td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;}
   td.bn{font-weight:700;white-space:nowrap;}
   td.sn{font-weight:600;font-size:13px;white-space:nowrap;}
@@ -37,12 +37,12 @@
   .store-row:hover,.branch-row:hover{background:#f0f4f8;}
   .store-row.has-tier td.sn{padding-left:6px;}
   .branch-row.has-tier td.bn{padding-left:8px;}
-  .exp{display:inline-block;font-size:11px;color:#9aa3ad;width:14px;transition:transform .2s;margin-right:2px;}
-  .store-row.expanded .exp,.branch-row.expanded .exp{transform:rotate(90deg);color:#4b5563;}
+  .exp{display:inline-block;width:0;height:0;font-size:0;line-height:0;border-left:5px solid #1AABCB;border-top:4px solid transparent;border-bottom:4px solid transparent;margin-right:8px;vertical-align:middle;transition:transform .2s;transform-origin:2px 50%;}
+  .store-row.expanded .exp,.branch-row.expanded .exp{transform:rotate(90deg);color:#5B6875;}
   .drawer-row{animation:slideDown .25s ease;}
   @keyframes slideDown{from{opacity:0;max-height:0;}to{opacity:1;max-height:260px;}}
-  .drawer-cell{padding:0!important;background:#fafbfc;border-left:3px solid #6366f1!important;}
-  .drawer-inner{padding:10px 18px;font-size:12.5px;color:#4b5563;line-height:1.7;}
+  .drawer-cell{padding:0!important;background:#fafbfc;border-left:3px solid #1AABCB!important;}
+  .drawer-inner{padding:10px 18px;font-size:12.5px;color:#5B6875;line-height:1.7;}
   .drawer-tag{display:inline-block;background:#eef2f7;color:#475569;font-weight:700;font-size:11px;border-radius:4px;padding:1px 8px;margin-right:8px;}
   /* 手机端：抽屉内容跟随横向滚动固定在可视区内，不用左右拖 */
   @media (max-width:768px){
@@ -52,26 +52,26 @@
   .bar span{display:block;height:100%;border-radius:6px;}
   td.rate b{font-size:15px;vertical-align:middle;}
   .bd{margin-top:30px;}
-  .bd-title{font-size:14px;font-weight:700;color:#374151;margin-bottom:10px;padding-left:10px;border-left:4px solid #6366f1;}
+  .bd-title{font-size:14px;font-weight:700;color:#374151;margin-bottom:10px;padding-left:10px;border-left:4px solid #1AABCB;}
   .store-table{margin-top:0;}
   .store-table th,.store-table td{padding:9px 16px;font-size:13.5px;}
   .unsold{margin-top:12px;background:#fff7f7;border:1px solid #f3d4d4;border-radius:10px;padding:12px 14px;}
   .unsold.ok{background:#f1fbf4;border-color:#cdeed6;color:#15803d;}
-  .us-title{font-size:12.5px;font-weight:700;color:#b91c1c;margin-bottom:8px;}
-  .tag{display:inline-block;background:#fde8e8;color:#b91c1c;border:1px solid #f3c7c7;border-radius:7px;
+  .us-title{font-size:12.5px;font-weight:700;color:#D64545;margin-bottom:8px;}
+  .tag{display:inline-block;background:#fde8e8;color:#D64545;border:1px solid #f3c7c7;border-radius:7px;
     padding:3px 9px;margin:3px 4px 3px 0;font-size:12.5px;}
-  .muted{color:#9aa3ad;font-size:13px;padding:8px 2px;}
+  .muted{color:#94A1AE;font-size:13px;padding:8px 2px;}
   .note{margin-top:22px;background:#fff;border:1px solid #e5e9ef;border-left:4px solid #F6AA00;border-radius:12px;padding:16px 18px;}
   .note h3{font-size:14px;margin-bottom:8px;color:#92400e;}
-  .note p{font-size:13px;color:#6b7280;line-height:1.7;}
-  .foot{margin-top:26px;color:#9aa3ad;font-size:12px;text-align:center;}
-  .warn{color:#dc2626;font-weight:700;}
-  .loading{padding:40px 0;text-align:center;color:#9099a5;font-size:14px;}
+  .note p{font-size:13px;color:#5B6875;line-height:1.7;}
+  .foot{margin-top:26px;color:#94A1AE;font-size:12px;text-align:center;}
+  .warn{color:#D64545;font-weight:700;}
+  .loading{padding:40px 0;text-align:center;color:#94A1AE;font-size:14px;}
   /* 趋势图表 */
   .trend-btns{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
   .trend-btn{border:1px solid #e5e9ef;background:#fff;border-radius:20px;padding:6px 16px;font-size:13px;font-weight:600;
-    color:#4b5563;cursor:pointer;transition:all .15s;}
-  .trend-btn.active{background:#6366f1;color:#fff;border-color:#6366f1;}
+    color:#5B6875;cursor:pointer;transition:all .15s;}
+  .trend-btn.active{background:#1AABCB;color:#fff;border-color:#1AABCB;}
   .trend-btn:not(.active):hover{background:#eef0fe;}
   .chart-wrap{position:relative;width:100%;height:340px;}
   .chart-wrap canvas{width:100%!important;height:100%!important;}
@@ -82,15 +82,16 @@
   .trend-tip{position:absolute;pointer-events:none;background:rgba(31,41,51,.92);color:#fff;font-size:12px;
     padding:7px 10px;border-radius:8px;line-height:1.6;white-space:nowrap;display:none;z-index:9;transform:translate(-50%,-100%);}
 </style>
-<!-- UNIFIED-UI v=20261023c BEGIN（统一界面层，勿手改，改 assets/ui.css） -->
-<link rel="stylesheet" href="../assets/ui.css?v=20261023c">
-<script defer src="../assets/ui.js?v=20261023c"></script>
+<!-- UNIFIED-UI v=20261023f BEGIN（统一界面层，勿手改，改 assets/ui.css） -->
+<link rel="stylesheet" href="../assets/ui.css?v=20261023f">
+<script defer src="../assets/ui.js?v=20261023f"></script>
 <!-- UNIFIED-UI END -->
 </head>
 <body>
   <div class="wrap">
-    <div class="brandbar"></div>
-    <h1>付费会员销售看板 · 会员连带率</h1>
+    <div class="head">
+      <h1>付费会员销售看板 · 会员连带率</h1>
+    </div>
     <div class="selbar">
       <div class="ct-btns" id="tf">
         <button class="ct-btn" data-mode="当日" id="tfDay">当日</button>
@@ -219,7 +220,7 @@ function aggregate(js){
 function rateColor(rate){
   if(rate>=10) return "#16a34a";
   if(rate>=5) return "#F6AA00";
-  return "#dc2626";
+  return "#D64545";
 }
 function pct(x){ return (x*100).toFixed(2)+"%"; }
 function draw(agg, dates, want){
@@ -238,11 +239,11 @@ function draw(agg, dates, want){
   const fmtAmt = n => (n>=10000 ? (n/10000).toFixed(2)+'万' : n.toFixed(0));
   let kpi = '<div class="kpis">'
     + '<div class="kpi"><div class="v">'+total.denominator.toFixed(0)+'</div><div class="l">主机台量（分母）</div></div>'
-    + '<div class="kpi"><div class="v o">'+total.numerator.toFixed(0)+'</div><div class="l">VIP会员商品数（分子）</div></div>'
+    + '<div class="kpi"><div class="v">'+total.numerator.toFixed(0)+'</div><div class="l">VIP会员商品数（分子）</div></div>'
     + '<div class="kpi"><div class="v">'+pct(totRate)+'</div><div class="l">合计会员连带率</div></div>'
     + '<div class="kpi"><div class="v">'+pct(totOpenRate)+'</div><div class="l">付费会员开单占比（'+openStores+'/'+totalStores+' 门店）</div></div>'
     + '<div class="kpi"><div class="v o">¥'+fmtAmt(total.amount)+'</div><div class="l">会员产值金额总计</div></div>'
-    + '<div class="kpi"><div class="v">¥'+fmtAmt(total.profit)+'</div><div class="l">会员纯利总计</div></div>'
+    + '<div class="kpi"><div class="v o">¥'+fmtAmt(total.profit)+'</div><div class="l">会员纯利总计</div></div>'
     + '</div>';
 
   // 分公司表
@@ -294,8 +295,8 @@ function draw(agg, dates, want){
     ).join('');
     html+='<div class="bd"><div class="bd-title">每日趋势（会员连带率 / 开单占比）</div>'
       +'<div class="trend-btns">'+trendBtns+'</div>'
-      +'<div class="trend-legend"><span data-line="rate"><i style="background:#6366f1"></i>会员连带率(%)</span>'
-      +'<span data-line="open"><i style="background:#f59e0b"></i>开单占比(%)</span></div>'
+      +'<div class="trend-legend"><span data-line="rate"><i style="background:#1AABCB"></i>会员连带率(%)</span>'
+      +'<span data-line="open"><i style="background:#F6AA00"></i>开单占比(%)</span></div>'
       +'<div class="chart-wrap"><canvas id="trendChart"></canvas><div class="trend-tip" id="trendTip"></div></div></div>';
   }
 
@@ -315,7 +316,7 @@ function draw(agg, dates, want){
       items.forEach((o,si)=>{
         const rate=o.denominator? o.numerator/o.denominator:null;
         const opened=o.numerator>0;
-        const openCell=opened? '<span style="color:#16a34a;font-weight:700">有</span>' : '<span style="color:#9aa3ad">无</span>';
+        const openCell=opened? '<span style="color:#16a34a;font-weight:700">有</span>' : '<span style="color:#94A1AE">无</span>';
         const rid='sr-'+b.replace(/\s/g,'-')+'-'+si;
         // 门店级 VIP 档位
         const tierItems=Object.keys(o.vip||{}).map(c=>({name:(o.vip[c].name||c).replace(/会员套餐?/,''), qty:o.vip[c].qty}))
@@ -323,7 +324,7 @@ function draw(agg, dates, want){
         const hasTier=tierItems.length>0;
         if(rate===null){
           sr+='<tr class="store-row'+(hasTier?' has-tier':'')+'" data-rid="'+rid+'"><td class="sn">'+(hasTier?'<span class="exp">▸</span> ':'')+o.store+'</td><td class="num">'+o.denominator.toFixed(0)+'</td>'
-            +'<td class="num">'+o.numerator.toFixed(0)+'</td><td class="rate"><b style="color:#9aa3ad">—</b></td>'
+            +'<td class="num">'+o.numerator.toFixed(0)+'</td><td class="rate"><b style="color:#94A1AE">—</b></td>'
             +'<td>'+openCell+'</td></tr>';
         }else{
           const col=rateColor(rate*100); const w=(rate/maxr*100);
@@ -443,7 +444,7 @@ function draw(agg, dates, want){
       maxV=Math.ceil(maxV/10)*10 || 10;
       // 网格 + Y 轴标签
       ctx.strokeStyle='#eef0f3'; ctx.lineWidth=1;
-      ctx.fillStyle='#9aa3ad'; ctx.font='11px -apple-system,sans-serif';
+      ctx.fillStyle='#94A1AE'; ctx.font='11px -apple-system,sans-serif';
       ctx.textAlign='right'; ctx.textBaseline='middle';
       var steps=5;
       for(var i=0;i<=steps;i++){
@@ -453,7 +454,7 @@ function draw(agg, dates, want){
       }
       // X 轴标签（2026-10-23 改横排：原来旋转 -90° 竖排，手机上成一列列竖字读不动）
       // 按可用宽度降采样（每格 ≥34px 才标），首末必标，始终水平书写
-      ctx.fillStyle='#9aa3ad'; ctx.font='11px -apple-system,sans-serif';
+      ctx.fillStyle='#94A1AE'; ctx.font='11px -apple-system,sans-serif';
       ctx.textAlign='center'; ctx.textBaseline='top';
       var _step=n>1?cw/(n-1):0, _ls=Math.max(1, Math.ceil(34/Math.max(_step,1)));
       d.labels.forEach(function(lb,i){
@@ -478,8 +479,8 @@ function draw(agg, dates, want){
           ctx.strokeStyle=color; ctx.lineWidth=2; ctx.beginPath(); ctx.arc(x,y,3.4,0,Math.PI*2); ctx.stroke();
         });
       }
-      if(showLine.rate) plot(d.rate,'#6366f1');
-      if(showLine.open) plot(d.open,'#f59e0b');
+      if(showLine.rate) plot(d.rate,'#1AABCB');
+      if(showLine.open) plot(d.open,'#F6AA00');
       // 存几何供 tooltip
       cv._geo={pl:pl,pt:pt,cw:cw,ch:ch,maxV:maxV,n:n};
     }

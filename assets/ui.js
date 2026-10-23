@@ -11,6 +11,16 @@
 
   var WRAP_THRESHOLD = 10;   // 超过这个字数才允许换行并限宽（中文按字符计）
 
+  // 纯数值单元格：数字/金额/百分比/带单位数字（不含日期、比率、括号复合值）
+  var NUM_RE = /^[¥￥$+-]?[\d,]+(\.\d+)?\s*(%|万|亿|元|台|笔|单|家|人|个|天|次|件)?$/;
+
+  function isNum(txt) {
+    var t = (txt || '').replace(/\s/g, '');
+    if (!t) return false;
+    if (t === '—' || t === '-' || t === '无') return true;   // 占位符随列对齐
+    return NUM_RE.test(t);
+  }
+
   function isInTblx(el) {
     var p = el.parentNode;
     return !!(p && p.classList && p.classList.contains('tblx'));
@@ -28,6 +38,9 @@
     }
   }
 
+  // 纯符号/数字类短标签（如「38/39（97.44%）」「¥1,234万」）：不换行，宁可整表横向滚动
+  var COMPACT_RE = /^[\d\s\/\\（）()%.,¥￥+\-—~·]+$/;
+
   function markCells(root) {
     var cells = root.querySelectorAll ? root.querySelectorAll('td, th') : [];
     for (var i = 0; i < cells.length; i++) {
@@ -35,7 +48,7 @@
       if (c.getAttribute('data-ui-l') === '1') continue;
       c.setAttribute('data-ui-l', '1');
       var txt = (c.textContent || '').trim();
-      if (txt.length > WRAP_THRESHOLD) c.classList.add('ui-w');
+      if (txt.length > WRAP_THRESHOLD && !COMPACT_RE.test(txt)) c.classList.add('ui-w');
     }
   }
 
@@ -48,10 +61,54 @@
     }
   }
 
+  /* 数字列自动右对齐：按列统计「像数字的单元格」占比，超过 60% 即判为数值列，
+     给该列的 th 与 td 都打上 .ui-num（CSS 里统一 text-align:right + 等宽数字）。
+     这样各看板表头与数值方向一致，不再出现「列头居左、数字居中」的错位。 */
+  function markNumeric(root) {
+    var tables = root.querySelectorAll ? root.querySelectorAll('table') : [];
+    for (var i = 0; i < tables.length; i++) {
+      var rows = tables[i].rows;
+      var cols = [], r, c;
+      for (r = 0; r < rows.length; r++) {
+        var cells = rows[r].cells, ci = 0;
+        for (c = 0; c < cells.length; c++) {
+          var span = cells[c].colSpan || 1;
+          if (span === 1) {
+            var txt = (cells[c].textContent || '').trim();
+            if (txt) {
+              var st = cols[ci] || (cols[ci] = [0, 0]);
+              st[1]++;
+              if (isNum(txt)) st[0]++;
+            }
+          }
+          ci += span;
+        }
+      }
+      var numCol = {};
+      var hit = false;
+      for (var k = 0; k < cols.length; k++) {
+        var s = cols[k];
+        if (s && s[1] >= 2 && s[0] / s[1] >= 0.6) { numCol[k] = 1; hit = true; }
+      }
+      if (!hit) continue;
+      for (r = 0; r < rows.length; r++) {
+        var cs = rows[r].cells, ci2 = 0;
+        for (c = 0; c < cs.length; c++) {
+          var sp = cs[c].colSpan || 1;
+          if (sp === 1 && numCol[ci2]) {
+            if (cs[c].tagName === 'TH' || (cs[c].textContent || '').trim()) cs[c].classList.add('ui-num');
+          }
+          ci2 += sp;
+        }
+      }
+    }
+  }
+
   function scan(root) {
     if (!root || root.nodeType !== 1) return;
     try { wrapTables(root); } catch (e) {}
     try { markCells(root); } catch (e) {}
+    try { markNumeric(root); } catch (e) {}
     try { markScrollable(); } catch (e) {}
   }
 

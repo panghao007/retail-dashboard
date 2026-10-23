@@ -9,52 +9,52 @@
   body { font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; background:#f4f6fa; color:#1f2937; padding:24px; }
   .wrap { max-width:1360px; margin:0 auto; }
   h1 { font-size:24px; font-weight:700; margin-bottom:4px; }
-  .h1-date { font-size:14px; font-weight:500; color:#9ca3af; margin-left:10px; }
-  .sub { color:#6b7280; font-size:13px; margin-bottom:20px; }
-  .rule { color:#6b7280; font-size:12px; background:#eef2ff; border:1px solid #e0e7ff; border-radius:8px; padding:10px 14px; margin-bottom:20px; line-height:1.7; }
+  .h1-date { font-size:14px; font-weight:500; color:#94A1AE; margin-left:10px; }
+  .sub { color:#5B6875; font-size:13px; margin-bottom:20px; }
+  .rule { color:#5B6875; font-size:12px; background:#eef2ff; border:1px solid #e0e7ff; border-radius:8px; padding:10px 14px; margin-bottom:20px; line-height:1.7; }
   .rule b { color:#4338ca; }
   .kpis { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:24px; }
   .kpi { background:#fff; border-radius:12px; padding:18px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
-  .kpi .label { font-size:13px; color:#6b7280; margin-bottom:8px; }
+  .kpi .label { font-size:13px; color:#5B6875; margin-bottom:8px; }
   .kpi .val { font-size:28px; font-weight:700; }
-  .kpi .unit { font-size:13px; color:#9ca3af; font-weight:400; margin-left:2px; }
-  .kpi .sub2 { font-size:12px; color:#6b7280; margin-top:4px; }
-  .kpi.bad .val, .kpi.bad .sub2 { color:#dc2626; }
-  .kpi.good .val, .kpi.good .sub2 { color:#059669; }
+  .kpi .unit { font-size:13px; color:#94A1AE; font-weight:400; margin-left:2px; }
+  .kpi .sub2 { font-size:12px; color:#5B6875; margin-top:4px; }
+  .kpi.bad .val, .kpi.bad .sub2 { color:#D64545; }
+  .kpi.good .val, .kpi.good .sub2 { color:#12A150; }
   .card { background:#fff; border-radius:12px; padding:20px; box-shadow:0 1px 3px rgba(0,0,0,.06); margin-bottom:24px; }
   .card h2 { font-size:16px; font-weight:600; margin-bottom:16px; }
   .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
   table { width:100%; border-collapse:collapse; font-size:13px; }
   th,td { padding:9px 12px; text-align:left; border-bottom:1px solid #f0f1f4; }
-  th { background:#fafbfc; color:#6b7280; font-weight:600; }
+  th { background:#fafbfc; color:#5B6875; font-weight:600; }
   tr:hover td { background:#fafbff; }
   td.num,th.num { text-align:right; font-variant-numeric:tabular-nums; }
   .rate-best { color:#16a34a; font-weight:700; }
-  .rate-worst { color:#dc2626; font-weight:700; }
+  .rate-worst { color:#D64545; font-weight:700; }
   .scroll { max-height:460px; overflow:auto; border:1px solid #f0f1f4; border-radius:8px; }
   .badge { display:inline-block; padding:2px 8px; border-radius:6px; font-size:12px; font-weight:600; }
-  .b-red { background:#fef2f2; color:#dc2626; } .b-org { background:#fff7ed; color:#ea580c; }
-  .b-gray { background:#f3f4f6; color:#6b7280; } .b-green { background:#ecfdf5; color:#059669; }
+  .b-red { background:#fef2f2; color:#D64545; } .b-org { background:#fff7ed; color:#ea580c; }
+  .b-gray { background:#f3f4f6; color:#5B6875; } .b-green { background:#ecfdf5; color:#12A150; }
   .alert { background:#fffbeb; border:1px solid #fde68a; color:#92400e; border-radius:8px; padding:12px 16px; font-size:13px; margin-bottom:24px; line-height:1.7; }
   .alert b { color:#b45309; }
   /* ── 门店排名表：可点击行 + 右侧抽屉（2026-10-22）── */
-  .st-hint { font-size:12px; color:#9ca3af; margin:-8px 0 12px; }
+  .st-hint { font-size:12px; color:#94A1AE; margin:-8px 0 12px; }
   tr.st-row { cursor:pointer; }
   tr.st-row td { transition:background .12s; }
   tr.st-row:hover td { background:#eff6ff; }
   tr.st-row.active td { background:#e0f2fe; box-shadow:inset 3px 0 0 #1AABCB; }
-  .st-open { display:inline-block; margin-left:8px; padding:1px 7px; border-radius:6px; background:#eef6f9; color:#1488a8; font-size:11px; font-weight:600; opacity:0; transition:opacity .12s; }
+  .st-open { display:inline-block; margin-left:8px; padding:1px 7px; border-radius:6px; background:#eef6f9; color:#0E8FA8; font-size:11px; font-weight:600; opacity:0; transition:opacity .12s; }
   tr.st-row:hover .st-open, tr.st-row.active .st-open { opacity:1; }
-  tr.st-row.no-inv { color:#9ca3af; }
+  tr.st-row.no-inv { color:#94A1AE; }
   .drw-mask { position:fixed; inset:0; background:rgba(17,24,39,.42); opacity:0; visibility:hidden; transition:opacity .22s,visibility .22s; z-index:60; }
   .drw-mask.on { opacity:1; visibility:visible; }
   .drw { position:fixed; top:0; right:0; height:100%; width:min(600px,94vw); background:#fff; box-shadow:-10px 0 32px rgba(0,0,0,.2); transform:translateX(101%); transition:transform .26s cubic-bezier(.22,.61,.36,1); z-index:61; display:flex; flex-direction:column; }
   .drw.on { transform:translateX(0); }
   .drw-head { padding:18px 20px 14px; border-bottom:1px solid #eef1f5; display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
   .drw-t { font-size:17px; font-weight:700; line-height:1.35; word-break:break-all; }
-  .drw-s { font-size:12.5px; color:#6b7280; margin-top:6px; line-height:1.7; }
-  .drw-s b { color:#dc2626; }
-  .drw-x { border:0; background:#f3f4f6; width:30px; height:30px; border-radius:8px; font-size:19px; line-height:1; cursor:pointer; color:#6b7280; flex:none; }
+  .drw-s { font-size:12.5px; color:#5B6875; margin-top:6px; line-height:1.7; }
+  .drw-s b { color:#D64545; }
+  .drw-x { border:0; background:#f3f4f6; width:30px; height:30px; border-radius:8px; font-size:19px; line-height:1; cursor:pointer; color:#5B6875; flex:none; }
   .drw-x:hover { background:#e5e7eb; color:#111827; }
   .drw-body { flex:1; overflow:auto; }
   .drw-body table { font-size:13px; }
@@ -63,23 +63,23 @@
   .drw-body th.num, .drw-body td.num { white-space:nowrap; }
   @media(max-width:520px){ .drw-body th, .drw-body td { padding:8px 9px; } }
   .drw-seller { font-size:12.5px; color:#374151; line-height:1.65; }
-  .drw-seller i { font-style:normal; color:#9ca3af; font-size:11.5px; }
-  .drw-foot { padding:11px 20px; border-top:1px solid #eef1f5; font-size:11.5px; color:#9ca3af; background:#fafbfc; line-height:1.6; }
-  .drw-empty { padding:40px 20px; text-align:center; color:#9ca3af; font-size:13px; }
-  .legend { font-size:12px; color:#6b7280; margin-bottom:14px; }
+  .drw-seller i { font-style:normal; color:#94A1AE; font-size:11.5px; }
+  .drw-foot { padding:11px 20px; border-top:1px solid #eef1f5; font-size:11.5px; color:#94A1AE; background:#fafbfc; line-height:1.6; }
+  .drw-empty { padding:40px 20px; text-align:center; color:#94A1AE; font-size:13px; }
+  .legend { font-size:12px; color:#5B6875; margin-bottom:14px; }
   .legend span { display:inline-flex; align-items:center; gap:5px; margin-right:16px; }
   .dot { width:10px; height:10px; border-radius:3px; display:inline-block; }
-  .head{background:linear-gradient(120deg,#1AABCB,#1488a8);color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;border-radius:12px;margin-bottom:18px;}
+  .head{background:linear-gradient(120deg,#1AABCB,#0E8FA8);color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;border-radius:12px;margin-bottom:18px;}
   .head h1{margin:0;font-size:21px;} .head p{margin:3px 0 0;opacity:.92;font-size:12.5px;}
   .statbar{font-size:13px;color:#456;background:#fff;padding:10px 24px;margin-bottom:16px;border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.04);}
-  .statbar b{color:#1488a8;}
+  .statbar b{color:#0E8FA8;}
   @media(max-width:900px){ .kpis{grid-template-columns:repeat(2,1fr);} .grid2{grid-template-columns:1fr;} }
   @media(min-width:901px){ .kpis{grid-template-columns:repeat(5,1fr);} }
-  .vt-leg{display:flex;gap:18px;font-size:12.5px;color:#6b7280;margin-bottom:8px;}
+  .vt-leg{display:flex;gap:18px;font-size:12.5px;color:#5B6875;margin-bottom:8px;}
   .vt-leg span i{display:inline-block;width:12px;height:3px;border-radius:2px;vertical-align:middle;margin-right:4px;}
   .trend-btns{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
   .trend-btn{border:1px solid #e5e9ef;background:#fff;border-radius:20px;padding:6px 16px;font-size:13px;font-weight:600;cursor:pointer;color:#374151;transition:all .15s;}
-  .trend-btn.active{background:#dc2626;color:#fff;border-color:#dc2626;}
+  .trend-btn.active{background:#D64545;color:#fff;border-color:#D64545;}
   .trend-btn:not(.active):hover{background:#fef2f2;}
   .period-bar{display:flex;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap;}
   .ct-btns{display:flex;gap:8px;flex-wrap:wrap;}
@@ -91,20 +91,24 @@
   .sf-btn{border:1px solid #e6e9ef;background:#fff;border-radius:999px;padding:7px 20px;font-size:13.5px;font-weight:600;color:#3f4652;cursor:pointer;line-height:1.2;transition:all .15s;}
   .sf-btn:hover{border-color:#f0b3b8;color:#c81e2a;}
   .sf-btn.sf-act{background:#e11d2c;border-color:#e11d2c;color:#fff;box-shadow:0 2px 8px rgba(225,29,44,.22);}
-  .period-label{font-size:13px;color:#6b7280;}
+  .period-label{font-size:13px;color:#5B6875;}
   .period-label b{color:#1AABCB;}
-  .period-hint{font-size:12px;color:#9ca3af;}
+  .period-hint{font-size:12px;color:#94A1AE;}
   #valTrend{display:block;width:100%;cursor:default;}
   .vt-tip{position:absolute;z-index:20;display:none;pointer-events:none;background:rgba(17,24,39,.94);color:#fff;border-radius:8px;padding:8px 11px;font-size:12px;line-height:1.6;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,.22);}
   .vt-tip .vt-tip-d{font-weight:700;margin-bottom:3px;font-size:12.5px;}
   .vt-tip .vt-tip-row{color:#d1d5db;}
   .vt-tip .vt-tip-row b{color:#fff;font-size:13px;}
 </style>
+<!-- UNIFIED-UI v=20261023f BEGIN（统一界面层，勿手改，改 assets/ui.css） -->
+<link rel="stylesheet" href="../assets/ui.css?v=20261023f">
+<script defer src="../assets/ui.js?v=20261023f"></script>
+<!-- UNIFIED-UI END -->
 </head>
 <body>
 <div class="wrap">
   <div class="head">
-    <div><h1>会员有效性看板</h1><p>来源：ERP 零售单-零售单查询（当月-全部公司）｜ 判定依据：通报商品分类-新.xlsx·商品分类 · 会员有效性规则（&le;2次有效/&gt;2次无效/跨门店救回）</p></div>
+    <div><h1>会员有效性看板</h1></div>
   </div>
   <div class="statbar">统计日期：<b>2026-10-22</b> ｜ 对比前一日：<b>2026-10-21</b> ｜ 数据更新于 <b>2026-10-23 11:37</b></div>
   <div class="period-bar">
@@ -121,10 +125,10 @@
   </div>
   <div class="kpis"><div class="kpi " id="kpi_orders"><div class="label">会员订单数</div><div class="val">35,766<span class="unit">单</span></div><div class="sub2">已剔除无会员号订单 5 单 + 福建精准FX 74 单</div></div><div class="kpi good" id="kpi_valid"><div class="label">有效会员订单</div><div class="val">33,749<span class="unit">单</span></div><div class="sub2">对比昨日新增 +895 单</div></div><div class="kpi bad" id="kpi_invalid"><div class="label">无效会员订单</div><div class="val">2,017<span class="unit">单</span></div><div class="sub2">对比昨日新增 +81 单</div></div><div class="kpi good" id="kpi_vrate"><div class="label">有效占比</div><div class="val">94.36<span class="unit">%</span></div></div><div class="kpi bad" id="kpi_irate"><div class="label">无效占比</div><div class="val">5.64<span class="unit">%</span></div></div></div>
   <div class="card" id="trendCard"><h2>无效会员每日新增趋势（仅本月/上月 · 从1号起）</h2>
-    <div class="legend"><span><i class="dot" style="background:#dc2626"></i>无效会员每日新增订单数</span></div>
+    <div class="legend"><span><i class="dot" style="background:#D64545"></i>无效会员每日新增订单数</span></div>
     <div class="trend-btns"><button class="trend-btn active" data-vt-branch="全部">全部</button></div>
     <div style="position:relative;width:100%;height:320px;"><canvas id="valTrend"></canvas><div id="vtTip" class="vt-tip"></div></div></div>
-  <div class="card"><h2>各分公司订单占比明细</h2><div class="scroll" id="branchTableWrap"><table><thead><tr><th>所属分公司</th><th class="num">会员订单数</th><th class="num">有效会员订单</th><th class="num">无效会员订单</th><th class="num">有效占比</th><th class="num">无效占比</th><th class="num">对比昨日无效增加</th></tr></thead><tbody><tr><td>北京易联</td><td class="num">11,196</td><td class="num"><span class="badge b-green">9,972</span></td><td class="num"><span class="badge b-red">1,224</span></td><td class="num" class="rate-worst">89.07%</td><td class="num">10.93%</td><td class="num" style="color:#dc2626;font-weight:700">+46</td></tr><tr><td>北京飞航</td><td class="num">6,119</td><td class="num"><span class="badge b-green">5,695</span></td><td class="num"><span class="badge b-red">424</span></td><td class="num">93.07%</td><td class="num">6.93%</td><td class="num" style="color:#dc2626;font-weight:700">+20</td></tr><tr><td>上海爱飞</td><td class="num">2,802</td><td class="num"><span class="badge b-green">2,578</span></td><td class="num"><span class="badge b-red">224</span></td><td class="num">92.01%</td><td class="num">7.99%</td><td class="num" style="color:#dc2626;font-weight:700">+14</td></tr><tr><td>四川新跃</td><td class="num">4,013</td><td class="num"><span class="badge b-green">3,952</span></td><td class="num"><span class="badge b-red">61</span></td><td class="num">98.48%</td><td class="num">1.52%</td><td class="num" style="color:#9ca3af">0</td></tr><tr><td>福建易联</td><td class="num">3,049</td><td class="num"><span class="badge b-green">3,005</span></td><td class="num"><span class="badge b-red">44</span></td><td class="num">98.56%</td><td class="num">1.44%</td><td class="num" style="color:#9ca3af">0</td></tr><tr><td>北京中恒</td><td class="num">8,587</td><td class="num"><span class="badge b-green">8,547</span></td><td class="num"><span class="badge b-red">40</span></td><td class="num" class="rate-best">99.53%</td><td class="num">0.47%</td><td class="num" style="color:#dc2626;font-weight:700">+1</td></tr></tbody></table></div></div>
+  <div class="card"><h2>各分公司订单占比明细</h2><div class="scroll" id="branchTableWrap"><table><thead><tr><th>所属分公司</th><th class="num">会员订单数</th><th class="num">有效会员订单</th><th class="num">无效会员订单</th><th class="num">有效占比</th><th class="num">无效占比</th><th class="num">对比昨日无效增加</th></tr></thead><tbody><tr><td>北京易联</td><td class="num">11,196</td><td class="num"><span class="badge b-green">9,972</span></td><td class="num"><span class="badge b-red">1,224</span></td><td class="num" class="rate-worst">89.07%</td><td class="num">10.93%</td><td class="num" style="color:#D64545;font-weight:700">+46</td></tr><tr><td>北京飞航</td><td class="num">6,119</td><td class="num"><span class="badge b-green">5,695</span></td><td class="num"><span class="badge b-red">424</span></td><td class="num">93.07%</td><td class="num">6.93%</td><td class="num" style="color:#D64545;font-weight:700">+20</td></tr><tr><td>上海爱飞</td><td class="num">2,802</td><td class="num"><span class="badge b-green">2,578</span></td><td class="num"><span class="badge b-red">224</span></td><td class="num">92.01%</td><td class="num">7.99%</td><td class="num" style="color:#D64545;font-weight:700">+14</td></tr><tr><td>四川新跃</td><td class="num">4,013</td><td class="num"><span class="badge b-green">3,952</span></td><td class="num"><span class="badge b-red">61</span></td><td class="num">98.48%</td><td class="num">1.52%</td><td class="num" style="color:#94A1AE">0</td></tr><tr><td>福建易联</td><td class="num">3,049</td><td class="num"><span class="badge b-green">3,005</span></td><td class="num"><span class="badge b-red">44</span></td><td class="num">98.56%</td><td class="num">1.44%</td><td class="num" style="color:#94A1AE">0</td></tr><tr><td>北京中恒</td><td class="num">8,587</td><td class="num"><span class="badge b-green">8,547</span></td><td class="num"><span class="badge b-red">40</span></td><td class="num" class="rate-best">99.53%</td><td class="num">0.47%</td><td class="num" style="color:#D64545;font-weight:700">+1</td></tr></tbody></table></div></div>
   <div class="card"><h2 id="storeTableTitle">门店无效会员订单排名（全部 185 家）</h2>
     <div class="sf" id="storeBranchBar">
       <button class="sf-btn sf-act" data-b="">全部</button>
@@ -304,9 +308,9 @@ function fmt(n){ n=Math.round(n||0); return n.toString().replace(/\B(?=(\d{3})+(
     setKpi('kpi_irate', ir.toFixed(2), '%', '');
     var br=P.branches||{};
     var names=Object.keys(br).sort(function(a,b){ return (br[b].total||0)-(br[a].total||0); });
-    function cellDelta(v){ if(v>0) return '<td class="num" style="color:#dc2626;font-weight:700">+'+v+'</td>';
-      if(v<0) return '<td class="num" style="color:#059669;font-weight:700">'+v+'</td>';
-      return '<td class="num" style="color:#9ca3af">0</td>'; }
+    function cellDelta(v){ if(v>0) return '<td class="num" style="color:#D64545;font-weight:700">+'+v+'</td>';
+      if(v<0) return '<td class="num" style="color:#12A150;font-weight:700">'+v+'</td>';
+      return '<td class="num" style="color:#94A1AE">0</td>'; }
     var best=0,worst=100;
     names.forEach(function(b){ var r=_fmtPct(br[b].valid,br[b].total); if(r>best)best=r; if(r<worst)worst=r; });
     var tbl='<table><thead><tr><th>所属分公司</th><th class="num">会员订单数</th><th class="num">有效会员订单</th><th class="num">无效会员订单</th><th class="num">有效占比</th><th class="num">无效占比</th><th class="num">对比昨日无效增加</th></tr></thead><tbody>';
@@ -374,7 +378,7 @@ function fmt(n){ n=Math.round(n||0); return n.toString().replace(/\B(?=(\d{3})+(
     var step=n>1?cw/(n-1):0;
     // 记录各节点坐标，供点击/悬停命中检测（step 必须在此前已定义，否则 x=NaN 导致点击无法命中）
     data.forEach(function(d,i){ var x=pl+step*i, v=d.invalid||0, y=pt+ch-v/maxV*ch; gPts.push({x:x,y:y,date:d.date,invalid:v,p:_src[i]}); });
-    ctx.strokeStyle='#eef0f3'; ctx.fillStyle='#9aa3ad'; ctx.font='11px sans-serif';
+    ctx.strokeStyle='#eef0f3'; ctx.fillStyle='#94A1AE'; ctx.font='11px sans-serif';
     ctx.textAlign='right'; ctx.textBaseline='middle';
     for(var i=0;i<=5;i++){var val=maxV*i/5,y=pt+ch-val/maxV*ch;ctx.beginPath();ctx.moveTo(pl,y);ctx.lineTo(pl+cw,y);ctx.stroke();ctx.fillText(val,pl-6,y);}
     ctx.textAlign='center'; ctx.textBaseline='top';
@@ -382,12 +386,12 @@ function fmt(n){ n=Math.round(n||0); return n.toString().replace(/\B(?=(\d{3})+(
     // 现在按可用宽度自动降采样（每格至少 34px 才标日期），首末必标，永远水平书写。
     ctx.textAlign='center'; ctx.textBaseline='top';
     var labStep=Math.max(1, Math.ceil(34/Math.max(step,1)));
-    data.forEach(function(d,i){ if(i%labStep!==0 && i!==n-1) return; ctx.fillStyle='#9aa3ad'; ctx.fillText(fmtDay(d.date), pl+step*i, pt+ch+7); });
+    data.forEach(function(d,i){ if(i%labStep!==0 && i!==n-1) return; ctx.fillStyle='#94A1AE'; ctx.fillText(fmtDay(d.date), pl+step*i, pt+ch+7); });
     // 固定显示最新无效会员订单数（2026-10-22 移至右上角：从 1 号起画后 1 号常为月内最高点，左上会压线）
     var lastV=data[data.length-1].invalid;
-    ctx.fillStyle='#dc2626'; ctx.font='bold 13px sans-serif'; ctx.textAlign='right'; ctx.textBaseline='top';
+    ctx.fillStyle='#D64545'; ctx.font='bold 13px sans-serif'; ctx.textAlign='right'; ctx.textBaseline='top';
     ctx.fillText('当日新增: '+fmt(lastV)+' 笔', pl+cw, pt-2);
-    ctx.fillStyle='#9aa3ad'; ctx.font='10px sans-serif';
+    ctx.fillStyle='#94A1AE'; ctx.font='10px sans-serif';
     ctx.fillText(activeBranch==='全部'?'(全部)': '('+activeBranch+')', pl+cw, pt+12);
     function plot(key,color,width){
       ctx.strokeStyle=color; ctx.lineWidth=width; ctx.beginPath(); var st=false;
@@ -395,7 +399,7 @@ function fmt(n){ n=Math.round(n||0); return n.toString().replace(/\B(?=(\d{3})+(
       ctx.stroke();
       data.forEach(function(d,i){var v=d[key];if(v==null||v==undefined)return;var x=pl+step*i;var y=pt+ch-v/maxV*ch;ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(x,y,3,0,Math.PI*2);ctx.fill();ctx.strokeStyle=color;ctx.lineWidth=2;ctx.beginPath();ctx.arc(x,y,3,0,Math.PI*2);ctx.stroke();});
     }
-    plot('invalid','#dc2626',2.6);
+    plot('invalid','#D64545',2.6);
   }
 
   function showTip(pt){
@@ -500,5 +504,6 @@ var _ss=document.getElementsByTagName("script")[0];
 _ss.parentNode.insertBefore(_hs,_ss);
 </script>
 <!-- RETAIL_STATS_END -->
+<div class="srcline">来源：ERP 零售单-零售单查询（当月-全部公司）｜ 判定依据：通报商品分类-新.xlsx·商品分类 · 会员有效性规则（&le;2次有效/&gt;2次无效/跨门店救回）</div>
 </body>
 </html>

@@ -24,7 +24,7 @@ function sortBranch(list, keyFn){
 /* ---------- 渲染辅助（不变） ---------- */
 function fmt(n){ if(n===null||n===undefined||n==='') return '-'; const x=Number(n); return isNaN(x)? String(n): x.toLocaleString('en-US'); }
 function esc(s){ return String(s===null?'':s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
-function rankColor(i){ return i===0?'#ff3b30':(i===1||i===2)?'#ff9500':'#34c759'; }
+function rankColor(i){ return i===0?'#D64545':(i===1||i===2)?'#F6AA00':'#12A150'; }
 function tabLabel(p, period){
   if((p==='day'||p==='yest') && period && period.dates && period.dates.length){
     const d=period.dates[0]; return d.slice(4,6)+'-'+d.slice(6,8);
@@ -37,7 +37,7 @@ function metric(v,l,c,delta){
     +(delta?`<div class="metric-delta ${c||''}">${esc(delta)}</div>`:'')+`</div>`;
 }
 function progress(pct,left,right,color){
-  color = color || (pct>=90?'linear-gradient(90deg,#34c759,#30b94e)':'linear-gradient(90deg,#ff9500,#ff6b5a)');
+  color = color || (pct>=90?'linear-gradient(90deg,#12A150,#30b94e)':'linear-gradient(90deg,#F6AA00,#ff6b5a)');
   return `<div class="progress-bar"><div class="progress-fill" style="width:${Math.max(0,Math.min(100,pct))}%;background:${color}"></div></div>`
     +`<div class="progress-label"><span>${esc(left)}</span><span>${esc(right)}</span></div>`;
 }
@@ -50,8 +50,8 @@ function actionBox(text){
   return `<div class="action-box"><div class="action-icon">!</div><div class="action-text">${text}</div></div>`;
 }
 function storeItem(name, meta, valNum, valLabel, valColor, highlight){
-  const h = highlight? ' style="background:rgba(255,59,48,0.05);border:1px solid rgba(255,59,48,0.15)"':'';
-  const hc = highlight? ' style="background:rgba(255,149,0,0.05)"':'';
+  const h = highlight? ' style="background:rgba(214,69,69,0.05);border:1px solid rgba(214,69,69,0.15)"':'';
+  const hc = highlight? ' style="background:rgba(246,170,0,0.05)"':'';
   return `<div class="store-item"${h}><div class="store-info"><div class="store-name">${esc(name)}</div>`
     +`<div class="store-meta">${esc(meta)}</div></div>`
     +`<div class="store-value"><div class="store-value-num ${valColor||''}">${esc(valNum)}</div>`
@@ -61,14 +61,14 @@ function storeItem(name, meta, valNum, valLabel, valColor, highlight){
    分公司列表已按 BRANCH_ORDER 固定排序，序号仅表示展示位置，不代表好坏。 */
 function branchItem(rankIdx, name, valueText, valueColor, barPct, barColor){
   const bar = (typeof barPct==='number'&&barPct>0)
-    ? `<div class="mini-bar"><div class="mini-bar-fill" style="width:${Math.max(8,Math.min(100,Math.round(barPct)))}%;background:${barColor||'#0071E3'}"></div></div>` : '';
+    ? `<div class="mini-bar"><div class="mini-bar-fill" style="width:${Math.max(8,Math.min(100,Math.round(barPct)))}%;background:${barColor||'#1AABCB'}"></div></div>` : '';
   const rc = (typeof rankIdx==='number')? `<div class="rank" style="background:#8e8e93">${rankIdx+1}</div>`:'';
   return `<div class="detail-item"><div class="detail-item-name">${rc}${esc(name)}</div>`
     +`<div class="detail-item-bar">${bar}<div class="detail-item-value ${valueColor||''}">${esc(valueText)}</div></div></div>`;
 }
 function detailItem(rankIdx, name, valueText, valueColor, barPct, barColor){
   const bar = (typeof barPct==='number'&&barPct>0)
-    ? `<div class="mini-bar"><div class="mini-bar-fill" style="width:${Math.max(8,Math.min(100,Math.round(barPct)))}%;background:${barColor||'#ff3b30'}"></div></div>` : '';
+    ? `<div class="mini-bar"><div class="mini-bar-fill" style="width:${Math.max(8,Math.min(100,Math.round(barPct)))}%;background:${barColor||'#D64545'}"></div></div>` : '';
   const rc = (typeof rankIdx==='number')? `<div class="rank" style="background:${rankColor(rankIdx)}">${rankIdx+1}</div>`:'';
   return `<div class="detail-item"><div class="detail-item-name">${rc}${esc(name)}</div>`
     +`<div class="detail-item-bar">${bar}<div class="detail-item-value ${valueColor||''}">${esc(valueText)}</div></div></div>`;

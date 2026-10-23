@@ -3,29 +3,29 @@
 <title>零售退货单分析看板</title>
 <style>
 *{box-sizing:border-box} html{-webkit-text-size-adjust:100%!important;} body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;margin:0;background:#f5f7fa;color:#1f2d3d;-webkit-text-size-adjust:100%!important;}
-.head{background:linear-gradient(120deg,#1AABCB,#1488a8);color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.head{background:linear-gradient(120deg,#1AABCB,#0E8FA8);color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
 .head h1{margin:0;font-size:21px} .head p{margin:3px 0 0;opacity:.92;font-size:12.5px}
 .kpis{display:flex;gap:14px;padding:18px 24px;flex-wrap:wrap}
 .card{background:#fff;border-radius:12px;padding:16px 20px;flex:1;min-width:180px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
 .card .n{font-size:26px;font-weight:700} .card .l{font-size:12.5px;color:#667;margin-top:2px} .card .r{display:block;margin-top:6px;font-size:12px;font-weight:700}
-.card.rate .n{color:#c0392b} .card.ret .n{color:#1AABCB} .card.sale .n{color:#10b981}
+.card.rate .n{color:#D64545} .card.ret .n{color:#D64545} .card.sale .n{color:#1B2733}
 .sec{background:#fff;margin:0 24px 18px;border-radius:12px;padding:14px 18px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
 .sec h2{font-size:15.5px;margin:0 0 10px;color:#1AABCB;border-left:4px solid #F6AA00;padding-left:10px;display:flex;justify-content:space-between;align-items:center}
 table{width:100%;border-collapse:collapse;font-size:13px} th,td{padding:6px 8px;border-bottom:1px solid #eef;text-align:right}
 th:first-child,td:first-child{text-align:left}
 th{background:#f0f6f8;color:#456} tbody tr:hover{background:#fafdff}
 .rate-cell{font-weight:700}
-.rate-hi{color:#c0392b} .rate-mid{color:#e08e0b} .rate-lo{color:#10b981}
+.rate-hi{color:#D64545} .rate-mid{color:#F6AA00} .rate-lo{color:#12A150}
 .note{font-size:12px;color:#889;padding:0 24px 22px;line-height:1.8}
 .dlbtn{display:inline-block;margin:0 0 10px;font-size:13px;font-weight:600;color:#fff;background:#1AABCB;text-decoration:none;padding:8px 16px;border-radius:9px;border:0;cursor:pointer}
-.dlbtn:hover{background:#1488a8}
-#owrap{padding:0 24px 8px;font-size:13px;color:#456} #period{font-weight:600;color:#1488a8}
+.dlbtn:hover{background:#0E8FA8}
+#owrap{padding:0 24px 8px;font-size:13px;color:#456} #period{font-weight:600;color:#0E8FA8}
 .ct-btns{display:flex;gap:8px;margin:10px 0 6px;flex-wrap:wrap;}
-.ct-btn{border:1px solid #e5e9ef;background:#fff;border-radius:20px;padding:6px 16px;font-size:13px;font-weight:600;color:#4b5563;cursor:pointer;transition:all .12s;}
+.ct-btn{border:1px solid #e5e9ef;background:#fff;border-radius:20px;padding:6px 16px;font-size:13px;font-weight:600;color:#5B6875;cursor:pointer;transition:all .12s;}
 .ct-btn:hover{background:#eef6f9;}
 .ct-btn.ct-act{background:#1AABCB;color:#fff;border-color:#1AABCB;}
 .winrange{font-size:12px;color:#889;padding:2px 0 2px}
-.morebtn{font-size:12.5px;font-weight:600;color:#1488a8;background:#eef6f9;border:1px solid #cfe6ee;border-radius:18px;padding:5px 16px;cursor:pointer;transition:all .12s}
+.morebtn{font-size:12.5px;font-weight:600;color:#0E8FA8;background:#eef6f9;border:1px solid #cfe6ee;border-radius:18px;padding:5px 16px;cursor:pointer;transition:all .12s}
 .morebtn:hover{background:#dceff5}
 .brgrp td{font-size:13px}
 /* ── 移动端/云之家WebView适配 ── */
@@ -41,9 +41,9 @@ th{background:#f0f6f8;color:#456} tbody tr:hover{background:#fafdff}
   table,th,td{font-size:10.5px;} th,td{padding:6px 8px;}
   .morebtn{font-size:11px;} .brgrp td{font-size:10.5px;}
 }
-</style><!-- UNIFIED-UI v=20261023c BEGIN（统一界面层，勿手改，改 assets/ui.css） -->
-<link rel="stylesheet" href="../assets/ui.css?v=20261023c">
-<script defer src="../assets/ui.js?v=20261023c"></script>
+</style><!-- UNIFIED-UI v=20261023f BEGIN（统一界面层，勿手改，改 assets/ui.css） -->
+<link rel="stylesheet" href="../assets/ui.css?v=20261023f">
+<script defer src="../assets/ui.js?v=20261023f"></script>
 <!-- UNIFIED-UI END -->
 </head><body>
 <div class="head">
@@ -138,7 +138,7 @@ function renderOverview(keys){
     +'<div class="card ret"><div class="n">'+fmt(R.return_count)+'</div><div class="l">退货单(数) · '+winName(CURRENT_W)+'</div></div>'
     +'<div class="card sale"><div class="n">'+fmt(R.sales_count)+'</div><div class="l">销售单(数) · 退单率分母</div></div>'
     +'<div class="card rate"><div class="n">'+r.toFixed(2)+'%</div><div class="l">退单率 · '+winName(CURRENT_W)+'</div></div>'
-    +'<div class="card"><div class="n" style="color:#F6AA00">¥'+money(R.return_amount)+'</div><div class="l">退货金额</div></div>';
+    +'<div class="card"><div class="n" style="color:#1AABCB">¥'+money(R.return_amount)+'</div><div class="l">退货金额</div></div>';
   document.getElementById("overview").innerHTML=html;
 }
 function renderTable(w){
@@ -165,7 +165,7 @@ function renderTable(w){
     bArr.forEach(function(br){
       var bn=br[0]; var sList=(sByB[bn]||[]).slice().sort(function(a,b){return b[4]-a[4];});
       if(!sList.length) return;
-      st+='<tr class="brgrp" data-br="'+bn+'"><td colspan="6" style="background:#eef6f9;color:#1488a8;font-weight:700;text-align:left;padding:8px 10px">'+bn+'　退单率 '+br[3].toFixed(2)+'%　·　'+sList.length+' 家门店</td></tr>';
+      st+='<tr class="brgrp" data-br="'+bn+'"><td colspan="6" style="background:#eef6f9;color:#0E8FA8;font-weight:700;text-align:left;padding:8px 10px">'+bn+'　退单率 '+br[3].toFixed(2)+'%　·　'+sList.length+' 家门店</td></tr>';
       sList.forEach(function(r,idx){
         var style=(idx>=10)?' style="display:none"':'';
         st+='<tr class="srow" data-br="'+bn+'"'+style+'><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+fmt(r[2])+'</td><td>'+fmt(r[3])+'</td><td class="rate-cell '+rateClass(r[4])+'">'+r[4].toFixed(2)+'%</td><td>'+money(r[5])+'</td></tr>';
