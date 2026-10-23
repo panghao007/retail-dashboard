@@ -14,14 +14,10 @@
   .sub{color:#6b7280;font-size:13.5px;margin-top:8px;line-height:1.6;}
   .selbar{display:flex;align-items:center;gap:10px;margin:24px 0 6px;flex-wrap:wrap;}
   .selbar .lab{font-size:13px;color:#6b7280;font-weight:600;margin-right:4px;}
-  .seg{display:inline-flex;background:#fff;border:1px solid #e5e9ef;border-radius:11px;overflow:hidden;}
-  .seg button{border:0;background:transparent;padding:9px 16px;font-size:14px;font-weight:600;color:#4b5563;cursor:pointer;transition:all .12s;}
-  .seg button.active{background:#6366f1;color:#fff;}
-  .seg button:not(.active):hover{background:#eef0fe;}
-  .custom{display:none;align-items:center;gap:8px;}
-  .custom.show{display:inline-flex;}
-  .custom input{font-size:13px;padding:7px 10px;border:1px solid #e5e9ef;border-radius:9px;color:#1f2933;background:#fff;}
-  .custom button{font-size:13px;font-weight:600;padding:7px 14px;border:0;border-radius:9px;background:#6366f1;color:#fff;cursor:pointer;}
+  .ct-btns{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+  .ct-btn{border:1px solid #e5e9ef;background:#fff;border-radius:16px;padding:8px 18px;font-size:14px;font-weight:600;color:#374151;cursor:pointer;transition:all .15s;}
+  .ct-btn.ct-act{background:#1AABCB;border-color:#1AABCB;color:#fff;}
+  .ct-btn:not(.ct-act):hover{background:#eef6f9;}
   .period{font-size:13px;color:#6366f1;font-weight:700;margin:10px 0 2px;}
   .note-upd{font-size:12px;color:#9aa3ad;margin-bottom:8px;}
   .kpis{display:flex;gap:14px;margin:14px 0 6px;flex-wrap:wrap;}
@@ -96,18 +92,13 @@
     <h1>付费会员销售看板 · 会员连带率</h1>
     <div class="sub">来源：ERP 零售单-零售单查询（当月-全部公司）｜ 口径：通报商品分类-新.xlsx·主机清单 + VIP商品编码 ｜ 统计北京中恒 / 四川新跃 / 北京易联 / 福建易联 / 北京飞航 / 上海爱飞 六家分公司</div>
     <div class="selbar">
-      <span class="lab">时间维度</span>
-      <div class="seg" id="seg">
-        <button data-mode="当日">当日</button>
-        <button data-mode="昨日">昨日</button>
-        <button data-mode="当月" class="active">当月</button>
-        <button data-mode="自定义">自定义</button>
-      </div>
-      <div class="custom" id="custom">
-        <input type="date" id="cstart">
-        <span style="color:#9aa3ad">至</span>
-        <input type="date" id="cend">
-        <button id="capply">应用</button>
+      <div class="ct-btns" id="tf">
+        <button class="ct-btn" data-mode="当日" id="tfDay">当日</button>
+        <button class="ct-btn" data-mode="昨日" id="tfYest">昨日</button>
+        <button class="ct-btn" data-mode="本周">本周</button>
+        <button class="ct-btn" data-mode="上周">上周</button>
+        <button class="ct-btn ct-act" data-mode="本月">本月</button>
+        <button class="ct-btn" data-mode="上月">上月</button>
       </div>
     </div>
     <div class="period" id="period"></div>
@@ -130,8 +121,7 @@ function branchStart(b, date){
 let INDEX = [];          // 可用日期列表（升序）
 let GENERATED = "";
 let DAILY = {};          // 缓存 date -> json
-let MODE = "当月";
-let CUSTOM = {start:null, end:null};
+let MODE = "本月";
 
 function bjDate(d){ // d: Date -> 'YYYY-MM-DD' (北京)
   const bj = new Date(d.getTime()+8*3600000);
@@ -147,22 +137,38 @@ async function loadIndex(){
   for(const c of cands){
     try{
       const r = await fetch('daily_index_'+fmtDate(c)+'.json', {cache:'no-store'});
-      if(r.ok){ const j = await r.json(); INDEX = j.dates||[]; GENERATED = j.generated||""; return; }
+      if(r.ok){ const j = await r.json(); INDEX = (j.dates||[]).slice(); GENERATED = j.generated||""; break; }
     }catch(e){}
   }
-  try{ const r = await fetch('daily_index.json', {cache:'no-store'}); if(r.ok){ const j=await r.json(); INDEX=j.dates||[]; GENERATED=j.generated||""; } }catch(e){}
+  // 🔴 dated 索引只含「当月」（ERP 导出是当月累计），单靠它会切不到「上周/上月」。
+  //    再并上全量索引 daily_index.json（格式 YYYYMMDD 无横线，扫 daily 目录全量重建），统一成 YYYY-MM-DD。
+  try{
+    const r = await fetch('daily_index.json', {cache:'no-store'});
+    if(r.ok){
+      const j = await r.json();
+      const all = (j.dates||[]).map(x => x.length===8 ? (x.slice(0,4)+'-'+x.slice(4,6)+'-'+x.slice(6)) : x);
+      INDEX = Array.from(new Set([].concat(INDEX, all))).sort();
+      if(!GENERATED) GENERATED = j.generated||"";
+    }
+  }catch(e){}
 }
 async function loadDay(date){
   if(DAILY[date]) return DAILY[date];
   const r = await fetch('daily/'+fmtDate(date)+'.json', {cache:'no-store'});
   const j = await r.json(); DAILY[date]=j; return j;
 }
+function addDaysS(s,n){ const d=new Date(s+'T00:00:00'); d.setDate(d.getDate()+n); return bjDate(d); }
+function mondayOf(s){ const d=new Date(s+'T00:00:00'); const wd=(d.getDay()+6)%7; d.setDate(d.getDate()-wd); return bjDate(d); }
+// 取数基准日：今日已导出则用今天，否则回退到最新可用日期（ERP 为 T+1）
+function baseDay(){ const t=todayBJ(); return INDEX.includes(t)? t : (INDEX.length? INDEX[INDEX.length-1] : t); }
 function wantDates(){
-  const t=todayBJ(), y=prevDay(t), ms=t.slice(0,8)+"01";
-  if(MODE==="当日") return [t];
+  const base=baseDay(), y=prevDay(base);
+  if(MODE==="当日") return [base];
   if(MODE==="昨日") return [y];
-  if(MODE==="当月") return INDEX.filter(d=>d>=ms && d<=y);
-  if(MODE==="自定义") return INDEX.filter(d=>d>=(CUSTOM.start||"0000") && d<=(CUSTOM.end||"9999"));
+  if(MODE==="本周") return INDEX.filter(d=>d>=mondayOf(base) && d<=base);
+  if(MODE==="上周"){ const e=addDaysS(mondayOf(base),-1), s=addDaysS(e,-6); return INDEX.filter(d=>d>=s && d<=e); }
+  if(MODE==="本月") return INDEX.filter(d=>d>=base.slice(0,7)+"-01" && d<=base);
+  if(MODE==="上月"){ const f=addDaysS(base.slice(0,7)+"-01",-1), s=f.slice(0,7)+"-01"; return INDEX.filter(d=>d>=s && d<=f); }
   return [];
 }
 function availableDates(){
@@ -171,12 +177,9 @@ function availableDates(){
   return {want, av, missing:want.filter(d=>!INDEX.includes(d))};
 }
 function selectedLabel(want){
-  if(want.length===0) return "（无数据）";
-  if(MODE==="当日") return "当日（"+want[0]+"）";
-  if(MODE==="昨日") return "昨日（"+want[0]+"）";
-  if(MODE==="当月") return "当月累积（"+want[0]+" ~ "+want[want.length-1]+"）";
-  if(MODE==="自定义") return "自定义（"+(CUSTOM.start||"?")+" ~ "+(CUSTOM.end||"?")+"）";
-  return "";
+  if(!want || want.length===0) return "（无数据）";
+  const a=want[0], b=want[want.length-1];
+  return MODE+"（"+(want.length>1 ? (a.slice(5)+" ~ "+b.slice(5)) : a)+"）";
 }
 function aggregate(js){
   const total={denominator:0,numerator:0,order_denom:0,order_num:0,amount:0,profit:0};
@@ -364,7 +367,7 @@ function draw(agg, dates, want){
     +'· <b>分子（VIP会员商品）</b>：商品编码精确匹配《通报商品分类-新.xlsx》sheet「付费会员商品」的付费会员物料编码，与分母同口径剔除。<br>'
     +'· <b>会员连带率</b> = 分子 ÷ 分母；<b>付费会员开单占比</b> = 区间内「有 VIP 会员商品销售」的门店数 ÷ 六家分公司主数据门店总数（门店维度二元判定：卖过 VIP 即「有」，未卖即「无」）。<br>'
     +'· <b>门店销售(售/总)</b>：分公司主数据（门店sheet）中，当期主机台量&gt;0 的门店数 / 主数据门店总数。<br>'
-    +'· <b>未售门店</b>：仅「当月 / 自定义」区间维度展示——主数据中当期主机台量=0 的门店（单日维度不展示逐日未售清单）。<br>'
+    +'· <b>未售门店</b>：仅区间维度（本周 / 上周 / 本月 / 上月）展示——主数据中当期主机台量=0 的门店（单日维度不展示逐日未售清单）。<br>'
     +'· <b>退货处理</b>：退货状态「已退货」整行剔除；「部分退货」按 实售=销售数量−已退数量 计入。<br>'
     +'· ⚠️ 各分公司 VIP 编码均来自《通报商品分类-新.xlsx》sheet「付费会员商品」（北京中恒=vip-iphone* / 四川新跃=SCXYVIP* / 北京易联=BJYLVIP* / 福建易联=FJYLVIP* / 北京飞航=上海爱飞=FHQLVIP*）。<br>'
     +'· 各分公司区块下方「付费会员商品销售明细」列出该分公司当期具体售出的会员商品（按商品编码 / 名称 / VIP数 / 会员纯利），便于核对都卖了哪些付费会员商品。<br>'
@@ -532,10 +535,7 @@ async function render(){
   document.getElementById('content').innerHTML='<div class="loading">加载中…</div>';
   const {want, av, missing}=availableDates();
   if(av.length===0){
-    let msg='';
-    if(MODE==="当日") msg='今日（'+want[0]+'）数据尚未导出（ERP 数据为 T+1）。最新可用数据截至 '+(INDEX.length?INDEX[INDEX.length-1]:'无')+'。';
-    else if(MODE==="昨日") msg='昨日（'+want[0]+'）数据暂不可用。';
-    else msg='所选范围内暂无导出数据。';
+    let msg=MODE+' 所选范围内暂无导出数据。最新可用数据截至 '+(INDEX.length?INDEX[INDEX.length-1]:'无')+'（ERP 为 T+1）。';
     document.getElementById('content').innerHTML='<div class="loading">'+msg+'</div>';
     document.getElementById('period').textContent="统计周期："+selectedLabel(want);
     document.getElementById('noteUpd').textContent=GENERATED?("数据更新于 "+GENERATED):"";
@@ -549,23 +549,18 @@ async function render(){
   }
 }
 // 事件
-document.getElementById('seg').addEventListener('click', e=>{
-  const btn=e.target.closest('button'); if(!btn) return;
+document.getElementById('tf').addEventListener('click', e=>{
+  const btn=e.target.closest('.ct-btn'); if(!btn) return;
   MODE=btn.dataset.mode;
-  [...document.querySelectorAll('#seg button')].forEach(b=>b.classList.toggle('active', b===btn));
-  document.getElementById('custom').classList.toggle('show', MODE==="自定义");
+  [...document.querySelectorAll('#tf .ct-btn')].forEach(b=>b.classList.toggle('ct-act', b===btn));
   render();
-});
-document.getElementById('capply').addEventListener('click', ()=>{
-  CUSTOM.start=document.getElementById('cstart').value||null;
-  CUSTOM.end=document.getElementById('cend').value||null;
-  if(CUSTOM.start) render();
 });
 (async function(){
   await loadIndex();
-  const t = todayBJ(), y = prevDay(t);
-  document.getElementById('cstart').value = t.slice(0,8)+"01";
-  document.getElementById('cend').value = y;
+  const base=baseDay();
+  const d=document.getElementById('tfDay'), y=document.getElementById('tfYest');
+  if(d) d.textContent=base.slice(5);
+  if(y) y.textContent=prevDay(base).slice(5);
   render();
 })();
 </script>
