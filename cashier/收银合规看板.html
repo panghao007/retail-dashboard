@@ -131,8 +131,8 @@ function draw(D, D1, T, T1){
       +'<td style="text-align:right;color:#12A150"><b>'+(v.perfect_pct||0)+'%</b></td>'
       +'<td style="text-align:right">'+fmt(v.count)+'</td>'
       +'<td style="text-align:right;color:#12A150">'+fmt(v.comp)+'</td>'
+      +'<td style="text-align:right;color:#12A150"><b>'+((v.comp+v.noncomp)>0? (v.comp/(v.comp+v.noncomp)*100).toFixed(2):'0.00')+'%</b></td>'
       +'<td style="text-align:right;color:#D64545"><b>'+fmt(v.noncomp)+'</b></td>'
-      +'<td style="text-align:right;color:#D64545">'+((v.comp+v.noncomp)>0? (v.noncomp/(v.comp+v.noncomp)*100).toFixed(2):'0.00')+'%</td>'
       +'<td style="text-align:right">'+dBadge(v.noncomp,v1&&v1.noncomp,'down')+'</td></tr>';
   });
   var store_rows="";
@@ -153,7 +153,7 @@ function draw(D, D1, T, T1){
   var perfect_pct=(total_stores>0)? Math.round(perfect.length/total_stores*1000)/10 : 0;
   var perfect_rows=perfect.map(function(s){var v=D.store_stat[s];return '<tr class="pf-row" data-br="'+(STORE_BRANCH[s]||'')+'"><td>'+s+'</td><td style="text-align:right">'+fmt(v.count)+'</td><td style="text-align:right;color:#12A150">'+fmt(v.comp)+'</td><td style="text-align:right;color:#12A150"><b>100%</b></td></tr>';}).join("");
   var html=kpi
-    +'<div class="sec"><h2><span class="seq">②</span>分公司明细（当月累积 · 右列为日环比对比前一天）</h2><table><thead><tr><th>所属分公司</th><th style="text-align:right">合规门店数量</th><th style="text-align:right">不合规门店数量</th><th style="text-align:right">100%合规门店占比</th><th style="text-align:right">笔数</th><th style="text-align:right">合规</th><th style="text-align:right">不合规</th><th style="text-align:right">不合规占比</th><th style="text-align:right">对比昨日增加</th></tr></thead><tbody>'+(branch_rows||'<tr><td colspan=9 style="text-align:center;color:#12A150">✅ 各分公司均合规</td></tr>')+'</tbody></table></div>'
+    +'<div class="sec"><h2><span class="seq">②</span>分公司明细（当月累积 · 右列为日环比对比前一天）</h2><table><thead><tr><th>所属分公司</th><th style="text-align:right">合规门店数量</th><th style="text-align:right">不合规门店数量</th><th style="text-align:right">100%合规门店占比</th><th style="text-align:right">笔数</th><th style="text-align:right">合规</th><th style="text-align:right">合规占比</th><th style="text-align:right">不合规</th><th style="text-align:right">对比昨日增加</th></tr></thead><tbody>'+(branch_rows||'<tr><td colspan=9 style="text-align:center;color:#12A150">✅ 各分公司均合规</td></tr>')+'</tbody></table></div>'
     +'<div class="sec"><h2 id="hStore"><span class="seq">③</span>门店明细 · 按分公司筛选（当月累积 · 右列为日环比对比前一天）</h2>'
     +'<div class="sf" id="storeBar">'+sf_btns+'</div>'
     +'<table id="tblStore"><thead><tr><th>销售门店</th><th>所属分公司</th><th style="text-align:right">笔数</th><th style="text-align:right">合规</th><th style="text-align:right">不合规</th><th style="text-align:right">剔除</th><th style="text-align:right">门店合规率</th><th style="text-align:right">不合规Δ</th></tr></thead><tbody>'+(store_rows||'<tr><td colspan=8 style="text-align:center;color:#12A150">✅ 各门店均合规</td></tr>')+'</tbody></table></div>'
