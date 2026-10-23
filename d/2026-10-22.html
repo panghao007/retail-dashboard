@@ -378,9 +378,11 @@ function fmt(n){ n=Math.round(n||0); return n.toString().replace(/\B(?=(\d{3})+(
     ctx.textAlign='right'; ctx.textBaseline='middle';
     for(var i=0;i<=5;i++){var val=maxV*i/5,y=pt+ch-val/maxV*ch;ctx.beginPath();ctx.moveTo(pl,y);ctx.lineTo(pl+cw,y);ctx.stroke();ctx.fillText(val,pl-6,y);}
     ctx.textAlign='center'; ctx.textBaseline='top';
-    // 日期竖向显示（防手机叠压）；2026-10-22 起横轴可能长达 31 天，按可用宽度自动降采样标日期
-    var labStep=Math.max(1, Math.ceil(26/Math.max(step,1)));
-    data.forEach(function(d,i){ if(i%labStep!==0 && i!==n-1) return; var x=pl+step*i; ctx.save(); ctx.translate(x,pt+ch+6); ctx.rotate(-Math.PI/2); ctx.textAlign='right'; ctx.textBaseline='middle'; ctx.fillText(fmtDay(d.date),0,0); ctx.restore();});
+    // 2026-10-23 统一改「横排」：原来旋转 -90° 竖排字，手机上更是一列一列往下掉，读不动。
+    // 现在按可用宽度自动降采样（每格至少 34px 才标日期），首末必标，永远水平书写。
+    ctx.textAlign='center'; ctx.textBaseline='top';
+    var labStep=Math.max(1, Math.ceil(34/Math.max(step,1)));
+    data.forEach(function(d,i){ if(i%labStep!==0 && i!==n-1) return; ctx.fillStyle='#9aa3ad'; ctx.fillText(fmtDay(d.date), pl+step*i, pt+ch+7); });
     // 固定显示最新无效会员订单数（2026-10-22 移至右上角：从 1 号起画后 1 号常为月内最高点，左上会压线）
     var lastV=data[data.length-1].invalid;
     ctx.fillStyle='#dc2626'; ctx.font='bold 13px sans-serif'; ctx.textAlign='right'; ctx.textBaseline='top';

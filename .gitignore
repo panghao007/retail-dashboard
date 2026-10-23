@@ -9,3 +9,5 @@ d/dashboard_data.json
 # 周报管线中间产物（gen_weekly_apple.py 读写，无页面引用，不公开）
 _weekly_agg.json
 _weekly_agg.py
+# 仓库根目录残留的未脱敏汇总（防止误提交公开）
+/dashboard_data.json

@@ -1,0 +1,229 @@
+/* ==========================================================================
+   首茂零售数据看板 · 统一界面层  v=20261023
+   六个看板（会员有效性 / 收银合规 / 付费会员 / 零售退货 / 会员沉淀 / 预订单）
+   共用这一份样式。由 apply_ui.py 注入到每个页面 </head> 最后，覆盖各页原有样式。
+   设计原则：
+     1. 左右不留白：卡片满宽贴边，区块之间用 6px 页面底色自然分隔；
+     2. 字号统一且只求看清：正文 13px、表格 13px、手机 12.5px，KPI 23px；
+     3. 手机端表格横向滚动（.tblx），禁止中文被挤成竖排。
+   改版只改这一个文件，六个看板同时生效。
+   ========================================================================== */
+
+:root{
+  --ui-font:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --ui-bg:#f2f4f7;
+  --ui-card:#ffffff;
+  --ui-line:#eceff3;
+  --ui-text:#1f2937;
+  --ui-muted:#65707d;
+  --ui-faint:#98a2b0;
+  --ui-accent:#1aabcb;
+  --ui-fs:13px;
+  --ui-fs-sm:12px;
+  --ui-fs-xs:11px;
+  --ui-fs-h1:19px;
+  --ui-fs-h2:15px;
+  --ui-fs-h3:13px;
+  --ui-fs-kpi:23px;
+  --ui-gap:6px;
+  --ui-pad:12px;
+  --ui-row:8px;
+}
+
+/* ---------------------------------------------------------------- 1. 基础 */
+html{-webkit-text-size-adjust:100%!important;text-size-adjust:100%!important;}
+html,body{
+  margin:0!important;padding:0!important;
+  width:100%!important;max-width:100%!important;
+  overflow-x:hidden!important;
+  background:var(--ui-bg)!important;
+  color:var(--ui-text)!important;
+  font-family:var(--ui-font)!important;
+  font-size:var(--ui-fs)!important;
+  line-height:1.55!important;
+  -webkit-font-smoothing:antialiased;
+}
+body *{box-sizing:border-box;}
+img,canvas,svg{max-width:100%;}
+
+/* 所有页面容器：满宽、无外边距、无左右内边距 */
+.wrap,.container,.page,.content-wrap,.main{
+  width:100%!important;max-width:100%!important;
+  margin:0!important;padding:0!important;
+}
+
+/* -------------------------------------------------- 2. 标题 / 说明文字层级 */
+h1{font-size:var(--ui-fs-h1)!important;line-height:1.35!important;font-weight:700!important;margin:0!important;}
+h2,.sec h2,.card h2,.section-title,.bd-title{
+  font-size:var(--ui-fs-h2)!important;line-height:1.4!important;font-weight:700!important;
+  margin:0 0 8px!important;
+}
+h3,.sec h3{font-size:var(--ui-fs-h3)!important;line-height:1.45!important;font-weight:700!important;margin:12px 0 6px!important;}
+p,.sub,.note,.hint,.legend,.muted,.subject,.memo{
+  font-size:var(--ui-fs)!important;line-height:1.6!important;
+}
+.note,.sub,.legend,.hint,.muted,.st-hint,.note-upd,.period-hint,.drw-s,.drw-foot,.foot{color:var(--ui-muted)!important;}
+.note,.foot,.drw-foot{font-size:var(--ui-fs-sm)!important;}
+
+/* ---------------------------------------------------------- 3. 顶部标题条 */
+.head,.header,.topbar,.hero{
+  padding:10px var(--ui-pad)!important;
+  margin:0 0 var(--ui-gap)!important;
+  border-radius:0!important;
+}
+.head h1,.header h1{font-size:var(--ui-fs-h1)!important;}
+.head p,.header p{font-size:var(--ui-fs-sm)!important;line-height:1.5!important;margin:2px 0 0!important;}
+
+/* 顶部条里的胶囊切换（沉淀的 .bar / 预订单的 tab-row）保持换行不溢出 */
+.bar,.tab-row,.seg{max-width:100%!important;flex-wrap:wrap!important;}
+.bar button,.seg button,.tab-row button{font-size:var(--ui-fs-sm)!important;padding:6px 12px!important;}
+
+/* ------------------------------------------------------- 4. 周期/筛选按钮 */
+.period-bar,.ct-btns,.trend-btns,.sf,.br-row,.bucket-row{
+  gap:6px!important;margin:0!important;padding:8px var(--ui-pad)!important;flex-wrap:wrap!important;
+}
+.ct-btn,.trend-btn,.sf-btn,.bucket-chip,.br-chip,.morebtn{
+  font-size:var(--ui-fs-sm)!important;padding:6px 14px!important;border-radius:16px!important;line-height:1.2!important;
+}
+.period-label,.period-hint,#period,#noteUpd,.cmp{
+  font-size:var(--ui-fs-sm)!important;
+}
+
+/* 纯文字条（统计口径、更新时间等）：只留左右内边距，不加白底 */
+#mwrap,#owrap,.statbar,.cmp,.note,#cmp{
+  margin:0!important;
+  padding:8px var(--ui-pad)!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  border-radius:0!important;
+  font-size:var(--ui-fs-sm)!important;
+  color:var(--ui-muted)!important;
+}
+/* 沉淀页统计行原本是白字（贴在浅底上几乎看不见）——统一改深灰 */
+#mwrap,#mwrap *{color:var(--ui-muted)!important;}
+
+/* --------------------------------------------------------------- 5. 卡片 */
+.card,.sec,.block,.panel,.card-box,.tbl-card,#content>.card,#content>.sec,#cards>.card{
+  margin:0 0 var(--ui-gap)!important;
+  padding:10px var(--ui-pad)!important;
+  background:var(--ui-card)!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:0 1px 0 var(--ui-line)!important;
+}
+#content,#cards,.cards{padding:0!important;margin:0!important;}
+/* 卡片之间的标题、说明留出呼吸但不留白 */
+.card>.legend,.sec>.legend{margin:0 0 6px!important;}
+
+/* --------------------------------------------------------------- 6. KPI */
+.kpis{
+  display:grid!important;
+  grid-template-columns:repeat(auto-fit,minmax(146px,1fr))!important;
+  gap:var(--ui-gap)!important;
+  padding:0 0 var(--ui-gap)!important;
+  margin:0!important;
+  background:transparent!important;
+}
+.kpis>*,.kpi,.kpis .card{
+  margin:0!important;
+  padding:10px var(--ui-pad)!important;
+  background:var(--ui-card)!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:0 1px 0 var(--ui-line)!important;
+  min-width:0!important;
+  flex:none!important;
+}
+.kpi .val,.kpi .v,.kpi .n,.card .n,.kpis .v,.kpis .n{
+  font-size:var(--ui-fs-kpi)!important;line-height:1.25!important;font-weight:700!important;
+}
+.kpi .label,.kpi .l,.kpi .sub2,.card .l,.kpis .l,.card .d,.kpi .d{
+  font-size:var(--ui-fs-sm)!important;line-height:1.45!important;
+}
+
+/* --------------------------------------------------------------- 7. 表格 */
+.tblx{width:100%;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0;padding:0;}
+.tblx::-webkit-scrollbar{height:5px;}
+.tblx::-webkit-scrollbar-thumb{background:#cbd3dd;border-radius:3px;}
+/* 可横向滚动的表格：右边缘一点点渐隐，提示「右边还有列」 */
+.tblx.is-scroll{
+  background-image:linear-gradient(to right,rgba(255,255,255,0) 55%,rgba(15,23,42,.075) 100%);
+  background-repeat:no-repeat;background-size:26px 100%;background-position:right top;
+}
+table{
+  width:100%!important;border-collapse:collapse!important;
+  font-size:var(--ui-fs)!important;background:transparent;
+}
+/* 关键：单元格不折行，避免中文被压成一字一行的“竖排”；超宽时整表横向滚动 */
+th,td{
+  white-space:nowrap!important;
+  padding:var(--ui-row) 9px!important;
+  font-size:var(--ui-fs)!important;
+  line-height:1.45!important;
+  border-bottom:1px solid var(--ui-line)!important;
+  word-break:normal!important;
+  overflow-wrap:normal!important;
+}
+th{font-size:var(--ui-fs-sm)!important;font-weight:600!important;color:var(--ui-muted)!important;background:#fafbfc!important;}
+td{color:var(--ui-text)!important;}
+tr:last-child td{border-bottom:0!important;}
+/* 长文本单元格（ui.js 按字数自动加 .ui-w）允许换行，但给足最小宽度，
+   不会出现「北/京/易/联」一字一行；短文本一律不换行。 */
+td.ui-w,th.ui-w{white-space:normal!important;min-width:7em;max-width:16em;}
+td.ui-w *,th.ui-w *{white-space:normal!important;}
+td.tier-label,td.tier-label *,tr.tier-row td,tr.tier-row td *,.drawer-inner,.drawer-inner *{white-space:normal!important;}
+td.store-name,td.name{min-width:8em;white-space:normal!important;}
+.badge{font-size:var(--ui-fs-xs)!important;padding:2px 7px!important;border-radius:5px!important;}
+.num{font-variant-numeric:tabular-nums;}
+
+/* --------------------------------------------------------- 8. 抽屉/弹层 */
+.drw,.drawer,.mask,.drawer-mask{border-radius:0!important;}
+.drw-t,.drawer-title{font-size:16px!important;}
+.drw-s,.drawer-sub{font-size:var(--ui-fs-sm)!important;}
+.drw-body table,.drawer-body table{font-size:var(--ui-fs-sm)!important;}
+
+/* ------------------------------------------------- 9. 图例/提示/图表容器 */
+.vt-leg,.trend-legend{font-size:var(--ui-fs-sm)!important;gap:12px!important;}
+.vt-tip,.trend-tip{font-size:var(--ui-fs-xs)!important;padding:6px 9px!important;}
+/* 图表区左右不留白 */
+canvas{display:block;max-width:100%!important;}
+
+/* ------------------------------------------------------------- 10. 手机端 */
+@media (max-width:768px){
+  :root{
+    --ui-fs:12.5px;
+    --ui-fs-sm:11.5px;
+    --ui-fs-xs:11px;
+    --ui-fs-h1:17px;
+    --ui-fs-h2:14px;
+    --ui-fs-h3:12.5px;
+    --ui-fs-kpi:19px;
+    --ui-gap:5px;
+    --ui-pad:10px;
+    --ui-row:7px;
+  }
+  html,body{font-size:var(--ui-fs)!important;padding:0!important;margin:0!important;}
+  .kpis{grid-template-columns:repeat(2,1fr)!important;}
+  /* 单数个 KPI 时，最后一个占满整行，避免右下留一块空白 */
+  .kpis>:last-child:nth-child(odd){grid-column:1 / -1;}
+  .kpis>*,.kpi,.kpis .card{padding:8px 10px!important;}
+  .kpi .val,.kpi .v,.kpi .n,.card .n,.kpis .v,.kpis .n{font-size:var(--ui-fs-kpi)!important;}
+  th,td{padding:var(--ui-row) 7px!important;font-size:var(--ui-fs)!important;}
+  th{font-size:var(--ui-fs-sm)!important;}
+  td.ui-w,th.ui-w{min-width:6em;max-width:10em;}
+  td.store-name,td.name{min-width:7em;}
+  .drw{width:100%!important;max-width:100%!important;}
+  .drawer{left:0!important;right:0!important;}
+  .head,.header{padding:9px var(--ui-pad)!important;}
+  .ct-btn,.trend-btn,.sf-btn,.bucket-chip,.br-chip{font-size:var(--ui-fs-sm)!important;padding:5px 11px!important;}
+}
+@media (max-width:400px){
+  .kpis{grid-template-columns:repeat(2,1fr)!important;}
+}
+
+/* ------------------------------------------------------------- 11. 打印 */
+@media print{
+  html,body{background:#fff!important;}
+  .tblx{overflow:visible!important;}
+  th,td{white-space:normal!important;}
+}

@@ -31,7 +31,11 @@ td.bname{font-weight:600}
 .branch-name{font-size:13px;font-weight:700;color:#10b981;margin-bottom:6px;padding-left:8px;border-left:3px solid #10b981}
 #period{font-weight:600;color:#fff}
 #mwrap{padding:8px 24px 0;font-size:13px;color:#fff}
-</style></head><body>
+</style><!-- UNIFIED-UI v=20261023b BEGIN（统一界面层，勿手改，改 assets/ui.css） -->
+<link rel="stylesheet" href="../assets/ui.css?v=20261023b">
+<script defer src="../assets/ui.js?v=20261023b"></script>
+<!-- UNIFIED-UI END -->
+</head><body>
 <div class="head">
   <div><h1>会员沉淀看板</h1><p>以「首次购买门店」归属分公司 ｜ 截至所选日期的累计会员数（快照，不可加总）</p></div>
   <div class="bar">
@@ -57,7 +61,7 @@ var CUSTOM = {start:"", end:""};
 
 function bjNow(){ var n=new Date(); return new Date(n.getTime()+(n.getTimezoneOffset()+480)*60000); }
 function todayKey(){ var b=bjNow(); var m=('0'+(b.getMonth()+1)).slice(-2), d=('0'+b.getDate()).slice(-2); return ''+b.getFullYear()+m+d; }
-function keyToYmd(k){ k=''+k; return k? (k.slice(0,4)+"-"+k.slice(4,6)+"-"+k.slice(6,8)) : ""; }
+function keyToYmd(k){ k=(''+k).replace(/\D/g,""); return k? (k.slice(0,4)+"-"+k.slice(4,6)+"-"+k.slice(6,8)) : ""; }
 function ymdToKey(s){ return s? (''+s).replace(/-/g,"") : ""; }
 function prevKey(k){ k=''+k; var y=+k.slice(0,4),m=+k.slice(4,6),d=+k.slice(6,8); var dt=new Date(y,m-1,d); dt.setDate(dt.getDate()-1); var mm=('0'+(dt.getMonth()+1)).slice(-2), dd=('0'+dt.getDate()).slice(-2); return ''+dt.getFullYear()+mm+dd; }
 function firstOfMonthKey(k){ k=''+k; return k.slice(0,4)+k.slice(4,6)+'01'; }

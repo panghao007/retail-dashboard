@@ -85,6 +85,10 @@
   .trend-tip{position:absolute;pointer-events:none;background:rgba(31,41,51,.92);color:#fff;font-size:12px;
     padding:7px 10px;border-radius:8px;line-height:1.6;white-space:nowrap;display:none;z-index:9;transform:translate(-50%,-100%);}
 </style>
+<!-- UNIFIED-UI v=20261023b BEGIN（统一界面层，勿手改，改 assets/ui.css） -->
+<link rel="stylesheet" href="../assets/ui.css?v=20261023b">
+<script defer src="../assets/ui.js?v=20261023b"></script>
+<!-- UNIFIED-UI END -->
 </head>
 <body>
   <div class="wrap">
@@ -440,11 +444,14 @@ function draw(agg, dates, want){
         ctx.beginPath(); ctx.moveTo(pl,y); ctx.lineTo(pl+cw,y); ctx.stroke();
         ctx.fillText(val+'%', pl-6, y);
       }
-      // X 轴标签（竖向，防手机叠压）
+      // X 轴标签（2026-10-23 改横排：原来旋转 -90° 竖排，手机上成一列列竖字读不动）
+      // 按可用宽度降采样（每格 ≥34px 才标），首末必标，始终水平书写
       ctx.fillStyle='#9aa3ad'; ctx.font='11px -apple-system,sans-serif';
+      ctx.textAlign='center'; ctx.textBaseline='top';
+      var _step=n>1?cw/(n-1):0, _ls=Math.max(1, Math.ceil(34/Math.max(_step,1)));
       d.labels.forEach(function(lb,i){
-        var x=xAt(i,n,cw,pl);
-        ctx.save(); ctx.translate(x,pt+ch+6); ctx.rotate(-Math.PI/2); ctx.textAlign='right'; ctx.textBaseline='middle'; ctx.fillText(lb,0,0); ctx.restore();
+        if(i%_ls!==0 && i!==n-1) return;
+        ctx.fillText(lb, xAt(i,n,cw,pl), pt+ch+7);
       });
       // 画线
       function plot(data,color){
