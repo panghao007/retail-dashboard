@@ -1,19 +1,19 @@
 {
   "date": "2026-10-18",
-  "generated": "2026-10-23 16:05",
+  "generated": "2026-10-23 22:52",
   "total": {
-    "denominator": 1019.0,
-    "numerator": 457.0,
-    "order_denom": 1004,
-    "order_num": 457,
-    "amount": 456669.0,
-    "profit": 52878.0
+    "denominator": 1018.0,
+    "numerator": 456.0,
+    "order_denom": 1003,
+    "order_num": 456,
+    "amount": 450670.0,
+    "profit": 52778.0
   },
   "branches": {
     "北京中恒": {
-      "denominator": 365.0,
+      "denominator": 364.0,
       "numerator": 219.0,
-      "order_denom": 360,
+      "order_denom": 359,
       "order_num": 219,
       "vip_items": [
         {
@@ -85,9 +85,9 @@
     },
     "四川新跃": {
       "denominator": 139.0,
-      "numerator": 73.0,
+      "numerator": 72.0,
       "order_denom": 136,
-      "order_num": 73,
+      "order_num": 72,
       "vip_items": [
         {
           "code": "SCXYVIP00001",
@@ -148,13 +148,13 @@
         {
           "code": "SCXYTC00003",
           "name": "5999尊享配套权益",
-          "qty": 2.0,
+          "qty": 1.0,
           "price": 5999,
           "profit": 100.0
         }
       ],
-      "amount": 158567.0,
-      "profit": 7300.0
+      "amount": 152568.0,
+      "profit": 7200.0
     },
     "北京易联": {
       "denominator": 212.0,
@@ -433,9 +433,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京五道口购物中心",
-      "denominator": 12.0,
+      "denominator": 11.0,
       "numerator": 1.0,
-      "order_denom": 9,
+      "order_denom": 8,
       "order_num": 1,
       "vip_items": [
         {
@@ -1480,9 +1480,9 @@
       "branch": "四川新跃",
       "store": "APR成都三利爱琴海",
       "denominator": 6.0,
-      "numerator": 5.0,
+      "numerator": 4.0,
       "order_denom": 6,
-      "order_num": 5,
+      "order_num": 4,
       "vip_items": [
         {
           "code": "SCXYVIP00002",
@@ -1504,17 +1504,10 @@
           "qty": 1.0,
           "price": 7999,
           "profit": 100.0
-        },
-        {
-          "code": "SCXYTC00003",
-          "name": "5999尊享配套权益",
-          "qty": 1.0,
-          "price": 5999,
-          "profit": 100.0
         }
       ],
-      "amount": 16492.0,
-      "profit": 500.0
+      "amount": 10493.0,
+      "profit": 400.0
     },
     {
       "branch": "四川新跃",
