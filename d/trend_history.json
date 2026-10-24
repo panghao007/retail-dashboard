@@ -3055,10 +3055,10 @@
     {
       "date": "2026-10-24",
       "invalid": 397,
-      "valid": 34495,
+      "valid": 34499,
       "orders_invalid": 2211,
-      "orders_valid": 36752,
-      "total": 34892,
+      "orders_valid": 36756,
+      "total": 34896,
       "branches": {
         "北京易联": {
           "invalid": 1308,
@@ -3072,8 +3072,8 @@
         },
         "上海爱飞": {
           "invalid": 269,
-          "valid": 2798,
-          "total": 3067
+          "valid": 2799,
+          "total": 3068
         },
         "四川新跃": {
           "invalid": 66,
@@ -3087,8 +3087,8 @@
         },
         "福建易联": {
           "invalid": 47,
-          "valid": 3244,
-          "total": 3291
+          "valid": 3247,
+          "total": 3294
         }
       }
     }
