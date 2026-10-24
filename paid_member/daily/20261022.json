@@ -1,10 +1,10 @@
 {
   "date": "2026-10-22",
-  "generated": "2026-10-23 23:00",
+  "generated": "2026-10-24 16:05",
   "total": {
-    "denominator": 518.0,
+    "denominator": 517.0,
     "numerator": 186.0,
-    "order_denom": 511,
+    "order_denom": 510,
     "order_num": 186,
     "amount": 207806.0,
     "profit": 22033.5
@@ -236,9 +236,9 @@
       "profit": 1274.0
     },
     "上海爱飞": {
-      "denominator": 49.0,
+      "denominator": 48.0,
       "numerator": 6.0,
-      "order_denom": 49,
+      "order_denom": 48,
       "order_num": 6,
       "vip_items": [
         {
@@ -3109,9 +3109,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海FFC滨江悦里授权体验店",
-      "denominator": 2.0,
+      "denominator": 1.0,
       "numerator": 0.0,
-      "order_denom": 2,
+      "order_denom": 1,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
