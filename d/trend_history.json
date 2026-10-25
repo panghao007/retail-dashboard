@@ -3095,10 +3095,10 @@
     {
       "date": "2026-10-25",
       "invalid": 408,
-      "valid": 35988,
+      "valid": 35989,
       "orders_invalid": 2284,
-      "orders_valid": 38339,
-      "total": 36396,
+      "orders_valid": 38340,
+      "total": 36397,
       "branches": {
         "北京易联": {
           "invalid": 1343,
@@ -3122,8 +3122,8 @@
         },
         "北京中恒": {
           "invalid": 55,
-          "valid": 9810,
-          "total": 9865
+          "valid": 9811,
+          "total": 9866
         },
         "福建易联": {
           "invalid": 51,
