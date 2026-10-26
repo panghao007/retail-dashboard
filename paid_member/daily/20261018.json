@@ -1,6 +1,6 @@
 {
   "date": "2026-10-18",
-  "generated": "2026-10-25 23:01",
+  "generated": "2026-10-26 16:07",
   "total": {
     "denominator": 1018.0,
     "numerator": 456.0,
@@ -84,9 +84,9 @@
       "profit": 21900.0
     },
     "四川新跃": {
-      "denominator": 139.0,
+      "denominator": 138.0,
       "numerator": 72.0,
-      "order_denom": 136,
+      "order_denom": 135,
       "order_num": 72,
       "vip_items": [
         {
@@ -229,9 +229,9 @@
       "profit": 3871.0
     },
     "上海爱飞": {
-      "denominator": 81.0,
+      "denominator": 82.0,
       "numerator": 17.0,
-      "order_denom": 80,
+      "order_denom": 81,
       "order_num": 17,
       "vip_items": [
         {
@@ -1938,9 +1938,9 @@
     {
       "branch": "四川新跃",
       "store": "APR成都金楠天街",
-      "denominator": 10.0,
+      "denominator": 9.0,
       "numerator": 4.0,
-      "order_denom": 10,
+      "order_denom": 9,
       "order_num": 4,
       "vip_items": [
         {
@@ -4011,9 +4011,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海长宁龙之梦授权体验店",
-      "denominator": 6.0,
+      "denominator": 7.0,
       "numerator": 0.0,
-      "order_denom": 6,
+      "order_denom": 7,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,

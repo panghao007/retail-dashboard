@@ -1,10 +1,10 @@
 {
   "date": "2026-10-21",
-  "generated": "2026-10-25 23:01",
+  "generated": "2026-10-26 16:07",
   "total": {
-    "denominator": 589.0,
+    "denominator": 588.0,
     "numerator": 271.0,
-    "order_denom": 574,
+    "order_denom": 573,
     "order_num": 271,
     "amount": 273039.0,
     "profit": 30394.0
@@ -91,9 +91,9 @@
       "profit": 15600.0
     },
     "四川新跃": {
-      "denominator": 83.0,
+      "denominator": 82.0,
       "numerator": 47.0,
-      "order_denom": 80,
+      "order_denom": 79,
       "order_num": 47,
       "vip_items": [
         {
@@ -1522,9 +1522,9 @@
     {
       "branch": "四川新跃",
       "store": "APR成都时代天街",
-      "denominator": 6.0,
+      "denominator": 5.0,
       "numerator": 4.0,
-      "order_denom": 6,
+      "order_denom": 5,
       "order_num": 4,
       "vip_items": [
         {

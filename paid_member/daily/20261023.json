@@ -1,19 +1,19 @@
 {
   "date": "2026-10-23",
-  "generated": "2026-10-25 23:01",
+  "generated": "2026-10-26 16:07",
   "total": {
-    "denominator": 758.0,
-    "numerator": 334.0,
-    "order_denom": 746,
-    "order_num": 334,
-    "amount": 500290.0,
-    "profit": 35902.0
+    "denominator": 757.0,
+    "numerator": 333.0,
+    "order_denom": 745,
+    "order_num": 333,
+    "amount": 500191.0,
+    "profit": 35840.0
   },
   "branches": {
     "北京中恒": {
-      "denominator": 329.0,
+      "denominator": 328.0,
       "numerator": 215.0,
-      "order_denom": 322,
+      "order_denom": 321,
       "order_num": 215,
       "vip_items": [
         {
@@ -227,14 +227,14 @@
     },
     "北京飞航": {
       "denominator": 132.0,
-      "numerator": 30.0,
+      "numerator": 29.0,
       "order_denom": 131,
-      "order_num": 30,
+      "order_num": 29,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
           "name": "畅玩会员-99",
-          "qty": 25.0,
+          "qty": 24.0,
           "price": 99,
           "profit": 62.0
         },
@@ -246,8 +246,8 @@
           "profit": 117.0
         }
       ],
-      "amount": 3470.0,
-      "profit": 2135.0
+      "amount": 3371.0,
+      "profit": 2073.0
     },
     "上海爱飞": {
       "denominator": 31.0,
@@ -1315,9 +1315,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京通州万达",
-      "denominator": 15.0,
+      "denominator": 14.0,
       "numerator": 9.0,
-      "order_denom": 14,
+      "order_denom": 13,
       "order_num": 9,
       "vip_items": [
         {
@@ -3050,20 +3050,20 @@
       "branch": "北京飞航",
       "store": "DJI北京王府井APM授权高级体验店",
       "denominator": 14.0,
-      "numerator": 2.0,
+      "numerator": 1.0,
       "order_denom": 13,
-      "order_num": 2,
+      "order_num": 1,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
           "name": "畅玩会员-99",
-          "qty": 2.0,
+          "qty": 1.0,
           "price": 99,
           "profit": 62.0
         }
       ],
-      "amount": 198.0,
-      "profit": 124.0
+      "amount": 99.0,
+      "profit": 62.0
     },
     {
       "branch": "北京飞航",
