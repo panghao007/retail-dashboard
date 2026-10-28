@@ -1,25 +1,25 @@
 {
   "date": "2026-10-24",
-  "generated": "2026-10-27 23:25",
+  "generated": "2026-10-29 00:38",
   "total": {
     "denominator": 1052.0,
-    "numerator": 480.0,
+    "numerator": 482.0,
     "order_denom": 1036,
-    "order_num": 480,
-    "amount": 434389.0,
-    "profit": 53387.0
+    "order_num": 482,
+    "amount": 441888.0,
+    "profit": 53587.0
   },
   "branches": {
     "北京中恒": {
       "denominator": 409.0,
-      "numerator": 286.0,
+      "numerator": 285.0,
       "order_denom": 401,
-      "order_num": 286,
+      "order_num": 285,
       "vip_items": [
         {
           "code": "vip-iphone1498",
           "name": "iphone会员套餐1498",
-          "qty": 104.0,
+          "qty": 103.0,
           "price": 1498,
           "profit": 100.0
         },
@@ -87,14 +87,14 @@
           "profit": 100.0
         }
       ],
-      "amount": 347043.0,
-      "profit": 28600.0
+      "amount": 345545.0,
+      "profit": 28500.0
     },
     "四川新跃": {
       "denominator": 204.0,
-      "numerator": 60.0,
+      "numerator": 63.0,
       "order_denom": 199,
-      "order_num": 60,
+      "order_num": 63,
       "vip_items": [
         {
           "code": "SCXYVIP00001",
@@ -125,6 +125,13 @@
           "profit": 100.0
         },
         {
+          "code": "SCXYTC00007",
+          "name": "2999尊享配套权益",
+          "qty": 3.0,
+          "price": 2999,
+          "profit": 100.0
+        },
+        {
           "code": "SCXYVIP00003",
           "name": "1598元臻享会员",
           "qty": 3.0,
@@ -139,8 +146,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 58080.0,
-      "profit": 6000.0
+      "amount": 67077.0,
+      "profit": 6300.0
     },
     "北京易联": {
       "denominator": 163.0,
@@ -1525,22 +1532,22 @@
       "branch": "北京中恒",
       "store": "APR北京颐堤港",
       "denominator": 12.0,
-      "numerator": 9.0,
+      "numerator": 8.0,
       "order_denom": 12,
-      "order_num": 9,
+      "order_num": 8,
       "vip_items": [
-        {
-          "code": "vip-iphone1498",
-          "name": "iphone会员套餐1498",
-          "qty": 3.0,
-          "price": 1498,
-          "profit": 100.0
-        },
         {
           "code": "vip-iphone698",
           "name": "iPhone会员套餐698",
           "qty": 2.0,
           "price": 698,
+          "profit": 100.0
+        },
+        {
+          "code": "vip-iphone1498",
+          "name": "iphone会员套餐1498",
+          "qty": 2.0,
+          "price": 1498,
           "profit": 100.0
         },
         {
@@ -1565,8 +1572,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 11283.0,
-      "profit": 900.0
+      "amount": 9785.0,
+      "profit": 800.0
     },
     {
       "branch": "北京中恒",
@@ -1849,9 +1856,9 @@
       "branch": "四川新跃",
       "store": "APR成都武侯大悦城",
       "denominator": 16.0,
-      "numerator": 2.0,
+      "numerator": 3.0,
       "order_denom": 14,
-      "order_num": 2,
+      "order_num": 3,
       "vip_items": [
         {
           "code": "SCXYVIP00001",
@@ -1866,10 +1873,17 @@
           "qty": 1.0,
           "price": 1898,
           "profit": 100.0
+        },
+        {
+          "code": "SCXYTC00007",
+          "name": "2999尊享配套权益",
+          "qty": 1.0,
+          "price": 2999,
+          "profit": 100.0
         }
       ],
-      "amount": 2596.0,
-      "profit": 200.0
+      "amount": 5595.0,
+      "profit": 300.0
     },
     {
       "branch": "四川新跃",
@@ -2004,9 +2018,9 @@
       "branch": "四川新跃",
       "store": "APR成都西宸天街",
       "denominator": 17.0,
-      "numerator": 2.0,
+      "numerator": 3.0,
       "order_denom": 17,
-      "order_num": 2,
+      "order_num": 3,
       "vip_items": [
         {
           "code": "SCXYVIP00005",
@@ -2021,10 +2035,17 @@
           "qty": 1.0,
           "price": 698,
           "profit": 100.0
+        },
+        {
+          "code": "SCXYTC00007",
+          "name": "2999尊享配套权益",
+          "qty": 1.0,
+          "price": 2999,
+          "profit": 100.0
         }
       ],
-      "amount": 1196.0,
-      "profit": 200.0
+      "amount": 4195.0,
+      "profit": 300.0
     },
     {
       "branch": "四川新跃",
@@ -2063,15 +2084,22 @@
       "branch": "四川新跃",
       "store": "APR成都金牛凯德",
       "denominator": 14.0,
-      "numerator": 4.0,
+      "numerator": 5.0,
       "order_denom": 14,
-      "order_num": 4,
+      "order_num": 5,
       "vip_items": [
         {
           "code": "SCXYVIP00001",
           "name": "698元悦享会员",
           "qty": 1.0,
           "price": 698,
+          "profit": 100.0
+        },
+        {
+          "code": "SCXYTC00007",
+          "name": "2999尊享配套权益",
+          "qty": 1.0,
+          "price": 2999,
           "profit": 100.0
         },
         {
@@ -2089,8 +2117,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 4592.0,
-      "profit": 400.0
+      "amount": 7591.0,
+      "profit": 500.0
     },
     {
       "branch": "四川新跃",

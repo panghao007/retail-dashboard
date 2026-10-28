@@ -1,20 +1,20 @@
 {
   "date": "2026-10-26",
-  "generated": "2026-10-27 23:25",
+  "generated": "2026-10-29 00:38",
   "total": {
-    "denominator": 599.0,
-    "numerator": 236.0,
-    "order_denom": 589,
-    "order_num": 236,
-    "amount": 212491.0,
-    "profit": 27227.0
+    "denominator": 597.0,
+    "numerator": 237.0,
+    "order_denom": 587,
+    "order_num": 237,
+    "amount": 212889.0,
+    "profit": 27327.0
   },
   "branches": {
     "北京中恒": {
-      "denominator": 238.0,
-      "numerator": 146.0,
-      "order_denom": 231,
-      "order_num": 146,
+      "denominator": 237.0,
+      "numerator": 147.0,
+      "order_denom": 230,
+      "order_num": 147,
       "vip_items": [
         {
           "code": "vip-iphone1498",
@@ -40,7 +40,7 @@
         {
           "code": "vip-iphone398",
           "name": "iphone会员套餐398",
-          "qty": 15.0,
+          "qty": 16.0,
           "price": 398,
           "profit": 100.0
         },
@@ -66,8 +66,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 165608.0,
-      "profit": 14600.0
+      "amount": 166006.0,
+      "profit": 14700.0
     },
     "四川新跃": {
       "denominator": 90.0,
@@ -139,9 +139,9 @@
       "profit": 5907.0
     },
     "福建易联": {
-      "denominator": 59.0,
+      "denominator": 58.0,
       "numerator": 14.0,
-      "order_denom": 59,
+      "order_denom": 58,
       "order_num": 14,
       "vip_items": [
         {
@@ -320,15 +320,22 @@
       "branch": "北京中恒",
       "store": "APR北京五棵松华熙",
       "denominator": 8.0,
-      "numerator": 9.0,
+      "numerator": 10.0,
       "order_denom": 8,
-      "order_num": 9,
+      "order_num": 10,
       "vip_items": [
         {
           "code": "vip-iphone698",
           "name": "iPhone会员套餐698",
           "qty": 1.0,
           "price": 698,
+          "profit": 100.0
+        },
+        {
+          "code": "vip-iphone398",
+          "name": "iphone会员套餐398",
+          "qty": 1.0,
+          "price": 398,
           "profit": 100.0
         },
         {
@@ -367,8 +374,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 12582.0,
-      "profit": 900.0
+      "amount": 12980.0,
+      "profit": 1000.0
     },
     {
       "branch": "北京中恒",
@@ -760,9 +767,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京房山龙湖",
-      "denominator": 14.0,
+      "denominator": 13.0,
       "numerator": 7.0,
-      "order_denom": 14,
+      "order_denom": 13,
       "order_num": 7,
       "vip_items": [
         {
@@ -2263,9 +2270,9 @@
     {
       "branch": "福建易联",
       "store": "华为南平建阳建发悦城",
-      "denominator": 8.0,
+      "denominator": 7.0,
       "numerator": 4.0,
-      "order_denom": 8,
+      "order_denom": 7,
       "order_num": 4,
       "vip_items": [
         {

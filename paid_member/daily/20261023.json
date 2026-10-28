@@ -1,19 +1,19 @@
 {
   "date": "2026-10-23",
-  "generated": "2026-10-27 23:25",
+  "generated": "2026-10-29 00:38",
   "total": {
-    "denominator": 756.0,
-    "numerator": 333.0,
-    "order_denom": 744,
-    "order_num": 333,
-    "amount": 500191.0,
-    "profit": 35840.0
+    "denominator": 755.0,
+    "numerator": 337.0,
+    "order_denom": 743,
+    "order_num": 337,
+    "amount": 508187.0,
+    "profit": 36240.0
   },
   "branches": {
     "北京中恒": {
-      "denominator": 328.0,
+      "denominator": 327.0,
       "numerator": 215.0,
-      "order_denom": 321,
+      "order_denom": 320,
       "order_num": 215,
       "vip_items": [
         {
@@ -113,9 +113,9 @@
     },
     "四川新跃": {
       "denominator": 127.0,
-      "numerator": 41.0,
+      "numerator": 45.0,
       "order_denom": 126,
-      "order_num": 41,
+      "order_num": 45,
       "vip_items": [
         {
           "code": "SCXYVIP00001",
@@ -129,6 +129,13 @@
           "name": "3999尊享配套权益",
           "qty": 9.0,
           "price": 3999,
+          "profit": 100.0
+        },
+        {
+          "code": "SCXYTC00006",
+          "name": "1999尊享配套权益",
+          "qty": 4.0,
+          "price": 1999,
           "profit": 100.0
         },
         {
@@ -181,8 +188,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 91932.0,
-      "profit": 4100.0
+      "amount": 99928.0,
+      "profit": 4500.0
     },
     "北京易联": {
       "denominator": 100.0,
@@ -763,9 +770,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京常营龙湖",
-      "denominator": 16.0,
+      "denominator": 15.0,
       "numerator": 11.0,
-      "order_denom": 16,
+      "order_denom": 15,
       "order_num": 11,
       "vip_items": [
         {
@@ -1612,10 +1619,17 @@
       "branch": "四川新跃",
       "store": "APR成都新光天地",
       "denominator": 4.0,
-      "numerator": 2.0,
+      "numerator": 4.0,
       "order_denom": 4,
-      "order_num": 2,
+      "order_num": 4,
       "vip_items": [
+        {
+          "code": "SCXYTC00006",
+          "name": "1999尊享配套权益",
+          "qty": 2.0,
+          "price": 1999,
+          "profit": 100.0
+        },
         {
           "code": "SCXYVIP00001",
           "name": "698元悦享会员",
@@ -1631,8 +1645,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 1696.0,
-      "profit": 200.0
+      "amount": 5694.0,
+      "profit": 400.0
     },
     {
       "branch": "四川新跃",
@@ -1676,10 +1690,17 @@
       "branch": "四川新跃",
       "store": "APR成都武侯大悦城",
       "denominator": 13.0,
-      "numerator": 3.0,
+      "numerator": 5.0,
       "order_denom": 12,
-      "order_num": 3,
+      "order_num": 5,
       "vip_items": [
+        {
+          "code": "SCXYTC00006",
+          "name": "1999尊享配套权益",
+          "qty": 2.0,
+          "price": 1999,
+          "profit": 100.0
+        },
         {
           "code": "SCXYVIP00001",
           "name": "698元悦享会员",
@@ -1695,8 +1716,8 @@
           "profit": 100.0
         }
       ],
-      "amount": 10696.0,
-      "profit": 300.0
+      "amount": 14694.0,
+      "profit": 500.0
     },
     {
       "branch": "四川新跃",
