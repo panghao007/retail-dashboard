@@ -2,14 +2,14 @@
   "date": "",
   "html": "d/index.html",
   "kpi": {
-    "total_orders": 31224,
-    "valid_members": 30866,
-    "invalid_members": 358,
-    "valid_rate": 94.49,
-    "invalid_rate": 5.51,
-    "orders_valid": 32875,
-    "orders_invalid": 1916,
-    "prev_invalid": 1819,
+    "total_orders": 36229,
+    "valid_members": 35912,
+    "invalid_members": 317,
+    "valid_rate": 95.3,
+    "invalid_rate": 4.7,
+    "orders_valid": 37957,
+    "orders_invalid": 1872,
+    "prev_invalid": 1820,
     "prev_valid": null,
     "latest_date": ""
   }
