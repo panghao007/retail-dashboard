@@ -1,19 +1,19 @@
 {
   "date": "2026-11-04",
-  "generated": "2026-11-05 00:20",
+  "generated": "2026-11-05 22:44",
   "total": {
-    "denominator": 462.0,
-    "numerator": 203.0,
-    "order_denom": 444,
-    "order_num": 203,
-    "amount": 152405.0,
-    "profit": 24304.0
+    "denominator": 460.0,
+    "numerator": 202.0,
+    "order_denom": 441,
+    "order_num": 202,
+    "amount": 152106.0,
+    "profit": 24130.0
   },
   "branches": {
     "北京中恒": {
-      "denominator": 175.0,
+      "denominator": 174.0,
       "numerator": 100.0,
-      "order_denom": 166,
+      "order_denom": 165,
       "order_num": 100,
       "vip_items": [
         {
@@ -115,9 +115,9 @@
       "profit": 3200.0
     },
     "北京易联": {
-      "denominator": 84.0,
+      "denominator": 82.0,
       "numerator": 29.0,
-      "order_denom": 82,
+      "order_denom": 80,
       "order_num": 29,
       "vip_items": [
         {
@@ -139,15 +139,15 @@
       "profit": 6182.0
     },
     "福建易联": {
-      "denominator": 34.0,
-      "numerator": 18.0,
+      "denominator": 35.0,
+      "numerator": 17.0,
       "order_denom": 32,
-      "order_num": 18,
+      "order_num": 17,
       "vip_items": [
         {
           "code": "FJYLVIP0004",
           "name": "299元礼包",
-          "qty": 16.0,
+          "qty": 15.0,
           "price": 299,
           "profit": 174.0
         },
@@ -166,8 +166,8 @@
           "profit": 211.5
         }
       ],
-      "amount": 5882.0,
-      "profit": 3352.0
+      "amount": 5583.0,
+      "profit": 3178.0
     },
     "北京飞航": {
       "denominator": 64.0,
@@ -923,9 +923,9 @@
     {
       "branch": "北京中恒",
       "store": "APR北京石景山万达",
-      "denominator": 9.0,
+      "denominator": 8.0,
       "numerator": 4.0,
-      "order_denom": 9,
+      "order_denom": 8,
       "order_num": 4,
       "vip_items": [
         {
@@ -1623,9 +1623,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京东坝万达",
-      "denominator": 8.0,
+      "denominator": 7.0,
       "numerator": 0.0,
-      "order_denom": 7,
+      "order_denom": 6,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -1843,9 +1843,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京平谷万达",
-      "denominator": 4.0,
+      "denominator": 3.0,
       "numerator": 2.0,
-      "order_denom": 4,
+      "order_denom": 3,
       "order_num": 2,
       "vip_items": [
         {
@@ -2164,9 +2164,9 @@
     {
       "branch": "福建易联",
       "store": "华为南平建阳建发悦城",
-      "denominator": 2.0,
+      "denominator": 4.0,
       "numerator": 1.0,
-      "order_denom": 2,
+      "order_denom": 3,
       "order_num": 1,
       "vip_items": [
         {
@@ -2396,21 +2396,21 @@
     {
       "branch": "福建易联",
       "store": "华为福州东二环泰禾广场",
-      "denominator": 5.0,
-      "numerator": 4.0,
-      "order_denom": 5,
-      "order_num": 4,
+      "denominator": 4.0,
+      "numerator": 3.0,
+      "order_denom": 4,
+      "order_num": 3,
       "vip_items": [
         {
           "code": "FJYLVIP0004",
           "name": "299元礼包",
-          "qty": 4.0,
+          "qty": 3.0,
           "price": 299,
           "profit": 174.0
         }
       ],
-      "amount": 1196.0,
-      "profit": 696.0
+      "amount": 897.0,
+      "profit": 522.0
     },
     {
       "branch": "福建易联",

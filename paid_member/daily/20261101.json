@@ -1,10 +1,10 @@
 {
   "date": "2026-11-01",
-  "generated": "2026-11-05 00:20",
+  "generated": "2026-11-05 22:44",
   "total": {
-    "denominator": 849.0,
+    "denominator": 848.0,
     "numerator": 356.0,
-    "order_denom": 837,
+    "order_denom": 836,
     "order_num": 356,
     "amount": 278217.0,
     "profit": 42042.5
@@ -63,9 +63,9 @@
       "profit": 19500.0
     },
     "四川新跃": {
-      "denominator": 128.0,
+      "denominator": 129.0,
       "numerator": 52.0,
-      "order_denom": 128,
+      "order_denom": 129,
       "order_num": 52,
       "vip_items": [
         {
@@ -139,9 +139,9 @@
       "profit": 11752.0
     },
     "福建易联": {
-      "denominator": 55.0,
+      "denominator": 54.0,
       "numerator": 17.0,
-      "order_denom": 55,
+      "order_denom": 54,
       "order_num": 17,
       "vip_items": [
         {
@@ -194,9 +194,9 @@
       "profit": 2223.0
     },
     "上海爱飞": {
-      "denominator": 50.0,
+      "denominator": 49.0,
       "numerator": 6.0,
-      "order_denom": 50,
+      "order_denom": 49,
       "order_num": 6,
       "vip_items": [
         {
@@ -1478,9 +1478,9 @@
     {
       "branch": "四川新跃",
       "store": "APR成都时代天街",
-      "denominator": 4.0,
+      "denominator": 5.0,
       "numerator": 4.0,
-      "order_denom": 4,
+      "order_denom": 5,
       "order_num": 4,
       "vip_items": [
         {
@@ -2716,9 +2716,9 @@
     {
       "branch": "福建易联",
       "store": "华为福州仓山爱琴海",
-      "denominator": 4.0,
+      "denominator": 3.0,
       "numerator": 1.0,
-      "order_denom": 4,
+      "order_denom": 3,
       "order_num": 1,
       "vip_items": [
         {
@@ -3478,9 +3478,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海久光中心授权体验店",
-      "denominator": 5.0,
+      "denominator": 4.0,
       "numerator": 0.0,
-      "order_denom": 5,
+      "order_denom": 4,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
