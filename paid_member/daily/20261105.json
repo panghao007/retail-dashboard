@@ -1,13 +1,13 @@
 {
   "date": "2026-11-05",
-  "generated": "2026-11-05 22:44",
+  "generated": "2026-11-06 22:37",
   "total": {
-    "denominator": 516.0,
-    "numerator": 212.0,
-    "order_denom": 501,
-    "order_num": 212,
-    "amount": 163532.0,
-    "profit": 26598.5
+    "denominator": 513.0,
+    "numerator": 213.0,
+    "order_denom": 498,
+    "order_num": 213,
+    "amount": 163831.0,
+    "profit": 26772.5
   },
   "branches": {
     "北京中恒": {
@@ -70,9 +70,9 @@
       "profit": 11200.0
     },
     "四川新跃": {
-      "denominator": 81.0,
+      "denominator": 80.0,
       "numerator": 24.0,
-      "order_denom": 80,
+      "order_denom": 79,
       "order_num": 24,
       "vip_items": [
         {
@@ -115,9 +115,9 @@
       "profit": 2400.0
     },
     "北京易联": {
-      "denominator": 95.0,
+      "denominator": 94.0,
       "numerator": 42.0,
-      "order_denom": 94,
+      "order_denom": 93,
       "order_num": 42,
       "vip_items": [
         {
@@ -139,15 +139,15 @@
       "profit": 9233.0
     },
     "福建易联": {
-      "denominator": 37.0,
-      "numerator": 13.0,
-      "order_denom": 37,
-      "order_num": 13,
+      "denominator": 38.0,
+      "numerator": 14.0,
+      "order_denom": 38,
+      "order_num": 14,
       "vip_items": [
         {
           "code": "FJYLVIP0004",
           "name": "299元礼包",
-          "qty": 12.0,
+          "qty": 13.0,
           "price": 299,
           "profit": 174.0
         },
@@ -159,13 +159,13 @@
           "profit": 211.5
         }
       ],
-      "amount": 3987.0,
-      "profit": 2299.5
+      "amount": 4286.0,
+      "profit": 2473.5
     },
     "北京飞航": {
-      "denominator": 77.0,
+      "denominator": 76.0,
       "numerator": 11.0,
-      "order_denom": 76,
+      "order_denom": 75,
       "order_num": 11,
       "vip_items": [
         {
@@ -187,9 +187,9 @@
       "profit": 846.0
     },
     "上海爱飞": {
-      "denominator": 50.0,
+      "denominator": 49.0,
       "numerator": 10.0,
-      "order_denom": 42,
+      "order_denom": 41,
       "order_num": 10,
       "vip_items": [
         {
@@ -1276,9 +1276,9 @@
     {
       "branch": "四川新跃",
       "store": "APR成都双楠伊藤",
-      "denominator": 2.0,
+      "denominator": 1.0,
       "numerator": 0.0,
-      "order_denom": 2,
+      "order_denom": 1,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2093,9 +2093,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京石景山万达",
-      "denominator": 11.0,
+      "denominator": 10.0,
       "numerator": 6.0,
-      "order_denom": 11,
+      "order_denom": 10,
       "order_num": 6,
       "vip_items": [
         {
@@ -2430,20 +2430,20 @@
       "branch": "福建易联",
       "store": "华为福州东二环泰禾广场",
       "denominator": 12.0,
-      "numerator": 5.0,
+      "numerator": 6.0,
       "order_denom": 12,
-      "order_num": 5,
+      "order_num": 6,
       "vip_items": [
         {
           "code": "FJYLVIP0004",
           "name": "299元礼包",
-          "qty": 5.0,
+          "qty": 6.0,
           "price": 299,
           "profit": 174.0
         }
       ],
-      "amount": 1495.0,
-      "profit": 870.0
+      "amount": 1794.0,
+      "profit": 1044.0
     },
     {
       "branch": "福建易联",
@@ -2470,9 +2470,9 @@
     {
       "branch": "福建易联",
       "store": "华为福州五四北泰禾广场",
-      "denominator": 2.0,
+      "denominator": 3.0,
       "numerator": 2.0,
-      "order_denom": 2,
+      "order_denom": 3,
       "order_num": 2,
       "vip_items": [
         {
@@ -3059,9 +3059,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI大疆哈苏北京朝阳合生汇概念店",
-      "denominator": 9.0,
+      "denominator": 8.0,
       "numerator": 1.0,
-      "order_denom": 9,
+      "order_denom": 8,
       "order_num": 1,
       "vip_items": [
         {
@@ -3163,9 +3163,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海中庚漫游城授权体验店",
-      "denominator": 4.0,
+      "denominator": 3.0,
       "numerator": 0.0,
-      "order_denom": 3,
+      "order_denom": 2,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
