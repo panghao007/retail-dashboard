@@ -1,10 +1,10 @@
 {
   "date": "2026-11-06",
-  "generated": "2026-11-07 22:36",
+  "generated": "2026-11-09 00:40",
   "total": {
-    "denominator": 664.0,
+    "denominator": 658.0,
     "numerator": 319.0,
-    "order_denom": 651,
+    "order_denom": 645,
     "order_num": 319,
     "amount": 242763.0,
     "profit": 36735.5
@@ -115,9 +115,9 @@
       "profit": 3700.0
     },
     "北京易联": {
-      "denominator": 110.0,
+      "denominator": 109.0,
       "numerator": 44.0,
-      "order_denom": 107,
+      "order_denom": 106,
       "order_num": 44,
       "vip_items": [
         {
@@ -139,9 +139,9 @@
       "profit": 9109.0
     },
     "福建易联": {
-      "denominator": 46.0,
+      "denominator": 45.0,
       "numerator": 19.0,
-      "order_denom": 45,
+      "order_denom": 44,
       "order_num": 19,
       "vip_items": [
         {
@@ -170,9 +170,9 @@
       "profit": 3563.5
     },
     "北京飞航": {
-      "denominator": 107.0,
+      "denominator": 103.0,
       "numerator": 29.0,
-      "order_denom": 101,
+      "order_denom": 97,
       "order_num": 29,
       "vip_items": [
         {
@@ -1976,9 +1976,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京大兴大族",
-      "denominator": 7.0,
+      "denominator": 6.0,
       "numerator": 3.0,
-      "order_denom": 7,
+      "order_denom": 6,
       "order_num": 3,
       "vip_items": [
         {
@@ -2465,9 +2465,9 @@
     {
       "branch": "福建易联",
       "store": "华为厦门思明瑞景广场",
-      "denominator": 1.0,
+      "denominator": 0.0,
       "numerator": 0.0,
-      "order_denom": 1,
+      "order_denom": 0,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -3116,9 +3116,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京金源购物广场授权体验店",
-      "denominator": 5.0,
+      "denominator": 3.0,
       "numerator": 1.0,
-      "order_denom": 5,
+      "order_denom": 3,
       "order_num": 1,
       "vip_items": [
         {
@@ -3228,9 +3228,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京龙湖房山天街授权体验店",
-      "denominator": 3.0,
+      "denominator": 1.0,
       "numerator": 1.0,
-      "order_denom": 3,
+      "order_denom": 1,
       "order_num": 1,
       "vip_items": [
         {
