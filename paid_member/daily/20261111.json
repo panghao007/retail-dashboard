@@ -1,13 +1,13 @@
 {
   "date": "2026-11-11",
-  "generated": "2026-11-12 00:40",
+  "generated": "2026-11-13 00:40",
   "total": {
-    "denominator": 683.0,
-    "numerator": 288.0,
-    "order_denom": 666,
-    "order_num": 287,
-    "amount": 192364.0,
-    "profit": 34547.0
+    "denominator": 680.0,
+    "numerator": 289.0,
+    "order_denom": 663,
+    "order_num": 288,
+    "amount": 192533.0,
+    "profit": 34650.0
   },
   "branches": {
     "北京中恒": {
@@ -135,10 +135,10 @@
       "profit": 3654.0
     },
     "北京飞航": {
-      "denominator": 98.0,
-      "numerator": 22.0,
-      "order_denom": 98,
-      "order_num": 22,
+      "denominator": 96.0,
+      "numerator": 23.0,
+      "order_denom": 96,
+      "order_num": 23,
       "vip_items": [
         {
           "code": "FHQLVIP0003",
@@ -150,18 +150,18 @@
         {
           "code": "FHQLVIP0005",
           "name": "畅享会员-169",
-          "qty": 5.0,
+          "qty": 6.0,
           "price": 169,
           "profit": 103.0
         }
       ],
-      "amount": 2528.0,
-      "profit": 1569.0
+      "amount": 2697.0,
+      "profit": 1672.0
     },
     "上海爱飞": {
-      "denominator": 47.0,
+      "denominator": 46.0,
       "numerator": 20.0,
-      "order_denom": 42,
+      "order_denom": 41,
       "order_num": 20,
       "vip_items": [
         {
@@ -2890,9 +2890,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京西单大悦城授权体验店",
-      "denominator": 9.0,
+      "denominator": 8.0,
       "numerator": 5.0,
-      "order_denom": 9,
+      "order_denom": 8,
       "order_num": 5,
       "vip_items": [
         {
@@ -2920,13 +2920,21 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京西红门荟聚中心授权体验店",
-      "denominator": 8.0,
-      "numerator": 0.0,
-      "order_denom": 8,
-      "order_num": 0,
-      "vip_items": [],
-      "amount": 0,
-      "profit": 0
+      "denominator": 7.0,
+      "numerator": 1.0,
+      "order_denom": 7,
+      "order_num": 1,
+      "vip_items": [
+        {
+          "code": "FHQLVIP0005",
+          "name": "畅享会员-169",
+          "qty": 1.0,
+          "price": 169,
+          "profit": 103.0
+        }
+      ],
+      "amount": 169.0,
+      "profit": 103.0
     },
     {
       "branch": "北京飞航",
@@ -3617,9 +3625,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海静安大融城授权体验店",
-      "denominator": 2.0,
+      "denominator": 1.0,
       "numerator": 0.0,
-      "order_denom": 2,
+      "order_denom": 1,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,

@@ -1,6 +1,6 @@
 {
   "date": "2026-11-03",
-  "generated": "2026-11-12 00:40",
+  "generated": "2026-11-13 00:40",
   "total": {
     "denominator": 551.0,
     "numerator": 240.0,
@@ -2001,18 +2001,18 @@
       "order_num": 4,
       "vip_items": [
         {
-          "code": "BJYLVIP0004",
-          "name": "499元套包",
-          "qty": 2.0,
-          "price": 499,
-          "profit": 337.0
-        },
-        {
           "code": "BJYLVIP0006",
           "name": "299元套包",
           "qty": 3.0,
           "price": 299,
           "profit": 204.0
+        },
+        {
+          "code": "BJYLVIP0004",
+          "name": "499元套包",
+          "qty": 2.0,
+          "price": 499,
+          "profit": 337.0
         }
       ],
       "amount": 1895.0,
