@@ -1,10 +1,10 @@
 {
   "date": "2026-11-11",
-  "generated": "2026-11-13 00:40",
+  "generated": "2026-11-13 22:40",
   "total": {
-    "denominator": 680.0,
+    "denominator": 681.0,
     "numerator": 289.0,
-    "order_denom": 663,
+    "order_denom": 664,
     "order_num": 288,
     "amount": 192533.0,
     "profit": 34650.0
@@ -159,9 +159,9 @@
       "profit": 1672.0
     },
     "上海爱飞": {
-      "denominator": 46.0,
+      "denominator": 47.0,
       "numerator": 20.0,
-      "order_denom": 41,
+      "order_denom": 42,
       "order_num": 20,
       "vip_items": [
         {
@@ -3625,9 +3625,9 @@
     {
       "branch": "上海爱飞",
       "store": "DJI上海静安大融城授权体验店",
-      "denominator": 1.0,
+      "denominator": 2.0,
       "numerator": 0.0,
-      "order_denom": 1,
+      "order_denom": 2,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
