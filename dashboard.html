@@ -534,11 +534,7 @@ async function loadValidity(){
         ? [{text:"对比昨日无效增减：—", type:"flat"}]
         : [deltaChip("无效增减", v.delta, "笔", "down")]
     );
-    const dlV=document.getElementById("dl-validity");
-    if(dlV && v.date){
-      dlV.href="d/"+v.date+"_会员有效性分析.xlsx";
-      dlV.textContent="⬇ 会员有效性分析("+v.date+").xlsx";
-    }
+    bindValidityXlsx(v.date);
     updateHeader();
     return;
   }catch(e){ /* 回退 latest.json */ }
@@ -561,8 +557,7 @@ async function loadValidity(){
         : [deltaChip("无效增减", invDelta, "笔", "down")]
     );
     // 回退分支也更新下载按钮
-    var dlV2=document.getElementById("dl-validity");
-    if(dlV2 && vDate){ dlV2.href="d/"+vDate+"_会员有效性分析.xlsx"; dlV2.textContent="⬇ 会员有效性分析("+vDate+").xlsx"; }
+    bindValidityXlsx(vDate);
   }catch(_){
     setCard("validity","—",[{num:"—",lab:"会员有效性(取数失败)"}],[]);
   }
@@ -746,6 +741,21 @@ function downloadCashierCSV(){
 document.getElementById("dl-cashier-csv").addEventListener("click", downloadCashierCSV);
 
 /* ── 历史全月归档下载（monthly_archive/manifest.json 驱动，列出全部归档月份，最新在上） ── */
+/* 会员有效性 Excel 文件名按「跑数日」生成，可能比数据日期晚 1~2 天（ERP T+1 / 开机补跑）。
+   逐个探测候选日期，命中才给 href；全不命中禁用按钮，避免点了 404。*/
+async function bindValidityXlsx(dataDate){
+  const el=document.getElementById("dl-validity");
+  if(!el || !dataDate) return;
+  el.textContent="⬇ 会员有效性分析("+dataDate+").xlsx";
+  const base=new Date(dataDate+"T00:00:00");
+  for(let i=0;i<=4;i++){
+    const d=new Date(base.getTime()+i*86400000);
+    const c=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+    const u="d/"+c+"_会员有效性分析.xlsx";
+    try{ const r=await fetch(u,{method:"HEAD",cache:"no-store"}); if(r.ok){ el.href=u; el.style.opacity=""; el.title=""; return; } }catch(_){}
+  }
+  el.removeAttribute("href"); el.style.opacity=".5"; el.title="当日 Excel 尚未生成";
+}
 function mkBtn(href, file, label){
   var a=document.createElement("a");
   a.className="dl-btn";
