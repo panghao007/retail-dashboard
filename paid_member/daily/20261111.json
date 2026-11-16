@@ -1,10 +1,10 @@
 {
   "date": "2026-11-11",
-  "generated": "2026-11-13 22:40",
+  "generated": "2026-11-16 09:22",
   "total": {
-    "denominator": 681.0,
+    "denominator": 680.0,
     "numerator": 289.0,
-    "order_denom": 664,
+    "order_denom": 663,
     "order_num": 288,
     "amount": 192533.0,
     "profit": 34650.0
@@ -135,9 +135,9 @@
       "profit": 3654.0
     },
     "北京飞航": {
-      "denominator": 96.0,
+      "denominator": 95.0,
       "numerator": 23.0,
-      "order_denom": 96,
+      "order_denom": 95,
       "order_num": 23,
       "vip_items": [
         {
@@ -2748,9 +2748,9 @@
     {
       "branch": "北京飞航",
       "store": "DJI北京太阳宫凯德授权体验店",
-      "denominator": 5.0,
+      "denominator": 4.0,
       "numerator": 0.0,
-      "order_denom": 5,
+      "order_denom": 4,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,

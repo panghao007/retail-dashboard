@@ -1,13 +1,13 @@
 {
   "date": "2026-11-07",
-  "generated": "2026-11-13 22:40",
+  "generated": "2026-11-16 09:22",
   "total": {
-    "denominator": 887.0,
-    "numerator": 380.0,
-    "order_denom": 877,
-    "order_num": 380,
-    "amount": 272287.0,
-    "profit": 42932.5
+    "denominator": 886.0,
+    "numerator": 379.0,
+    "order_denom": 876,
+    "order_num": 379,
+    "amount": 271988.0,
+    "profit": 42758.5
   },
   "branches": {
     "北京中恒": {
@@ -115,9 +115,9 @@
       "profit": 5500.0
     },
     "北京易联": {
-      "denominator": 115.0,
+      "denominator": 114.0,
       "numerator": 42.0,
-      "order_denom": 115,
+      "order_denom": 114,
       "order_num": 42,
       "vip_items": [
         {
@@ -140,14 +140,14 @@
     },
     "福建易联": {
       "denominator": 73.0,
-      "numerator": 33.0,
+      "numerator": 32.0,
       "order_denom": 73,
-      "order_num": 33,
+      "order_num": 32,
       "vip_items": [
         {
           "code": "FJYLVIP0004",
           "name": "299元礼包",
-          "qty": 32.0,
+          "qty": 31.0,
           "price": 299,
           "profit": 174.0
         },
@@ -159,8 +159,8 @@
           "profit": 356.5
         }
       ],
-      "amount": 10267.0,
-      "profit": 5924.5
+      "amount": 9968.0,
+      "profit": 5750.5
     },
     "北京飞航": {
       "denominator": 147.0,
@@ -2300,9 +2300,9 @@
     {
       "branch": "北京易联",
       "store": "华为北京通州乐堤港",
-      "denominator": 3.0,
+      "denominator": 2.0,
       "numerator": 0.0,
-      "order_denom": 3,
+      "order_denom": 2,
       "order_num": 0,
       "vip_items": [],
       "amount": 0,
@@ -2658,20 +2658,20 @@
       "branch": "福建易联",
       "store": "华为福州中骏世界城",
       "denominator": 0.0,
-      "numerator": 5.0,
+      "numerator": 4.0,
       "order_denom": 0,
-      "order_num": 5,
+      "order_num": 4,
       "vip_items": [
         {
           "code": "FJYLVIP0004",
           "name": "299元礼包",
-          "qty": 5.0,
+          "qty": 4.0,
           "price": 299,
           "profit": 174.0
         }
       ],
-      "amount": 1495.0,
-      "profit": 870.0
+      "amount": 1196.0,
+      "profit": 696.0
     },
     {
       "branch": "福建易联",
