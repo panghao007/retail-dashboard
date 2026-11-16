@@ -65,6 +65,8 @@ function keyToYmd(k){ k=(''+k).replace(/\D/g,""); return k? (k.slice(0,4)+"-"+k.
 function ymdToKey(s){ return s? (''+s).replace(/-/g,"") : ""; }
 function prevKey(k){ k=''+k; var y=+k.slice(0,4),m=+k.slice(4,6),d=+k.slice(6,8); var dt=new Date(y,m-1,d); dt.setDate(dt.getDate()-1); var mm=('0'+(dt.getMonth()+1)).slice(-2), dd=('0'+dt.getDate()).slice(-2); return ''+dt.getFullYear()+mm+dd; }
 function firstOfMonthKey(k){ k=''+k; return k.slice(0,4)+k.slice(4,6)+'01'; }
+// 🔴 取数基准日 = 最新可用快照日（ERP T+1，当天快照要晚上才生成）；勿用自然日，否则「当日」恒空
+function baseKey(){ var t=todayKey(); return (INDEX.indexOf(t)>=0 || INDEX.length===0)? t : INDEX[INDEX.length-1]; }
 function idxName(k){ return "daily_index_"+k+".json"; }
 async function loadIndex(){
   var k=todayKey();
@@ -77,10 +79,11 @@ async function loadIndex(){
 function loadSnap(k){ if(SNAPS[k]) return Promise.resolve(SNAPS[k]); return fetch("daily/"+k+".json").then(function(r){return r.json();}).then(function(j){SNAPS[k]=j;return j;}).catch(function(){return null;}); }
 function selectedDates(){
   if(INDEX.length===0) return [];
-  var t=todayKey();
+  var t=baseKey();
   if(MODE==="当日") return [t];
-  if(MODE==="昨日") return [prevKey(t)];
-  if(MODE==="当月"){ var ms=firstOfMonthKey(t); var ye=prevKey(t); return INDEX.filter(function(d){return d>=ms && d<=ye;}); }
+  // 昨日 = 上一个「有快照」的日期（快照口径存在历史缺口，避免点到空白日）
+  if(MODE==="昨日"){ var p=prevInIndex(t); return p?[p]:[]; }
+  if(MODE==="当月"){ var ms=firstOfMonthKey(t); var ye=t; return INDEX.filter(function(d){return d>=ms && d<=ye;}); }
   if(MODE==="自定义"){ return INDEX.filter(function(d){return d>=(CUSTOM.start||"0000") && d<=(CUSTOM.end||"99999999");}); }
   return [];
 }
@@ -195,15 +198,15 @@ function setMode(m){
   MODE=m;
   document.querySelectorAll('.bar button').forEach(function(b){ b.classList.toggle('on', b.dataset.m===m); });
   document.getElementById('cust').style.display=(m==="自定义")?"inline-flex":"none";
-  if(m==="自定义"){ var t=todayKey(); document.getElementById('cstart').value=keyToYmd(firstOfMonthKey(t)); document.getElementById('cend').value=keyToYmd(prevKey(t)); }
+  if(m==="自定义"){ var t=baseKey(); document.getElementById('cstart').value=keyToYmd(firstOfMonthKey(t)); document.getElementById('cend').value=keyToYmd(t); }
   render();
 }
 function applyCustom(){ CUSTOM.start=ymdToKey(document.getElementById('cstart').value); CUSTOM.end=ymdToKey(document.getElementById('cend').value); render(); }
 (async function(){
   await loadIndex();
-  var t=todayKey();
+  var t=baseKey();
   document.getElementById('cstart').value=keyToYmd(firstOfMonthKey(t));
-  document.getElementById('cend').value=keyToYmd(prevKey(t));
+  document.getElementById('cend').value=keyToYmd(t);
   setMode("当日");
 })();
 </script>
