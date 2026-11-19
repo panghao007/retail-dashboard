@@ -1,16 +1,16 @@
 {
-  "date": "2026-11-18",
+  "date": "2026-11-19",
   "html": "d/index.html",
   "kpi": {
-    "total_orders": 19654,
-    "valid_members": 19588,
-    "invalid_members": 66,
-    "valid_rate": 96.42,
-    "invalid_rate": 3.58,
-    "orders_valid": 20317,
-    "orders_invalid": 755,
-    "prev_invalid": 724,
+    "total_orders": 20355,
+    "valid_members": 20288,
+    "invalid_members": 67,
+    "valid_rate": 96.43,
+    "invalid_rate": 3.57,
+    "orders_valid": 21056,
+    "orders_invalid": 780,
+    "prev_invalid": 753,
     "prev_valid": null,
-    "latest_date": "2026-11-18"
+    "latest_date": "2026-11-19"
   }
 }
