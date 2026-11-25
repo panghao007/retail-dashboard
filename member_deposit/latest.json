@@ -1,9 +1,9 @@
 {
-  "date": "2026-11-24",
+  "date": "2026-11-25",
   "html": "member_deposit/会员沉淀看板.html",
   "kpi": {
-    "total_distinct": 375747,
+    "total_distinct": 376895,
     "branch_count": 6,
-    "prev_new": 1737
+    "prev_new": 1148
   }
 }
