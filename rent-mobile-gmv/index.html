@@ -410,15 +410,25 @@ if(!FC.date){
 // 版本自检 + 缓存绕过：固定链接被浏览器/微信缓存时，旧页面也能自动发现并跳到最新版。
 // 原理：读取带时间戳的轻量版本文件 version.json，与本页内嵌 generated 对比；
 //       不一致（或本页来自缓存）就替换 URL 参数强制重新拉取。
+// 安全阀：sessionStorage 记录本会话已处理的版本；且只在线上版本「更新」时才跳，
+//         避免版本号异常导致刷新死循环。
 (function(){
   const curGen=(D&&D.generated)||'';
-  const u=new URL(location.href);
-  const v=u.searchParams.get('_v')||'';
+  const KEY='__rent_v_seen__';
+  let seen='';
+  try{ seen=sessionStorage.getItem(KEY)||''; }catch(e){}
+  if(seen===curGen) return;                      // 本会话已处理过这个版本
   fetch('version.json?_='+Date.now(),{cache:'no-store'})
     .then(r=>r.ok?r.json():null)
     .then(j=>{
-      if(!j||!j.generated) return;         // 无版本文件则放弃（不打扰用户）
-      if(j.generated===curGen && v===j.generated) return;  // 已是最新
+      if(!j||!j.generated) return;                // 无版本文件则放弃（不打扰用户）
+      if(j.generated===curGen) {                 // 已是最新
+        try{ sessionStorage.setItem(KEY,curGen); }catch(e){}
+        return;
+      }
+      if(j.generated < curGen) return;            // 版本倒退则不动，避免死循环
+      try{ sessionStorage.setItem(KEY,j.generated); }catch(e){}
+      const u=new URL(location.href);
       u.searchParams.set('_v', j.generated);
       location.replace(u.toString());
     })
